@@ -32,12 +32,6 @@ library(rstan)
 library(ggplot2)
 library(purrr)
 library(dplyr)
-library(pander)
-```
-
-```{r}
-panderOptions('table.alignment.default',
-  function(df) ifelse(sapply(df, is.numeric), 'right', 'left'))
 ```
 
 ```{r}
@@ -154,40 +148,6 @@ W_{s} = \alpha_{s}{L_{s}}^{\beta_{s}}
 \end{equation}
 
 where $\alpha_s$ and $\beta_s$ are the parameters of the equation specific to sex, and $L_s$ and $W_s$ are paired length ($L$) and weight ($W$) observations from synoptic surveys (Table \@ref(tab:biosamples)). Results are shown in Figure \@ref(fig:lw-figs).
-
-```{r, results='hide'}
-# surveys <- list(
-#   all = c("SYN HS", "SYN QCS","SYN WCVI"),
-#   HSQC = c("SYN HS", "SYN QCS"),
-#   WC = "SYN WCVI"
-# )
-# sexes <- c("male", "female")
-# vb_fits <-
-#   map(surveys, function(.survey) {
-#     map(sexes, function(.sex) {
-#       .dat <- filter(x, is.element(survey_abbrev, .survey))
-#       fit_vb(.dat, .sex, method = "mpd")
-#     })
-#   })
-
-# vb_figs <- map(vb_fits, ~ plot_vb(
-#   object_male = .x[[1]], object_female = .x[[2]],
-#       col = c(Female = "red", Male = "grey40"))
-#   )
-# cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
-
-# nms <- names(vb_fits[[1]][[1]]$model$par)
-# get_par_df <- function(.d, element = 1) {
-#   map_df(.d, ~ .x[[element]]$model$par) %>%
-#     t() %>%
-#     as.data.frame() %>%
-#     setNames(nms) %>%
-#     mutate(sex = sexes[element])
-# }
-# get_par_df(vb_fits, 1) %>%
-#   bind_rows(get_par_df(vb_fits, 2)) %>%
-#   pander::pander(caption = "Caption for the table")
-```
 
 ```{r fit-vb, results='hide'}
 surveys_list <- list(
