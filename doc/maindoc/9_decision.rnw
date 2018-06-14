@@ -1,0 +1,107 @@
+\section{DECISION TABLES}
+
+Performance measures were calculated over a sequence of alternative 2014 projected catch levels and are based on one-year projections to 2015.
+Projected recruitment anomalies in 2015 were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
+
+Reference points and performance measures are listed in Tables 12 and 13.
+The decision tables are designed to present probabilities of undesirable states under alternative 2014 projected catch levels.
+An undesirable biomass-based performance measure occurs when 2015 projected biomass is below the reference point, i.e., $B_{2015}/B_\text{ReferencePoint} < 1$.
+Probabilities using biomass-based reference points are only presented for Area 5CD for the reasons given above.
+
+An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2014}/F_\text{ReferencePoint} > 1$.
+
+Probabilities of undesirable states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures). 
+
+In the previous section, we identified some key sources of uncertainty in this assessment and suggested three solutions to presenting advice incorporating this uncertainty.
+In both management Areas 5CD and 5AB, we suggested that we cannot further reduce the uncertainty arising from the prior probability distribution for ln($M$) (Figures 32 and 45); the goodness of fit to the mean weight data (Figures 36 and 47); or how well the model should fit to the commercial CPUE data, if at all (Figures 41, 44, 49 and 50).
+
+In the following sections we present the Base Case decision tables for each area, then present alternative ``model averaged'' decision tables that incorporate the uncertainty from the above sensitivity cases and Base Cases.
+The model averaging approach is described below.
+We did not attempt to assign different weights to the alternative models in the construction of the model-averaged results.
+
+\subsection{BASE CASE MODELS}
+
+The decision table for the Area 5CD Base Case model is provided in Table 26.
+The probability of the 2015 biomass being below the 2014 biomass ranged from 12.4\% under no 2014 catch to 64.1\% under 2400 t, double the current TAC.
+The probability of being below the LRP ranged from 12.3\% to 24.9\% over the range of catch levels considered.
+The probability of being below the USR was higher and ranged from 51.2\% under no 2014 catch to 66.0\% over the range of catch levels considered.
+The probability of the 2014 fishing mortality being greater than the 2013 fishing mortality ranged from 0.0\% to 100\%.
+The probability of the 2014 fishing mortality being greater than the LRR ranged from 0.0\% to 33.9\%.
+Estimated probabilities at the current TAC 1200 t are shown in bold (Table 26).
+Under a 2014 catch level of 1200 t, there is an estimated 60\% probability that the 2015 biomass will be below the USR and an 18.2\% probability that the 2015 biomass will be below the LRP.
+
+The decision table for the Area 5AB Base Case model is provided in Table 27.
+The range of 2014 catch levels is smaller for Area 5AB, reflecting the apparent smaller stock size and smaller historical catch levels (Table 1).
+The probability of the 2014 fishing mortality being greater than the 2013 fishing mortality ranged from 0.0\% to 100\%.
+The probability of the 2014 fishing mortality being greater than the provisional LRR ranged from 0.0\% to 100\%, with a 99.5\% probability at 850 t.
+Estimated probabilities under a catch level close to the current TAC of 590 t are shown in bold (Table 27).
+At the current TAC, the probability of exceeding the provisional LRR is 95.4\%. In recent years, the TAC has been under-utilized in Area 5AB (Table 3).
+
+We urge caution in interpreting these results.
+Lack of survey data for this area implies that estimates of recruitment and biomass have been strongly influenced by the catch and mean weight data for the recent part of the time series, both of which are known to have been influenced by management changes, i.e., the implementation of quotas and changes in the observer program and sampling of length-frequency data. 
+
+\subsection{MODEL AVERAGING}
+
+\subsubsection{Area 5CD: Hecate Strait}
+
+For Area 5CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
+\begin{resdoclist}
+\item Base Case; 
+\item the sensitivity case with prior probability distribution for ln($M$): $\mathcal{N}\sim(0.4,0.2)$;
+\item the sensitivity case with $\sigma_W = 0.4$; 
+\item the sensitivity case with $\sigma_0 = 0.15$; and 
+\item the sensitivity case without commercial CPUE data.
+\end{resdoclist}
+We selected the sensitivity case for the prior on ln($M$) that had biomass estimates most divergent from the Base Case model to better bracket the uncertainty due to this parameter.
+Posterior estimates of biomass relative to the LRP and USR from each scenario are summarized in Figure 53. 
+
+The vectors of 1,000 burned-in posterior samples from each of the five models, for each performance measure, under each alternative 2014 catch level, were combined into a single vector of 5,000 samples and probabilities of undesirable states (see above) were calculated from the combined samples. 
+
+A similar approach was used in the 2011 assessment of Pacific Hake (Stewart et al. 2011), where two alternative stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible.
+Another approach, based on Maximum Posterior Density model results, was used by Stewart et al. (2013) for the 2012 assessment of Pacific Halibut, where the magnitude of natural mortality was considered to be the primary axis of uncertainty.
+A similar approach is being used for the 2013 assessment of Pacific Halibut, where three alternative, structurally different models, are being used to develop catch advice (Stewart and Martell. 2014).
+The latter example draws from the ensemble modeling approach commonly used in weather forecasting (e.g., Hamill et al. 2012).
+
+The ``Model-Averaged'' decision table probabilities for Area 5CD are presented in Table 28.
+For most performance measures, probabilities were similar to those in the Base Case model.
+For example, the probability of B2015 < B2014 under a 2014 TAC of 1200 t was 39.6\% for the Base Case model (Table 26), and 42.1\% from the averaged models (Table 28).
+The probability of B2015 < LRP under a 2014 catch level of 1200 t  was 18.8\% for the averaged models, compared with 18.2\% for the Base Case model.
+The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8\% for the averaged models, compared with 60.0\% for the Base Case model.
+
+\subsubsection{Area 5AB: Queen Charlotte Sound}
+
+For Area 5AB, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance from the following five models:
+\begin{resdoclist}
+\item Base Case; 
+\item the sensitivity case with prior probability distribution for ln($M$): $\mathcal{N}\sim(0.4,0.2)$;
+\item the sensitivity case with $\sigma_W = 0.4$; 
+\item the sensitivity case with $\sigma_0 = 0.15$; and 
+\item the sensitivity case using the conditional MPD estimate of $\sigma_j$ in the objective function. 
+\end{resdoclist}
+As for Area 5CD, we selected the sensitivity case for the prior on ln($M$) that had biomass estimates most divergent from the Base Case model to better bracket the uncertainty due to this parameter.
+Posterior estimates of biomass from each scenario are summarized in Figure 54.
+
+The ``Model-Averaged'' decision table probabilities for Area 5AB are presented in Table 29.
+The probability of the 2014 fishing mortality being greater than the 2013 fishing mortality ranged from 0.0\% to 100\%.
+The probability of the 2014 fishing mortality being greater than the provisional LRR ranged from 0.0\% to 99.6\%, with a 99.5\% probability at 1,550 t.
+Estimated probabilities under a catch level close to the current TAC of 590 t are shown in bold (Table 27).
+At the current TAC, the probability of exceeding the provisional LRR is 87.7\%.
+In recent years, the TAC has been under-utilized in Area 5AB (Table 3).
+
+We re-iterate the same cautions in interpreting these results for Area 5AB as for Table 27 (above).
+
+\subsubsection{Area 3CD: WEST COAST VANCOUVER ISLAND}
+
+\subsection{SUMMARY}
+
+We presented the alternative, ``model averaged'' decision tables for Areas 5CD (Table 28) and 5AB (Table 29) in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
+
+However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
+\begin{resdoclist}
+\item The effects of the assumption of constant selectivity in the trawl fishery;
+\item The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;
+\item The impact of uncertainty in stock structure in understanding patterns in abundance; 
+\item The impact of uncertainty in the magnitude of historical discarding and foreign catches;
+\item The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
+\end{resdoclist}
+Uncertainty is therefore under-represented in this assessment.

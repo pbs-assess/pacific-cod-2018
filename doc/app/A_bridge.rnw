@@ -1,0 +1,192 @@
+\label{chap:bridge}
+\starredchapter{APPENDIX~\thechapter. BRIDGING ANALYSIS}
+\lfoot{\fishName}
+\rfoot{Appendix~\thechapter~-- Bridging analysis}
+
+A bridging analysis provides a means of documenting the transition from the approach used by Sinclair and Starr (2005), and aids in understanding the underlying causes of changes to the stock reconstruction and estimates of key parameters.
+We present a bridging analysis for the Hecate Strait fishery only, because the Queen Charlotte Sound stock has not been successfully assessed in the recent past.
+For brevity, we do not present the full suite of sensitivity analyses that were explored but list key steps leading up to development of the candidate Base Case models (Table A1). 
+
+For all bridging steps, joint posterior distributions were numerically approximated using the Markov Chain Monte Carlo method implemented in AD Model Builder (Fournier et al. 2012).
+Posterior samples were drawn systematically every 2,500 iterations from a chain of length five million, resulting in 2,000 posterior samples with the first 1,000 samples removed to allow for burn-in.
+
+\appsection{STEP A1: RECONSTRUCTION OF PREVIOUS EFFORT-DRIVEN ASSESSMENT WITH FIXED PARAMETERS}
+
+The first step in the bridging analysis is to reproduce the results of the previous assessment using the current model (Tables 8-11), with parameters fixed at the values used in 2005 (Table A2).
+The purpose of this step was to verify that the current model was coded consistently with the previous model.
+
+The model in Step A1 was conditioned on the same effort time series used in 2005 and fit to the historical total catches published in Sinclair and Starr (2005), with the parameter qc fixed (Table A2).
+Sinclair and Starr (2005) used an additive iterative reweighting approach to weight the Assemblage Survey and Pacific Cod Monitoring Survey data (Sinclair and Starr 2005).
+To emulate their observation error terms in the current model, we set $\phi^{-2}$ and $\rho$ to give $\sigma_R = 0.4$ and $\sigma_O = 1.0$, then set the weighting term $c_j$ for each index as
+\begin{equation}
+c_j = \left( \sqrt{\text{CV}_{ij}^2+w_j^2} \right)^{-1}
+\end{equation}
+where
+$w_j = 0.68$ and 0.0 for the Assemblage Survey and Pacific Cod Monitoring Survey, respectively, and annual CV's are given in Table A3.
+This approach resulted in annual values of $\sigma_{ij}$ identical to those used in Sinclair and Starr (2005).
+
+Figure A1a shows estimates of biomass and recruits from the fixed parameter delay difference model compared with estimates published by Sinclair and Starr (2005; their Table 15, Fixed $h$ run).
+The similarity of the reconstructed biomass and recruitment times series indicates that current models are coded consistently with the model of Sinclair and Starr (2005) and produces consistent results under the same assumptions.
+
+Slight variations between the reconstructions obtained from the current model and the 2005 model are the result of slight differences in the fit to the catch data.
+In general, the current model tended to fit the catch data more precisely than the 2005 model (Fig. B2).
+
+\appsection{STEP A2: EFFORT-DRIVEN MODEL WITH ESTIMATED PARAMETERS}
+
+As in the previous step, Step A2 applied the delay difference model conditioned on the qualified effort data series from Sinclair and Starr (2005).
+Parameters of the model were estimated, with broad prior probability distributions shown in Table A2.
+Wherever possible, uniform distributions were used.
+Productivity parameters $M$ and $h$ required informative priors to prevent implausibly high estimates, particularly for $M$.
+
+Given the importance of estimates of $M$ to determining population scale, two alternative prior probability distributions for ln($M$) were considered:
+(i) in Step A2a the prior was a normal distribution with mean ln(0.5) and standard deviation (SD) = 0.1; and
+(ii) in Step A2b the prior was a normal distribution with mean ln(0.4) and SD = 0.1 (Table A2).
+The means of these two distributions were intended to be based on MPD values from the Fixed Steepness ($M = 0.596$) and Estimated Steepness ($M = 0.400$) alternative runs from Sinclair and Starr (2005).
+However, we achieved very poor model convergence with a prior probability distribution centred on ln(0.596) and chose ln(0.5) for our ``higher M'' scenario.
+
+Variance parameters were fixed as for the previous step, with the exception that values were chosen to give $\sigma_R = 0.8$ and $\sigma_O = 1.0$ (Table A2).
+Given the apparent large variability in recruitment for this stock (Figure A1), a higher value of $\sigma_R$ was considered more appropriate for the current assessment.
+Sensitivity to this assumption was tested for the Base Case model (see main body of this document).
+
+Median estimates of biomass and recruits were lower in Step A2a than for Step A1, although the posterior interval contained the median estimates from Step A1 (Figure A3).
+The MPD estimate of M was 0.523 $y^{-1}$, and the MPD estimate of steepness ($h$) was 0.603, i.e., both productivity parameters were estimated to be lower than the fixed values used in Step A1 (Table A2).
+In Step A2b, the median estimates of biomass and recruits were lower than for Steps A1 and Step B1a (Figure A3).
+The MPD estimate of $M$ was 0.439 $y^{-1}$, and the MPD estimate of $h$ was 0.606.
+The distribution of posterior estimates of ln($M$) was very close to the prior distribution in Step A2a (Figure A4a).
+Posterior estimates of ln($M$) tended to be greater than prior values in Step A2b, but were lower than posterior estimates in Step A2a (Figure A4b).
+
+These bridging steps illustrate that the estimated scale of the population size for this stock in this model formulation is highly dependent on assumptions about natural mortality, whether fixed or estimated with a prior probability distribution.
+We note that the biomass and recruitment trajectories for the early part of the time series are almost identical among the three steps and differ only in scale.
+
+\appsection{STEPS A3A AND A3B: UPDATING DATA STREAMS}
+
+The next bridging step is to update the data streams to 2013.
+
+Estimates of historical catch, survey indices, commercial CPUE, and effort were updated in 2013, as described in the Data section in the main body of this document.
+Given the availability of swept area estimates of biomass from the biennial Hecate Strait Synpotic Survey, we elected to drop the Pacific Cod Monitoring Survey since it overlapped in time with the Hecate Strait Assemblage and Synoptic surveys and only had three data points (Figure 8).
+We also replaced the index values for the Hecate Strait Assemblage Survey with swept area estimates (see Data section and Table A3).
+We changed the prior on ln($q_j$) for this survey to a weakly informative normal prior centred on ln(1.0) with SD = 0.5 (Table A2).
+
+Given the new survey index data in this step, it was no longer appropriate to fix the observation error parameters to the values used by Sinclair and Starr (2005). In this step, we set $\phi^{-2}$ and $\rho$ to give $\sigma_R = 0.8$ and $\sigma_O = 0.25$ (Table A2).
+We did not apply any additional weighting parameters and simply set $c_j = \text{CV}_{ij}^{-1}$ (Eq. T11.3 - T11.4), where annual CVs are given in Table A3.
+As in the previous step A2, the model was run with two alternative prior probability distributions for ln($M$), centred on 0.5 $y^{-1}$ (Step A3a) and 0.4 $y^{-1}$ (Step A3b). 
+
+Trends in biomass and recruitment for Steps A3a and A3b were very similar to those in the previous steps (Figure A5).
+Both models predicted the stock to be continuing on an increasing trajectory beginning in the early 2000s.
+
+\appsection{STEP A4: SENSITIVITY TO $\sigma_C$}
+
+While the results shown in Figure A4 are consistent with previous assessments, we note that all model Steps A1-A3 failed to fit to the 1958, 1987 and 1991 peaks in catch (e.g., Figure A6a).
+The fixed standard deviation in catch residuals $\sigma_C$ determines how well the predicted catches fit the observed catch data (Eq. T11.10).
+In Steps A1-A3, $\sigma_C$ had been set to 0.1, as in Sinclair and Starr (2005), resulting in the poor fits to catch peaks seen in Figure A6a and in their assessment.
+In Step A4, $\sigma_C$ was set to 0.025 to force the predicted catches to closely fit the observed data (Figure A6b). 
+
+In this step, it was not possible to obtain plausible estimates of $M$.
+All posterior estimates of $M$ were greater than 0.99 $y^{-1}$.
+For this step, therefore, $M$ was fixed at 0.596 $y^{-1}$.
+The effect of forcing the model to fit to the peaks in the catch data was to scale the estimated biomass downward (Figure A7), while more than doubling the estimate of the parameter that scales the effort data to fishing mortality, $q_c$.
+The MPD estimate of $q_c$ was 1.87e-5 in Step A3a compared to 7.50e-5 in Step A4.
+In summary, forcing the model to fit to the catch data, while fixing $M$ to be less than 0.6 $y^{-1}$, forced the model to estimate higher catchability in order to explain the peak catches in 1958, 1987 and 1991.
+Overall biomass was therefore estimated to be much lower.
+The only other way the model could explain the peak catches was with a highly productive stock with implausibly high natural mortality (i.e., $\sim 1.0~y^{-1}$).
+
+Estimates of the posterior probability distributions showed poor convergence for catchability parameters.
+The model also produced worse fits to the mean weight data, estimating mean weights to be around half of observed values (Figure A7). 
+
+We note that estimates of biomass, recruits and catch follow almost identical time-series trajectories over all bridging steps examined so far (see also Figure 7).
+There are differences in scale but not relative trends.
+A pairs plot of parameter estimates from Step A3a shows an almost linear positive relationship between qc and the two survey catchability parameters, $q_1$ and $q_2$; as well as strong confounding among other parameters (Figure A8).
+The strong correlations among parameters shown in Figure A8 were typical of all bridging steps so far.
+
+Linear correlations like those in Figure A8 indicate that the model is over-parameterized, i.e., there are too many parameters relative to the information in the data.
+In this case, we suggest that the assumption of a single parameter $q_c$ that scales the effort data to fishing mortality for the entire time series introduces a rigidity to the model structure.
+There was also a strong negative correlation between ln($M$) and $q_c$, $q_1$ and $q_2$ (Figure A8).
+Therefore, when $M$ was fixed in Step A4, and the model was also forced to fit to all of the catch data, the estimate of $q_c$ was forced to be larger, causing the decrease in estimated biomass (Figure A7).
+The extremely narrow posterior interval for the biomass estimates also suggests an inflexible model configuration when the model is forced to fit to the catches. 
+
+\appsection{STEPS B1A AND B1B: CATCH-DRIVEN MODEL}
+
+In this Step, we apply an alternative model configuration that removes the reliance of fishing mortality on effort data while still allowing the commercial CPUE data to be admitted into the objective function.
+Essentially, the CPUE data are used as a third index of abundance, where index points are assumed to be observed with error.
+
+The model in this configuration is fully documented in Tables 8-11, and is described in the main body of this document.
+Predicted catches are constrained to closely fit observed catches using Eq T11.10 in the objective function, where log residuals are assumed to be normally distributed and $\sigma_C$ is fixed at 0.05.
+Note that this can be achieved with a higher value of $\sigma_C$ than in the previous configuration because fishing mortality is independent of the fixed time series of effort data.
+
+Annual commercial CPUE data are available for the years 1956-2012 (Appendix \ref{chap:cpue}).
+We used Analysis D, the series based on catch and effort data from key Pacific Cod fishing localities (Appendix \ref{chap:cpue}).
+This choice was based on the assumption that these data are most likely to be representative of abundance, and was also made for consistency with Sinclair and Starr (2005).
+The series was split at 1995, the year before 100\% at-sea observer coverage was introduced into the bottom trawl fishery. 
+
+Given the availability of fishery-independent survey data post-1995, and the possibility that many vessels have been actively avoiding known fishing areas for Pacific Cod since smaller quotas were introduced in 2001, we did not include the post-1995 commercial CPUE data in the analysis.
+Therefore, three indices of abundance were available as inputs to the model:
+(1) the Hecate Strait Multispecies Assemblage Survey;
+(2) the Hecate Strait Synoptic Survey; and
+(3) the 1956-1995 commercial trawl catch per unit effort series, $\text{CPUE}_{1956-1995}$.
+The period covered by the two fishery independent surveys was summarized in Table A3.
+
+The first steps in implementing the model in this configuration used the same priors and fixed variance parameters as Steps A3a and A3b (Table A4).
+As for previous steps, two alternative priors for ln($M$) were tested: normal distributions centred on ln(0.5) and ln(0.4), with $\text{SD} = 0.1$.
+The parameter $\sigma_C$ was set to 0.05.
+Annual CVs were not available for the commercial CPUE data, which were obtained from a simple arithmetic approach described in Appendix \ref{chap:cpue}.
+A CV of 0.25 was assumed for each observation in the commercial CPUE data.
+Sensitivity to this value is analyzed in a later section.
+
+Median estimates of biomass and recruitment in both Steps B1a and Step B1b were lower than in previous steps (Figure A9).
+In both runs, $M$ was estimated to be lower than in previous steps, with MPD estimates of 0.393 $y^{-1}$ and 0.345 $y^{-1}$ for Steps B1a and B1b, respectively.
+
+Predicted indices of abundance followed the general trends of the observations but did not fit the data closely, especially the commercial CPUE data (Figure A10).
+We suggest that the model estimated lower values of $M$ in this configuration because it was not constrained to fit to the highest peaks of the CPUE data, notably in the mid-1970s and in 1987.
+
+Pairs plots of posterior parameter estimates from Step B1b show less confounding between parameters compared to the previous model configuration, particularly between $M$ and catchability parameters $q_j$ (Figure A11).
+The model provided near perfect fits to the catch data and reasonable fits to the mean weight data, although, as in the previous steps, mean weights were under-estimated during the 1990s (Figure A12).
+
+\appsection{STEPS B2 AND B3: SENSITIVITY TO FIT TO COMMERCIAL CPUE DATA}
+
+Fixed variance parameters can have a large influence on model outcomes.
+The effect of higher and lower values of overall observation error term $\sigma_O$ was tested in Steps B2 and B3.
+Previous steps used values for fixed variance parameters $\phi^{-2}$ and $\rho$ to give $\sigma_O = 0.25$ (Eq. T11.1 and T11.2).
+In a sensitivity analysis to the variance parameters in the previous step, variance parameters were fixed to give $\sigma_O = 0.1$ in Step B2 and, and $\sigma_O = 0.5$ in Step B3 (Table A4).
+These arbitrary values were intended to test the effect of assuming higher and lower overall variance in the survey observations. 
+
+The effect of the prior probability distribution for ln($M$) has been shown in previous steps and we drop further comparisons in this bridging analysis.
+Steps B2 and B3 were both run with a prior probability distribution for ln($M$) with Mean = 0.5 and SD = 0.1 (Table A4).
+
+As expected, setting $\sigma_O$ to 0.1 in Step B2 resulted in very close fits to the Synoptic Survey and CPUE data (Figure A13), although we note that the model did not fit to peaks in CPUE in 1974 or 1987.
+Conversely, setting $\sigma_O$ to 0.5 in Step B3 degraded the fit to all indices of abundance, most notably the commercial CPUE data (Figure A14). 
+
+Relaxing the fit to the CPUE data in Step B3 resulted in a slight decrease in estimated biomass in the recent part of the time series, while smoothing out the estimated peaks and troughs in the 1970s and 1980s.
+The median estimated current biomass and 95\% credibility interval was lower than in the other steps shown (Figure A15).
+The lower estimates of biomass at the recent end of the time series is likely in large part due to the poorer fit to the 2013 Hecate Strait Synoptic Survey observation (Figure A14).
+
+Despite the similarity in recent trajectories resulting from Steps B1a to B3, there were notable differences in estimates of productivity parameters $M$ and steepness ($h$).
+MPD estimates of $M$ and $h$ were much higher in Step B2 than for the other ``B'' steps (Table A5).
+The interpretation is that forcing the model to closely fit the commercial CPUE data by setting $\sigma_O = 0.1$ resulted in the model predicting a far more productive stock to explain the large peaks in biomass and catch.
+Much larger peaks in recruitment were also estimated in Step B2 (Figure A15).
+
+We also note that the lower estimates of $M$ and $h$ obtained in Step B1a (due to a lower mean value in the prior probability distribution for ln(M)) and in Step B3 (due to relaxing the goodness of fit to the commercial CPUE data) were associated with larger and much more uncertain estimates of B0 (Table A5; Figures B9 and B15).
+Therefore, while the biomass trajectories were similar in all cases, especially at the recent end of the time series (Figure A14), MSY-based reference points, which are derived from estimates of $M$, $h$ and $B_0$ (Table 9), were very different among scenarios (Figure A16). 
+
+Table A5 and Figure A16 imply that estimates of MSY-based reference points are in part a function of the goodness of fit to the index of abundance data.
+Given the inestimability of variance parameters in this assessment, the goodness of fit to the indices of abundance must rely on subjective decisions about the value of $\sigma_O$. For this reason, we concur with the conclusions of the 2005 stock assessment authors and review committee that reference points based on the reconstructed history of the stock are preferable to MSY-based reference points for this fishery (Sinclair and Starr 2005; Fargo 2005).
+
+\appsection{CONCLUSIONS FROM BRIDGING ANALYSES}
+
+The key conclusions from this analysis are:
+\begin{resdoclist}
+\item The model in its 2005 configuration could not explain peak catches.
+Natural mortality was estimated to be very high in order to explain large peaks in biomass arising from the assumption of a constant, invariant relationship between fishing mortality and fishing effort throughout the time series.
+\item Reconfiguring the model allowed catches to be fit very closely, while relaxing the influence of peaks in the CPUE data on estimates of productivity.
+Estimates of productivity parameters were influenced by how well the model fit to peaks in the index data. 
+\item While the biomass trajectories were similar in most model steps, especially at the recent end of the time series (Figure A15), MSY-based reference points were strongly influenced by fixed variance parameters and the prior for natural mortality (Figure A16).
+For this reason, we concur with the conclusions of the 2005 stock assessment authors and review committee that reference points based on the reconstructed history of the stock are preferable for this stock (Sinclair and Starr 2005; Fargo 2005).
+\end{resdoclist}
+
+Further sensitivity analyses are presented in the main body of this document.
+
+We suggest the model presented in Step B1a be used as the Base Case model for the Area 5CD stock of Pacific cod.
+We suggest the same model configuration and parameter settings be used for the Area 5AB stock.
+
+\appsection{FIGURES}
+
+\appsection{TABLES}

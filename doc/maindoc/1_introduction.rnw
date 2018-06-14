@@ -1,0 +1,205 @@
+\section{INTRODUCTION}
+
+\subsection{STOCK STRUCTURE AND LIFE HISTORY}
+
+\fishName (\scienceName) is a relatively short-lived, fast-growing member of the family Gadidae.
+Other common names in British Columbia (BC) include grey cod (or gray cod).
+Populations of \fishName{} are distributed from California, throughout the waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China (Hart 1973).
+Maximum observed age in British Columbia is around 10-11 years (Westrheim 1996; this document), while a maximum age of approximately 13 years has been reported for Alaskan stocks (Roberson 2001).
+Maximum length recorded in British Columbia is 100 cm (Hart 1973), although some larger specimens have been observed in Alaska and Russia (Westrheim 1996).
+\fishName{} are demersal spawners, with several studies reporting that spawning most likely occurs during February to March.
+A comprehensive review of the biology, life history and distribution of \fishName{} in British Columbia is provided by Westrheim (1996).
+
+Four stocks of \fishName{} are defined for management purposes on the BC coast: Strait of Georgia (4B); West Coast Vancouver Island (3CD); Queen Charlotte Sound (5AB); and Hecate Strait (5CD).
+This study focuses on the populations in West Coast Vancouver Island, Queen Charlotte Sound and Hecate Strait (Figure 1).
+
+% Recent genetic analyses have identified a distinction between North American and Asian \fishName{} populations, and have shown some evidence for distinction between Alaskan populations and those south of Dixon Entrance in British Columbia (reviewed in Appendix \ref{chap:genetic}).
+There is also evidence that fish taken off the coast of Washington and the west coast of Vancouver Island may be distinct from fish sampled within the Strait of Georgia or Puget Sound.
+However, linkages, if any, among stocks in BC and those in Alaska remain poorly understood.
+% To date it is uncertain whether genetic population structure exists within BC waters (Appendix \ref{chap:genetic}).
+
+Population dynamics of \fishName{} in BC have been characterized by large variations in abundance, based on reconstructions driven by fishery catch rates, most likely as a function of large recruitment events followed by large opportunistic fishery catches.
+However, other  hypotheses, including predator-prey cycles, density-dependent growth and mortality,and northward water transport have also been proposed (reviewed by Westrheim 1996).
+Natural mortality has been estimated as high as 0.6 - 0.65 $y^{-1}$ in some stock assessments (e.g., Fournier 1983; Sinclair and Starr 2005) although lower estimates ($\sim 0.4~y^{-1}$) have also been obtained (Sinclair et al. 2001).
+The combination of apparently volatile dynamics with short life span and high natural mortality suggests periods of over/under harvest could result if harvest strategies are not designed to be robust to these features.
+However, in the context of the BC integrated groundfish fishery, constraints imposed by quotas for other species mean that single-species considerations alone do not always dictate the best harvest strategy.
+
+\subsection{ECOSYSTEM CONSIDERATIONS}
+
+\subsubsection{Prey and predators}
+
+\fishName{} are omnivores, eating a diet of mainly marine invertebrates, including amphipods, euphausiids, shrimp and crabs.
+At around 50-55 cm they also become piscivorous, with Pacific Sand Lance (Ammodytes hexapterus) and Pacific Herring (Clupea harengus pallasi) becoming important components of the diet (Westrheim 1996).
+Juvenile Sablefish (Anoplopoma fimbria) and adult Pacific Hake (Merluccius productus) have also been reported in the diet of \fishName{} off the west coast of Vancouver Island (Ware and McFarlane 1986).
+\fishName{} have been reported in the diets of Pacific Halibut (Hippoglossus stenolepis), North Pacific Spiny Dogfish (Squalus suckleyi), sea birds, seals and sealions (Westrheim 1996).
+
+Walters et al. (1986) demonstrated a \fishName{}-Herring predator-prey interaction in Hecate Strait, in contrast to Ware and McFarlane (1986).
+Simulation models were developed by Walters et al. (1986) to explicitly model the effects of \fishName{} predation on Pacific Herring.
+The simulations were able to mimic recruitment trends in both species. Walters et al. (1986) concluded that availability of Pacific Herring prey could be an important driver of \fishName{} production in Hecate Strait, and, similarly, that \fishName{} predation could be a significant driver of Pacific Herring abundance.
+These authors acknowledged that there are alternative hypotheses for cycles in abundance of \fishName{} and Pacific Herring (e.g., environmental forcing; see below) and suggested that large-scale management experiments may be the only way to distinguish among competing hypotheses.
+
+\subsubsection{Environment}
+
+A large number of studies have investigated linkages between recruitment and environmental indices for \fishName{} in Hecate Strait.
+The dominant hypothesis is an inverse relationship between recruitment and northward water transport (i.e., northward advection of larvae) (Tyler and Westrheim 1986; Tyler and Crawford 1991).
+Northward water transport has been shown to be positively correlated with mean annual sea level at Prince Rupert during the spawning season, which in turn has been used as an explanatory variable for recruitment by a number of authors (Fournier 1983; Sinclair et al. 2001; Sinclair and Crawford 2005; Sinclair and Starr 2005).
+Westrheim (1996) provides a review of the major alternative studies.
+
+\subsubsection{Other species}
+
+Other species caught with \fishName{} include Arrowtooth Flounder (Atheresthes stomias), Yellowtail Rockfish (Sebastes flavidus), Pacific Ocean Perch (S. alutus), Lingcod (Ophiodon elongatus), Silvergray Rockfish (S. brevispinis), English Sole (Parophrys vetulus) and Big Skate (Raja binoculata) (Figure 2).
+Vessels catching \fishName{} must hold quota for all quota species encountered.
+Since 1996, there has been 100\% at-sea observer coverage on commercial bottom trawl vessels in BC.
+At-sea releases are recorded by observers and counted against the vessel's quota, according to agreed-upon discard mortality rates published in the integrated fishery management plan (DFO 2015). 
+
+\subsection{FISHERIES}
+
+\fishName{} in British Columbia are caught almost entirely in the groundfish bottom trawl fishery, which is part of \href{http://www.pac.dfo-mpo.gc.ca/index-eng.html}{BC's integrated groundfish fishery}.
+\fishName{} is one of the principal target species of the trawl fishery in Hecate Strait.
+Currently, the majority of the BC \fishName{} catch is taken from in Hecate Strait (Area 5CD) (Figure 3).
+
+\fishName{} are distributed throughout Area 5CD at depths mainly less than 150 m.
+\fishName{} density, measured by commercial catch per unit effort (see Appendix \ref{chap:cpue}), appears to be highest over the Two Peaks/Butterworth, White Rocks, Shell Ground, Reef Island, and Horseshoe fishing grounds (Figure 1).
+In Queen Charlotte Sound (Area 5AB), \fishName{} are caught mainly around the edge of Goose Island Bank in Area 5B and on Cape Scott and Mexicana Banks, north of Vancouver Island, in Area 5A (Figure 1).
+The depth range of capture is approximately 60 to 160 m.
+Annual reported catches of \fishName{} in both Hecate Strait and Queen Charlotte Sound have shown considerable variability since the beginning of the time series in 1956 (Figure 3, Tables 1 and 2).
+
+In Hecate Strait (Figure 3a), major peaks in catches (landings plus estimated discards) occurred in 1958 (5,702 t), 1965 and 1966 (8,870 t and 9,156 t), 1979 (5,736 t), 1987 (9,542 t), and 1991 (7,747 t).
+These peak years may be contrasted with years of low catches in 1961 (1,528 t), 1970 and 1971 (1,188 t and 1,333 t), 1985 (1,053 t), and the minimum on record in 2001 (214 t).
+Reported catches have increased since 2001 to 701 t in 2012, although it should be noted that recent low catches are partially a result of lowered quotas in the early to mid-2000s.
+Catch was reported by USA vessels from 1956 to 1978.
+The estimated USA portion of the total catch was approximately 15\% over these years (Table 1). 
+
+Catches in Queen Charlotte Sound (Figure 3b) also showed significant variability over the time series.
+Major peaks in catches occurred in1957 (2,625 t), 1965 (1,983 t), 1972 and 1975 (2,415 t and 2,470 t), 1987 (3,209 t), and 1991 (2,206 t).
+Low catch years included 1961 (259 t), 1970 (278 t), 1983 (184 t), 2000 (67 t) and the lowest year on record 2008 (35 t).
+Significant catches were reported by USA vessels from 1956 to 1980.
+The estimated USA portion of the total catch was approximately 50\% over these years (Table 2).
+
+Prior to the introduction of at-sea observer coverage in 1996, estimates of at-sea releases (discards) for the period 1956-1995 were obtained from fishing logbooks (Figure 4).
+These estimates are considered an underestimate of the actual releases.
+Estimates in years following the introduction of 100\% at-sea observer coverage in 1996 can be considered to be more accurate.
+Since 1996, the proportions of estimated discards have been considerably higher than in years before at-sea observers (Figure 4), especially in Queen Charlotte Sound, largely as a result of reduced total catches.
+\fishName{} can be legally discarded by trawlers in BC.
+However, on-board observers first estimate the quantity being discarded and it is assigned a discard mortality rate which is counted against the vessel's \fishName{} quota.
+Therefore, in addition to greater accuracy in reporting of discards since 1996, incentives to avoid discarding have also been greater.
+
+Japanese and Soviet vessels also trawled in waters off BC in the late 1960s and early 1970s.
+These vessels were mainly targeting rockfish and likely at depths greater than 150 m.
+The bycatch of \fishName{} in these fisheries is, however, unknown.
+Given uncertainty in foreign catches and discards in the earlier parts of the time series, total catch estimates should be considered underestimates prior to 1996.
+
+Bottom trawl fishing effort has been somewhat cyclic in both areas, especially in Hecate Strait (Figure 5).
+Total effort of all trawl vessels has declined in both areas since peaking in 1993 (Hecate Strait) and 1995 (Queen Charlotte Sound).
+A detailed analysis of catch per unit effort (CPUE) is provided in Appendix \ref{chap:cpue}.
+As noted by Sinclair (2000), however, there are a number of problems with the use of commercial catch per unit effort data as an index of biomass for \fishName{}.
+It has been suggested that changes in the management regime from an unrestricted fishery prior to 1992, to the introduction of TACs (1992-1996) and then to Individual Vessel Quotas (IVQs) (1997-present), as well as several increases in mesh size, have affected the underlying relationship between commercial CPUE and abundance, and the relationship between fishing effort and fishing mortality.
+In recent years of lower \fishName{} quotas, many fishing masters report actively avoiding \fishName{} to prevent their \fishName{} quota being exceeded before catching available quotas for other species.
+Fournier (1983) noted similar problems with relating fishing effort to fishing mortality for this fishery.
+Sinclair et al. (2001) analyzed the spatial distribution of fishing effort in Hecate Strait and reported that there had been little fishing over Butterworth, White Rock, Bonilla and Horseshoe grounds (Figure 1), which had previously been locations with the highest CPUE.
+They also cited industry reports that key \fishName{} fishing grounds had been avoided to preserve \fishName{} quota for bycatch in other fisheries (Sinclair et al. 2001).
+We do not provide a detailed analysis of spatial fishing effort in this document but recommend it as an avenue of future research to improve understanding of the CPUE data and drivers of fishing effort (e.g., Branch and Hilborn 2008).
+
+\subsection{MANAGEMENT HISTORY}
+
+The history of \fishName{} management from 1984 to 2013 is summarized in Tables 3-6. The tables list total allowable catches (TACs), landings and carryovers, area closures and mesh restrictions.
+
+Groundfish fisheries were managed by calendar year until 1996.
+Beginning in 1997-98 the fishing year changed to April 1 - March 31.
+In 2010 - 2011 the fishing year was changed again to February 21 to February 20.
+Throughout this document, fishing years are defined as beginning April 1 for all years, and are referenced by starting year, e.g., fishing year 1997 runs from April 1, 1997 to March 31, 1998.
+
+\subsubsection{Area 5AB: Queen Charlotte Sound}
+
+Annual TACs were introduced for \fishName{} in Queen Charlotte Sound in fishing year 1997 (Table 3).
+Before 2005, there was no scientific advice for this area and the TAC was initially established at 260 t, which was the low end of the range of observed catches (Sinclair and Starr 2005).
+The TAC remained unchanged until 2004 when it was increased to 390 t based on advice from the fishing industry to Fisheries Management that \fishName{} abundance had increased.
+There were also carryover amounts in the 1999-2004 fishing years.
+Between 1997 and 2002, the fishery did not catch the TAC (plus carryover) in each year, with a low of 18\% taken in 2000 and a high of 56\% in 2002.
+The TAC plus carryover was exceeded by 16\% in 2003.
+The TAC remained at 390 t from 2004 until 2010.
+In 2010 the quota was exceeded by 22\% and in 2011 the TAC was increased to 590 t.
+
+Other management measures have been used to control the \fishName{} fishery in Area 5AB.
+Voluntary increases in mesh size for various portions of Queen Charlotte Sound were suggested in 2007 for vessels fishing shallower than 60 fm.
+This was then regulated in 2011 (Table 5).
+
+\subsubsection{Area 5CD: Hecate Strait}
+
+Annual TACs were introduced in the 5CDE area in 1992 (Sinclair and Starr 2005).
+Catches in Area 5E (West Coast Haida Gwaii) have been negligible and we do not further discuss this area.
+The original Area 5CD 1992 TAC was 3,400 t and landings that year exceeded this figure by 48\% (Table 4).
+The TAC was increased to 5,100 t in 1993, and then reduced in steps to 1,000 t in 1998.
+The low catch in relation to the TAC in 1999 led to a carryover of 283 t in 2000.
+The TAC was reduced to 200 t in 2001 due to very low assessed stock biomass (Sinclair 2000) and no carryovers were allowed.
+The TAC was maintained at 200 t in 2002.
+The 2003 TAC was initially set at 200 t but results from the Hecate Strait \fishName{} monitoring survey, commercial CPUE, and input from the trawl fleet indicated that \fishName{} abundance had increased in the area.
+Consequently, the TAC was increased to 400 t in the winter of 2003 and the TAC was maintained at 400 t for 2004.
+The TAC was increased to 800 t in 2005 and remained at that level until 2009.
+In 2010 the TAC was increased to 1,200 t and has remained at that level until the present.
+
+Other management measures have been used to control the \fishName{} fishery in Area 5CD.
+Voluntary increases in mesh size for various portions of areas 5CD were suggested as early as 1989 for this fishery and were regulated in 1995 (Table 5).
+There have also been a number of closures instituted in Hecate Strait to protect spawning biomass (Table 6, Figure 6).
+The Horseshoe and Reef Island fishing grounds, as well as the shallow Dogfish Bank, were closed from January 1 - April 15 in 1991 and 1992.
+A slightly smaller area was closed for the same months between 1996 and 2001 (Table 6, Figure 6).
+The closed area was again increased in size in February 2001 to include all of Hecate Strait south of a line between the latitude of Rose Spit and north of a line just south of Reef Island (Figure 6).
+This closed all of the main cod fishing grounds except Two Peaks/Butterworth.
+Effective January 27, 2012 the size of the spawning closure was decreased, opening up the eastern side of Hecate Strait to fishing, including the White Rocks ground (Figure 6).
+Additionally, since 1996, there has been a closure from June 1-July 15 in the shallow portions of Area 5D for the protection of Dungeness crabs during the soft shell stage.
+
+\subsubsection{Area 3CD: West Coast Vancouver Island}
+
+\subsection{ASSESSMENT HISTORY}
+
+A number of methods have been used to assess \fishName{} in Hecate Strait since the 1980s.
+Fournier (1983) developed an age-structured model and used it to test for evidence of age-dependent trends in natural mortality, density-dependent natural mortality and catchability, and also for evidence of an environmental factor affecting recruitment.
+Evidence was found for a relationship between mean sea level at Prince Rupert and recruitment, and also for density-dependent natural mortality.
+Natural mortality was estimated to be 0.65 $y^{-1}$ by Fournier (1983).
+This author cautioned about the possibility of confounding among model parameters and systematic data biases that could influence conclusions from the analysis.
+Estimates of age were obtained from length-frequency analysis (Foucher and Fournier 1982).
+
+\fishName{} are one of the most difficult Pacific groundfish species to age.
+Annual rings (annuli) in otoliths, other bony structures and scales are difficult to distinguish from interannual growth checks (Beamish 1981; Chilton and Beamish 1982; Roberson 2001; Johnston and Anderl 2012).
+In British Columbia, age compositions have been estimated using length-based approaches, scales, otoliths and, currently, dorsal fin ray sections, although all methods present difficulties.
+In the absence of reliable direct age data, length-based approaches were used to assess the Hecate Strait stock during the 1990s (Haist and Fournier 1995\footnote{Haist, V. and Fournier, D. 1995. Hecate Strait \fishName{} assessment for 1995 and recommended yield options for 1996. PSARC Working Paper G95-3.}; 1996; 1997; 1998\footnote{Haist, V. and Fournier, D. 1998. Hecate Strait \fishName{} assessment for 1998 and recommended yield options for 1999. PSARC Working Paper G98-3.}).
+The last of these assessments (Haist and Fournier 1998) suggested that the stock had reached an historic low in 1996, followed by a slight rebound.
+
+Sinclair (2000) used a simple surplus production model fit to a commercial CPUE index to assess the Hecate Strait stock in 2000.
+This author cited significant structural changes in the fishery during the 1990s resulting in changes in quality and comparability of fishery-dependent data available for the analysis.
+Changes included voluntary increases in mesh size in the commercial fishery and introduction of individual vessel quotas (IVQs) in 1997 as discussed above.
+Given the large structural differences between the previous length-based models and the surplus production model, Sinclair (2000) noted that results were remarkably comparable until 1994, with three estimated peaks in abundance occurring in 1965, 1974-5 and 1986-7.
+The two approaches diverged significantly after 1994, with the the length-based Multifan model estimating an increase in biomass while the surplus production model estimated a decline.
+The differences were interpreted to be due to differences in the indices of abundance used to tune the models, as well as structural model differences.
+
+Sinclair et al. (2001) developed a delay-difference model (Deriso 1980; Schnute 1985; Hilborn and Walters 1992) containing a Ricker stock-recruit function to assess \fishName{} in Hecate Strait and off the west coast of Vancouver Island.
+Recruitment was assumed to be knife-edged at age 2 years.
+A report card summary of information available for the stock was also developed.
+The report card analysis from this assessment found biomass indicators to be in the "danger" and "low" categories with potential for increasing recruitment; and reported a general lack of information on other types of indicators for this species in BC.
+The delay difference model provided a better statistical fit to the data than the previously-applied surplus production model.
+However, biomass estimates followed a similar trend and magnitude (Figure 7).
+Retrospective analyses using only data up to 1995 tended to project large increases in biomass that were not predicted when the most recent CPUE data to 2000 were used.
+The authors noted that the model containing the most recent data predicted the stock to be less productive than the model containing only the earlier data. 
+
+The Hecate Strait \fishName{} stock was last assessed in 2004 (Sinclair and Starr 2005) using a delay difference model with a Beverton-Holt stock-recruit function, based on the view that a Ricker type function with declining recruitment at high stock size was inappropriate for this species.
+As for the previous assessment, recruitment was assumed to be knife-edged at age 2 years.
+Model fits were presented with alternative combinations of fixing or estimating natural mortality ($M$) and the steepness parameter of the stock-recruit function, h (Mace and Doonan 1988).
+They reported similar fits and biomass estimates for the alternative scenarios but noted very different estimates of equilibrium MSY-based management parameters under alternative combinations of fixed and estimated steepness and $M$. 
+
+Estimates of biomass for the two preferred model runs were considerably higher than estimates from previous assessments (Figure 7).
+Given structural differences between these and previous models, and differences in the data to which the models were fitted, it is not appropriate to speculate on the source of the large difference in scale among models.
+However we note that the 2004 assessment was not directly fit to the commercial CPUE data as were previous assessments, but instead was fit to data from the Hecate Strait Assemblage Survey (Choromanski et al. 2005) and the \fishName{} Monitoring Survey (Sinclair and Workman 2002).
+There were also differences in: 
+\begin{resdoclist}
+\item weighting of the indices of abundance relative to the mean weight data, to which both sets of models were also fitted; and 
+\item the choice of other fixed variance parameters. 
+\end{resdoclist}
+Key uncertainties of the analysis noted by Sinclair and Starr (2005) were:
+\begin{resdoclist}
+\item uncertainty in the growth function (model parameters and assumptions of stationarity); and 
+\item the possibility of violating the assumption of knife-edged recruitment at age 2 years, given evidence for younger fish in the length composition data from the commercial fishery. 
+\end{resdoclist}
+
+Finally, an error was discovered in the model code used for this assessment several years after this assessment was published (see below).
+
+Assessments using corrected code were repeated for English Sole (Starr 2009a) and Petrale Sole (Starr 2009b), but this was not done for \fishName{}.

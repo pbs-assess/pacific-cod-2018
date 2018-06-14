@@ -1,0 +1,57 @@
+\section{RESEARCH NEEDS}
+
+There are major structural uncertainties that are not addressed in this assessment.
+These uncertainties are in part a function of:
+\begin{resdoclist}
+\item the lack of age composition data;
+\item short fishery-independent indices of abundance with limited trend information; 
+\item bias in the length frequency data prior to 1996, due to under-representation of lengths of fish that were caught but discarded at sea (Appendix \ref{chap:length}); and 
+\item poor understanding of how the relationship between commercial CPUE data and abundance has changed over the course of the fishery. 
+\end{resdoclist}
+
+The latter factor, as is the case for many assessments, is a large contributor to the structural uncertainty of this assessment particularly given the significant changes in management regime, fishing behaviour, and gear efficiencies that are known to have occurred.
+Changes to management and fishery practices since the 1950s have almost certainly resulted in changes in fishery selectivity throughout the time series, due to changes in mesh size and the spatial distribution of fishing effort.
+
+Members of the fishing industry present at the January 2014 CSAP review of the first draft of this Research Document provided detailed advice about market factors, fishing practices and management changes that have affected patterns of effort directed at \fishName{} throughout the time series (DFO In prep. ).
+It is recommended that this list of factors be incorporated into a formal document, in collaboration with fishing industry members and fishery managers.
+This would form a valuable reference for future \fishName{} assessments and research.
+
+Large changes in management and fishery practices have made interpretation of data for Area 5AB particularly problematic, leading to the rejection of biomass-based reference points using estimated historical biomasses.
+The estimated average fishing mortality for the period 1956-2004 was accepted provisionally as a LRR for this stock, with the recommendation of regular updates of the assessment to check current estimates of $F$.
+The committee also proposed using the biennial QCS survey index as a trigger point for new advice.
+Specifically, the trigger for action would occur when any additional index point (after 2013) falls below 50\% of the mean survey indices prior to the new index point.
+If this occurs, additional analysis will be required and an updated assessment could be requested.
+Further, a suggestion was made to explore the use of yield-per-recruit type analyses to develop reference points for this stock (e.g., Zhou et al. 2012).
+
+Length-frequency data from the fishery and survey suggest that recruitment to the survey may occur at a younger age than recruitment to the fishery.
+Therefore the assumption of time-invariant, knife-edged recruitment to the fishery, survey and spawning stock at age 2 years is very likely to be violated for these stocks.
+
+% It is unclear whether the Area 5CD and 5AB populations are biologically distinct stocks (Appendix \ref{chap:genetic}).
+Given the relative lack of data for Area 5AB, and lack of strong evidence that the Area 5AB population is distinct from the Area 5CD population, we recommend research into combining the data for the two areas and assessing them as a single stock.
+We recognize that there are operationally valid reasons for maintaining spatial management, necessary for the functioning of the multi-species integrated groundfish fishery, but highlight the possibility that \fishName{} in Areas 5AB and 5CD may not be separate biological stocks, which presents challenges to the estimation of stock size and interpretation of biological reference points.
+
+We do not believe that many of these uncertainties can be further reduced through application of statistical stock assessment models alone.
+We recommend development of feedback simulation tools to evaluate the performance of alternative management procedures for \fishName{} under a range of structural uncertainties, including time-varying selectivity and alternative representations of stock structure (Butterworth and Punt 1999; Smith et al. 1999; Cox and Kronlund 2008).
+Current, or irresolvable, uncertainties can be specified in an operating model used to generate future observed data that can be used to test the performance of set of candidate management procedures, to provide a relative ranking of their performance relative to specified benchmarks.
+We define management procedures as the combination of choice of data, stock assessment type, reference points and harvest control rule. 
+
+Given the paucity of ageing data available for \fishName{}, the expense of preparing fin-sections and the uncertainty associated with age readings, we also recommend development of cost-benefit analyses to evaluate the utility of ageing data in decision-making for this stock.
+Feedback simulation modelling is the only practical means to conduct a cost/benefit analysis of the effects of acquiring ageing data for the assessment and management of \fishName{} stocks in BC.
+
+The following list of recommendations is provided to help resolve some of the uncertainties noted previously.
+Work has already commenced on a number of items as indicated by an asterisk:
+\begin{resdoclist}
+\item Perform analyses to better resolve whether population structure exists within BC waters.
+A genetic sampling program has been initiated, aimed at addressing questions of stock sub-structure in BC and linkages with stocks outside of BC waters*.
+Other evidence for differentiation of stocks, e.g., otoliths microchemistry or differences in other biological factors may also be considered.
+\item Analyze existing ageing data to help parameterize a cost-benefit analysis of the utility of age-structured data for this species; and to gain clearer understanding of current proportions at age, precision and potential bias in ageing estimates*.
+\item Develop updated schedules of maturity-at-age and growth, based on new understanding of age composition and age-at-length (see previous bullet)*.
+\item Investigate alternative structural hypotheses of drivers of abundance (e.g., Fournier 1983; Walters et al. 1986; Tyler and Crawford 1991), through statistical data analysis and simulation modeling, including feedback simulation*. 
+\item Improve understanding of the magnitude of historical foreign catch and discards, to better characterize uncertainty in these quantities in operating models for feedback simulation.
+\item Investigate alternative stock assessment models that combine data from Areas 5AB and 5CD.
+\item Evaluate drivers of spatial changes in fishing effort and management that may improve understanding of the relationship between catch and CPUE data and abundance, and to better characterize uncertainty in historical changes in fishery. 
+\item Improve the methodology used to extract and calculate annual commercial mean weights, as discussed in Appendix \ref{chap:weight}.
+\item Investigate improvements to the methodology used to calculate the commercial CPUE index, rather than the simple ratio estimator presented in Appendix \ref{chap:cpue}.
+\item Develop feedback simulation tools to evaluate performance of alternative management procedures against background of the considerable uncertainties discussed above*.
+\end{resdoclist}
+

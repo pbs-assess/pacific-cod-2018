@@ -1,0 +1,156 @@
+\section{RESULTS}
+
+\subsection{AREA 5CD: HECATE STRAIT}
+
+The joint posterior distribution was numerically approximated using the Markov Chain Monte Carlo routines built into AD Model Builder (Fournier et al. 2012).
+Posterior samples were drawn systematically every 50,000 iterations from a chain of length 100 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in).
+Convergence was diagnosed using visual inspection of the trace plots (Figure 11) and visual examination of autocorrelation in posterior chains (Figure 12).
+Autocorrelation was minor for most parameters, except for ln($R_\text{Avg\_init}$), for which autocorrelation was quite strong.
+This likely reflects lack of information in the data about this parameter.
+Overall, there was no strong evidence for lack of convergence, although the model occasionally estimated very large values for ln($R_0$), possibly because of this parameter was confounded with steepness ($h$) (Figure 13).
+Very high estimates of ln($R_0$) were obtained when h was estimated to be very low (Figure 13).
+Survey catchability parameters were positively correlated with each other and negatively correlated with ln($M$), implying that there is limited information in the data to distinguish between a small productive population or a larger, less productive population (Figure 13).
+
+Maximum posterior density (MPD) model fits to the three indices of abundance are shown in Figure 14.
+Model-estimated indices of abundance followed the general trends of all three observed trends, although they failed to reach most of the peaks in the respective datasets.
+As previously discussed above and in the bridging analysis (Appendix \ref{chap:bridge}), model outcomes, especially estimates of productivity parameters, were very sensitive to the goodness of fit to the indices of abundance, particularly peak commercial CPUE observations and the 2013 Synoptic Survey observation (Table A5).
+We consider the goodness of fit to the indices of abundance to be a primary driver of uncertainty in this assessment and present further sensitivity analyses in a later section
+
+Posterior probability distributions of estimated parameters are shown in Figure 15.
+The median, $2.5^\text{th}$ percentile and $97.5^\text{th}$ percentile posterior parameter estimates, and maximum posterior density (MPD) estimates, are given in Table 16.
+With the exception of steepness, the posterior estimates did not appear to be strongly influenced by the prior probability distributions.
+The posterior probability distribution for steepness was very similar to the prior probability distribution, implying that there is little information about this parameter in the available data.
+Sensitivity to the prior distribution assumed for steepness is tested in a later section.
+Posterior probability estimates of ln($M$) tended to be lower than the prior values, although the right-hand tail of the posterior distribution did overlap with the left-hand tail of the prior distribution (Figure 15).
+We have already noted that posterior estimates of M were strongly influenced by the fit to the index of abundance data (Table A5), which likely has a stronger influence on estimates of M than the prior probability distribution. 
+
+Normal prior probability distributions were used for the log catchability parameters ln($q$) for the Hecate Strait Assemblage and Synoptic Surveys (Figure 10).
+These prior probability distributions did not appear to strongly affect the posterior estimates, with the posterior distribution far to the left of the prior distribution in both cases (Figure 15).
+
+The Hecate Strait Base Case model predicted the stock to be on an increasing trajectory (Figure 16; Table 17).
+The median posterior estimate of 2013 biomass was below the median Upper Stock Reference (USR), and above the median Limit Reference Point (LRP), i.e., in the Cautious Zone (DFO 2009).
+The 95\% posterior credibility interval for biomass was very broad for recent years, with substantial parts of the interval both above the USR and below the LRP since 2009.
+Projected 2014 biomass is projected to be above the 2013 biomass.
+The estimate of B0 was highly uncertain, with the posterior median estimated to be almost 35,000 tonnes, just below the estimated maximum biomass in 1965 (Figure 16; Table 16).
+However, the 95\% credibility interval extended far above the range of estimated historical biomasses.
+
+Posterior median estimates and 95\ credibility interval of age-2 recruits are shown in Figure 17 and Table 18.
+Peaks in recruitment were estimated to have occurred in 1964, 1972 and 1986.
+Posterior median recruitment is estimated to have been below the long-term median recruitment since 1993, with the exception of apparent stronger recruitment in 2002.
+The 95\% posterior credibility intervals since 2008 are reasonably broad, with considerable uncertainty around the estimate of 2013 recruitment.
+This is expected since there is no information in the data about the strength of this year class. 
+
+Posterior estimates of fishing mortality are shown in Figure 18 and Table 19. The median posterior estimate of fishing mortality is estimated to have peaked in 1991 at 0.513 $y^{-1}$.
+Fishing mortality has been estimated to have been well below the LRR, since 1998.
+Median posterior fishing mortality rates are estimated to have been less than 0.1 $y^{-1}$ since the reduction in TAC in 2001 (Figure 18 and Table 19). 
+
+\subsubsection{Reference points}
+
+Posterior estimates of $F_{2013}$ and $B_{2014}$ are shown in Figures 19 and 20, and Table 20.
+Fishing mortality in 2013 was low compared to the historical period, with the posterior median estimated to be 0.052 $y^{-1}$.
+
+As discussed in the previous section, we used reference points based on the reconstructed time series of stock biomass and fishing mortality, rather than MSY-based reference points.
+Reference points and performance measures were summarized in Tables 12 and 13.
+Boxplots of the posterior distributions of all the reference points from Table 13 are shown in Figure 20.
+Percentiles of the posterior probability distributions are given in Table 20. 
+
+Estimated reference points based on fishing mortality are shown in Figure 20a and Table 20.
+Estimates of FMSY were estimated to be extremely uncertain, with the 95\% posterior credibility interval ranging from 0.148 to 0.527 $y^{-1}$.
+Both estimates of average historical fishing mortality, based on the short (1956-2004) and long (1956-2012) time series, were estimated to be lower than FMSY and were considerably more precise (Figure 20a).
+There was very little difference between the estimated historical average fishing mortality for the short period compared with the long period, although the latter was slightly lower (Figure 20a, Table 20).
+
+Estimated reference points based on biomass are shown in Figure 20b and Table 20.
+As discussed above, there was considerable uncertainty in the projected estimate of 2014 biomass, due to large uncertainty in 2013 recruitment (Figure 17).
+The MSY-based reference points, $B_\text{MSY}$ (and therefore the fractions $0.8B_\text{MSY}$ and $0.4B_\text{MSY}$) were characterized by extremely long tails that extended well above the 95\% posterior credibility interval.
+The posterior median estimate of the Limit Reference Point of $B_{1971}$, was 12,182 t (Table 20).
+The posterior median estimate of the Upper Stock Reference was 19,258 t.
+
+We suggest that the large uncertainty in estimates of MSY-based reference points (Figure 20, Table 20), in addition to their sensitivity to estimates of productivity parameters (Table A5, Figure A16), provides further support to avoid their use in developing catch advice for this stock.
+
+\subsection{AREA 5AB: QUEEN CHARLOTTE SOUND}
+
+% Although Area 5AB has been managed as a separate stock there is little evidence that Pacific Cod in Area 5AB and 5CD constitute different biological stocks (Appendix \ref{chap:genetic}).
+While there are operationally valid reasons for maintaining spatial management, necessary for the functioning of the multi-species integrated groundfish fishery, the possibility that Pacific Cod in Areas 5AB and 5CD are not separate biological stocks presents challenges to the identification and interpretation of biological reference points (the same is true of Area 5CD, although a larger proportion of the biomass is estimated to occupy Area 5CD).
+Also, there have been no recent successful assessments of Area 5AB Pacific Cod that could have led to the development of agreed upon reference points.
+The review committee at the December 2014 meeting did not find any of the proposed biomass-based reference points satisfactory (BMSY-based or reference points based on estimated historical biomass).
+Therefore, no biomass-based reference points are presented for the Area 5AB stock.
+This is discussed in further detail below.
+
+Posterior samples were drawn systematically every 25,000 iterations from a chain of length 50 million, resulting in 2,000 posterior samples, with the first 1,000 samples excluded from the sample to allow for burn-in.
+The MCMC algorithm did not converge as well as the Area 5CD analysis, and there was autocorrelation in the posterior parameter estimates evident in the chains (Figures 21 and 22).
+Like the results for Area 5CD, autocorrelation was worst for the parameter ln($R_\text{Avg\_init}$).
+Survey catchability parameters were positively correlated with each other and negatively correlated with ln($M$), implying that there is limited information in the data to distinguish between a small productive population or a larger, less productive population (Figure 23).
+
+Maximum posterior density (MPD) model fits to the two indices of abundance are shown in Figure 24.
+Model-estimated indices of abundance followed the general trends of both observed trends, but failed to fit to the maximum peaks in both respective datasets.
+As for Area 5CD, we consider the goodness of fit to the indices of abundance to be a primary axis of uncertainty for this delay-difference model assessment and present sensitivity analyses in a later section.
+
+Posterior probability distributions of estimated parameters are shown in Figure 25.
+The median, $2.5\text{th}$ percentile and $97.5\text{th}$ percentile posterior parameter estimates, and MPD estimates, are given in Table 21.
+With the exception of steepness and ln($q$), the posterior estimates did not appear to be strongly influenced by the prior probability distributions.
+Posterior probability estimates of steepness and ln($M$) tended to be lower than the prior values, although the posterior distributions overlapped with the priors (Figure 25).
+A normal prior probability distribution was assumed for the catchability parameter, ln($q$), for the Queen Charlotte Sound Synoptic Survey (Table 15).
+This prior distribution appeared to strongly affect the posterior estimates, despite the prior being fairly broad (Figure 25).
+
+The Queen Charlotte Sound Base Case model reconstructed the current stock to be on a flat trajectory, below the historical average (Figure 26).
+The 95\% posterior credibility interval for biomass was broad for recent years.
+Projected 2014 biomass is shown in red in Figure 26 and is projected to be slightly above the 2013 biomass.
+The estimate of $B_0$ was less uncertain than that obtained for Area 5CD, with the posterior median value estimated to be 7,046 t (Figure 26; Table 21).
+
+Posterior median estimates and 95\% credibility interval of age-2 recruits, and log recruitment anomalies, are shown in Figure 27 and Table 23.
+Maximum median estimates of recruitment occurred in 1964, 1973 and 1987.
+Posterior median recruitment is estimated to have been below the long-term median recruitment since 1993.
+
+Posterior estimates of fishing mortality are shown in Figure 28 and Table 24.
+The median posterior estimate of fishing mortality is estimated to have peaked in 1993 at 0.701 $y^{-1}$.
+The median posterior estimate of 2013 fishing mortality is estimated to have been 0.290 $y^{-1}$, close to the long-term average of 0.269 $y^{-1}$ (Table 25 and Figure 29).
+
+We note that the period of estimated low biomass beginning in 1996 (Figure 26) is coincident with the end of the commercial CPUE time series data and the introduction of low quotas for this stock (Figure 3; Table 3).
+Importantly, there is a large shift in the length composition data before and after 1998 (Appendix \ref{chap:length}, Figure C1).
+This is due to the introduction of mandatory onboard observers in 1996 and the beginning of sampling of the entire size composition in the catch, instead of only fish that were landed (``Keepers'').
+The lack of survey data between 1995 and 2003 implies that catch and mean weight data are the principle sources of information for stock size and recruitment in recent years.
+Both of these datasets have been strongly influenced by management changes (introduction of low quotas and onboard observers).
+We therefore urge caution in interpreting the estimates of low biomass and recruitment in recent years as evidence of a change in productivity of the stock in Area 5AB.
+
+We recommend that future efforts be made to combine the datasets from Area 5CD and Area 5AB into a single stock assessment to help alleviate some of the data concerns with Area 5AB.
+% As there is no strong evidence that the population in Area 5AB is distinct from that in Area 5CD (Appendix \ref{chap:genetic}), a combined assessment will likely be justified, even if quotas are still implemented separately for the two management areas.
+
+\subsubsection{Reference points}
+
+Alternative reference points based on estimates of average historical biomass, similar to those adopted in Area 5CD, were explored.
+However, these historical reference points were problematic for Area 5AB because the period chosen (1956-2004) occurred during a time when fleet behaviour differed significantly from recent years.
+Currently, many vessels in Area 5AB actively avoid Pacific Cod due to low quotas.
+This was not the case in the historical period, when vessels actively targeted Pacific Cod and no quota was in place.
+While this was also true for Area 5CD, the effects on model results of changes in management on biomass estimates in Area 5AB were stronger for two main reasons:
+\begin{resdoclist}
+\item there was no index of abundance to bridge between the pre- and post-1996 periods in Area 5AB, meaning that estimates of biomass were strongly affected by the reductions in catch following the introduction of quotas; and
+\item there was an abrupt shift in the commercial length data (used to calculate annual mean weights) due to the introduction of observers (Appendix \ref{chap:weight}).
+Sensitivity analyses showed that the Area 5AB assessment was much more strongly influenced by the annual mean weight data in the post-1996 part of the time series than was the Area 5CD assessment.
+The review committee therefore had low confidence that the model was accurately estimating biomass in the post-1996 period.
+\end{resdoclist}
+
+Using the post-1996 period to define historical biomass-based reference points, which were thought to be more consistent with recent estimates of biomass, was also problematic.
+This was because the resulting estimates of average biomass were very low and were considered to be inconsistent with a precautionary decision-making framework.
+Historical biomass-based reference points were therefore rejected for use in Area 5AB.
+
+Estimated fishing mortality rates were reasonably constant over the whole time series (Table 24 and Figure 28) and were reasonably robust across a range of model assumptions.
+Therefore, a provisional, model-averaged reference point based on the average estimated fishing mortality for the period 1956-2004 ($F_{\text{avg}(1956-2004)}$) was adopted as a provisional LRR until further analyses can be completed.
+The review committee at the December 2014 CSAP meeting recommended that the current model be updated on a regular basis to re-estimate fishing mortality.
+The committee also proposed using the biennial QCS survey index as a trigger point for new advice.
+Specifically, the trigger for action would occur when any additional index point (after 2013) falls below 50\% of the mean survey indices prior to the new index point.
+If this occurs, additional analysis will be required and an updated assessment could be requested (see also Research Needs).
+
+Posterior estimates of F2013 are shown in Figure 29 and Table 25.
+
+Proposed reference points and performance measures were summarized in Tables 12 and 13.
+Boxplots of the distribution of F-based reference points from Table 13 for Area 5AB are shown in Figure 30.
+Percentiles of the posterior probability distributions of the reference points are listed in Table 25
+
+Estimated reference points based on fishing mortality (Figure 30a; Table 25) suggest that fishing mortality in 2013 was of a similar magnitude to the rest of the historical period, with the median estimated to be 0.289 $y^{-1}$.
+Estimates of $F_\text{MSY}$ were extremely uncertain, with the 95\% posterior credibility interval ranging from 0.155 to 0.553 $y^{-1}$.
+Estimates of average historical fishing mortality, based on both the short (1956-2004) and long (1956-2012) time series, were estimated to be similar in magnitude to $F_\text{MSY}$ but were slightly less variable (Figure 30a; Table 25).
+As for Area 5CD, there was very little difference between the estimated historical average fishing mortality for the short and long periods (Figure 30a, Table 25).
+
+\subsection{AREA 3CD: WEST COAST VANCOUVER ISLAND}
+
+\subsubsection{Reference points}

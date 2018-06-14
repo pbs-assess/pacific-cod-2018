@@ -1,0 +1,72 @@
+\label{chap:cpue}
+\starredchapter{APPENDIX~\thechapter. ANALYSIS OF CATCH PER UNIT EFFORT DATA}
+\lfoot{\fishName}
+\rfoot{Appendix~\thechapter~-- Catch per unit effort}
+
+\appsection{METHODS}
+
+The criteria used to select data for the calculation of CPUE for Area 3CD (West Coast Vancouver Island), Area 5AB (Queen Charlotte Sound), and Area 5CD (Hecate Strait) \fishName{} are listed in Table B1.
+The filtering criteria used to select GFCatch data have changed slightly from those used for the 2004 assessment, with the utilization category ``bait'' being changed from discarded to landed catch.
+
+Catch data are available on a tow-by-tow basis in the PacHarvest and GFFOS databases where each tow has at least two associated depth fields (beginning and end of tow).
+However, data in the GFCatch database before 1991 are only available in summary form because vessels reported on a ``trip'' basis and provided ``rolled-up'' reports of catch for defined ``localities'' within approximately 10 fathom depth bands (Rutherford 1998).
+Most records would have two associated depth bands which were interpreted by the algorithm in Table B2.
+Beginning in January 1991, the data in GFCatch are reported on a tow-by-tow basis and are treated in the same manner as the later data.
+
+All data were summarized into ``fishing years'' (April 1 - March 31) to provide continuity with previous \fishName{} assessments.
+
+Four CPUE analyses (defined in Table B3) were performed on the 3CD, 5AB and 5CD data sets selected using the selection criteria presented in Table B1.
+These analyses were extensions of the analyses performed for the 2004 assessment.
+A range of analyses was required because there had been a substantial drop in the Hecate Strait \fishName{} TAC on 1 April 2001, which altered the behaviour of fishermen and consequently affected the comparability of the later CPUE indices with those from earlier years.
+Three of the selected analyses attempt to adjust for this effect while the fourth is presented as a continuation with the analysis performed for the 2001 Hecate Strait assessment.
+
+One approach used to correct for changes in effort behaviour was to identify ``key localities'' where \fishName{} have been captured throughout the catch history period (Table B4).
+The areas selected for Hecate Strait were the same as those used in the Hecate Strait \fishName{} Monitoring survey (Sinclair 2002) while the cumulative catch data were examined to identify similar areas in Queen Charlotte Sound.
+It appears that locality of catch was not recorded for 5AB (Queen Charlotte Sound) before 1966, while reporting of locality information was more common in 5CD (Hecate Strait) in these early years (Figure B1).
+Therefore, Analysis ``D'' for Queen Charlotte Sound (Table B4) uses the catch and effort data from Analysis ``A'' for all fishing years before 1966/67.
+
+All analyses were performed on total mortalities (landed catch + discards), but this may potentially bias the analyses, given that reliable discard data have only been available since 1996.
+However, it is important to include the recent discard information to obtain a complete index for this species, given the low TAC for Hecate Strait \fishName{} beginning in 2001.
+This approach assumes that discarding of \fishName{} was minimal before 1996/97.
+
+Catch and effort (either as total hours fished or number of tows) were summed for each analysis by April 1 to March 31 fishing year, beginning in April 1, 1956.
+Arithmetic and geometric CPUE indices were calculated for each fishing year (j) using the following equations:
+\begin{equation}
+\text{arithmetic CPUE}_j = \frac{\sum_{k=1}^{M_j}C_{jk}}{\sum_{k=1}^{M_j}E_{jk}}
+\end{equation}
+\begin{equation}
+\text{geometic CPUE}_j = \text{exp}\left(\frac{\sum_{k=1}^{M_j}\text{ln}\left(\frac{C_{jk}}{E_{jk}}\right)}{M_j}\right)
+\end{equation}
+where
+$k$ indexes each fishing event in each data set and
+$M_j$ is the number of fishing events by fishing year in the data set.
+Effort ($E_{jk}$) can be either the number of tows or hours fished and catch ($C_{jk}$) is in kilograms.
+Comparisons between index series were made by taking the geometric mean of each series across the same years.
+
+\appsection{AREA 3CD: WEST COAST VANCOUVER ISLAND}
+
+\appsection{AREA 5CD: HECATE STRAIT}
+
+Plots of the CPUE indices, standardised relative to the geometric mean CPUE for each series, do not show much sensitivity to the analysis assumptions when the plots are viewed for all fishing years (Figure B2, Table B5), with the annual variations in CPUE well captured by all of the data preparation assumptions.
+However, the most recent (2012/13) index value is somewhat higher for the ``key locality'' series than for the other three series (Figure B3, Table 5).
+
+There is little sensitivity in the 5CD CPUE index to the choice of the effort variable, with both ``hours fished'' and ``tows'' giving very similar relative index values (Figure B4).
+A comparison of CPUE annual indices calculated using an arithmetic mean (Eq .B1) with a geometric mean (Eq. B2) shows relatively little difference between the two series (Figure B5).
+The strong peak estimated in the mid-1960s is higher for the geometric mean series while the final peak in 2010/11 is lower than for the arithmetic series.
+There were no differences in the overlapping sections of the 5CD CPUE series between the index values calculated by Sinclair and Starr (2005) and current 5CD \fishName{} assessments (Figure B6).
+
+\appsection{AREA 5AB: QUEEN CHARLOTTE SOUND}
+
+Plots of the CPUE indices standardised relative to the mean CPUE for the series based on all effort (Analysis A) and the effort only from key localities (Analysis D) are nearly identical, while Analyses B and C show lesser peaks in CPUE for the peak years in the 1970s and the early 1990s (Figure B7, Table B5).
+The similarity between Analyses A and D should not be surprising because, given the information in Figure B1, where almost the entire \fishName{} catch in 5AB comes from these seven localities.
+The CPUE indices for Analysis A are slightly higher than for those in Analysis D for 2001/02 and 2002/03, possibly suggesting some movement away from traditional \fishName{} fishing grounds in those years (Figure B8, Table B5).
+However, this difference disappears in the following years.
+
+As seen for 5CD, there is little sensitivity in the 5AB CPUE series to the choice of the effort variable, with both ``hours fished'' and ``tows'' giving very similar relative index values (Figure B9).
+A comparison of CPUE annual indices calculated using an arithmetic mean (Eq. B1) with a geometric mean (Eq. B2) shows a similarity in patterns between the two series (Figure B10).
+However, most of the CPUE peaks are higher for the arithmetic mean series than for the geometric mean series, including the final peak years in 2010/11 and 2011/12.
+There were no differences in the overlapping sections of the 5AB CPUE series between the index values calculated by Sinclair and Starr (2005) and current 5AB \fishName{} assessments (Figure B11).
+
+\appsection{FIGURES}
+
+\appsection{TABLES}
