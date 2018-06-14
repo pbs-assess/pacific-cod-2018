@@ -1,0 +1,5 @@
+book_filename: "resdoc"
+chapter_name: "Chapter "
+rmd_files: ["index.Rmd", "01-main.Rmd", "02-appendix-age-key.Rmd", "98-colophon.Rmd", "99-references.Rmd"]
+download: [["resdoc.pdf", "PDF"], ["resdoc.docx", "Word"]]
+delete_merged_file: true

@@ -1,0 +1,32 @@
+---
+title: "Title Here (*Latin Species Name*)"
+author: |
+  First. M. Last^1^ and
+  Alex B. Smith^2^
+author_list: "Last, F.M. and Smith, A.B."
+address: |
+  ^1^Pacific Biological Station\
+     Fisheries and Oceans Canada, 3190 Hammond Bay Road\
+     Nanaimo, British Columbia, V9T 6N7, Canada\
+  ^2^Far, far away\
+     Another Galaxy
+year: "2018"
+report_number: "nnn"
+abstract: |
+  Here is the abstract text.
+output:
+  csasdown::resdoc_pdf
+  # csasdown::resdoc_word
+  # csasdown::resdoc_gitbook
+# ------------
+# End of options to set
+knit: bookdown::render_book
+site: bookdown::bookdown_site
+bibliography: bib/refs.bib
+csl: csl/csas.csl
+lot: true
+lof: true
+# Any extra LaTeX code for the header:
+# header-includes:
+# - \usepackage{tikz}
+---
