@@ -59,11 +59,25 @@ x <- filter(d$survey_samples,
 
 Survey age, length and maturity data were extracted from the GFBio database using the following query:
 
-- Details of the query
+```
+Filters                                                                              & Rationale                                                                                                                                          \\
+\midrule
+Filtered for \texttt{TRIP\_SUBTYPE\_CODE} \texttt{2, 3} (research trips)                      & To extract only research data                                                                                                             \\
+Filtered for \texttt{SAMPLE\_TYPE\_CODE} \texttt{1, 2, 6, 7, 8} (random or total)             & To extract only those records of sample type 'random' or 'total'                                                                          \\
+Filtered for \texttt{SPECIES\_CATEGORY\_CODE} \texttt{NULL, 0, 1, 3, 4, 5, 6, 7}              & To remove samples sorted on unknown criteria                                                                                              \\
+Filtered for \texttt{SAMPLE\_SOURCE\_CODE} \texttt{NULL, 1, 2, 3}                             & To extract both sorted and unsorted samples for later filtration for desired analysis (removes stomach contents samples)                  \\
+```
 
-In addition, commercial length and maturity (?) samples were extracted from GFFOS using the following query:
+In addition, commercial length and maturity samples were extracted from GFBio using the following options:
 
-- Details of the query
+- Filtered out `TRIP_SUBTYPE_CODE` in 2, 3 (research trips) to extract only commercial data.
+
+- Filtered for `SAMPLE_TYPE_CODE` in 1, 2, 6, 7, 8 (random or total) to extract only those records of sample type 'random' or 'total'.   
+
+- Filtered out `TRIP_SUBTYPE_CODE` in 2, 3 (research trips) to extract only commercial data.    
+- Filtered for `SPECIES_CATEGORY_CODE` NULL, 0, 1, 3, 4, 5, 6, 7 to remove samples sorted on unknown criteria.
+
+- Filtered for `SAMPLE_SOURCE_CODE` NULL, 1, 2, 3 to extract both sorted and unsorted samples for later filtration for desired analysis (removes stomach contents samples).
 
 Note about stratified length samples
 
@@ -360,15 +374,10 @@ The number of age records in each length category in the age sample was then tab
 The "length sample" contains all of the specimen records with only a length (cm) observation, i.e., records already included in the age sample for construction of the ALK are excluded from the length sample. In total there were six length samples from:
 
 1.  Hecate Strait Synoptic Survey (Area 5CD)
-
 2.  Queen Charlotte Sound Synoptic Survey (Area 5AB)
-
 3.  West Coast Vancouver Island Synoptic Survey (Area 3CD)
-
 4.  Area 5CD Commercial Bottom Trawl Fishery
-
 5.  Area 5AB Commercial Bottom Trawl Fishery
-
 6.  Area 3CD Commercial Bottom Trawl Fishery
 
 For each of the above length datasets, ages were randomly assigned to the unaged fish within a length category according to the proportions-at-age for that length category in the ALK for that area (Table TODO or Table TODO). Ages were assigned using the FSA function alkIndivAge [@ogle2018], using the "completely random" approach (Type="CR"). In the "completely random" approach, the age assigned to each fish is randomly assigned with probabilistic weights proportional to the proportions-at-age in each length category. For example, if 50% of observed fish in a length category were age 1, then a single fish in that category would have a 50% chance of being assigned an age of 1. However, because the sampling is random, the distribution of assigned ages in the length category could differ from the distribution in the ALK. The "completely random" approach differs from the alternative "semi-random" approach (Type="SR"), where the proportion of fish at each age in each length category is constrained to match the ALK, even though the assignment of ages to individual fish is random. A difficulty with the "semi-random" approach is dealing with fractional proportions, requiring a two-stage assignment process [@isermann2005].
