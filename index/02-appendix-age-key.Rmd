@@ -110,6 +110,14 @@ tidy_ages_raw(x,
   ylim(0, NA)
 ```
 
+```{r age-precision, fig.cap="Aging precision; all samples", fig.asp=1, out.width="3in", fig.width=4}
+tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
+  plot_age_precision(n = 1e6) + 
+  scale_x_continuous(breaks = seq(0, 10, 1)) + 
+  scale_y_continuous(breaks = seq(0, 10, 1)) +
+  ggtitle("")
+```
+
 ```{r biosamples, results='asis'}
 x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
@@ -251,11 +259,57 @@ get_par_df(lw_fits, 1) %>%
 
 Maturity-at-age parameters were estimated by fitting observed age and maturity data to the logistic function
 
+------------
+
+Sean's version:
+
+We fit maturity ogives as logistic regressions of maturity (mature vs. not mature) against length or age:
+
+\begin{align}
+y_i &\sim \mathrm{Binomial}(\pi_i)\\
+\mathrm{logit} \left( \pi_i \right) &= \beta_0 + \beta_1 x_i + \beta_2 F_i
+ (\#eq:maturity)
+\end{align}
+
+```
+a_50% = -(log((1 / 0.5) - 1) + a) / b
+a = intercept, b = slope in logit space
+```
+
+where $y_i$ represents a 1 if fish $i$ is considered mature and a 0 if fish $i$
+is considered immature. The $\beta$ parameters represent estimated coefficients,
+$x_i$ represents either the length or age of fish $i$, and $F_i$ represents
+a binary predictor that is 1 if the fish is female and 0 if the fish is male.
+The variable $\pi_i$ represents the expected probability of fish $i$ being
+mature.
+
+--------------
+
 $$P_{a_{s}} = \frac{1}{1 + e^{- \ \frac{a_{s} - a_{{50\%}_{s}}}{\text{σa}_{{50\%}_{s}}}}}$$
 
-where $a_{{50\%}_s}$ and $\sigma a_{{50\%}_s}$ are the parameters of the equation, respectively, age-at-50% maturity and standard deviation of the logistic curve, specific to sex. $P_{a_{s}}$ is the proportion mature at age $a_{s}$ for sex *s*. Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage. For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
+where $a_{{50\%}_s}$ and $\sigma a_{{50\%}_s}$ are the parameters of the equation, respectively, age-at-50% maturity and standard deviation of the logistic curve, specific to sex. $P_{a_s}$ is the proportion mature at age $a_{s}$ for sex $s$. Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage. For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
 
-Estimated parameters are provided in Table A.3. Estimated maturity ogives are shown in Figure A.5. Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2. Estimates older for WCVI than HS/QCS.
+```{r fit-maturity}
+surveys_list <- list(
+  `SYN HS, SYN QCS, SYN WCVI` = c("SYN HS", "SYN QCS","SYN WCVI"),
+  `SYN HS, SYN QCS` = c("SYN HS", "SYN QCS"),
+  `SYN WCVI` = "SYN WCVI"
+)
+mat_fits <- map(surveys_list, function(.survey) {
+  .dat <- filter(x, is.element(survey_abbrev, .survey))
+  fit_mat_ogive(.dat, type = "age")
+})
+```
+
+```{r mat-figs, fig.cap = "Caption", fig.asp=2, fig.width=4, out.width="3.5in"}
+mat_figs <- map(mat_fits, ~ plot_mat_ogive(.x) + 
+    coord_cartesian(xlim = c(0, 8.2), ylim = c(0, 1), expand = FALSE))
+for (i in seq_along(mat_figs))
+  mat_figs[[i]] <- mat_figs[[i]] + ggtitle(names(surveys_list)[i])
+cowplot::plot_grid(plotlist = mat_figs, ncol = 1)
+```
+
+Estimated parameters are provided in Table TODO Estimated maturity ogives are shown in Figure \@ref(fig:mat-figs). Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2. Estimates older for WCVI than HS/QCS.
 
 - RF to check Westrheim report for previous estimates
 
@@ -317,9 +371,9 @@ The "length sample" contains all of the specimen records with only a length (cm)
 
 6.  Area 3CD Commercial Bottom Trawl Fishery
 
-For each of the above length datasets, ages were randomly assigned to the unaged fish within a length category according to the proportions-at-age for that length category in the ALK for that area (Table A.3a or Table A.3b). Ages were assigned using the FSA function alkIndivAge [@ogle2018], using the "completely random" approach (Type="CR"). In the "completely random" approach, the age assigned to each fish is randomly assigned with probabilistic weights proportional to the proportions-at-age in each length category. For example, if 50% of observed fish in a length category were age 1, then a single fish in that category would have a 50% chance of being assigned an age of 1. However, because the sampling is random, the distribution of assigned ages in the length category could differ from the distribution in the ALK. The "completely random" approach differs from the alternative "semi-random" approach (Type="SR"), where the proportion of fish at each age in each length category is constrained to match the ALK, even though the assignment of ages to individual fish is random. A difficulty with the "semi-random" approach is dealing with fractional proportions, requiring a two-stage assignment process [@isermann2005].
+For each of the above length datasets, ages were randomly assigned to the unaged fish within a length category according to the proportions-at-age for that length category in the ALK for that area (Table TODO or Table TODO). Ages were assigned using the FSA function alkIndivAge [@ogle2018], using the "completely random" approach (Type="CR"). In the "completely random" approach, the age assigned to each fish is randomly assigned with probabilistic weights proportional to the proportions-at-age in each length category. For example, if 50% of observed fish in a length category were age 1, then a single fish in that category would have a 50% chance of being assigned an age of 1. However, because the sampling is random, the distribution of assigned ages in the length category could differ from the distribution in the ALK. The "completely random" approach differs from the alternative "semi-random" approach (Type="SR"), where the proportion of fish at each age in each length category is constrained to match the ALK, even though the assignment of ages to individual fish is random. A difficulty with the "semi-random" approach is dealing with fractional proportions, requiring a two-stage assignment process [@isermann2005].
 
-For each of the above length datasets, age assignment was done using two alternative ranges of years. In the "interpolated" approach, ages were only assigned to lengths for years represented in the year-range in the ALK (Table A.1). In the "extrapolated" approach, ages were assigned to lengths for all years which had length observations in the period 2006 to 2017 for the surveys, and 2006 to 2016 for the commercial data. Note that the West Coast Vancouver Island Synoptic Survey only operated in even-numbered years, while the Hecate Strait and Queen Charlotte Sound Synoptic surveys only operated in odd-numbered years, with the first year of assigned ages for each area reflecting this. As suggested by @ogle2018, observed lengths below the smallest length in the age sample were removed from the length sample. Observed lengths in the length sample that were larger than the largest observed length in the age sample were assigned ages according to the probabilities for the largest length category in the ALK (Table A.3a or A.3b).
+For each of the above length datasets, age assignment was done using two alternative ranges of years. In the "interpolated" approach, ages were only assigned to lengths for years represented in the year-range in the ALK (Table TODO). In the "extrapolated" approach, ages were assigned to lengths for all years which had length observations in the period 2006 to 2017 for the surveys, and 2006 to 2016 for the commercial data. Note that the West Coast Vancouver Island Synoptic Survey only operated in even-numbered years, while the Hecate Strait and Queen Charlotte Sound Synoptic surveys only operated in odd-numbered years, with the first year of assigned ages for each area reflecting this. As suggested by @ogle2018, observed lengths below the smallest length in the age sample were removed from the length sample. Observed lengths in the length sample that were larger than the largest observed length in the age sample were assigned ages according to the probabilities for the largest length category in the ALK (Table TODO or TODO).
 
 Results are summarized for each dataset with three types of graph: i) jittered scatterplot of length\~age; ii) bubble plots of assigned proportions-at-age; and iii) length-frequency histograms colour-coded by assigned age. Results for data including 2006, with assigned ages extrapolated to 2017 are shown for each of the six length datasets above.
 
@@ -335,27 +389,19 @@ Results are summarized for each dataset with three types of graph: i) jittered s
 
 **Figure** **A.10**
 
-
 ### WEST COAST VANCOUVER ISLAND SYNOPTIC SURVEY (AREA 3CD)
-
 
 **Figure A.11**
 
-
 **Figure A.12**
-
 
 ### AREA 5CD COMMERCIAL BOTTOM TRAWL FISHERY
 
-
 **Figure A.13**
-
-
 
 **Figure A.14**
 
 ### AREA 5AB COMMERCIAL BOTTOM TRAWL FISHERY
-
 
 **Figure A.15**
 
@@ -363,9 +409,7 @@ Results are summarized for each dataset with three types of graph: i) jittered s
 
 ### AREA 3CD COMMERCIAL BOTTOM TRAWL FISHERY
 
-
 **Figure A.17**
-
 
 **Figure A.18**
 
@@ -415,22 +459,17 @@ Table and Figures are numbered to match the main Appendix A figures.
 
 ### HECATE STRAIT SYNOPTIC SURVEY (AREA 5CD)
 
-
 **Figure S.A.7**
-
 
 **Figure S.A.8**
 
 ### QUEEN CHARLOTTE SOUND SYNOPTIC SURVEY (AREA 5AB)
 
-
 **Figure S.A.9**
-
 
 **Figure S.A.10**
 
 ### WEST COAST VANCOUVER ISLAND SYNOPTIC SURVEY (AREA 3CD)
-
 
 **Figure S.A.11**
 
@@ -438,14 +477,11 @@ Table and Figures are numbered to match the main Appendix A figures.
 
 ### AREA 5CD COMMERCIAL BOTTOM TRAWL FISHERY
 
-
 **Figure S.A.13**
-
 
 **Figure S.A.14**
 
 ### AREA 5AB COMMERCIAL BOTTOM TRAWL FISHERY
-
 
 **Figure S.A.15**
 
