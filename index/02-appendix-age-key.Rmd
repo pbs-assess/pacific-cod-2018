@@ -1,5 +1,3 @@
-\clearpage 
-
 ```{r, knitr-opts, echo=FALSE, cache=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -22,6 +20,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+\clearpage
+
+`r if(knitr:::is_latex_output()) '\\Appendices'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
 
 ```{r, message=FALSE, warning=FALSE}
 library(gfplot)
@@ -37,19 +40,66 @@ panderOptions('table.alignment.default',
   function(df) ifelse(sapply(df, is.numeric), 'right', 'left'))
 ```
 
-
 ```{r}
 if (!file.exists("data/pacific-cod.rds")) {
-  gfplot::cache_pbs_data("pacific cod", path = "data", compress = TRUE, 
+  gfplot::cache_pbs_data("pacific cod", path = "data", compress = TRUE,
     survey_sets = FALSE)
 }
 d <- readRDS("data/pacific-cod.rds")
 ```
 
 ```{r}
-x <- filter(d$survey_samples, 
+x <- filter(d$survey_samples,
   is.element(survey_abbrev, c("SYN HS", "SYN QCS","SYN WCVI")))
 ```
+
+# Age-based analyses for Pacific Cod
+
+- There is very limited ageing data available for BC Pacific Cod populations.
+
+- The delay-difference model is conditional on the assumption that maturity, selectivity to the fishery and selectivity to the survey are all knife-edged at age 2.
+
+- In this appendix we examine length, maturity and available ageing data to test whether these assumptions are likely to be violated.
+
+## Database queries
+
+Survey age, length and maturity data were extracted from the GFBio database using the following query:
+
+- Details of the query
+
+In addition, commercial length and maturity (?) samples were extracted from GFFOS using the following query:
+
+- Details of the query
+
+Note about stratified length samples
+
+```{r}
+total_aged <- tidy_ages_raw(x,
+  survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
+  ageing_method_codes = 6) %>% 
+  group_by(survey_abbrev, year) %>% 
+  summarise(n = total[1]) %>% ungroup() %>% 
+  summarise(n = sum(n)) %>% pull(n)
+```
+
+
+## Age samples
+
+- Pacific Cod are difficult to age due to inconsistency in annual marks, especially in the first few years of life (Beamish, 1981; Johnstone and Anderl, 2012; Kastelle, 2017).
+
+- A recent microchemistry-based validation study of Alaskan Pacific Cod otoliths revealed a high probability of over-ageing fish of ages 3-4 by one year using visual examination methods. This was due to difficulty of readers distinguishing growth checks (translucent zones) from annuli (Kastelle, 2017).
+
+- Pacific Cod are aged in BC using dorsal finray sections, although this method is unvalidated (Beamish, 1981). TEXT FROM JOHN HOLMES REPORT
+
+- Ageing finray sections is resource intensive, since fins must be dried, sectioned and mounted in resin before reading. Therefore, production ageing of Pacific Cod has not been done for BC populations.
+
+- An ageing request was made in 2012 to age Pacific Cod from dorsal fin rays collected in recent synoptic surveys in Areas 3CD, 5AB and 5CD. A total of `r total_aged` fin rays were aged. A summary of number aged by year, survey and sex is provided in Table \@ref(tab:biosamples). Proportions at each age are shown in Figure TODO.
+
+- Due to the difficulties with interpreting annuli for Pacific Cod, a subset of fin rays were read by a second "precision" or secondary reader. There were 162 such secondary reads for Area 5CD and 57 for Area 3CD. Results yielded non-zero probabilities of precision reads differing by one or more years, particularly for older fish (Figure TODO).
+
+- Given the small ranges of years and small sample sizes, these data are insufficient for an age-structured stock assessment.
+
+- However, they may be informative about the assumptions of growth, maturity and selectivity in the delay-difference model.
 
 ```{r, fig.cap="Figure caption here"}
 tidy_ages_raw(x,
@@ -66,7 +116,7 @@ tidy_ages_raw(x,
   ylim(0, NA)
 ```
 
-```{r, results='asis'}
+```{r biosamples, results='asis'}
 x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
   filter(!is.na(age)) %>%
@@ -82,58 +132,10 @@ x %>%
     `N female` = nage_f, `Prop. male` = proportion_male,
     `Prop. female` = proportion_female
   ) %>%
-  pander(caption = "Caption for the table")
+  knitr::kable(caption = "Caption for the table", booktabs = TRUE, linesep = "")
 ```
 
-`r if(knitr:::is_latex_output()) '\\appendix'`
-
-`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
-
-\clearpage
-
-# AGE-BASED ANALYSES FOR PACIFIC COD
-
-- There is very limited ageing data available for BC Pacific Cod populations.
-
-- The delay-difference model is conditional on the assumption that maturity, selectivity to the fishery and selectivity to the survey are all knife-edged at age 2.
-
-- In this appendix we examine length, maturity and available ageing data to test whether these assumptions are likely to be violated.
-
-## DATABASE QUERIES
-
-Survey age, length and maturity data were extracted from the GFBio database using the following query:
-
-- Details of the query
-
-In addition, commercial length and maturity (?) samples were extracted from GFFOS using the following query:
-
-- Details of the query
-
-Note about stratified length samples
-
-## AGE SAMPLES
-
-- Pacific Cod are difficult to age due to inconsistency in annual marks, especially in the first few years of life (Beamish, 1981; Johnstone and Anderl, 2012; Kastelle, 2017).
-
-- A recent microchemistry-based validation study of Alaskan Pacific Cod otoliths revealed a high probability of over-ageing fish of ages 3-4 by one year using visual examination methods. This was due to difficulty of readers distinguishing growth checks (translucent zones) from annuli (Kastelle, 2017).
-
-- Pacific Cod are aged in BC using dorsal finray sections, although this method is unvalidated (Beamish, 1981). TEXT FROM JOHN HOLMES REPORT
-
-- Ageing finray sections is resource intensive, since fins must be dried, sectioned and mounted in resin before reading. Therefore, production ageing of Pacific Cod has not been done for BC populations.
-
-- An ageing request was made in 2012 to age Pacific Cod from dorsal fin rays collected in recent synoptic surveys in Areas 3CD, 5AB and 5CD. A total of 2,876 fin rays were aged. A summary of number aged by year, survey and sex is provided in Table A.1. Proportions at each age are shown in Figure A.1.
-
-- Due to the difficulties with interpreting annuli for Pacific Cod, a subset of fin rays were read by a second "precision" or secondary reader. There were 162 such secondary reads for Area 5CD and 57 for Area 3CD. Results yielded non-zero probabilities of precision reads differing by one or more years, particularly for older fish (Figure A.2).
-
-- Given the small ranges of years and small sample sizes, these data are insufficient for an age-structured stock assessment.
-
-- However, they may be informative about the assumptions of growth, maturity and selectivity in the delay-difference model.
-
-**FIGURE A.1**
-
-**FIGURE A.2**
-
-## GROWTH
+## Growth
 
 Growth parameters were estimated by fitting age and length data to the von Bertalanffy growth function (Equation \@ref(eq:vB))
 
@@ -142,63 +144,59 @@ L_{s} = L_{\infty,s}\left( 1 - e^{- k_{s}\left( a_{s} - {a_{0}}_{s} \right)} \ri
  (\#eq:vB)
 \end{equation}
 
-where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $a_{s}$ are paired length ($L$) and age ($a$) observations from synoptic surveys (Table 1). The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples. Results are shown in Figure A.3.
+where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $a_{s}$ are paired length ($L$) and age ($a$) observations from synoptic surveys (Table \@ref(tab:biosamples)). The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples. Results are shown in Figure \@ref(fig:vb-figs).
 
-Length-weight parameters (Equation 2) were also estimated using paired length and weight data from the same surveys
+Length-weight parameters (Equation \@ref(eq:weight-length)) were also estimated using paired length and weight data from the same surveys
 
 \begin{equation}
 W_{s} = \alpha_{s}{L_{s}}^{\beta_{s}}
  (\#eq:weight-length)
 \end{equation}
 
-where $\alpha_{s}$ and $\beta_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $W_{s}$ are paired length ($L$) and weight ($W$) observations from synoptic surveys (Table 1). Results are shown in Figure A.4.
+where $\alpha_s$ and $\beta_s$ are the parameters of the equation specific to sex, and $L_s$ and $W_s$ are paired length ($L$) and weight ($W$) observations from synoptic surveys (Table \@ref(tab:biosamples)). Results are shown in Figure \@ref(fig:lw-figs).
 
 ```{r, results='hide'}
 # surveys <- list(
-#   all = c("SYN HS", "SYN QCS","SYN WCVI"), 
-#   HSQC = c("SYN HS", "SYN QCS"), 
+#   all = c("SYN HS", "SYN QCS","SYN WCVI"),
+#   HSQC = c("SYN HS", "SYN QCS"),
 #   WC = "SYN WCVI"
 # )
 # sexes <- c("male", "female")
-# vb_fits <- 
+# vb_fits <-
 #   map(surveys, function(.survey) {
 #     map(sexes, function(.sex) {
 #       .dat <- filter(x, is.element(survey_abbrev, .survey))
 #       fit_vb(.dat, .sex, method = "mpd")
 #     })
 #   })
-```
 
-```{r}
 # vb_figs <- map(vb_fits, ~ plot_vb(
-#   object_male = .x[[1]], object_female = .x[[2]], 
+#   object_male = .x[[1]], object_female = .x[[2]],
 #       col = c(Female = "red", Male = "grey40"))
 #   )
 # cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
-```
 
-```{r}
 # nms <- names(vb_fits[[1]][[1]]$model$par)
 # get_par_df <- function(.d, element = 1) {
 #   map_df(.d, ~ .x[[element]]$model$par) %>%
-#     t() %>% 
-#     as.data.frame() %>% 
-#     setNames(nms) %>% 
+#     t() %>%
+#     as.data.frame() %>%
+#     setNames(nms) %>%
 #     mutate(sex = sexes[element])
 # }
-# get_par_df(vb_fits, 1) %>% 
-#   bind_rows(get_par_df(vb_fits, 2)) %>% 
+# get_par_df(vb_fits, 1) %>%
+#   bind_rows(get_par_df(vb_fits, 2)) %>%
 #   pander::pander(caption = "Caption for the table")
 ```
 
 ```{r fit-vb, results='hide'}
 surveys_list <- list(
-  `SYN HS, SYN QCS, SYN WCVI` = c("SYN HS", "SYN QCS","SYN WCVI"), 
-  `SYN HS, SYN QCS` = c("SYN HS", "SYN QCS"), 
+  `SYN HS, SYN QCS, SYN WCVI` = c("SYN HS", "SYN QCS","SYN WCVI"),
+  `SYN HS, SYN QCS` = c("SYN HS", "SYN QCS"),
   `SYN WCVI` = "SYN WCVI"
 )
 sexes <- c("male", "female")
-vb_fits <- 
+vb_fits <-
   map(surveys_list, function(.survey) {
     map(sexes, function(.sex) {
       .dat <- filter(x, is.element(survey_abbrev, .survey))
@@ -209,7 +207,7 @@ vb_fits <-
 
 ```{r vb-figs, fig.cap = "Caption", fig.asp=0.3, fig.width=9, out.width="6.5in"}
 vb_figs <- map(vb_fits, ~ plot_vb(
-  object_male = .x[[1]], object_female = .x[[2]], 
+  object_male = .x[[1]], object_female = .x[[2]],
       col = c(Female = "red", Male = "grey40"), lab_x = 0.38) +
     ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")))
 cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
@@ -218,28 +216,28 @@ cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
 ```{r vb-pars, fig.asp=0.4, fig.cap = "Caption"}
 get_par_df <- function(.d, element = 1) {
   map_df(vb_fits, function(.x) {
-    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.9) %>% 
+    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.9) %>%
     select(-std.error) %>%
-    mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>% 
-    mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>% 
-    mutate(Sex = sexes[element]) %>% 
+    mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+    mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+    mutate(Sex = sexes[element]) %>%
     filter(term != "sigma")
 })}
-get_par_df(vb_fits, 1) %>% 
+get_par_df(vb_fits, 1) %>%
   bind_rows(get_par_df(vb_fits, 2)) %>%
-  mutate(surveys = factor(surveys, levels = rev(names(surveys_list)))) %>% 
-  ggplot(aes(surveys, estimate, colour = Sex, ymin = conf.low, ymax = conf.high)) + 
+  mutate(surveys = factor(surveys, levels = rev(names(surveys_list)))) %>%
+  ggplot(aes(surveys, estimate, colour = Sex, ymin = conf.low, ymax = conf.high)) +
   geom_pointrange(position = position_dodge(width = 0.2)) +
   facet_wrap(~term, scales = "free_x") +
-  coord_flip() + 
+  coord_flip() +
   ylab("Parameter value") +
   xlab("") +
-  theme_pbs() + 
+  theme_pbs() +
   scale_color_manual(values = c("female" = "red", "male" = "grey40"))
 ```
 
 ```{r fit-lw, results='hide'}
-lw_fits <- 
+lw_fits <-
   map(surveys_list, function(.survey) {
     map(sexes, function(.sex) {
       .dat <- filter(x, is.element(survey_abbrev, .survey))
@@ -250,7 +248,7 @@ lw_fits <-
 
 ```{r lw-figs, fig.cap = "Caption", fig.asp=0.28, fig.width=9, out.width="6.5in"}
 lw_figs <- map(lw_fits, ~ plot_length_weight(
-  object_male = .x[[1]], object_female = .x[[2]], 
+  object_male = .x[[1]], object_female = .x[[2]],
       col = c(Female = "red", Male = "grey40"), lab_x_gap = 0.45) +
     ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")))
 cowplot::plot_grid(plotlist = lw_figs, nrow = 1)
@@ -259,73 +257,55 @@ cowplot::plot_grid(plotlist = lw_figs, nrow = 1)
 ```{r lw-pars, fig.asp=0.4, fig.cap = "Caption"}
 get_par_df <- function(.d, element = 1) {
   map_df(lw_fits, function(.x) {
-    broom::tidy(.x[[element]]$model) %>% 
-    mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>% 
-    mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>% 
-    mutate(Sex = sexes[element]) %>% 
+    broom::tidy(.x[[element]]$model) %>%
+    mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+    mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+    mutate(Sex = sexes[element]) %>%
     filter(term != "statistic")
 })}
-get_par_df(lw_fits, 1) %>% 
+get_par_df(lw_fits, 1) %>%
   bind_rows(get_par_df(lw_fits, 2)) %>%
-  mutate(conf.low = estimate - 1.96 * std.error, conf.high = estimate + 1.96 * std.error) %>% 
-  mutate(surveys = factor(surveys, levels = rev(names(surveys_list)))) %>% 
-  mutate(term = gsub("\\(Intercept\\)", "ln(a_s)", term)) %>% 
-  mutate(term = gsub("log\\(length\\)", "b_s", term)) %>% 
-  ggplot(aes(surveys, estimate, colour = Sex, ymin = conf.low, ymax = conf.high)) + 
+  mutate(conf.low = estimate - 1.96 * std.error, conf.high = estimate + 1.96 * std.error) %>%
+  mutate(surveys = factor(surveys, levels = rev(names(surveys_list)))) %>%
+  mutate(term = gsub("\\(Intercept\\)", "ln(a_s)", term)) %>%
+  mutate(term = gsub("log\\(length\\)", "b_s", term)) %>%
+  ggplot(aes(surveys, estimate, colour = Sex, ymin = conf.low, ymax = conf.high)) +
   geom_pointrange(position = position_dodge(width = 0.2)) +
   facet_wrap(~term, scales = "free_x") +
-  coord_flip() + 
+  coord_flip() +
   ylab("Parameter value") +
   xlab("") +
-  theme_pbs() + 
+  theme_pbs() +
   scale_color_manual(values = c("female" = "red", "male" = "grey40"))
 ```
 
+- Estimates of growth rate $k$ higher in the WCVI survey compared to HS/QCS.
 
-**FIGURE A.3. a. all surveys; b. Hecate Strait/QCS; c. WCVI**
+- The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound Pacific Cod stocks (Forrest et al., 2015) used the same growth parameters used in the previous assessment for the Hecate Strait stock, i.e., $L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y (Sinclair and Starr 2004). These values were reported by Westrheim (1996) for the WCVI stock. Westrheim (1996) reported different values for the Hecate Strait stock, i.e., $L_{\infty}$ = 84.01 cm; $k$ = 0.203 y^-1^ and $a_0$ = -0.806 y. In those analyses, age-frequencies were derived from length-frequency data, using the methods described in Foucher and Fournier (1982).
 
-**FIGURE A.4. a. all surveys; b. Hecate Strait/QCS; c. WCVI**
+- The current results Figs \@ref(fig:vb-pars) and \@ref(fig:lw-pars), which are based on sampled age and length observations (Table \@ref(tab:biosamples)), are consistent with the parameters reported by Westrheim (1996), where Hecate Strait fish appear to grow more slowly and reach a smaller size compared with those from West Coast Vancouver Island. This suggests that the current assessment should calculate the growth parameters of the delay-difference model using updated von Bertalanffy growth parameters, as the values used in the 2013 assessment may have been too high.
 
+- Comment on sample sizes and imprecision --- insufficient secondary reads to account for ageing error in calculation of growth parameters [e.g., as in @cope2007].
 
-- Estimates of growth rate *k* higher in the WCVI survey compared to HS/QCS.
-
-- The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound Pacific Cod stocks (Forrest et al., 2015) used the same growth parameters used in the previous assessment for the Hecate Strait stock, i.e., $L_{\infty}$ = 89.48 cm; *k* = 0.307 *y*^-1^and *a~0~* = -0.116 *y* (Sinclair and Starr 2004). These values were reported by Westrheim (1996) for the WCVI stock. Westrheim (1996) reported different values for the Hecate Strait stock, i.e., $L_{\infty}$ = 84.01 cm; *k* = 0.203 *y*^-1^and *a~0~* = -0.806 *y*. In those analyses, age-frequencies were derived from length-frequency data, using the methods described in Foucher and Fournier (1982).
-
-- The current results (Table A.2), which are based on sampled age and length observations (Table A.1), are consistent with the parameters reported by Westrheim (1996), where Hecate Strait fish appear to grow more slowly and reach a smaller size compared with those from West Coast Vancouver Island. This suggests that the current assessment should calculate the growth parameters of the delay-difference model using updated von Bertalanffy growth parameters, as the values used in the 2013 assessment may have been too high.
-
-- Comment on sample sizes and imprecision --- insufficient secondary reads to account for ageing error in calculation of growth parameters (e.g., as in Cope and Punt, 2007).
-
-## MATURITY
+## Maturity
 
 Maturity-at-age parameters were estimated by fitting observed age and maturity data to the logistic function
 
 $$P_{a_{s}} = \frac{1}{1 + e^{- \ \frac{a_{s} - a_{{50\%}_{s}}}{\text{σa}_{{50\%}_{s}}}}}$$
 
-where $a_{{50\%}_{s}}$ and $\text{σa}_{{50\%}_{s}}$ are the parameters of the equation, respectively, age-at-50% maturity and standard deviation of the logistic curve, specific to sex. $P_{a_{s}}$ is the proportion mature at age $a_{s}$ for sex *s*. Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage. For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
+where $a_{{50\%}_s}$ and $\sigma a_{{50\%}_s}$ are the parameters of the equation, respectively, age-at-50% maturity and standard deviation of the logistic curve, specific to sex. $P_{a_{s}}$ is the proportion mature at age $a_{s}$ for sex *s*. Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage. For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
 
 Estimated parameters are provided in Table A.3. Estimated maturity ogives are shown in Figure A.5. Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2. Estimates older for WCVI than HS/QCS.
 
 - RF to check Westrheim report for previous estimates
 
-**TABLE A.3**
+<!-- **Figure A.5.** Top = All survey data combined; Centre = Hecate Strait and Queen Charlotte Sound Synoptic Surveys combined; Bottom = West Coast Vancouver Island Synoptic Survey. -->
 
-**Survey**           **Sex**   $a_{50\%s}$**(*y*)**   $σa_{50\%s}$**(*y*)**
--------------------- --------- -------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------
-Surveys combined     Male      3.0
-Surveys combined     Female    2.8
-SYN HS and SYN QCS   Male      2.6
-SYN HS and SYN QCS   Female    2.4
-SYN WCVI             Male      3.2
-SYN WCVI             Female    3.2
-
-
-**Figure A.5.** Top = All survey data combined; Centre = Hecate Strait and Queen Charlotte Sound Synoptic Surveys combined; Bottom = West Coast Vancouver Island Synoptic Survey.
-
-## AGE-LENGTH KEY
+## Age-length key
 
 An age-length key (ALK) was constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys. Data were pooled over years and surveys to increase the number of paired samples (Table A1). Because the West Coast Vancouver Island Synoptic Survey occurs in alternate years to the Hecate Strait and Queen Charlotte Sound surveys, and occurs in a geographically distinct area, it may not actually be appropriate to pool the data, especially given differences in growth rates reported above. Separate ALKs were therefore developed for: (i) the combined the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys; and (ii) the West Coast Vancouver Island Synoptic Survey.
 
-The ALK was used to probabilistically "assign" ages to observed lengths from the surveys and commercial catch data, using methods described in Isermann and Knight (2005), coded in the R package FSA (Ogle, 2012; 2018). Briefly, the method takes the following steps:
+The ALK was used to probabilistically "assign" ages to observed lengths from the surveys and commercial catch data, using methods described in @isermann2005, coded in the R package FSA [@ogle2018]. Briefly, the method takes the following steps:
 
 **1. Get the age sample and construct the ALK**
 
@@ -334,21 +314,23 @@ The "age sample" contains all the specimen records with *both* an age (y) and le
 
 **Figure A.6. Left = 5ABCD. Right = 3CD**
 
-The ALK describes the proportion of fish of each age in each length bin (length categories), where bins were set to 2 cm increments. See XXX for sensitivity to choice of bin width. The FSA function lencat (Ogle, 2018) was used to bin the observed lengths into length categories (LCat), where odd-numbered lengths were binned to the length category below, e.g.,
+The ALK describes the proportion of fish of each age in each length bin (length categories), where bins were set to 2 cm increments. See XXX for sensitivity to choice of bin width. The FSA function lencat [@ogle2018] was used to bin the observed lengths into length categories (LCat), where odd-numbered lengths were binned to the length category below, e.g.,
 
+--------------------
 year length age LCat
+---- ------ --- ----
+2007 17     0   16
 
-2007 17 0 16
+2007 18     0   18
 
-2007 18 0 18
+2007 17     0   16
 
-2007 17 0 16
+2007 23     0   22
 
-2007 23 0 22
+2007 21     0   20
 
-2007 21 0 20
-
-2007 16 0 16
+2007 16     0   16
+--------------------
 
 The number of age records in each length category in the age sample was then tabulated using the R function table. Numbers were then converted to proportions using the function prop.table. Resulting ALKs with 2 cm length bins are shown in Tables A.3a (Hecate Strait/Queen Charlotte Sound) and A.3b (West Coast Vancouver Island), where the sum of age proportions in each length bin is 1.
 
@@ -375,9 +357,9 @@ The "length sample" contains all of the specimen records with only a length (cm)
 
 6.  Area 3CD Commercial Bottom Trawl Fishery
 
-For each of the above length datasets, ages were randomly assigned to the unaged fish within a length category according to the proportions-at-age for that length category in the ALK for that area (Table A.3a or Table A.3b). Ages were assigned using the FSA function alkIndivAge (Ogle, 2018), using the "completely random" approach (Type="CR"). In the "completely random" approach, the age assigned to each fish is randomly assigned with probabilistic weights proportional to the proportions-at-age in each length category. For example, if 50% of observed fish in a length category were age 1, then a single fish in that category would have a 50% chance of being assigned an age of 1. However, because the sampling is random, the distribution of assigned ages in the length category could differ from the distribution in the ALK. The "completely random" approach differs from the alternative "semi-random" approach (Type="SR"), where the proportion of fish at each age in each length category is constrained to match the ALK, even though the assignment of ages to individual fish is random. A difficulty with the "semi-random" approach is dealing with fractional proportions, requiring a two-stage assignment process (Isermann and Knight, 2005).
+For each of the above length datasets, ages were randomly assigned to the unaged fish within a length category according to the proportions-at-age for that length category in the ALK for that area (Table A.3a or Table A.3b). Ages were assigned using the FSA function alkIndivAge [@ogle2018], using the "completely random" approach (Type="CR"). In the "completely random" approach, the age assigned to each fish is randomly assigned with probabilistic weights proportional to the proportions-at-age in each length category. For example, if 50% of observed fish in a length category were age 1, then a single fish in that category would have a 50% chance of being assigned an age of 1. However, because the sampling is random, the distribution of assigned ages in the length category could differ from the distribution in the ALK. The "completely random" approach differs from the alternative "semi-random" approach (Type="SR"), where the proportion of fish at each age in each length category is constrained to match the ALK, even though the assignment of ages to individual fish is random. A difficulty with the "semi-random" approach is dealing with fractional proportions, requiring a two-stage assignment process [@isermann2005].
 
-For each of the above length datasets, age assignment was done using two alternative ranges of years. In the "interpolated" approach, ages were only assigned to lengths for years represented in the year-range in the ALK (Table A.1). In the "extrapolated" approach, ages were assigned to lengths for all years which had length observations in the period 2006 to 2017 for the surveys, and 2006 to 2016 for the commercial data. Note that the West Coast Vancouver Island Synoptic Survey only operated in even-numbered years, while the Hecate Strait and Queen Charlotte Sound Synoptic surveys only operated in odd-numbered years, with the first year of assigned ages for each area reflecting this. As suggested by Ogle (2012), observed lengths below the smallest length in the age sample were removed from the length sample. Observed lengths in the length sample that were larger than the largest observed length in the age sample were assigned ages according to the probabilities for the largest length category in the ALK (Table A.3a or A.3b).
+For each of the above length datasets, age assignment was done using two alternative ranges of years. In the "interpolated" approach, ages were only assigned to lengths for years represented in the year-range in the ALK (Table A.1). In the "extrapolated" approach, ages were assigned to lengths for all years which had length observations in the period 2006 to 2017 for the surveys, and 2006 to 2016 for the commercial data. Note that the West Coast Vancouver Island Synoptic Survey only operated in even-numbered years, while the Hecate Strait and Queen Charlotte Sound Synoptic surveys only operated in odd-numbered years, with the first year of assigned ages for each area reflecting this. As suggested by @ogle2018, observed lengths below the smallest length in the age sample were removed from the length sample. Observed lengths in the length sample that were larger than the largest observed length in the age sample were assigned ages according to the probabilities for the largest length category in the ALK (Table A.3a or A.3b).
 
 Results are summarized for each dataset with three types of graph: i) jittered scatterplot of length\~age; ii) bubble plots of assigned proportions-at-age; and iii) length-frequency histograms colour-coded by assigned age. Results for data including 2006, with assigned ages extrapolated to 2017 are shown for each of the six length datasets above.
 
@@ -427,7 +409,7 @@ Results are summarized for each dataset with three types of graph: i) jittered s
 
 **Figure A.18**
 
-## SUMMARY: IMPLICATIONS FOR THE DELAY-DIFFERENCE MODEL
+## Summary: implications for the delay-difference model
 
 Growth:
 
@@ -462,14 +444,6 @@ where:
 - What we can possibly say is that if age 1 fish are available they will be caught by the survey and is some amounts by the commercial fishery.
 
 - One sensitivity test would be to set up an SCA model with fixed knife-edged selectivity at age 1 for survey, age 2 for fishery; and set age at maturity knife-edged at age 3. This would probably be the most direct means of comparing to the delay-difference model
-
-## REFERENCES (NOT COMPLETE)
-
-Isermann, D. A. and C. T. Knight. 2005. A computer program for age-length keys incorporating age assignment to individual fish. North American Journal of Fisheries Management 25:1153 - 1160.
-
-Ogle, D.H. 2012. fishR Vignette - Age-Length Keys to Assign Age from Lengths. Published online http://derekogle.com/fishR/examples/oldFishRVignettes/AgeLengthKey.pdf (Accessed June 6, 2018).
-
-Ogle, D.H. 2018. FSA: Fisheries Stock Analysis. R package version 0.8.20
 
 ## APPENDIX A SUPPLEMENT: SENSITIVITY ANALYSES
 

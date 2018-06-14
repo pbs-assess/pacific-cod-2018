@@ -4,7 +4,13 @@ This version of the document was generated on `r Sys.time()`. The repository is 
 
 The computational environment that was used to generate this version is as follows:
 
-```{r echo = FALSE}
-devtools::session_info()
+```{r echo = FALSE, results='asis', message=FALSE, warning=FALSE}
+panderOptions('table.alignment.default',
+  function(df) ifelse(sapply(df, is.numeric), 'right', 'left'))
+pkgs <- c("broom", "gfplot", "ggplot2", "dplyr", "rstan", "knitr")
+info <- devtools::session_info()$packages
+info %>% dplyr::filter(package %in% pkgs) %>%
+  dplyr::select(package, loadedversion, date) %>% 
+  dplyr::rename(version = loadedversion) %>% 
+  pander::pander()
 ```
-
