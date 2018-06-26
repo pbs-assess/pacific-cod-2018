@@ -318,6 +318,57 @@ for (i in seq_along(mat_figs))
 cowplot::plot_grid(plotlist = mat_figs, ncol = 1)
 ```
 
+```{r, fig.cap = "Caption", fig.width=6, out.width="4.5in"}
+mat_coefs <- plyr::ldply(mat_fits, function(.x) {
+  broom::tidy(.x$model, conf.int = TRUE)
+})
+
+mutate(mat_coefs, .id = factor(.id, levels = names(surveys_list))) %>% 
+ggplot(
+  aes(ymin = conf.low, ymax = conf.high, y = estimate, x = term, colour = .id)) +
+  geom_pointrange(position = position_dodge(width = 0.4)) +
+  coord_flip() +
+  theme_pbs() +
+  xlab("") + ylab("Coefficient") +
+  labs(colour = "Survey group")
+
+est <- group_by(mat_coefs, .id) %>%
+  summarise(
+    intercept_male = estimate[term == "(Intercept)"],
+    intercept_female = estimate[term == "(Intercept)"] + estimate[term == "female"],
+    slope_male = estimate[term == "age_or_length"],
+    slope_female = estimate[term == "age_or_length"] + 
+      estimate[term == "age_or_length:female"]
+  ) %>% reshape2::melt(variable.name = "term", value.name = "estimate")
+
+combine_se <- function(se1, se2) {
+  sqrt(se2^2 - se1^2)
+}
+
+se <- group_by(mat_coefs, .id) %>%
+  summarise(
+    intercept_male = std.error[term == "(Intercept)"],
+    intercept_female = combine_se(std.error[term == "(Intercept)"], 
+      std.error[term == "female"]),
+    slope_male = std.error[term == "age_or_length"],
+    slope_female = combine_se(std.error[term == "age_or_length"],
+      std.error[term == "age_or_length:female"])
+  ) %>% reshape2::melt(variable.name = "term", value.name = "std.error")
+inner_join(est, se) %>% 
+  mutate(conf.low = estimate - 1.96 * std.error) %>% 
+  mutate(conf.high = estimate + 1.96 * std.error) %>% 
+  mutate(.id = factor(.id, levels = names(surveys_list))) %>% 
+  ggplot(aes(ymin = conf.low, ymax = conf.high, y = estimate, 
+    x = term, colour = .id)) + 
+  geom_pointrange(position = position_dodge(width = 0.4)) +
+  coord_flip() +
+  theme_pbs() +
+  xlab("") + ylab("Coefficient") +
+  labs(colour = "Survey group") +
+  scale_color_brewer(palette = "Set1")
+```
+
+
 Estimated parameters are provided in Table TODO Estimated maturity ogives are shown in Figure \@ref(fig:mat-figs). Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2. Estimates older for WCVI than HS/QCS.
 
 - RF to check Westrheim report for previous estimates
