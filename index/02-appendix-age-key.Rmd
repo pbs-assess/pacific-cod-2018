@@ -281,21 +281,16 @@ We fit maturity ogives as logistic regressions of maturity (mature vs. not matur
 
 \begin{align}
 y_i &\sim \mathrm{Binomial}(\pi_i)\\
-\mathrm{logit} \left( \pi_i \right) &= \beta_0 + \beta_1 x_i + \beta_2 F_i
+\mathrm{logit} \left( \pi_i \right) &= \beta_0 + \beta_1 x_i + \beta_2 F_i +  \beta_3 x_i F_i
  (\#eq:maturity)
 \end{align}
-
-```
-a_50% = -(log((1 / 0.5) - 1) + a) / b
-a = intercept, b = slope in logit space
-```
 
 where $y_i$ represents a 1 if fish $i$ is considered mature and a 0 if fish $i$
 is considered immature. The $\beta$ parameters represent estimated coefficients,
 $x_i$ represents either the length or age of fish $i$, and $F_i$ represents
 a binary predictor that is 1 if the fish is female and 0 if the fish is male.
 The variable $\pi_i$ represents the expected probability of fish $i$ being
-mature.
+mature. We can then calculate of the age at 50% maturity as: $-(\log(1 / 0.5 - 1) + \beta_0) / \beta_1$ or $-(\log(1) + \beta_0) / \beta_1$ for males and $-(\log(1) + \beta_0 + \beta_2) / (\beta_1 + \beta_3)$ for females.
 
 --------------
 
@@ -328,6 +323,8 @@ Estimated parameters are provided in Table TODO Estimated maturity ogives are sh
 - RF to check Westrheim report for previous estimates
 
 <!-- **Figure A.5.** Top = All survey data combined; Centre = Hecate Strait and Queen Charlotte Sound Synoptic Surveys combined; Bottom = West Coast Vancouver Island Synoptic Survey. -->
+
+\clearpage
 
 ## Age-length key
 
@@ -382,11 +379,16 @@ The "length sample" contains all of the specimen records with only a length (cm)
 
 For each of the above length datasets, ages were randomly assigned to the unaged fish within a length category according to the proportions-at-age for that length category in the ALK for that area (Table TODO or Table TODO). Ages were assigned using the FSA function alkIndivAge [@ogle2018], using the "completely random" approach (Type="CR"). In the "completely random" approach, the age assigned to each fish is randomly assigned with probabilistic weights proportional to the proportions-at-age in each length category. For example, if 50% of observed fish in a length category were age 1, then a single fish in that category would have a 50% chance of being assigned an age of 1. However, because the sampling is random, the distribution of assigned ages in the length category could differ from the distribution in the ALK. The "completely random" approach differs from the alternative "semi-random" approach (Type="SR"), where the proportion of fish at each age in each length category is constrained to match the ALK, even though the assignment of ages to individual fish is random. A difficulty with the "semi-random" approach is dealing with fractional proportions, requiring a two-stage assignment process [@isermann2005].
 
-For each of the above length datasets, age assignment was done using two alternative ranges of years. In the "interpolated" approach, ages were only assigned to lengths for years represented in the year-range in the ALK (Table TODO). In the "extrapolated" approach, ages were assigned to lengths for all years which had length observations in the period 2006 to 2017 for the surveys, and 2006 to 2016 for the commercial data. Note that the West Coast Vancouver Island Synoptic Survey only operated in even-numbered years, while the Hecate Strait and Queen Charlotte Sound Synoptic surveys only operated in odd-numbered years, with the first year of assigned ages for each area reflecting this. As suggested by @ogle2018, observed lengths below the smallest length in the age sample were removed from the length sample. Observed lengths in the length sample that were larger than the largest observed length in the age sample were assigned ages according to the probabilities for the largest length category in the ALK (Table TODO or TODO).
+For each of the above length datasets, age assignment was done using two alternative ranges of years. In the "interpolated" approach, ages were only assigned to lengths for years represented in the year-range in the ALK (Table TODO). In the "extrapolated" approach, ages were assigned to lengths for all years which had length observations in the period 2006 to 2017 for the surveys, and 2006 to 2016 for the commercial data.
+<!-- RF: Do we have 2017 data yet? -->
+<!-- SA: Yes! -->
+Note that the West Coast Vancouver Island Synoptic Survey only operated in even-numbered years, while the Hecate Strait and Queen Charlotte Sound Synoptic surveys only operated in odd-numbered years, with the first year of assigned ages for each area reflecting this. As suggested by @ogle2018, observed lengths below the smallest length in the age sample were removed from the length sample. Observed lengths in the length sample that were larger than the largest observed length in the age sample were assigned ages according to the probabilities for the largest length category in the ALK (Table TODO or TODO).
 
 Results are summarized for each dataset with three types of graph: i) jittered scatterplot of length\~age; ii) bubble plots of assigned proportions-at-age; and iii) length-frequency histograms colour-coded by assigned age. Results for data including 2006, with assigned ages extrapolated to 2017 are shown for each of the six length datasets above.
 
 ### HECATE STRAIT SYNOPTIC SURVEY (AREA 5CD)
+
+<!-- TODO: Fix color legends so they are consistent if no 0 -->
 
 **Figure A.7**
 
