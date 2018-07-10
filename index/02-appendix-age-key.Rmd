@@ -281,21 +281,16 @@ We fit maturity ogives as logistic regressions of maturity (mature vs. not matur
 
 \begin{align}
 y_i &\sim \mathrm{Binomial}(\pi_i)\\
-\mathrm{logit} \left( \pi_i \right) &= \beta_0 + \beta_1 x_i + \beta_2 F_i
+\mathrm{logit} \left( \pi_i \right) &= \beta_0 + \beta_1 x_i + \beta_2 F_i +  \beta_3 x_i F_i
  (\#eq:maturity)
 \end{align}
-
-```
-a_50% = -(log((1 / 0.5) - 1) + a) / b
-a = intercept, b = slope in logit space
-```
 
 where $y_i$ represents a 1 if fish $i$ is considered mature and a 0 if fish $i$
 is considered immature. The $\beta$ parameters represent estimated coefficients,
 $x_i$ represents either the length or age of fish $i$, and $F_i$ represents
 a binary predictor that is 1 if the fish is female and 0 if the fish is male.
 The variable $\pi_i$ represents the expected probability of fish $i$ being
-mature.
+mature. We can then calculate of the age at 50% maturity as: $-(\log(1 / 0.5 - 1) + \beta_0) / \beta_1$ or $-(\log(1) + \beta_0) / \beta_1$ for males and $-(\log(1) + \beta_0 + \beta_2) / (\beta_1 + \beta_3)$ for females.
 
 --------------
 
@@ -315,7 +310,7 @@ mat_fits <- map(surveys_list, function(.survey) {
 })
 ```
 
-```{r mat-figs, fig.cap = "Caption", fig.asp=2, fig.width=4, out.width="3.5in"}
+```{r mat-figs, fig.cap = "Caption", fig.asp=1.7, fig.width=4.5, out.width="3.4in"}
 mat_figs <- map(mat_fits, ~ plot_mat_ogive(.x) + 
     coord_cartesian(xlim = c(0, 8.2), ylim = c(0, 1), expand = FALSE))
 for (i in seq_along(mat_figs))
@@ -323,11 +318,64 @@ for (i in seq_along(mat_figs))
 cowplot::plot_grid(plotlist = mat_figs, ncol = 1)
 ```
 
+```{r, fig.cap = "Caption", fig.width=6, out.width="4.5in"}
+mat_coefs <- plyr::ldply(mat_fits, function(.x) {
+  broom::tidy(.x$model, conf.int = TRUE)
+})
+
+mutate(mat_coefs, .id = factor(.id, levels = names(surveys_list))) %>% 
+ggplot(
+  aes(ymin = conf.low, ymax = conf.high, y = estimate, x = term, colour = .id)) +
+  geom_pointrange(position = position_dodge(width = 0.4)) +
+  coord_flip() +
+  theme_pbs() +
+  xlab("") + ylab("Coefficient") +
+  labs(colour = "Survey group")
+
+est <- group_by(mat_coefs, .id) %>%
+  summarise(
+    intercept_male = estimate[term == "(Intercept)"],
+    intercept_female = estimate[term == "(Intercept)"] + estimate[term == "female"],
+    slope_male = estimate[term == "age_or_length"],
+    slope_female = estimate[term == "age_or_length"] + 
+      estimate[term == "age_or_length:female"]
+  ) %>% reshape2::melt(variable.name = "term", value.name = "estimate")
+
+combine_se <- function(se1, se2) {
+  sqrt(se2^2 - se1^2)
+}
+
+se <- group_by(mat_coefs, .id) %>%
+  summarise(
+    intercept_male = std.error[term == "(Intercept)"],
+    intercept_female = combine_se(std.error[term == "(Intercept)"], 
+      std.error[term == "female"]),
+    slope_male = std.error[term == "age_or_length"],
+    slope_female = combine_se(std.error[term == "age_or_length"],
+      std.error[term == "age_or_length:female"])
+  ) %>% reshape2::melt(variable.name = "term", value.name = "std.error")
+inner_join(est, se) %>% 
+  mutate(conf.low = estimate - 1.96 * std.error) %>% 
+  mutate(conf.high = estimate + 1.96 * std.error) %>% 
+  mutate(.id = factor(.id, levels = names(surveys_list))) %>% 
+  ggplot(aes(ymin = conf.low, ymax = conf.high, y = estimate, 
+    x = term, colour = .id)) + 
+  geom_pointrange(position = position_dodge(width = 0.4)) +
+  coord_flip() +
+  theme_pbs() +
+  xlab("") + ylab("Coefficient") +
+  labs(colour = "Survey group") +
+  scale_color_brewer(palette = "Set1")
+```
+
+
 Estimated parameters are provided in Table TODO Estimated maturity ogives are shown in Figure \@ref(fig:mat-figs). Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2. Estimates older for WCVI than HS/QCS.
 
 - RF to check Westrheim report for previous estimates
 
 <!-- **Figure A.5.** Top = All survey data combined; Centre = Hecate Strait and Queen Charlotte Sound Synoptic Surveys combined; Bottom = West Coast Vancouver Island Synoptic Survey. -->
+
+\clearpage
 
 ## Age-length key
 
@@ -382,11 +430,16 @@ The "length sample" contains all of the specimen records with only a length (cm)
 
 For each of the above length datasets, ages were randomly assigned to the unaged fish within a length category according to the proportions-at-age for that length category in the ALK for that area (Table TODO or Table TODO). Ages were assigned using the FSA function alkIndivAge [@ogle2018], using the "completely random" approach (Type="CR"). In the "completely random" approach, the age assigned to each fish is randomly assigned with probabilistic weights proportional to the proportions-at-age in each length category. For example, if 50% of observed fish in a length category were age 1, then a single fish in that category would have a 50% chance of being assigned an age of 1. However, because the sampling is random, the distribution of assigned ages in the length category could differ from the distribution in the ALK. The "completely random" approach differs from the alternative "semi-random" approach (Type="SR"), where the proportion of fish at each age in each length category is constrained to match the ALK, even though the assignment of ages to individual fish is random. A difficulty with the "semi-random" approach is dealing with fractional proportions, requiring a two-stage assignment process [@isermann2005].
 
-For each of the above length datasets, age assignment was done using two alternative ranges of years. In the "interpolated" approach, ages were only assigned to lengths for years represented in the year-range in the ALK (Table TODO). In the "extrapolated" approach, ages were assigned to lengths for all years which had length observations in the period 2006 to 2017 for the surveys, and 2006 to 2016 for the commercial data. Note that the West Coast Vancouver Island Synoptic Survey only operated in even-numbered years, while the Hecate Strait and Queen Charlotte Sound Synoptic surveys only operated in odd-numbered years, with the first year of assigned ages for each area reflecting this. As suggested by @ogle2018, observed lengths below the smallest length in the age sample were removed from the length sample. Observed lengths in the length sample that were larger than the largest observed length in the age sample were assigned ages according to the probabilities for the largest length category in the ALK (Table TODO or TODO).
+For each of the above length datasets, age assignment was done using two alternative ranges of years. In the "interpolated" approach, ages were only assigned to lengths for years represented in the year-range in the ALK (Table TODO). In the "extrapolated" approach, ages were assigned to lengths for all years which had length observations in the period 2006 to 2017 for the surveys, and 2006 to 2016 for the commercial data. 
+<!-- RF: Do we have 2017 data yet? -->
+<!-- SA: Yes! -->
+Note that the West Coast Vancouver Island Synoptic Survey only operated in even-numbered years, while the Hecate Strait and Queen Charlotte Sound Synoptic surveys only operated in odd-numbered years, with the first year of assigned ages for each area reflecting this. As suggested by @ogle2018, observed lengths below the smallest length in the age sample were removed from the length sample. Observed lengths in the length sample that were larger than the largest observed length in the age sample were assigned ages according to the probabilities for the largest length category in the ALK (Table TODO or TODO).
 
 Results are summarized for each dataset with three types of graph: i) jittered scatterplot of length\~age; ii) bubble plots of assigned proportions-at-age; and iii) length-frequency histograms colour-coded by assigned age. Results for data including 2006, with assigned ages extrapolated to 2017 are shown for each of the six length datasets above.
 
 ### HECATE STRAIT SYNOPTIC SURVEY (AREA 5CD)
+
+<!-- TODO: Fix color legends so they are consistent if no 0 -->
 
 **Figure A.7**
 
