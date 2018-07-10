@@ -6,24 +6,26 @@
 
 rm(list = ls(all = TRUE))
 
+## Need to do this first to provide install.packages.if.needed()
+if(!("iscamtext" %in% rownames(installed.packages()))){
+  devtools::install_github("cgrandin/iscamtex")
+}
+library(iscamtex)
+
 install.packages.if.needed("coda")
 install.packages.if.needed("knitr")
 install.packages.if.needed("lubridate")
-install.packages.if.needed("PBSmodelling")
+## install.packages.if.needed("PBSmodelling")
 install.packages.if.needed("xtable")
 install.packages.if.needed("RColorBrewer")
-
-install.packages.if.needed("devtools")
-devtools::install_github("cgrandin/iscamtex")
 
 library(coda)
 library(knitr)
 library(lubridate)
-library(PBSmodelling)
+## library(PBSmodelling)
 library(xtable)
 library(tidyverse)
 library(RColorBrewer)
-library(iscamtex)
 
 ## Code to setup the model names, and start/end years for various things
 ##  in the models
