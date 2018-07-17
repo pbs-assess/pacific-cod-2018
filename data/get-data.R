@@ -30,18 +30,20 @@ library(lubridate)
 
 extract.data <- function(species = "pacific cod",
                          cache.dir = "cache",
-                         unsorted_only = FALSE){
+                         end.year = 2017,
+                         unsorted.only = FALSE){
   ## Extract the data into the cache directory
 
   cache_pbs_data(species,
                  path = cache.dir,
-                 unsorted_only = unsorted_only,
+                 unsorted_only = unsorted.only,
                  survey_sets = FALSE)
 
   ## Extract CPUE data
   database <- c("GFFOS", "GFCatch", "PacHarvest")
-  sql <- readLines("pcod-cpue.sql")
-  pcod_cpue <- run_sql(database = database, query = sql)
+  ## sql <- readLines("pcod-cpue.sql")
+  ## pcod_cpue <- run_sql(database = database, query = sql)
+  pcod_cpue <- get_cpue_historic(222, fishing_year = TRUE, end_year = end.year)
   saveRDS(pcod_cpue, file = file.path(cache.dir, "pbs-cpue.rds"),
           compress = FALSE)
   message("All data extracted and saved in the folder `",
@@ -52,21 +54,12 @@ extract.data <- function(species = "pacific cod",
 load.data <- function(cache.dir = "cache"){
   ## Assumes you have run extract.data()
 
-  d_survey_sets     <<- readRDS(file.path(cache.dir, "pbs-survey-sets.rds"))
-  d_survey_samples  <<- readRDS(file.path(cache.dir, "pbs-survey-samples.rds"))
-  d_comm_samples    <<- readRDS(file.path(cache.dir, "pbs-comm-samples.rds"))
-  d_catch           <<- readRDS(file.path(cache.dir, "pbs-catch.rds"))
-  d_cpue_spatial    <<- readRDS(file.path(cache.dir, "pbs-cpue-spatial.rds"))
-  d_cpue_spatial_ll <<- readRDS(file.path(cache.dir, "pbs-cpue-spatial-ll.rds"))
-  d_survey_index    <<- readRDS(file.path(cache.dir, "pbs-survey-index.rds"))
-  d_age_precision   <<- readRDS(file.path(cache.dir, "pbs-age-precision.rds"))
-  d_cpue_index      <<- readRDS(file.path(cache.dir, "pbs-cpue-index.rds"))
-  d_cpue            <<- as_tibble(readRDS(file.path(cache.dir, "pbs-cpue.rds")))
+  readRDS(file.path(cache.dir, "pacific-cod.rds"))
 }
 
-total.catch.yr.qtr <- function(d = d_catch){
+total.catch.yr.qtr <- function(d){
   ## Return a tbl of the total catch by year and quarter
-  mutate(d,
+  mutate(d$catch,
          month = month(best_date),
          quarter = case_when(
            month %in% seq(1, 3) ~ 4,
@@ -81,7 +74,7 @@ total.catch.yr.qtr <- function(d = d_catch){
     ungroup()
 }
 
-comm.specimens  <- function(d = d_comm_samples,
+comm.specimens  <- function(d,
                             areas = NULL,
                             a = .ALPHA,
                             b = .BETA){
@@ -93,11 +86,13 @@ comm.specimens  <- function(d = d_comm_samples,
   ## a and b are the growth parameters: weight = a*length^b
 
   if(!is.null(areas)){
-    d <- d %>% inner_join(gfplot::pbs_areas, by = "major_stat_area_code") %>%
+    df <- d$commercial_samples %>% inner_join(gfplot::pbs_areas, by = "major_stat_area_code") %>%
       filter(grepl(areas, major_stat_area_description))
+  }else{
+    df <- d$commercial_samples
   }
 
-  d <- mutate(d,
+  df <- mutate(df,
               month = month(trip_start_date),
               quarter = case_when(
                 month %in% seq(1, 3) ~ 4,
@@ -110,7 +105,7 @@ comm.specimens  <- function(d = d_comm_samples,
 
   ## Filter the data as shown in the table in the appendix for the calculation
   ##  of mean weight data (Table C1 in 2013 assessment document)
-  d %>% filter(trip_sub_type_code %in% c(1, 4)) %>%
+  df %>% filter(trip_sub_type_code %in% c(1, 4)) %>%
     filter(gear == 1) %>%
     filter(year <= 1996 & sampling_desc == "KEEPERS" |
            year > 1996 & sampling_desc == "UNSORTED") %>%
@@ -125,12 +120,12 @@ comm.specimens  <- function(d = d_comm_samples,
 
 }
 
-calc.mean.weight <- function(d){
+calc.mean.weight <- function(df){
   ## Return a tbl of the mean weight by sample
   ## d is the pre-filtered tbl from function comm.specimens.pcod()
 
   ## Eq C3 in 2013 PCod assessment
-  d <- d %>% group_by(year, quarter, sample_id) %>%
+  df <- df %>% group_by(year, quarter, sample_id) %>%
     mutate(calc.sample.weight = sum(calc.weight, na.rm = TRUE),
            sample_weight = ifelse(!is.na(sample_weight),
                                   sample_weight,
@@ -142,7 +137,7 @@ calc.mean.weight <- function(d){
     summarize(ws = sum(numerator) / sum(denominator),
               catch_weight = sum(catch_weight))
   ## Eq C4 in 2013 PCod assessment
-  d %>% group_by(year, quarter) %>%
+  df %>% group_by(year, quarter) %>%
     summarize(numerator = sum(ws * catch_weight),
               denominator = sum(catch_weight),
               wf = numerator / denominator) %>%
@@ -150,20 +145,20 @@ calc.mean.weight <- function(d){
 
 }
 
-get.total.catch.yr <- function(d = d_catch,
+get.total.catch.yr <- function(d,
                                areas = NULL){
   ## Return a tbl with the year and sum of landed and discarded catch
   ##  by year
   ## areas can be a regexp like this: "5[CD]+"
 
   if(!is.null(areas)){
-    d <- d %>%
+    df <- d$catch %>%
       inner_join(gfplot::pbs_areas, by = "major_stat_area_code") %>%
       filter(grepl(areas, major_stat_area_description))
   }
 
-  d <- d %>%
-    mutate(year = if_else(month(d$best_date) <= 3, year - 1, year)) %>%
+  df <- df %>%
+    mutate(year = if_else(month(df$best_date) <= 3, year - 1, year)) %>%
     group_by(year) %>%
     summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0)
 
@@ -171,14 +166,14 @@ get.total.catch.yr <- function(d = d_catch,
   areas <- gsub("\\[|\\]|\\+", "", areas)
   fn <- paste0("usa-catch-", areas, ".csv")
   usa <- as_tibble(read.csv(fn))
-  left_join(d, usa, by = "year") %>%
+  left_join(df, usa, by = "year") %>%
     rowwise() %>%
     mutate(total_catch = sum(usa_catch, catch_weight, na.rm = TRUE)) %>%
     mutate(total_catch = sprintf("%0.3f", round(total_catch, 3))) %>%
     ungroup()
 }
 
-get.survey.index <- function(d = d_survey_index,
+get.survey.index <- function(d,
                              survey.series.id){
   ## Return a tbl of the survey biomass index and wt for the requested survey
   ## eg. survey_series_id:
@@ -187,7 +182,7 @@ get.survey.index <- function(d = d_survey_index,
   ## 3 = HSSS
   ## 4 = WCVISS
 
-  d %>%
+  d$survey_index%>%
     filter(survey_series_id == survey.series.id) %>%
     mutate(wt = 1/re) %>%
     select(year, biomass, wt) %>%
@@ -195,15 +190,16 @@ get.survey.index <- function(d = d_survey_index,
            wt = sprintf("%0.1f", wt))
 }
 
-get.mean.weight <- function(areas = NULL){
+get.mean.weight <- function(d,
+                            areas = NULL){
   ## Return a tbl of year and mean weight
   if(is.null(areas)){
     warning("You didn't specify any areas. ",
             "The whole dataset is being processed.")
   }
-  cs <- comm.specimens(d_comm_samples, areas)
+  cs <- comm.specimens(d, areas)
   cs$catch_weight <- NULL
-  tot.catch <- total.catch.yr.qtr(d_catch)
+  tot.catch <- total.catch.yr.qtr(d)
   left_join(cs, tot.catch, by = c("year", "quarter")) %>%
     calc.mean.weight() %>%
     group_by(year) %>%
