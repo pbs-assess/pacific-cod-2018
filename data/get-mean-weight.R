@@ -79,3 +79,73 @@ save.mean.weight.data <- function(dat,
                     b = .BETA3)
   write_csv(df, file.path(out.dir, "AnnualMeanWeight_3CD.csv"))
 }
+
+#' Plot mean weight data
+#'
+#' @param dat A data frame as read in by read.csv()
+#' @param fn Name of the file to save the plot to
+#' @param area.name Name of the area to appear on the plot
+#' @param out.dir The output directory for the plot
+#'
+#' @return Nothing
+plot.mean.weight.data <- function(dat,
+                                  fn,
+                                  area.name = "NA",
+                                  out.dir = "results"){
+  df <- dat
+  ggplot(data = df,
+         aes(x = year,
+             y = mean_weight,
+             group = 1)) +
+    geom_line(lwd=1, colour=2) +
+    ylim(0, 1.1 * max(df$mean_weight)) +
+    theme(plot.title = element_text(size = 14,
+                                    face = "bold",
+                                    hjust = 0.5),
+          axis.text = element_text(size = 14),
+          axis.title = element_text(size = 14,
+                                    face = "bold")) +
+    scale_x_continuous(breaks = seq(min(df$year),
+                                    max(df$year),
+                                    by = 5)) +
+    labs(x = "Fishing Year",
+         y = "Annual Mean Weight (Kg)",
+         title = paste0("Area ", area.name))
+  ggsave(file.path(out.dir, fn))
+
+}
+
+#' Plot the mean weight data for all areas
+#'
+#' @param out.dir  The output directory for the plot
+#'
+#' @return Nothing
+plot.mean.weight <- function(out.dir = "results"){
+  ## 5AB
+  dat <- read.csv(file.path(out.dir, "AnnualMeanWeight_5AB.csv"))
+  plot.mean.weight.data(dat,
+                        "AnnualMeanWeight_5AB.png",
+                        "5AB",
+                        out.dir = out.dir)
+
+  ## 5CD
+  dat <- read.csv(file.path(out.dir, "AnnualMeanWeight_5CD.csv"))
+  plot.mean.weight.data(dat,
+                        "AnnualMeanWeight_5CD.png",
+                        "5CD",
+                        out.dir = out.dir)
+
+  ## 5ABCD
+  dat <- read.csv(file.path(out.dir, "AnnualMeanWeight_5ABCD.csv"))
+  plot.mean.weight.data(dat,
+                        "AnnualMeanWeight_5ABCD.png",
+                        "5ABCD",
+                        out.dir = out.dir)
+
+  ## 3CD
+  dat <- read.csv(file.path(out.dir, "AnnualMeanWeight_3CD.csv"))
+  plot.mean.weight.data(dat,
+                        "AnnualMeanWeight_3CD.png",
+                        "3CD",
+                        out.dir = out.dir)
+}
