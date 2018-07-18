@@ -18,22 +18,25 @@
 ## mw5cd <- get.mean.weight(areas = "5[CD]+")
 ## mw3cd <- get.mean.weight(areas = "3[CD]+")
 
-## Growth parameters for length/weight relationship
-.ALPHA <- 7.377e-06
-.BETA <- 3.0963
-
 library(gfplot)
 library(ggplot2)
 library(dplyr)
 library(rstan)
 library(lubridate)
 
+#' Extract species data from database to RDS files
+#'
+#' @param species Species code or name
+#' @param cache.dir Reletive name of the directory to hold the RDS files
+#' @param end.year End year for the data extraction
+#' @param unsorted.only Only include 'unsorted' samples. Removes 'keepers'
+#'   and 'sorted'
+#'
+#' @return Nothing, creates files in the cache.dir directory
 extract.data <- function(species = "pacific cod",
                          cache.dir = "cache",
                          end.year = 2017,
                          unsorted.only = FALSE){
-  ## Extract the data into the cache directory
-
   cache_pbs_data(species,
                  path = cache.dir,
                  unsorted_only = unsorted.only,
@@ -51,15 +54,22 @@ extract.data <- function(species = "pacific cod",
 
 }
 
+#' Load the data from the RDS files produced by extract.data()
+#'
+#' @param cache.dir Reletive name of the directory to hold the RDS files
+#'
+#' @return The data object as returned from gfplot package
 load.data <- function(cache.dir = "cache"){
-  ## Assumes you have run extract.data()
-
   readRDS(file.path(cache.dir, "pacific-cod.rds"))
 }
 
-total.catch.yr.qtr <- function(d){
-  ## Return a tbl of the total catch by year and quarter
-  mutate(d$catch,
+#' Calculate the total catch by year and quarter of year
+#'
+#' @param dat  A tibble of the catch from gfplot package
+#'
+#' @return A tibble with year, quarter, and catch weight
+total.catch.yr.qtr <- function(dat){
+  mutate(dat,
          month = month(best_date),
          quarter = case_when(
            month %in% seq(1, 3) ~ 4,
@@ -74,38 +84,40 @@ total.catch.yr.qtr <- function(d){
     ungroup()
 }
 
-comm.specimens  <- function(d,
+#' Extract table of commercial specimens for areas requested
+#'
+#' @param dat A tibble of the commercial samples from gfplot package
+#' @param areas A regexp like this: "5[CD]+"
+#' @param a Growth parameter alpha
+#' @param b Growth parameter beta
+#'
+#' @return A tibble of all commercial specimens for the areas requested,
+#'   with new columns 'month', 'quarter', and 'calc.weight' added
+#'   calc.weight is calculated from length according to the Appendix in the
+#'   2018 PCod stock assessment.
+comm.specimens  <- function(dat,
                             areas = NULL,
-                            a = .ALPHA,
-                            b = .BETA){
-  ## Return a tbl of all commercial specimens for the areas requested,
-  ##  with new columns 'month', 'quarter', and 'calc.weight' added
-  ##  calc.weight is calculated from length according to the Appendix in the
-  ##  2018 PCod stock assessment.
-  ## areas can be a regexp like this: "5[CD]+"
-  ## a and b are the growth parameters: weight = a*length^b
-
+                            a,
+                            b){
   if(!is.null(areas)){
-    df <- d$commercial_samples %>% inner_join(gfplot::pbs_areas, by = "major_stat_area_code") %>%
+    dat <- dat %>% inner_join(gfplot::pbs_areas, by = "major_stat_area_code") %>%
       filter(grepl(areas, major_stat_area_description))
-  }else{
-    df <- d$commercial_samples
   }
 
-  df <- mutate(df,
-              month = month(trip_start_date),
-              quarter = case_when(
-                month %in% seq(1, 3) ~ 4,
-                month %in% seq(4, 6) ~ 1,
-                month %in% seq(7, 9) ~ 2,
-                month %in% seq(10, 12) ~ 3
-              )) %>% select(-month) %>%
+  dat <- mutate(dat,
+                month = month(trip_start_date),
+                quarter = case_when(
+                  month %in% seq(1, 3) ~ 4,
+                  month %in% seq(4, 6) ~ 1,
+                  month %in% seq(7, 9) ~ 2,
+                  month %in% seq(10, 12) ~ 3
+                )) %>% select(-month) %>%
     mutate(calc.weight = a * length ^ b) %>%
     filter(year >= 1956)
 
   ## Filter the data as shown in the table in the appendix for the calculation
   ##  of mean weight data (Table C1 in 2013 assessment document)
-  df %>% filter(trip_sub_type_code %in% c(1, 4)) %>%
+  dat %>% filter(trip_sub_type_code %in% c(1, 4)) %>%
     filter(gear == 1) %>%
     filter(year <= 1996 & sampling_desc == "KEEPERS" |
            year > 1996 & sampling_desc == "UNSORTED") %>%
@@ -120,12 +132,14 @@ comm.specimens  <- function(d,
 
 }
 
-calc.mean.weight <- function(df){
-  ## Return a tbl of the mean weight by sample
-  ## d is the pre-filtered tbl from function comm.specimens.pcod()
-
+#' Calculate the mean weight by sample
+#'
+#' @param dat A tibble of the catch from gfplot package
+#'
+#' @return A tibble of mean weight by sample
+calc.mean.weight <- function(dat){
   ## Eq C3 in 2013 PCod assessment
-  df <- df %>% group_by(year, quarter, sample_id) %>%
+  dat <- dat %>% group_by(year, quarter, sample_id) %>%
     mutate(calc.sample.weight = sum(calc.weight, na.rm = TRUE),
            sample_weight = ifelse(!is.na(sample_weight),
                                   sample_weight,
@@ -137,7 +151,7 @@ calc.mean.weight <- function(df){
     summarize(ws = sum(numerator) / sum(denominator),
               catch_weight = sum(catch_weight))
   ## Eq C4 in 2013 PCod assessment
-  df %>% group_by(year, quarter) %>%
+  dat %>% group_by(year, quarter) %>%
     summarize(numerator = sum(ws * catch_weight),
               denominator = sum(catch_weight),
               wf = numerator / denominator) %>%
@@ -145,20 +159,23 @@ calc.mean.weight <- function(df){
 
 }
 
-get.total.catch.yr <- function(d,
+#' Calculate the total catch by year
+#'
+#' @param dat A tibble of the catch from gfplot package
+#' @param areas A regexp like this: "5[CD]+"
+#'
+#' @return A tibble with the year and sum of landed and discarded catch
+#'   by year
+get.total.catch.yr <- function(dat,
                                areas = NULL){
-  ## Return a tbl with the year and sum of landed and discarded catch
-  ##  by year
-  ## areas can be a regexp like this: "5[CD]+"
-
   if(!is.null(areas)){
-    df <- d$catch %>%
+    dat <- dat %>%
       inner_join(gfplot::pbs_areas, by = "major_stat_area_code") %>%
       filter(grepl(areas, major_stat_area_description))
   }
 
-  df <- df %>%
-    mutate(year = if_else(month(df$best_date) <= 3, year - 1, year)) %>%
+  dat <- dat %>%
+    mutate(year = if_else(month(dat$best_date) <= 3, year - 1, year)) %>%
     group_by(year) %>%
     summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0)
 
@@ -166,23 +183,22 @@ get.total.catch.yr <- function(d,
   areas <- gsub("\\[|\\]|\\+", "", areas)
   fn <- paste0("usa-catch-", areas, ".csv")
   usa <- as_tibble(read.csv(fn))
-  left_join(df, usa, by = "year") %>%
+  left_join(dat, usa, by = "year") %>%
     rowwise() %>%
     mutate(total_catch = sum(usa_catch, catch_weight, na.rm = TRUE)) %>%
     mutate(total_catch = sprintf("%0.3f", round(total_catch, 3))) %>%
     ungroup()
 }
 
-get.survey.index <- function(d,
+#' Extract survey biomass and CV for the requested survey
+#'
+#' @param dat A tibble of the survey index from gfplot package
+#' @param survey.series.id 1 = QCSSS, 2 = HSMAS, 3 = HSSS, 4 = WCVISS
+#'
+#' @return A tibble of the survey biomass index and wt for the requested survey
+get.survey.index <- function(dat,
                              survey.series.id){
-  ## Return a tbl of the survey biomass index and wt for the requested survey
-  ## eg. survey_series_id:
-  ## 1 = QCSSS
-  ## 2 = HSMAS
-  ## 3 = HSSS
-  ## 4 = WCVISS
-
-  d$survey_index%>%
+  dat %>%
     filter(survey_series_id == survey.series.id) %>%
     mutate(wt = 1/re) %>%
     select(year, biomass, wt) %>%
@@ -190,19 +206,30 @@ get.survey.index <- function(d,
            wt = sprintf("%0.1f", wt))
 }
 
-get.mean.weight <- function(d,
-                            areas = NULL){
-  ## Return a tbl of year and mean weight
+#' Calculate the mean weight by year
+#'
+#' @param dat.catch A tibble of the catch from gfplot package
+#' @param dat.comm.samples A tibble of the commercial samples from gfplot package
+#' @param areas A regexp like this: "5[CD]+"
+#' @param a Growth parameter alpha
+#' @param b Growth parameter beta
+#'
+#' @return A tibble of year and mean weight
+get.mean.weight <- function(dat.comm.samples,
+                            dat.catch,
+                            areas = NULL,
+                            a,
+                            b){
   if(is.null(areas)){
     warning("You didn't specify any areas. ",
             "The whole dataset is being processed.")
   }
-  cs <- comm.specimens(d, areas)
+  cs <- comm.specimens(dat.comm.samples, areas, a, b)
   cs$catch_weight <- NULL
-  tot.catch <- total.catch.yr.qtr(d)
+  tot.catch <- total.catch.yr.qtr(dat.catch)
   left_join(cs, tot.catch, by = c("year", "quarter")) %>%
     calc.mean.weight() %>%
     group_by(year) %>%
     summarize(mean_weight = mean(wf)) %>%
-    mutate(mean_weight = sprintf("%0.3f", mean_weight))
+    mutate(mean_weight = as.numeric(sprintf("%0.3f", mean_weight)))
 }
