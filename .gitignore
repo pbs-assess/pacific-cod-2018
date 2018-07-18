@@ -44,3 +44,5 @@ models*
 doc/knitr-cache/
 retrospectives*/
 retrospectives/
+data/results/
+data/Results/
