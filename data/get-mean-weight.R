@@ -59,12 +59,24 @@ df5AB <- filter(d,area=="5AB") %>%
 
 write_csv(df5AB,paste0(outDir,"AnnualMeanWeight_5AB.csv"))  
 
+#5AB - OLD LW pars
+df5ABoldpars <- filter(d,area=="5AB") %>%
+  get.mean.weight(areas=NULL,
+                  a = .ALPHA2013,
+                  b = .BETA2013)
+
 #5CD
 df5CD <- filter(d,area=="5CD") %>%
   get.mean.weight(areas=NULL,
                   a = .ALPHA5,
                   b = .BETA5)
-write_csv(df5CD,paste0(outDir,"AnnualMeanWeight_5CD.csv"))  
+write_csv(df5CD,paste0(outDir,"AnnualMeanWeight_5CD.csv"))
+
+#5CD - OLD LW pars
+df5CDoldpars <- filter(d,area=="5CD") %>%
+  get.mean.weight(areas=NULL,
+                  a = .ALPHA2013,
+                  b = .BETA2013)
 
 #3CD
 df3CD <- filter(d,area=="3CD") %>%
@@ -78,7 +90,7 @@ df5ABCD <- filter(d,is.element(area,c("5AB", "5CD"))) %>%
   get.mean.weight(areas=NULL,
                   a = .ALPHA5,
                   b = .BETA5)
-write_csv(df5ABCD,paste0(outDir,"AnnualMeanWeight_5ABCD.csv"))  
+write_csv(df5ABCD,paste0(outDir,"AnnualMeanWeight_5ABCD.csv"))
 
 #################################################################
 #Plot results
@@ -137,8 +149,13 @@ Analysis <- "2018 new LW pars"
 df <- df5AB
 df <- cbind(df,rep(Analysis,nrow(df)))
 colnames(df) <- c("Year","MeanWeight","Analysis")
+Analysis <- "2018 old LW pars"
+df2 <- df5ABoldpars
+df2 <- cbind(df2,rep(Analysis,nrow(df2)))
+colnames(df2) <- c("Year","MeanWeight","Analysis")
+
 dfcompare <- subset(prevMeanWeight, Area=="5AB", select=-Area)
-dfcompare <- rbind(dfcompare,df)
+dfcompare <- rbind(dfcompare,df,df2)
 ggplot(data=dfcompare, aes(x=Year,y=MeanWeight, group=Analysis, colour=Analysis)) +
   geom_line(lwd=1) +
   ylim(0,1.1*max(dfcompare$MeanWeight)) +
@@ -154,8 +171,13 @@ Analysis <- "2018 new LW pars"
 df <- df5CD
 df <- cbind(df,rep(Analysis,nrow(df)))
 colnames(df) <- c("Year","MeanWeight","Analysis")
+Analysis <- "2018 old LW pars"
+df2 <- df5CDoldpars
+df2 <- cbind(df2,rep(Analysis,nrow(df2)))
+colnames(df2) <- c("Year","MeanWeight","Analysis")
+
 dfcompare <- subset(prevMeanWeight, Area=="5CD", select=-Area)
-dfcompare <- rbind(dfcompare,df)
+dfcompare <- rbind(dfcompare,df,df2)
 ggplot(data=dfcompare, aes(x=Year,y=MeanWeight, group=Analysis, colour=Analysis)) +
   geom_line(lwd=1) +
   ylim(0,1.1*max(dfcompare$MeanWeight)) +
@@ -165,21 +187,4 @@ ggplot(data=dfcompare, aes(x=Year,y=MeanWeight, group=Analysis, colour=Analysis)
   scale_x_continuous(breaks=seq(min(df$Year),max(df$Year),by=5)) +
   labs(x= "Fishing Year", y = "Annual Mean Weight (Kg)", title="Area 5CD") 
 ggsave(paste0(outDir,"AnnualMeanWeightCompare_5CD.png"), width=8, height=6, units="in") 
-
-#3CD
-Analysis <- "2018 new LW pars"
-df <- df3CD
-df <- cbind(df,rep(Analysis,nrow(df)))
-colnames(df) <- c("Year","MeanWeight","Analysis")
-dfcompare <- subset(prevMeanWeight, Area=="3CD", select=-Area)
-dfcompare <- rbind(dfcompare,df)
-ggplot(data=dfcompare, aes(x=Year,y=MeanWeight, group=Analysis, colour=Analysis)) +
-  geom_line(lwd=1) +
-  ylim(0,1.1*max(dfcompare$MeanWeight)) +
-  theme(plot.title=element_text(size=14,face="bold",hjust=0.5),
-        axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold")) +
-  scale_x_continuous(breaks=seq(min(df$Year),max(df$Year),by=5)) +
-  labs(x= "Fishing Year", y = "Annual Mean Weight (Kg)", title="Area 3CD") 
-ggsave(paste0(outDir,"AnnualMeanWeightCompare_3CD.png"), width=8, height=6, units="in") 
 
