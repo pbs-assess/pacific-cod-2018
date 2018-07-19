@@ -1,151 +1,190 @@
+#Code by Chris Grandin, Sean Anderson and Robyn Forrest. 
+
+#Modified by Robyn Forrest July 16 2018
+graphics.off()
+rm(list=ls(all=TRUE))
+library(gfplot)
 library(tidyverse)
 library(readr)
+library(lubridate)
 library(psych)
 library(reshape2)
 
+#Length-weight parameters
+#coastwide
+.ALPHA <- 6.79e-06
+.BETA <- 3.11
+
+#3CD
+.ALPHA3 <- 7.43e-06
+.BETA3 <- 3.09
+
+#5ABCD
+.ALPHA5 <- 6.52e-06
+.BETA5 <- 3.12
+
+#old (2013 assessment)
+.ALPHA2013 <- 7.377e-06
+.BETA2013 <- 3.0963
+
+setwd("C:/pbs-pcod/0_15-2018_Assessment/Data/CPUE_MeanWeight_CombineSurveys/")
+outDir <- "C:/pbs-pcod/0_15-2018_Assessment/Data/CPUE_MeanWeight_CombineSurveys/Results/"
+
+prevMeanWeight <- read_csv("MeanWeights_previous.csv")
+
+useLocal <- TRUE #set to TRUE if you want to work offline and have recently pulled the data from the network
+
 source("get-data.R")
 
-#' Save mean weight data to CSV files for each area
-#'
-#' @param dat A tibble of the commercial samples from gfplot package
-#' @param out.dir The directory to output the CSV files to
-#'
-#' @return Nothing
-save.mean.weight.data <- function(dat,
-                                  out.dir = "results"){
-  ## Length-weight parameters
-  ## Coastwide
-  .ALPHA <- 6.79e-06
-  .BETA <- 3.11
+if(useLocal==F) extract.data(species = "pacific cod",cache.dir = "pcod-cache",unsorted_only = FALSE)
 
-  ## 3CD
-  .ALPHA3 <- 7.43e-06
-  .BETA3 <- 3.09
+load.data(cache.dir = "pcod-cache") #load data function is in get-data.r. It loads the pcod-cpue.rds file
 
-  ## 5ABCD
-  .ALPHA5 <- 6.52e-06
-  .BETA5 <- 3.12
+d <- d_commercial_samples
 
-  ## 2013 assessment
-  .ALPHA2013 <- 7.377e-06
-  .BETA2013 <- 3.0963
-
-  areas <- c("3[CD]+", "5[AB]+", "5[CD]+")
-  d$area <- NA
-  for (i in seq_along(areas)) {
-    dat[grepl(areas[[i]],
-              dat$major_stat_area_name),
-        "area"] <- gsub("\\[|\\]|\\+", "", areas[[i]])
-  }
-  specific_areas <- c("3C", "3D", "5A", "5B", "5C", "5D")
-  dat$specific_area <- NA
-  for (i in seq_along(specific_areas)) {
-    dat[grepl(specific_areas[[i]],
-              dat$major_stat_area_name),
-        "specific_area"] <- specific_areas[[i]]
-  }
-
-  ## Get mean weights by area
-
-  ## 5AB
-  df <- filter(dat, area == "5AB") %>%
-    get.mean.weight(d$catch,
-                    areas = NULL,
-                    a = .ALPHA5,
-                    b = .BETA5)
-  write_csv(df, file.path(out.dir, "AnnualMeanWeight_5AB.csv"))
-
-  ## 5CD
-  df <- filter(dat, area == "5CD") %>%
-    get.mean.weight(d$catch,
-                    areas = NULL,
-                    a = .ALPHA5,
-                    b = .BETA5)
-  write_csv(df, file.path(out.dir, "AnnualMeanWeight_5CD.csv"))
-
-  ## 5ABCD
-  df <- filter(dat, is.element(area,c("5AB", "5CD"))) %>%
-    get.mean.weight(d$catch,
-                    areas = NULL,
-                    a = .ALPHA5,
-                    b = .BETA5)
-  write_csv(df, file.path(out.dir, "AnnualMeanWeight_5ABCD.csv"))
-
-  ## 3CD
-  df <- filter(dat, area == "3CD") %>%
-    get.mean.weight(d$catch,
-                    areas = NULL,
-                    a = .ALPHA3,
-                    b = .BETA3)
-  write_csv(df, file.path(out.dir, "AnnualMeanWeight_3CD.csv"))
+areas <- c("3[CD]+", "5[AB]+", "5[CD]+")
+d$area <- NA
+for (i in seq_along(areas)) {
+  d[grepl(areas[[i]], d$major_stat_area_name), "area"] <-
+    gsub("\\[|\\]|\\+", "", areas[[i]])
 }
 
-#' Plot mean weight data
-#'
-#' @param dat A data frame as read in by read.csv()
-#' @param fn Name of the file to save the plot to
-#' @param area.name Name of the area to appear on the plot
-#' @param out.dir The output directory for the plot
-#'
-#' @return Nothing
-plot.mean.weight.data <- function(dat,
-                                  fn,
-                                  area.name = "NA",
-                                  out.dir = "results"){
-  df <- dat
-  ggplot(data = df,
-         aes(x = year,
-             y = mean_weight,
-             group = 1)) +
-    geom_line(lwd=1, colour=2) +
-    ylim(0, 1.1 * max(df$mean_weight)) +
-    theme(plot.title = element_text(size = 14,
-                                    face = "bold",
-                                    hjust = 0.5),
-          axis.text = element_text(size = 14),
-          axis.title = element_text(size = 14,
-                                    face = "bold")) +
-    scale_x_continuous(breaks = seq(min(df$year),
-                                    max(df$year),
-                                    by = 5)) +
-    labs(x = "Fishing Year",
-         y = "Annual Mean Weight (Kg)",
-         title = paste0("Area ", area.name))
-  ggsave(file.path(out.dir, fn))
+################################################################
+#Get mean weight
+#5AB
+df5AB <- filter(d,area=="5AB") %>%
+  get.mean.weight(areas=NULL,
+                     a = .ALPHA5,
+                     b = .BETA5)
 
-}
+write_csv(df5AB,paste0(outDir,"AnnualMeanWeight_5AB.csv"))  
 
-#' Plot the mean weight data for all areas
-#'
-#' @param out.dir  The output directory for the plot
-#'
-#' @return Nothing
-plot.mean.weight <- function(out.dir = "results"){
-  ## 5AB
-  dat <- read.csv(file.path(out.dir, "AnnualMeanWeight_5AB.csv"))
-  plot.mean.weight.data(dat,
-                        "AnnualMeanWeight_5AB.png",
-                        "5AB",
-                        out.dir = out.dir)
+#5AB - OLD LW pars
+df5ABoldpars <- filter(d,area=="5AB") %>%
+  get.mean.weight(areas=NULL,
+                  a = .ALPHA2013,
+                  b = .BETA2013)
 
-  ## 5CD
-  dat <- read.csv(file.path(out.dir, "AnnualMeanWeight_5CD.csv"))
-  plot.mean.weight.data(dat,
-                        "AnnualMeanWeight_5CD.png",
-                        "5CD",
-                        out.dir = out.dir)
+#5CD
+df5CD <- filter(d,area=="5CD") %>%
+  get.mean.weight(areas=NULL,
+                  a = .ALPHA5,
+                  b = .BETA5)
+write_csv(df5CD,paste0(outDir,"AnnualMeanWeight_5CD.csv"))
 
-  ## 5ABCD
-  dat <- read.csv(file.path(out.dir, "AnnualMeanWeight_5ABCD.csv"))
-  plot.mean.weight.data(dat,
-                        "AnnualMeanWeight_5ABCD.png",
-                        "5ABCD",
-                        out.dir = out.dir)
+#5CD - OLD LW pars
+df5CDoldpars <- filter(d,area=="5CD") %>%
+  get.mean.weight(areas=NULL,
+                  a = .ALPHA2013,
+                  b = .BETA2013)
 
-  ## 3CD
-  dat <- read.csv(file.path(out.dir, "AnnualMeanWeight_3CD.csv"))
-  plot.mean.weight.data(dat,
-                        "AnnualMeanWeight_3CD.png",
-                        "3CD",
-                        out.dir = out.dir)
-}
+#3CD
+df3CD <- filter(d,area=="3CD") %>%
+  get.mean.weight(areas=NULL,
+                  a = .ALPHA3,
+                  b = .BETA3)
+write_csv(df3CD,paste0(outDir,"AnnualMeanWeight_3CD.csv"))  
+
+#5ABCD
+df5ABCD <- filter(d,is.element(area,c("5AB", "5CD"))) %>%
+  get.mean.weight(areas=NULL,
+                  a = .ALPHA5,
+                  b = .BETA5)
+write_csv(df5ABCD,paste0(outDir,"AnnualMeanWeight_5ABCD.csv"))
+
+#################################################################
+#Plot results
+#5AB
+df <- df5AB
+ggplot(data=df, aes(x=year,y=mean_weight, group=1)) +
+  geom_line(lwd=1, colour=2) +
+  ylim(0,1.1*max(df$mean_weight)) +
+  theme(plot.title=element_text(size=14,face="bold",hjust=0.5),
+        axis.text=element_text(size=12),
+        axis.title=element_text(size=14,face="bold")) +
+  scale_x_continuous(breaks=seq(min(df$year),max(df$year),by=5)) +
+  labs(x= "Fishing Year", y = "Annual Mean Weight (Kg)", title="Area 5AB") 
+ggsave(paste0(outDir,"AnnualMeanWeight_5AB.png"), width=8, height=6, units="in")  
+
+#5CD
+df <- df5CD
+ggplot(data=df, aes(x=year,y=mean_weight, group=1)) +
+  geom_line(lwd=1, colour=2) +
+  ylim(0,1.1*max(df$mean_weight)) +
+  theme(plot.title=element_text(size=14,face="bold",hjust=0.5),
+        axis.text=element_text(size=12),
+        axis.title=element_text(size=14,face="bold")) +
+  scale_x_continuous(breaks=seq(min(df$year),max(df$year),by=5)) +
+  labs(x= "Fishing Year", y = "Annual Mean Weight (Kg)", title="Area 5CD") 
+ggsave(paste0(outDir,"AnnualMeanWeight_5CD.png"), width=8, height=6, units="in")  
+
+#3CD
+df <- df3CD
+ggplot(data=df, aes(x=year,y=mean_weight, group=1)) +
+  geom_line(lwd=1, colour=2) +
+  ylim(0,1.1*max(df$mean_weight)) +
+  theme(plot.title=element_text(size=14,face="bold",hjust=0.5),
+        axis.text=element_text(size=12),
+        axis.title=element_text(size=14,face="bold")) +
+  scale_x_continuous(breaks=seq(min(df$year),max(df$year),by=5)) +
+  labs(x= "Fishing Year", y = "Annual Mean Weight (Kg)", title="Area 3CD") 
+ggsave(paste0(outDir,"AnnualMeanWeight_3CD.png"), width=8, height=6, units="in")  
+
+#5ABCD
+df <- df5ABCD
+ggplot(data=df, aes(x=year,y=mean_weight, group=1)) +
+  geom_line(lwd=1, colour=2) +
+  ylim(0,1.1*max(df$mean_weight)) +
+  theme(plot.title=element_text(size=14,face="bold",hjust=0.5),
+        axis.text=element_text(size=12),
+        axis.title=element_text(size=14,face="bold")) +
+  scale_x_continuous(breaks=seq(min(df$year),max(df$year),by=5)) +
+  labs(x= "Fishing Year", y = "Annual Mean Weight (Kg)", title="Area 5ABCD") 
+ggsave(paste0(outDir,"AnnualMeanWeight_5ABCD.png"), width=8, height=6, units="in")
+
+#########################################################################################
+#Compare to previous analyses
+#5AB
+Analysis <- "2018 new LW pars"
+df <- df5AB
+df <- cbind(df,rep(Analysis,nrow(df)))
+colnames(df) <- c("Year","MeanWeight","Analysis")
+Analysis <- "2018 old LW pars"
+df2 <- df5ABoldpars
+df2 <- cbind(df2,rep(Analysis,nrow(df2)))
+colnames(df2) <- c("Year","MeanWeight","Analysis")
+
+dfcompare <- subset(prevMeanWeight, Area=="5AB", select=-Area)
+dfcompare <- rbind(dfcompare,df,df2)
+ggplot(data=dfcompare, aes(x=Year,y=MeanWeight, group=Analysis, colour=Analysis)) +
+  geom_line(lwd=1) +
+  ylim(0,1.1*max(dfcompare$MeanWeight)) +
+  theme(plot.title=element_text(size=14,face="bold",hjust=0.5),
+        axis.text=element_text(size=12),
+        axis.title=element_text(size=14,face="bold")) +
+  scale_x_continuous(breaks=seq(min(df$Year),max(df$Year),by=5)) +
+  labs(x= "Fishing Year", y = "Annual Mean Weight (Kg)", title="Area 5AB") 
+ggsave(paste0(outDir,"AnnualMeanWeightCompare_5AB.png"), width=8, height=6, units="in") 
+
+#5CD
+Analysis <- "2018 new LW pars"
+df <- df5CD
+df <- cbind(df,rep(Analysis,nrow(df)))
+colnames(df) <- c("Year","MeanWeight","Analysis")
+Analysis <- "2018 old LW pars"
+df2 <- df5CDoldpars
+df2 <- cbind(df2,rep(Analysis,nrow(df2)))
+colnames(df2) <- c("Year","MeanWeight","Analysis")
+
+dfcompare <- subset(prevMeanWeight, Area=="5CD", select=-Area)
+dfcompare <- rbind(dfcompare,df,df2)
+ggplot(data=dfcompare, aes(x=Year,y=MeanWeight, group=Analysis, colour=Analysis)) +
+  geom_line(lwd=1) +
+  ylim(0,1.1*max(dfcompare$MeanWeight)) +
+  theme(plot.title=element_text(size=14,face="bold",hjust=0.5),
+        axis.text=element_text(size=12),
+        axis.title=element_text(size=14,face="bold")) +
+  scale_x_continuous(breaks=seq(min(df$Year),max(df$Year),by=5)) +
+  labs(x= "Fishing Year", y = "Annual Mean Weight (Kg)", title="Area 5CD") 
+ggsave(paste0(outDir,"AnnualMeanWeightCompare_5CD.png"), width=8, height=6, units="in") 
+
