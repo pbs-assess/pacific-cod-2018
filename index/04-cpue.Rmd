@@ -49,25 +49,47 @@ for (i in seq_along(specific_areas)) {
 
 #Get the locality codes
 #Paul Starr's locality codes
-keyLocality <- c("cape scott spit","mexicana","topknot","ne goose","se goose","nw goose","sw goose", "reef island","west horseshoe","east horseshoe","two peaks","butterworth","white rocks","shell ground")
+keyLocality <-
+  c(
+  "cape scott spit",
+  "mexicana",
+  "topknot",
+  "ne goose",
+  "se goose",
+  "nw goose",
+  "sw goose",
+  "reef island",
+  "west horseshoe",
+  "east horseshoe",
+  "two peaks",
+  "butterworth",
+  "white rocks",
+  "shell ground"
+  )
 x <- d %>%
-  subset(select=c(specific_area,locality_code,locality_description)) %>%
+  select(specific_area, locality_code, locality_description) %>%
   distinct()
 
-x <- x[with(x, order(x$specific_area,x$locality_code)),]
-Starr_key_locality <- is.element(x$locality_description,keyLocality)
-x <- cbind(x,Starr_key_locality)
-write_csv(x,paste0(outDir,"Locality_Codes.csv"))
+# x <- x[with(x, order(x$specific_area,x$locality_code)),]
+# Starr_key_locality <- is.element(x$locality_description,keyLocality)
+# x <- cbind(x,Starr_key_locality)
+# write_csv(x,paste0(outDir,"Locality_Codes.csv"))
 
-#Robyn re-wrote this (see object x above for key)
 dsum <- d %>%
-  mutate(key_locality =
-           specific_area == "5A" & locality_description %in% c("cape scott spit", "mexicana","topknot") |
-           specific_area == "5B" & locality_description %in% c("ne goose","se goose","nw goose","sw goose") |
-           specific_area == "5C" & locality_description %in% c("reef island","west horseshoe","east horseshoe") |
-           specific_area == "5D" & locality_description %in% c("two peaks","butterworth","white rocks","shell ground")
+  mutate(
+    key_locality =
+      specific_area == "5A" & 
+      locality_description %in% 
+      c("cape scott spit", "mexicana", "topknot") |
+        specific_area == "5B" & 
+      locality_description %in% 
+      c("ne goose", "se goose", "nw goose", "sw goose") |
+        specific_area == "5C" & 
+      locality_description %in% 
+      c("reef island", "west horseshoe", "east horseshoe") |
+        specific_area == "5D" & 
+      locality_description %in% 
+      c("two peaks", "butterworth", "white rocks", "shell ground")
   ) %>%
-  ## filter(hours_fished < 2000) %>%
-  filter(species_code == "222") %>%
-  filter(!is.na(hours_fished), !is.na(total), total > 0, hours_fished > 0)
+  filter(!is.na(hours_fished), !is.na(total), hours_fished > 0)
 ```
