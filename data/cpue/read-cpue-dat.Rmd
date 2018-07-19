@@ -63,7 +63,7 @@ Filter down to only the fishing events with P cod and remove all rows of data wi
 d <- d %>%
   filter(species_code == "222") %>%
   filter(!is.na(hours_fished), !is.na(total), total > 0, hours_fished > 0) %>%
-  filter(!is.na(fyear)) %>% 
+  filter(!is.na(fyear)) %>%
   mutate(key_locality =
     specific_area == "5A" & locality_code %in% c(1, 2, 3, 4) |
     specific_area == "5B" & locality_code %in% c(1, 2, 3, 4) |
@@ -71,8 +71,8 @@ d <- d %>%
     specific_area == "5C" & minor_stat_area_code == "06" & locality_code %in% c(1, 2, 10) |
     specific_area == "5D" & minor_stat_area_code == "01" & locality_code %in% c(5) |
     specific_area == "5D" & minor_stat_area_code == "04" & locality_code %in% c(1, 2) |
-    specific_area == "5D" & minor_stat_area_code == "05" & locality_code %in% c(1, 3)) %>% 
-  mutate(locality_concat = paste(specific_area, minor_stat_area_code, 
+    specific_area == "5D" & minor_stat_area_code == "05" & locality_code %in% c(1, 3)) %>%
+  mutate(locality_concat = paste(specific_area, minor_stat_area_code,
     locality_code, sep = "-"))
 ```
 
@@ -141,7 +141,7 @@ d_scaled %>%
   labs(colour = "Locality type")
 ```
 
-What about a basic standardization model with locality as a covariate? Let's work with just the data before 1996 as has been done in previous research documents. 
+What about a basic standardization model with locality as a covariate? Let's work with just the data before 1996 as has been done in previous research documents.
 
 ```{r}
 d <- mutate(d, cpue = total / hours_fished)
@@ -151,16 +151,16 @@ d$fyear_factor <- as.factor(d$fyear)
 out <- plyr::ddply(d, "area", function(x) {
   x$locality_factor <- gfplot::f(x$locality_description, ref = get_most_common_level)
   m <- lm(log(cpue) ~ fyear_factor + locality_factor, data = x)
-  nd <- data.frame(fyear_factor = unique(x$fyear_factor), 
-    locality_factor = 
-      factor(levels(x$locality_factor)[[1]], levels = levels(x$locality_factor))) %>% 
+  nd <- data.frame(fyear_factor = unique(x$fyear_factor),
+    locality_factor =
+      factor(levels(x$locality_factor)[[1]], levels = levels(x$locality_factor))) %>%
     arrange(fyear_factor)
   nd$cpue_pred <- predict(m, newdata = nd)
   nd$cpue_pred_se <- predict(m, newdata = nd, se = TRUE)$se.fit
   nd
 })
-out <- out %>% mutate(fyear = as.numeric(as.character(fyear_factor))) %>% 
-    left_join(select(d_sum, area, fyear, geo_cpue), by = c("area", "fyear")) %>% 
+out <- out %>% mutate(fyear = as.numeric(as.character(fyear_factor))) %>%
+    left_join(select(d_sum, area, fyear, geo_cpue), by = c("area", "fyear")) %>%
   as_tibble()
 ```
 
@@ -169,13 +169,13 @@ Note a huge difference:
 (red is standardized, black is the raw geometric mean by year)
 
 ```{r, fig.asp=0.3}
-out %>% group_by(area) %>% 
+out %>% group_by(area) %>%
   mutate(
   geo_cpue = geo_cpue / exp(mean(log(geo_cpue))),
   cpue_pred = log(exp(cpue_pred) / exp(mean(log(exp(cpue_pred))))),
   cpue_stand_lwr = exp(cpue_pred - 2 * cpue_pred_se),
   cpue_stand_upr = exp(cpue_pred + 2 * cpue_pred_se)
-) %>% 
+) %>%
   ggplot(aes(fyear, geo_cpue)) +
   geom_line(colour = "grey30") +
   geom_line(aes(y = exp(cpue_pred)), colour = "red") +
