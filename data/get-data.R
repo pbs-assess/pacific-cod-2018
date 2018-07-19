@@ -117,10 +117,11 @@ comm.specimens  <- function(dat,
 
   ## Filter the data as shown in the table in the appendix for the calculation
   ##  of mean weight data (Table C1 in 2013 assessment document)
+  ## Removed filtration of KEEPERS and UNSORTED so that data match 2014 data.
   dat %>% filter(trip_sub_type_code %in% c(1, 4)) %>%
     filter(gear == 1) %>%
-    filter(year <= 1996 & sampling_desc == "KEEPERS" |
-           year > 1996 & sampling_desc == "UNSORTED") %>%
+    ## filter(year <= 1996 & sampling_desc == "KEEPERS" |
+    ##       year > 1996 & sampling_desc == "UNSORTED") %>%
     filter(sample_type_code %in% c(1, 2, 6, 7)) %>%
     filter(!sample_id %in% c(173726,
                              173740,
