@@ -182,7 +182,7 @@ vb_fits <-
   map(surveys_list, function(.survey) {
     map(sexes, function(.sex) {
       .dat <- filter(x, is.element(survey_abbrev, .survey))
-      fit_vb(.dat, .sex, method = "mcmc", chains = 1)
+      fit_vb(.dat, .sex, method = "mcmc", chains = 1, uniform_priors = TRUE)
     })
   })
 ```

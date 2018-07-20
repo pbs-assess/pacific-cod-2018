@@ -2,15 +2,17 @@
 #Original in C:\GitHub\pcod-scenarios-2018\data\read-cpue-dat.r
 #see also C:\GitHub\pcod-scenarios-2018\data\read-cpue-dat.Rmd
 #Modified by Robyn Forrest June 27 2018
-graphics.off()
-rm(list=ls(all=TRUE))
+# graphics.off()
+# rm(list=ls(all=TRUE))
 library(gfplot)
 library(tidyverse)
 library(readr)
-library(rstan)
+# library(rstan)
 library(lubridate)
-library(psych)
+# library(psych)
 library(reshape2)
+
+geometric.mean <- psych::geometric.mean
 
 setwd("C:/pbs-pcod/0_15-2018_Assessment/Data/CPUE_MeanWeight_CombineSurveys/")
 outDir <- "C:/pbs-pcod/0_15-2018_Assessment/Data/CPUE_MeanWeight_CombineSurveys/Results/"

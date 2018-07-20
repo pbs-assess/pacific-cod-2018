@@ -25,31 +25,14 @@ library(dplyr)
 library(ggplot2)
 ```
 
-```{r}
-d <- readRDS(here::here("cache/pbs-cpue.rds"))
-names(d) <- tolower(names(d))
-d <- rename(d, total = totcatch_kg, minor_stat_area_code = min)
-d$hours_fished <- as.numeric(as.character(d$hours_fished))
-d$database_name <- tolower(d$database_name)
-d$gear <- tolower(d$gear)
-d$locality_description <- tolower(d$locality_description)
+```{r read-cpue-historic}
+d <- read.csv("~/Dropbox/PBS synopsis/pcod/cpue.csv",
+  stringsAsFactors = FALSE, strip.white = TRUE)
+# d <- gfplot::get_cpue_historic(species = NULL, end_year = 2017)
+```
 
-areas <- c("3[CD]+", "5[AB]+", "5[CD]+")
-d$area <- NA
-for (i in seq_along(areas)) {
-  d[grepl(areas[[i]], d$major_stat_area_description), "area"] <-
-    gsub("\\[|\\]|\\+", "", areas[[i]])
-}
-specific_areas <- c("3C", "3D", "5A", "5B", "5C", "5D")
-d$specific_area <- NA
-for (i in seq_along(specific_areas)) {
-  d[grepl(specific_areas[[i]], d$major_stat_area_description), "specific_area"] <-
-    specific_areas[[i]]
-}
-
-#Get the locality codes
-#Paul Starr's locality codes
-keyLocality <-
+```{r cpue-historic-basic-filtering}
+key_locality <-
   c(
   "cape scott spit",
   "mexicana",
@@ -66,30 +49,130 @@ keyLocality <-
   "white rocks",
   "shell ground"
   )
-x <- d %>%
-  select(specific_area, locality_code, locality_description) %>%
-  distinct()
 
-# x <- x[with(x, order(x$specific_area,x$locality_code)),]
-# Starr_key_locality <- is.element(x$locality_description,keyLocality)
-# x <- cbind(x,Starr_key_locality)
-# write_csv(x,paste0(outDir,"Locality_Codes.csv"))
+# Suggested by Paul Starr by email in 2018:
+new_locality_2018 <-
+  c("triangle", "ole spot", "north moresby", "south bonilla", "west two peaks")
 
-dsum <- d %>%
-  mutate(
-    key_locality =
-      specific_area == "5A" & 
-      locality_description %in% 
-      c("cape scott spit", "mexicana", "topknot") |
-        specific_area == "5B" & 
-      locality_description %in% 
-      c("ne goose", "se goose", "nw goose", "sw goose") |
-        specific_area == "5C" & 
-      locality_description %in% 
-      c("reef island", "west horseshoe", "east horseshoe") |
-        specific_area == "5D" & 
-      locality_description %in% 
-      c("two peaks", "butterworth", "white rocks", "shell ground")
-  ) %>%
-  filter(!is.na(hours_fished), !is.na(total), hours_fished > 0)
+# Make sure we have spelled all the localities correctly:
+stopifnot(all(key_locality %in% unique(d$locality_description)))
+stopifnot(all(new_locality_2018 %in% unique(d$locality_description)))
+
+# Basic filters that will apply to all data sets:
+d <- d %>% filter(!is.na(hours_fished), !is.na(total), !is.na(best_depth_m),
+    best_depth_m > 0, hours_fished > 0, total > 0, year >= 1956)
+```
+
+```{r cpue-historic-depth}
+filter(d, species_code == "222") %>%
+  ggplot(aes(best_depth_m)) + geom_histogram(binwidth = 25) +
+  geom_vline(xintercept = 150) +
+  geom_vline(xintercept = 350) +
+  gfplot::theme_pbs()
+```
+
+```{r cpue-historic-calculations}
+# This is to create 3CD, 5AB, 5CD, and 5ABCD versions of the data:
+d3cd <- filter(d, area %in% c("3CD"))
+d5ab <- filter(d, area %in% c("5AB"))
+d5cd <- filter(d, specific_area %in% c("5C", "5D"))
+d5cd$area <- "5CD"
+d5abcd <- bind_rows(d5ab, d5cd)
+d5abcd$area <- "5ABCD"
+d_all <- bind_rows(d3cd, d5ab, d5cd, d5abcd)
+rm(d3cd, d5ab, d5cd, d5abcd)
+
+# A data set with the original key localities:
+d_loc <- d_all %>%
+  filter(locality_description %in% key_locality |
+      (year <= 1967 & (specific_area == "5A" | specific_area == "5B")) |
+      area == "3CD")
+
+# This should match CPUE analysis D from the last research document:
+d_resdoc_2015 <- d_loc %>%
+  filter(best_depth_m <= 150) %>%
+  group_by(year, area, trip_id, fishing_event_id) %>%
+  summarise(
+    pcod_catch = sum(ifelse(species_code == "222", total, 0)),
+    effort = hours_fished[[1]]) %>%
+  group_by(area, year) %>%
+  summarise(pcod_catch = sum(pcod_catch), effort = sum(effort)) %>%
+  mutate(cpue = pcod_catch / effort) %>%
+  mutate(version = "Forrest et al. 2015")
+
+# This version extends the depth filter to 300m, which encompasses most but
+# not all Pacific Cod:
+d_depth_350 <- d_loc %>%
+  filter(best_depth_m <= 350) %>%
+  group_by(year, area, trip_id, fishing_event_id) %>%
+  summarise(
+    pcod_catch = sum(ifelse(species_code == "222", total, 0)),
+    effort = hours_fished[[1]]) %>%
+  group_by(area, year) %>%
+  summarise(pcod_catch = sum(pcod_catch), effort = sum(effort)) %>%
+  mutate(cpue = pcod_catch / effort) %>%
+  mutate(version = "Depth <= 350")
+
+# This version adds in the key localities only:
+d_depth_new_loc <- d_all %>%
+  filter(locality_description %in% union(new_locality_2018, key_locality) |
+      (year <= 1967 & (specific_area == "5A" | specific_area == "5B")) |
+      area == "3CD") %>%
+  filter(best_depth_m <= 150) %>%
+  group_by(year, area, trip_id, fishing_event_id) %>%
+  summarise(
+    pcod_catch = sum(ifelse(species_code == "222", total, 0)),
+    effort = hours_fished[[1]]) %>%
+  group_by(area, year) %>%
+  summarise(pcod_catch = sum(pcod_catch), effort = sum(effort)) %>%
+  mutate(cpue = pcod_catch / effort) %>%
+  mutate(version = "New localities")
+
+# This version adds in the new key localities and new depth:
+d_depth_350_new_loc <- d_all %>%
+  filter(locality_description %in% union(new_locality_2018, key_locality) |
+      (year <= 1967 & (specific_area == "5A" | specific_area == "5B")) |
+      area == "3CD") %>%
+  filter(best_depth_m <= 350) %>%
+  group_by(year, area, trip_id, fishing_event_id) %>%
+  summarise(
+    pcod_catch = sum(ifelse(species_code == "222", total, 0)),
+    effort = hours_fished[[1]]) %>%
+  group_by(area, year) %>%
+  summarise(pcod_catch = sum(pcod_catch), effort = sum(effort)) %>%
+  mutate(cpue = pcod_catch / effort) %>%
+  mutate(version = "Depth <= 350 & new localities")
+```
+
+```{r cpue-historic-paul}
+# The data from the last research document:
+paul <- read.csv(here::here("data/cpue/Starr_2013_CPUE.csv"), stringsAsFactors = FALSE) %>%
+  rename(year = FYear, area = Area, cpue = CPUE) %>%
+  filter(Analysis == "AD") %>%
+  select(-Analysis) %>%
+  mutate(version = "Paul")
+
+bind_rows(d_resdoc_2015, paul) %>%
+  ggplot(aes(year, cpue, colour = version)) +
+  facet_wrap(~area) +
+  geom_line() +
+  gfplot::theme_pbs()
+```
+
+```{r cpue-historic-comparison-plot}
+cpue <- bind_rows(
+  d_resdoc_2015,
+  d_depth_350,
+  d_depth_new_loc,
+  d_depth_350_new_loc
+)
+filter(cpue, version != "Depth <= 350 & new localities") %>%
+  ggplot(aes(year, cpue, colour = version)) +
+  facet_wrap(~area) +
+  geom_line() +
+  gfplot::theme_pbs()
+```
+
+```{r save-cpue-data}
+saveRDS(cpue, file = here::here("data/pcod-cpue-bridging.rds"))
 ```
