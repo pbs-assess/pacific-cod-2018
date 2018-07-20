@@ -273,10 +273,6 @@ get_par_df(lw_fits, 1) %>%
 
 Maturity-at-age parameters were estimated by fitting observed age and maturity data to the logistic function
 
-------------
-
-Sean's version:
-
 We fit maturity ogives as logistic regressions of maturity (mature vs. not mature) against length or age:
 
 \begin{align}
@@ -292,11 +288,7 @@ a binary predictor that is 1 if the fish is female and 0 if the fish is male.
 The variable $\pi_i$ represents the expected probability of fish $i$ being
 mature. We can then calculate of the age at 50% maturity as: $-(\log(1 / 0.5 - 1) + \beta_0) / \beta_1$ or $-(\log(1) + \beta_0) / \beta_1$ for males and $-(\log(1) + \beta_0 + \beta_2) / (\beta_1 + \beta_3)$ for females.
 
---------------
-
-$$P_{a_{s}} = \frac{1}{1 + e^{- \ \frac{a_{s} - a_{{50\%}_{s}}}{\text{σa}_{{50\%}_{s}}}}}$$
-
-where $a_{{50\%}_s}$ and $\sigma a_{{50\%}_s}$ are the parameters of the equation, respectively, age-at-50% maturity and standard deviation of the logistic curve, specific to sex. $P_{a_s}$ is the proportion mature at age $a_{s}$ for sex $s$. Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage. For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
+Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage. For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
 
 ```{r fit-maturity}
 surveys_list <- list(
