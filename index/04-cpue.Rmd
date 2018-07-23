@@ -23,17 +23,20 @@ knitr::opts_chunk$set(
 ```{r}
 library(dplyr)
 library(ggplot2)
+library(gfplot)
 ```
 
 ```{r read-cpue-historic}
-d <- read.csv("~/Dropbox/PBS synopsis/pcod/cpue.csv",
-  stringsAsFactors = FALSE, strip.white = TRUE)
-# d <- gfplot::get_cpue_historic(species = NULL, end_year = 2017)
+if (!file.exists(here::here("data/historic-cpue-raw-data.rds"))) {
+  d <- gfplot::get_cpue_historic(species = NULL, end_year = 2017)
+  readr::write_rds(d, here::here("data/historic-cpue-raw-data.rds"))
+} else {
+  d <- readr::read_rds(here::here("data/historic-cpue-raw-data.rds"))
+}
 ```
 
 ```{r cpue-historic-basic-filtering}
-key_locality <-
-  c(
+key_locality <- c(
   "cape scott spit",
   "mexicana",
   "topknot",
@@ -64,6 +67,7 @@ d <- d %>% filter(!is.na(hours_fished), !is.na(total), !is.na(best_depth_m),
 ```
 
 ```{r cpue-historic-depth}
+# Look at the depth distribution:
 filter(d, species_code == "222") %>%
   ggplot(aes(best_depth_m)) + geom_histogram(binwidth = 25) +
   geom_vline(xintercept = 150) +
@@ -71,7 +75,7 @@ filter(d, species_code == "222") %>%
   gfplot::theme_pbs()
 ```
 
-```{r cpue-historic-calculations}
+```{r cpue-historic-data-binding}
 # This is to create 3CD, 5AB, 5CD, and 5ABCD versions of the data:
 d3cd <- filter(d, area %in% c("3CD"))
 d5ab <- filter(d, area %in% c("5AB"))
@@ -81,7 +85,9 @@ d5abcd <- bind_rows(d5ab, d5cd)
 d5abcd$area <- "5ABCD"
 d_all <- bind_rows(d3cd, d5ab, d5cd, d5abcd)
 rm(d3cd, d5ab, d5cd, d5abcd)
+```
 
+```{r cpue-historic-calculations}
 # A data set with the original key localities:
 d_loc <- d_all %>%
   filter(locality_description %in% key_locality |
@@ -152,6 +158,7 @@ paul <- read.csv(here::here("data/cpue/Starr_2013_CPUE.csv"), stringsAsFactors =
   select(-Analysis) %>%
   mutate(version = "Paul")
 
+# Compare:
 bind_rows(d_resdoc_2015, paul) %>%
   ggplot(aes(year, cpue, colour = version)) +
   facet_wrap(~area) +
@@ -160,13 +167,14 @@ bind_rows(d_resdoc_2015, paul) %>%
 ```
 
 ```{r cpue-historic-comparison-plot}
+# Plot all of the raw CPUE versions:
 cpue <- bind_rows(
   d_resdoc_2015,
   d_depth_350,
   d_depth_new_loc,
   d_depth_350_new_loc
 )
-filter(cpue, version != "Depth <= 350 & new localities") %>%
+filter(cpue) %>%
   ggplot(aes(year, cpue, colour = version)) +
   facet_wrap(~area) +
   geom_line() +
@@ -175,4 +183,191 @@ filter(cpue, version != "Depth <= 350 & new localities") %>%
 
 ```{r save-cpue-data}
 saveRDS(cpue, file = here::here("data/pcod-cpue-bridging.rds"))
+```
+
+Standardization:
+
+```{r}
+# Can we use vessel and latitude?
+group_by(raw_dat, year, trip_id, vessel, vessel) %>%
+  summarise(n = n()) %>% group_by(year) %>%
+  summarise(prop_na = sum(is.na(vessel)) / n()) %>%
+  ggplot(aes(year, prop_na)) + geom_point()
+
+group_by(raw_dat, year, trip_id, fishing_event_id, latitude) %>%
+  summarise(n = n()) %>% group_by(year) %>%
+  summarise(prop_na = sum(is.na(latitude)) / n()) %>%
+  ggplot(aes(year, prop_na)) + geom_point()
+```
+
+
+```{r}
+raw_dat <- d_all %>%
+  filter(locality_description %in% union(new_locality_2018, key_locality) |
+      (year <= 1967 & (specific_area == "5A" | specific_area == "5B")) |
+      area == "3CD") %>%
+  filter(best_depth_m <= 350) %>%
+  filter(year <= 2017) #%>%
+  # before 1967, most of 5AB is 'unknown' locality, make it all so for model:
+  # mutate(locality_description = ifelse(year <= 1967 &
+  #     (specific_area == "5A" | specific_area == "5B"), "unknown", locality_description))
+
+# Remove everything except for letters in the localities
+# This makes it easier to plot of the locality coefficients later:
+raw_dat <- mutate(raw_dat, locality_desc = gsub(" ", "", locality_description))
+raw_dat <- mutate(raw_dat, locality_desc = gsub("\\/", "", locality_desc))
+raw_dat <- mutate(raw_dat, locality_desc = gsub("'", "", locality_desc))
+raw_dat <- mutate(raw_dat, locality_desc = gsub(">", "", locality_desc))
+raw_dat <- mutate(raw_dat, locality_desc = gsub("\\(", "", locality_desc))
+raw_dat <- mutate(raw_dat, locality_desc = gsub("\\)", "", locality_desc))
+raw_dat <- mutate(raw_dat, locality_desc = gsub("\\-", "", locality_desc))
+raw_dat <- mutate(raw_dat, locality_desc = gsub("\\.", "", locality_desc))
+raw_dat <- mutate(raw_dat, locality_desc = gsub("[0-9]", "", locality_desc))
+unique(raw_dat$locality_desc)
+sum(is.na(raw_dat$locality_desc))
+raw_dat <- filter(raw_dat, !is.na(locality_desc))
+
+# Main dataset for model fitting:
+out <- raw_dat %>% group_by(year, area, trip_id, fishing_event_id) %>%
+  summarize(
+    spp_catch = sum(ifelse(species_code == "222", total, 0)),
+    hours_fished = hours_fished[[1]],
+    depth = best_depth_m[[1]],
+    month = month[[1]],
+    locality = paste0("-", locality_desc[[1]])
+  ) %>% ungroup()
+
+filter(out, area == "5AB") %>% group_by(locality, year) %>% summarise(n = sum(spp_catch)) %>% ggplot(aes(year, n, colour = locality)) + geom_line()
+filter(out, area == "5CD") %>% group_by(locality, year) %>% summarise(n = sum(spp_catch)) %>% ggplot(aes(year, n, colour = locality)) + geom_line()
+filter(out, area == "3CD") %>% group_by(locality, year) %>% summarise(n = sum(spp_catch)) %>% ggplot(aes(year, n, colour = locality)) + geom_line()
+
+filter(raw_dat, species_code == "222") %>%
+  ggplot(aes(best_depth_m)) + geom_histogram(binwidth = 10) +
+  gfplot::theme_pbs()
+
+depth_bands <- c(seq(0, 150, 25), 200, 350)
+
+out$year_factor <- as.factor(out$year)
+out$month <- as.factor(out$month)
+out$locality <- as.factor(out$locality)
+out <- out %>%
+  mutate(pos_catch = ifelse(spp_catch > 0, 1, 0),
+    depth_bin = gfplot:::factor_bin_clean(depth, depth_bands)
+)
+
+group_by(out, area, locality) %>%
+  summarize(pos_catch_tot = sum(pos_catch)) %>%
+  ggplot(aes(locality, pos_catch_tot)) + geom_col() +
+  facet_wrap(~area, scales = "free") + coord_flip()
+
+small_localities <- group_by(out, area, locality) %>%
+  summarize(pos_catch_tot = sum(pos_catch)) %>%
+  filter(pos_catch_tot < 200) %>%
+  select(-pos_catch_tot) %>%
+  ungroup()
+
+out <- mutate(out, locality = as.character(locality)) %>%
+  mutate(locality = ifelse(locality %in% small_localities$locality,
+    "-minorlocality", locality)) %>%
+  mutate(locality = as.factor(locality))
+
+group_by(out, area, locality) %>%
+  summarize(pos_catch_tot = sum(pos_catch)) %>%
+  ggplot(aes(locality, pos_catch_tot)) + geom_col() +
+  facet_wrap(~area, scales = "free") + coord_flip()
+```
+
+```{r month-catch}
+group_by(out, area, month) %>% summarise(catch = sum(spp_catch)) %>%
+  ggplot(aes(month, catch)) + geom_point() + facet_wrap(~area)
+```
+
+```{r}
+group_by(out, area, depth_bin) %>% summarise(catch = sum(spp_catch)) %>%
+  ggplot(aes(depth_bin, catch)) + geom_point() + facet_wrap(~area)
+```
+
+```{r standard-cpue-hist-fit, results='hide', warning=FALSE, message=FALSE}
+areas <- unique(out$area)
+cpue_models <- purrr::map(areas, function(this_area) {
+  message("Fitting ", this_area)
+  dat_ <- filter(out, area == this_area)
+  dat_$locality <- as.factor(as.character(dat_$locality))
+  pos_catch_fleet <- filter(dat_, pos_catch == 1)
+  base_month    <- "5"
+  base_depth    <- "050"
+  base_locality <- get_most_common_level(pos_catch_fleet$locality)
+  model <- fit_cpue_index(dat_,
+    formula_binomial = pos_catch ~ year_factor +
+      f(month, base_month) +
+      f(locality, base_locality) +
+      f(depth_bin, base_depth),
+    formula_lognormal = log(spp_catch / hours_fished) ~ year_factor +
+      f(month, base_month) +
+      f(locality, base_locality) +
+      f(depth_bin, base_depth))
+  model$base_levels <- c(
+    "month" = base_month,
+    "depth_bin" = base_depth,
+    "locality" = base_locality
+  )
+  model
+})
+```
+
+```{r}
+coef_plots <- lapply(cpue_models, function(x) {
+  plot_cpue_index_coefs(x)
+})
+coef_plots[[1]] + ggtitle(areas[[1]])
+coef_plots[[2]] + ggtitle(areas[[2]])
+coef_plots[[3]] + ggtitle(areas[[3]])
+coef_plots[[4]] + ggtitle(areas[[4]])
+
+# TODO: fix gfplot; not plotting
+# jk_plots <- purrr::map_df(cpue_models, function(x) {
+#   plot_cpue_index_jk(x, terms = c("f(month)", "f(locality)", "f(depth)"), return_data = T)
+# })
+
+ii <<- 0
+cpue_stand <- purrr::map_df(cpue_models, function(x) {
+  ii <<- ii + 1
+  data.frame(predict_cpue_index(x, center = FALSE),
+    area = areas[ii], stringsAsFactors = FALSE)
+})
+
+ggplot(cpue_stand, aes_string("year", "est", ymin = "upr", ymax = "lwr")) +
+  ggplot2::geom_ribbon(fill = "grey70") +
+  geom_line() +
+  theme_pbs() +
+  facet_grid(model~area, scales = "free_y") +
+  labs(y = "CPUE index", x = "") +
+  ylim(0, NA)
+
+ii <<- 0
+cpue_stand_cent <- purrr::map_df(cpue_models, function(x) {
+  ii <<- ii + 1
+  data.frame(predict_cpue_index(x, center = TRUE),
+    area = areas[ii], stringsAsFactors = FALSE)
+})
+
+raw_cpue <- readRDS(here::here("data/pcod-cpue-bridging.rds")) %>%
+  # filter(year < 1996) %>%
+  group_by(version, area) %>%
+  mutate(cpue_raw_centered = cpue / exp(mean(log(cpue)))) %>%
+  ungroup() %>%
+  filter(version == "Depth <= 350 & new localities")
+
+left_join(cpue_stand_cent, raw_cpue) %>%
+  filter(model == "Combined") %>%
+  ggplot(aes_string("year", "est", ymin = "upr", ymax = "lwr")) +
+  ggplot2::geom_ribbon(fill = "grey70") +
+  geom_line() +
+  theme_pbs() +
+  facet_grid(model~area, scales = "free_y") +
+  labs(y = "CPUE index", x = "") +
+  ylim(0, NA) +
+  geom_line(aes(y = cpue_raw_centered), lty = 1, col = "blue")
+
+mm <- readRDS("~/src/gfsynopsis/report/cpue-cache/pacific-cod.rds")
 ```
