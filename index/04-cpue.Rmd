@@ -202,12 +202,16 @@ group_by(raw_dat, year, trip_id, fishing_event_id, latitude) %>%
 
 
 ```{r}
+filter(d_all, species_code == "222") %>%
+  ggplot(aes(best_depth_m)) + geom_histogram(binwidth = 10) +
+  gfplot::theme_pbs()
+
 raw_dat <- d_all %>%
   filter(locality_description %in% union(new_locality_2018, key_locality) |
       (year <= 1967 & (specific_area == "5A" | specific_area == "5B")) |
       area == "3CD") %>%
   filter(best_depth_m <= 350) %>%
-  filter(year <= 2017) #%>%
+  filter(year <= 2017)
   # before 1967, most of 5AB is 'unknown' locality, make it all so for model:
   # mutate(locality_description = ifelse(year <= 1967 &
   #     (specific_area == "5A" | specific_area == "5B"), "unknown", locality_description))
@@ -225,6 +229,7 @@ raw_dat <- mutate(raw_dat, locality_desc = gsub("\\.", "", locality_desc))
 raw_dat <- mutate(raw_dat, locality_desc = gsub("[0-9]", "", locality_desc))
 unique(raw_dat$locality_desc)
 sum(is.na(raw_dat$locality_desc))
+100*sum(is.na(raw_dat$locality_desc)) / nrow(raw_dat)
 raw_dat <- filter(raw_dat, !is.na(locality_desc))
 
 # Main dataset for model fitting:
@@ -234,44 +239,94 @@ out <- raw_dat %>% group_by(year, area, trip_id, fishing_event_id) %>%
     hours_fished = hours_fished[[1]],
     depth = best_depth_m[[1]],
     month = month[[1]],
-    locality = paste0("-", locality_desc[[1]])
+    locality = paste0("-", locality_desc[[1]]) # - is for formatting for coef plotting
   ) %>% ungroup()
 
-filter(out, area == "5AB") %>% group_by(locality, year) %>% summarise(n = sum(spp_catch)) %>% ggplot(aes(year, n, colour = locality)) + geom_line()
-filter(out, area == "5CD") %>% group_by(locality, year) %>% summarise(n = sum(spp_catch)) %>% ggplot(aes(year, n, colour = locality)) + geom_line()
-filter(out, area == "3CD") %>% group_by(locality, year) %>% summarise(n = sum(spp_catch)) %>% ggplot(aes(year, n, colour = locality)) + geom_line()
+plot_pcod_dist <- function(dat, y, ylab = "", title = "") {
+  ggplot(dat, aes_string("as.factor(year)", y = y)) + geom_boxplot() + 
+    scale_y_log10(breaks = c(0.1, 1, 10, 100, 1000, 10000), labels = scales::comma) +
+    scale_x_discrete(breaks = seq(1950, 2020, 2)) +
+    theme_pbs() +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+    facet_wrap(~area) + xlab("") + ylab(ylab) +
+    ggtitle(title)
+}
 
-filter(raw_dat, species_code == "222") %>%
-  ggplot(aes(best_depth_m)) + geom_histogram(binwidth = 10) +
-  gfplot::theme_pbs()
+plot_pcod_dist(out, y = "hours_fished", ylab = "Effort (hr)", 
+  title = "Effort, all fishing events (trips in older years)") +
+  geom_hline(yintercept = 12, col = "red")
+
+out <- out %>% 
+  filter(year < 1991 | year >= 1991 & hours_fished <= 12)
+
+# Main dataset at the trip level:
+out_trip <- out %>% group_by(year, area, trip_id) %>%
+  summarize(
+    spp_catch = sum(spp_catch),
+    hours_fished = sum(hours_fished),
+    depth = mean(depth),
+    mean_log_depth = mean(log(depth)),
+    month = rev(names(table(month)))[[1]],
+    locality = rev(names(table(locality)))[[1]],
+    n_month = length(unique(month)),
+    n_locality = length(unique(locality))
+  ) %>% ungroup()
+
+plot_pcod_dist(filter(out_trip, spp_catch > 0), y = "spp_catch/hours_fished", 
+  ylab = "CPUE (kg/hr)", title = "CPUE, positive trips")
+plot_pcod_dist(filter(out_trip, spp_catch > 0), y = "spp_catch", 
+  ylab = "Catch (kg)", title = "Catch, positive trips")
+plot_pcod_dist(filter(out_trip, spp_catch > 0), y = "hours_fished", 
+  ylab = "Effort (hours)", title = "Effort, positive trips")
+plot_pcod_dist(out_trip, y = "hours_fished", 
+  ylab = "Effort (hours)", title = "Effort, all trips")
+plot_pcod_dist(filter(out_trip, spp_catch > 0), y = "exp(mean_log_depth)", 
+  ylab = "Mean depth", title = "Mean depth, positive trips")
+plot_pcod_dist(out_trip, y = "exp(mean_log_depth)", 
+  ylab = "Mean depth", title = "Mean depth, all trips")
+
+filter(out_trip, area == "5AB") %>% group_by(locality, year) %>% 
+  summarise(n = sum(spp_catch)) %>% 
+  ggplot(aes(year, n, colour = locality)) + geom_line()
+filter(out_trip, area == "5CD") %>% group_by(locality, year) %>% 
+  summarise(n = sum(spp_catch)) %>% 
+  ggplot(aes(year, n, colour = locality)) + geom_line()
+filter(out_trip, area == "3CD") %>% group_by(locality, year) %>% 
+  summarise(n = sum(spp_catch)) %>% 
+  ggplot(aes(year, n, colour = locality)) + geom_line()
 
 depth_bands <- c(seq(0, 150, 25), 200, 350)
-
-out$year_factor <- as.factor(out$year)
-out$month <- as.factor(out$month)
-out$locality <- as.factor(out$locality)
-out <- out %>%
+out_trip$year_factor <- as.factor(out_trip$year)
+out_trip$month <- as.factor(out_trip$month)
+out_trip$locality <- as.factor(out_trip$locality)
+out_trip <- out_trip %>%
   mutate(pos_catch = ifelse(spp_catch > 0, 1, 0),
     depth_bin = gfplot:::factor_bin_clean(depth, depth_bands)
 )
 
-group_by(out, area, locality) %>%
+group_by(out_trip, area, locality) %>%
   summarize(pos_catch_tot = sum(pos_catch)) %>%
   ggplot(aes(locality, pos_catch_tot)) + geom_col() +
   facet_wrap(~area, scales = "free") + coord_flip()
 
-small_localities <- group_by(out, area, locality) %>%
+small_localities <- group_by(out_trip, area, locality) %>%
   summarize(pos_catch_tot = sum(pos_catch)) %>%
-  filter(pos_catch_tot < 200) %>%
-  select(-pos_catch_tot) %>%
+  filter(pos_catch_tot < 100) %>%
+  arrange(area, -pos_catch_tot) %>% 
+  # select(-pos_catch_tot) %>%
   ungroup()
 
-out <- mutate(out, locality = as.character(locality)) %>%
+small_localities %>%
+  knitr::kable(format = "pandoc")
+
+out_trip <- mutate(out_trip, locality = as.character(locality)) %>%
   mutate(locality = ifelse(locality %in% small_localities$locality,
     "-minorlocality", locality)) %>%
   mutate(locality = as.factor(locality))
+```
 
-group_by(out, area, locality) %>%
+```{r}
+group_by(out_trip, area, locality) %>%
   summarize(pos_catch_tot = sum(pos_catch)) %>%
   ggplot(aes(locality, pos_catch_tot)) + geom_col() +
   facet_wrap(~area, scales = "free") + coord_flip()
@@ -287,18 +342,26 @@ group_by(out, area, depth_bin) %>% summarise(catch = sum(spp_catch)) %>%
   ggplot(aes(depth_bin, catch)) + geom_point() + facet_wrap(~area)
 ```
 
-
 ```{r}
-# dat_ <- filter(out, area == "5CD")
-library(doParallel)
-registerDoParallel(cores = 4L)
-m_re <- plyr::dlply(out, "area", function(df) {
-  message(unique(df$area))
-  gfplot:::fit_cpue_index_re(df)
-}, .parallel = FALSE)
-# saveRDS(m_re, file = "~/Desktop/m_re.rds")
+if (!file.exists(here::here("data/generated/cpue-models-re.rds"))) {
+  m_re <- plyr::dlply(out_trip, "area", function(df) {
+    message("Fitting ", unique(df$area))
+    gfplot:::fit_cpue_index_re(df, 
+      formula_binomial = pos_catch ~ year_factor +
+        poly(mean_log_depth, 2),
+      formula_lognormal = log(spp_catch / hours_fished) ~ year_factor +
+        poly(mean_log_depth, 2))
+  })
+  readr::write_rds(m_re, here::here("data/generated/cpue-models-re.rds")) 
+} else {
+  m_re <- readr::read_rds(here::here("data/generated/cpue-models-re.rds"))
+}
 predictions_re <- plyr::ldply(m_re, predict_cpue_index)
-saveRDS(predictions_re, file = "~/Desktop/pcod-cpue-glmm.rds")
+saveRDS(predictions_re, file = here::here("data/generated/cpue-re-predictions.rds")) 
+
+geo_mean <- filter(out, pos_catch == 1) %>% 
+  group_by(area, year) %>% 
+  summarise(est = exp(mean(log(spp_catch / hours_fished))))
 ```
 
 ```{r standard-cpue-hist-fit, results='hide', warning=FALSE, message=FALSE}
@@ -437,6 +500,33 @@ left_join(predictions_re, raw_cpue) %>%
   labs(y = "CPUE index", x = "") +
   ylim(0, NA) +
   geom_line(aes(y = cpue), lty = 1, col = "blue")
+
+# this:
+bind_rows(data.frame(geo_mean, type = "Unstandardized\ngeometric mean", model = "Lognormal"),
+  data.frame(predictions_re, type = "GLMM standardized")) %>% 
+  filter(model == "Lognormal") %>%
+  ggplot(aes_string("year", "est", ymin = "upr", ymax = "lwr", fill = "type")) +
+  ggplot2::geom_ribbon(alpha = 0.5) +
+  geom_line(aes_string(colour = "type", linetype = "type")) +
+  theme_pbs() +
+  facet_wrap(~area, scales = "free_y") +
+  labs(y = "CPUE index", x = "") +
+  ylim(0, NA) +
+  scale_linetype_manual(values = c("Unstandardized\ngeometric mean" = 2, "GLMM standardized" = 1)) +
+  scale_colour_manual(values = c("Unstandardized\ngeometric mean" = "grey20", "GLMM standardized" = "red")) +
+  scale_fill_manual(values = c("Unstandardized\ngeometric mean" = "grey20", "GLMM standardized" = "red")) +
+  ylab("Trip-level CPUE (kg/hr)") +
+  geom_vline(xintercept = 1996, col = "grey70", lty = 3) +
+  labs(colour = "Type", fill = "Type", lty = "Type")
+
+geo_mean %>%
+  ggplot(aes_string("year", "est")) +
+  geom_line() +
+  theme_pbs() +
+  facet_grid(~area, scales = "free_y") +
+  labs(y = "CPUE index", x = "") +
+  ylim(0, NA) +
+  geom_line(data = raw_cpue, aes(y = cpue), colour = "blue")
 
 mm <- readRDS("~/src/gfsynopsis/report/cpue-cache/pacific-cod.rds")
 ```
