@@ -289,115 +289,17 @@ group_by(out, area, depth_bin) %>% summarise(catch = sum(spp_catch)) %>%
 
 
 ```{r}
-dat_ <- filter(out, area == "5CD")
-mean_log_pos_depth <- mean(log(filter(dat_, pos_catch == 1)$depth))
-dat_$log_depth_scaled <- (dat_$depth - mean_log_pos_depth) / (2 * sd(dat_$depth))
-
-m_re <- gfplot:::fit_cpue_index_re(dat_)
-
-# pos_dat <- filter(dat_, pos_catch == 1)
-# 
-# # Random effect version:
-# fct_to_tmb_num <- function(x) {
-#   as.numeric(as.factor(as.character(x))) - 1
-# }
-# bin_vess <- fct_to_tmb_num(dat_$month)
-# pos_vess <- fct_to_tmb_num(filter(dat_, pos_catch == 1)$month)
-# bin_loc <- fct_to_tmb_num(dat_$locality)
-# pos_loc <- fct_to_tmb_num(filter(dat_, pos_catch == 1)$locality)
-# 
-# base_depth <- "050"
-# formula_binomial = pos_catch ~ year_factor +
-#   # f(month, base_month) +
-#   # f(locality, base_locality) +
-#   # f(depth_bin, base_depth)
-#   log_depth_scaled + I(log_depth_scaled^2)
-# formula_lognormal = log(spp_catch / hours_fished) ~ year_factor +
-#   # f(month, base_month) +
-#   # f(locality, base_locality) +
-#   # f(depth_bin, base_depth)
-#   log_depth_scaled + I(log_depth_scaled^2)
-#   
-# mm1 <- model.matrix(formula_binomial, data = dat_)
-# mm2 <- model.matrix(formula_lognormal, data = pos_dat)
-# mm_pred1 <- make_pred_mm(mm1, years = unique(pos_dat$year_factor))
-# mm_pred2 <- make_pred_mm(mm2, years = unique(dat_$year_factor))
-# 
-# # find good fixed-effect starting values from GLMs/LMs:
-# m_bin <- speedglm::speedglm(formula_binomial, data = dat_,
-#   family = binomial(link = "logit"))
-# m_pos <- lm(formula_lognormal, data = filter(dat_, pos_catch == 1))
-# 
-# library(TMB)
-# 
-# tmb_cpp_2re <- system.file("tmb", "deltalognormal_2re.cpp", package = "gfplot")
-# TMB::compile(tmb_cpp_2re)
-# dyn.load(TMB::dynlib(sub("\\.cpp", "", tmb_cpp_2re)))
-#   
-# obj <- MakeADFun(
-#   data = list(
-#     X1_ij = mm1, y1_i = d_retained$pos_catch,
-#     X2_ij = mm2, y2_i = log(
-#       subset(d_retained, pos_catch == 1)$spp_catch/
-#         subset(d_retained, pos_catch == 1)$hours_fished),
-# 
-#     factor1k_i = bin_vess,
-#     factor2k_i = pos_vess,
-#     factor1g_i = bin_loc,
-#     factor2g_i = pos_loc,
-# 
-#     X1_pred_ij = mm_pred1,
-#     X2_pred_ij = mm_pred2,
-# 
-#     nk1 = length(unique(bin_vess)),
-#     nk2 = length(unique(pos_vess)),
-#     ng1 = length(unique(bin_loc)),
-#     ng2 = length(unique(pos_loc))
-#   ),
-#   parameters = list(
-#     b1_j = coef(m_bin),
-#     b2_j = coef(m_pos),
-# 
-#     z1_k = rep(0, length(unique(bin_vess))),
-#     z2_k = rep(0, length(unique(pos_vess))),
-#     z1_g = rep(0, length(unique(bin_loc))),
-#     z2_g = rep(0, length(unique(pos_loc))),
-# 
-#     log_sigma = log(1.5),
-#     log_sigma_zk1 = log(0.2),
-#     log_sigma_zk2 = log(0.2),
-#     log_sigma_zg1 = log(0.2),
-#     log_sigma_zg2 = log(0.2)
-#   ),
-#   random = c("z1_k", "z2_k", "z1_g", "z2_g"),
-#   DLL = "deltalognormal_2re")
-# 
-# # obj$fn(obj$par)
-# # obj$gr(obj$par)
-# system.time({
-#   opt <- nlminb(
-#     start = obj$par,
-#     objective = obj$fn,
-#     gradient = obj$gr, control = list(iter.max = 1000,
-#       eval.max = 1000))
-#   opt
-# })
-# 
-obj$report()
-object <- list()
-object$model <- obj
-object$sdreport <- sdreport(obj)
-object$mm_bin <- mm1
-object$mm_pos <- mm2
-object$years <- sort(unique(dat_$year))
-# 
-# # gfplot::tidy_cpue_index_coefs(object, 
-# #   remove = c("z1_k", "z1_g", "z2_g", "z2_k", "log_sigma_zk1", "log_sigma_zk2", "log_sigma_zg1", "log_sigma_zg2")) %>% 
-# #   plot_cpue_index()
-
-predictions_re <- predict_cpue_index(object)
+# dat_ <- filter(out, area == "5CD")
+library(doParallel)
+registerDoParallel(cores = 4L)
+m_re <- plyr::dlply(out, "area", function(df) {
+  message(unique(df$area))
+  gfplot:::fit_cpue_index_re(df)
+}, .parallel = FALSE)
+# saveRDS(m_re, file = "~/Desktop/m_re.rds")
+predictions_re <- plyr::ldply(m_re, predict_cpue_index)
+saveRDS(predictions_re, file = "~/Desktop/pcod-cpue-glmm.rds")
 ```
-
 
 ```{r standard-cpue-hist-fit, results='hide', warning=FALSE, message=FALSE}
 areas <- unique(out$area)
@@ -514,9 +416,9 @@ left_join(cpue_stand, raw_cpue) %>%
   ylim(0, NA) +
   geom_line(aes(y = cpue), lty = 1, col = "blue")
 
-bind_rows(data.frame(cpue_stand, type = "glm"), 
-  data.frame(predictions_re, type = "glmm", area = "5CD")) %>%
-  filter(area == "5CD") %>%
+bind_rows(data.frame(cpue_stand, type = "glm"),
+  data.frame(predictions_re, type = "glmm")) %>%
+  # filter(area == "5CD") %>%
   ggplot(aes_string("year", "est", ymin = "upr", ymax = "lwr", colour = "type", fill = "type")) +
   ggplot2::geom_ribbon(alpha = 0.3) +
   geom_line() +
@@ -524,6 +426,17 @@ bind_rows(data.frame(cpue_stand, type = "glm"),
   facet_grid(model~area, scales = "free_y") +
   labs(y = "CPUE index", x = "") +
   ylim(0, NA)
+
+left_join(predictions_re, raw_cpue) %>%
+  filter(model == "Combined") %>%
+  ggplot(aes_string("year", "est", ymin = "upr", ymax = "lwr")) +
+  ggplot2::geom_ribbon(fill = "grey70") +
+  geom_line() +
+  theme_pbs() +
+  facet_grid(model~area, scales = "free_y") +
+  labs(y = "CPUE index", x = "") +
+  ylim(0, NA) +
+  geom_line(aes(y = cpue), lty = 1, col = "blue")
 
 mm <- readRDS("~/src/gfsynopsis/report/cpue-cache/pacific-cod.rds")
 ```
