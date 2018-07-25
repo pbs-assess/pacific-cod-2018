@@ -38,15 +38,6 @@ x <- filter(d$survey_samples,
 
 Survey age, length and maturity data were extracted from the GFBio database using the following query:
 
-```
-Filters                                                                              & Rationale                                                                                                                                          \\
-\midrule
-Filtered for \texttt{TRIP\_SUBTYPE\_CODE} \texttt{2, 3} (research trips)                      & To extract only research data                                                                                                             \\
-Filtered for \texttt{SAMPLE\_TYPE\_CODE} \texttt{1, 2, 6, 7, 8} (random or total)             & To extract only those records of sample type 'random' or 'total'                                                                          \\
-Filtered for \texttt{SPECIES\_CATEGORY\_CODE} \texttt{NULL, 0, 1, 3, 4, 5, 6, 7}              & To remove samples sorted on unknown criteria                                                                                              \\
-Filtered for \texttt{SAMPLE\_SOURCE\_CODE} \texttt{NULL, 1, 2, 3}                             & To extract both sorted and unsorted samples for later filtration for desired analysis (removes stomach contents samples)                  \\
-```
-
 In addition, commercial length and maturity samples were extracted from GFBio using the following options:
 
 - Filtered out `TRIP_SUBTYPE_CODE` in 2, 3 (research trips) to extract only commercial data.
@@ -68,7 +59,6 @@ total_aged <- tidy_ages_raw(x,
   summarise(n = total[1]) %>% ungroup() %>%
   summarise(n = sum(n)) %>% pull(n)
 ```
-
 
 ## Age samples
 
@@ -348,6 +338,8 @@ Estimated parameters are provided in Table TODO Estimated maturity ogives are sh
 
 \clearpage
 
+<!--
+
 ## Age-length key
 
 An age-length key (ALK) was constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys. Data were pooled over years and surveys to increase the number of paired samples (Table A1). Because the West Coast Vancouver Island Synoptic Survey occurs in alternate years to the Hecate Strait and Queen Charlotte Sound surveys, and occurs in a geographically distinct area, it may not actually be appropriate to pool the data, especially given differences in growth rates reported above. Separate ALKs were therefore developed for: (i) the combined the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys; and (ii) the West Coast Vancouver Island Synoptic Survey.
@@ -402,15 +394,14 @@ The "length sample" contains all of the specimen records with only a length (cm)
 For each of the above length datasets, ages were randomly assigned to the unaged fish within a length category according to the proportions-at-age for that length category in the ALK for that area (Table TODO or Table TODO). Ages were assigned using the FSA function alkIndivAge [@ogle2018], using the "completely random" approach (Type="CR"). In the "completely random" approach, the age assigned to each fish is randomly assigned with probabilistic weights proportional to the proportions-at-age in each length category. For example, if 50% of observed fish in a length category were age 1, then a single fish in that category would have a 50% chance of being assigned an age of 1. However, because the sampling is random, the distribution of assigned ages in the length category could differ from the distribution in the ALK. The "completely random" approach differs from the alternative "semi-random" approach (Type="SR"), where the proportion of fish at each age in each length category is constrained to match the ALK, even though the assignment of ages to individual fish is random. A difficulty with the "semi-random" approach is dealing with fractional proportions, requiring a two-stage assignment process [@isermann2005].
 
 For each of the above length datasets, age assignment was done using two alternative ranges of years. In the "interpolated" approach, ages were only assigned to lengths for years represented in the year-range in the ALK (Table TODO). In the "extrapolated" approach, ages were assigned to lengths for all years which had length observations in the period 2006 to 2017 for the surveys, and 2006 to 2016 for the commercial data.
-<!-- RF: Do we have 2017 data yet? -->
-<!-- SA: Yes! -->
+
 Note that the West Coast Vancouver Island Synoptic Survey only operated in even-numbered years, while the Hecate Strait and Queen Charlotte Sound Synoptic surveys only operated in odd-numbered years, with the first year of assigned ages for each area reflecting this. As suggested by @ogle2018, observed lengths below the smallest length in the age sample were removed from the length sample. Observed lengths in the length sample that were larger than the largest observed length in the age sample were assigned ages according to the probabilities for the largest length category in the ALK (Table TODO or TODO).
 
 Results are summarized for each dataset with three types of graph: i) jittered scatterplot of length\~age; ii) bubble plots of assigned proportions-at-age; and iii) length-frequency histograms colour-coded by assigned age. Results for data including 2006, with assigned ages extrapolated to 2017 are shown for each of the six length datasets above.
 
 ### HECATE STRAIT SYNOPTIC SURVEY (AREA 5CD)
 
-<!-- TODO: Fix color legends so they are consistent if no 0 -->
+TODO: Fix color legends so they are consistent if no 0
 
 **Figure A.7**
 
@@ -526,3 +517,4 @@ Table and Figures are numbered to match the main Appendix A figures.
 
 **Figure S.A.18**
 
+-->
