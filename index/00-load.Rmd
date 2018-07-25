@@ -1,0 +1,23 @@
+```{r, knitr-opts, echo=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>",
+  fig.path = "knitr-figs/",
+  cache.path = "knitr-cache/",
+  fig.asp = 0.618,
+  fig.width = 7.5,
+  out.width = "6in",
+  echo = FALSE,
+  autodep = TRUE,
+  cache = TRUE,
+  cache.comments = FALSE,
+  dev = "png",
+  dpi = 200,
+  fig.align = "center",
+  fig.pos = "htb"
+)
+source("R/all.r")
+
+```
