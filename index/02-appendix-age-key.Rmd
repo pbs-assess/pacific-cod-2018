@@ -279,19 +279,19 @@ for (i in seq_along(mat_figs))
 cowplot::plot_grid(plotlist = mat_figs, ncol = 1)
 ```
 
-```{r, fig.cap = "Caption", fig.width=6, out.width="4.5in"}
+```{r, fig.cap = "Rearranged coefficients from the logistic regression maturity ogives. Parameters are in logit or log odds space. The intercept refers to the log odds of maturity for a theoretical fish of age zero.", fig.width=6, out.width="4.5in"}
 mat_coefs <- plyr::ldply(mat_fits, function(.x) {
   broom::tidy(.x$model, conf.int = TRUE)
 })
 
-mutate(mat_coefs, .id = factor(.id, levels = names(surveys_list))) %>%
-ggplot(
-  aes(ymin = conf.low, ymax = conf.high, y = estimate, x = term, colour = .id)) +
-  geom_pointrange(position = position_dodge(width = 0.4)) +
-  coord_flip() +
-  theme_pbs() +
-  xlab("") + ylab("Coefficient") +
-  labs(colour = "Survey group")
+# mutate(mat_coefs, .id = factor(.id, levels = names(surveys_list))) %>%
+# ggplot(
+#   aes(ymin = conf.low, ymax = conf.high, y = estimate, x = term, colour = .id)) +
+#   geom_pointrange(position = position_dodge(width = 0.4)) +
+#   coord_flip() +
+#   theme_pbs() +
+#   xlab("") + ylab("Coefficient") +
+#   labs(colour = "Survey group")
 
 est <- group_by(mat_coefs, .id) %>%
   summarise(
@@ -326,7 +326,7 @@ inner_join(est, se) %>%
   theme_pbs() +
   xlab("") + ylab("Coefficient") +
   labs(colour = "Survey group") +
-  scale_color_brewer(palette = "Set1")
+  scale_color_brewer(palette = "Dark2")
 ```
 
 
