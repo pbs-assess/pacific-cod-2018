@@ -492,7 +492,9 @@ saveRDS(predictions_re,
   file = here::here("data/generated/cpue-re-predictions.rds"))
 ```
 
-```{r cpue-plot-glmm-standardizations, fig.cap="The binomial and lognormal estimates of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model. Shaded ribbons illustrates the 95% confidence intervals.", fig.asp=1.2}
+\clearpage
+
+```{r cpue-plot-glmm-standardizations, fig.cap="The binomial and lognormal estimates of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model. Shaded ribbons illustrates the 95 percent confidence intervals.", fig.asp=1.2}
 unstandardized <- predictions_re %>%
   filter(formula_version == "Unstandardized") %>%
   rename(est_unstandardized = est, lwr_unstandardized = lwr, upr_unstandardized = upr) %>%
@@ -528,7 +530,9 @@ g_lognormal <- plot_re_predictions("Lognormal")
 cowplot::plot_grid(g_binomial, g_lognormal, ncol = 1)
 ```
 
-```{r, fig.cap="The unconditional combined estimate of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model."}
+\clearpage
+
+```{r pue-plot-glmm-standardizations-combined, fig.cap="The unconditional combined estimate of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model."}
 plot_re_predictions("Combined")
 ```
 
