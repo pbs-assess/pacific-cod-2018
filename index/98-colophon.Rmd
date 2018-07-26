@@ -6,14 +6,13 @@ This version of the document was generated on `r Sys.time()`.
 
 The computational environment that was used to generate this version is as follows:
 
-```{r echo = FALSE, results='asis', message=FALSE, warning=FALSE, eval=FALSE}
+```{r env, echo = FALSE, results='asis', message=FALSE, warning=FALSE, eval=TRUE}
 library(FSA)
-panderOptions('table.alignment.default',
-  function(df) ifelse(sapply(df, is.numeric), 'right', 'left'))
+# panderOptions('table.alignment.default',
+#   function(df) ifelse(sapply(df, is.numeric), 'right', 'left'))
 pkgs <- c("broom", "gfplot", "ggplot2", "dplyr", "rstan", "knitr", "FSA")
 info <- devtools::session_info()$packages
 info %>% dplyr::filter(package %in% pkgs) %>%
-  dplyr::select(package, loadedversion, date) %>% 
-  dplyr::rename(version = loadedversion) %>% 
-  pander::pander()
+  dplyr::select(package, version, date) %>% 
+  knitr::kable(booktabs = TRUE, linesep = "")
 ```
