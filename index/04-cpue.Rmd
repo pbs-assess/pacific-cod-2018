@@ -323,7 +323,7 @@ stopifnot(all(out_trip$n_locality == 1))
 ```
 
 We can look at the distribution of catch, effort, and CPUE for this trip-level
-dataset (Figure \@ref(fig:cpue-dist-plots)).
+dataset (Figure \@ref(fig:cpue-dist-plots-catch-positive) through \@ref(fig:cpue-dist-plots-cpue-positive)).
 
 ```{r cpue-dist-plots-catch-positive, fig.cap="The distribution of Pacific Cod catch by year through time for trips that reported catching Pacific Cod."}
 g1_dist <- plot_pcod_dist(filter(out_trip, spp_catch > 0),
@@ -360,7 +360,7 @@ g4_dist
 \clearpage
 
 We can also look at the distribution of fished depth through time (Figure
-\@ref(fig:depth-time-cpue)). We can see a deepening of the trawl fishing after
+\@ref(fig:cpue-plot-depth-distributions-positive), \@ref(fig:cpue-plot-depth-distributions-all)). We can see a deepening of the trawl fishing after
 the early 1990s across all fishing trips and for just those fishing trips that
 caught Pacific Cod.
 
