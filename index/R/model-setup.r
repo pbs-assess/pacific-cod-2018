@@ -41,7 +41,7 @@ if(verbose) cat0("Last assessment year: \n  ", last.assess.yr)
 ## -----------------------------------------------------------------------------
 ## Directory in which the model directories reside
 ## -----------------------------------------------------------------------------
-model.dir <- file.path("..", "..", "models")
+model.dir <- file.path("..", "models")
 if(verbose) cat0("Models directory: \n  ", model.dir)
 
 ## -----------------------------------------------------------------------------
@@ -91,7 +91,7 @@ if(verbose){
 base.model.name <- "Reference model"
 base.model.dir.name <- "0_1_5CD_2018_Base"
 
-#verify.models(model.dir, base.model.dir.name, base.model.name)
+verify.models(model.dir, base.model.dir.name, base.model.name)
 
 if(verbose){
   cat0("Base model directory name for reference model:\n", base.model.dir.name)
@@ -107,9 +107,9 @@ sens.models.dir.name.1 <- c("0_2_5CD_2018_sig02",
 sens.models.name.1 <- c("Sigma = 0.2",
                         "Sigma = 0.15",
                         "Sigma = 0.1")
-#verify.models(model.dir,
-#              sens.models.dir.name.1,
-#              sens.models.name.1)
+verify.models(model.dir,
+              sens.models.dir.name.1,
+              sens.models.name.1)
 
 if(verbose){
   print.model.message(sens.models.dir.name.1,
