@@ -1,19 +1,6 @@
 # Commercial CPUE
 
-```{r, knitr-opts-cpue, echo=FALSE, cache=FALSE}
-knitr::opts_chunk$set(
-  echo = TRUE
-)
-```
-
-```{r}
-library(dplyr)
-library(ggplot2)
-library(gfplot)
-theme_set(theme_pbs())
-```
-
-```{r read-cpue-historic}
+```{r cpue-read-historic}
 if (!file.exists(here::here("data/historic-cpue-raw-data.rds"))) {
   d <- gfplot::get_cpue_historic(species = NULL, end_year = 2017)
   readr::write_rds(d, here::here("data/historic-cpue-raw-data.rds"))
@@ -69,12 +56,13 @@ depths deeper than 150m (Figure \@ref(fig:cpue-historic-depth)). Therefore, we
 created a commercial CPUE data set with an alternative threshold of 350m to
 encapsulate the vast majority of Pacific Cod fishing events.
 
-```{r cpue-historic-depth}
+```{r cpue-historic-depth, out.width="4in", fig.width=5, fig.cap="Depth distribution across all fishing events that caught Pacific Cod."}
 # Look at the depth distribution:
 filter(d, species_code == "222") %>%
-  group_by(year, fishing_event_id, trip_id) %>%
+  group_by(year, fishing_event_id) %>%
   summarise(best_depth_m = best_depth_m[[1]]) %>%
-  ggplot(aes(best_depth_m)) + geom_histogram(binwidth = 25) +
+  ggplot(aes(best_depth_m)) + 
+  geom_histogram(binwidth = 20) +
   geom_vline(xintercept = 150, lty = 2) +
   geom_vline(xintercept = 350, lty = 2) +
   scale_x_continuous(breaks = c(0, 150, 350, 500, 750), limits = c(0, 760)) +
@@ -158,15 +146,15 @@ d_depth_350_new_loc <- d_all %>%
   mutate(version = "Depth <= 350 & new localities")
 ```
 
-We can see that our version of the commercial CPUE dataset that seeks to
-replicate the last research document is nearly identical for some areas. We
-believe it is slightly different in 5CD because we used the true fishing years
-whereas the last research document used an old definition of fishing years for
+We can see that our version of the key locality commercial CPUE dataset that seeks to
+replicate the last research document is nearly identical. We
+believe it is slightly different, mostly for 5CD, because we used the true fishing years
+whereas the last research document used an older (slightly incorrect) definition of fishing years for
 consistency with a previous assessment. This version of commercial CPUE sums the catch
 the Pacific Cod in each fishing year and divides that by the summed effort
 across the entire bottom trawl fleet regardless of species caught or targeted.
 
-```{r cpue-historic-paul, fig.cap="TODO"}
+```{r cpue-historic-paul, fig.cap="Replicating the CPUE from the last research document."}
 # The data from the last research document:
 paul <- read.csv(here::here("data/cpue/Starr_2013_CPUE.csv"), stringsAsFactors = FALSE) %>%
   rename(year = FYear, area = Area, cpue = CPUE) %>%
@@ -189,7 +177,7 @@ localities has a very minor effect and adding the deeper fishing events has
 a moderate effect in all areas except 5CD (Figure
 \@ref(fig:cpue-historic-bridging-plot)).
 
-```{r cpue-historic-bridging-plot, fig.cap="TODO"}
+```{r cpue-historic-bridging-plot, fig.cap="Bridging analysis for CPUE with new localities and new depth threshold."}
 # Plot all of the raw CPUE versions:
 cpue_new <- bind_rows(
   d_depth_350,
@@ -202,10 +190,10 @@ cpue_reconstructed <- d_resdoc_2015 %>%
 
 left_join(cpue_new, cpue_reconstructed) %>%
   ggplot(aes(year, cpue, colour = version)) +
-  facet_grid(
+  facet_grid(area~
     factor(version, levels =
         c("New localities", "Depth <= 350",
-          "Depth <= 350 & new localities"))~area) +
+          "Depth <= 350 & new localities")), scales = "free_y") +
   geom_line() +
   geom_line(aes(y = cpue_reconstructed), lty = 2, col = "grey50") +
   theme_pbs() +
@@ -222,9 +210,9 @@ bind_rows(cpue_new, d_resdoc_2015) %>%
 We can fit an index standardization model to account for the effects of depth,
 month, and locality on the commercial CPUE times series. There are insufficient
 older records with vessel and latitude associated with them to include them in
-a model (Figure \@ref(fig:latitude-vessel-prop)).
+a model (Figure \@ref(fig:cpue-latitude-vessel-prop)).
 
-```{r latitude-vessel-prop, fig.cap="TODO"}
+```{r cpue-latitude-vessel-prop, fig.cap="The proportion of missing vessel and latitude for catch and effort records through time.", fig.asp=0.3}
 # Can we use vessel and latitude?
 g <- group_by(d_all, year, trip_id, fishing_event_id) %>%
   summarize(vessel = vessel[[1]]) %>%
@@ -243,7 +231,7 @@ g2 <- group_by(d_all, year, trip_id, fishing_event_id) %>%
 cowplot::plot_grid(g, g2)
 ```
 
-```{r, cpue-glmm-first-filter}
+```{r cpue-glmm-first-filter}
 raw_dat <- d_all %>%
   filter(locality_description %in% union(new_locality_2018, key_locality) |
       (year <= 1967 & (specific_area == "5A" | specific_area == "5B")) |
@@ -270,7 +258,7 @@ After removing fishing events deeper than 350m and those that did not occur in t
 We then condensed the dataset down to create a column for Pacific Cod catch,
 total hours fished, depth, month, and locality. However, prior to 1991, fishing
 events were 'rolled up' into trips in the groundfish databases. We can clearly
-see this in the data (Figure \@ref(fig:plot-effort-fe)). As a result, in order
+see this in the data (Figure \@ref(fig:cpue-plot-effort-fe)). As a result, in order
 to treat the timesseries consistently in the historical and recent decades, we
 conducted the rest of our analysis on commercial CPUE at the trip level. To do
 that we condensed the fishing event level data in 1991 and after into trips.
@@ -279,9 +267,9 @@ the depth has to be summarized in some way. We chose to summarize it as the
 mean of the log depth. Furthermore, we removed all fishing events in 1991 and
 after that were longer than six hours since these longer events are likely data
 entry errors (see the red line after 1990 in (Figure
-\@ref(fig:plot-effort-fe)).
+\@ref(fig:cpue-plot-effort-fe)).
 
-```{r make-cpue-fe-data}
+```{r cpue-make-fe-data}
 raw_dat <- filter(raw_dat, !is.na(locality_desc))
 
 # Main dataset for model fitting:
@@ -295,11 +283,13 @@ out <- raw_dat %>% group_by(year, area, trip_id, fishing_event_id) %>%
   ) %>% ungroup()
 ```
 
-```{r plot_pcod_dist, fig.cap="TODO"}
+```{r cpue-plot-pcod-dist-function}
 plot_pcod_dist <- function(dat, y, ylab = "", title = "") {
-  ggplot(dat, aes_string("as.factor(year)", y = y)) + geom_boxplot() +
-    scale_y_log10(breaks = c(0.1, 1, 10, 100, 1000, 10000), labels = scales::comma) +
-    scale_x_discrete(breaks = seq(1950, 2030, 2)) +
+  ggplot(dat, aes_string("as.factor(year)", y = y)) + 
+    geom_boxplot(outlier.size = 0.3, outlier.alpha = 0.5) +
+    scale_y_log10(breaks = c(0.1, 1, 10, 100, 1000, 10000), 
+      labels = scales::comma) +
+    scale_x_discrete(breaks = seq(1950, 2030, 5)) +
     theme_pbs() +
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
     facet_wrap(~area) + xlab("") + ylab(ylab) +
@@ -307,7 +297,7 @@ plot_pcod_dist <- function(dat, y, ylab = "", title = "") {
 }
 ```
 
-```{r plot-effort-fe, fig.cap="TODO"}
+```{r cpue-plot-effort-fe, fig.cap="The distribution of fishing effort by year through time. Note that prior to 1991 the fishing events are rolled up to a trip level. The horizontal red line illustrates the six hour threshold that was used to remove erroneous fishing events in 1991 and after."}
 plot_pcod_dist(out, y = "hours_fished", ylab = "Effort (hr)",
   title = "Effort, all fishing events (trips in older years)") +
   geom_hline(yintercept = 6, col = "red")
@@ -335,39 +325,53 @@ stopifnot(all(out_trip$n_locality == 1))
 We can look at the distribution of catch, effort, and CPUE for this trip-level
 dataset (Figure \@ref(fig:cpue-dist-plots)).
 
-```{r cpue-dist-plots, fig.asp=3, fig.cap="TODO"}
-g1 <- plot_pcod_dist(filter(out_trip, spp_catch > 0),
+```{r cpue-dist-plots-catch-positive, fig.cap="The distribution of Pacific Cod catch by year through time for trips that reported catching Pacific Cod."}
+g1_dist <- plot_pcod_dist(filter(out_trip, spp_catch > 0),
   y = "spp_catch",
   ylab = "Catch (kg)",
   title = "Catch, positive trips")
+g1_dist
+```
 
-g2 <- plot_pcod_dist(filter(out_trip, spp_catch > 0),
+```{r cpue-dist-plots-effort-positive, fig.cap="The distribution of effort by year through time for trips that reported catching Pacific Cod."}
+g2_dist <- plot_pcod_dist(filter(out_trip, spp_catch > 0),
   y = "hours_fished",
   ylab = "Effort (hours)",
   title = "Effort, positive trips")
+g2_dist
+```
 
-g3 <- plot_pcod_dist(out_trip, y = "hours_fished",
+
+```{r cpue-dist-plots-effort-all, fig.cap="The distribution of effort by year through time across all bottom trawl trips."}
+g3_dist <- plot_pcod_dist(out_trip, y = "hours_fished",
   ylab = "Effort (hours)",
   title = "Effort, all trips")
+g3_dist
+```
 
-g4 <- plot_pcod_dist(filter(out_trip, spp_catch > 0),
+```{r cpue-dist-plots-cpue-positive, fig.cap="The distribution of Pacific Cod commercial CPUE by year through time for trips that reported catching Pacific Cod."}
+g4_dist <- plot_pcod_dist(filter(out_trip, spp_catch > 0),
   y = "spp_catch/hours_fished",
   ylab = "CPUE (kg/hr)",
   title = "CPUE, positive trips")
-cowplot::plot_grid(g1, g2, g3, g4, ncol = 1)
+g4_dist
 ```
+
+\clearpage
 
 We can also look at the distribution of fished depth through time (Figure
 \@ref(fig:depth-time-cpue)). We can see a deepening of the trawl fishing after
 the early 1990s across all fishing trips and for just those fishing trips that
 caught Pacific Cod.
 
-```{r, depth-time-cpue, fig.cap="TODO"}
+```{r cpue-plot-depth-distributions-positive, fig.cap="The distribution of average trip fishing for trips that caught Pacific Cod. Note the deepening in 3CD and 5AB."}
 plot_pcod_dist(filter(out_trip, spp_catch > 0),
   y = "exp(mean_log_depth)",
   ylab = "Mean depth",
   title = "Mean depth, positive trips")
+```
 
+```{r cpue-plot-depth-distributions-all, fig.cap="The distribution of average trip fishing for trips across all trips. Note the deepening in 3CD and 5AB."}
 plot_pcod_dist(out_trip,
   y = "exp(mean_log_depth)",
   ylab = "Mean depth",
@@ -380,7 +384,7 @@ effects could be easily estimated for all localities. This is needed, despite
 the above key localitys approach, because of the addition of 3CD and the
 inclusion of all catch before 1967 in 5AB.
 
-```{r, cpue-localities-b4-filter, fig.cap="Left is before filtering; right is after."}
+```{r, cpue-localities-before-filter, fig.cap="The number of positive trips for Pacific Cod across localities initially included in the data set. Key localities for 5AB and 5CD (except before 1967) and without a locality filter on 3CD (this could be changed).", fig.asp=1.3}
 depth_bands <- c(seq(0, 150, 25), 200, 350)
 out_trip$year_factor <- as.factor(out_trip$year)
 out_trip$month <- as.factor(out_trip$month)
@@ -393,8 +397,13 @@ out_trip <- out_trip %>%
 g1 <- group_by(out_trip, area, locality) %>%
   summarize(pos_catch_tot = sum(pos_catch)) %>%
   ggplot(aes(locality, pos_catch_tot)) + geom_col() +
-  facet_wrap(~area, scales = "free") + coord_flip()
+  ylab("") + xlab("Positive trips") +
+  facet_wrap(~area, scales = "free") + coord_flip() +
+  ggtitle("Before locality combining")
+g1
+```
 
+```{r, cpue-localities-after-filter, fig.cap="The number of positive trips for Pacific Cod across localities after grouping localities with less than 100 positive trips into a new category 'minorlocality'.", fig.asp=1.1}
 small_localities <- group_by(out_trip, area, locality) %>%
   summarize(pos_catch_tot = sum(pos_catch)) %>%
   filter(pos_catch_tot < 100) %>%
@@ -412,14 +421,18 @@ out_trip <- mutate(out_trip, locality = as.character(locality)) %>%
 g2 <- group_by(out_trip, area, locality) %>%
   summarize(pos_catch_tot = sum(pos_catch)) %>%
   ggplot(aes(locality, pos_catch_tot)) + geom_col() +
-  facet_wrap(~area, scales = "free") + coord_flip()
+  facet_wrap(~area, scales = "free") +
+  ylab("") + xlab("Positive trips") +
+  coord_flip() +
+  ggtitle("After locality combining")
+g2
 
-cowplot::plot_grid(g1, g2, ncol = 2)
+# cowplot::plot_grid(g1, g2, ncol = 1)
 ```
 
 We can also look at the catch by month and depth bin (Figure \@ref(fig:month-depth-catch)).
 
-```{r month-depth-catch, fig.cap="Catch by month and depth bin."}
+```{r cpue-month-depth-catch, fig.cap="Summed catch across all years by month and depth bin. The 200m depth bin includes depths up to 350m.", fig.asp=1}
 g1 <- group_by(out_trip, area, month) %>%
   summarise(catch = sum(spp_catch)) %>%
   ggplot(aes(month, catch)) + geom_point() + facet_wrap(~area)
@@ -428,13 +441,15 @@ g2 <- group_by(out_trip, area, depth_bin) %>%
   summarise(catch = sum(spp_catch)) %>%
   ggplot(aes(depth_bin, catch)) + geom_point() + facet_wrap(~area)
 
-cowplot::plot_grid(g1, g2, ncol = 2)
+cowplot::plot_grid(g1, g2, ncol = 1)
 ```
 
 We will fit a standardization model with a quadratic effect for depth and
-random intercepts for month and locality.
+random intercepts for month and locality. Details to follow. This analysis renders a similar shape to fitting a GLM with factors for depth bin, month, and locality, but lets us produce a CPUE timeseries at an average depth, average month, and average locality while integrating over the uncertainty in the month- and locality-specific estimates. It is fit in TMB as a delta-lognormal model --- binary logistic regression estimate the probability of a trip catching Pacific Cod and a linear regression fit to log CPUE estimates the expected CPUE given that some Pacific Cod was caught. The two are combined by multiplying the probability of a positive event by the expected value if a positive event occurs. Standard errors are then calculated in log space on the combined value using the automatic Delta method built into TMB.
 
-```{r, standardize-depth}
+TODO: I can plot out the coefficients but I haven't adopted the code yet to work with the random interceptor version. 
+
+```{r cpue-standardize-depth}
 mean_log_pcod_depth <- mean(filter(out_trip, pos_catch == 1)$mean_log_depth)
 sd_log_pcod_depth <- sd(filter(out_trip, pos_catch == 1)$mean_log_depth)
 # round(exp(mean_log_pcod_depth), 0)
@@ -445,7 +460,7 @@ out_trip <- mutate(out_trip,
 )
 ```
 
-```{r, fit-glmm-models}
+```{r cpue-fit-glmm-models}
 areas <- unique(out_trip$area)
 formulas <- data_frame(formula = c(
   "year_factor",
@@ -477,7 +492,7 @@ saveRDS(predictions_re,
   file = here::here("data/generated/cpue-re-predictions.rds"))
 ```
 
-```{r plot-glmm-standardizations, fig.cap="TODO"}
+```{r cpue-plot-glmm-standardizations, fig.cap="The binomial and lognormal estimates of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model. Shaded ribbons illustrates the 95% confidence intervals.", fig.asp=1.2}
 unstandardized <- predictions_re %>%
   filter(formula_version == "Unstandardized") %>%
   rename(est_unstandardized = est, lwr_unstandardized = lwr, upr_unstandardized = upr) %>%
@@ -508,9 +523,49 @@ plot_re_predictions <- function(model_version = "Combined") {
     guides(colour = FALSE, fill = FALSE) +
     ggtitle(model_version)
 }
-g_combined <- plot_re_predictions("Combined")
 g_binomial <- plot_re_predictions("Binomial")
 g_lognormal <- plot_re_predictions("Lognormal")
-cowplot::plot_grid(g_combined, g_binomial, ncol = 1)
+cowplot::plot_grid(g_binomial, g_lognormal, ncol = 1)
 ```
 
+```{r, fig.cap="The unconditional combined estimate of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model."}
+plot_re_predictions("Combined")
+```
+
+```{r cpue-comparison-arithmetic, fig.cap="A comparison of the arithmetic raw CPUE as illustrated earlier in the document (reconstructed with additional depth and localities) compared with the GLMM standardized mean CPUE. The upper version shows the unskilled values and the lower version shows the values scaled by dividing them by their geometric mean.", fig.asp=1}
+glmm_standardized <- predictions_re %>%
+  filter(formula_version == "Full standardization" & model == "Combined") %>% 
+  select(year, area, est, lwr, upr) %>% 
+  rename(cpue = est) %>%
+  mutate(version = "GLMM standardized mean CPUE") %>% 
+  as_tibble()
+  
+cpue_comparison <- d_depth_350_new_loc %>% select(-pcod_catch, -effort) %>%
+  mutate(version = paste("Forrest et al. 2015\n+", version)) %>%
+  bind_rows(glmm_standardized)
+
+g_cpue_comparison <- cpue_comparison %>% 
+  ggplot(aes(year, cpue)) +
+  geom_ribbon(aes(ymin = lwr, ymax = upr, fill = version), alpha = 0.5) +
+  geom_line(aes(colour = version)) +
+  facet_wrap(~area) +
+  labs(colour = "Version", fill = "Version") +
+  ggtitle("Unscaled CPUE times series") +
+  ylab("CPUE (kg / hr)") +
+  xlab("")
+
+g_cpue_comparison2 <- cpue_comparison %>%
+  group_by(version, area) %>% 
+  mutate(geo_mean = exp(mean(log(cpue)))) %>% 
+  mutate(upr = upr/geo_mean, lwr = lwr/geo_mean, cpue = cpue/geo_mean) %>%
+  ggplot(aes(year, cpue)) +
+  geom_ribbon(aes(ymin = lwr, ymax = upr, fill = version), alpha = 0.5) +
+  geom_line(aes(colour = version)) +
+  facet_wrap(~area) +
+  labs(colour = "Version", fill = "Version") +
+  ggtitle("Scaled to same geometric mean") +
+  ylab("Proportion of geometric mean CPUE") +
+  xlab("")
+
+cowplot::plot_grid(g_cpue_comparison, g_cpue_comparison2, ncol = 1)
+```
