@@ -35,7 +35,7 @@ library(lubridate)
 #' @return Nothing, creates files in the cache.dir directory
 extract.data <- function(species = "pacific cod",
                          cache.dir = "cache",
-                         end.year = 2017,
+                         end.year,
                          unsorted.only = FALSE){
   cache_pbs_data(species,
                  path = cache.dir,
@@ -44,10 +44,12 @@ extract.data <- function(species = "pacific cod",
 
   ## Extract CPUE data
   database <- c("GFFOS", "GFCatch", "PacHarvest")
-  ## sql <- readLines("pcod-cpue.sql")
-  ## pcod_cpue <- run_sql(database = database, query = sql)
-  pcod_cpue <- get_cpue_historic(222, fishing_year = TRUE, end_year = end.year)
-  saveRDS(pcod_cpue, file = file.path(cache.dir, "pbs-cpue.rds"),
+  cpue <- get_cpue_historic(species,
+                            alt_year_start_date = "04-01",
+                            areas = c("3[CD]+", "5[AB]+", "5[CDE]+"),
+                            end_year = end.year)
+  saveRDS(cpue,
+          file = file.path(cache.dir, "pbs-cpue.rds"),
           compress = FALSE)
   message("All data extracted and saved in the folder `",
           cache.dir, "`.")

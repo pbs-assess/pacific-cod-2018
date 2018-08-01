@@ -152,21 +152,19 @@ build <- function(ovwrt.base = FALSE,
   ##
   ## ovwrt.base - overwrite the RData file for the base model?
   ## ovwrt.sens - overwrite the RData files for the sensitivity models?
-  ## ovwrt.retro - overwrite the RData files for the retrospective runs?
+  ## ovwrt.retro - overwrite the RData files for the retrospective models?
 
   ## Base model
-  create.rdata.file(model.name = base.model,
+  create.rdata.file(model.name = base.model.dir.name,
                     ovwrt.rdata = ovwrt.base,
                     load.proj = TRUE,
                     low = confidence.vals[1],
                     high = confidence.vals[2],
-                    burnin = 0,
-                    fixed.cutoffs = fixed.cutoffs,
                     verbose = ss.verbose)
 
   ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the lapply below to work right
-  sens.models.names.list <- c(unlist(sens.model.dir.name.1))
+  sens.models.names.list <- c(unlist(sens.models.dir.name.1))
                              ## unlist(sens.model.dir.name.2),
                              ## unlist(sens.model.dir.name.3),
                              ## unlist(sens.model.dir.name.4),
@@ -182,13 +180,19 @@ build <- function(ovwrt.base = FALSE,
       load.proj = TRUE,
       low = confidence.vals[1],
       high = confidence.vals[2],
-      burnin = 0,
-      which.stock = which.stock,
-      which.model = which.model,
-      fixed.cutoffs = fixed.cutoffs,
-      verbose = ss.verbose)
+      verbose = verbose)
   }
 
   ## Retrospective models
+  for(model.nm in retro.dir.names){
+    create.rdata.file(
+      models.dir = retro.dir,
+      model.name = model.nm,
+      ovwrt.rdata = ovwrt.retro,
+      load.proj = TRUE,
+      low = confidence.vals[1],
+      high = confidence.vals[2],
+      verbose = verbose)
+  }
 
 }
