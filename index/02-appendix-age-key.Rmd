@@ -26,6 +26,34 @@ x <- filter(d$survey_samples,
   is.element(survey_abbrev, c("SYN HS", "SYN QCS","SYN WCVI")))
 ```
 
+```{r}
+theme_set(theme_minimal())
+
+xx <- d$commercial_samples %>%
+  filter(!is.na(length), sampling_desc == "UNSORTED")
+
+areas <- c("^3[CD]+", "^5[AB]+", "^5[CD]+")
+areas <- c("^3[CD]+", "^5[ABCD]+")
+xx$area <- NA
+for (i in seq_along(areas)) {
+  xx[grepl(areas[[i]], xx$major_stat_area_name), "area"] <-
+    gsub("\\[|\\]|\\+", "", areas[[i]])
+}
+xx %>%
+  filter(!is.na(area)) %>%
+  group_by(area, year) %>%
+  filter(year > 1995) %>%
+  summarise(
+    u = quantile(length, probs = 0.75),
+    l = quantile(length, probs = 0.25),
+    m = quantile(length, probs = 0.55)
+  ) %>%
+  ggplot(aes(year, m, ymin = l, ymax = u)) +
+  geom_ribbon(alpha = 0.6, aes(fill = area)) +
+  geom_line(aes(colour = area), lwd = 1.2)
+```
+
+
 # Age-based analyses for Pacific Cod
 
 - There is very limited ageing data available for BC Pacific Cod populations.
@@ -154,6 +182,29 @@ vb_fits <-
       fit_vb(.dat, .sex, method = "mcmc", chains = 1, uniform_priors = TRUE)
     })
   })
+```
+
+```{r}
+preds <- plyr::ldply(vb_fits, function(.x) bind_rows(data.frame(.x[[1]]$predictions, sex = "male"), data.frame(.x[[2]]$predictions, sex = "female"))) %>% filter(sex == "female")%>% filter(!.id %in% c("SYN HS, SYN QCS, SYN WCVI"))
+
+dats <- plyr::ldply(vb_fits, function(.x) bind_rows(data.frame(.x[[1]]$data), data.frame(.x[[2]]$data))) %>%
+  filter(sex == 2) %>% filter(!.id %in% c("SYN HS, SYN QCS, SYN WCVI"))
+
+ggplot(dats, aes(age, length, colour = .id)) +
+  geom_point(position = position_jitter(width = 0.15, height = 0), alpha = 0.7) +
+  geom_line(data = preds, lwd = 2)
+
+ggplot(dats, aes(as.factor(age), length, fill = .id)) +
+  geom_boxplot() +
+  geom_line(data = preds, lwd = 2, aes(x = age+1, colour = .id))
+```
+
+
+```{r}
+map(vb_fits, ~ data_frame(
+  object_male = .x[[1]], object_female = .x[[2]],
+      col = c(Female = "red", Male = "grey40"), lab_x = 0.38) +
+    ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")))
 ```
 
 ```{r vb-figs, fig.cap = "Caption", fig.asp=0.3, fig.width=9, out.width="6.5in"}
