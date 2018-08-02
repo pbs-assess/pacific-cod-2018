@@ -452,7 +452,7 @@ cowplot::plot_grid(g1, g2, ncol = 1)
 ```
 
 We will fit a standardization model with a quadratic effect for depth and
-random intercepts for month and locality. Details to follow. This analysis renders a similar shape to fitting a GLM with factors for depth bin, month, and locality, but lets us produce a CPUE timeseries at an average depth, average month, and average locality while integrating over the uncertainty in the month- and locality-specific estimates. It is fit in TMB as a delta-lognormal model --- binary logistic regression estimate the probability of a trip catching Pacific Cod and a linear regression fit to log CPUE estimates the expected CPUE given that some Pacific Cod was caught. The two are combined by multiplying the probability of a positive event by the expected value if a positive event occurs. Standard errors are then calculated in log space on the combined value using the automatic Delta method built into TMB.
+random intercepts for month and locality. Details to follow. This analysis renders a similar shape to fitting a GLM with factors for depth bin, month, and locality, but lets us produce a CPUE timeseries at an average depth, average month, and average locality while integrating over the uncertainty in the month- and locality-specific estimates. It is fit in TMB as a delta-Gamma model --- binary logistic regression estimate the probability of a trip catching Pacific Cod and a Gamma GLM fit to CPUE estimates the expected CPUE given that some Pacific Cod was caught. The two are combined by multiplying the probability of a positive event by the expected value if a positive event occurs. Standard errors are then calculated in log space on the combined value using the automatic Delta method built into TMB.
 
 TODO: I can plot out the coefficients but I haven't adopted the code yet to work with the random intercept version.
 
@@ -496,10 +496,10 @@ if (!file.exists(here::here("data/generated/cpue-models-re.rds"))) {
   m_re <- plyr::mlply(torun, function(formula, area, formula_version) {
     df <- out_trip[out_trip$area == area, , drop = FALSE]
     message("Fitting area ", area, " and model ", formula)
-    gfplot:::fit_cpue_index_re(df,
+    fit_cpue_index(df,
       formula_binomial = as.formula(paste("pos_catch ~", formula)),
-      formula_lognormal =
-        as.formula(paste("log(spp_catch / hours_fished) ~", formula))
+      formula_gamma =
+        as.formula(paste("spp_catch / hours_fished ~", formula))
     )
   })
   readr::write_rds(m_re, here::here("data/generated/cpue-models-re.rds"))
@@ -514,20 +514,29 @@ saveRDS(predictions_re,
 
 \clearpage
 
-```{r cpue-plot-glmm-standardizations, fig.cap="The binomial and lognormal estimates of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model. Shaded ribbons illustrates the 95 percent confidence intervals.", fig.asp=1.2}
-unstandardized <- predictions_re %>%
-  filter(formula_version == "Unstandardized") %>%
-  rename(est_unstandardized = est, lwr_unstandardized = lwr, upr_unstandardized = upr) %>%
-  select(year, area, model, est_unstandardized, lwr_unstandardized, upr_unstandardized)
+```{r cpue-plot-glmm-standardizations, fig.cap="The binomial and Gamma estimates of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model. Shaded ribbons illustrates the 95 percent confidence intervals.", fig.asp=1.2}
+plot_re_predictions <- function(dat, model_version = "Combined", scale = FALSE) {
 
-plot_re_predictions <- function(model_version = "Combined") {
-  predictions_re %>%
+  if (scale) {
+    dat <- dat %>% group_by(formula_version, model, area) %>%
+      mutate(geo_mean = exp(mean(log(est)))) %>%
+      mutate(upr = upr/geo_mean, lwr = lwr/geo_mean, est = est/geo_mean) %>%
+      ungroup()
+  }
+
+  unstandardized <- dat %>%
+    filter(formula_version == "Unstandardized") %>%
+    rename(est_unstandardized = est, lwr_unstandardized = lwr, upr_unstandardized = upr) %>%
+    select(year, area, model, est_unstandardized, lwr_unstandardized, upr_unstandardized)
+
+  temp <- dat %>%
     filter(formula_version != "Unstandardized") %>%
     left_join(unstandardized, by = c("area", "year", "model")) %>%
     filter(model == model_version) %>%
     mutate(formula_version = gsub("\\+ ", " ", formula_version)) %>%
     mutate(formula_version =
-        gsub("Full standardization", "All variables", formula_version)) %>%
+        gsub("Full standardization", "All variables", formula_version))
+  temp %>%
     ggplot(aes(year, est, ymin = upr, ymax = lwr,
       fill = area)) +
     geom_line(aes(y = est_unstandardized), colour = "grey30", lty = 1) +
@@ -540,20 +549,20 @@ plot_re_predictions <- function(model_version = "Combined") {
     facet_grid(area~formula_version, scales = "free_y") +
     labs(y = "CPUE (kg/hour)", x = "") +
     ylim(0, NA) +
-    geom_vline(xintercept = 1996, lty = 2, col = "grey60") +
-    geom_vline(xintercept = 1991, lty = 2, col = "grey80") +
+    # geom_vline(xintercept = 1996, lty = 2, col = "grey60") +
+    # geom_vline(xintercept = 1991, lty = 2, col = "grey80") +
     guides(colour = FALSE, fill = FALSE) +
     ggtitle(model_version)
 }
-g_binomial <- plot_re_predictions("Binomial")
-g_lognormal <- plot_re_predictions("Lognormal")
-cowplot::plot_grid(g_binomial, g_lognormal, ncol = 1)
+g_binomial <- plot_re_predictions(predictions_re, "Binomial")
+g_gamma <- plot_re_predictions(predictions_re, "Gamma")
+cowplot::plot_grid(g_binomial, g_gamma, ncol = 1)
 ```
 
 \clearpage
 
 ```{r pue-plot-glmm-standardizations-combined, fig.cap="The unconditional combined estimate of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model."}
-plot_re_predictions("Combined")
+plot_re_predictions(predictions_re, "Combined")
 ```
 
 ```{r cpue-comparison-arithmetic, fig.cap="A comparison of the arithmetic raw CPUE as illustrated earlier in the document (reconstructed with additional depth and localities) compared with the GLMM standardized mean CPUE. The upper version shows the unskilled values and the lower version shows the values scaled by dividing them by their geometric mean.", fig.asp=1}
@@ -694,8 +703,13 @@ filter(dfleet, !locality %in% large_localities$locality)
 dfleet <- inner_join(dfleet, large_localities, by = c("locality", "area"))
 ```
 
-
 ```{r}
+enough_lat <- filter(dfleet) %>% group_by(area, latitude) %>% summarise(n = n()) %>%
+  filter(n > 100)
+dfleet <- inner_join(dfleet, enough_lat, by = c("latitude", "area"))
+```
+
+```{r fit-1996-re-cpue}
 areas <- unique(dfleet$area)
 formulas <- data_frame(
   formula = c(
@@ -720,23 +734,36 @@ formulas <- data_frame(
 torun <- expand.grid(formula = formulas$formula, area = areas, stringsAsFactors = FALSE)
 torun <- inner_join(torun, formulas, by = "formula")
 
+filter(dfleet, pos_catch == 1) %>% group_by(area) %>%
+  summarise(
+    mean_depth = mean(best_depth),
+    mean_latitude = mean(as.numeric(as.character(latitude))))
+
 if (!file.exists(here::here("data/generated/1996-cpue-models-re.rds"))) {
   m1996_re <- plyr::mlply(torun, function(formula, area, formula_version) {
 
     df <- dfleet[dfleet$area == area, , drop = FALSE]
 
-    df$locality <- gfplot::f(df$locality, ref = get_most_common_level)
-    df$vessel   <- gfplot::f(df$vessel, ref = get_most_common_level)
-    df$latitude <- gfplot::f(df$latitude, ref = get_most_common_level)
-    df$depth_bin <- relevel(as.factor(df$depth_bin), ref = "075")
-    df$month <- relevel(as.factor(df$month), ref = "05")
+    # RE:
+    df$locality <- as.factor(df$locality)
+    df$vessel   <- as.factor(df$vessel)
+
+    # FE:
+    df$month <- relevel(as.factor(df$month), ref = "04")
+    if (area == "3CD") {
+      df$latitude <- relevel(as.factor(df$latitude), ref = "49.0")
+      df$depth_bin <- relevel(as.factor(df$depth_bin), ref = "150")
+    } else {
+      df$latitude <- relevel(as.factor(df$latitude), ref = "52.2")
+      df$depth_bin <- relevel(as.factor(df$depth_bin), ref = "125")
+    }
 
     message("Fitting area ", area, " and model ", formula)
 
-    gfplot:::fit_cpue_index_re(df,
+    fit_cpue_index(df,
       formula_binomial = as.formula(paste("pos_catch ~", formula)),
-      formula_lognormal =
-        as.formula(paste("log(spp_catch / hours_fished) ~", formula))
+      formula_gamma =
+        as.formula(paste("(spp_catch / hours_fished) ~", formula))
     )
 
   })
@@ -751,16 +778,17 @@ saveRDS(predictions_re,
 ```
 
 ```{r}
-# predictions_1996_re %>%
-#   mutate(version = "GLMM") %>%
-#   mutate(area = "5ABCD") %>%
-#   rename(cpue = est) %>%
-#   ggplot(aes(year, cpue)) +
-#   geom_ribbon(aes(ymin = lwr, ymax = upr, fill = version), alpha = 0.5) +
-#   geom_line(aes(colour = version)) +
-#   facet_grid(model~area, scales = "free_y") +
-#   labs(colour = "Version", fill = "Version") +
-#   ggtitle("Unscaled CPUE times series") +
-#   ylab("CPUE (kg / hr)") +
-#   xlab("")
+toplot <- which(torun$formula_version == "Full standardization")
+plot_cpue_index_coefs(m1996_re[[toplot[1]]])
+plot_cpue_index_coefs(m1996_re[[toplot[2]]])
+```
+
+
+```{r}
+g_1996_binomial <- plot_re_predictions(predictions_re, "Binomial")
+g_1996_gamma <- plot_re_predictions(predictions_re, "Gamma")
+cowplot::plot_grid(g_1996_binomial, g_1996_gamma, ncol = 1)
+
+plot_re_predictions(predictions_1996_re, "Combined", scale = FALSE)
+plot_re_predictions(predictions_1996_re, "Combined", scale = TRUE)
 ```
