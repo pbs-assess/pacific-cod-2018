@@ -25,6 +25,7 @@ knitr::opts_chunk$set(
 ```{r packages, cache=FALSE}
 library("dplyr")
 library("ggplot2")
+devtools::install_github("pbs-assess/gfplot", ref = "eae5d3d5")
 library("gfplot")
 ggplot2::theme_set(gfplot::theme_pbs())
 ```
@@ -93,6 +94,19 @@ hist(dfleet$best_depth)
 Match the depth bins of Paul and change the base factor levels to specific levels (roughly the most common levels):
 
 ```{r}
+bin_clean <- function(x, bins, clean = TRUE) {
+  out <- bins[findInterval(x, bins, rightmost.closed = TRUE)]
+  max_char <- max(nchar(out))
+  ndec <- ndecimals(out)
+  if (clean & ndec == 0) {
+    out <- sprintf(paste0("%0", max_char, "d"), out)
+  } # pad with zeros
+  if (clean & ndec > 0) {
+    out <- sprintf(paste0("%.", ndec, "f"), out)
+  } # pad after decimal
+  as.factor(out)
+}
+
 # depth_bands <- c(seq(25, 150, 25), 200, 325)
 depth_bands <- seq(25, 325, 25)
 dfleet <- dfleet %>%
