@@ -1,60 +1,14 @@
-## To extract PCod data and get catch, survey indices, and mean weights:
+## Extract PCod data and get catch, survey indices, and mean weights:
 ## For indices:
 ## 5CD - use HSMAS, HSSS, and CPUE
 ## 5AB - use QCSSS and CPUE
 ## 3CD - use WCVISS and CPUE
-##
-## extract.data()
-## load.data()
-##
-## ca5ab <- get.total.catch.yr(areas = "5[AB]+")
-## ca5cd <- get.total.catch.yr(areas = "5[CD]+")
-## ca3cd <- get.total.catch.yr(areas = "3[CD]+")
-## qcsss <- get.survey.index(survey.series.id = 1)
-## hsmas <- get.survey.index(survey.series.id = 2)
-## hsss <- get.survey.index(survey.series.id = 3)
-## wcviss <- get.survey.index(survey.series.id = 4)
-## mw5ab <- get.mean.weight(areas = "5[AB]+")
-## mw5cd <- get.mean.weight(areas = "5[CD]+")
-## mw3cd <- get.mean.weight(areas = "3[CD]+")
 
 library(gfplot)
 library(ggplot2)
 library(dplyr)
 library(rstan)
 library(lubridate)
-
-#' Extract species data from database to RDS files
-#'
-#' @param species Species code or name
-#' @param cache.dir Reletive name of the directory to hold the RDS files
-#' @param end.year End year for the data extraction
-#' @param unsorted.only Only include 'unsorted' samples. Removes 'keepers'
-#'   and 'sorted'
-#'
-#' @return Nothing, creates files in the cache.dir directory
-extract.data <- function(species = "pacific cod",
-                         cache.dir = "cache",
-                         end.year,
-                         unsorted.only = FALSE){
-  cache_pbs_data(species,
-                 path = cache.dir,
-                 unsorted_only = unsorted.only,
-                 survey_sets = FALSE)
-
-  ## Extract CPUE data
-  database <- c("GFFOS", "GFCatch", "PacHarvest")
-  cpue <- get_cpue_historic(species,
-                            alt_year_start_date = "04-01",
-                            areas = c("3[CD]+", "5[AB]+", "5[CDE]+"),
-                            end_year = end.year)
-  saveRDS(cpue,
-          file = file.path(cache.dir, "pbs-cpue.rds"),
-          compress = FALSE)
-  message("All data extracted and saved in the folder `",
-          cache.dir, "`.")
-
-}
 
 #' Load the data from the RDS files produced by extract.data()
 #'
@@ -65,46 +19,19 @@ load.data <- function(cache.dir = "cache"){
   readRDS(file.path(cache.dir, "pacific-cod.rds"))
 }
 
-#' Calculate the total catch by year and quarter of year
-#'
-#' @param dat  A tibble of the catch from gfplot package
-#'
-#' @return A tibble with year, quarter, and catch weight
-total.catch.yr.qtr <- function(dat){
-  mutate(dat,
-         month = month(best_date),
-         quarter = case_when(
-           month %in% seq(1, 3) ~ 4,
-           month %in% seq(4, 6) ~ 1,
-           month %in% seq(7, 9) ~ 2,
-           month %in% seq(10, 12) ~ 3
-         )) %>%
-    select(-month) %>%
-    mutate(year = if_else(quarter == 4, year - 1, year)) %>%
-    group_by(year, quarter) %>%
-    summarize(catch_weight = sum(landed_kg) + sum(discarded_kg)) %>%
-    ungroup()
-}
-
 #' Extract table of commercial specimens for areas requested
 #'
 #' @param dat A tibble of the commercial samples from gfplot package
-#' @param areas A regexp like this: "5[CD]+"
 #' @param a Growth parameter alpha
 #' @param b Growth parameter beta
 #'
-#' @return A tibble of all commercial specimens for the areas requested,
+#' @return A tibble of all commercial specimens,
 #'   with new columns 'month', 'quarter', and 'calc.weight' added
 #'   calc.weight is calculated from length according to the Appendix in the
 #'   2018 PCod stock assessment.
 comm.specimens  <- function(dat,
-                            areas = NULL,
                             a,
                             b){
-  if(!is.null(areas)){
-    dat <- dat %>% inner_join(gfplot::pbs_areas, by = "major_stat_area_code") %>%
-      filter(grepl(areas, major_stat_area_description))
-  }
 
   dat <- mutate(dat,
                 month = month(trip_start_date),
@@ -162,34 +89,79 @@ calc.mean.weight <- function(dat){
 
 }
 
-#' Calculate the total catch by year
+#' Calculate the total catch by year and quarter
 #'
 #' @param dat A tibble of the catch from gfplot package
-#' @param areas A regexp like this: "5[CD]+"
+#' @param area A vector of regexps like this: c("3[CD]+", "5[CD]+")
+#'   Used only for USA data.
+#' @param include.usa Toggle to include the USA catch in the table and total_catch
+#'  column sums
 #'
 #' @return A tibble with the year and sum of landed and discarded catch
-#'   by year
-get.total.catch.yr <- function(dat,
-                               areas = NULL){
-  if(!is.null(areas)){
-    dat <- dat %>%
-      inner_join(gfplot::pbs_areas, by = "major_stat_area_code") %>%
-      filter(grepl(areas, major_stat_area_description))
+#'   by year and quarter.
+total.catch.yr.qtr <- function(dat,
+                               areas = NULL,
+                               include.usa = FALSE){
+  if(is.null(areas)){
+    stop("You must supply at least one area.")
+  }
+  ## Bring in USA landings from csv file
+  areas <- gsub("\\[|\\]|\\+", "", areas)
+  area.num <- substr(areas[1],
+                     grep("[0-9]", areas),
+                     grep("[0-9]", areas))
+
+  usa <- NULL
+  if(length(grep("AB", areas))){
+    fn <- paste0("usa-catch-", area.num, "AB.csv")
+    usa <- as_tibble(read.csv(fn))
+  }
+  if(length(grep("CD", areas))){
+    fn <- paste0("usa-catch-", area.num, "CD.csv")
+    usa.cd <- as_tibble(read.csv(fn))
+    if(!is.null(usa)){
+      ## Merge the two area catches (sum) into a single tibble
+      usa <- left_join(usa, usa.cd, by = "year") %>%
+        mutate(usa_catch.x, usa_catch.x = if_else(is.na(usa_catch.x),
+                                                  0L,
+                                                  usa_catch.x)) %>%
+        mutate(usa_catch.y, usa_catch.y = if_else(is.na(usa_catch.y),
+                                                  0L,
+                                                  usa_catch.y)) %>%
+        mutate(usa_catch = usa_catch.x + usa_catch.y) %>%
+        select(-c("usa_catch.x", "usa_catch.y"))
+    }else{
+      usa <- usa.cd
+    }
+  }
+  if(!include.usa){
+    ## Set all USA catch to 0
+    usa <- mutate(usa, usa_catch = 0L)
   }
 
-  dat <- dat %>%
-    mutate(year = if_else(month(dat$best_date) <= 3, year - 1, year)) %>%
-    group_by(year) %>%
-    summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0)
-
-  ## Bring in USA landings and add to the catch
-  areas <- gsub("\\[|\\]|\\+", "", areas)
-  fn <- paste0("usa-catch-", areas, ".csv")
-  usa <- as_tibble(read.csv(fn))
-  left_join(dat, usa, by = "year") %>%
+  mutate(dat,
+         month = month(best_date),
+         quarter = case_when(
+           month %in% seq(1, 3) ~ 4,
+           month %in% seq(4, 6) ~ 1,
+           month %in% seq(7, 9) ~ 2,
+           month %in% seq(10, 12) ~ 3
+         )) %>%
+    select(-month) %>%
+    mutate(year = if_else(quarter == 4, year - 1, year)) %>%
+    group_by(year, quarter) %>%
+    summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0) %>%
+    left_join(usa, by = "year") %>%
     rowwise() %>%
-    mutate(total_catch = sum(usa_catch, catch_weight, na.rm = TRUE)) %>%
-    mutate(total_catch = sprintf("%0.3f", round(total_catch, 3))) %>%
+    mutate(usa_catch, usa_catch1 = if_else(quarter == 1,
+                                           usa_catch,
+                                           0L)) %>%
+    mutate(usa_catch1, usa_catch2 = if_else(is.na(usa_catch1),
+                                            0L,
+                                            usa_catch1)) %>%
+    mutate(total_catch = sum(usa_catch2, catch_weight)) %>%
+    mutate(total_catch = round(total_catch, 3)) %>%
+    ## mutate(total_catch = sprintf("%0.3f", round(total_catch, 3))) %>%
     ungroup()
 }
 
@@ -220,19 +192,30 @@ get.survey.index <- function(dat,
 #' @return A tibble of year and mean weight
 get.mean.weight <- function(dat.comm.samples,
                             dat.catch,
-                            areas = NULL,
+                            areas =  c("3[CD]+", "5[AB]+", "5[CD]+"),
+                            include.usa = FALSE,
                             a,
                             b){
-  if(is.null(areas)){
-    warning("You didn't specify any areas. ",
-            "The whole dataset is being processed.")
-  }
-  cs <- comm.specimens(dat.comm.samples, areas, a, b)
+  dat.comm.samples <- mutate(dat.comm.samples,
+                             area = assign_areas(major_stat_area_name,
+                                                 area_regex = areas)) %>%
+    filter(!is.na(area))
+
+  dat.catch <- mutate(dat.catch,
+                      area = assign_areas(major_stat_area_name,
+                                          area_regex = areas)) %>%
+    filter(!is.na(area))
+
+  cs <- comm.specimens(dat.comm.samples, a, b)
   cs$catch_weight <- NULL
-  tot.catch <- total.catch.yr.qtr(dat.catch)
+  tot.catch <- total.catch.yr.qtr(dat.catch,
+                                  areas = areas,
+                                  include.usa = include.usa)
+
   left_join(cs, tot.catch, by = c("year", "quarter")) %>%
     calc.mean.weight() %>%
     group_by(year) %>%
     summarize(mean_weight = mean(wf)) %>%
+    filter(!is.na(mean_weight)) %>%
     mutate(mean_weight = as.numeric(sprintf("%0.3f", mean_weight)))
 }
