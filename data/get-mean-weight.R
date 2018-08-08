@@ -10,27 +10,6 @@ library(lubridate)
 library(psych)
 library(reshape2)
 
-#Length-weight parameters
-#coastwide
-.ALPHA <- 6.79e-06
-.BETA <- 3.11
-
-#3CD
-.ALPHA3 <- 7.43e-06
-.BETA3 <- 3.09
-
-#5ABCD
-.ALPHA5 <- 6.52e-06
-.BETA5 <- 3.12
-
-#old (2013 assessment)
-.ALPHA2013 <- 7.377e-06
-.BETA2013 <- 3.0963
-
-outDir <- "results"
-
-prevMeanWeight <- read_csv("MeanWeights_previous.csv")
-
 source("get-data.R")
 
 if(FALSE){
