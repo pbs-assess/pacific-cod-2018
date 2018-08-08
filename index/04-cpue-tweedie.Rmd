@@ -1,0 +1,645 @@
+# Commercial CPUE
+
+```{r temp}
+library(dplyr)
+library(ggplot2)
+load_all(here::here("../gfplot"))
+ggplot2::theme_set(gfplot::theme_pbs())
+scale_colour_discrete <- function(...) scale_colour_brewer(..., palette = "Dark2")
+scale_fill_discrete <- function(...) scale_fill_brewer(..., palette = "Dark2")
+# scale_colour_discrete <- function(...) scale_colour_viridis_d(..., end = 0.75, option = "C")
+scale_colour_continuous <- scale_colour_viridis_c
+scale_fill_continuous <- scale_fill_viridis_c
+```
+
+```{r cpue-read-historic}
+fi <- here::here("data/historic-cpue-raw-data.rds")
+if (!file.exists(fi)) {
+  d <- gfplot::get_cpue_historic(species = NULL, end_year = 2017)
+  readr::write_rds(d, fi)
+} else {
+  d <- readr::read_rds(fi)
+}
+```
+
+We will start by removing all fishing events that have NAs for hours fished,
+catch, or depth. We will also remove all fishing events that have hours fished,
+catch, or depth less than zero.
+
+```{r cpue-historic-basic-filtering}
+key_locality <- c(
+  "cape scott spit",
+  "mexicana",
+  "topknot",
+  "ne goose",
+  "se goose",
+  "nw goose",
+  "sw goose",
+  "reef island",
+  "west horseshoe",
+  "east horseshoe",
+  "two peaks",
+  "butterworth",
+  "white rocks",
+  "shell ground"
+  )
+
+# Suggested by Paul Starr by email in 2018:
+new_locality_2018 <- c(
+  "triangle",
+  "ole spot",
+  "north moresby",
+  "south bonilla",
+  "west two peaks"
+  )
+
+# Make sure we have spelled all the localities correctly:
+stopifnot(all(key_locality %in% unique(d$locality_description)))
+stopifnot(all(new_locality_2018 %in% unique(d$locality_description)))
+```
+
+```{r}
+depth_bands <- c(seq(25, 150, 25), 200, 300)
+d_loc <- d %>%
+  filter(locality_description %in% union(key_locality, new_locality_2018) |
+    (year <= 1967 & (specific_area == "5A" | specific_area == "5B")) |
+    area == "3CD")
+cpue_arith <- tidy_cpue_historic(d_loc, species_common = "pacific cod",
+    year_range = c(1956, 1995), depth_bins = depth_bands, use_alt_year = TRUE,
+    area = c("3[CD]+", "5[ABCD]+"),
+    type = "arithmetic-cpue")
+```
+
+```{r}
+cpue_dat <- tidy_cpue_historic(d, species_common = "pacific cod",
+    year_range = c(1956, 1995), depth_bins = depth_bands, use_alt_year = TRUE,
+    area = c("3[CD]+", "5[ABCD]+"),
+    type = "trip-level-data")
+```
+
+```{r cpue-historic-depth, out.width="4in", fig.width=5, fig.cap="Depth distribution across all fishing events that caught Pacific Cod."}
+cpue_dat %>%
+  ggplot(aes(mean_depth)) +
+  geom_histogram(binwidth = 12) +
+  geom_vline(xintercept = 150, lty = 2) +
+  scale_x_continuous(breaks = seq(50, 550, 100), limits = c(0, 500)) +
+  ylim(0, NA) +
+  coord_cartesian(expand = FALSE)
+```
+
+We will reproduce the key localities analysis from REF. The key localities used
+in that assessment were `r paste(key_locality, collapse = ", ")`. We will also
+include the additional localities `r paste(new_locality_2018, collapse = ", ")`.
+
+The previous assessment used a depth threshold of 150m for the calculation of
+commercial CPUE. A substantial portion of the Pacific Cod fishing events are at
+depths deeper than 150m (Figure \@ref(fig:cpue-historic-depth)). Therefore, we
+created a commercial CPUE data set with an alternative threshold of 350m to
+encapsulate the vast majority of Pacific Cod fishing events.
+
+```{r cpue-historic-calculations}
+# This should match CPUE analysis D from the last research document:
+d_resdoc_2015 <- d_loc %>%
+  filter(best_depth_m <= 150, best_depth_m >= 25) %>%
+  tidy_cpue_historic(species_common = "pacific cod",
+    year_range = c(1956, 1995), depth_bins = depth_bands, use_alt_year = TRUE,
+    area = c("3[CD]+", "5[ABCD]+"),
+    type = "arithmetic-cpue") %>%
+  mutate(version = "Forrest et al. 2015\nreconstruction")
+
+# This version extends the depth filter to 350m, which encompasses most but
+# not all Pacific Cod:
+d_depth_350 <- d_loc %>%
+  filter(best_depth_m <= 350, best_depth_m >= 25) %>%
+  tidy_cpue_historic(d_loc, species_common = "pacific cod",
+    year_range = c(1956, 1995), depth_bins = depth_bands, use_alt_year = TRUE,
+    area = c("3[CD]+", "5[ABCD]+"),
+    type = "arithmetic-cpue") %>%
+  mutate(version = "Depth < 350")
+```
+
+When we compare the four versions of CPUE we created we see that adding the new
+localities has a very minor effect and adding the deeper fishing events has
+a moderate effect in all areas except 5CD (Figure
+\@ref(fig:cpue-historic-bridging-plot)).
+
+```{r cpue-historic-bridging-plot, fig.cap="Bridging analysis for CPUE with new localities and new depth threshold."}
+bind_rows(d_depth_350, d_resdoc_2015) %>%
+  ggplot(aes(year, cpue_arith, colour = version)) +
+  facet_grid(~area) +
+  geom_line() +
+  xlab("") + ylab("CPUE (kg / hr)") + labs(colour = "Version")
+```
+
+```{r save-cpue-data}
+bind_rows(d_depth_350, d_resdoc_2015) %>%
+  saveRDS(file = here::here("data/pcod-cpue-bridging.rds"))
+```
+
+# Commercial CPUE index standardization
+
+We can fit an index standardization model to account for the effects of depth,
+month, and locality on the commercial CPUE times series. There are insufficient
+older records with vessel and latitude associated with them to include them in
+a model.
+
+After removing fishing events deeper than 350m and those that did not occur in
+the key Pacific Cod localities, we further removed fishing events that were
+missing a locality. This mostly occurs in the 1950s and early 1960s in area 5AB
+but only removes `r sum(is.na(raw_dat$locality_desc))` fishing events or `r
+round(100*sum(is.na(raw_dat$locality_desc)) / nrow(raw_dat), 2)`% of the total
+fishing events.
+
+We then condensed the dataset down to create a column for Pacific Cod catch,
+total hours fished, depth, month, and locality. However, prior to 1991, fishing
+events were 'rolled up' into trips in the groundfish databases. We can clearly
+see this in the data (Figure \@ref(fig:cpue-plot-effort-fe)). As a result, in order
+to treat the timeseries consistently in the historical and recent decades, we
+conducted the rest of our analysis on commercial CPUE at the trip level. To do
+that we condensed the fishing event level data in 1991 and after into trips.
+There is only ever a single locality and month in the database per trip, but
+the depth has to be summarized in some way. We chose to summarize it as the
+mean of the log depth. Furthermore, we removed all fishing events in 1991 and
+after that were longer than six hours since these longer events are likely data
+entry errors (see the red line after 1990 in (Figure
+\@ref(fig:cpue-plot-effort-fe)).
+
+```{r cpue-plot-pcod-dist-function}
+plot_pcod_dist <- function(dat, y, ylab = "", title = "") {
+  ggplot(dat, aes_string("as.factor(year)", y = y)) +
+    geom_boxplot(outlier.size = 0.3, outlier.alpha = 0.5) +
+    scale_y_log10(breaks = c(0.1, 1, 10, 100, 1000, 10000),
+      labels = scales::comma) +
+    scale_x_discrete(breaks = seq(1950, 2030, 5)) +
+    theme_pbs() +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+    facet_wrap(~area) + xlab("") + ylab(ylab) +
+    ggtitle(title)
+}
+```
+
+```{r cpue-plot-effort-fe, fig.cap="The distribution of fishing effort by year through time. Note that prior to 1991 the fishing events are rolled up to a trip level. The horizontal red line illustrates the five hour threshold that was used to remove erroneous fishing events in 1991 and after."}
+# plot_pcod_dist(cpue_dat, y = "hours_fished", ylab = "Effort (hr)",
+#   title = "Effort, all fishing events (trips in older years)")
+```
+
+```{r cpue-trip-dataset}
+## Main dataset at the trip level:
+# out_trip <- out %>% group_by(year, area, trip_id) %>%
+#   summarize(
+#     spp_catch = sum(spp_catch),
+#     hours_fished = sum(hours_fished),
+#     depth = mean(depth),
+#     mean_log_depth = mean(log(depth)),
+#     month = month[[1]],
+#     locality = locality[[1]],
+#     n_month = length(unique(month)),
+#     n_locality = length(unique(locality))
+#   ) %>% ungroup()
+# stopifnot(all(out_trip$n_month == 1))
+# stopifnot(all(out_trip$n_locality == 1))
+```
+
+We can look at the distribution of catch, effort, and CPUE for this trip-level
+dataset (Figure \@ref(fig:cpue-dist-plots-catch-positive) through
+\@ref(fig:cpue-dist-plots-cpue-positive)).
+
+```{r cpue-dist-plots-catch-positive, fig.cap="The distribution of Pacific Cod catch by year through time for trips that reported catching Pacific Cod."}
+g1_dist <- plot_pcod_dist(filter(cpue_dat, spp_catch > 0),
+  y = "spp_catch",
+  ylab = "Catch (kg)",
+  title = "Catch, positive trips")
+g1_dist
+```
+
+```{r}
+bubble_predictors <- function(dat, variable, reorder_group = FALSE) {
+  temp <- dat %>%
+    filter(spp_catch > 0) %>%
+    group_by(area, year, !!rlang::sym(variable)) %>%
+    summarize(n = length(unique(trip_id))) %>%
+    group_by(area, !!rlang::sym(variable)) %>%
+    mutate(n_tot = sum(n)) %>%
+    ungroup()
+
+  if (reorder_group) {
+    temp[, variable] <- paste(temp$area,
+      as.character(temp[, variable,drop=TRUE]))
+    temp$y_group <- forcats::fct_reorder2(temp[, variable, drop=TRUE],
+      temp$area, -temp$n_tot)
+  } else {
+    temp$y_group <- temp[, variable, drop=TRUE]
+  }
+
+  temp %>%
+    ggplot(aes_string("as.factor(year)", y = "y_group")) +
+    geom_point(aes(size = n, fill = n), alpha = 0.4, pch = 21) +
+    facet_wrap(~area, scales = "free") +
+    scale_x_discrete(breaks = seq(1950, 2020, 10)) +
+    xlab("") + ylab(gfplot:::firstup(gsub("_", " ", variable))) +
+    labs(size = "Number of trips") +
+    labs(fill = "Number of trips") +
+    scale_size_continuous(range = c(0, 7)) +
+    scale_fill_viridis_c(trans = "log", breaks = c(1, 10, 100, 500))
+}
+bubble_predictors(cpue_dat, "locality", reorder_group = TRUE)
+cpue_dat %>%
+  mutate(month = as.character(month)) %>%
+  bubble_predictors("month")
+cpue_dat %>%
+  mutate(depth_bin = forcats::fct_rev(as.character(depth_bin))) %>%
+  bubble_predictors("depth_bin")
+```
+
+```{r cpue-dist-plots-effort-positive, fig.cap="The distribution of effort by year through time for trips that reported catching Pacific Cod."}
+g2_dist <- plot_pcod_dist(filter(cpue_dat, spp_catch > 0),
+  y = "hours_fished",
+  ylab = "Effort (hours)",
+  title = "Effort, positive trips")
+g2_dist
+```
+
+```{r cpue-dist-plots-effort-all, fig.cap="The distribution of effort by year through time across all bottom trawl trips."}
+g3_dist <- plot_pcod_dist(cpue_dat, y = "hours_fished",
+  ylab = "Effort (hours)",
+  title = "Effort, all trips")
+g3_dist
+```
+
+```{r cpue-dist-plots-cpue-positive, fig.cap="The distribution of Pacific Cod commercial CPUE by year through time for trips that reported catching Pacific Cod."}
+g4_dist <- plot_pcod_dist(filter(cpue_dat, spp_catch > 0),
+  y = "spp_catch/hours_fished",
+  ylab = "CPUE (kg/hr)",
+  title = "CPUE, positive trips")
+g4_dist
+```
+
+\clearpage
+
+We can also look at the distribution of fished depth through time (Figure
+\@ref(fig:cpue-plot-depth-distributions-positive),
+\@ref(fig:cpue-plot-depth-distributions-all)). We can see a deepening of the
+trawl fishing after the early 1990s across all fishing trips and for just those
+fishing trips that caught Pacific Cod.
+
+```{r cpue-plot-depth-distributions-positive, fig.cap="The distribution of average trip fishing for trips that caught Pacific Cod. Note the deepening in 3CD and 5AB."}
+plot_pcod_dist(filter(cpue_dat, spp_catch > 0),
+  y = "geo_mean_depth",
+  ylab = "Geometric mean depth",
+  title = "Geometric mean depth, positive trips") +
+  scale_y_log10(breaks = c(0.1, 1, 20, 10, 50, 100, 200, 300, 1000, 10000),
+      labels = scales::comma)
+```
+
+```{r cpue-plot-depth-distributions-all, fig.cap="The distribution of average trip fishing for trips across all trips. Note the deepening in 3CD and 5AB."}
+plot_pcod_dist(cpue_dat,
+  y = "geo_mean_depth",
+  ylab = "Geometric mean depth",
+  title = "Geometric mean depth, all trips")
+```
+
+We combined a number of localities with less than 150 total trips that caught
+Pacific Cod through time into a single 'minor locality' category so that random
+effects could be easily estimated for all localities.
+
+```{r, cpue-localities-before-filter, fig.cap="The number of positive trips for Pacific Cod across localities initially included in the data set. Key localities for 5AB and 5CD (except before 1967) and without a locality filter on 3CD (this could be changed).", fig.asp=1.3}
+g1 <- group_by(cpue_dat, area, locality) %>%
+  summarize(pos_catch_tot = sum(pos_catch)) %>%
+  ggplot(aes(locality, pos_catch_tot)) + geom_col() +
+  xlab("") + ylab("Positive trips") +
+  facet_wrap(~area, scales = "free") + coord_flip() +
+  ggtitle("Before locality combining")
+g1
+```
+
+```{r, cpue-localities-after-filter, fig.cap="The number of positive trips for Pacific Cod across localities after grouping localities with less than 100 positive trips into a new category 'minorlocality'.", fig.asp=1.1}
+small_localities <- group_by(cpue_dat, area, locality) %>%
+  summarize(pos_catch_tot = sum(pos_catch)) %>%
+  filter(pos_catch_tot < 150) %>%
+  arrange(area, -pos_catch_tot) %>%
+  ungroup()
+
+cpue_dat <- mutate(cpue_dat, locality = as.character(locality)) %>%
+  mutate(locality = ifelse(locality %in% small_localities$locality,
+    "-minorlocality", locality)) %>%
+  mutate(locality = as.factor(locality))
+
+g2 <- group_by(cpue_dat, area, locality) %>%
+  summarize(pos_catch_tot = sum(pos_catch)) %>%
+  ggplot(aes(locality, pos_catch_tot)) + geom_col() +
+  facet_wrap(~area, scales = "free") +
+  xlab("") + ylab("Positive trips") +
+  coord_flip() +
+  ggtitle("After locality combining")
+g2
+```
+
+We can also look at the catch by month and depth bin (Figure
+\@ref(fig:month-depth-catch)).
+
+```{r cpue-month-depth-catch, fig.cap="Summed catch across all years by month and depth bin. The 200m depth bin includes depths up to 350m.", fig.asp=1}
+g1 <- group_by(cpue_dat, area, month) %>%
+  summarise(catch = sum(spp_catch)) %>%
+  ggplot(aes(month, catch)) + geom_point() +
+  facet_wrap(~area, scales = "free_y")
+
+g2 <- group_by(cpue_dat, area, depth_bin) %>%
+  summarise(catch = sum(spp_catch)) %>%
+  ggplot(aes(depth_bin, catch)) + geom_point() +
+  facet_wrap(~area, scales = "free_y")
+
+cowplot::plot_grid(g1, g2, ncol = 1)
+```
+
+We will fit a standardization model ... details to follow... lets us produce
+a CPUE timeseries at an average average locality while integrating over the
+uncertainty in the locality-specific estimates. It is fit in TMB as
+a delta-Gamma model --- binomial GLMM estimating the probability of a trip
+catching Pacific Cod and a Gamma GLMM fit to CPUE estimates the expected CPUE
+given that some Pacific Cod was caught. The two are combined by multiplying the
+probability of a positive event by the expected value if a positive event
+occurs. Standard errors are then calculated in log space on the combined value
+using the automatic Delta method built into TMB.
+
+```{r cpue-fit-glmm-models}
+cpue_dat$month <- relevel(as.factor(sprintf("%02s", cpue_dat$month)), ref = "05")
+cpue_dat$depth_bin <- relevel(cpue_dat$depth_bin, ref = "075")
+cpue_dat$cpue <- cpue_dat$spp_catch / cpue_dat$hours_fished
+
+areas <- unique(cpue_dat$area)
+formulas <- data_frame(
+  formula = c(
+    "cpue ~ year_factor",
+    "cpue ~ year_factor + depth_bin",
+    "cpue ~ year_factor + month",
+    "cpue ~ year_factor + (1 | locality)",
+    "cpue ~ year_factor + depth_bin + month + (1 | locality)"
+  ),
+  formula_version = c(
+    "Unstandardized",
+    "Depth",
+    "Month",
+    "Locality",
+    "Full standardization"
+  )
+)
+torun <- expand.grid(formula = formulas$formula, area = areas,
+  stringsAsFactors = FALSE)
+torun <- inner_join(torun, formulas, by = "formula")
+
+fi <- here::here("data/generated/cpue-models-re-tweedie.rds")
+if (!file.exists(fi)) {
+  m_re <- plyr::mlply(torun, function(formula, area, formula_version) {
+    df <- cpue_dat[cpue_dat$area == area, , drop = FALSE]
+    df$locality <- as.factor(df$locality)
+    message("Fitting area ", area, " and model ", formula)
+    fit_cpue_index_tweedie(df, formula = as.formula(formula))
+  })
+  readr::write_rds(m_re, fi)
+} else {
+  m_re <- readr::read_rds(fi)
+}
+
+predictions_re <- plyr::ldply(m_re, predict_cpue_index)
+saveRDS(predictions_re, file = here::here("data/generated/cpue-re-predictions.rds"))
+```
+
+\clearpage
+
+```{r cpue-plot-glmm-standardizations, fig.cap="The binomial and Gamma estimates of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model. Shaded ribbons illustrates the 95 percent confidence intervals.", fig.asp=1.2}
+plot_re_predictions <- function(dat, model_version = "Combined", scale = FALSE) {
+
+  if (scale) {
+    dat <- dat %>% group_by(formula_version, model, area) %>%
+      mutate(geo_mean = exp(mean(log(est)))) %>%
+      mutate(upr = upr/geo_mean, lwr = lwr/geo_mean, est = est/geo_mean) %>%
+      ungroup()
+  }
+
+  unstandardized <- dat %>%
+    filter(formula_version == "Unstandardized") %>%
+    rename(est_unstandardized = est, lwr_unstandardized = lwr, upr_unstandardized = upr) %>%
+    select(year, area, model, est_unstandardized, lwr_unstandardized, upr_unstandardized)
+
+  temp <- dat %>%
+    filter(formula_version != "Unstandardized") %>%
+    left_join(unstandardized, by = c("area", "year", "model")) %>%
+    filter(model == model_version) %>%
+    mutate(formula_version = gsub("\\+ ", " ", formula_version)) %>%
+    mutate(formula_version =
+        gsub("Full standardization", "All variables", formula_version))
+  temp %>%
+    ggplot(aes(year, est, ymin = upr, ymax = lwr)) +
+    geom_line(aes(y = est_unstandardized), colour = "grey30", lty = 1) +
+    ggplot2::geom_ribbon(
+      aes(ymin = lwr_unstandardized, ymax = upr_unstandardized),
+      fill = "#00000030") +
+    ggplot2::geom_ribbon(alpha = 0.4, fill = "red") +
+    geom_line(colour = "red") +
+    theme_pbs() +
+    facet_grid(area~formula_version, scales = "free_y") +
+    labs(y = if (!scale) "CPUE (kg/hour)" else "CPUE (kg/hour) divided\nby geometric mean",
+      x = "") +
+    ylim(0, NA) +
+    guides(colour = FALSE, fill = FALSE) +
+    ggtitle(model_version)
+}
+```
+
+\clearpage
+
+```{r cpue-plot-glmm-standardizations-combined, fig.cap="The unconditional combined estimate of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model."}
+plot_re_predictions(predictions_re, "Combined")
+plot_re_predictions(predictions_re, "Combined", scale = TRUE)
+
+arith_cpue <- cpue_dat %>% filter(area %in% areas) %>%
+  group_by(area, year) %>% summarise(est = sum(spp_catch) / sum(hours_fished)) %>%
+  mutate(model = "Combined") %>%
+  group_by(area) %>%
+  mutate(geo_mean = exp(mean(log(est)))) %>%
+  mutate(est = est/geo_mean) %>%
+  ungroup()
+
+plot_re_predictions(predictions_re, "Combined", scale = TRUE) +
+  geom_line(data = arith_cpue, aes(year, est), inherit.aes = FALSE, lty = 2)
+```
+
+```{r}
+toplot <- which(torun$formula_version == "Full standardization")
+plot_cpue_index_coefs(m_re[[toplot[1]]])
+plot_cpue_index_coefs(m_re[[toplot[2]]])
+```
+
+# Post-1995 CPUE
+
+Extract the data from our databases:
+
+```{r load-data}
+fi <- here::here("data/cpue-index-dat.rds")
+if (!file.exists(fi)) {
+  dcpue <- gfplot::get_cpue_index(gear = "bottom trawl", min_cpue_year = 1996)
+  readr::write_rds(d, fi)
+} else {
+  dcpue <- readr::read_rds(fi)
+}
+```
+
+Define our fleet:
+
+```{r define-fleet}
+define_pcod_fleet <- function(area) {
+  gfplot::tidy_cpue_index(dcpue,
+    species_common = "pacific cod",
+    alt_year_start_date = "04-01",
+    use_alt_year = TRUE,
+    year_range = c(1996, 2017), lat_range = c(48, Inf),
+    min_positive_tows = 600,
+    min_positive_trips = 5,
+    min_yrs_with_trips = 5,
+    area_grep_pattern = area,
+    lat_bin_quantiles = c(0, 1),
+    depth_bin_quantiles = c(0, 1),
+    gear = "BOTTOM TRAWL",
+    lat_band_width = 0.2)
+}
+dfleet_5ABCD <- define_pcod_fleet("^5[ABCD]+")
+dfleet_3CD <- define_pcod_fleet("^3[CD]+")
+dfleet <- bind_rows(
+  mutate(dfleet_5ABCD, area = "5ABCD"),
+  mutate(dfleet_3CD, area = "3CD"))
+rm(dfleet_5ABCD, dfleet_3CD)
+```
+
+```{r}
+depth_bands <- c(seq(25, 150, 25), 200, 350)
+dfleet <- dfleet %>%
+  mutate(depth_bin = gfplot:::factor_bin_clean(best_depth, depth_bands))
+```
+
+Remove a small number of localities with almost no positive fishing events so the models can be estimated well:
+
+```{r}
+large_localities <- group_by(dfleet, area, locality) %>%
+  summarize(pos_catch_tot = sum(pos_catch)) %>%
+  filter(pos_catch_tot >= 25) %>%
+  arrange(-pos_catch_tot) %>%
+  ungroup()
+
+filter(dfleet, !locality %in% large_localities$locality)
+
+# too few positive events so drop:
+dfleet <- inner_join(dfleet, large_localities, by = c("locality", "area"))
+```
+
+```{r}
+enough_lat <- filter(dfleet) %>% group_by(area, latitude) %>% summarise(n = n()) %>%
+  filter(n > 100)
+dfleet <- inner_join(dfleet, enough_lat, by = c("latitude", "area"))
+```
+
+```{r}
+bubble_predictors(dfleet, "locality", reorder_group = TRUE)
+bubble_predictors(dfleet, "vessel", reorder_group = TRUE)
+dfleet %>%
+  mutate(month = as.character(month)) %>%
+  bubble_predictors("month")
+dfleet %>%
+  mutate(depth_bin = forcats::fct_rev(as.character(depth_bin))) %>%
+  bubble_predictors("depth_bin")
+
+dfleet %>%
+  bubble_predictors("latitude")
+```
+
+```{r}
+nrow(dfleet)
+sum(dfleet$pos_catch)
+length(unique(dfleet$vessel))
+sum(dfleet$spp_catch) / 1000
+hist(dfleet$best_depth)
+```
+
+```{r fit-1996-re-cpue}
+areas <- unique(dfleet$area)
+formulas <- data_frame(
+  formula = c(
+    "cpue ~ year_factor",
+    "cpue ~ year_factor + depth_bin",
+    "cpue ~ year_factor + month",
+    "cpue ~ year_factor + latitude",
+    "cpue ~ year_factor + (1 | locality)",
+    "cpue ~ year_factor + (1 | vessel)",
+    "cpue ~ year_factor + depth_bin + month + latitude + (1 | locality) + (1 | vessel)"
+  ),
+  formula_version = c(
+    "Unstandardized",
+    "Depth",
+    "Month",
+    "Latitude",
+    "Locality",
+    "Vessel",
+    "Full standardization"
+  )
+)
+torun <- expand.grid(formula = formulas$formula,
+  area = areas, stringsAsFactors = FALSE)
+torun <- inner_join(torun, formulas, by = "formula")
+
+filter(dfleet, pos_catch == 1) %>% group_by(area) %>%
+  summarise(
+    mean_depth = mean(best_depth),
+    mean_latitude = mean(as.numeric(as.character(latitude))))
+
+fi <- here::here("data/generated/1996-cpue-models-re-tweedie.rds")
+if (!file.exists(fi)) {
+  m1996_re <- plyr::mlply(torun[,,drop=FALSE],
+    function(formula, area, formula_version) {
+    df <- dfleet[dfleet$area == area, , drop = FALSE]
+    df <- droplevels(df)
+    # RE:
+    df$locality <- as.factor(df$locality)
+    df$vessel   <- as.factor(df$vessel)
+    # FE:
+    df$month <- relevel(as.factor(df$month), ref = "04")
+    df$depth_bin <- relevel(as.factor(df$depth_bin), ref = "075")
+    if (area == "3CD") {
+      df$latitude <- relevel(as.factor(df$latitude), ref = "49.0")
+    } else {
+      df$latitude <- relevel(as.factor(df$latitude), ref = "52.6")
+    }
+    message("Fitting area ", area, " and model ", formula)
+    fit_cpue_index_tweedie(df, formula = as.formula(formula))
+  })
+  readr::write_rds(m1996_re, fi)
+} else {
+  m1996_re <- readr::read_rds(fi)
+}
+predictions_1996_re <- plyr::ldply(m1996_re, predict_cpue_index)
+saveRDS(predictions_re,
+  file = here::here("data/generated/cpue-1996-re-predictions.rds")
+)
+```
+
+```{r}
+toplot <- which(torun$formula_version == "Full standardization")
+plot_cpue_index_coefs(m1996_re[[toplot[1]]])
+plot_cpue_index_coefs(m1996_re[[toplot[2]]])
+```
+
+```{r}
+plot_re_predictions(predictions_1996_re, "Combined", scale = FALSE)
+plot_re_predictions(predictions_1996_re, "Combined", scale = TRUE)
+
+arith_cpue_1996 <- dfleet %>%
+  group_by(area, year) %>%
+  summarise(est = sum(spp_catch) / sum(hours_fished)) %>%
+  mutate(model = "Combined") %>%
+  group_by(area) %>%
+  mutate(geo_mean = exp(mean(log(est)))) %>%
+  mutate(est = est/geo_mean) %>%
+  ungroup()
+
+plot_re_predictions(predictions_1996_re, "Combined", scale = TRUE) +
+  geom_line(data = arith_cpue_1996, aes(year, est),
+    inherit.aes = FALSE, lty = 2)
+```
