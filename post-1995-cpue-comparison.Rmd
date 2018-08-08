@@ -25,7 +25,8 @@ knitr::opts_chunk$set(
 ```{r packages, cache=FALSE}
 library("dplyr")
 library("ggplot2")
-devtools::install_github("pbs-assess/gfplot", ref = "eae5d3d5")
+devtools::install_github("pbs-assess/gfplot", ref = "eae5d3d5", 
+  dependencies = FALSE)
 library("gfplot")
 ggplot2::theme_set(gfplot::theme_pbs())
 ```
@@ -41,7 +42,7 @@ if (!file.exists(here::here("data/cpue-index-dat.rds"))) {
 }
 ```
 
-Switch to a fishing year that starts April 1. I will add this option to the package shortly.
+Switch to a fishing year that starts April 1. (This is now in the newest version of the package too.)
 
 ```{r}
 alt_year_start_date <- "04-01" # fishing year
@@ -94,25 +95,70 @@ hist(dfleet$best_depth)
 Match the depth bins of Paul and change the base factor levels to specific levels (roughly the most common levels):
 
 ```{r}
+# this had an issue in gfplot as of this hash; rightmost.closed = TRUE
 bin_clean <- function(x, bins, clean = TRUE) {
   out <- bins[findInterval(x, bins, rightmost.closed = TRUE)]
   max_char <- max(nchar(out))
-  ndec <- ndecimals(out)
-  if (clean & ndec == 0) {
+  if (clean) {
     out <- sprintf(paste0("%0", max_char, "d"), out)
   } # pad with zeros
-  if (clean & ndec > 0) {
-    out <- sprintf(paste0("%.", ndec, "f"), out)
-  } # pad after decimal
   as.factor(out)
 }
 
-# depth_bands <- c(seq(25, 150, 25), 200, 325)
 depth_bands <- seq(25, 325, 25)
 dfleet <- dfleet %>%
-  mutate(depth_bin = gfplot:::factor_bin_clean(best_depth, depth_bands))
+  mutate(depth_bin = bin_clean(best_depth, depth_bands))
 dfleet$depth_bin <- relevel(dfleet$depth_bin, ref = "075")
 dfleet$month <- relevel(dfleet$month, ref = "05")
+```
+
+Inspect the predictors:
+
+```{r}
+bubble_predictors <- function(dat, variable, reorder_group = FALSE) {
+  temp <- dat %>%
+    filter(spp_catch > 0) %>%
+    group_by(area, year, !!rlang::sym(variable)) %>%
+    summarize(n = length(unique(trip_id))) %>%
+    group_by(area, !!rlang::sym(variable)) %>%
+    mutate(n_tot = sum(n)) %>%
+    ungroup()
+
+  if (reorder_group) {
+    temp[, variable] <- paste(temp$area,
+      as.character(temp[, variable, drop = TRUE]))
+    temp$y_group <- forcats::fct_reorder2(temp[, variable, drop=TRUE],
+      temp$area, -temp$n_tot)
+  } else {
+    temp$y_group <- temp[, variable, drop = TRUE]
+  }
+
+  temp %>%
+    ggplot(aes_string("as.factor(year)", y = "y_group")) +
+    geom_point(aes(size = n, fill = n), alpha = 0.4, pch = 21) +
+    facet_wrap(~area, scales = "free") +
+    scale_x_discrete(breaks = seq(1950, 2020, 10)) +
+    xlab("") + ylab(gfplot:::firstup(gsub("_", " ", variable))) +
+    labs(size = "Number of trips") +
+    labs(fill = "Number of trips") +
+    scale_size_continuous(range = c(0, 7)) +
+    scale_fill_viridis_c(trans = "log", 
+      breaks = c(1, 2, 5, 10, 20, 50, 100, 200, 500))
+}
+dfleet$area <- "5ABCD"
+bubble_predictors(dfleet, "locality", reorder_group = TRUE)
+dfleet %>%
+  mutate(month = as.character(month)) %>%
+  bubble_predictors("month")
+
+dfleet %>%
+  mutate(depth_bin = forcats::fct_rev(as.character(depth_bin))) %>%
+  bubble_predictors("depth_bin")
+
+dfleet %>%
+  bubble_predictors("latitude")
+
+bubble_predictors(dfleet, "vessel", reorder_group = TRUE)
 ```
 
 Remove a small number of localities with almost no positive fishing events so the models can be estimated well:
@@ -135,9 +181,9 @@ Match PJS models. Note that our models are slightly different in that I am model
 ```{r fit-main-model, results='hide', message=FALSE, warning=FALSE}
 m1996 <- fit_cpue_index(dfleet,
   formula_binomial = pos_catch ~ year_factor +
-  f(locality) + f(depth) + f(latitude),
+  f(locality) + depth_bin + f(latitude),
   formula_lognormal = log(spp_catch/hours_fished) ~ year_factor +
-  f(vessel) + f(locality) + f(depth) + f(latitude))
+  f(vessel) + f(locality) + depth_bin + f(latitude))
 ```
 
 Plot the coefficients. These are effects in log-odds space (binomial/'Bin.'/black) or log space (lognormal/ 'Pos.'/blue) compared to the base factor level in each case. The depth base factor level was manually set to 75m above. The other base factor levels were automatically set to the most common levels in the data set.
