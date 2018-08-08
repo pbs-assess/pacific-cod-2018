@@ -1,21 +1,26 @@
+\clearpage
+
+`r if(knitr:::is_latex_output()) '\\Appendices'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
+
 # Commercial CPUE
 
 ```{r temp}
-library(dplyr)
-library(ggplot2)
-load_all(here::here("../gfplot"))
-ggplot2::theme_set(gfplot::theme_pbs())
-scale_colour_discrete <- function(...) scale_colour_brewer(..., palette = "Dark2")
-scale_fill_discrete <- function(...) scale_fill_brewer(..., palette = "Dark2")
-# scale_colour_discrete <- function(...) scale_colour_viridis_d(..., end = 0.75, option = "C")
-scale_colour_continuous <- scale_colour_viridis_c
-scale_fill_continuous <- scale_fill_viridis_c
+# library(dplyr)
+# library(ggplot2)
+# load_all(here::here("../gfplot"))
+# ggplot2::theme_set(gfplot::theme_pbs())
+# scale_colour_discrete <- function(...) scale_colour_brewer(..., palette = "Dark2")
+# scale_fill_discrete <- function(...) scale_fill_brewer(..., palette = "Dark2")
+# scale_colour_continuous <- scale_colour_viridis_c
+# scale_fill_continuous <- scale_fill_viridis_c
 ```
 
 ```{r cpue-read-historic}
 fi <- here::here("data/historic-cpue-raw-data.rds")
 if (!file.exists(fi)) {
-  d <- gfplot::get_cpue_historic(species = NULL, end_year = 2017)
+  d <- gfplot::get_cpue_historic(species = NULL, end_year = 1995)
   readr::write_rds(d, fi)
 } else {
   d <- readr::read_rds(fi)
@@ -58,7 +63,7 @@ stopifnot(all(key_locality %in% unique(d$locality_description)))
 stopifnot(all(new_locality_2018 %in% unique(d$locality_description)))
 ```
 
-```{r}
+```{r filter-historic-cpue}
 depth_bands <- c(seq(25, 150, 25), 200, 300)
 d_loc <- d %>%
   filter(locality_description %in% union(key_locality, new_locality_2018) |
@@ -70,7 +75,7 @@ cpue_arith <- tidy_cpue_historic(d_loc, species_common = "pacific cod",
     type = "arithmetic-cpue")
 ```
 
-```{r}
+```{r filter-historic-cpue2}
 cpue_dat <- tidy_cpue_historic(d, species_common = "pacific cod",
     year_range = c(1956, 1995), depth_bins = depth_bands, use_alt_year = TRUE,
     area = c("3[CD]+", "5[ABCD]+"),
@@ -145,10 +150,7 @@ a model.
 
 After removing fishing events deeper than 350m and those that did not occur in
 the key Pacific Cod localities, we further removed fishing events that were
-missing a locality. This mostly occurs in the 1950s and early 1960s in area 5AB
-but only removes `r sum(is.na(raw_dat$locality_desc))` fishing events or `r
-round(100*sum(is.na(raw_dat$locality_desc)) / nrow(raw_dat), 2)`% of the total
-fishing events.
+missing a locality. This mostly occurs in the 1950s and early 1960s in area 5AB.
 
 We then condensed the dataset down to create a column for Pacific Cod catch,
 total hours fished, depth, month, and locality. However, prior to 1991, fishing
@@ -178,28 +180,6 @@ plot_pcod_dist <- function(dat, y, ylab = "", title = "") {
 }
 ```
 
-```{r cpue-plot-effort-fe, fig.cap="The distribution of fishing effort by year through time. Note that prior to 1991 the fishing events are rolled up to a trip level. The horizontal red line illustrates the five hour threshold that was used to remove erroneous fishing events in 1991 and after."}
-# plot_pcod_dist(cpue_dat, y = "hours_fished", ylab = "Effort (hr)",
-#   title = "Effort, all fishing events (trips in older years)")
-```
-
-```{r cpue-trip-dataset}
-## Main dataset at the trip level:
-# out_trip <- out %>% group_by(year, area, trip_id) %>%
-#   summarize(
-#     spp_catch = sum(spp_catch),
-#     hours_fished = sum(hours_fished),
-#     depth = mean(depth),
-#     mean_log_depth = mean(log(depth)),
-#     month = month[[1]],
-#     locality = locality[[1]],
-#     n_month = length(unique(month)),
-#     n_locality = length(unique(locality))
-#   ) %>% ungroup()
-# stopifnot(all(out_trip$n_month == 1))
-# stopifnot(all(out_trip$n_locality == 1))
-```
-
 We can look at the distribution of catch, effort, and CPUE for this trip-level
 dataset (Figure \@ref(fig:cpue-dist-plots-catch-positive) through
 \@ref(fig:cpue-dist-plots-cpue-positive)).
@@ -212,7 +192,7 @@ g1_dist <- plot_pcod_dist(filter(cpue_dat, spp_catch > 0),
 g1_dist
 ```
 
-```{r}
+```{r bubble-predictors}
 bubble_predictors <- function(dat, variable, reorder_group = FALSE) {
   temp <- dat %>%
     filter(spp_catch > 0) %>%
@@ -251,14 +231,6 @@ cpue_dat %>%
   bubble_predictors("depth_bin")
 ```
 
-```{r cpue-dist-plots-effort-positive, fig.cap="The distribution of effort by year through time for trips that reported catching Pacific Cod."}
-g2_dist <- plot_pcod_dist(filter(cpue_dat, spp_catch > 0),
-  y = "hours_fished",
-  ylab = "Effort (hours)",
-  title = "Effort, positive trips")
-g2_dist
-```
-
 ```{r cpue-dist-plots-effort-all, fig.cap="The distribution of effort by year through time across all bottom trawl trips."}
 g3_dist <- plot_pcod_dist(cpue_dat, y = "hours_fished",
   ylab = "Effort (hours)",
@@ -282,7 +254,7 @@ We can also look at the distribution of fished depth through time (Figure
 trawl fishing after the early 1990s across all fishing trips and for just those
 fishing trips that caught Pacific Cod.
 
-```{r cpue-plot-depth-distributions-positive, fig.cap="The distribution of average trip fishing for trips that caught Pacific Cod. Note the deepening in 3CD and 5AB."}
+```{r cpue-plot-depth-distributions-positive, fig.cap="The distribution of average trip depth for trips that caught Pacific Cod. Note the deepening in 3CD and 5AB."}
 plot_pcod_dist(filter(cpue_dat, spp_catch > 0),
   y = "geo_mean_depth",
   ylab = "Geometric mean depth",
@@ -400,8 +372,8 @@ if (!file.exists(fi)) {
   m_re <- readr::read_rds(fi)
 }
 
-predictions_re <- plyr::ldply(m_re, predict_cpue_index)
-saveRDS(predictions_re, file = here::here("data/generated/cpue-re-predictions.rds"))
+predictions_re <- plyr::ldply(m_re, predict_cpue_index_tweedie)
+saveRDS(predictions_re, file = here::here("data/generated/cpue-re-predictions-tweedie.rds"))
 ```
 
 \clearpage
@@ -441,8 +413,7 @@ plot_re_predictions <- function(dat, model_version = "Combined", scale = FALSE) 
     labs(y = if (!scale) "CPUE (kg/hour)" else "CPUE (kg/hour) divided\nby geometric mean",
       x = "") +
     ylim(0, NA) +
-    guides(colour = FALSE, fill = FALSE) +
-    ggtitle(model_version)
+    guides(colour = FALSE, fill = FALSE)
 }
 ```
 
@@ -450,7 +421,7 @@ plot_re_predictions <- function(dat, model_version = "Combined", scale = FALSE) 
 
 ```{r cpue-plot-glmm-standardizations-combined, fig.cap="The unconditional combined estimate of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model."}
 plot_re_predictions(predictions_re, "Combined")
-plot_re_predictions(predictions_re, "Combined", scale = TRUE)
+# plot_re_predictions(predictions_re, "Combined", scale = TRUE)
 
 arith_cpue <- cpue_dat %>% filter(area %in% areas) %>%
   group_by(area, year) %>% summarise(est = sum(spp_catch) / sum(hours_fished)) %>%
@@ -466,8 +437,10 @@ plot_re_predictions(predictions_re, "Combined", scale = TRUE) +
 
 ```{r}
 toplot <- which(torun$formula_version == "Full standardization")
-plot_cpue_index_coefs(m_re[[toplot[1]]])
-plot_cpue_index_coefs(m_re[[toplot[2]]])
+plot_cpue_index_coefs(m_re[[toplot[1]]], type = "tweedie", 
+  re_name = c("RE locality", "NA"))
+plot_cpue_index_coefs(m_re[[toplot[2]]], type = "tweedie", 
+  re_name = c("RE locality", "NA"))
 ```
 
 # Post-1995 CPUE
@@ -510,34 +483,36 @@ dfleet <- bind_rows(
 rm(dfleet_5ABCD, dfleet_3CD)
 ```
 
-```{r}
+```{r cpue-define-modern-fleet}
 depth_bands <- c(seq(25, 150, 25), 200, 350)
+dfleet <- filter(dfleet, best_depth >= min(depth_bands), best_depth <= max(depth_bands))
 dfleet <- dfleet %>%
-  mutate(depth_bin = gfplot:::factor_bin_clean(best_depth, depth_bands))
+  mutate(depth_bin = gfplot:::factor_bin_clean(best_depth, depth_bands)) %>% 
+  mutate(cpue = spp_catch / hours_fished)
 ```
 
 Remove a small number of localities with almost no positive fishing events so the models can be estimated well:
 
-```{r}
+```{r cpue-remove-small-localities-modern}
 large_localities <- group_by(dfleet, area, locality) %>%
   summarize(pos_catch_tot = sum(pos_catch)) %>%
   filter(pos_catch_tot >= 25) %>%
   arrange(-pos_catch_tot) %>%
   ungroup()
 
-filter(dfleet, !locality %in% large_localities$locality)
+# filter(dfleet, !locality %in% large_localities$locality)
 
 # too few positive events so drop:
 dfleet <- inner_join(dfleet, large_localities, by = c("locality", "area"))
 ```
 
-```{r}
+```{r cpue-remove-small-latitudes-modern}
 enough_lat <- filter(dfleet) %>% group_by(area, latitude) %>% summarise(n = n()) %>%
   filter(n > 100)
 dfleet <- inner_join(dfleet, enough_lat, by = c("latitude", "area"))
 ```
 
-```{r}
+```{r cpue-bubble-predictors-modern}
 bubble_predictors(dfleet, "locality", reorder_group = TRUE)
 bubble_predictors(dfleet, "vessel", reorder_group = TRUE)
 dfleet %>%
@@ -551,7 +526,7 @@ dfleet %>%
   bubble_predictors("latitude")
 ```
 
-```{r}
+```{r cpue-modern-fleet-characteristics}
 nrow(dfleet)
 sum(dfleet$pos_catch)
 length(unique(dfleet$vessel))
@@ -564,20 +539,20 @@ areas <- unique(dfleet$area)
 formulas <- data_frame(
   formula = c(
     "cpue ~ year_factor",
-    "cpue ~ year_factor + depth_bin",
-    "cpue ~ year_factor + month",
-    "cpue ~ year_factor + latitude",
-    "cpue ~ year_factor + (1 | locality)",
-    "cpue ~ year_factor + (1 | vessel)",
+    # "cpue ~ year_factor + depth_bin",
+    # "cpue ~ year_factor + month",
+    # "cpue ~ year_factor + latitude",
+    # "cpue ~ year_factor + (1 | locality)",
+    # "cpue ~ year_factor + (1 | vessel)",
     "cpue ~ year_factor + depth_bin + month + latitude + (1 | locality) + (1 | vessel)"
   ),
   formula_version = c(
     "Unstandardized",
-    "Depth",
-    "Month",
-    "Latitude",
-    "Locality",
-    "Vessel",
+    # "Depth",
+    # "Month",
+    # "Latitude",
+    # "Locality",
+    # "Vessel",
     "Full standardization"
   )
 )
@@ -585,10 +560,10 @@ torun <- expand.grid(formula = formulas$formula,
   area = areas, stringsAsFactors = FALSE)
 torun <- inner_join(torun, formulas, by = "formula")
 
-filter(dfleet, pos_catch == 1) %>% group_by(area) %>%
-  summarise(
-    mean_depth = mean(best_depth),
-    mean_latitude = mean(as.numeric(as.character(latitude))))
+# filter(dfleet, pos_catch == 1) %>% group_by(area) %>%
+#   summarise(
+#     mean_depth = mean(best_depth),
+#     mean_latitude = mean(as.numeric(as.character(latitude))))
 
 fi <- here::here("data/generated/1996-cpue-models-re-tweedie.rds")
 if (!file.exists(fi)) {
@@ -614,21 +589,23 @@ if (!file.exists(fi)) {
 } else {
   m1996_re <- readr::read_rds(fi)
 }
-predictions_1996_re <- plyr::ldply(m1996_re, predict_cpue_index)
+predictions_1996_re <- plyr::ldply(m1996_re, predict_cpue_index_tweedie)
 saveRDS(predictions_re,
-  file = here::here("data/generated/cpue-1996-re-predictions.rds")
+  file = here::here("data/generated/cpue-1996-re-predictions-tweedie.rds")
 )
 ```
 
-```{r}
+```{r cpue-modern-coefficients, fig.asp=0.8}
 toplot <- which(torun$formula_version == "Full standardization")
-plot_cpue_index_coefs(m1996_re[[toplot[1]]])
-plot_cpue_index_coefs(m1996_re[[toplot[2]]])
+plot_cpue_index_coefs(m1996_re[[toplot[1]]], type = "tweedie", 
+  re_name = c("RE locality", "RE vessel"))
+plot_cpue_index_coefs(m1996_re[[toplot[2]]], type = "tweedie", 
+  re_name = c("RE locality", "RE vessel"))
 ```
 
-```{r}
+```{r cpue-modern-predictions, fig.asp=0.8}
 plot_re_predictions(predictions_1996_re, "Combined", scale = FALSE)
-plot_re_predictions(predictions_1996_re, "Combined", scale = TRUE)
+# plot_re_predictions(predictions_1996_re, "Combined", scale = TRUE)
 
 arith_cpue_1996 <- dfleet %>%
   group_by(area, year) %>%
