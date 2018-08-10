@@ -48,7 +48,7 @@ if(verbose) cat0("Models directory: \n  ", model.dir)
 ## -----------------------------------------------------------------------------
 ## Directory in which the retrospective model directories reside
 ## -----------------------------------------------------------------------------
-retro.dir <- file.path(model.dir, "0_1_5CD_2018_Base", "retrospectives")
+retro.dir <- file.path(model.dir, "0_1_5CD_2018_Base")
 if(verbose) cat0("Retrospectives directory: \n  ", retro.dir)
 
 ## -----------------------------------------------------------------------------
