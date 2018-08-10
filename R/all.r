@@ -27,13 +27,13 @@ library(xtable)
 library(tidyverse)
 library(RColorBrewer)
 
-source("R/utilities.r")
-source("R/load-models.r")
-source("R/verify.r")
+source("utilities.r")
+source("load-models.r")
+source("verify.r")
 
 ## Code to setup the model names, and start/end years for various things
 ##  in the models
-source("R/model-setup.r")
+source("model-setup.r")
 
 ## Code to setup forecast model runs
 ## source("forecast-catch-levels.r")
