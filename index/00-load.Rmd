@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
 )
 
 source(file.path(here::here(), "R", "all.r"))
+load.models.into.parent.env()
 
 ggplot2::theme_set(gfplot::theme_pbs())
 scale_colour_discrete <- function(...) scale_colour_brewer(..., palette = "Dark2")

@@ -18,7 +18,7 @@
 ```
 
 ```{r cpue-read-historic}
-fi <- here::here("data/historic-cpue-raw-data.rds")
+fi <- file.path(rootd.data, "historic-cpue-raw-data.rds")
 if (!file.exists(fi)) {
   d <- gfplot::get_cpue_historic(species = NULL, end_year = 1995)
   readr::write_rds(d, fi)

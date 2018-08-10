@@ -145,7 +145,9 @@ load.models.into.parent.env <- function(){
 
 build <- function(ovwrt.base = FALSE,
                   ovwrt.sens = FALSE,
-                  ovwrt.retro = FALSE){
+                  ovwrt.retro = FALSE,
+                  burnin = 1000,
+                  thin = 1){
   ## Once the model setup has been verified, this function will create the
   ##  corresponding RData files. Each model defined in the models-setup.r
   ##  file will have its own RData file holding the model object as defined
@@ -159,6 +161,8 @@ build <- function(ovwrt.base = FALSE,
   create.rdata.file(model.name = base.model.dir.name,
                     ovwrt.rdata = ovwrt.base,
                     load.proj = TRUE,
+                    burnin = burnin,
+                    thin = thin,
                     low = confidence.vals[1],
                     high = confidence.vals[2],
                     verbose = ss.verbose)
@@ -179,6 +183,8 @@ build <- function(ovwrt.base = FALSE,
       model.name = model.nm,
       ovwrt.rdata = ovwrt.sens,
       load.proj = TRUE,
+      burnin = burnin,
+      thin = thin,
       low = confidence.vals[1],
       high = confidence.vals[2],
       verbose = verbose)
@@ -186,14 +192,19 @@ build <- function(ovwrt.base = FALSE,
 
   ## Retrospective models
   for(model.nm in retro.dir.names){
-    create.rdata.file(
-      models.dir = retro.dir,
-      model.name = model.nm,
-      ovwrt.rdata = ovwrt.retro,
-      load.proj = TRUE,
-      low = confidence.vals[1],
-      high = confidence.vals[2],
-      verbose = verbose)
+    if(dir.exists(retro.dir)){
+      if(dir.exists(file.path(retro.dir, model.nm))){
+        create.rdata.file(
+          models.dir = retro.dir,
+          model.name = model.nm,
+          ovwrt.rdata = ovwrt.retro,
+          load.proj = TRUE,
+          burnin = burnin,
+          thin = thin,
+          low = confidence.vals[1],
+          high = confidence.vals[2],
+          verbose = verbose)
+      }
+    }
   }
-
 }
