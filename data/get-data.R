@@ -28,16 +28,16 @@ library(lubridate)
 .ALPHA2013 <- 7.377e-06
 .BETA2013 <- 3.0963
 
-outDir <- "results"
+outDir <- "data/results"
 
-prevMeanWeight <- read.csv("MeanWeights_previous.csv")
+prevMeanWeight <- read.csv("data/MeanWeights_previous.csv")
 
 #' Load the data from the RDS files produced by extract.data()
 #'
 #' @param cache.dir Reletive name of the directory to hold the RDS files
 #'
 #' @return The data object as returned from gfplot package
-load.data <- function(cache.dir = "cache"){
+load.data <- function(cache.dir = "data/cache"){
   readRDS(file.path(cache.dir, "pacific-cod.rds"))
 }
 
@@ -134,11 +134,11 @@ total.catch.yr.qtr <- function(dat,
 
   usa <- NULL
   if(length(grep("AB", areas))){
-    fn <- paste0("usa-catch-", area.num, "AB.csv")
+    fn <- paste0("data/usa-catch-", area.num, "AB.csv")
     usa <- as_tibble(read.csv(fn))
   }
   if(length(grep("CD", areas))){
-    fn <- paste0("usa-catch-", area.num, "CD.csv")
+    fn <- paste0("data/usa-catch-", area.num, "CD.csv")
     usa.cd <- as_tibble(read.csv(fn))
     if(!is.null(usa)){
       ## Merge the two area catches (sum) into a single tibble
@@ -244,7 +244,7 @@ get.mean.weight <- function(dat.comm.samples,
 }
 
 proc.old <- function(area = "3[CD]+"){
-  d <- read.csv("Pcod_Catch_all_by_major_area_FY_Q.csv")
+  d <- read.csv("data/Pcod_Catch_all_by_major_area_FY_Q.csv")
   d <- d %>%
     mutate(area = assign_areas(Area, area)) %>%
     filter(!is.na(area)) %>%
@@ -253,21 +253,21 @@ proc.old <- function(area = "3[CD]+"){
 
   area <- gsub("\\^|\\[|\\]|\\+", "", area)
   write.csv(d,
-            file = paste0("results/Old-catch-by-year-quarter-", area, ".csv"),
+            file = paste0("data/results/Old-catch-by-year-quarter-", area, ".csv"),
             row.names = FALSE)
 
   d <- group_by(d, FYear) %>% summarize(year_catch = sum(catch))
   write.csv(d,
-            file = paste0("results/Old-catch-by-year-", area, ".csv"),
+            file = paste0("data/results/Old-catch-by-year-", area, ".csv"),
             row.names = FALSE)
 }
 
 proc.old.catch <- function(area = "3[CD]+",
                            include.usa = TRUE){
-  dat <- load.data(cache.dir = "pcod-cache")
+  dat <- load.data(cache.dir = "data/pcod-cache")
   d <- dat$commercial_samples
 
-  catch <- read.csv("Pcod_Catch_all_by_major_area_FY_Q.csv")
+  catch <- read.csv("data/Pcod_Catch_all_by_major_area_FY_Q.csv")
   catch <- catch %>%
     group_by(FYear, Quarter) %>%
     mutate(total_catch = (Landed_kg + Released_kg) / 1000.0) %>%
@@ -335,7 +335,7 @@ proc.old.catch <- function(area = "3[CD]+",
          y = "Annual Mean Weight (Kg)",
          title = paste0("Area ", area))
 
-  ggsave(paste0("results/AnnualMeanWeight_", area, "_old_catch.png"),
+  ggsave(paste0("data/results/AnnualMeanWeight_", area, "_old_catch.png"),
          width = 8,
          height = 6,
          units = "in")
@@ -344,7 +344,7 @@ proc.old.catch <- function(area = "3[CD]+",
 
 compare.catch <- function(area = "3[CD]+",
                           include.usa = TRUE){
-  d.old <- read.csv("Pcod_Catch_all_by_major_area_FY_Q.csv")
+  d.old <- read.csv("data/Pcod_Catch_all_by_major_area_FY_Q.csv")
   d.old <- d.old %>%
     mutate(area = assign_areas(Area, area)) %>%
     filter(!is.na(area)) %>%
@@ -355,7 +355,7 @@ compare.catch <- function(area = "3[CD]+",
     mutate(year = FYear) %>%
     select(-FYear)
 
-  dat <- load.data(cache.dir = "pcod-cache")
+  dat <- load.data(cache.dir = "data/pcod-cache")
   dat.catch <- mutate(dat$catch,
                       area = assign_areas(major_stat_area_name,
                                           area_regex = area)) %>%
@@ -398,7 +398,7 @@ compare.catch <- function(area = "3[CD]+",
     labs(x = "Fishing Year", y = "Catch (t)",
          title = paste0("Area ", area))
 
-  ggsave(paste0("results/Catch-", area, ".png"),
+  ggsave(paste0("data/results/Catch-", area, ".png"),
          width = 8,
          height = 6,
          units = "in")
@@ -408,9 +408,9 @@ plot.spec <- function(area = "5[CD]+"){
 
   a <- gsub("\\^|\\[|\\]|\\+", "", area)
   if(a == "5CD"){
-    d <- read.csv("Pcod_commercial_specimens_5CD_June2014.csv")
+    d <- read.csv("data/Pcod_commercial_specimens_5CD_June2014.csv")
   }else if(a == "5AB"){
-    d <- read.csv("Pcod_commercial_specimens_5AB_June2014.csv")
+    d <- read.csv("data/Pcod_commercial_specimens_5AB_June2014.csv")
   }else{
     stop("Only implemented for 5AB and 5CD.")
   }
@@ -430,7 +430,7 @@ plot.spec <- function(area = "5[CD]+"){
 
   colnames(d2014) <- c("year", "quarter", "num.specimens")
 
-  d <- load.data(cache.dir = "pcod-cache")
+  d <- load.data(cache.dir = "data/pcod-cache")
   d2018 <- mutate(d$commercial_samples,
                       area = assign_areas(major_stat_area_name,
                                           area_regex = area)) %>%
@@ -480,7 +480,7 @@ plot.spec <- function(area = "5[CD]+"){
     labs(x = "Year and quarter", y = "Number of length specimens",
          title = paste0("Area ", area))
 
-  ggsave(paste0("results/Num-length-specimens-", area, ".png"),
+  ggsave(paste0("data/results/Num-length-specimens-", area, ".png"),
          width = 12,
          height = 6,
          units = "in")

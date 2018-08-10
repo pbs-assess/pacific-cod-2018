@@ -10,15 +10,15 @@ library(lubridate)
 library(psych)
 library(reshape2)
 
-source("get-data.R")
+source("data/get-data.R")
 
 if(FALSE){
   cache_pbs_data(species = "pacific cod",
-                 path = "pcod-cache",
+                 path = "data/pcod-cache",
                  unsorted_only = FALSE)
 }
 
-dat <- load.data(cache.dir = "pcod-cache")
+dat <- load.data(cache.dir = "data/pcod-cache")
 d <- dat$commercial_samples
 
 ################################################################
