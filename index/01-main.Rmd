@@ -1,2 +1,5 @@
 # Introduction
 
+## STOCK STRUCTURE AND LIFE HISTORY
+
+Pacific Cod (*Gadus macrocephalus*) is a relatively short-lived, fast-growing member of the family Gadidae. Other common names in British Columbia (BC) include grey cod (or gray cod). Populations of Pacific Cod are distributed from California, throughout the waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China [@hart1973]. Maximum observed age in British Columbia is around 10-11 years [@westrheim1996, this document], while a maximum age of approximately 13 years has been reported for Alaskan stocks [@roberson2001]. Maximum length recorded in British Columbia is 100 cm [@hart1973], although some larger specimens have been observed in Alaska and Russia [@westrheim1996]. Pacific Cod are demersal spawners, with several studies reporting that spawning most likely occurs during February to March. A comprehensive review of the biology, life history and distribution of Pacific Cod in British Columbia is provided by @westrheim1996.

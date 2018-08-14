@@ -15,8 +15,8 @@ report_number: "nnn"
 abstract: |
   Here is the abstract text.
 output:
-  # csasdown::resdoc_pdf
-  csasdown::resdoc_word
+  csasdown::resdoc_pdf
+  # csasdown::resdoc_word
   # csasdown::resdoc_gitbook
 # ------------
 # End of options to set
