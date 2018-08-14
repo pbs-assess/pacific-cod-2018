@@ -7,7 +7,7 @@
 # load.models.into.parent.env()
 # source(file.path(here::here(), "R/custom-knitr-variables.r"))
 
-rm(list = ls(all = TRUE))
+# rm(list = ls(all = TRUE))
 
 # Need to do this first to provide install.packages.if.needed()
 # if(!("iscamtext" %in% rownames(installed.packages()))){
@@ -36,6 +36,7 @@ library(RColorBrewer)
 rootd <- here::here()
 rootd.R <- file.path(rootd, "R")
 rootd.data <- file.path(rootd, "data")
+rootd.models <- file.path(rootd, "models")
 
 source(file.path(rootd.R, "utilities.R"))
 source(file.path(rootd.R, "load-models.R"))

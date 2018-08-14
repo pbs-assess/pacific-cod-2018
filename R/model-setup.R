@@ -40,9 +40,9 @@ if(verbose) cat0("Last assessment year: \n  ", last.assess.yr)
 
 ## -----------------------------------------------------------------------------
 ## Directory in which the model directories reside
-## rootd is defined in all.r
+## rootd.models all.r
 ## -----------------------------------------------------------------------------
-model.dir <- file.path(rootd, "models")
+model.dir <- rootd.models
 if(verbose) cat0("Models directory: \n  ", model.dir)
 
 ## -----------------------------------------------------------------------------
@@ -168,7 +168,7 @@ build <- function(ovwrt.base = FALSE,
                     verbose = ss.verbose)
 
   ## Sensitivity models need to be unlisted from their groups
-  ##  and placed into a single list for the lapply below to work right
+  ##  and placed into a single list for the for loop below to work right
   sens.models.names.list <- c(unlist(sens.models.dir.name.1))
                              ## unlist(sens.model.dir.name.2),
                              ## unlist(sens.model.dir.name.3),

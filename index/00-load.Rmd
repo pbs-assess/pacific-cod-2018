@@ -20,6 +20,11 @@ knitr::opts_chunk$set(
 )
 
 source(file.path(here::here(), "R", "all.r"))
+build(ovwrt.base = FALSE,
+      ovwrt.sens = FALSE,
+      ovwrt.retro = FALSE,
+      burnin = 1000,
+      thin = 1)
 load.models.into.parent.env()
 
 ggplot2::theme_set(gfplot::theme_pbs())
