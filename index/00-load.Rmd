@@ -1,4 +1,4 @@
-```{r, knitr-opts, echo=FALSE, cache=FALSE}
+```{r, knitr-opts, echo=FALSE, cache=FALSE, message=FALSE, results='hide', warning=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
