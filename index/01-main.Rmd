@@ -277,3 +277,152 @@ large recruitment event, a change in selectivity, the introduction of
 onboard observers, or an artefact of sampling. Changes in selectivity can
 result from changes to the fishing gear (e.g., mesh size) or changes in
 fishing location (e.g., depth).
+
+# STOCK ASSESSMENT MODEL
+
+All models presented in this document are Bayesian models implemented in
+AD Model Builder [@fournier2012]. The models are based on the Integrated
+Statistical Catch Age Model (iSCAM), developed by Steven J.D. Martell
+[@martell2011]. A number of modifications have been made to the code by the
+first author of this assessment to include delay difference calculations and
+adapt the code for the purpose of assessing Pacific Cod in BC, as described
+below. The model in its present formulation is fully described in the present
+document.
+
+## DELAY DIFFERENCE MODEL
+
+The last assessment for Pacific Cod in QCS and Hecate Strait used a
+delay-difference model [@forrest2013]. Delay difference models represent an
+intermediate between aggregated surplus production models and fully
+age-structured models. The delay-difference structure tracks the effects of
+recruitment, survival and growth on biomass, without requiring a fully
+age-structured framework, and can perform well, as long as its major
+assumptions are met [@hilborn1992]. Difference equations, which allow for a
+time-delay between spawning and recruitment, are used to build population models
+in discrete time-steps (i.e., 1 year), in which the surviving biomass for
+next year is predicted from the surviving biomass from last year, after
+adjusting for growth and adding next year's recruitment. An advantage of delay
+difference models over simpler production models is that they do not assume
+constant recruitment over time.
+
+The key assumptions of the delay difference model are:
+
+- Growth in mean body weight Wa follows the linear relationship described by the
+  Ford-Walford equation, $W_a = \alpha_g + \rho W_{a-1}$;
+- Knife edge selectivity, i.e., all fish aged $k$ and older are equally
+  vulnerable to the fishing gear; and
+- Constant mortality at age, i.e., all fish aged $k$ and older have the same
+  mortality rate.
+
+The delay difference model collapses all the equations needed to fully describe
+the population's age structure into equations for the total numbers ($N_t$) and
+biomass ($B_t$) at time $t$:
+
+\begin{equation}
+  B_t = S_{t-1}(\alpha_g N_{t-1} + \rho_g B_{t-1}) + w_k R_t
+  (\#eq:ddbiomass)
+\end{equation}
+
+and
+
+\begin{equation}
+  N_t = S_{t-1} N_{t-1} + R_t
+  (\#eq:ddnumbers)
+\end{equation}
+
+where $S$ is survival, given by
+
+\begin{equation}
+  S_t = e^{-(M + F_t)}
+  (\#eq:ddsurvival)
+\end{equation}
+
+where $M$ is natural mortality; $F$ is the estimated instantaneous fishing
+mortality rate; $\alpha_g$ and $\rho_g$ are the slope and intercept of the
+Ford-Walford equation, for all ages > $k$, where $k$ is the age at which
+fish are assumed to become fully vulnerable to fishing; $w_k$ is the weight
+at $k$; and $R_t$ is the assumed stock-recruit function, here constrained
+to conform to a Beverton-Holt form with $a$ and $b$ the constants of this
+equation (Eq. XX). It is here assumed that recruitment to the fishery,
+survey and spawning stock occurs at age 2 y (i.e., $k$ = 2y), as assumed by
+@sinclair2005.
+
+A list of model parameters is given in Table XX. Equilibrium and dynamic
+equations are given in Tables XX and XX. Variance parameters and components
+of the objective function are given in Table XX. Leading estimated
+parameters are shown in bold type in Table XX. Fixed parameter values
+and prior probability distributions are given in the description of the
+candidate Base Case models.
+
+@sinclair2005 initialized the model using an estimated ratio parameter that
+scaled the biomass in 1956 to unfished equilibrium biomass. This ratio was
+introduced to avoid the assumption that the stock was in an unfished
+equilibrium state in 1956. Two alternative means of initializing the model
+while avoiding the unfished equilibrium assumption are:
+
+- to assume the stock was in an "equilibrium fished" state in 1956 using
+  equations XX-XX; or
+- use the same approach as an age-structured model for initializing numbers
+  in the first year (Eq. XX and XX). The latter alternative was selected
+  for the purposes of this assessment because it was assumed that stocks
+  were not at equilibrium in 1956.
+
+From 1956-2017, bias-corrected annual recruitments were estimated as the
+product of an estimated mean recruitment ($R_{Avg}$, estimated in log space)
+and bias-corrected annual log recruitment deviations ($\omega_t$), weakly
+constrained to a normal distribution with $\omega_t \sim N(0,2)$. A separate
+estimated log mean recruitment $ln(R_{Avg\_init})$ and estimated vector
+of eight years of log deviates (age 3--age 10; $\omega_{t\_init}$), with
+natural mortality used to calculate survival, was used to fill the first
+year of the numbers-at-age matrix (Eq. XX and XX). The number of fish in
+the first year was then calculated as the sum of numbers at age in the first
+year. For the years 1957-2013, annual numbers of fish ($N_t$) were calculated
+using delay difference equations (Eq. XX). Biomass in the first year was
+calculated as the sum over ages of the product of numbers-at-age and the
+weight-at-age, with the latter derived from the von Bertlanffy growth
+parameters (Table XX). Delay difference equations were used to calculate
+annual biomass ($B_t$) for the years 1957-2014 (Eq. XX), with log recruitment
+anomalies in the 2014 projection year drawn from a normal distribution,
+i.e., $\omega_t \sim N(0,\sigma R)$.
+
+### Conditioning the model
+
+The model has some key formulation differences compared to the formulation
+used by @sinclair2005. The 2005 model was conditioned on a qualified effort
+series, derived from the total catch and catch per unit effort (CPUE) series:
+
+\begin{equation}
+  E_t = C_t / CPUE_t
+  (\#eq:ddeffort)
+\end{equation}
+
+where the $CPUE$ was calculated using catch and effort data from key fishing
+locations (Appendix XX, CPUE Analysis XX), while catch was the total estimated
+catch from the whole of Area 5ABCD (Table XX). Annual fishing mortality rates
+($F_t$) in the model were then calculated as a function of the qualified
+effort, i.e.:
+
+\begin{equation}
+  F_t = q_c E_t
+  (\#eq:ddfishingmort)
+\end{equation}
+
+where $q_c$ is an estimated parameter describing a linear relationship between
+the qualified effort data and fishing mortality. The model was then fit to
+the same total catch data from which the effort series was derived, resulting
+in a degree of circularity in the model conditioning and fitting.
+
+As discussed above and noted by @sinclair2000 and @fournier1983, there are a
+number of problems with assuming a constant, linear relationship between
+fishing effort and fishing mortality over time for this fishery. These
+problems include the large changes in the management regime that ranged from
+an unrestricted fishery prior to 1992, to the introduction of total allowable
+catches (TACs) and then IVQs (1997-present). In addition, there have been gear
+changes including several increases in mesh size, which cumulatively have
+affected the underlying relationship between commercial CPUE and abundance,
+and the relationship between fishing effort and fishing mortality. Changes in
+fishing behaviour also bear consideration, as some fishing masters report
+active avoidance of Pacific Cod due to quota constraints since the reduction
+in TAC in the 2000 fishing year (Table XX). This is because reaching or
+exceeding allowable catch limits for Pacific Cod can reduce opportunities to
+fish for other co-occurring species for which vessels also hold quota.
