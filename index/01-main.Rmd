@@ -503,6 +503,8 @@ parameters $ln(q)$ for the Hecate Strait Assemblage and Synoptic Surveys
 affect the posterior estimates, with the posterior distribution far to the left
 of the prior distribution in both cases (Figure XX).
 
+Spawning biomass is shown in Figure \@ref(fig:fig-base-biomass).
+
 ### Reference Points
 
 Posterior estimates of $F_{2017}$ and $B_{2018}$ are shown in Figures XX and

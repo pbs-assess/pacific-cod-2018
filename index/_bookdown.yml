@@ -3,6 +3,7 @@ chapter_name: "Chapter "
 rmd_files: ["index.Rmd",
             "00-load.Rmd",
             "01-main.Rmd",
+            "06-figures.Rmd",
             #"04-cpue-tweedie.Rmd",
             "05-model-description.Rmd",
             "98-colophon.Rmd",

@@ -1,0 +1,11 @@
+\clearpage
+
+# FIGURES
+
+```{r fig-base-biomass, fig.cap="Biomass for the Reference Model, Area 5ABCD"}
+make.biomass.mcmc.plot(
+  base.model,
+  base.model.name,
+  ylim = c(0, 70000),
+  opacity = 50)
+```

@@ -42,6 +42,7 @@ source(file.path(rootd.R, "utilities.R"))
 source(file.path(rootd.R, "load-models.R"))
 source(file.path(rootd.R, "verify.R"))
 source(file.path(rootd.R, "mcmc-diagnostics.R"))
+source(file.path(rootd.R, "figures-biomass.R"))
 
 # Code to setup the model names, and start/end years for various things
 #  in the models
