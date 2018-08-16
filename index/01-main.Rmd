@@ -713,3 +713,70 @@ alternative reference points in this assessment (e.g., reference points based
 on spawning biomass per recruit; @clark1991), but recommend exploration and
 simulation-testing of alternatives in the context of a feedback simulation
 analysis.
+
+# BRIDGING ANALYSIS
+
+In Appendix XX we present a bridging analysis, beginning with a model that
+emulated the results of the 2013 stock assessment with fixed parameters,
+through steps that: updated the data streams to 2017; examined the effects
+of model reconfiguration; and illustrated the effects of fixing variance terms.
+A bridging analysis provides a means of documenting the transition from the
+approach used by @forrest2013, and aids in understanding the underlying causes
+of changes to the stock reconstruction and estimates of key parameters.
+For brevity, we do not present the full suite of sensitivity analyses that were
+explored but list key steps leading up to development of the candidate Base
+Case models.
+
+# BASE CASE MODELS
+
+The Base Case models for both areas 5ABCD and 3CD are XX.
+
+## PRIOR PROBABILITY DISTRIBUTIONS
+
+Prior probability distributions for the Area 5ABCD and 3CD Base Case models
+are shown in Figure XX and Table XX.
+
+Broad, uniform prior probability distributions were used for $ln(R_0)$,
+$ln(R_{Avg})$, $ln(R_{Avg\_init}$) and $ln(q_{CPUE}$), where the subscript
+CPUE indicates the commercial CPUE data from 1956-1995. These uniform
+distributions reflect our ignorance the scale of the population.
+
+A Beta distribution was used for steepness with shape parameters that
+resulted in a distribution with mean = 0.7 XX and SD = 0.15 XX. These parameter
+choices resulted in a distribution with almost no probability density for
+values less than 0.2 XX, implying that no transformation was necessary
+(Figure XX). @sinclair2005 fixed steepness at 0.75 in one of their
+"preferred" scenarios. In their other "preferred" scenario, the MPD estimate
+of steepness was 0.53. The prior probability distribution chosen here
+encompasses both of these values. A sensitivity analysis was done for
+both areas with a uniform distribution for steepness between 0.21 XX and
+0.99 XX, with very little impact on posterior estimates of biomass
+(see below).
+
+A normal distribution was used for $ln(M)$ with mean = $ln(0.5)$  XX
+and SD = 0.1 XX. @sinclair2005 obtained MPD estimates of natural mortality
+of 0.596 and 0.567 in their two "preferred" scenarios. The bridging
+analysis provided in Appendix XX of this document suggested that natural
+mortality could be considerably lower, depending on the values of other
+fixed or estimated parameters. For the base cases presented here, we chose
+to centre the prior probability distribution a little lower than the MPD
+values reported by @sinclair2005. Model sensitivity to both the mean and
+the standard deviation of the distribution is presented below.
+
+Normal distributions were used for $ln(q_{HSAS})$, $ln(q_{HSSS})$, and
+$ln(q_{QSSS}$ where the subscripts $HSAS$, $HSSS$, and $QSSS$ indicate
+the Hecate Strait Assemblage Survey, Hecate Strait Synoptic Survey, and
+the Queen Charlotte Sound Synoptic Survey respectively (Table XX). Normal
+distributions centred on $ln(1.0)$ were selected because the survey estimates
+of biomass were derived from swept area analysis
+(Eqs. \@ref(eq:sweptareabiomass)--\@ref(eq:sweptareacpue)) and could therefore
+reasonably be expected to be some fraction of unity. A large standard
+deviation was used to reflect ignorance of the scale of the swept area
+analysis compared with the true biomass. Note there was no Assemblage Survey
+in Queen Charlotte Sound (Area 5AB). Broad uniform distributions were used
+for $ln(q_{CPUE})$, reflecting large uncertainty in the scale of the
+relationship between commercial CPUE data and true biomass.
+
+A total of XX model parameters were conditionally estimated in Area 5ABCD;
+while XX parameters were estimated for Area 3CD, which had one fewer survey
+q parameters (Table XX).
