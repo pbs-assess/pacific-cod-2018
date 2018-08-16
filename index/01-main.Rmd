@@ -426,3 +426,199 @@ active avoidance of Pacific Cod due to quota constraints since the reduction
 in TAC in the 2000 fishing year (Table XX). This is because reaching or
 exceeding allowable catch limits for Pacific Cod can reduce opportunities to
 fish for other co-occurring species for which vessels also hold quota.
+
+The current assessment relaxes the dependence of model results on the
+commercial CPUE time series by estimating annual log fishing mortality rates
+directly, rather than calculating fishing mortality as a function of
+effort and the estimated qc parameter (Eq. XX). The current model is fit to
+observed catch data, observed mean weight data and three indices of
+abundance:
+
+- the Hecate Strait Multispecies Assemblage Survey
+- the Hecate Strait Synoptic Survey
+- a shortened time series of commercial CPUE data
+
+The CPUE time series spans the period 1956-1995, the year before the
+introduction of 100% observer coverage in the fishery, and resulting
+improvements in estimates of discards and general data reliability. In this
+formulation it must be assumed that catches are known with little to no error,
+while it is assumed there is observation error in the commercial CPUE data.
+This assumption is the opposite of the assumption of @sinclair2005, where it
+was assumed the effort data derived from the CPUE data were known without
+error, and observation error was admitted into the fit to the catch data.
+
+### Objective function components
+
+Variance parameters and objective function components are listed in Table XX.
+The objective function in the delay difference model contained five major
+components:
+
+- the negative log-likelihood for the relative abundance data
+- the negative log-likelihood for the catch data
+- the negative log-likelihood for the mean weight data
+- the prior distributions for model parameters
+- three penalty functions that:
+  - constrain the estimates of annual recruitment to conform to a
+    Beverton-Holt stock-recruit function (Table eq XX)
+  - weakly constrain the log recruitment deviations to a normal distribution
+  - weakly constrain estimates of log fishing mortality to a normal
+    distribution ($\sim N(ln(0.2), 4.0)$), to prevent estimates of catch
+    from exceeding estimated biomass
+
+Tests showed the model was insensitive to changes in the penalty function
+parameters, indicating that the other likelihood components and prior
+probability distributions were the most important contributors to the
+objective function.
+
+### Indices of abundance
+
+The abundance indices were treated as relative abundance indices, assumed to be
+directly proportional to the biomass with lognormal errors. The survey
+catchability parameter for each survey $q_j$ was treated as an uncertain
+parameter, with the conditional maximum posterior density (MPD) estimate of
+$q_j$ used in the objective function (Eqs. XX-XX). In Eq. XX, the parameter
+$j_z$ represents the maximum likelihood estimate of $ln(j_q)$, conditional on
+other model parameters, with $n_j$ the number of observations in index $j$
+[@walters1994].
+
+### Catch data
+
+The model was conditioned on total catch, with annual log fishing mortality
+rates for the bottom trawl fishery estimated directly. Estimated fishing
+mortality rates ($F_t$) were then used to predict catch using the Baranov catch
+equation (Eq. XX). Log residuals (Eq. XX) were assumed to be normally
+distributed with fixed standard deviation $\sigma_C$ (Eq. XX).
+
+### Mean weight
+
+Predicted annual mean weight ($\hat{\bar{W}}_t$) was calculated using
+Eq. XX. Log residuals (Eq. XX) were assumed to be normally distributed with
+fixed standard deviation $\sigma_W$ (Eq. XX).
+
+### Recruitment
+
+Bias-corrected annual recruitment (Eq. XX) was estimated as the product of
+estimated mean recruitment ($R_{Avg}$) and estimated annual deviations
+($\omega_t$), with both parameters estimated in log space. Predicted recruits
+($\hat{R}_t$) were assumed to come from Beverton-Holt stock-recruit function
+(Eq. XX). Log recruitment residuals (Eq. XX) were assumed to be normally
+distributed with standard deviation $\sigma_R$ (Eq. XX).
+
+@sinclair2005 included an environmental correlate into the stock-recruit
+relationship, linking recruitment anomalies to Prince Rupert Sea Level
+anomalies (after @sinclair2005-2). @sinclair2005 reported that the effect
+of including the environmental correlate made very little difference to
+estimates of biomass. Unpublished analyses by the authors of the current
+assessment suggested that model estimates of biomass and recruitment were most
+strongly influenced by catch and commercial annual mean weight data; and that
+incorporating a parameter relating the stock-recruit function to an updated
+time series of air pressure adjusted Prince Rupert sea level data (Figure XX)
+simply resulted in a shift in estimated recruitment anomalies, resulting in
+almost identical estimates of biomass and recruits. For this reason, the
+present assessment does not incorporate the Prince Rupert sea level data.
+A comprehensive re-analysis of alternative hypotheses for drivers of
+productivity for Pacific Cod recruitment, including re-evaluation of the
+relationship between Prince Rupert sea level and recruitment is recommended
+as a future research priority.
+
+### Variance components and weighting of index data
+
+Variance components of the delay difference model implemented within the
+iScam modelling framework [@martell2011] were partitioned using an errors in
+variables approach. The key variance parameter is the inverse of the total
+variance $\phi^{-2}$ (i.e., total precision). This parameter can be fixed or
+estimated, and was fixed here. The total variance is partitioned into
+observation and process error components by the model parameter $\rho$, which
+represents the proportion of the total variance that is due to observation
+error [@punt1993, @deriso2007].
+
+The equation for the observation error component of the total variance
+($\sigma_O$) is given in Eq. XX, while the process error term, $\sigma_R$ is
+given in Eq. XX. The process error term σR enters the objective function in the
+log likelihood function for the recruitment residuals (Eq. XX). In cases when
+the index of abundance data are informative about absolute abundance (e.g.,
+an acoustic survey), one or both of these parameters, $\phi^{-2}$ and $\rho$,
+may be estimable. In practice, however, one or both of these parameters usually
+must be fixed.
+
+It was not possible to obtain plausible estimates of the variance term
+$\phi^{-2}$ for the Base Case model described below. Any attempt to estimate
+$\phi^{-2}$ resulted in estimates of $\sigma_R$ close to 2.0 (Eq. XX) and
+estimates of $\sigma_O$ close to 1.5 (Eq. XX), with extremely poor fits to the
+indices of abundance, particularly the commercial CPUE data. It was therefore
+necessary to fix $\phi^{-2}$ and $\rho$ to give fixed values of $\sigma_O$ and
+$\sigma_R$. Model outcomes were very sensitive to the value of $\sigma_O$,
+mainly as a result of its influence on the goodness of fit to the commercial
+CPUE data and the 2013 Hecate Strait Synoptic Survey observation. We perform a
+number of sensitivity tests that evaluate the consequences of the assumed fixed
+values of $\phi^{-2}$ and $\rho$.
+
+The overall observation error term $\sigma_O$ influences the fit to all indices
+of abundance through its contribution to $\sigma_{j,t}$, the standard deviation
+of log observation residuals for each index $j$ in survey year $t$ in the
+log-likelihood function (Eq. XX). For a theoretical assessment with only one
+index of abundance with equally weighted observations, $\sigma_{j,t}$ would be
+equal to $\sigma_O$ for all observations. Commonly, however, there are multiple
+surveys available. Within a given survey, annual coefficients of variation
+($CV_{j,t}$) for each observation may also differ from year to year, due to
+annual sampling differences (e.g., sample size, spatial effects, etc.). It is
+therefore desirable to weight each observation according to its $CV_{j,t}$,
+where a low $CV_{j,t}$ for a given observation gives it a higher weight (and
+lower standard deviation in the objective function). This is implemented
+multiplicatively using Eq. XX, where the $c_{j,t}$ term allows each observation
+to be weighted relative to the total observation error $\sigma_O$. In this
+case, $c_{j,t}$ is simply obtained from the inverse of $CV_{j,t}$ (Eq. XX). For
+consistency with the use of an overall observation error term applied to all
+indices of abundance, the vector of $c_{j,t}$ terms was normalized across all
+surveys by dividing by the mean value of $c_{j,t}$. This choice had the effect
+weighting each survey observation consistently across all three datasets.
+
+In Eq. XX, annual coefficients of variation ($CV_{j,t}$) were derived from
+bootstrapping the swept area estimates for the Multispecies Assemblage and
+Synoptic Surveys, using the procedure described in Eqs.
+\@ref(eq:sweptareabiomass)--\@ref(eq:sweptareacv). Annual CVs were not available
+for the commercial CPUE data, which were obtained from a simple arithmetic
+approach described in Appendix XX. A CV of 0.25 was assumed for each
+observation in the commercial CPUE data. This was a subjective decision
+intended to allow the model to fit to the commercial CPUE data without
+overweighting them. Model sensitivity to this assumption was tested.
+
+A number of authors have noted that there is little consensus on the best
+approach to managing the relative weighting of multiple survey indices, and
+that there is always a degree of subjectivity in the choice of weighting
+strategy (e.g., @francis2011, @mcallister2001). In particular, there is no
+objective means of deciding how well a model should fit to commercial CPUE data,
+given that there is no independent means of knowing the degree to which
+commercial CPUE data are proportional to the underlying biomass. Commercial
+fisheries do not sample populations randomly; catchability and selectivity
+are unlikely to be constant through time; and spatial effects can impact the
+underlying relationship between CPUE and abundance [@hilborn1992]. Surveys are
+assumed to be proportional to abundance by virtue of survey design, however
+this assumption too can be vulnerable to various effects.
+
+@francis2011 reviewed some approaches to weighting abundance indices in
+fisheries stock assessment and advised against subjective down-weighting of
+commercial CPUE data. He described a two-stage approach to weighting some or
+all of the datasets with the intention of making data weights more consistent
+with model output, i.e., satisfying a statistical fit criterion. He proposed
+a survey-specific weighting term, set so that the standard deviation of
+normalized Pearson residuals (SDNR) for each index of abundance dataset is
+equal to about 1.0 [@francis2011].
+
+In the current assessment, adopting an iterative re-weighting approach similar
+to that reported in @francis2011 would necessitate introducing a third,
+survey-specific weighting term to the calculation of $\sigma_{j,t}$. That is,
+$\sigma_{j,t}$ would be composed of $\sigma_O$, $c_{j,t}$, and a
+survey-specific weighting term $w_j$ that would bring SDNR close to 1.0
+@francis2011. Given that both $\sigma_O$ and the commercial CPUE $CV_{j,t}$
+terms were already fixed at subjectively-determined values, and that
+$c_{j,t}$ was already normalized across surveys, it seemed an unwarranted
+addition to introduce another fixed weighting term. @francis2011 stated that
+the overall goal is a stock assessment that fits all indices of abundance
+well, and that the SDNR provides a means of judging whether that is the
+case. However, expert judgment can also be employed [@mcallister2001].
+
+We present sensitivity analyses to the values of fixed variance parameters
+and suggest that an understanding of the impact of fixed variance assumptions
+on management advice for Pacific Cod can be obtained without an iterative
+re-weighting step.
