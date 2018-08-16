@@ -856,3 +856,151 @@ chains (Figure XX).
 
 Alternative reference points based on estimates of average historical biomass,
 similar to those adopted in Area 5ABCD, were explored.
+
+# SENSITIVITY ANALYSES
+
+We present a number of sensitivity analyses to show the influence of fixed
+parameters and prior probability distributions in the Area 5ABCD and 3CD Base
+Case models.
+
+## AREA 5ABCD: HECATE STRAIT AND QUEEN CHARLOTTE SOUND
+
+We tested sensitivity of the model outputs to the following assumptions:
+
+- The prior probability distribution for $ln(q)$
+- The prior probability distribution for $ln(M)$
+- The prior probability distribution for steepness
+- The assumed fixed value of $\sigma_R$
+- The assumed fixed value of $\sigma_W$
+- The effect of including recent (1996-2017) commercial CPUE data as an index
+  of abundance
+- The effect of alternative treatment of variance parameters
+
+Results are presented under these headings below, with Base Case parameter
+settings provided in Table XX. In all sensitivity runs, posterior samples were
+drawn systematically every 10,000 XX iterations from a chain of length 20
+million XX, resulting in 2,000 XX posterior samples; the first 1,000 XX samples
+were dropped to allow for sufficient burn-in.
+
+### Prior probability distribution for $ln(q)$
+
+XX
+
+### Prior probability distribution for $ln(M)$
+
+Three sensitivity analyses are shown to illustrate the effect of the
+parameters of the normal prior distribution assumed for $ln(M)$:
+
+- the mean was held at the Base Case value of 0.5 y^-1^, while the standard
+  deviation was increased to 0.2
+- the mean was reduced to 0.4 y^-1^ and the standard deviation was held at
+  the Base Case value of 0.1
+- the mean was reduced to 0.4 y^-1^ and the standard deviation was increased
+  to 0.2
+
+Respective median posterior estimates of M were:
+
+- 0.323 y^-1^ XX
+- 0.347 y^-1^ XX
+- 0.300 y^-1^ XX
+
+compared to the median posterior Base Case estimate of M = 0.393 y^-1^. It
+therefore appears that the assumed prior probability distribution for natural
+mortality does influence posterior estimates of M and that the prior used in
+the Base Case model may have resulted in higher estimates of M than if a less
+informative prior had been used. Convergence properties appeared to be poor
+for Case 1, with large auto-correlation in several chains. However, convergence
+properties for Cases 2 and 3 were the same or better than those obtained for
+the Base Case model, particularly for Case 3 (not shown).
+
+The biomass estimates that resulted from each sensitivity case are shown in
+Figure XX. There was almost no discernible difference in recent biomass
+estimates among scenarios for the three cases. However, there were large
+differences in estimated historical biomasses, with historical biomasses
+estimated to be smaller than for the Base Case in all three scenarios. Because
+of this, estimates of current stock status relative to the USR and LRP were
+different for these three sensitivity cases. We only show results for cases
+2 and 3, which had much better convergence properties than case 1, in
+Figure XX. Results show that the stock was estimated to be larger relative
+to the historical averages as estimates of M declined.
+
+### Prior probability distribution for steepness
+
+Sensitivity to the assumed prior probability distribution for steepness was
+tested by running the model with a uniform prior for this parameter with lower
+and upper bounds of 0.21 XX and 0.99 XX, respectively. Biomass and parameter
+estimates are shown in Figures XX and XX, where it can be seen that there was
+relatively little effect of the prior on steepness on posterior estimates of
+biomass, although estimates in recent years were slightly lower (Figure XX).
+The median posterior estimate of B0 was much larger than the maximum estimated
+biomass in the time series, and the model showed poor convergence for most
+parameters. The model's tendency to sample very low estimates of steepness with
+this prior resulted in some very large estimates of $ln(R_0)$ and
+$ln(R_{Avg\_init})$ (Figure XX). This result suggests that an informative
+prior for steepness helped to improve model convergence properties without
+having a very large influence on biomass estimates (Figure XX).
+
+### Assumed fixed value of $\sigma_R$
+
+Throughout this assessment so far, 0.8 was assumed to be an appropriate
+value for $\sigma_R$, as this stock appears to have had very variable
+recruitment throughout the history of the fishery. In this sensitivity
+analysis, we test two alternative fixed values of $\sigma_R$:
+
+- $\sigma_R$ = 0.4
+- $\sigma_R$ = 1.0
+
+Resulting estimates of historical biomass are shown in Figure XX. As for the
+steepness sensitivity test, there was very little discernible difference in
+the estimated historical time series between the Base Case model and the two
+sensitivity cases. The largest effects were seen in the estimates of $B_0$
+(Figure XX), which showed much lower posterior estimates obtained with
+$\sigma_R$ = 0.4; and much higher and uncertain posterior estimates with
+$\sigma_R$ = 1.0 as a function of the increased recruitment variation.
+
+### Assumed fixed value of $\sigma_W$
+
+Problems with interpreting the mean weight data were discussed in Appendix XX.
+These problems stem from changes over time in the sample sizes of different
+categories of length data, i.e., sorted and unsorted categories. Concerns
+about the use of the mean weight data were also recorded in the review of
+the 2005 assessment [@fargo2005]. This issue was acknowledged by
+@sinclair2005, who noted that the mean weight series was necessary for
+estimation of model parameters but was down-weighted in the objective function.
+Given the uncertainties in interpreting this time series and its potential
+to provide direct information for scaling the population size, we tested model
+sensitivity to the value of the standard deviation of the mean weight
+residuals, $\sigma_w$. In the Base Case model, $\sigma_w$ was fixed at 0.2.
+For this sensitivity test, we set $\sigma_w$ = 0.4, applying more
+down-weighting to the influence of the mean weight data in the objective
+function.
+
+## Effect of including recent (1996-2017) commercial CPUE data as an index
+  of abundance
+
+In Appendix XX, we provided rationale for excluding the post-1995 commercial
+CPUE data as an index of abundance. The main reason was that a shift in
+management fishing practices could have resulted in some vessels actively
+avoiding Pacific Cod for parts of the year. Here, we provide a sensitivity
+test to illustrate the impact of fitting to this index on model outcomes.
+As for the pre-1996 CPUE data, we assumed an annual CV = 0.25.
+
+The model fit to the trend in the post-1995 commercial CPUE data
+reasonably well (Figure XX). The estimated trend in recent biomass was very
+similar to that from the Base Case model (Figure XX). This was likely because
+the trends in recent survey biomass and commercial CPUE data were largely in
+agreement (Appendix XX). The 95% posterior credibility interval for post-2000
+period biomass was slightly narrower than for the Base Case model.
+
+The results of this analysis suggest, post hoc, that adding the post-1995
+CPUE data did not have a large effect on model outcomes, although we suggest
+that our reasons for questioning the utility of the data as a useful index
+of abundance had merit *a priori*
+
+### Effect of alternative treatment of variance parameters
+
+XX
+
+## AREA 3CD: WEST COAST VANCOUVER ISLAND
+
+XX - fill in later
