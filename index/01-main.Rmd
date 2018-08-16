@@ -780,3 +780,79 @@ relationship between commercial CPUE data and true biomass.
 A total of XX model parameters were conditionally estimated in Area 5ABCD;
 while XX parameters were estimated for Area 3CD, which had one fewer survey
 q parameters (Table XX).
+
+# RESULTS
+
+## AREA 5ABCD: QUEEN CHARLOTTE SOUND AND HECATE STRAIT
+
+The joint posterior distribution was numerically approximated using the
+Markov Chain Monte Carlo routines built into AD Model Builder
+[@fournier2012]. Posterior samples were drawn systematically every 50,000 XX
+iterations from a chain of length 100 million XX, resulting in 2,000 XX
+posterior samples (the first 1,000 XX samples were dropped to allow for
+sufficient burn-in). Convergence was diagnosed using visual inspection of the
+trace plots (Figure XX) and visual examination of autocorrelation in posterior
+chains (Figure XX). Autocorrelation was minor for most parameters, except for
+$ln(R_{Avg\_init}$), for which autocorrelation was quite strong. This likely
+reflects lack of information in the data about this parameter. Overall, there
+was no strong evidence for lack of convergence, although the model occasionally
+estimated very large values for $ln(R_0)$, possibly because of this parameter
+was confounded with steepness ($h$, Figure XX). Very high estimates of
+$ln(R_0)$ were obtained when $h$ was estimated to be very low (Figure XX).
+Survey catchability parameters were positively correlated with each other
+and negatively correlated with $ln(M)$, implying that there is limited
+information in the data to distinguish between a small productive population
+or a larger, less productive population (Figure XX).
+
+Maximum posterior density (MPD) model fits to the three indices of abundance
+are shown in Figure XX. Model-estimated indices of abundance followed the
+general trends of all three observed trends, although they failed to reach most
+of the peaks in the respective datasets. As previously discussed above and in
+the bridging analysis (Appendix XX), model outcomes, especially estimates of
+productivity parameters, were very sensitive to the goodness of fit to the
+indices of abundance, particularly peak commercial CPUE observations and the
+2017 Synoptic Survey observation (Table XX). We consider the goodness of fit
+to the indices of abundance to be a primary driver of uncertainty in this
+assessment and present further sensitivity analyses in a later section.
+
+Posterior probability distributions of estimated parameters are shown in
+Figure XX. The median, 2.5^th^ percentile and 97.5^th^ percentile posterior
+parameter estimates, and maximum posterior density (MPD) estimates, are given
+in Table XX. With the exception of steepness, the posterior estimates did not
+appear to be strongly influenced by the prior probability distributions. The
+posterior probability distribution for steepness was very similar to the prior
+probability distribution, implying that there is little information about this
+parameter in the available data. Sensitivity to the prior distribution assumed
+for steepness is tested in a later section. Posterior probability estimates of
+$ln(M)$ tended to be lower than the prior values, although the right-hand tail
+of the posterior distribution did overlap with the left-hand tail of the prior
+distribution (Figure XX). We have already noted that posterior estimates of $M$
+were strongly influenced by the fit to the index of abundance data (Table XX),
+which likely has a stronger influence on estimates of $M$ than the prior
+probability distribution.
+
+Normal prior probability distributions were used for the log catchability
+parameters $ln(q)$ for the Hecate Strait Assemblage and Synoptic Surveys
+(Figure XX). These prior probability distributions did not appear to strongly
+affect the posterior estimates, with the posterior distribution far to the left
+of the prior distribution in both cases (Figure XX).
+
+### Reference Points
+
+Posterior estimates of $F_{2017}$ and $B_{2018}$ are shown in Figures XX and
+XX, and Table XX. Fishing mortality in 2017 was low compared to the historical
+period, with the posterior median estimated to be 0.052y^-1^ XX.
+
+## AREA 3CD: WEST COAST VANCOUVER ISLAND
+
+Posterior samples were drawn systematically every 50,000 XX
+iterations from a chain of length 100 million XX, resulting in 2,000 XX
+posterior samples (the first 1,000 XX samples were dropped to allow for
+sufficient burn-in). Convergence was diagnosed using visual inspection of the
+trace plots (Figure XX) and visual examination of autocorrelation in posterior
+chains (Figure XX).
+
+### Reference Points
+
+Alternative reference points based on estimates of average historical biomass,
+similar to those adopted in Area 5ABCD, were explored.
