@@ -1,0 +1,34 @@
+\clearpage
+
+`r if(knitr:::is_latex_output()) '\\Appendices'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
+
+```{r cpue-params}
+params <- list()
+params$species_proper <- "Pacific Cod"
+params$april1_year <- TRUE
+params$area <- c("5[ABCD]+", "3[CD]+")
+params$area_name <- c("5ABCD", "3CD")
+params$skip_single_variable_models <- FALSE
+```
+
+```{r cpue-run-historic}
+params$era <- "historic"
+source(here::here("index/cpue.R"))
+dfleet_hist <- dfleet
+gg_cpue_hist <- gg_cpue
+cpue_pred_hist <- predictions
+arith_cpue_hist <- arith_cpue
+```
+
+```{r cpue-run-modern}
+params$era <- "modern"
+source(here::here("index/cpue.R"))
+dfleet_modern <- dfleet
+gg_cpue_modern <- gg_cpue
+cpue_pred_modern <- predictions
+arith_cpue_modern <- arith_cpue
+```
+
+
