@@ -43,6 +43,7 @@ source(file.path(rootd.R, "load-models.R"))
 source(file.path(rootd.R, "verify.R"))
 source(file.path(rootd.R, "mcmc-diagnostics.R"))
 source(file.path(rootd.R, "figures-biomass.R"))
+source(file.path(rootd.data, "get-data.R"))
 
 # Code to setup the model names, and start/end years for various things
 #  in the models
@@ -55,3 +56,15 @@ source(file.path(rootd.R, "model-setup.R"))
 
 # Set up variables for data tables from csv files
 # source("data-tables.r")
+
+
+# Load the raw data
+dat.file <- file.path(rootd.data,
+                      "pcod-cache",
+                      "pacific-cod.rds")
+if(!file.exists(dat.file)){
+  cache_pbs_data(species = "pacific cod",
+                 path = file.path(rootd.data,
+                                  "pcod-cache"))
+}
+dat <- readRDS(dat.file)

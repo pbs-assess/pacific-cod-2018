@@ -26,6 +26,7 @@ build(ovwrt.base = FALSE,
       burnin = 1000,
       thin = 1)
 load.models.into.parent.env()
+source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 ggplot2::theme_set(gfplot::theme_pbs())
 scale_colour_discrete <- function(...) scale_colour_brewer(..., palette = "Dark2")

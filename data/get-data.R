@@ -126,6 +126,11 @@ total.catch.yr.qtr <- function(dat,
   if(is.null(areas)){
     stop("You must supply at least one area.")
   }
+  dat <- mutate(dat,
+                area = assign_areas(major_stat_area_name,
+                                    area_regex = areas)) %>%
+    filter(!is.na(area))
+
   ## Bring in USA landings from csv files
   areas <- gsub("\\[|\\]|\\+", "", areas)
   area.num <- substr(areas[1],
@@ -159,7 +164,7 @@ total.catch.yr.qtr <- function(dat,
     ## Set all USA catch to 0
     usa <- mutate(usa, usa_catch = 0L)
   }
-  j <- mutate(dat,
+  mutate(dat,
          month = month(best_date),
          quarter = case_when(
            month %in% c(1, 2, 3) ~ 4,
@@ -184,7 +189,11 @@ total.catch.yr.qtr <- function(dat,
     mutate(total_catch = sum(usa_catch2, catch_weight)) %>%
     mutate(total_catch = round(total_catch, 3)) %>%
     ## mutate(total_catch = sprintf("%0.3f", round(total_catch, 3))) %>%
-    ungroup()
+    ungroup() %>%
+    select(-c(usa_catch, usa_catch1)) %>%
+    rename(canada_catch = catch_weight,
+           usa_catch = usa_catch2)
+
 }
 
 #' Extract survey biomass and CV for the requested survey
@@ -222,11 +231,6 @@ get.mean.weight <- function(dat.comm.samples,
   dat.comm.samples <- mutate(dat.comm.samples,
                              area = assign_areas(major_stat_area_name,
                                                  area_regex = areas)) %>%
-    filter(!is.na(area))
-
-  dat.catch <- mutate(dat.catch,
-                      area = assign_areas(major_stat_area_name,
-                                          area_regex = areas)) %>%
     filter(!is.na(area))
 
   cs <- comm.specimens(dat.comm.samples, a, b)
