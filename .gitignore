@@ -18,6 +18,7 @@ data/cache/*
 *.lof
 *.lot
 *.aux
+*.bat
 *.bbl
 *.blg
 *~
