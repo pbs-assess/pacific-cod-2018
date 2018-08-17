@@ -128,7 +128,7 @@ localities has a very minor effect and adding the deeper fishing events has
 a moderate effect in all areas except 5CD (Figure
 \@ref(fig:cpue-historic-bridging-plot)).
 
-```{r cpue-historic-bridging-plot, fig.cap="Bridging analysis for CPUE with new localities and new depth threshold."}
+```{r cpue-historic-bridging-plot, fig.cap="Bridging analysis for CPUE with new localities and new depth threshold.", fig.asp=0.4}
 bind_rows(d_depth_350, d_resdoc_2015) %>%
   ggplot(aes(year, cpue_arith, colour = version)) +
   facet_grid(~area) +
@@ -141,7 +141,7 @@ bind_rows(d_depth_350, d_resdoc_2015) %>%
   saveRDS(file = here::here("data/pcod-cpue-bridging.rds"))
 ```
 
-# Commercial CPUE index standardization
+## Commercial CPUE index standardization
 
 We can fit an index standardization model to account for the effects of depth,
 month, and locality on the commercial CPUE times series. There are insufficient
@@ -193,11 +193,12 @@ g1_dist
 ```
 
 ```{r bubble-predictors}
-bubble_predictors <- function(dat, variable, reorder_group = FALSE) {
+bubble_predictors <- function(dat, variable, reorder_group = FALSE,
+  group_id = "trip_id", ncol = 2) {
   temp <- dat %>%
     filter(spp_catch > 0) %>%
     group_by(area, year, !!rlang::sym(variable)) %>%
-    summarize(n = length(unique(trip_id))) %>%
+    summarize(n = length(unique(!!rlang::sym(group_id)))) %>%
     group_by(area, !!rlang::sym(variable)) %>%
     mutate(n_tot = sum(n)) %>%
     ungroup()
@@ -214,7 +215,7 @@ bubble_predictors <- function(dat, variable, reorder_group = FALSE) {
   temp %>%
     ggplot(aes_string("as.factor(year)", y = "y_group")) +
     geom_point(aes(size = n, fill = n), alpha = 0.4, pch = 21) +
-    facet_wrap(~area, scales = "free") +
+    facet_wrap(~area, scales = "free", ncol = ncol) +
     scale_x_discrete(breaks = seq(1950, 2020, 10)) +
     xlab("") + ylab(gfplot:::firstup(gsub("_", " ", variable))) +
     labs(size = "Number of trips") +
@@ -222,13 +223,48 @@ bubble_predictors <- function(dat, variable, reorder_group = FALSE) {
     scale_size_continuous(range = c(0, 7)) +
     scale_fill_viridis_c(trans = "log", breaks = c(1, 10, 100, 500))
 }
-bubble_predictors(cpue_dat, "locality", reorder_group = TRUE)
-cpue_dat %>%
-  mutate(month = as.character(month)) %>%
-  bubble_predictors("month")
-cpue_dat %>%
-  mutate(depth_bin = forcats::fct_rev(as.character(depth_bin))) %>%
-  bubble_predictors("depth_bin")
+```
+
+```{r, cpue-localities-after-filter, fig.cap="The number of positive trips for Pacific Cod across localities after grouping localities with less than 100 positive trips into a new category 'minorlocality'.", fig.asp=1.1}
+small_localities <- group_by(cpue_dat, area, locality) %>%
+  summarize(pos_catch_tot = sum(pos_catch)) %>%
+  filter(pos_catch_tot < 150) %>%
+  arrange(area, -pos_catch_tot) %>%
+  ungroup()
+
+cpue_dat <- mutate(cpue_dat, locality = as.character(locality)) %>%
+  mutate(locality = ifelse(locality %in% small_localities$locality,
+    "-minorlocality", locality)) %>%
+  mutate(locality = as.factor(locality))
+
+g2 <- group_by(cpue_dat, area, locality) %>%
+  summarize(pos_catch_tot = sum(pos_catch)) %>%
+  ggplot(aes(locality, pos_catch_tot)) + geom_col() +
+  facet_wrap(~area, scales = "free") +
+  xlab("") + ylab("Positive trips") +
+  coord_flip() +
+  ggtitle("After locality combining")
+# g2
+```
+
+\clearpage
+
+```{r bubble-predictors-loc, fig.asp=1.2}
+bubble_predictors(cpue_dat, "locality", reorder_group = TRUE, ncol = 1)
+```
+
+\clearpage
+
+```{r bubble-predictors-month}
+# cpue_dat %>%
+#   mutate(month = as.character(month)) %>%
+#   bubble_predictors("month")
+```
+
+```{r bubble-predictors-depth}
+#cpue_dat %>%
+#  mutate(depth_bin = forcats::fct_rev(as.character(depth_bin))) %>%
+#  bubble_predictors("depth_bin")
 ```
 
 ```{r cpue-dist-plots-effort-all, fig.cap="The distribution of effort by year through time across all bottom trawl trips."}
@@ -254,20 +290,18 @@ We can also look at the distribution of fished depth through time (Figure
 trawl fishing after the early 1990s across all fishing trips and for just those
 fishing trips that caught Pacific Cod.
 
-```{r cpue-plot-depth-distributions-positive, fig.cap="The distribution of average trip depth for trips that caught Pacific Cod. Note the deepening in 3CD and 5AB."}
-plot_pcod_dist(filter(cpue_dat, spp_catch > 0),
+```{r cpue-plot-depth-distributions-positive, fig.cap="The distribution of average trip depth for trips that caught Pacific Cod. Note the deepening in 3CD and 5AB. (B) The distribution of average trip fishing for trips across all trips. Note the deepening in 3CD and 5AB.", fig.asp=1}
+g1 <- plot_pcod_dist(filter(cpue_dat, spp_catch > 0),
   y = "geo_mean_depth",
   ylab = "Geometric mean depth",
   title = "Geometric mean depth, positive trips") +
   scale_y_log10(breaks = c(0.1, 1, 20, 10, 50, 100, 200, 300, 1000, 10000),
       labels = scales::comma)
-```
-
-```{r cpue-plot-depth-distributions-all, fig.cap="The distribution of average trip fishing for trips across all trips. Note the deepening in 3CD and 5AB."}
-plot_pcod_dist(cpue_dat,
+g2 <- plot_pcod_dist(cpue_dat,
   y = "geo_mean_depth",
   ylab = "Geometric mean depth",
   title = "Geometric mean depth, all trips")
+cowplot::plot_grid(g1, g2, ncol = 1, labels = "AUTO")
 ```
 
 We combined a number of localities with less than 150 total trips that caught
@@ -281,29 +315,7 @@ g1 <- group_by(cpue_dat, area, locality) %>%
   xlab("") + ylab("Positive trips") +
   facet_wrap(~area, scales = "free") + coord_flip() +
   ggtitle("Before locality combining")
-g1
-```
-
-```{r, cpue-localities-after-filter, fig.cap="The number of positive trips for Pacific Cod across localities after grouping localities with less than 100 positive trips into a new category 'minorlocality'.", fig.asp=1.1}
-small_localities <- group_by(cpue_dat, area, locality) %>%
-  summarize(pos_catch_tot = sum(pos_catch)) %>%
-  filter(pos_catch_tot < 150) %>%
-  arrange(area, -pos_catch_tot) %>%
-  ungroup()
-
-cpue_dat <- mutate(cpue_dat, locality = as.character(locality)) %>%
-  mutate(locality = ifelse(locality %in% small_localities$locality,
-    "-minorlocality", locality)) %>%
-  mutate(locality = as.factor(locality))
-
-g2 <- group_by(cpue_dat, area, locality) %>%
-  summarize(pos_catch_tot = sum(pos_catch)) %>%
-  ggplot(aes(locality, pos_catch_tot)) + geom_col() +
-  facet_wrap(~area, scales = "free") +
-  xlab("") + ylab("Positive trips") +
-  coord_flip() +
-  ggtitle("After locality combining")
-g2
+# g1
 ```
 
 We can also look at the catch by month and depth bin (Figure
@@ -320,7 +332,7 @@ g2 <- group_by(cpue_dat, area, depth_bin) %>%
   ggplot(aes(depth_bin, catch)) + geom_point() +
   facet_wrap(~area, scales = "free_y")
 
-cowplot::plot_grid(g1, g2, ncol = 1)
+# cowplot::plot_grid(g1, g2, ncol = 1)
 ```
 
 We will fit a standardization model ... details to follow... lets us produce
@@ -399,7 +411,9 @@ plot_re_predictions <- function(dat, model_version = "Combined", scale = FALSE) 
     filter(model == model_version) %>%
     mutate(formula_version = gsub("\\+ ", " ", formula_version)) %>%
     mutate(formula_version =
-        gsub("Full standardization", "All variables", formula_version))
+        gsub("Full standardization", "All variables", formula_version)) %>%
+    mutate(formula_version =
+        forcats::fct_relevel(formula_version, "All variables", after = Inf))
   temp %>%
     ggplot(aes(year, est, ymin = upr, ymax = lwr)) +
     geom_line(aes(y = est_unstandardized), colour = "grey30", lty = 1) +
@@ -420,7 +434,7 @@ plot_re_predictions <- function(dat, model_version = "Combined", scale = FALSE) 
 \clearpage
 
 ```{r cpue-plot-glmm-standardizations-combined, fig.cap="The unconditional combined estimate of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model."}
-plot_re_predictions(predictions_re, "Combined")
+# plot_re_predictions(predictions_re, "Combined")
 # plot_re_predictions(predictions_re, "Combined", scale = TRUE)
 
 arith_cpue <- cpue_dat %>% filter(area %in% areas) %>%
@@ -435,15 +449,19 @@ plot_re_predictions(predictions_re, "Combined", scale = TRUE) +
   geom_line(data = arith_cpue, aes(year, est), inherit.aes = FALSE, lty = 2)
 ```
 
-```{r}
-toplot <- which(torun$formula_version == "Full standardization")
-plot_cpue_index_coefs(m_re[[toplot[1]]], type = "tweedie", 
-  re_name = c("RE locality", "NA"))
-plot_cpue_index_coefs(m_re[[toplot[2]]], type = "tweedie", 
-  re_name = c("RE locality", "NA"))
+\clearpage
+
+```{r, fig.asp=1}
+areas_plot <- unique(attr(m_re, "split_labels")$area)
+toplot <- which(attr(m_re, "split_labels")$formula_version == "Full standardization")
+g1_coef <- plot_cpue_index_coefs(m_re[[toplot[1]]], type = "tweedie",
+  re_name = c("RE locality", "NA")) + ggtitle(areas_plot[1])
+g2_coef <- plot_cpue_index_coefs(m_re[[toplot[2]]], type = "tweedie",
+  re_name = c("RE locality", "NA")) + ggtitle(areas_plot[2])
+cowplot::plot_grid(g2_coef, g1_coef, ncol = 1)
 ```
 
-# Post-1995 CPUE
+## Post-1995 CPUE
 
 Extract the data from our databases:
 
@@ -527,11 +545,10 @@ dfleet %>%
 ```
 
 ```{r cpue-modern-fleet-characteristics}
-nrow(dfleet)
-sum(dfleet$pos_catch)
-length(unique(dfleet$vessel))
-sum(dfleet$spp_catch) / 1000
-hist(dfleet$best_depth)
+# nrow(dfleet)
+# sum(dfleet$pos_catch)
+# length(unique(dfleet$vessel))
+# sum(dfleet$spp_catch) / 1000
 ```
 
 ```{r fit-1996-re-cpue}
@@ -539,20 +556,20 @@ areas <- unique(dfleet$area)
 formulas <- data_frame(
   formula = c(
     "cpue ~ year_factor",
-    # "cpue ~ year_factor + depth_bin",
-    # "cpue ~ year_factor + month",
-    # "cpue ~ year_factor + latitude",
-    # "cpue ~ year_factor + (1 | locality)",
-    # "cpue ~ year_factor + (1 | vessel)",
+    "cpue ~ year_factor + depth_bin",
+    "cpue ~ year_factor + month",
+    "cpue ~ year_factor + latitude",
+    "cpue ~ year_factor + (1 | locality)",
+    "cpue ~ year_factor + (1 | vessel)",
     "cpue ~ year_factor + depth_bin + month + latitude + (1 | locality) + (1 | vessel)"
   ),
   formula_version = c(
     "Unstandardized",
-    # "Depth",
-    # "Month",
-    # "Latitude",
-    # "Locality",
-    # "Vessel",
+    "Depth",
+    "Month",
+    "Latitude",
+    "Locality",
+    "Vessel",
     "Full standardization"
   )
 )
@@ -589,22 +606,30 @@ if (!file.exists(fi)) {
 } else {
   m1996_re <- readr::read_rds(fi)
 }
+
+# zz <- c(m1996_re, .m1996_re[2], .m1996_re[4])
+# attr(zz, "split_labels") <- torun[c(1:6,8:13,7,14),]
+# predictions_1996_re <- plyr::ldply(zz, predict_cpue_index_tweedie)
 predictions_1996_re <- plyr::ldply(m1996_re, predict_cpue_index_tweedie)
-saveRDS(predictions_re,
+saveRDS(predictions_1996_re,
   file = here::here("data/generated/cpue-1996-re-predictions-tweedie.rds")
 )
 ```
 
-```{r cpue-modern-coefficients, fig.asp=0.8}
-toplot <- which(torun$formula_version == "Full standardization")
+```{r cpue-modern-coefficients, fig.asp=0.9}
+toplot <- which(attr(m1996_re, "split_labels")$formula_version == "Full standardization")
+areas_plot <- unique(attr(m1996_re, "split_labels")$area)
 plot_cpue_index_coefs(m1996_re[[toplot[1]]], type = "tweedie", 
-  re_name = c("RE locality", "RE vessel"))
-plot_cpue_index_coefs(m1996_re[[toplot[2]]], type = "tweedie", 
-  re_name = c("RE locality", "RE vessel"))
+  re_name = c("RE locality", "RE vessel")) + ggtitle(areas_plot[1])
 ```
 
-```{r cpue-modern-predictions, fig.asp=0.8}
-plot_re_predictions(predictions_1996_re, "Combined", scale = FALSE)
+```{r cpue-modern-coefficients2, fig.asp=0.8}
+plot_cpue_index_coefs(m1996_re[[toplot[2]]], type = "tweedie", 
+  re_name = c("RE locality", "RE vessel")) + ggtitle(areas_plot[2])
+```
+
+```{r cpue-modern-predictions, fig.asp=0.4, fig.cap="The unconditional combined estimate of standardized CPUE (colours) compared with the unstandardized CPUE time series (black). The first 3 columns illustrate the effect of the individual predictors or random intercepts and the last column combines all 3 elements into a single model."}
+# plot_re_predictions(predictions_1996_re, "Combined", scale = FALSE)
 # plot_re_predictions(predictions_1996_re, "Combined", scale = TRUE)
 
 arith_cpue_1996 <- dfleet %>%
@@ -618,5 +643,6 @@ arith_cpue_1996 <- dfleet %>%
 
 plot_re_predictions(predictions_1996_re, "Combined", scale = TRUE) +
   geom_line(data = arith_cpue_1996, aes(year, est),
-    inherit.aes = FALSE, lty = 2)
+    inherit.aes = FALSE, lty = 2) +
+  scale_x_continuous(breaks = seq(1990, 2050, 10))
 ```
