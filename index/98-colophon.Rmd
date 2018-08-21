@@ -10,7 +10,7 @@ The computational environment that was used to generate this version is as follo
 library(FSA)
 # panderOptions('table.alignment.default',
 #   function(df) ifelse(sapply(df, is.numeric), 'right', 'left'))
-pkgs <- c("broom", "gfplot", "ggplot2", "dplyr", "rstan", "knitr", "FSA")
+pkgs <- c("broom", "gfplot", "ggplot2", "dplyr", "rstan", "knitr", "glmmTMB", "TMB")
 info <- devtools::session_info()$packages
 info %>% dplyr::filter(package %in% pkgs) %>%
   dplyr::select(package, version, date) %>% 
