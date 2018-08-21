@@ -338,7 +338,7 @@ g2 <- make_cpue_ts_dat_noint(cpue_pred_modern) %>% make_cpue_ts_plot_noint() +
 cowplot::plot_grid(g1, g2, ncol = 1)
 ```
 
-```{r}
+```{r cpue-coef-plot-funcs}
 make_fe_plots <- function(object) {
   su <- summary(object)$coefficients$cond
   sud <- as.data.frame(su)
@@ -364,7 +364,7 @@ make_fe_plots <- function(object) {
     labs(x = "Coefficient value (log space)", y = "Predictor value")
 }
 make_re_dat <- function(object) {
-  re <- ranef(object)
+  re <- glmmTMB::ranef(object)
   plyr::ldply(re$cond, function(x) {
     sud <- as.data.frame(x)
     sud$par_value <- row.names(sud)
@@ -398,6 +398,58 @@ make_year_locality_plots <- function(object) {
     theme_pbs() + guides(shape = FALSE, colour = FALSE) +
     labs(x = "Year", y = "Random intercept\n(interaction) value (log space)")
 }
+```
+
+```{r cpue-coef-plot1, fig.asp=1.3, echo=FALSE, fig.cap="Fixed effect coefficients for historical commercial CPUE standardization model. Dots and thick and thin line segments represent means and 50\\% and 95\\% Wald confidence intervals."}
+toplot <- c(6, 12)
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_fe_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+```
+
+```{r cpue-coef-plot2, fig.asp=2.4, echo=FALSE, fig.cap="Locality random effects for the historical commercial CPUE standardization model", fig.width=4, out.width="3in"}
+p <- list()
+for (i in seq_along(params$area_name)) {
+   p[[i]] <- make_re_plots(m_historic[[toplot[i]]], re_names = "locality") + 
+    ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+```
+
+```{r cpue-coef-plot3, fig.asp=0.9, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the historical commercial CPUE standardization model."}
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_year_locality_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+```
+
+```{r cpue-coef-plot1-modern, fig.asp=1.7, echo=FALSE, fig.cap="Fixed effect coefficients for modern commercial CPUE standardization model. Dots and thick and thin line segments represent means and 50\\% and 95\\% Wald confidence intervals."}
+toplot <- c(8, 16)
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_fe_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
+```
+
+```{r cpue-coef-plot2-modern, fig.asp=1.35, echo=FALSE, fig.cap="Locality and vessel random effects for the modern commercial CPUE standardization model"}
+p <- list()
+for (i in seq_along(params$area_name)) {
+   p[[i]] <- make_re_plots(m_modern[[c(8, 16)[i]]], re_names = c("locality", "vessel")) + 
+    ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+```
+
+```{r cpue-coef-plot3-modern, fig.asp=0.9, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the modern commercial CPUE standardization model."}
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_year_locality_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
 
 ```{r cpue-re-int-ts-funcs}
@@ -637,10 +689,14 @@ d1 <- x %>% sample_frac(1) %>%
 d1 <- mutate(d1, year_factor = as.factor(yr), cpue = value)
 d1 <- mutate(d1, yr_x_loc = paste(yr, loc))
 
+trash <- capture.output({
 m_int <- plyr::dlply(d1, "variable", function(xx)
   gfplot::fit_cpue_index_glmmtmb(xx, formula = cpue ~ 0 + year_factor + (1|loc) + (1|yr_x_loc)))
+})
+trash <- capture.output({
 m_no_int <- plyr::dlply(d1, "variable", function(xx)
   gfplot::fit_cpue_index_glmmtmb(xx, formula = cpue ~ 0 + year_factor + (1|loc)))
+})
 
 x1 <- plyr::ldply(m_int, function(xx) gfplot::predict_cpue_index_tweedie(xx)) %>% 
   mutate(model = "Space-time interactions")
