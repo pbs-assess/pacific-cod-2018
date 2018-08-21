@@ -6,7 +6,8 @@
 
 # Commercial CPUE standardization
 
-The standardized time series
+
+<!-- The standardized time series
 follows the approach commonly employed for British Columbia groundfish stock
 assessments of using a Generalized Linear Model (GLM) to account for the
 confounding effects of month, depth, latitude, vessel, and DFO locality
@@ -101,6 +102,7 @@ also compared our estimates qualitatively to recent estimates from similar
 models in published assessments to ensure we derived similar timeseries.
 
 For the simulation testing, 
+ -->
 
 ```{r cpue-params}
 params <- list()
@@ -409,13 +411,13 @@ for (i in seq_along(params$area_name)) {
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
 
-```{r cpue-coef-plot2, fig.asp=2.4, echo=FALSE, fig.cap="Locality random effects for the historical commercial CPUE standardization model", fig.width=4, out.width="3in"}
+```{r cpue-coef-plot2, fig.asp=1, echo=FALSE, fig.cap="Locality random effects for the historical commercial CPUE standardization model."}
 p <- list()
 for (i in seq_along(params$area_name)) {
    p[[i]] <- make_re_plots(m_historic[[toplot[i]]], re_names = "locality") + 
     ggtitle(params$area_name[i])
 }
-cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```
 
 ```{r cpue-coef-plot3, fig.asp=0.9, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the historical commercial CPUE standardization model."}
@@ -426,7 +428,7 @@ for (i in seq_along(params$area_name)) {
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
 
-```{r cpue-coef-plot1-modern, fig.asp=1.7, echo=FALSE, fig.cap="Fixed effect coefficients for modern commercial CPUE standardization model. Dots and thick and thin line segments represent means and 50\\% and 95\\% Wald confidence intervals."}
+```{r cpue-coef-plot1-modern, fig.asp=1.2, echo=FALSE, fig.cap="Fixed effect coefficients for modern commercial CPUE standardization model. Dots and thick and thin line segments represent means and 50\\% and 95\\% Wald confidence intervals."}
 toplot <- c(8, 16)
 p <- list()
 for (i in seq_along(params$area_name)) {
@@ -435,13 +437,13 @@ for (i in seq_along(params$area_name)) {
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```
 
-```{r cpue-coef-plot2-modern, fig.asp=1.35, echo=FALSE, fig.cap="Locality and vessel random effects for the modern commercial CPUE standardization model"}
+```{r cpue-coef-plot2-modern, fig.asp=0.8, echo=FALSE, fig.cap="Locality and vessel random effects for the modern commercial CPUE standardization model."}
 p <- list()
 for (i in seq_along(params$area_name)) {
    p[[i]] <- make_re_plots(m_modern[[c(8, 16)[i]]], re_names = c("locality", "vessel")) + 
     ggtitle(params$area_name[i])
 }
-cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```
 
 ```{r cpue-coef-plot3-modern, fig.asp=0.9, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the modern commercial CPUE standardization model."}
