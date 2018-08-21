@@ -280,12 +280,12 @@ make_cpue_ts_plot <- function(dat) {
 }
 ```
 
-```{r cpue-index-ts-hist, fig.asp=1.15, fig.cap="Commercial trawl CPUE standardization models. Throughout, the black line and shaded region indicate a CPUE index with only a year predictor. The coloured line and shaded regents indicate indices that have been standardized by one or more predictors. The first five rows illustrate standardization models that include a single predictor listed on the right. The sixth Rowe illustrates a standardization model that includes all the predictors in one model. The last row illustrates a standardization model that includes all the predictors plus locality-by-year (space-time) random effects. Throughout, vessel and locality are fit as random effects and all other variables are fit as fixed effects."}
+```{r cpue-index-ts-hist, fig.asp=1.15, fig.cap="Commercial trawl CPUE standardization models. Throughout, the black line and shaded region indicate a CPUE index with only a year predictor. The coloured line and shaded ribbons indicate indices that have been standardized by one or more predictors. The first three rows illustrate standardization models that include a single predictor listed on the right. The second last row illustrates a standardization model that includes all the predictors in one model. The last row illustrates a standardization model that includes all the predictors plus locality-by-year (space-time) random effects. Locality and locality-vessel interactions are fit as random effects and all other variables are fit as fixed effects."}
 make_cpue_ts_dat(cpue_pred_hist) %>% make_cpue_ts_plot() +
   ggtitle("1956-1995 CPUE")
 ```
 
-(ref:caption-cpue-index-ts-modern) Same as Figure \@ref(fig:cpue-index-ts-hist) but for the 1996 to 2017 data.
+(ref:caption-cpue-index-ts-modern) Same as Figure \@ref(fig:cpue-index-ts-hist) but for the 1996 to 2017 data. Locality, vessel, and locality-vessel interactions are fit as random effects and all other variables are fit as fixed effects.
 
 ```{r cpue-index-ts-modern, fig.asp=1.55, fig.cap="(ref:caption-cpue-index-ts-modern)", out.width="5.2in", fig.width=6.5}
 make_cpue_ts_dat(cpue_pred_modern) %>% make_cpue_ts_plot() +
@@ -396,7 +396,7 @@ make_year_locality_plots <- function(object) {
     geom_hline(yintercept = 0, lty = 2, alpha = 0.4) +
     geom_point(alpha = 0.7) +
     geom_line(alpha = 0.3) +
-    # facet_wrap(~loc_group) +
+    facet_wrap(~loc_group) +
     theme_pbs() + guides(shape = FALSE, colour = FALSE) +
     labs(x = "Year", y = "Random intercept\n(interaction) value (log space)")
 }
@@ -415,12 +415,12 @@ cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 p <- list()
 for (i in seq_along(params$area_name)) {
    p[[i]] <- make_re_plots(m_historic[[toplot[i]]], re_names = "locality") + 
-    ggtitle(params$area_name[i])
+    ggtitle(params$area_name[i]) + xlab("Random intercept value\n(log space)")
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```
 
-```{r cpue-coef-plot3, fig.asp=0.9, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the historical commercial CPUE standardization model."}
+```{r cpue-coef-plot3, fig.asp=1.35, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the historical commercial CPUE standardization model.", fig.width=10.5}
 p <- list()
 for (i in seq_along(params$area_name)) {
   p[[i]] <- make_year_locality_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
@@ -446,7 +446,7 @@ for (i in seq_along(params$area_name)) {
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```
 
-```{r cpue-coef-plot3-modern, fig.asp=0.9, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the modern commercial CPUE standardization model."}
+```{r cpue-coef-plot3-modern, fig.asp=1.35, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the modern commercial CPUE standardization model."}
 p <- list()
 for (i in seq_along(params$area_name)) {
   p[[i]] <- make_year_locality_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
