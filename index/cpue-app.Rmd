@@ -4,6 +4,104 @@
 
 `r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
 
+# Commercial CPUE standardization
+
+The standardized time series
+follows the approach commonly employed for British Columbia groundfish stock
+assessments of using a Generalized Linear Model (GLM) to account for the
+confounding effects of month, depth, latitude, vessel, and DFO locality
+(predesignated historical geographical locations) when calculating an annual
+index value.
+
+combined to derive the final estimate of CPUE for a given year at a consistent
+value for all the predictors, i.e. a consistent month, depth, latitude, vessel,
+and DFO locality.
+
+For depth and latitude, we binned the values into a sequence of bands to allow
+for nonlinear relationships between these predictors and the response. For
+latitude, we used bands that are 0.1 degrees wide, start at 
+
+e used this quantile method to algorithmically account for
+outlying values that were often data recording errors and could cause problems
+when fitting the models. 
+
+For depth, we used the fishing capture depth binned into bands
+  that are 25m wide. 
+  
+The bins start at the 1\% quantile of the depth values for
+  the specific region and end at the 99\% quantile of the depth values. 
+  
+  We
+  rounded the lowest and highest bin values to 50m values similarly to the
+  process for the latitude bins as described above.
+
+Due to the multispecies nature of the BC groundfish fishery, it is necessary to
+define rules about which vessels should be considered part of a `fleet'
+with which to calculate a CPUE index. We follow the approach used in a number of
+recent BC groundfish stock assessments by requiring vessels to have caught the
+species in a certain number of tows across all years of interest, and to have
+passed a certain threshold of positive trips (trips that recorded some of the
+species) for a certain number of years. Our implementation requires a
+vessel to have recorded at least 100 positive tows since 1996 and to have
+recorded at least five positive trips in at least five years since 1996.
+
+We fit the binomial model (denoted with a superscript $B$) as a logistic
+regression:
+
+\begin{align}
+  y_i^B &\sim \mathrm{Binomial}(\pi_i^B)\\
+  \mathrm{logit}\left(\pi_i^B\right) &= \bm{X}_i^B \bm{\beta}^B,
+\end{align}
+
+and $i$ represents a single tow, $y_i$ represents either a 1 if a tow caught the
+species or a 0 if it did not, $\bm{X^B_i}$ represents a vector of predictors,
+$\bm{\beta^B}$ represents a vector of coefficients, and $\pi_i^B$ represents the
+estimated probability of observing the species in a tow. Details to follow on
+the specific depth and latitude bands chosen.
+
+
+We can then calculate the standardized estimate of CPUE for year $t$, $\mu_t$ as:
+
+\begin{equation}
+  \mu_t = \mathrm{logit}^{-1} \left(\bm{X}_r^B
+    \bm{\beta}^B \right) \cdot \exp \left(\bm{X}_r^L \bm{\beta}^L \right)
+\end{equation}
+
+or
+
+\begin{equation}
+  \mu_t = \pi_t^B \cdot \exp \left(\bm{X}_r^L \bm{\beta}^L \right)
+\end{equation}
+
+where $\bm{X_r}$ represents a vector of predictors set to the reference ($r$)
+levels with the year set to the year of interest. We chose the reference levels
+as the most frequent level of each predictor in the positive-only data
+\citep{maunder2004}. For example, we set the reference month as the most common
+month observed in the dataset filtered for only tows where the species was
+caught. This will not have on the shape of the final CPUE index...
+
+the statistical software
+TMB \citep{kristensen2016} and use standard errors ($\mathrm{SE}$) as calculated
+by TMB on $\log (\mu_t)$ via the Delta method as is commonly done for such
+models \citep[e.g.][]{thorson2015}. We then calculated the 95\% confidence
+intervals as $\exp (\mu_t \pm 1.96 \mathrm{SE}_t)$.
+
+Wald
+
+We calculated the `raw' unstandardized timeseries is calculated using a similar
+procedure but without any of the covariates other than a factor predictor for
+each year. This is similar to calculating the geometric mean of CPUE each
+year.
+
+We tested our implementation of this index standardization model against
+simulated data to ensure that (1) it can generate unbiased annual estimates and
+(2) the confidence intervals have the correct coverage, i.e. the confidence
+intervals contain the true known value at the expected frequency of 95\%. We
+also compared our estimates qualitatively to recent estimates from similar
+models in published assessments to ensure we derived similar timeseries.
+
+For the simulation testing, 
+
 ```{r cpue-params}
 params <- list()
 params$species_proper <- "Pacific Cod"
@@ -20,6 +118,7 @@ dfleet_hist <- dfleet
 gg_cpue_hist <- gg_cpue
 cpue_pred_hist <- predictions
 arith_cpue_hist <- arith_cpue
+m_historic <- readRDS(here::here("data/generated/cpue-models-pcod-historic.rds"))
 ```
 
 ```{r cpue-run-modern}
@@ -29,6 +128,613 @@ dfleet_modern <- dfleet
 gg_cpue_modern <- gg_cpue
 cpue_pred_modern <- predictions
 arith_cpue_modern <- arith_cpue
+m_modern <- readRDS(here::here("data/generated/cpue-models-pcod-modern.rds"))
 ```
 
+```{r cpue-catch-effort-ts, fig.cap="Raw time series of Pacific Cod catch and total hours trawled (regardless of species caught). Data prior to 1996 is shown separately from data after 1996.", fig.asp=1.1}
+make_catch_effort_ts_plot <- function(dat) {
+  bind_rows(dat) %>% group_by(year, area) %>%
+    summarise(
+      `Species catch` = sum(spp_catch)/1000,
+      `Hours fished` = sum(hours_fished)/1000) %>%
+    reshape2::melt(id.vars = c("year", "area")) %>%
+    ggplot(aes(year, value)) +
+    geom_line() +
+    facet_grid(variable~area, scales = "free_y") +
+    ylab("Value (1000 kg or 1000 hours)") + xlab("") +
+    ylim(0, NA)
+}
+g1 <- make_catch_effort_ts_plot(dfleet_hist)  +
+  ggtitle("1956-1995 data")
+g2 <- make_catch_effort_ts_plot(dfleet_modern) +
+  ggtitle("1996+ data")
+cowplot::plot_grid(g1, g2, ncol = 1)
+```
+
+```{r, cpue-depth-hists, fig.asp=0.8, fig.cap="The depth distribution for fishing trips (top row) and fishing trawl events (bottom row) that caught Pacific Cod (blue) or did not catch Pacific Cod (red)."}
+g1 <- gg_cpue_modern$depth + ylab("Fishing event count") + xlab("Depth") +
+  labs(fill = "Fishing event\ncaught\nPacific Cod") +
+  theme(legend.position = c(0.95, 0.95), legend.background = element_rect(fill = "white"),
+    legend.justification = c(1, 1)) +
+  ggtitle("1996+ data")
+
+g2 <- gg_cpue_hist$depth + ylab("Trip count") + xlab("Depth") +
+  labs(fill = "Trip\ncaught\nPacific Cod") +
+  theme(legend.position = c(0.95, 0.95), legend.background = element_rect(fill = "white"),
+    legend.justification = c(1, 1)) +
+  ggtitle("1956-1995 data")
+
+cowplot::plot_grid(g2, g1, ncol = 1)
+```
+
+```{r cpue-bubble-funcs}
+make_bubble_dat <- function(dat,
+  measure.vars = c("month", "locality_code", "vessel", "latitude", "depth")) {
+  bubble_pos <- bind_rows(dat) %>%
+    filter(spp_catch > 0) %>%
+    reshape2::melt(id.vars = c("year", "area"),
+      measure.vars = measure.vars) %>%
+    group_by(area, year, variable, value) %>%
+    summarize(n_pos = n())
+  
+  bubble_all <- bind_rows(dat) %>%
+    reshape2::melt(id.vars = c("year", "area"),
+      measure.vars = measure.vars) %>%
+    group_by(area, year, variable, value) %>%
+    summarize(n = n())
+  
+  left_join(bubble_all, bubble_pos, by = c("area", "year", "variable", "value")) %>%
+    ungroup() %>%
+    mutate(variable = gfplot:::firstup(gsub("_", " ", variable)))
+}
+
+make_facet_bubble_plot <- function(dat, group = "fishing events") {
+  ggplot(dat, aes_string("as.factor(year)", y = "value")) +
+    geom_point(aes_string(size = "n_pos", fill = "n"), alpha = 0.4, pch = 21) +
+    geom_point(aes_string(size = "n"), alpha = 0.4, pch = 21) +
+    facet_wrap(~variable, scales = "free", ncol = 2) +
+    ggplot2::scale_x_discrete(breaks = seq(1950, 2020, 5)) +
+    xlab("") + ylab("") +
+    labs(size = paste0("Number of\n", group)) +
+    labs(fill = paste0("Number of\n", group)) +
+    ggplot2::scale_size_continuous(range = c(0, 7)) +
+    ggplot2::scale_fill_viridis_c(trans = "log", breaks = c(1, 10, 100, 500)) +
+    theme_pbs() +
+    theme(legend.position = c(0.95, 0.05), legend.justification = c(1, 0),
+      legend.direction = "horizontal")
+}
+```
+
+```{r cpue-bubble-plots-hist-3CD, fig.asp=1.35, fig.cap="Distribution of predictors in CPUE standardization models for 1956--1995 3CD dataset. Area of outermost circles represents the number of trip-locality combinations for that predictor value and year combination. Area and shading of innermost circles represents the number of trip-locality combinations for that predictor value and year combination that caught Pacific Cod."}
+dfleet_hist %>%
+  make_bubble_dat(measure.vars = c("month", "locality", "depth")) %>%
+  filter(area == "3CD") %>%
+  make_facet_bubble_plot(group = "trips") +
+  ggtitle("1956-1995 3CD")
+```
+
+(ref:caption-cpue-bubble-plots-hist-5ABCD) Same as Figure \@ref(fig:cpue-bubble-plots-hist-3CD) but for 5ABCD.
+(ref:caption-cpue-bubble-plots-modern-3CD) Same as Figure \@ref(fig:cpue-bubble-plots-hist-3CD) but for 1996--2017 3CD.
+(ref:caption-cpue-bubble-plots-modern-5ABCD) Same as Figure \@ref(fig:cpue-bubble-plots-hist-3CD) but for 1996--2017 5ABCD.
+
+```{r cpue-bubble-plots-hist-5ABCD, fig.asp=1.35, fig.cap="(ref:caption-cpue-bubble-plots-hist-5ABCD)"}
+dfleet_hist %>%
+  make_bubble_dat(measure.vars = c("month", "locality", "depth")) %>%
+  filter(area == "5ABCD") %>%
+  make_facet_bubble_plot(group = "trips") +
+  ggtitle("1956-1995 5ABCD")
+```
+
+```{r cpue-bubble-plots-modern-3CD, fig.asp=1.4, fig.cap="(ref:caption-cpue-bubble-plots-modern-3CD)"}
+dfleet_modern %>% make_bubble_dat() %>%
+  filter(area == "3CD") %>%
+  make_facet_bubble_plot() +
+  ggtitle("1996+ 3CD")
+```
+
+```{r cpue-bubble-plots-modern-5ABCD, fig.asp=1.4, fig.cap="(ref:caption-cpue-bubble-plots-modern-5ABCD)"}
+dfleet_modern %>% make_bubble_dat() %>%
+  filter(area == "5ABCD") %>%
+  make_facet_bubble_plot() +
+  ggtitle("1996+ 5ABCD")
+```
+
+```{r cpue-index-ts-funcs}
+make_cpue_ts_dat <- function(dat) {
+  pp <- dat %>%
+    group_by(formula_version, model, area) %>%
+    mutate(geo_mean = exp(mean(log(est)))) %>%
+    mutate(upr = upr / geo_mean, lwr = lwr / geo_mean, est = est / geo_mean) %>%
+    ungroup() %>%
+    mutate(formula_version =
+        gsub("Full standardization minus interactions",
+          "Full standardization\nminus interactions", formula_version)) %>%
+    mutate(formula_version =
+        forcats::fct_relevel(formula_version,
+          "Full standardization\nminus interactions", after = Inf)) %>%
+    mutate(formula_version =
+        forcats::fct_relevel(formula_version,
+          "Full standardization", after = Inf))
+  uns <- filter(pp, formula_version == "Unstandardized") %>% select(-formula_version)
+  list(stand = pp, unstand = uns)
+}
+
+make_cpue_ts_plot <- function(dat) {
+  dat$stand %>%
+    filter(formula_version != "Unstandardized") %>%
+    ggplot(aes(year, est, ymin = lwr, ymax = upr, fill = formula_version)) +
+    geom_line() +
+    geom_ribbon(data = dat$unstand, aes(x = year, ymin = lwr, ymax = upr),
+      fill = "black", alpha = 0.5,
+      inherit.aes = FALSE) +
+    geom_line(data = dat$unstand, aes(x = year, y = est),
+      colour = "black", inherit.aes = FALSE) +
+    labs(fill = "Version", colour = "Version", y = "") +
+    geom_ribbon(alpha = 0.5) +
+    geom_line(aes(colour = formula_version)) +
+    facet_grid(formula_version~area) +
+    ylab("CPUE (kg/hour) divided\nby geometric mean") +
+    guides(fill = FALSE, colour = FALSE) + xlab("")
+}
+```
+
+```{r cpue-index-ts-hist, fig.asp=1.15, fig.cap="Commercial trawl CPUE standardization models. Throughout, the black line and shaded region indicate a CPUE index with only a year predictor. The coloured line and shaded regents indicate indices that have been standardized by one or more predictors. The first five rows illustrate standardization models that include a single predictor listed on the right. The sixth Rowe illustrates a standardization model that includes all the predictors in one model. The last row illustrates a standardization model that includes all the predictors plus locality-by-year (space-time) random effects. Throughout, vessel and locality are fit as random effects and all other variables are fit as fixed effects."}
+make_cpue_ts_dat(cpue_pred_hist) %>% make_cpue_ts_plot() +
+  ggtitle("1956-1995 CPUE")
+```
+
+(ref:caption-cpue-index-ts-modern) Same as Figure \@ref(fig:cpue-index-ts-hist) but for the 1996 to 2017 data.
+
+```{r cpue-index-ts-modern, fig.asp=1.55, fig.cap="(ref:caption-cpue-index-ts-modern)", out.width="5.2in", fig.width=6.5}
+make_cpue_ts_dat(cpue_pred_modern) %>% make_cpue_ts_plot() +
+  ggtitle("1996+ CPUE")
+```
+
+```{r cpue-int-test-funcs}
+make_cpue_ts_dat_noint <- function(dat) {
+  pp <- dat %>%
+    group_by(formula_version, model, area) %>%
+    mutate(geo_mean = exp(mean(log(est)))) %>%
+    mutate(upr = upr / geo_mean, lwr = lwr / geo_mean, est = est / geo_mean) %>%
+    ungroup() %>%
+    mutate(formula_version =
+        gsub("Full standardization minus interactions",
+          "Full standardization\nminus interactions", formula_version)) %>%
+    mutate(formula_version =
+        forcats::fct_relevel(formula_version,
+          "Full standardization\nminus interactions", after = Inf)) %>%
+    mutate(formula_version =
+        forcats::fct_relevel(formula_version,
+          "Full standardization", after = Inf))
+  uns <- filter(pp, formula_version == "Full standardization\nminus interactions") %>% 
+    select(-formula_version)
+  list(stand = pp, unstand = uns)
+}
+
+make_cpue_ts_plot_noint <- function(dat) {
+  dat$stand %>%
+    filter(formula_version == "Full standardization") %>%
+    ggplot(aes(year, est, ymin = lwr, ymax = upr, fill = formula_version)) +
+    geom_line() +
+    geom_ribbon(data = dat$unstand, aes(x = year, ymin = lwr, ymax = upr),
+      fill = "black", alpha = 0.5,
+      inherit.aes = FALSE) +
+    geom_line(data = dat$unstand, aes(x = year, y = est),
+      colour = "black", inherit.aes = FALSE) +
+    labs(fill = "Version", colour = "Version", y = "") +
+    geom_ribbon(alpha = 0.5) +
+    geom_line(aes(colour = formula_version)) +
+    facet_wrap(~area, ncol = 2) +
+    ylab("CPUE (kg/hour) divided\nby geometric mean") +
+    guides(fill = FALSE, colour = FALSE) + xlab("")
+}
+```
+
+```{r cpue-int-test-plot, fig.asp=0.85, fig.cap="A comparison of CPUE timeseries standardized with a model that does not include locality-year (space-time) random effects (black/grey) and a model that does include the locality-year random effects (red)."}
+g1 <- make_cpue_ts_dat_noint(cpue_pred_hist) %>% make_cpue_ts_plot_noint() +
+  ggtitle("1956-1995 CPUE")
+g2 <- make_cpue_ts_dat_noint(cpue_pred_modern) %>% make_cpue_ts_plot_noint() +
+  ggtitle("1996+ CPUE")
+cowplot::plot_grid(g1, g2, ncol = 1)
+```
+
+```{r cpue-coef-plot-funcs}
+make_fe_plots <- function(object) {
+  su <- summary(object)$coefficients$cond
+  sud <- as.data.frame(su)
+  sud$param <- row.names(su)
+  row.names(sud) <- NULL
+  sud <- rename(sud, est = Estimate, se = `Std. Error`)
+  sud <- mutate(sud, par_value = gsub("^[A-Z_a-z]+", "", param))
+  sud <- mutate(sud, par_group = gsub("^([A-Z_a-z]+)[0-9.]+$", "\\1", param))
+  ggplot(sud, aes_string("est", "forcats::fct_rev(par_value)",
+    yend = "forcats::fct_rev(par_value)"
+  )) +
+    ggplot2::geom_segment(aes_string(
+      x = "est - 1.96 * se",
+      xend = "est + 1.96 * se"
+    ), lwd = 0.5) +
+    ggplot2::geom_segment(aes_string(
+      x = "est - 0.67 * se",
+      xend = "est + 0.67 * se"
+    ), lwd = 1.25) +
+    geom_point() +
+    facet_wrap(~par_group, scales = "free") +
+    theme_pbs() + guides(shape = FALSE, colour = FALSE) +
+    labs(x = "Coefficient value (log space)", y = "Predictor value")
+}
+make_re_dat <- function(object) {
+  re <- glmmTMB::ranef(object)
+  plyr::ldply(re$cond, function(x) {
+    sud <- as.data.frame(x)
+    sud$par_value <- row.names(sud)
+    row.names(sud) <- NULL
+    sud
+  }) %>% 
+    rename(par_group = .id) %>%
+    rename(est = `(Intercept)`) %>% 
+    as_tibble() %>% 
+    mutate(loc_group = gsub("^([0-9]+)[ -]*([0-9a-zA-Z]+)$", "\\2", par_value)) %>% 
+    mutate(loc_year = gsub("^([0-9]+)[ -]*[0-9a-zA-Z]+$", "\\1", par_value))
+}
+make_re_plots <- function(object, re_names = c("locality")) {
+  re <- make_re_dat(object)
+  filter(re, par_group %in% re_names) %>% 
+    ggplot(aes_string("est", "forcats::fct_rev(par_value)")) +
+    geom_vline(xintercept = 0, lty = 2, alpha = 0.4) +
+    geom_point(bg = "white") +
+    facet_wrap(~par_group, scales = "free") +
+    theme_pbs() + guides(shape = FALSE, colour = FALSE) +
+    labs(x = "Random intercept value (log space)", y = "")
+}
+make_year_locality_plots <- function(object) {
+  re <- make_re_dat(object)
+  filter(re, par_group == "year_locality") %>% 
+    ggplot(aes_string("as.numeric(loc_year)", "est", group = "loc_group")) +
+    geom_hline(yintercept = 0, lty = 2, alpha = 0.4) +
+    geom_point(alpha = 0.7) +
+    geom_line(alpha = 0.3) +
+    # facet_wrap(~loc_group) +
+    theme_pbs() + guides(shape = FALSE, colour = FALSE) +
+    labs(x = "Year", y = "Random intercept\n(interaction) value (log space)")
+}
+```
+
+```{r cpue-coef-plot1, fig.asp=1.3, echo=FALSE, fig.cap="Fixed effect coefficients for historical commercial CPUE standardization model. Dots and thick and thin line segments represent means and 50\\% and 95\\% Wald confidence intervals."}
+toplot <- c(6, 12)
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_fe_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+```
+
+```{r cpue-coef-plot2, fig.asp=2.4, echo=FALSE, fig.cap="Locality random effects for the historical commercial CPUE standardization model", fig.width=4, out.width="3in"}
+p <- list()
+for (i in seq_along(params$area_name)) {
+   p[[i]] <- make_re_plots(m_historic[[toplot[i]]], re_names = "locality") + 
+    ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+```
+
+```{r cpue-coef-plot3, fig.asp=0.9, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the historical commercial CPUE standardization model."}
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_year_locality_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+```
+
+```{r cpue-coef-plot1-modern, fig.asp=1.7, echo=FALSE, fig.cap="Fixed effect coefficients for modern commercial CPUE standardization model. Dots and thick and thin line segments represent means and 50\\% and 95\\% Wald confidence intervals."}
+toplot <- c(8, 16)
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_fe_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
+```
+
+```{r cpue-coef-plot2-modern, fig.asp=1.35, echo=FALSE, fig.cap="Locality and vessel random effects for the modern commercial CPUE standardization model"}
+p <- list()
+for (i in seq_along(params$area_name)) {
+   p[[i]] <- make_re_plots(m_modern[[c(8, 16)[i]]], re_names = c("locality", "vessel")) + 
+    ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+```
+
+```{r cpue-coef-plot3-modern, fig.asp=0.9, echo=FALSE, fig.cap="Locality-by-year (space-time) random effects for the modern commercial CPUE standardization model."}
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_year_locality_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+```
+
+```{r cpue-re-int-ts-funcs}
+most_common <- function(x) names(rev(sort(table(as.character(x)))))[[1]]
+basel_level <- function(x) levels(x)[[1]]
+
+plot_cpue_int_res <- function(model, fleet, index_data, 
+  era = c("modern", "historical"), ref_type = c("base", "common"),
+  the_formula_version = "Full standardization") {
+  
+  era <- match.arg(era)
+  ref_type <- match.arg(ref_type)
+  
+  library(glmmTMB)
+  
+  if (ref_type == "base") {
+    newdata <- select(fleet, year_factor, locality) %>%
+      unique() %>% 
+      mutate(year = as.numeric(as.character(year_factor))) %>% 
+      group_by(locality) %>% 
+      do({
+        data_frame(year = seq(min(.$year), max(.$year)))
+      }) %>% 
+      group_by(locality) %>%
+      mutate(
+        depth = basel_level(fleet$depth),
+        month = basel_level(fleet$month)
+      )
+    if (era == "modern") {
+      newdata <- newdata %>% mutate(
+        latitude = basel_level(fleet$latitude),
+        vessel = basel_level(fleet$vessel))
+    }
+  } else {
+    if (era != "modern") {
+    newdata <- fleet %>% 
+      mutate(year = as.numeric(as.character(year_factor))) %>% 
+      group_by(locality) %>%
+      summarise(
+        year_min = min(year), 
+        year_max = max(year), 
+        depth = most_common(depth), 
+        month = most_common(month)
+      )
+    }
+    if (era == "modern") {
+      newdata <- fleet %>% 
+      mutate(year = as.numeric(as.character(year_factor))) %>% 
+      group_by(locality) %>%
+      summarise(
+        year_min = min(year), 
+        year_max = max(year), 
+        depth = most_common(depth), 
+        month = most_common(month),
+        latitude = most_common(latitude), 
+        vessel = most_common(vessel)
+      )
+    }
+    if (era != "modern") {
+      newdata <- newdata %>% group_by(locality) %>%
+        do({
+          data_frame(
+            year = seq(.$year_min, .$year_max),
+            depth = .$depth,
+            month = .$month
+          )
+        })
+    }
+    if (era == "modern") {
+      newdata <- newdata %>% group_by(locality) %>%
+        do({
+          data_frame(
+            year = seq(.$year_min, .$year_max),
+            depth = .$depth,
+            month = .$month,
+            vessel = .$vessel,
+            latitude = .$latitude
+          )
+        })
+    }
+  }
+  newdata <- ungroup(newdata)
+  newdata <- newdata %>% mutate(year_locality = paste(year, locality))
+  newdata <- newdata %>% mutate(year_factor = as.character(year))
+  
+  pp <- predict(model, newdata = newdata)
+  newdata$loc_pred <- pp
+  newdata <- arrange(newdata, year, locality)
+  
+  stand <- filter(index_data, formula_version == the_formula_version, 
+    area == unique(fleet$area)[[1]]) %>% 
+    select(year, est_link, se_link)
+  
+  ggplot(newdata, aes(year, loc_pred)) + 
+    geom_line(alpha = 0.7, aes(group = locality, colour = locality)) +
+    geom_line(data = stand, aes(x = year, est_link), inherit.aes = FALSE, lwd = 1) +
+    geom_ribbon(data = stand,
+      aes(x = year, ymin = est_link - 1.96 * se_link,
+        ymax = est_link + 1.96 * se_link), inherit.aes = FALSE, alpha = 0.4) +
+    guides(colour = FALSE) +
+    scale_color_discrete() + ylab("Log of standardized CPUE") +
+    xlab("")
+}
+```
+
+```{r cpue-re-int-ts, fig.cap="Locality-specific CPUE index trends for a standardization model that allows for locality-year (space-time) interactions. The coloured lines indicate the locality-specific estimates with all other predictors set to their base levels. The black line and shaded ribbon indicate the overall average annual CPUE.", fig.asp=0.8}
+stopifnot(length(m_modern) == 16L)
+g1 <- plot_cpue_int_res(m_modern[[8]], fleet = dfleet_modern[[1]], 
+  index_data = cpue_pred_modern,
+  era = "modern") + ggtitle("1996+ 5ABCD")
+
+g2 <- plot_cpue_int_res(m_modern[[16]], fleet = dfleet_modern[[2]], 
+  index_data = cpue_pred_modern,
+  era = "modern") + ggtitle("1996+ 3CD")
+
+stopifnot(length(m_historic) == 12L)
+g3 <- plot_cpue_int_res(m_historic[[6]], fleet = dfleet_hist[[1]], 
+  index_data = cpue_pred_hist,
+  era = "historical")+ ggtitle("1956-1995 5ABCD")
+
+g4 <- plot_cpue_int_res(m_historic[[12]], fleet = dfleet_hist[[2]], 
+  index_data = cpue_pred_hist,
+  era = "historical")+ ggtitle("1956-1995 3CD")
+
+cowplot::plot_grid(g4, g3, g2, g1, ncol = 2)
+```
+
+```{r cpue-re-int-ts-common, fig.cap="Locality-specific CPUE index trends with other predictors at their most common locality value. The coloured lines indicate the effect of including locality and locality-year random effects. The black line and shaded ribbon indicate the overall average annual CPUE --- the standardized CPUE timeseries used elsewhere.", fig.asp=0.8, eval=FALSE}
+g1 <- plot_cpue_int_res(m_modern[[8]], fleet = dfleet_modern[[1]], 
+  index_data = cpue_pred_modern, ref_type = "common",
+  era = "modern") + ggtitle("1996+ 5ABCD")
+
+g2 <- plot_cpue_int_res(m_modern[[16]], fleet = dfleet_modern[[2]], 
+  index_data = cpue_pred_modern, ref_type = "common",
+  era = "modern") + ggtitle("1996+ 3CD")
+
+g3 <- plot_cpue_int_res(m_historic[[6]], fleet = dfleet_hist[[1]], 
+  index_data = cpue_pred_hist, ref_type = "common",
+  era = "historical")+ ggtitle("1956-1995 5ABCD")
+
+g4 <- plot_cpue_int_res(m_historic[[12]], fleet = dfleet_hist[[2]], 
+  index_data = cpue_pred_hist, ref_type = "common",
+  era = "historical")+ ggtitle("1956-1995 3CD")
+
+cowplot::plot_grid(g4, g3, g2, g1, ncol = 2)
+```
+
+```{r cpue-re-no-int-ts, fig.cap="Locality-specific CPUE index trends for a standardization model that does not allow for locality-year (space-time) interactions. The coloured lines indicate the locality-specific estimates with all other predictors set to their base levels. The black line and shaded ribbon indicate the overall average annual CPUE.", fig.asp=0.8}
+g1 <- plot_cpue_int_res(m_modern[[7]], fleet = dfleet_modern[[1]], 
+  index_data = cpue_pred_modern,
+  the_formula_version = "Full standardization minus interactions",
+  era = "modern") + ggtitle("1996+ 5ABCD")
+
+g2 <- plot_cpue_int_res(m_modern[[15]], fleet = dfleet_modern[[2]], 
+  index_data = cpue_pred_modern,
+  the_formula_version = "Full standardization minus interactions",
+  era = "modern") + ggtitle("1996+ 3CD")
+
+g3 <- plot_cpue_int_res(m_historic[[5]], fleet = dfleet_hist[[1]], 
+  index_data = cpue_pred_hist,
+  the_formula_version = "Full standardization minus interactions",
+  era = "historical")+ ggtitle("1956-1995 5ABCD")
+
+g4 <- plot_cpue_int_res(m_historic[[11]], fleet = dfleet_hist[[2]], 
+  index_data = cpue_pred_hist,
+  the_formula_version = "Full standardization minus interactions",
+  era = "historical")+ ggtitle("1956-1995 3CD")
+
+cowplot::plot_grid(g4, g3, g2, g1, ncol = 2)
+```
+
+
+```{r cpue-re-no-int-ts-common, fig.cap="Locality-specific CPUE index trends with other predictors at their most common locality value. The coloured lines indicate the effect of including locality random effects. The black line and shaded ribbon indicate the overall average annual CPUE.", fig.asp=0.8,eval=FALSE}
+g1 <- plot_cpue_int_res(m_modern[[7]], fleet = dfleet_modern[[1]], 
+  index_data = cpue_pred_modern, ref_type = "common",
+  the_formula_version = "Full standardization minus interactions",
+  era = "modern") + ggtitle("1996+ 5ABCD")
+
+g2 <- plot_cpue_int_res(m_modern[[15]], fleet = dfleet_modern[[2]], 
+  index_data = cpue_pred_modern, ref_type = "common",
+  the_formula_version = "Full standardization minus interactions",
+  era = "modern") + ggtitle("1996+ 3CD")
+
+g3 <- plot_cpue_int_res(m_historic[[5]], fleet = dfleet_hist[[1]], 
+  index_data = cpue_pred_hist, ref_type = "common",
+  the_formula_version = "Full standardization minus interactions",
+  era = "historical")+ ggtitle("1956-1995 5ABCD")
+
+g4 <- plot_cpue_int_res(m_historic[[11]], fleet = dfleet_hist[[2]], 
+  index_data = cpue_pred_hist, ref_type = "common",
+  the_formula_version = "Full standardization minus interactions",
+  era = "historical")+ ggtitle("1956-1995 3CD")
+
+cowplot::plot_grid(g4, g3, g2, g1, ncol = 2)
+```
+
+
+```{r cpue-sim-test-tweedie-glmm, message=FALSE, warning=FALSE, results='hide'}
+set.seed(99)
+N <- 12
+nyrs <- 20
+locs <- LETTERS[seq_len(N)]
+loc_effects <- rnorm(N, 0, 0.3)
+yr_effects <- as.numeric(arima.sim(n = nyrs, list(ar = 0.3), sd = 1, mean = 2))
+obs_per_yr_loc <- 10
+tweedie_p <- 1.6
+tweedie_phi <- 5
+
+x <- data.frame(loc = rep(locs, each = nyrs * obs_per_yr_loc), 
+  loc_ef = rep(loc_effects, each = nyrs * obs_per_yr_loc))
+x <- mutate(x, yr = rep(seq_len(nyrs), N * obs_per_yr_loc), 
+  yr_ef = rep(yr_effects, N * obs_per_yr_loc))
+x <- mutate(x, mu = yr_ef + loc_ef)
+x <- mutate(x, yr_x_loc = paste(yr, loc))
+x <- mutate(x, y = tweedie::rtweedie(length(mu), 
+  mu = exp(mu), power = tweedie_p, phi = tweedie_phi))
+# ggplot(x, aes(yr, y)) + geom_point() + geom_line(aes(x = yr, y = exp(yr_ef)))
+
+yr_loc_int <- expand.grid(yr = unique(x$yr), loc = unique(x$loc))
+yr_loc_int <- mutate(yr_loc_int, yr_x_loc = paste(yr, loc))
+yr_loc_int <- mutate(yr_loc_int, yr_x_loc_ef = rnorm(nrow(yr_loc_int), 0, 0.5))
+
+x <- left_join(x, yr_loc_int, by = c("loc", "yr", "yr_x_loc"))
+
+x <- mutate(x, mu_w_int = yr_ef + loc_ef + yr_x_loc_ef)
+x <- mutate(x, y_w_int = 
+    tweedie::rtweedie(length(mu_w_int), 
+      mu = exp(mu_w_int), power = tweedie_p, phi = tweedie_phi))
+# ggplot(x, aes(yr, y_w_int)) + geom_point() + geom_line(aes(x = yr, y = exp(yr_ef)))
+
+d1 <- x %>% sample_frac(1) %>% 
+  reshape2::melt(id.vars = c("loc", "yr", "yr_ef"), measure.vars = c("y", "y_w_int"))
+# d1 %>% ggplot(aes(yr, value)) + geom_point(alpha = 0.7, pch = 21) + 
+#   geom_line(aes(x = yr, y = exp(yr_ef))) +
+#   facet_wrap(~variable)
+
+d1 <- mutate(d1, year_factor = as.factor(yr), cpue = value)
+d1 <- mutate(d1, yr_x_loc = paste(yr, loc))
+
+trash <- capture.output({
+m_int <- plyr::dlply(d1, "variable", function(xx)
+  gfplot::fit_cpue_index_glmmtmb(xx, formula = cpue ~ 0 + year_factor + (1|loc) + (1|yr_x_loc)))
+})
+trash <- capture.output({
+m_no_int <- plyr::dlply(d1, "variable", function(xx)
+  gfplot::fit_cpue_index_glmmtmb(xx, formula = cpue ~ 0 + year_factor + (1|loc)))
+})
+
+x1 <- plyr::ldply(m_int, function(xx) gfplot::predict_cpue_index_tweedie(xx)) %>% 
+  mutate(model = "Space-time interactions")
+x2 <- plyr::ldply(m_no_int, function(xx) gfplot::predict_cpue_index_tweedie(xx)) %>% 
+  mutate(model = "No space-time interactions")
+pp <- bind_rows(x1, x2)
+
+orig_dat <- select(x, yr, yr_ef) %>% unique() %>% 
+  mutate(yr_ef = yr_ef - mean(yr_ef)) %>%
+  rename(year = yr)
+```
+
+```{r cpue-sim-test-tweedie-glmm-plot, fig.cap="An example simulation illustrating the effect of modelling or not modelling space-time interactions as random effects in a CPUE index standardization model. Left panel shows a scenario where the data were generated with the same trend for all localities in space. Right panel shows a scenario where the data were generated with space-time interactions. The red and blue lines and shaded regions represent estimated CPUE indices from models that allow for space-time interactions or do not allow for space-time interactions along with 95\\% confidence intervals. The dashed black line indicates the true mean CPUE for each year. All model and data combinations have correct 95\\% coverage except for the no-space-time-interactions model fitted to data that does have space-time interactions, which has 55\\% coverage.", fig.asp=0.45}
+pp <- left_join(pp, orig_dat, by = "year") %>%
+  mutate(est_link = est_link - mean(est_link)) %>% 
+  ungroup() %>% 
+  mutate(variable = gsub("^y$", "Data have no space-time interactions", variable)) %>% 
+  mutate(variable = gsub("^y_w_int$", "Data have space-time interactions", variable)) %>% 
+  mutate(model = forcats::fct_rev(model))
+
+pp %>% group_by(model, variable) %>%
+  ungroup() %>%
+  ggplot() + 
+  geom_ribbon(aes(x = year, ymin = exp(est_link - 1.96 * se_link),
+    ymax = exp(est_link + 1.96 * se_link), fill = model), alpha = 0.4) +
+  geom_line(aes(x = year, y = exp(est_link), colour = model), lwd = 0.8) +
+  facet_grid(~variable) +
+  geom_line(data = orig_dat, aes(x = year, y = exp(yr_ef)), lwd = 0.9, col = "grey20", lty = 2) +
+  labs(fill = "Model", colour = "Model", x = "Year", y = "CPUE") + 
+  gfplot::theme_pbs() +
+  theme(legend.position = c(0.02, 0.97), legend.justification = c(0, 1))
+```
+
+```{r cpue-sim-test-tweedie-glmm-table, echo = FALSE, results='asis', message=FALSE, warning=FALSE, eval=TRUE}
+# group_by(pp, variable, model) %>%
+#   rename(data = variable) %>%
+#   summarise(coverage =
+#     sum(yr_ef < est_link + 1.96 * se_link & yr_ef > est_link - 1.96 * se_link) / n()) %>%
+#   knitr::kable(caption = "TODO", booktabs = TRUE, linesep = "")
+```
 

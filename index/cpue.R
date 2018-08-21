@@ -1,19 +1,22 @@
+gg_cpue <- list()
+spp <- "pcod"
+
 if (params$era == "modern") {
   fi <- here::here("data/cpue-modern.rds")
   if (!file.exists(fi)) {
     d1996 <- gfplot::get_cpue_index(gear = "bottom trawl", min_cpue_year = 1996)
-    write_rds(d1996, fi)
+    readr::write_rds(d1996, fi)
   } else {
-    d1996 <- read_rds(fi)
+    d1996 <- readr::read_rds(fi)
   }
 } else {
   fi <- here::here("data/cpue-historic.rds")
   if (!file.exists(fi)) {
     d <- gfplot::get_cpue_historic(species = NULL, end_year = 1995,
       alt_year_start_date = "04-01")
-    write_rds(d, fi)
+    readr::write_rds(d, fi)
   } else {
-    d <- read_rds(fi)
+    d <- readr::read_rds(fi)
   }
 }
 
@@ -54,18 +57,6 @@ if (params$era == "modern") {
   dfleet <- map2(params$area, params$area_name, define_fleet)
 }
 
-gg_cpue$catch_effort <- dfleet %>% bind_rows() %>%
-   group_by(year, area) %>%
-   summarise(
-     `Species catch` = sum(spp_catch)/1000,
-     `Hours fished` = sum(hours_fished)/1000) %>%
-   reshape2::melt(id.vars = c("year", "area")) %>%
-   ggplot(aes(year, value)) +
-   geom_line() +
-   facet_grid(variable~area, scales = "free_y") +
-   ylab("Value (1000 kg or 1000 hours)") + xlab("") +
-   ylim(0, NA)
-
 depth_bands <- as.numeric(as.character(unique(bind_rows(dfleet)$depth)))
 
 gg_cpue$depth <- dfleet %>%
@@ -78,29 +69,6 @@ gg_cpue$depth <- dfleet %>%
    geom_vline(xintercept = depth_bands, lty = 2, col = "grey80") +
    coord_cartesian(expand = FALSE) +
    facet_wrap(~area, ncol = 2)
-
-group <- if (params$era == "modern") "fishing_event_id" else "trip_id"
-for (i in seq_along(dfleet)) {
-  gg_cpue$bubble_loc <- gfplot:::plot_predictor_bubbles(dfleet[[i]], "locality", reorder_group = TRUE,
-    group = group) %>% print()
-
-  gg_cpue$bubble_dep <- dfleet[[i]] %>% mutate(depth = as.factor(as.character(depth))) %>%
-    gfplot:::plot_predictor_bubbles("depth", reorder_group = FALSE,
-      group = group)
-
-  if (params$era == "modern") {
-    gg_cpue$bubble_lat <- dfleet[[i]] %>% mutate(latitude = as.factor(as.character(latitude))) %>%
-      gfplot:::plot_predictor_bubbles("latitude", reorder_group = FALSE,
-        group = group)
-
- gg_cpue$bubble_ves <-  gfplot:::plot_predictor_bubbles(dfleet[[i]], "vessel", reorder_group = TRUE,
-    group = group)
-  }
-
- gg_cpue$bubble_mon <-  dfleet[[i]] %>% mutate(month = as.factor(as.character(month))) %>%
-    gfplot:::plot_predictor_bubbles("month", reorder_group = FALSE,
-      group = group)
-}
 
 for (i in seq_along(dfleet)) {
   dfleet[[i]]$year_locality <- paste(dfleet[[i]]$year_factor, dfleet[[i]]$locality)
@@ -160,7 +128,7 @@ if (params$skip_single_variable_models) {
       "Full standardization"))
 }
 
-file_model <- here::here(paste0("data/generated/cpue-models-", 
+file_model <- here::here(paste0("data/generated/cpue-models-",
     spp, "-", params$era, ".rds"))
 if (!file.exists(file_model)) {
   system.time({
@@ -176,7 +144,7 @@ if (!file.exists(file_model)) {
 }
 
 predictions <- plyr::ldply(model, predict_cpue_index_tweedie)
-## write_csv(predictions,
+## readr::write_csv(predictions,
 ##   here::here(paste0("data/generated/cpue-predictions-", spp, "-", params$era, ".csv")))
 
 arith_cpue <- dfleet %>%
@@ -194,15 +162,5 @@ gg_cpue$pred <- predictions %>%
   gfplot:::plot_cpue_predictions("Combined", scale = TRUE) +
   geom_line(data = arith_cpue, aes(year, est),
     inherit.aes = FALSE, lty = 2) +
-  scale_x_continuous(breaks = seq(1990, 2050, 5))
+  scale_x_continuous(breaks = seq(1950, 2050, 5))
 
-## tpredictions %>%
-##   group_by(formula_version, model, area) %>%
-##   mutate(geo_mean = exp(mean(log(est)))) %>%
-##   mutate(upr = upr / geo_mean, lwr = lwr / geo_mean, est = est / geo_mean) %>%
-##   ungroup() %>%
-##   ggplot(aes(year, est, ymin = lwr, ymax = upr,
-##     colour = formula_version, fill = formula_version)) + geom_line() +
-##   geom_ribbon(alpha = 0.5) +
-##   facet_wrap(~area, ncol = 1) +
-##   ylab("CPUE (kg/hour) divided\nby geometric mean")
