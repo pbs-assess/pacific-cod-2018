@@ -13,6 +13,11 @@ Common.name <- "Pacific cod"
 bc <- "British Columbia"
 
 # Catch data for each area 3 = 3CD, 5 = 5ABCD
+
+if (!"major_stat_area_name" %in% names(dat$catch)) {
+  dat$catch <- left_join(dat$catch, gfplot::pbs_areas, by = "major_stat_area_code") %>%
+    rename(major_stat_area_name = major_stat_area_description)
+}
 catch.3 <- total.catch.yr.qtr(dat$catch,
                               areas = "3[CD]+",
                               include.usa = TRUE)
