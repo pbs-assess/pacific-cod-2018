@@ -60,15 +60,15 @@ if (params$era == "modern") {
 depth_bands <- as.numeric(as.character(unique(bind_rows(dfleet)$depth)))
 
 gg_cpue$depth <- dfleet %>%
-   bind_rows() %>%
-   mutate(`Trip or fishing event\ncaught this species` =
-       ifelse(pos_catch == 1, "Yes", "No")) %>%
-   ggplot(aes(best_depth, fill = `Trip or fishing event\ncaught this species`)) +
-   geom_histogram(binwidth = 10) +
-   ylim(0, NA) +
-   geom_vline(xintercept = depth_bands, lty = 2, col = "grey80") +
-   coord_cartesian(expand = FALSE) +
-   facet_wrap(~area, ncol = 2)
+  bind_rows() %>%
+  mutate(`Trip or fishing event\ncaught this species` =
+      ifelse(pos_catch == 1, "Yes", "No")) %>%
+  ggplot(aes(best_depth, fill = `Trip or fishing event\ncaught this species`)) +
+  geom_histogram(binwidth = 10) +
+  ylim(0, NA) +
+  geom_vline(xintercept = depth_bands, lty = 2, col = "grey80") +
+  coord_cartesian(expand = FALSE) +
+  facet_wrap(~area, ncol = 2)
 
 for (i in seq_along(dfleet)) {
   dfleet[[i]]$year_locality <- paste(dfleet[[i]]$year_factor, dfleet[[i]]$locality)
@@ -99,23 +99,23 @@ if (params$era == "modern") {
   )
 } else {
   formulas <- data_frame(
-  formula = c(
-    "cpue ~ 0 + year_factor",
-    "cpue ~ 0 + year_factor + depth",
-    "cpue ~ 0 + year_factor + month",
-    "cpue ~ 0 + year_factor + (1 | locality)",
-    "cpue ~ 0 + year_factor + depth + month + (1 | locality)",
-    "cpue ~ 0 + year_factor + depth + month + (1 | locality) + (1 | year_locality)"
-  ),
-  formula_version = c(
-    "Unstandardized",
-    "Depth",
-    "Month",
-    "Locality",
-    "Full standardization minus interactions",
-    "Full standardization"
+    formula = c(
+      "cpue ~ 0 + year_factor",
+      "cpue ~ 0 + year_factor + depth",
+      "cpue ~ 0 + year_factor + month",
+      "cpue ~ 0 + year_factor + (1 | locality)",
+      "cpue ~ 0 + year_factor + depth + month + (1 | locality)",
+      "cpue ~ 0 + year_factor + depth + month + (1 | locality) + (1 | year_locality)"
+    ),
+    formula_version = c(
+      "Unstandardized",
+      "Depth",
+      "Month",
+      "Locality",
+      "Full standardization minus interactions",
+      "Full standardization"
+    )
   )
-)
 }
 
 torun <- expand.grid(formula = formulas$formula,
@@ -129,15 +129,15 @@ if (params$skip_single_variable_models) {
 }
 
 file_model <- here::here(paste0("data/generated/cpue-models-",
-    spp, "-", params$era, ".rds"))
+  spp, "-", params$era, ".rds"))
 if (!file.exists(file_model)) {
-  system.time({
-  model <- plyr::mlply(torun, function(formula, area, formula_version) {
-    df <- dfleet[[which(params$area_name == area)]]
-    message("Fitting area ", area, " and model ", formula)
-    fit_cpue_index_glmmtmb(df, as.formula(formula))
+  invisible(capture.output({
+    model <- plyr::mlply(torun, function(formula, area, formula_version) {
+      df <- dfleet[[which(params$area_name == area)]]
+      message("Fitting area ", area, " and model ", formula)
+      fit_cpue_index_glmmtmb(df, as.formula(formula))
     })
-  })
+  }))
   saveRDS(model, file_model)
 } else {
   model <- readRDS(file_model)
