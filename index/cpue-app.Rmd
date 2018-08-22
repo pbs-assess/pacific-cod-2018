@@ -1,13 +1,18 @@
-\clearpage
-
-`r if(knitr:::is_latex_output()) '\\Appendices'`
-
-`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
-
 # Commercial CPUE standardization
 
+We sought to generate an index of Pacific Cod abundance from commercial trawl
+catch per unit effort data that was standardized for depth, fishing locality,
+month, and vessel and latitude when available.
 
-<!-- The standardized time series
+## Defining the 1956--1995 fleet
+
+## Defining the 1996--2007 fleet
+
+## A Tweedie GLMM index standardization model
+
+##
+
+The standardized time series
 follows the approach commonly employed for British Columbia groundfish stock
 assessments of using a Generalized Linear Model (GLM) to account for the
 confounding effects of month, depth, latitude, vessel, and DFO locality
@@ -37,7 +42,7 @@ The bins start at the 1\% quantile of the depth values for
   process for the latitude bins as described above.
 
 Due to the multispecies nature of the BC groundfish fishery, it is necessary to
-define rules about which vessels should be considered part of a `fleet'
+define rules about which vessels should be considered part of a 'fleet'
 with which to calculate a CPUE index. We follow the approach used in a number of
 recent BC groundfish stock assessments by requiring vessels to have caught the
 species in a certain number of tows across all years of interest, and to have
@@ -89,7 +94,7 @@ intervals as $\exp (\mu_t \pm 1.96 \mathrm{SE}_t)$.
 
 Wald
 
-We calculated the `raw' unstandardized timeseries is calculated using a similar
+We calculated the 'raw' unstandardized timeseries is calculated using a similar
 procedure but without any of the covariates other than a factor predictor for
 each year. This is similar to calculating the geometric mean of CPUE each
 year.
@@ -102,7 +107,6 @@ also compared our estimates qualitatively to recent estimates from similar
 models in published assessments to ensure we derived similar timeseries.
 
 For the simulation testing,
- -->
 
 ```{r cpue-params}
 params <- list()
@@ -227,14 +231,14 @@ dfleet_hist %>%
   ggtitle("1956-1995 5ABCD")
 ```
 
-```{r cpue-bubble-plots-modern-3CD, fig.asp=1.4, fig.cap="(ref:caption-cpue-bubble-plots-modern-3CD)"}
+```{r cpue-bubble-plots-modern-3CD, fig.asp=1.4, fig.width=9, fig.cap="(ref:caption-cpue-bubble-plots-modern-3CD)"}
 dfleet_modern %>% make_bubble_dat() %>%
   filter(area == "3CD") %>%
   make_facet_bubble_plot() +
   ggtitle("1996+ 3CD")
 ```
 
-```{r cpue-bubble-plots-modern-5ABCD, fig.asp=1.4, fig.cap="(ref:caption-cpue-bubble-plots-modern-5ABCD)"}
+```{r cpue-bubble-plots-modern-5ABCD, fig.asp=1.4, fig.width=9, fig.cap="(ref:caption-cpue-bubble-plots-modern-5ABCD)"}
 dfleet_modern %>% make_bubble_dat() %>%
   filter(area == "5ABCD") %>%
   make_facet_bubble_plot() +
