@@ -150,8 +150,9 @@ the other hand, assumes that the CPUE trend is identical in shape and only
 deviates in magnitude across localities (Figure \@ref(fig:cpue-re-no-int-ts)).
 Ignoring these space-time interactions can result in confidence intervals that
 are substantially too narrow if the trends are not in fact identical across
-space and has no qualitative effect on model performance or coverage if they
-are not present (Figure \@ref(fig:cpue-sim-test-tweedie-glmm-plot).
+space and allowing for the interactions has no qualitative effect on model
+performance or coverage if the interactions are not present (Figure
+\@ref(fig:cpue-sim-test-tweedie-glmm-plot).
 
 *TODO: write up the simulation*
 
