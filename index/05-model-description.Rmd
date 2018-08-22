@@ -1,10 +1,4 @@
-\clearpage
-
-`r if(knitr:::is_latex_output()) '\\Appendices'`
-
-`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
-
-# DELAY DIFFERENCE MODEL
+# Delay Difference model
 
 The last assessment for Pacific Cod in QCS and Hecate Strait used a
 delay-difference model [@forrest2013]. Delay difference models represent an
