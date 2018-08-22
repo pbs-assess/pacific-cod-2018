@@ -113,7 +113,7 @@ params$area_name <- c("5ABCD", "3CD")
 params$skip_single_variable_models <- FALSE
 ```
 
-```{r cpue-run-historic}
+```{r cpue-run-historic, message=FALSE, warning=FALSE, results='hide'}
 params$era <- "historic"
 source(here::here("index/cpue.R"))
 dfleet_hist <- dfleet
@@ -123,7 +123,7 @@ arith_cpue_hist <- arith_cpue
 m_historic <- readRDS(here::here("data/generated/cpue-models-pcod-historic.rds"))
 ```
 
-```{r cpue-run-modern}
+```{r cpue-run-modern, message=FALSE, warning=FALSE, results='hide'}
 params$era <- "modern"
 source(here::here("index/cpue.R"))
 dfleet_modern <- dfleet
@@ -454,7 +454,7 @@ for (i in seq_along(params$area_name)) {
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
 
-```{r cpue-re-int-ts-funcs}
+```{r cpue-re-int-ts-funcs, message=FALSE, warning=FALSE, results='hide'}
 most_common <- function(x) names(rev(sort(table(as.character(x)))))[[1]]
 basel_level <- function(x) levels(x)[[1]]
 
@@ -691,14 +691,10 @@ d1 <- x %>% sample_frac(1) %>%
 d1 <- mutate(d1, year_factor = as.factor(yr), cpue = value)
 d1 <- mutate(d1, yr_x_loc = paste(yr, loc))
 
-trash <- capture.output({
 m_int <- plyr::dlply(d1, "variable", function(xx)
   gfplot::fit_cpue_index_glmmtmb(xx, formula = cpue ~ 0 + year_factor + (1|loc) + (1|yr_x_loc)))
-})
-trash <- capture.output({
 m_no_int <- plyr::dlply(d1, "variable", function(xx)
   gfplot::fit_cpue_index_glmmtmb(xx, formula = cpue ~ 0 + year_factor + (1|loc)))
-})
 
 x1 <- plyr::ldply(m_int, function(xx) gfplot::predict_cpue_index_tweedie(xx)) %>% 
   mutate(model = "Space-time interactions")
@@ -716,8 +712,8 @@ pp <- left_join(pp, orig_dat, by = "year") %>%
   mutate(est_link = est_link - mean(est_link)) %>% 
   ungroup() %>% 
   mutate(variable = gsub("^y$", "Data have no space-time interactions", variable)) %>% 
-  mutate(variable = gsub("^y_w_int$", "Data have space-time interactions", variable)) %>% 
-  mutate(model = forcats::fct_rev(model))
+  mutate(variable = gsub("^y_w_int$", "Data have space-time interactions", variable)) #%>%
+  # mutate(model = forcats::fct_rev(model))
 
 pp %>% group_by(model, variable) %>%
   ungroup() %>%
