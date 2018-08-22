@@ -1,5 +1,5 @@
 ---
-title: "Assessment of Pacific Cod (*Gadus macrocephalus*) for Hecate Strait (5CD), Queen Charlotte Sound (5AB), and West Coast of Vancouver Island (3CD) in 2018"
+title: "Assessment of Pacific Cod (*Gadus macrocephalus*) for Hecate Strait (5CD), Queen Charlotte Sound (5AB), and West Coast Vancouver Island (3CD) in 2018"
 author: |
   Robyn E. Forrest^1^,
   Alex B. Smith Etc.^2^,
