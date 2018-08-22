@@ -65,47 +65,49 @@ a non-zero CPUE from the first component can then be multiplied by the expected
 CPUE from the second component to derive an unconditional estimate of CPUE.
 However, this approach suffers from some issues:
 
-1. It adds complexity by needing to fit and report on two models.
-1. The two models are fit with separate links and so the coefficients cannot be
-   combined.
-1. It has shown to be insufficiently robust to TODO in some situations... REFs
-1. Something else from Jim's recent paper REFs
+1. The delta-GLM approach adds complexity by needing to fit and report on two
+   models.
+1. In the typical delta-GLM approach the two models are fit with separate links
+   and so the coefficients cannot be combined.
+1. The delta-GLM approach assumes independence among the components [e.g.
+   @thorson2017]
+1. The delta-GLM approach has shown to be insufficiently robust under variable
+   sampling intensity (e.g. in time or space) [@lecomte2013].
 1. Perhaps most importantly for our purpose, a delta-GLM in which the two
    models use different links renders a final index in which the shape is
    dependent on the specific factor base levels that the predictors are set to
-   (e.g. Punt-REFs).
+   [e.g. @maunder2004a].
 
 The Tweedie distribution solves the above problems (REFS) but has not seen
 widespread use presumably mostly because of the computational expense of
 calculating the Tweedie probability density function. Recently, the Tweedie
-density function has been introduced to the software TMB and can be fit
-relatively quickly.
+density function has been introduced to the software TMB [@kristensen2016] and
+can be fit relatively quickly to large data sets and for models with many
+random effects.
 
 In addition to a mean parameter, the Tweedie distribution has two other
 parameters, a power parameter $p$ and a dispersion parameter $\phi$. If $1
 > p > 2$ then the Tweedie distribution represents a compound distribution
-between the Poisson (if $p = 1$) and the Gamma distribution (if $p = 2$). In
-fact, the Tweedie is alternatively referred to as the compound-Poisson-Gamma
-distribution in this bounded case, although the compound-Poisson-Gamma
-distribution can also refer to a true compound distribution in which the
-Poisson and Gamma components can have their own means derived from their own
-predictive models (REF). We cannot fit such a model here, with separate Poisson
-and Gamma compounds --- sometimes referred to as a Poisson-link model (Thorson
-REF) --- because we do not know the number of fish samples contributing to
-the count or Poisson component.
+between the Poisson ($p = 1$) and the Gamma distribution ($p = 2$). In fact,
+the Tweedie is alternatively referred to as the compound-Poisson-Gamma
+distribution in this bounded case. We note however that the
+compound-Poisson-Gamma distribution is often used to refer to
+a re-parameterization in which the Poisson and Gamma components are fit such
+that they are not assumed to have the same predictive coefficients as they are
+in the Tweedie [@foster2013; @lecomte2013]. The Tweedie with a bounded power
+parameter, however, can be fit easily with TMB or the glmmTMB R package.
 
 We fit the Tweedie GLMM model as
 
 \begin{align}
   y_i &\sim \mathrm{Tweedie}(\mu_i)\\
-  \log \left(\mu_i\right) &= \bm{X}_i \bm{\beta},
+  \log \left(\mu_i\right) &= \bm{X}_i \bm{\beta} TODO RANDOM EFFECTS,
 \end{align}
 
 where $i$ represents a single trip (historical data) or tow (modern data),
 $y_i$ represents the catch (kg) per unit effort (hours trawled), $\bm{X_i}$
 represents a vector of predictors, $\bm{\beta}$ represents a vector of
-coefficients, and $\mu_i$ represents the estimated probability of observing the
-species in a tow.
+coefficients, and $\mu_i$ represents the expected CPUE in a tow.
 
 *TODO: Add random effect the details*
 
