@@ -22,12 +22,13 @@
 # install.packages.if.needed("xtable")
 # install.packages.if.needed("RColorBrewer")
 
+library(lubridate)
 library(dplyr)
 library(ggplot2)
 library(gfplot)
+library(purrr)
 library(coda)
 library(knitr)
-library(lubridate)
 library(PBSmodelling)
 library(xtable)
 library(tidyverse)
@@ -40,25 +41,25 @@ rootd.models <- file.path(rootd, "models")
 
 source(file.path(rootd.R, "utilities.R"))
 source(file.path(rootd.R, "load-models.R"))
-source(file.path(rootd.R, "verify.R"))
-source(file.path(rootd.R, "mcmc-diagnostics.R"))
-source(file.path(rootd.R, "figures-biomass.R"))
+## source(file.path(rootd.R, "verify.R"))
+## source(file.path(rootd.R, "mcmc-diagnostics.R"))
+## source(file.path(rootd.R, "figures-biomass.R"))
 source(file.path(rootd.data, "get-data.R"))
-
-# Code to setup the model names, and start/end years for various things
-#  in the models
-source(file.path(rootd.R, "model-setup.R"))
-
-# Code to setup forecast model runs
-# source("forecast-catch-levels.r")
-# Code to setup retro model runs.
-# source("retrospective-setup.r")
-
-# Set up variables for data tables from csv files
-# source("data-tables.r")
-
-
-# Load the raw data
+##
+## # Code to setup the model names, and start/end years for various things
+## #  in the models
+## source(file.path(rootd.R, "model-setup.R"))
+##
+## # Code to setup forecast model runs
+## # source("forecast-catch-levels.r")
+## # Code to setup retro model runs.
+## # source("retrospective-setup.r")
+##
+## # Set up variables for data tables from csv files
+## # source("data-tables.r")
+##
+##
+## # Load the raw data
 dat.file <- file.path(rootd.data,
                       "pcod-cache",
                       "pacific-cod.rds")
