@@ -1,9 +1,9 @@
 ---
-title: "Title Here (*Latin Species Name*)"
+title: "Assessment of Pacific Cod (*Gadus macrocephalus*) for Hecate Strait (5CD), Queen Charlotte Sound (5AB), and West Coast of Vancouver Island (3CD) in 2018"
 author: |
-  First. M. Last^1^ and
-  Alex B. Smith^2^
-author_list: "Last, F.M. and Smith, A.B."
+  Robyn E. Forrest^1^,
+  Alex B. Smith Etc.^2^,
+author_list: "Forrest, R.E. and Smith, A.B."
 address: |
   ^1^Pacific Biological Station\
      Fisheries and Oceans Canada, 3190 Hammond Bay Road\
@@ -17,16 +17,13 @@ abstract: |
 output:
   csasdown::resdoc_pdf
   # csasdown::resdoc_word
-  # csasdown::resdoc_gitbook
-# ------------
+# ---------------------
 # End of options to set
+# ---------------------
 knit: bookdown::render_book
 site: bookdown::bookdown_site
 bibliography: bib/refs.bib
 csl: csl/csas.csl
 lot: true
 lof: true
-# Any extra LaTeX code for the header:
-# header-includes:
-# - \usepackage{tikz}
 ---
