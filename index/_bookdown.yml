@@ -3,10 +3,11 @@ chapter_name: "Chapter "
 rmd_files: ["index.Rmd",
             "00-load.Rmd",
             "01-main.Rmd",
-            "06-figures.Rmd",
-            #"04-cpue-tweedie.Rmd",
+            #"06-figures.Rmd",
+            "age-key-app.Rmd",
+            "cpue-app.Rmd",
             "05-model-description.Rmd",
-            "98-colophon.Rmd",
+            # "98-colophon.Rmd",
             "99-references.Rmd"]
 download: [["resdoc.pdf", "PDF"], ["resdoc.docx", "Word"]]
 delete_merged_file: true
