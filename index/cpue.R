@@ -40,7 +40,7 @@ if (params$era == "modern") {
     out$area <- area_name
     out
   }
-  dfleet <- map2(params$area, params$area_name, define_fleet)
+  dfleet <- purrr::map2(params$area, params$area_name, define_fleet)
 } else {
   define_fleet <- function(area, area_name) {
     out <- tidy_cpue_historic(d,
@@ -54,7 +54,7 @@ if (params$era == "modern") {
     out$area <- area_name
     out
   }
-  dfleet <- map2(params$area, params$area_name, define_fleet)
+  dfleet <- purrr::map2(params$area, params$area_name, define_fleet)
 }
 
 depth_bands <- as.numeric(as.character(unique(bind_rows(dfleet)$depth)))
