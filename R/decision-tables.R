@@ -19,7 +19,7 @@ Burn=1000 #burn in
 
 #Set Area Here   
 Area <- Areas[1]
-BaseCaseOnly <- TRUE
+BaseCaseOnly <- FALSE
 
 if(BaseCaseOnly==TRUE) {
   dtname <- paste0(Area,"BaseCaseOnly")
@@ -27,6 +27,7 @@ if(BaseCaseOnly==TRUE) {
 
 #set up directories --- need to hardwire scenario choices for model averaging
 dir <- here::here()
+outdir <- paste0(dir,"/data/generated")
 
 if(Area == "5ABCD"){
   basedir <- paste0(dir,"/models/0_1a_5ABCD_BASE_loc-yr-interact_rsoleq_06_019-10m/")
@@ -108,6 +109,6 @@ for(i in seq_along(tac)){
 }  
 
 #Write decision table
-readr::write_csv(decisiontable,paste0(dir,"/decisiontable_", dtname,".csv"))
+readr::write_csv(decisiontable,paste0(outdir,"/decisiontable_", dtname,".csv"))
 
 
