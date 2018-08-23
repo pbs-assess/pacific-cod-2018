@@ -5,7 +5,7 @@
 #This table calculates probabilities of performance measures based on the combined posterior samples of performance measure quantities in pbs_pcod2013ddmcmc.proj
 #	 For example: A performance measure is B2019/0.8Bmsy. 
 #  A posterior sample of length 1000 will have 1000 estimates of B2019/0.8Bmsy
-#  We are interested in P(B2019 < 0.8Bmsy), i.e. P(B2019/0.8Bmsy) <1
+#  We are interested in P(B2019 < 0.8Bmsy), i.e. proportion of samples where B2019/0.8Bmsy <1
 #	 Therefore calculate the proportion of posterior samples for B2019/0.8Bmsy that are less than 1
 
 #Code makes four decision tables
