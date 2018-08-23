@@ -130,6 +130,7 @@ knitr::kable(df)
 
 Posterior samples were drawn systematically every 2,000 iterations from a chain length of five million, resulting in 2,000 posterior samples (with first 1,000 dropped to allow for burn-in). Longer chains will be run for the base cases in the final working paper.
 
+
 \begin{figure}[h!]
 \includegraphics[width=0.7\textwidth]{C:/GitHub/pcod-scenarios-2018/models/SensitivityFigures/SensitivityGroup_1_SB-mcmc.png}
 \caption{Posterior estimates of biomass for Area 5ABCD.}
@@ -140,6 +141,10 @@ Posterior samples were drawn systematically every 2,000 iterations from a chain 
 \caption{Posterior estimates of recruits for Area 5ABCD.}
 \end{figure}
 
+```{r}
+figpath <- here::here()
+
+```
 
 \begin{figure}[h!]
 \includegraphics[width=0.7\textwidth]{C:/GitHub/pcod-scenarios-2018/models/SensitivityFigures/SensitivityGroup_8_SB-mcmc.png}
