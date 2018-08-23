@@ -18,7 +18,7 @@ Areas <- c("5ABCD", "3CD")
 Burn=1000 #burn in
 
 #Set Area Here   
-Area <- Areas[2]
+Area <- Areas[1]
 BaseCaseOnly <- TRUE
 
 if(BaseCaseOnly==TRUE) {
@@ -30,7 +30,8 @@ dir <- here::here()
 
 if(Area == "5ABCD"){
   basedir <- paste0(dir,"/models/0_1a_5ABCD_BASE_loc-yr-interact_rsoleq_06_019-10m/")
-  sens1dir <- paste0(dir,"/models/0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV/")
+  #basedir <- paste0(dir,"/models/0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV-10m/") #Sensitivity testing
+  sens1dir <- paste0(dir,"/models/0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV-10m/")
   
   #Read in mcmc projection files
   scenarios <- list()
@@ -40,7 +41,8 @@ if(Area == "5ABCD"){
 }
 if(Area == "3CD"){
   basedir <- paste0(dir,"/models/1_1a_3CD_BASE_loc-yr-interact_rsoleq_0228sd03-10m/")
-  sens1dir <- paste0(dir,"/models/1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV/")
+  #basedir <- paste0(dir,"/models/1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV-10m/") #Sensitivity testing
+  sens1dir <- paste0(dir,"/models/1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV-10m/")
   
   #Read in mcmc projection files
   scenarios <- list()
@@ -106,6 +108,6 @@ for(i in seq_along(tac)){
 }  
 
 #Write decision table
-readr::write_csv(decisiontable,paste0(dir,"/decisiontable",Area,"_", dtname,".csv"))
+readr::write_csv(decisiontable,paste0(dir,"/decisiontable_", dtname,".csv"))
 
 
