@@ -140,13 +140,19 @@ Sc 1c was done because the annual CVs of the CPUE indices were very small (less 
 
 ## Sc 1d. Exclusion of commercial CPUE index for the modern period
 
-A sensitivity analysis was done where the modern CPUE index was removed from the model altogether. This was to address concerns that CPUE in the post-IVQ period (post-1995) may not be a good index of abundance, as some skippers reported avoiding Pacific Cod when quotas were low (@forrest2013).
+A sensitivity analysis was done where the modern CPUE index was removed from the model altogether. This was to address concerns that CPUE in the post-IVQ period (post-1995) may not be a good index of abundance, as some skippers reported avoiding Pacific Cod when quotas were low (@forrest2013). For comparison, to illustrate the effect of the historical CPUE index on model output, the historical CPUE index was removed. Finally, both commercial CPUE indexes were removed.
+
+TO DO: improve above text
 
 \begin{itemize}
 
 \item[] \textbf{Sc 1d.} Remove modern CPUE index from the model. Historical index includes year-location interaction term as a random effect.
+\item[] \textbf{Sc 1e.} Remove historical CPUE index from the model. Modern index includes year-location interaction term as a random effect.
+\item[] \textbf{Sc 1f.} Remove both CPUE indices from the model.
 
 \end{itemize}
+
+
 
 ## Sc 1e. Exclusion of the NMFS Triennial survey index for Area 3CD 
 
@@ -154,7 +160,7 @@ A sensitivity analysis was done where the NMFS Triennial Survey index was remove
 
 \begin{itemize}
 
-\item[] \textbf{Sc 1e (Area 3CD only).} Remove NMFS Triennial Survey index from the model.
+\item[] \textbf{Sc 1g (Area 3CD only).} Remove NMFS Triennial Survey index from the model.
 
 \end{itemize}
 
@@ -227,13 +233,14 @@ Figure XX. Results show that the stock was estimated to be larger relative
 to the historical averages as estimates of M declined.
 -->
 
-## Sc 4a. Prior probability distribution for steepness
+## Sc 4a and Sc 4b. Prior probability distribution for steepness
 
-One sensitivity analysis was done to illustrate the effect of the prior probability distribution assumed for steepness in the base case model:
+Two sensitivity analyses were done to illustrate the effect of the prior probability distribution assumed for steepness in the base case model:
 
 \begin{itemize}
 
 \item[] \textbf{Sc 4a.} Use a uniform prior for steepness bounded between 0.21 and 0.999.
+\item[] \textbf{Sc 4b.} Use a beta prior for steepness with mean = 0.85 and sd = 0.75.
   
 \end{itemize}
 
@@ -273,13 +280,14 @@ One sensitivity analysis was done to illustrate the effect of updating the von B
 
 TO DO: More explanatory text here 
 
-## Sc 6a and 6b. Assumed fixed value of observation error $\sigma_O$
+## Sc 6a - 6c. Assumed fixed value of observation error $\sigma_O$
 In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
 
 \begin{itemize}
 
-\item[] \textbf{Sc 6a.} Fix $\sigma_O$ = 0.15.
-\item[] \textbf{Sc 6b.} Fix $\sigma_O$ = 0.1.
+\item[] \textbf{Sc 6a.} Fix $\sigma_O$ = 0.1.
+\item[] \textbf{Sc 6b.} Fix $\sigma_O$ = 0.15.
+\item[] \textbf{Sc 6c.} Fix $\sigma_O$ = 0.25.
   
 \end{itemize}
 
@@ -293,7 +301,7 @@ analysis was done to test the effect of increasing the assumed value of $\sigma_
 
 \begin{itemize}
 
-\item[] \textbf{Sc 6c.} Fix $\sigma_R$ = 1.0
+\item[] \textbf{Sc 6d.} Fix $\sigma_R$ = 1.0
   
 \end{itemize}
 
@@ -318,11 +326,12 @@ the 2005 assessment [@fargo2005]. This issue was acknowledged by
 estimation of model parameters but was down-weighted in the objective function.
 
 Given the uncertainties in interpreting this time series and its potential
-to provide direct information for scaling the population size, one sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$, which was fixed at 0.2 in the base case:
+to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$, which was fixed at 0.2 in the base case:
 
 \begin{itemize}
 
 \item[] \textbf{Sc 7a.} Fix $\sigma_w$ = 0.4
+\item[] \textbf{Sc 7b.} Fix $\sigma_w$ = 0.15
   
 \end{itemize}
 
