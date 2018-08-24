@@ -141,10 +141,6 @@ Posterior samples were drawn systematically every 2,000 iterations from a chain 
 \caption{Posterior estimates of recruits for Area 5ABCD.}
 \end{figure}
 
-```{r}
-figpath <- here::here()
-
-```
 
 \begin{figure}[h!]
 \includegraphics[width=0.7\textwidth]{C:/GitHub/pcod-scenarios-2018/models/SensitivityFigures/SensitivityGroup_8_SB-mcmc.png}
@@ -174,25 +170,47 @@ figpath <- here::here()
 \clearpage
 
 ### Parameter estimates
+
 ### 5ABCD
 
-1. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 0_1a_5ABCD_BASE_loc-yr-interact_rsoleq_06_019**.
+1. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 0_1a_5ABCD_BASE_loc-yr-interact_rsoleq_06_019**. q1 = HSMAS, q2 = QCSSS, q3 = HsSS, q4 = Historical CPUE (1956-1995), q5 = Modern CPUE (1996-2017).
+
 ```{r, echo=FALSE}
 pars <- read.csv("C:/GitHub/pcod-scenarios-2018/models/0_1a_5ABCD_BASE_loc-yr-interact_rsoleq_06_019/Tables/0_1a_5ABCD_BASE_loc-yr-interact_rsoleq_06_019_ParamEst.csv", header=T)
+
+colnames(pars) <- c("Lower","Median","Upper", "MPD")
+rows_to_remove <- which(row.names(pars) %in% c("rbar","rinit","vartheta")) #remove fixed parameters
+pars <- pars[-rows_to_remove,]
+row.names(pars) <- c("R0", "Steepness", "M", "B0", "q1","q2","q3","q4","q5")
+
 knitr::kable(pars, digits=3)
 
 ```
 
-2. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 0_1b_5ABCD_NO_loc-yr-interact_rsoleq_06_019**.
+2. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 0_1b_5ABCD_NO_loc-yr-interact_rsoleq_06_019**. q1 = HSMAS, q2 = QCSSS, q3 = HsSS, q4 = Historical CPUE (1956-1995), q5 = Modern CPUE (1996-2017).
+
 ```{r, echo=FALSE}
 pars <- read.csv("C:/GitHub/pcod-scenarios-2018/models/0_1b_5ABCD_NO_loc-yr-interact_rsoleq_06_019/Tables/0_1b_5ABCD_NO_loc-yr-interact_rsoleq_06_019_ParamEst.csv", header=T)
+
+colnames(pars) <- c("Lower","Median","Upper", "MPD")
+rows_to_remove <- which(row.names(pars) %in% c("rbar","rinit","vartheta")) #remove fixed parameters
+pars <- pars[-rows_to_remove,]
+row.names(pars) <- c("R0", "Steepness", "M", "B0", "q1","q2","q3","q4","q5")
+
 knitr::kable(pars, digits=3)
 
 ```
 
-3. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV**.
+3. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV**. q1 = HSMAS, q2 = QCSSS, q3 = HsSS, q4 = Historical CPUE (1956-1995), q5 = Modern CPUE (1996-2017).
+
 ```{r, echo=FALSE}
 pars <- read.csv("C:/GitHub/pcod-scenarios-2018/models/0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV/Tables/0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV_ParamEst.csv", header=T)
+
+colnames(pars) <- c("Lower","Median","Upper", "MPD")
+rows_to_remove <- which(row.names(pars) %in% c("rbar","rinit","vartheta")) #remove fixed parameters
+pars <- pars[-rows_to_remove,]
+row.names(pars) <- c("R0", "Steepness", "M", "B0", "q1","q2","q3","q4","q5")
+
 knitr::kable(pars, digits=3)
 
 ```
@@ -201,23 +219,44 @@ knitr::kable(pars, digits=3)
 
 ### 3CD
 
-1. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 1_1a_3CD_BASE_loc-yr-interact_rsoleq_0228sd03**.
+1. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 1_1a_3CD_BASE_loc-yr-interact_rsoleq_0228sd03**. q1 = WCVISS, q2 = Historical CPUE (1956-1995),q3 = Modern CPUE (1996-2017), q4 = NMFS Triennial Survey.
+
 ```{r, echo=FALSE}
 pars <- read.csv("C:/GitHub/pcod-scenarios-2018/models/1_1a_3CD_BASE_loc-yr-interact_rsoleq_0228sd03/Tables/1_1a_3CD_BASE_loc-yr-interact_rsoleq_0228sd03_ParamEst.csv", header=T)
+
+colnames(pars) <- c("Lower","Median","Upper", "MPD")
+rows_to_remove <- which(row.names(pars) %in% c("rbar","rinit","vartheta")) #remove fixed parameters
+pars <- pars[-rows_to_remove,]
+row.names(pars) <- c("R0", "Steepness", "M", "B0", "q1","q2","q3","q4")
+
 knitr::kable(pars, digits=3)
 
 ```
 
-2. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 1_1b_3CD_NO_loc-yr-interact_rsoleq_0228sd03**.
+2. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 1_1b_3CD_NO_loc-yr-interact_rsoleq_0228sd03**. q1 = WCVISS, q2 = Historical CPUE (1956-1995),q3 = Modern CPUE (1996-2017), q4 = NMFS Triennial Survey.
+
 ```{r, echo=FALSE}
 pars <- read.csv("C:/GitHub/pcod-scenarios-2018/models/1_1b_3CD_NO_loc-yr-interact_rsoleq_0228sd03/Tables/1_1b_3CD_NO_loc-yr-interact_rsoleq_0228sd03_ParamEst.csv", header=T)
+
+colnames(pars) <- c("Lower","Median","Upper", "MPD")
+rows_to_remove <- which(row.names(pars) %in% c("rbar","rinit","vartheta")) #remove fixed parameters
+pars <- pars[-rows_to_remove,]
+row.names(pars) <- c("R0", "Steepness", "M", "B0", "q1","q2","q3","q4")
+
 knitr::kable(pars, digits=3)
 
 ```
 
-3. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV**.
+3. Lower (2.5th percentile), Median and Upper (97.5th percentile) posterior parameter estimates and MPD parameter estimates for **scenario 1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV**. q1 = WCVISS,  q2 = Historical CPUE (1956-1995),q3 = Modern CPUE (1996-2017), q4 = NMFS Triennial Survey.
+
 ```{r, echo=FALSE}
 pars <- read.csv("C:/GitHub/pcod-scenarios-2018/models/1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV/Tables/1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV_ParamEst.csv", header=T)
+
+colnames(pars) <- c("Lower","Median","Upper", "MPD")
+rows_to_remove <- which(row.names(pars) %in% c("rbar","rinit","vartheta")) #remove fixed parameters
+pars <- pars[-rows_to_remove,]
+row.names(pars) <- c("R0", "Steepness", "M", "B0", "q1","q2","q3","q4")
+
 knitr::kable(pars, digits=3)
 
 ```
