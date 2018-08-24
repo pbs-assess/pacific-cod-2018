@@ -1,0 +1,330 @@
+---
+title: "Pacific Cod (*Gadus macrocephalus*). List of sensitivity analyses for 5ABCD and 3CD. DRAFT DO NOT CIRCULATE"
+author: "Pacific Cod stock assessment team"
+date: "August 23, 2018"
+output: 
+  pdf_document:
+     fig_caption: yes
+     fig_width: 5
+     fig_height: 3.5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+We present a number of sensitivity analyses to show the influence of certain data sources, fixed
+parameters and prior probability distributions in the Area 5ABCD and 3CD base case models.
+
+### Summary of prior probability distributions common to all models. *Note Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15*.
+
+
+### 5ABCD Base Case settings
+
+
+```{r}
+
+df <- data.frame(Parameter = c("ln M",
+                     "Steepness",
+                     "ln R0",
+                     "Tau",
+                     "Sig",
+                     "q HSMSAS",
+                     "ln q QCSS",
+                     "ln q HSSS",
+                     "q CPUE Hist",
+                     "q CPUE 1996+"),
+                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Unif","Norm","Norm","Unif","Unif"),
+                 p1 = c("ln(0.5)",
+                        "5.83",
+                        "1",
+                        "0.8",
+                        "0.2",
+                        "0",
+                        "ln(0.628 x 0.65)",
+                        "ln(0.1869 x 0.35)",
+                        "0",
+                        "0"),
+                 p2 = c("0.1",
+                        "2.5",
+                        "12",
+                        "NA",
+                        "NA",
+                        "1",
+                        "0.3",
+                        "0.3",
+                        "1",
+                        "1"))
+knitr::kable(df)
+
+```
+
+### 3CD Base Case settings
+
+
+```{r}
+
+df <- data.frame(Parameter = c("ln M",
+                     "Steepness",
+                     "ln R0",
+                     "Tau",
+                     "Sig",
+                     "ln q WCVISS",
+                     "q CPUE Hist",
+                     "q CPUE 1996+",
+                     "q Triennial"),
+                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Norm","Unif","Unif","Unif"),
+                 p1 = c("ln(0.5)",
+                        "5.83",
+                        "1",
+                        "0.8",
+                        "0.2",
+                        "ln(0.228)",
+                        "0",
+                        "0",
+                        "0"),
+                 p2 = c("0.1",
+                        "2.5",
+                        "12",
+                        "NA",
+                        "NA",
+                        "0.3",
+                        "1",
+                        "1",
+                        "1"))
+knitr::kable(df)
+
+```
+
+\clearpage
+
+# SENSITIVITY ANALYSES
+For both stocks, we tested sensitivity of the model outputs to the following assumptions:
+
+- Exclusion of a year-location interaction as a random effect in the commercial CPUE data (historical period: pre-1996 and modern period: post-1995)
+- Exclusion of commercial CPUE index for the modern period.
+- Exclusion of the NMFS Triennial Survey index for Area 3CD
+- The prior probability distribution for $ln(q)$
+- The prior probability distribution for $ln(M)$
+- The prior probability distribution for steepness
+- The assumption of knife-edged selectivity and maturity at age 2
+- The updated growth parameters
+- The assumed fixed value of observation error $\sigma_O$
+- The assumed fixed value of $\sigma_R$
+- The assumed fixed value of $\sigma_W$
+
+Results are presented under these headings below, with Base Case parameter
+settings provided in Table XX. In all sensitivity runs, posterior samples were
+drawn systematically every 5,000 iterations from a chain of length 10
+million, resulting in 2,000 posterior samples. The first 1,000 samples
+were dropped to allow for sufficient burn-in.
+
+
+## Sc 1b and Sc 1c. Exclusion of a year-location interaction as random effect in commercial CPUE indices
+The base case models were fit to commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix XX). For the historical and modern periods, respectively, the GLMM without the interaction term is given by:
+
+$$cpue \sim 0 + year + depth + month + (1 | locality)$$
+$$cpue \sim 0 + year + depth + month + latitude + (1 | locality) + (1 | vessel)$$ 
+
+Two sensitivity analyses are shown to illustrate the effect of removing the interaction term from both indices (i.e., replacing equations XX and XX with the above equations for the historical and modern periods, respectively):
+
+\begin{itemize}
+  
+\item[] \textbf{Sc 1b.} Use equations without the interaction term to generate CPUE indices for historical and modern periods. Use the annual CVs resulting from the analysis as annual weighting terms in objective function of delay difference model.
+
+\item[] \textbf{Sc 1c.} Use equations without the interaction term to generate CPUE indices for historical and modern periods. Double the annual CVs resulting from the analysis directly as weighting terms in objective function of delay difference model.
+
+\end{itemize}
+
+Sc 1c was done because the annual CVs of the CPUE indices were very small (less than 0.1 in some years). Annual CVs were doubled to addres concerns that the objective function of the delay difference model may be giving the CPUE indices too much weight when CVs were very small.
+
+## Sc 1d. Exclusion of commercial CPUE index for the modern period
+
+A sensitivity analysis was done where the modern CPUE index was removed from the model altogether. This was to address concerns that CPUE in the post-IVQ period (post-1995) may not be a good index of abundance, as some skippers reported avoiding Pacific Cod when quotas were low (@forrest2013).
+
+\begin{itemize}
+
+\item[] \textbf{Sc 1d.} Remove modern CPUE index from the model. Historical index includes year-location interaction term as a random effect.
+
+\end{itemize}
+
+## Sc 1e. Exclusion of the NMFS Triennial survey index for Area 3CD 
+
+A sensitivity analysis was done where the NMFS Triennial Survey index was removed from the model.
+
+\begin{itemize}
+
+\item[] \textbf{Sc 1e (Area 3CD only).} Remove NMFS Triennial Survey index from the model.
+
+\end{itemize}
+
+
+## Sc 2a and 2b. Prior probability distribution for $ln(q)$
+
+For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $ln(q)$ for the QCS and HS Synoptic Surveys:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 2a.} The mean of the QCS Synoptic survey was set to the same mean as for the HS Synoptic survey, i.e., mean $ln(q)$ = $ln(0.186)$ .
+
+\item[] \textbf{Sc 2b.} A uniform prior was used for \textit{q} for both the QCS and HS Synoptic Surveys.
+
+\end{itemize}
+
+For 3CD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $ln(q)$ for the WCVI Synoptic Survey:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 2a.} The sd of the WCVI Synoptic survey was set to the same sd as for the QCS and HS Synoptic surveys, i.e., sd = 0.3.
+
+\item[] \textbf{Sc 2b.} A uniform prior was used for \textit{q} for the WCVI Synoptic Surveys.
+
+\end{itemize}
+
+
+## Sc 3a to 3c. Prior probability distribution for $ln(M)$
+
+Three sensitivity analyses are shown to illustrate the effect of the
+parameters of the normal prior distribution assumed for $ln(M)$:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 3a.} The mean was held at the Base Case value of 0.5, while the standard
+  deviation was increased to 0.2.
+\item[] \textbf{Sc 3b.} The mean was reduced to 0.4 and the standard deviation was held at
+  the Base Case value of 0.1.
+\item[] \textbf{Sc 3c.} The mean was reduced to 0.4 and the standard deviation was increased
+  to 0.2.
+  
+\end{itemize}
+
+<!--
+
+Respective median posterior estimates of M were:
+
+- 0.323 y^-1^ XX
+- 0.347 y^-1^ XX
+- 0.300 y^-1^ XX
+
+compared to the median posterior Base Case estimate of M = 0.393 y^-1^. It
+therefore appears that the assumed prior probability distribution for natural
+mortality does influence posterior estimates of M and that the prior used in
+the Base Case model may have resulted in higher estimates of M than if a less
+informative prior had been used. Convergence properties appeared to be poor
+for Case 1, with large auto-correlation in several chains. However, convergence
+properties for Cases 2 and 3 were the same or better than those obtained for
+the Base Case model, particularly for Case 3 (not shown).
+
+The biomass estimates that resulted from each sensitivity case are shown in
+Figure XX. There was almost no discernible difference in recent biomass
+estimates among scenarios for the three cases. However, there were large
+differences in estimated historical biomasses, with historical biomasses
+estimated to be smaller than for the Base Case in all three scenarios. Because
+of this, estimates of current stock status relative to the USR and LRP were
+different for these three sensitivity cases. We only show results for cases
+2 and 3, which had much better convergence properties than case 1, in
+Figure XX. Results show that the stock was estimated to be larger relative
+to the historical averages as estimates of M declined.
+-->
+
+## Sc 4a. Prior probability distribution for steepness
+
+One sensitivity analysis was done to illustrate the effect of the prior probability distribution assumed for steepness in the base case model:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 4a.} Use a uniform prior for steepness bounded between 0.21 and 0.999.
+  
+\end{itemize}
+
+<!--
+Biomass and parameter estimates are shown in Figures XX and XX, where it can be seen that there was
+relatively little effect of the prior on steepness on posterior estimates of
+biomass, although estimates in recent years were slightly lower (Figure XX).
+The median posterior estimate of B0 was much larger than the maximum estimated
+biomass in the time series, and the model showed poor convergence for most
+parameters. The model's tendency to sample very low estimates of steepness with
+this prior resulted in some very large estimates of $ln(R_0)$ and
+$ln(R_{Avg\_init})$ (Figure XX). This result suggests that an informative
+prior for steepness helped to improve model convergence properties without
+having a very large influence on biomass estimates (Figure XX).
+-->
+
+## Sc 5a. The assumption of knife-edged selectivity and maturity at age 2
+
+One sensitivity analysis was done to illustrate the effect of the assumption that fish recruit to the fishery, all surveys and mature at age 2 *y*:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 5a.} Set \textit{kage} = 3 \textit{y} and update Ford-Walford parameters accordingly
+  
+\end{itemize}
+
+TO DO: More explanatory text here referring to new maturity estimates. Possibly add "ageless" catch-age model sensitvity separating maturity and selectivity at age 3 and age 2 respectively (but would still be assuming knife-edged so maybe no point)
+
+## Sc 5b. Updated growth parameters
+One sensitivity analysis was done to illustrate the effect of updating the von Bertalanffy growth parameters using available age and length data (see Appendix XX). 
+
+\begin{itemize}
+
+\item[] \textbf{Sc 5b.} Use von Bertalanffy growth parameters used in the previous stock assessment (@forrest2013)
+  
+\end{itemize}
+
+TO DO: More explanatory text here 
+
+## Sc 6a and 6b. Assumed fixed value of observation error $\sigma_O$
+In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 6a.} Fix $\sigma_O$ = 0.15.
+\item[] \textbf{Sc 6b.} Fix $\sigma_O$ = 0.1.
+  
+\end{itemize}
+
+
+## Sc 6c. Assumed fixed value of process error $\sigma_R$
+
+In the Base Case and in @forrest2013, 0.8 was assumed to be an appropriate
+value for $\sigma_R$, as this stock appears to have had very variable
+recruitment throughout the history of the fishery. One sensitivity
+analysis was done to test the effect of increasing the assumed value of $\sigma_R$:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 6c.} Fix $\sigma_R$ = 1.0
+  
+\end{itemize}
+
+<!--
+Resulting estimates of historical biomass are shown in Figure XX. As for the
+steepness sensitivity test, there was very little discernible difference in
+the estimated historical time series between the Base Case model and the two
+sensitivity cases. The largest effects were seen in the estimates of $B_0$
+(Figure XX), which showed much lower posterior estimates obtained with
+$\sigma_R$ = 0.4; and much higher and uncertain posterior estimates with
+$\sigma_R$ = 1.0 as a function of the increased recruitment variation.
+-->
+
+## Sc 7a. Assumed fixed value of $\sigma_W$
+
+Problems with interpreting the mean weight data were discussed in Appendix XX.
+These problems stem from changes over time in the sample sizes of different
+categories of length data, i.e., sorted and unsorted categories. Concerns
+about the use of the mean weight data were also recorded in the review of
+the 2005 assessment [@fargo2005]. This issue was acknowledged by
+@sinclair2005, who noted that the mean weight series was necessary for
+estimation of model parameters but was down-weighted in the objective function.
+
+Given the uncertainties in interpreting this time series and its potential
+to provide direct information for scaling the population size, one sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$, which was fixed at 0.2 in the base case:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 7a.} Fix $\sigma_w$ = 0.4
+  
+\end{itemize}
+
+
+
