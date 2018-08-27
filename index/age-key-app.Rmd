@@ -41,15 +41,13 @@ xx %>%
 
 # Age-based analyses for Pacific Cod
 
-- There is very limited ageing data available for BC Pacific Cod populations.
-
-- The delay-difference model is conditional on the assumption that maturity, selectivity to the fishery and selectivity to the survey are all knife-edged at age 2.
-
-- In this appendix we examine length, maturity and available ageing data to test whether these assumptions are likely to be violated.
+In this appendix we analyse length, maturity and available ageing data to update growth and maturity parameters. We also plot age-frequency data derived from an age-length key to visualise the probable age composition in survey and commercial catch data.
 
 ## Database queries
 
 Survey age, length and maturity data were extracted from the GFBio database using the following query:
+
+*TO DO: Add query details for survey data. Improve bullets for commercial data below. Not really clear what it means*
 
 In addition, commercial length and maturity samples were extracted from GFBio using the following options:
 
@@ -62,7 +60,6 @@ In addition, commercial length and maturity samples were extracted from GFBio us
 
 - Filtered for `SAMPLE_SOURCE_CODE` NULL, 1, 2, 3 to extract both sorted and unsorted samples for later filtration for desired analysis (removes stomach contents samples).
 
-Note about stratified length samples
 
 ```{r age-total_aged}
 total_aged <- tidy_ages_raw(x,
@@ -75,23 +72,15 @@ total_aged <- tidy_ages_raw(x,
 
 ## Age samples
 
-- Pacific Cod are difficult to age due to inconsistency in annual marks, especially in the first few years of life (Beamish, 1981; Johnstone and Anderl, 2012; Kastelle, 2017).
+Pacific Cod are difficult to age due to inconsistency in annual marks, especially in the first few years of life (Beamish, 1981; Johnstone and Anderl, 2012; Kastelle, 2017).A recent microchemistry-based validation study of Alaskan Pacific Cod otoliths revealed that visual aging of otoliths resulted in a high probability of over-ageing fish of ages 3-4 y. This was due to difficulty of readers distinguishing growth checks (translucent zones) from annuli (Kastelle, 2017). In BC, Pacific Cod are aged using dorsal finray sections, although this method is unvalidated (Beamish, 1981). Ageing finray sections is resource intensive, since fins must be dried, sectioned and mounted in resin before reading. Therefore, production ageing of Pacific Cod has not been routinely done for BC populations.
 
-- A recent microchemistry-based validation study of Alaskan Pacific Cod otoliths revealed a high probability of over-ageing fish of ages 3-4 by one year using visual examination methods. This was due to difficulty of readers distinguishing growth checks (translucent zones) from annuli (Kastelle, 2017).
+An ageing request was made in 2012 to age Pacific Cod from dorsal fin rays collected in recent Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. A total of `r total_aged` fin rays were aged, covering the years 2007, 2009, 2011 for SYN HS; 2011 for SYN QCS and 2006, 2008 and 2010 for SYN WCVI. A summary of number aged by year, survey and sex is provided in Table \@ref(tab:age-biosamples). Proportions at each age are shown in Figure \@ref(fig:age-plotages).
 
-- Pacific Cod are aged in BC using dorsal finray sections, although this method is unvalidated (Beamish, 1981). TEXT FROM JOHN HOLMES REPORT
+Due to the difficulties with interpreting annuli for Pacific Cod, a subset of fin rays were read by a second "precision" reader. There were 162 such secondary reads for Area 5CD and 57 for Area 3CD. Results showed that precision reads sometimes differed from the primary read by one or more years, particularly for older fish (Figure \@ref(fig:age-precision)).
 
-- Ageing finray sections is resource intensive, since fins must be dried, sectioned and mounted in resin before reading. Therefore, production ageing of Pacific Cod has not been done for BC populations.
+Given the small ranges of years, these data are insufficient to support an age-structured stock assessment moel. However, they can be used to estimate growth and maturity parameters, and may be useful for visualizing probable age compositions in the commercial catch data.
 
-- An ageing request was made in 2012 to age Pacific Cod from dorsal fin rays collected in recent synoptic surveys in Areas 3CD, 5AB and 5CD. A total of `r total_aged` fin rays were aged. A summary of number aged by year, survey and sex is provided in Table \@ref(tab:biosamples). Proportions at each age are shown in Figure TODO.
-
-- Due to the difficulties with interpreting annuli for Pacific Cod, a subset of fin rays were read by a second "precision" or secondary reader. There were 162 such secondary reads for Area 5CD and 57 for Area 3CD. Results yielded non-zero probabilities of precision reads differing by one or more years, particularly for older fish (Figure TODO).
-
-- Given the small ranges of years and small sample sizes, these data are insufficient for an age-structured stock assessment.
-
-- However, they may be informative about the assumptions of growth, maturity and selectivity in the delay-difference model.
-
-```{r age-plotages, fig.cap="Figure caption here"}
+```{r age-plotages, fig.cap="Proportions at age of fish aged in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Grey circles = males. Red circles = females."}
 tidy_ages_raw(x,
   survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
   ageing_method_codes = 6
@@ -121,17 +110,20 @@ x %>%
   group_by(survey_abbrev, year) %>%
   summarize(
     nage_m = sum(sex == 1),
-    nage_f = sum(sex == 2),
-    proportion_male = sprintf("%.2f", round(nage_m / (nage_f + nage_m), 2)),
-    proportion_female = sprintf("%.2f", round(nage_f / (nage_f + nage_m), 2))
+    nage_f = sum(sex == 2) #,
+    #proportion_male = sprintf("%.2f", round(nage_m / (nage_f + nage_m), 2)),
+    #proportion_female = sprintf("%.2f", round(nage_f / (nage_f + nage_m), 2))
   ) %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nage_m,
-    `N female` = nage_f, `Prop. male` = proportion_male,
-    `Prop. female` = proportion_female
+    `N female` = nage_f #, 
+    #`P male` = proportion_male,
+    #`P female` = proportion_female
   ) %>%
-  knitr::kable(caption = "Caption for the table", booktabs = TRUE, linesep = "")
+  knitr::kable(caption = "Numbers (N) of otoliths aged in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "")
 ```
+
+\clearpage
 
 ## Growth
 
@@ -259,9 +251,9 @@ get_par_df(lw_fits, 1) %>%
   scale_color_manual(values = c("female" = "red", "male" = "grey40"))
 ```
 
-- Estimates of growth rate $k$ higher in the WCVI survey compared to HS/QCS.
+*TO DO: Update refs* 
 
-- The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound Pacific Cod stocks (Forrest et al., 2015) used the same growth parameters used in the previous assessment for the Hecate Strait stock, i.e., $L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y (Sinclair and Starr 2004). These values were reported by Westrheim (1996) for the WCVI stock. Westrheim (1996) reported different values for the Hecate Strait stock, i.e., $L_{\infty}$ = 84.01 cm; $k$ = 0.203 y^-1^ and $a_0$ = -0.806 y. In those analyses, age-frequencies were derived from length-frequency data, using the methods described in Foucher and Fournier (1982).
+Estimates of growth rate $k$ were higher in the WCVI survey compared to HS/QCS. The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound Pacific Cod stocks (Forrest et al., 2015) used the same growth parameters that had been used in the previous assessment for the Hecate Strait stock, i.e., $L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y (Sinclair and Starr 2004). These values were reported by Westrheim (1996) for the WCVI stock. Westrheim (1996) reported different values for the Hecate Strait stock, i.e., $L_{\infty}$ = 84.01 cm; $k$ = 0.203 y^-1^ and $a_0$ = -0.806 y. In those analyses, age-frequencies were derived from length-frequency data, using the methods described in Foucher and Fournier (1982).
 
 - The current results Figs \@ref(fig:vb-pars) and \@ref(fig:lw-pars), which are based on sampled age and length observations (Table \@ref(tab:biosamples)), are consistent with the parameters reported by Westrheim (1996), where Hecate Strait fish appear to grow more slowly and reach a smaller size compared with those from West Coast Vancouver Island. This suggests that the current assessment should calculate the growth parameters of the delay-difference model using updated von Bertalanffy growth parameters, as the values used in the 2013 assessment may have been too high.
 
