@@ -99,11 +99,11 @@ knitr::kable(df)
 \clearpage
 
 # SENSITIVITY ANALYSES
-For both stocks, we tested sensitivity of the model outputs to the following assumptions:
+For both stocks, we tested sensitivity of the model outputs to the following data and assumptions:
 
-- Exclusion of a year-location interaction as a random effect in the commercial CPUE data (historical period: pre-1996 and modern period: post-1995)
-- Exclusion of commercial CPUE index for the modern period.
-- Exclusion of the NMFS Triennial Survey index for Area 3CD
+- Inclusion of a year-location interaction as a random effect in the commercial CPUE data (historical period: pre-1996 and modern period: post-1995)
+- Inclusion of commercial CPUE indices for the historical and modern periods.
+- Inclusion of the NMFS Triennial Survey index for Area 3CD
 - The prior probability distribution for $ln(q)$
 - The prior probability distribution for $ln(M)$
 - The prior probability distribution for steepness
@@ -121,18 +121,25 @@ were dropped to allow for sufficient burn-in.
 
 
 ## Sc 1b and Sc 1c. Exclusion of a year-location interaction as random effect in commercial CPUE indices
-The base case models were fit to commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix XX). For the historical and modern periods, respectively, the GLMM without the interaction term is given by:
+The base case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix XX). For the historical \@ref(eq:cpuesenshist) and modern \@ref(eq:cpuesensmod) periods the GLMM *without* the interaction term is given by:
 
-$$cpue \sim 0 + year + depth + month + (1 | locality)$$
-$$cpue \sim 0 + year + depth + month + latitude + (1 | locality) + (1 | vessel)$$ 
+\begin{equation}
+  cpue \sim 0 + year + depth + month + (1 | locality)   
+  (\#eq:cpuesenshist)
+\end{equation}
+
+\begin{equation}
+  cpue \sim 0 + year + depth + month + latitude + (1 | locality) + (1 | vessel)
+  (\#eq:cpuesensmod)
+\end{equation} 
 
 Two sensitivity analyses are shown to illustrate the effect of removing the interaction term from both indices (i.e., replacing equations XX and XX with the above equations for the historical and modern periods, respectively):
 
 \begin{itemize}
   
-\item[] \textbf{Sc 1b.} Use equations without the interaction term to generate CPUE indices for historical and modern periods. Use the annual CVs resulting from the analysis as annual weighting terms in objective function of delay difference model.
+\item[] \textbf{Sc 1b.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Use the annual CVs resulting from the analysis as annual weighting terms in objective function of delay difference model (Equation TX.X).
 
-\item[] \textbf{Sc 1c.} Use equations without the interaction term to generate CPUE indices for historical and modern periods. Double the annual CVs resulting from the analysis directly as weighting terms in objective function of delay difference model.
+\item[] \textbf{Sc 1c.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Double the annual CVs resulting from the analysis directly as weighting terms in objective function of delay difference model (Equation TX.X).
 
 \end{itemize}
 

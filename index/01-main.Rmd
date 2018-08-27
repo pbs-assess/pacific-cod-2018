@@ -544,44 +544,192 @@ similar to those adopted in Area 5ABCD, were explored.
 
 # SENSITIVITY ANALYSES
 
-We present a number of sensitivity analyses to show the influence of fixed
-parameters and prior probability distributions in the Area 5ABCD and 3CD Base
-Case models.
+We present a number of sensitivity analyses to show the influence of certain data sources, fixed
+parameters and prior probability distributions in the Area 5ABCD and 3CD base case models.
 
-## AREA 5ABCD: HECATE STRAIT AND QUEEN CHARLOTTE SOUND
+### Summary of prior probability distributions common to all models. *Note Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15*.
 
-We tested sensitivity of the model outputs to the following assumptions:
 
+### 5ABCD Base Case settings
+*TO DO: Move these tables to model description and refer to them here*
+
+```{r}
+
+df <- data.frame(Parameter = c("ln M",
+                     "Steepness",
+                     "ln R0",
+                     "Tau",
+                     "Sig",
+                     "q HSMSAS",
+                     "ln q QCSS",
+                     "ln q HSSS",
+                     "q CPUE Hist",
+                     "q CPUE 1996+"),
+                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Unif","Norm","Norm","Unif","Unif"),
+                 p1 = c("ln(0.5)",
+                        "5.83",
+                        "1",
+                        "0.8",
+                        "0.2",
+                        "0",
+                        "ln(0.628 x 0.65)",
+                        "ln(0.1869 x 0.35)",
+                        "0",
+                        "0"),
+                 p2 = c("0.1",
+                        "2.5",
+                        "12",
+                        "NA",
+                        "NA",
+                        "1",
+                        "0.3",
+                        "0.3",
+                        "1",
+                        "1"))
+knitr::kable(df)
+
+```
+
+### 3CD Base Case settings
+
+
+```{r}
+
+df <- data.frame(Parameter = c("ln M",
+                     "Steepness",
+                     "ln R0",
+                     "Tau",
+                     "Sig",
+                     "ln q WCVISS",
+                     "q CPUE Hist",
+                     "q CPUE 1996+",
+                     "q Triennial"),
+                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Norm","Unif","Unif","Unif"),
+                 p1 = c("ln(0.5)",
+                        "5.83",
+                        "1",
+                        "0.8",
+                        "0.2",
+                        "ln(0.228)",
+                        "0",
+                        "0",
+                        "0"),
+                 p2 = c("0.1",
+                        "2.5",
+                        "12",
+                        "NA",
+                        "NA",
+                        "0.3",
+                        "1",
+                        "1",
+                        "1"))
+knitr::kable(df)
+
+```
+
+\clearpage
+
+For both stocks, we tested sensitivity of the model outputs to the following data and assumptions:
+
+- Inclusion of a year-location interaction as a random effect in the commercial CPUE data (historical period: pre-1996 and modern period: post-1995)
+- Inclusion of commercial CPUE indices for the historical and modern periods.
+- Inclusion of the NMFS Triennial Survey index for Area 3CD
 - The prior probability distribution for $ln(q)$
 - The prior probability distribution for $ln(M)$
 - The prior probability distribution for steepness
+- The assumption of knife-edged selectivity and maturity at age 2
+- The updated growth parameters
+- The assumed fixed value of observation error $\sigma_O$
 - The assumed fixed value of $\sigma_R$
 - The assumed fixed value of $\sigma_W$
-- The effect of including recent (1996-2017) commercial CPUE data as an index
-  of abundance
-- The effect of alternative treatment of variance parameters
 
 Results are presented under these headings below, with Base Case parameter
 settings provided in Table XX. In all sensitivity runs, posterior samples were
-drawn systematically every 10,000 XX iterations from a chain of length 20
-million XX, resulting in 2,000 XX posterior samples; the first 1,000 XX samples
+drawn systematically every 5,000 iterations from a chain of length 10
+million, resulting in 2,000 posterior samples. The first 1,000 samples
 were dropped to allow for sufficient burn-in.
 
-### Prior probability distribution for $ln(q)$
 
-XX
+## Sc 1b and Sc 1c. Exclusion of a year-location interaction as random effect in commercial CPUE indices
+The base case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix B). Two sensitivity analyses are shown to illustrate the effect of removing the interaction term from both indices (i.e., fitting the delay difference model to historical and modern CPUE indices calculated using equation \@ref(eq:cpuesens2)):
 
-### Prior probability distribution for $ln(M)$
+\begin{itemize}
+  
+\item[] \textbf{Sc 1b.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Use the annual CVs resulting from the analysis as annual weighting terms in objective function of delay difference model (Equation TX.X).
+
+\item[] \textbf{Sc 1c.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Double the annual CVs resulting from the analysis directly as weighting terms in objective function of delay difference model (Equation TX.X).
+
+\end{itemize}
+
+Sc 1c was done because the annual CVs of the CPUE indices were very small (less than 0.1 in some years). Annual CVs were doubled to addres concerns that the objective function of the delay difference model may be giving the CPUE indices too much weight when CVs were very small.
+
+## Sc 1d. Exclusion of commercial CPUE index for the modern period
+
+A sensitivity analysis was done where the modern CPUE index was removed from the model altogether. This was to address concerns that CPUE in the post-IVQ period (post-1995) may not be a good index of abundance, as some skippers reported avoiding Pacific Cod when quotas were low (@forrest2013). For comparison, to illustrate the effect of the historical CPUE index on model output, the historical CPUE index was removed. Finally, both commercial CPUE indexes were removed.
+
+*TO DO: improve above text*
+
+\begin{itemize}
+
+\item[] \textbf{Sc 1d.} Remove modern CPUE index from the model. Historical index includes year-location interaction term as a random effect.
+\item[] \textbf{Sc 1e.} Remove historical CPUE index from the model. Modern index includes year-location interaction term as a random effect.
+\item[] \textbf{Sc 1f.} Remove both CPUE indices from the model.
+
+\end{itemize}
+
+
+
+## Sc 1e. Exclusion of the NMFS Triennial survey index for Area 3CD 
+
+A sensitivity analysis was done where the NMFS Triennial Survey index was removed from the model.
+
+\begin{itemize}
+
+\item[] \textbf{Sc 1g (Area 3CD only).} Remove NMFS Triennial Survey index from the model.
+
+\end{itemize}
+
+
+## Sc 2a and 2b. Prior probability distribution for $ln(q)$
+
+For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $ln(q)$ for the QCS and HS Synoptic Surveys:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 2a.} The mean of the QCS Synoptic survey was set to the same mean as for the HS Synoptic survey, i.e., mean $ln(q)$ = $ln(0.186)$ .
+
+\item[] \textbf{Sc 2b.} A uniform prior was used for \textit{q} for both the QCS and HS Synoptic Surveys.
+
+\end{itemize}
+
+For 3CD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $ln(q)$ for the WCVI Synoptic Survey:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 2a.} The sd of the WCVI Synoptic survey was set to the same sd as for the QCS and HS Synoptic surveys, i.e., sd = 0.3.
+
+\item[] \textbf{Sc 2b.} A uniform prior was used for \textit{q} for the WCVI Synoptic Surveys.
+
+\end{itemize}
+
+
+## Sc 3a to 3c. Prior probability distribution for $ln(M)$
 
 Three sensitivity analyses are shown to illustrate the effect of the
 parameters of the normal prior distribution assumed for $ln(M)$:
 
-- the mean was held at the Base Case value of 0.5 y^-1^, while the standard
-  deviation was increased to 0.2
-- the mean was reduced to 0.4 y^-1^ and the standard deviation was held at
-  the Base Case value of 0.1
-- the mean was reduced to 0.4 y^-1^ and the standard deviation was increased
-  to 0.2
+\begin{itemize}
+
+\item[] \textbf{Sc 3a.} The mean was held at the Base Case value of 0.5, while the standard
+  deviation was increased to 0.2.
+\item[] \textbf{Sc 3b.} The mean was reduced to 0.4 and the standard deviation was held at
+  the Base Case value of 0.1.
+\item[] \textbf{Sc 3c.} The mean was reduced to 0.4 and the standard deviation was increased
+  to 0.2.
+  
+\end{itemize}
+
+<!--
 
 Respective median posterior estimates of M were:
 
@@ -608,13 +756,21 @@ different for these three sensitivity cases. We only show results for cases
 2 and 3, which had much better convergence properties than case 1, in
 Figure XX. Results show that the stock was estimated to be larger relative
 to the historical averages as estimates of M declined.
+-->
 
-### Prior probability distribution for steepness
+## Sc 4a and Sc 4b. Prior probability distribution for steepness
 
-Sensitivity to the assumed prior probability distribution for steepness was
-tested by running the model with a uniform prior for this parameter with lower
-and upper bounds of 0.21 XX and 0.99 XX, respectively. Biomass and parameter
-estimates are shown in Figures XX and XX, where it can be seen that there was
+Two sensitivity analyses were done to illustrate the effect of the prior probability distribution assumed for steepness in the base case model:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 4a.} Use a uniform prior for steepness bounded between 0.21 and 0.999.
+\item[] \textbf{Sc 4b.} Use a beta prior for steepness with mean = 0.85 and sd = 0.75.
+  
+\end{itemize}
+
+<!--
+Biomass and parameter estimates are shown in Figures XX and XX, where it can be seen that there was
 relatively little effect of the prior on steepness on posterior estimates of
 biomass, although estimates in recent years were slightly lower (Figure XX).
 The median posterior estimate of B0 was much larger than the maximum estimated
@@ -624,17 +780,57 @@ this prior resulted in some very large estimates of $ln(R_0)$ and
 $ln(R_{Avg\_init})$ (Figure XX). This result suggests that an informative
 prior for steepness helped to improve model convergence properties without
 having a very large influence on biomass estimates (Figure XX).
+-->
 
-### Assumed fixed value of $\sigma_R$
+## Sc 5a. The assumption of knife-edged selectivity and maturity at age 2
 
-Throughout this assessment so far, 0.8 was assumed to be an appropriate
+One sensitivity analysis was done to illustrate the effect of the assumption that fish recruit to the fishery, all surveys and mature at age 2 *y*:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 5a.} Set \textit{kage} = 3 \textit{y} and update Ford-Walford parameters accordingly
+  
+\end{itemize}
+
+TO DO: More explanatory text here referring to new maturity estimates. Possibly add "ageless" catch-age model sensitvity separating maturity and selectivity at age 3 and age 2 respectively (but would still be assuming knife-edged so maybe no point)
+
+## Sc 5b. Updated growth parameters
+One sensitivity analysis was done to illustrate the effect of updating the von Bertalanffy growth parameters using available age and length data (see Appendix XX). 
+
+\begin{itemize}
+
+\item[] \textbf{Sc 5b.} Use von Bertalanffy growth parameters used in the previous stock assessment (@forrest2013)
+  
+\end{itemize}
+
+TO DO: More explanatory text here 
+
+## Sc 6a - 6c. Assumed fixed value of observation error $\sigma_O$
+In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
+
+\begin{itemize}
+
+\item[] \textbf{Sc 6a.} Fix $\sigma_O$ = 0.1.
+\item[] \textbf{Sc 6b.} Fix $\sigma_O$ = 0.15.
+\item[] \textbf{Sc 6c.} Fix $\sigma_O$ = 0.25.
+  
+\end{itemize}
+
+
+## Sc 6c. Assumed fixed value of process error $\sigma_R$
+
+In the Base Case and in @forrest2013, 0.8 was assumed to be an appropriate
 value for $\sigma_R$, as this stock appears to have had very variable
-recruitment throughout the history of the fishery. In this sensitivity
-analysis, we test two alternative fixed values of $\sigma_R$:
+recruitment throughout the history of the fishery. One sensitivity
+analysis was done to test the effect of increasing the assumed value of $\sigma_R$:
 
-- $\sigma_R$ = 0.4
-- $\sigma_R$ = 1.0
+\begin{itemize}
 
+\item[] \textbf{Sc 6d.} Fix $\sigma_R$ = 1.0
+  
+\end{itemize}
+
+<!--
 Resulting estimates of historical biomass are shown in Figure XX. As for the
 steepness sensitivity test, there was very little discernible difference in
 the estimated historical time series between the Base Case model and the two
@@ -642,8 +838,9 @@ sensitivity cases. The largest effects were seen in the estimates of $B_0$
 (Figure XX), which showed much lower posterior estimates obtained with
 $\sigma_R$ = 0.4; and much higher and uncertain posterior estimates with
 $\sigma_R$ = 1.0 as a function of the increased recruitment variation.
+-->
 
-### Assumed fixed value of $\sigma_W$
+## Sc 7a. Assumed fixed value of $\sigma_W$
 
 Problems with interpreting the mean weight data were discussed in Appendix XX.
 These problems stem from changes over time in the sample sizes of different
@@ -652,40 +849,16 @@ about the use of the mean weight data were also recorded in the review of
 the 2005 assessment [@fargo2005]. This issue was acknowledged by
 @sinclair2005, who noted that the mean weight series was necessary for
 estimation of model parameters but was down-weighted in the objective function.
+
 Given the uncertainties in interpreting this time series and its potential
-to provide direct information for scaling the population size, we tested model
-sensitivity to the value of the standard deviation of the mean weight
-residuals, $\sigma_w$. In the Base Case model, $\sigma_w$ was fixed at 0.2.
-For this sensitivity test, we set $\sigma_w$ = 0.4, applying more
-down-weighting to the influence of the mean weight data in the objective
-function.
+to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$, which was fixed at 0.2 in the base case:
 
-## Effect of including recent (1996-2017) commercial CPUE data as an index
-  of abundance
+\begin{itemize}
 
-In Appendix XX, we provided rationale for excluding the post-1995 commercial
-CPUE data as an index of abundance. The main reason was that a shift in
-management fishing practices could have resulted in some vessels actively
-avoiding Pacific Cod for parts of the year. Here, we provide a sensitivity
-test to illustrate the impact of fitting to this index on model outcomes.
-As for the pre-1996 CPUE data, we assumed an annual CV = 0.25.
+\item[] \textbf{Sc 7a.} Fix $\sigma_w$ = 0.4
+\item[] \textbf{Sc 7b.} Fix $\sigma_w$ = 0.15
+  
+\end{itemize}
 
-The model fit to the trend in the post-1995 commercial CPUE data
-reasonably well (Figure XX). The estimated trend in recent biomass was very
-similar to that from the Base Case model (Figure XX). This was likely because
-the trends in recent survey biomass and commercial CPUE data were largely in
-agreement (Appendix XX). The 95% posterior credibility interval for post-2000
-period biomass was slightly narrower than for the Base Case model.
 
-The results of this analysis suggest, post hoc, that adding the post-1995
-CPUE data did not have a large effect on model outcomes, although we suggest
-that our reasons for questioning the utility of the data as a useful index
-of abundance had merit *a priori*
 
-### Effect of alternative treatment of variance parameters
-
-XX
-
-## AREA 3CD: WEST COAST VANCOUVER ISLAND
-
-XX - fill in later
