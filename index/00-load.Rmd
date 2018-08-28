@@ -20,12 +20,12 @@ knitr::opts_chunk$set(
 )
 
 source(file.path(here::here(), "R", "all.R"))
-## build(ovwrt.base = FALSE,
-##       ovwrt.sens = FALSE,
-##       ovwrt.retro = FALSE,
-##       burnin = 1000,
-##       thin = 1)
-## load.models.into.parent.env()
+build(ovwrt.base = FALSE,
+      ovwrt.sens = FALSE,
+      ovwrt.retro = FALSE,
+      burnin = 1000,
+      thin = 1)
+load.models.into.parent.env()
 source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 ggplot2::theme_set(gfplot::theme_pbs())

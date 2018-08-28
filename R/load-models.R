@@ -70,11 +70,10 @@ load.iscam.files <- function(model.dir,
 delete.rdata.files <- function(models.dir = model.dir){
   ## Delete all rdata files found in the subdirectories of the models.dir
   ## directory.
-  ##
-  ## models.dir - directory name for all models location
 
   dirs <- dir(models.dir)
-  rdata.files <- file.path(models.dir, dirs, paste0(dirs, ".rdata"))
+  dirs <- file.path(models.dir, dirs)
+  rdata.files <- file.path(dirs, "*.RData")
   ans <- readline("This operation cannot be undone, are you sure (y/n)? ")
   if(ans == "Y" | ans == "y"){
     unlink(rdata.files, force = TRUE)
@@ -99,8 +98,7 @@ delete.dirs <- function(models.dir = model.dir,
       sub.dir, "directory in each model directory.\n")
 }
 
-create.rdata.file <- function(models.dir = model.dir,
-                              model.name,
+create.rdata.file <- function(model.dir,
                               ovwrt.rdata = FALSE,
                               load.proj = TRUE,
                               burnin = 1000,
@@ -125,13 +123,14 @@ create.rdata.file <- function(models.dir = model.dir,
   ## high - higher quantile value to apply to mcmc samples
 
   curr.func.name <- get.curr.func.name()
-  model.dir <- file.path(models.dir, model.name)
   if(!dir.exists(model.dir)){
     stop(curr.func.name,"Error - the directory ", model.dir,
          " does not exist. Fix the problem and try again.\n")
   }
   ## The RData file will have the same name as the directory it is in
-  rdata.file <- file.path(model.dir, paste0(model.name, ".RData"))
+  model.dir.base <- basename(model.dir)
+  rdata.file <- file.path(model.dir,
+                          paste0(model.dir.base, ".RData"))
   if(file.exists(rdata.file)){
     if(ovwrt.rdata){
       ## Delete the RData file
@@ -161,13 +160,14 @@ create.rdata.file <- function(models.dir = model.dir,
   invisible()
 }
 
-load.models <- function(model.dir,
-                        model.dir.names){
+load.models <- function(model.dir.names){
   ## Load model(s) and return as a list.
-  model.rdata.files <- file.path(model.dir,
-                                 model.dir.names,
-                                 paste0(model.dir.names,
+  ## Strip last part of path to use as filename
+  model.dir.names.base <- basename(model.dir.names)
+  model.rdata.files <- file.path(model.dir.names,
+                                 paste0(model.dir.names.base,
                                         ".Rdata"))
+
   out <- lapply(1:length(model.rdata.files),
                 function(x){
                   load(model.rdata.files[x])
@@ -699,7 +699,11 @@ read.projection.file <- function(file = NULL,
   ## Get the element numbers which start with #.
   dat <- grep("^#.*", data)
   ## remove the lines that start with #.
-  dat <- data[-dat]
+  if(length(dat)){
+    dat <- data[-dat]
+  }else{
+    dat <- data
+  }
 
   ## remove comments which come at the end of a line
   dat <- gsub("#.*", "", dat)

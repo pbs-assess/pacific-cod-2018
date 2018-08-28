@@ -2,10 +2,42 @@
 
 # FIGURES
 
-```{r fig-base-biomass, fig.cap="Biomass for the Reference Model, Area 5ABCD"}
-make.biomass.mcmc.plot(
-  base.model,
-  base.model.name,
-  ylim = c(0, 70000),
-  opacity = 50)
+## Area 5ABCD
+
+```{r fig-catch-5abcd, fig.cap="Catch for Area 5ABCD"}
+make.catches.plot(catch.5)
+```
+
+```{r fig-base-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD"}
+b.plot(base.model.5abcd)
+# make.biomass.mcmc.plot(
+#   base.model.5abcd,
+#   base.model.5abcd.name,
+#   ylim = c(0, 100000),
+#   opacity = 50)
+```
+
+```{r fig-base-mcmc-trace-5abcd, fig.cap="Traceplots of posterior samples for the Area 5ABCD base reference model."}
+make.traces.plot(base.model.5abcd)
+```
+
+\clearpage
+
+## Area 3CD
+
+```{r fig-catch-3cd, fig.cap="Catch for Area 3CD"}
+make.catches.plot(catch.3)
+```
+
+```{r fig-base-biomass-3cd, fig.cap="Biomass for the Reference Model, Area 3CD"}
+b.plot(base.model.3cd)
+# make.biomass.mcmc.plot(
+#   base.model.3cd,
+#   base.model.3cd.name,
+#   ylim = c(0, 100000),
+#   opacity = 50)
+```
+
+```{r fig-base-mcmc-trace-3cd, fig.cap="Traceplots of posterior samples for the Area 3CD base reference model."}
+make.traces.plot(base.model.3cd)
 ```
