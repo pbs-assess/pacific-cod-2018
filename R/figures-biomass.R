@@ -1,3 +1,31 @@
+b.plot <- function(models,
+                   model.names = "Base"){
+
+  sbt.quants <- lapply(models,
+                       function(x){
+                         x$mcmccalcs$sbt.quants})
+  yrs <- lapply(sbt.quants,
+                function(x){
+                  as.numeric(colnames(x))})
+
+  tmp <- as.tibble(t(sbt.quants[[1]])) %>%
+    mutate(Year = yrs[[1]]) %>%
+    rename(`Catch (t)` = `50%`)
+
+  ggplot(tmp) +
+    aes(x = Year) +
+    theme_pbs() +
+    geom_line(aes(y = `Catch (t)`),
+              color = "blue") +
+    scale_y_continuous(labels = comma,
+                       limits = c(min(tmp$`5%`),
+                                  1.1 * max(tmp$`95%`))) +
+    geom_ribbon(aes(ymin = `5%`, ymax = `95%`),
+                fill = "blue",
+                alpha = 0.2)
+
+}
+
 make.biomass.mcmc.plot <- function(models,
                                    model.names = NULL,
                                    ylim,
