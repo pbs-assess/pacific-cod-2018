@@ -130,10 +130,10 @@ We fit the Tweedie GLMM (generalized linear mixed effect model) as
 where $i$ represents a single trip (historical data) or tow (modern data),
 $y_i$ represents the catch (kg) per unit effort (hours trawled), $\bm{X_i}$
 represents a vector of predictors, $\bm{\beta}$ represents a vector of
-coefficients, and $\mu_i$ represents the expected CPUE in a tow. The random
-effect intercepts ($\alpha$ symbols) are allowed to vary from the overall
-intercept by locality $j$ (\(\alpha^\mathrm{locality}_j\)), locality-year $k$
-(\(\alpha^\mathrm{locality-year}_k\)), and vessel $l$
+coefficients, and $\mu_i$ represents the expected CPUE in a trip or tow. The
+random effect intercepts ($\alpha$ symbols) are allowed to vary from the
+overall intercept by locality $j$ (\(\alpha^\mathrm{locality}_j\)),
+locality-year $k$ (\(\alpha^\mathrm{locality-year}_k\)), and vessel $l$
 (\(\alpha^\mathrm{vessel}_l\)) (for the modern dataset only) and are
 constrained by normal distributions with respective standard deviations denoted
 by $\sigma$ parameters.
