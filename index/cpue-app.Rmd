@@ -172,7 +172,7 @@ intervals contain the true known value at the expected frequency.
 
 The unstandardized Pacific Cod catch and total fleet effort show variable
 trends through time in both the historic and modern data sets
-\@ref(fig:cpue-catch-effort-ts)). The majority of positive fishing events for
+(Figure \@ref(fig:cpue-catch-effort-ts)). The majority of positive fishing events for
 Pacific Cod occurred at depths ranging from approximately 50m to 200m (Figure
 \@ref(fig:cpue-depth-hists)). We can see a increase in the total number of
 trip-locality combinations since 1991, some changes to the localities typically
@@ -185,37 +185,45 @@ latitude ... The distribution of index standardization variables for the modern
 dataset (Figure \@ref(fig:cpue-bubble-plots-modern-3CD),
 \@ref(fig:cpue-bubble-plots-modern-5ABCD)).
 
-The standardized index timeseries (Figure \@ref(fig:cpue-index-ts-hist), \@ref(fig:cpue-index-ts-modern))
+For the 1956--1995 data set, depth and locality had a moderate effect on the
+standardized CPUE index for 3CD, but the standardized and unstandardized series
+differed little in 5ABCD (Figure \@ref(fig:cpue-index-ts-hist)). Accounting for
+either depth or locality reduce to the 3CD CPUE in the 1970s and increased the
+CPUE from the mid 1980s to 1995. Accounting for depth also reduced a spike in
+CPUE in 3CD in the mid 1960s.
 
-A comparison of the standardized indices with and without space-time random effects (Figure \@ref(fig:cpue-int-test-plot)).
+For the 1996--2017 data set, depth and latitude had the largest effect on the
+standardized index, and again had a larger effect in 3CD than 5ABCD (Figure
+\@ref(fig:cpue-index-ts-modern)). Accounting for depth or latitude somewhat
+decreased the CPUE index for two to three years before and after 2010 and in
+this effect carried through to the standardization model with all covariates.
 
-Coefficient plots from the full standardization models:
-
-historic:
-Figure \@ref(fig:cpue-coef-plot1)
-Figure \@ref(fig:cpue-coef-plot2)
-Figure \@ref(fig:cpue-coef-plot3)
-
-modern:
-Figure \@ref(fig:cpue-coef-plot1-modern)
-Figure \@ref(fig:cpue-coef-plot2-modern)
-Figure \@ref(fig:cpue-coef-plot3-modern)
+Accounting for locality-year interactions had little effect on the shape of the
+standardized indices with the exception of a slight change in shape 2014--2015
+for the modern dataset in 5ABCD (Figure \@ref(fig:cpue-int-test-plot)). The
+main effect of including the locality-year random effect interactions was to
+increase the width of the confidence intervals in all areas and time periods.
+We can examine the contribution of all the fixed and random effect parameters
+via coefficient plots (historic: Figures \@ref(fig:cpue-coef-plot1),
+\@ref(fig:cpue-coef-plot2), \@ref(fig:cpue-coef-plot3); modern: Figures
+\@ref(fig:cpue-coef-plot1-modern), \@ref(fig:cpue-coef-plot2-modern),
+\@ref(fig:cpue-coef-plot3-modern)).
 
 ## Space-time interactions
 
 To test the effect of including or not including space-time interactions when
-they are or are not present, we performed a simulation test. We parameterized
-our simulation to approximately match the parameters estimated from observed
-data. Our simulation included 20 years of data; 12 localities drawn from
-a random effect distribution with a standard deviation of 0.3 and mean 0;
-optionally year-locality random effects drawn from a distribution with
+such interactions are or are not present, we performed a simulation test. We
+parameterized our simulation to approximately match the parameters estimated
+from observed data. Our simulation included 20 years of data; 12 localities
+drawn from a random effect distribution with a standard deviation of 0.3 and
+mean 0; optionally year-locality random effects drawn from a distribution with
 a standard deviation of 0.5 and mean of 0; 10 observations per year per
 locality; a true known CPUE index that, in log space, followed an
 auto-regressive process with correlation of 0.3 at lag 1, standard deviation of
-1 and a mean of 2; Tweedie parameters of $p = 1.6$ and $\phi = 5$. We generated
-versions of this data set with and without the year-locality interactions and
-then fit standardization models to those data sets that either allowed for or
-ignored your-locality interactions.
+1 and a mean of 2; and Tweedie parameters of $p = 1.6$ and $\phi = 5$. We
+generated versions of this data set with and without the locality-year
+interactions and then fit standardization models to those data sets that either
+allowed for or ignored locality-year interactions.
 
 By including locality-year random effects we allowed for each locality to have
 a trend that deviates slightly from the overall trend (Figure
