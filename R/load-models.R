@@ -70,11 +70,10 @@ load.iscam.files <- function(model.dir,
 delete.rdata.files <- function(models.dir = model.dir){
   ## Delete all rdata files found in the subdirectories of the models.dir
   ## directory.
-  ##
-  ## models.dir - directory name for all models location
 
   dirs <- dir(models.dir)
-  rdata.files <- file.path(models.dir, dirs, paste0(dirs, ".rdata"))
+  dirs <- file.path(models.dir, dirs)
+  rdata.files <- file.path(dirs, "*.RData")
   ans <- readline("This operation cannot be undone, are you sure (y/n)? ")
   if(ans == "Y" | ans == "y"){
     unlink(rdata.files, force = TRUE)
