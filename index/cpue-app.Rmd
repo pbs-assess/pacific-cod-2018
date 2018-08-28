@@ -7,28 +7,29 @@ model, we had to filter and manipulate the available catch and effort data to
 generate a dataset appropriate for model fitting. In the following sections we
 describe those decisions for the 'historical' (1956--1995) and 'modern' data
 (1996--2007). We then describe our index standardization model, explore the
-contribution of the various standardization components, and explore the
-decision to include space-time interactions in our standardization model.
+contribution of the various standardization components, and identify the effect
+of including or ignoring space-time interactions in our standardization model.
 
-## Defining the 1956--1995 (historic) fleet
+## Defining the 1956--1995 fleet
 
 Groundfish bottom trawl data prior to 1991 was recorded via dockside interviews
-and aggregated to fishing locality (spatial regions) and trip combinations.
-Data from 1991 to 1995 was recorded via logbooks at the fishing-event (trawl)
-level. We therefore aggregated the 1991 to 1995 data to the locality-trip level
-to match the resolution of the earlier data. During these time periods, the
-variables depth, date, and locality are available as model covariates.
+and aggregated to fishing locality (defined spatial regions) and trip
+combinations. Data from 1991 to 1995 was recorded via logbooks at the
+fishing-event (trawl) level. We therefore aggregated the 1991--1995 data to the
+locality-trip level (hereafter referred to as 'trips' in this appendix) to
+match the resolution of the earlier data. When aggregating this 1991--1995 data,
+we removed any trawl events that were longer than five hours, since these are
+likely to be data entry errors. During these time periods, the variables depth,
+date, and locality are available as model covariates.
 
-*Insert details about omitting fishing events with more than five hours effort.*
-
-## Defining the 1996--2007 (modern) fleet
+## Defining the 1996--2007 fleet
 
 Groundfish bottom trawl data from 1996 to present have been recorded to the
 fishing-event level in the presence of on-board observers or video monitoring.
 We have treated this modern dataset separately from the historic dataset to (1)
-take advantage of the higher resolution modern data that also includes
+take advantage of the higher data resolution that also includes
 information on latitude and vessel ID and (2) to avoid assuming a constant
-catchability and relationship between CPUE and the standardization predictors
+catchability and relationship between CPUE and the standardization covariates
 across large regulatory changes in 1996.
 
 Since we have data on individual vessels for this modern fleet, and in keeping
@@ -43,21 +44,31 @@ for at least five years --- all from 1996 to 2017.
 ## Defining the standardization model predictors
 
 For depth and latitude, we binned the values into a sequence of bands to allow
-for nonlinear relationships between these predictors and the response.
+for nonlinear relationships between these predictors and CPUE. For depth, we
+used the trawl depth binned into bands that are 25m wide. For latitude, we used
+bands that were 0.1 degrees wide. To ensure sufficient data to estimate
+a coefficient for each factor level, we limited the range of depth bins to
+those that fell within the 0.1% to 99.9% cumulative probability of positive
+observations and then removed any factor levels (across all predictors) that
+contained fewer than 0.1% of the positive fishing events.
 
-For depth, we used the fishing capture depth binned into bands that are 25m wide.
-
-For latitude, we used bands that are 0.1 degrees wide, starting at ...
-
-*Insert criteria for defining the depth and latitude bins algorithmically*
-
-*Insert criteria for omitting localities with insufficient data*
+Predictors that are treated as factors in a statistical model need a reference
+or base level --- a level from which the other coefficients for that variable
+estimate a difference from. The base level then becomes the predictor value
+that is used in the prediction for the standardized index. We chose the most
+frequent factor level as the base level, which is a common choice for these
+types of models [@maunder2004a]. For example, we set the base month as the most
+common month observed in the dataset filtered for only tows where the species
+was caught. This choice of base level only affects the intercept or relative
+magnitude of our index because of the form of our model (discussed below). This
+relative magnitude should not affect the outcomes of the stock assessment model
+because we estimated separate catchabilities for each commercial CPUE index.
 
 ## A Tweedie GLMM index standardization model
 
 Fisheries CPUE data contains both zeros and positive continuous values.
-A variety approaches have been used in the fishery literature and stock
-assessments to deal with this. One approach has been to fit a delta-GLM ---
+A variety of approaches have been used in the fishery literature to deal with
+this. One approach has been to fit a delta-GLM (generalized linear model) ---
 a model that fits the zero vs. non-zero values with a logistic regression (a
 binomial GLM and a logit link) and the positive values with a linear regression
 fit to log-transformed data or a Gamma GLM with a log link (e.g. REFS). The
@@ -68,7 +79,7 @@ estimate of CPUE. However, this approach suffers from a number of issues:
 1. The delta-GLM approach adds complexity by needing to fit and report on two
    models.
 1. In the typical delta-GLM approach, the two models are fit with separate
-   links and so the coefficients cannot be combined.
+links and so the coefficients cannot be combined.
 1. The delta-GLM approach assumes independence among the two components [e.g.
    @thorson2017].
 1. The delta-GLM approach has shown to be insufficiently robust to variable
@@ -83,22 +94,22 @@ The Tweedie distribution [@jorgensen1987] solves the above problems [e.g.
 seen widespread use presumably mostly because of the computational expense of
 calculating the Tweedie probability density function. Recently, the Tweedie
 density function has been introduced to the software TMB [@kristensen2016] and
-can be fit relatively quickly to large data sets and for models with many fixed
+can be fit relatively quickly to large datasets and for models with many fixed
 and random effect parameters either with custom written TMB models or via the
 glmmTMB R package [@brooks2017].
 
 In addition to a mean parameter, the Tweedie distribution has two other
-parameters, a power parameter $p$ and a dispersion parameter $\phi$. If $1
+parameters: a power parameter $p$ and a dispersion parameter $\phi$. If $1
 > p > 2$ then the Tweedie distribution represents a compound distribution
 between the Poisson ($p = 1$) and the Gamma distribution ($p = 2$). In fact,
 the Tweedie is alternatively referred to as the compound-Poisson-Gamma
 distribution in this bounded case. We note, however, that the
 compound-Poisson-Gamma distribution is often used to refer to
-a re-parameterization in which the Poisson and Gamma components are fit such
+a re-parameterization in which the Poisson and Gamma components are fit so
 that they are not assumed to have the same predictive coefficients as they are
 in the Tweedie distribution [@foster2013; @lecomte2013].
 
-We fit the Tweedie GLMM model as
+We fit the Tweedie GLMM (generalized linear mixed effect model) as
 
 \begin{align}
   y_i &\sim \mathrm{Tweedie}(\mu_i, p, \phi), \quad 1 < p < 2,\\
@@ -110,7 +121,7 @@ We fit the Tweedie GLMM model as
   \right),\\
 \alpha^\mathrm{locality}_j &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality}}),\\
-\alpha^\mathrm{locality year}_k &\sim
+\alpha^\mathrm{locality-year}_k &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality-year}}),\\
 \alpha^\mathrm{vessel}_l &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{vessel}}),\\
@@ -119,15 +130,13 @@ We fit the Tweedie GLMM model as
 where $i$ represents a single trip (historical data) or tow (modern data),
 $y_i$ represents the catch (kg) per unit effort (hours trawled), $\bm{X_i}$
 represents a vector of predictors, $\bm{\beta}$ represents a vector of
-coefficients, and $\mu_i$ represents the expected CPUE in a tow.
-
-locality $j$, locality-year $k$, and vessel $l$ (for the modern dataset only);
-$\phi$ represents the dispersion parameter;
-
-The intercepts are allowed to vary from the overall intercept \(\alpha\) by
-locality (\(\alpha^\mathrm{locality}_j\)), locality-year
-(\(\alpha^\mathrm{locality-year}_k\)), and vessel
-(\(\alpha^\mathrm{vessel}_l\)) (for the modern dataset only) with respective standardized deviations denoted by $\sigma$ parameters.
+coefficients, and $\mu_i$ represents the expected CPUE in a trip or tow. The
+random effect intercepts ($\alpha$ symbols) are allowed to vary from the
+overall intercept by locality $j$ (\(\alpha^\mathrm{locality}_j\)),
+locality-year $k$ (\(\alpha^\mathrm{locality-year}_k\)), and vessel $l$
+(\(\alpha^\mathrm{vessel}_l\)) (for the modern dataset only) and are
+constrained by normal distributions with respective standard deviations denoted
+by $\sigma$ parameters.
 
 We can then calculate the standardized estimate of CPUE for year $t$, $\mu_t$,
 as
@@ -137,20 +146,14 @@ as
 \end{equation}
 
 where $\bm{X_t}$ represents a vector of predictors set to the reference ($r$)
-levels with the year set to the year of interest.
-
-We chose the reference levels as the most frequent level of each predictor in
-the positive-only data [@maunder2004a]. For example, we set the reference
-month as the most common month observed in the dataset filtered for only tows
-where the species was caught. This will not have on the shape of the final CPUE
-index...
-
-<!--copied! We estimate ﬁxed effects via maximum marginal likelihood while integrating across all random effects (see Table 1 for full list of parameters). The marginal likelihood is approximated using the Laplace approximation (Skaug and Fournier, 2006; Thorson et al., 2015) as implemented using template model builder (Kristensen et al., 2014).-->
-
-We fit the models with the statistical software TMB via glmmTMB and use
-standard errors ($\mathrm{SE}$) as calculated by TMB on $\log (\mu_t)$ via the
-delta method. We then calculated the 95\% Wald confidence intervals as $\exp
-(\mu_t \pm 1.96 \mathrm{SE}_t)$.
+levels with the year set to the year of interest. Because each of the $\alpha$
+random intercepts is set to zero, the index is predicted for an average
+locality, locality-year, and vessel (for modern data).
+We estimated the fixed effects with maximum marginal likelihood while
+integrating over the random effects with the statistical software TMB via the
+R package glmmTMB. We used standard errors ($\mathrm{SE}$) as calculated by TMB
+on $\log (\mu_t)$ via the delta method. We then calculated the 95\% Wald
+confidence intervals as $\exp (\mu_t \pm 1.96 \mathrm{SE}_t)$.
 
 For comparison, we calculated the unstandardized timeseries using a similar
 procedure but without any of the covariates other than a factor predictor for
@@ -158,14 +161,62 @@ each year. This is similar to calculating the geometric mean of CPUE each year
 but with an assumed Tweedie observation model instead of a lognormal
 observation model that does not allow for zeros.
 
-We tested our implementation of this index standardization model against
-simulated data to ensure that (1) it can generate unbiased annual estimates and
-(2) the confidence intervals have the correct coverage, i.e. the 95\% confidence
-intervals contain the true known value at the expected frequency.
+## Commercial CPUE standardization results
+
+The unstandardized Pacific Cod catch and total fleet effort show variable
+trends through time in both the historic and modern datasets (Figure
+\@ref(fig:cpue-catch-effort-ts)). The majority of positive fishing events for
+Pacific Cod occurred at depths ranging from approximately 50m to 200m (Figure
+\@ref(fig:cpue-depth-hists)). We can see an increase in the total number of
+trip-locality combinations since 1991, some changes to the localities typically
+fished, and an introduction of trips with deeper average fishing depths towards
+the end of the 1956--1995 period (Figure \@ref(fig:cpue-bubble-plots-hist-3CD),
+\@ref(fig:cpue-bubble-plots-hist-5ABCD)). For the modern datasets, we see some
+changes to the distribution of fished depths, latitudes, and months through
+time, along with changes to the vessels participating in the 'fleet' and the
+localities fished (Figure \@ref(fig:cpue-bubble-plots-modern-3CD),
+\@ref(fig:cpue-bubble-plots-modern-5ABCD)).
+
+For the 1956--1995 time period, depth and locality had a moderate effect on the
+standardized CPUE index for 3CD, but the standardized and unstandardized series
+differed little in 5ABCD (Figure \@ref(fig:cpue-index-ts-hist)). Accounting for
+either depth or locality reduce to the 3CD CPUE in the 1970s and increased the
+CPUE from the mid 1980s to 1995. Accounting for depth also reduced a spike in
+CPUE in 3CD in the mid 1960s. For the 1996--2017 time period, depth and
+latitude had the largest effect on the standardized index, and again had
+a larger effect in 3CD than 5ABCD (Figure \@ref(fig:cpue-index-ts-modern)).
+Accounting for depth or latitude somewhat decreased the CPUE index for two to
+three years before and after 2010 and in this effect carried through to the
+standardization model with all covariates.
+
+Accounting for locality-year interactions had little effect on the shape of the
+standardized indices with the exception of a slight change in shape 2014--2015
+for the modern dataset in 5ABCD (Figure \@ref(fig:cpue-int-test-plot)). The
+main effect of including the locality-year random effect interactions was to
+increase the width of the confidence intervals in all areas and time periods.
+We can examine the contribution of all the fixed and random effect parameters
+via coefficient plots (historic: Figures \@ref(fig:cpue-coef-plot1),
+\@ref(fig:cpue-coef-plot2), \@ref(fig:cpue-coef-plot3); modern: Figures
+\@ref(fig:cpue-coef-plot1-modern), \@ref(fig:cpue-coef-plot2-modern),
+\@ref(fig:cpue-coef-plot3-modern)).
 
 ## Space-time interactions
 
-By including locality-year random effects we allow for each locality to have
+To test the effect of including or not including space-time interactions when
+such interactions are or are not present, we performed a simulation test. We
+parameterized our simulation to approximately match the parameters estimated
+from observed data. Our simulation included 20 years of data; 12 localities
+with their effects in log space drawn from a normal distribution with
+a standard deviation of 0.3 and mean 0; optionally year-locality random effects
+drawn from a distribution with a standard deviation of 0.5 and mean of 0; 10
+observations per year per locality; a true known CPUE index that, in log space,
+followed an auto-regressive process with correlation of 0.3 at lag 1, standard
+deviation of 1 and a mean of 2; and Tweedie parameters of $p = 1.6$ and $\phi
+= 5$. We generated versions of this dataset with and without the locality-year
+interactions and then fit standardization models to those datasets that either
+allowed for or ignored locality-year interactions.
+
+By including locality-year random effects we allowed for each locality to have
 a trend that deviates slightly from the overall trend (Figure
 \@ref(fig:cpue-re-int-ts)). Omitting these locality-by-year random effects, on
 the other hand, assumes that the CPUE trend is identical in shape and only
@@ -176,36 +227,6 @@ space (Figure \@ref(fig:cpue-sim-test-tweedie-glmm-plot)). Furthermore,
 allowing for the interactions has no qualitative effect on model performance or
 coverage if the interactions are not present (Figure
 \@ref(fig:cpue-sim-test-tweedie-glmm-plot)).
-
-*TODO: write up the simulation paragraph*
-
-## Commercial CPUE standardization results
-
-Figures to reference:
-
-Raw Pacific Cod catch and total fleet effort (Figure \@ref(fig:cpue-catch-effort-ts)).
-
-The depth distribution of fishing trips or events (Figure \@ref(fig:cpue-depth-hists)).
-
-The distribution of index standardization variables for the historical dataset (Figure \@ref(fig:cpue-bubble-plots-hist-3CD), \@ref(fig:cpue-bubble-plots-hist-5ABCD)).
-
-The distribution of index standardization variables for the modern dataset (Figure \@ref(fig:cpue-bubble-plots-modern-3CD), \@ref(fig:cpue-bubble-plots-modern-5ABCD)).
-
-The standardized index timeseries (Figure \@ref(fig:cpue-index-ts-hist), \@ref(fig:cpue-index-ts-modern))
-
-A comparison of the standardized indices with and without space-time random effects (Figure \@ref(fig:cpue-int-test-plot)).
-
-Coefficient plots from the full standardization models:
-
-historic:
-Figure \@ref(fig:cpue-coef-plot1)
-Figure \@ref(fig:cpue-coef-plot2)
-Figure \@ref(fig:cpue-coef-plot3)
-
-modern:
-Figure \@ref(fig:cpue-coef-plot1-modern)
-Figure \@ref(fig:cpue-coef-plot2-modern)
-Figure \@ref(fig:cpue-coef-plot3-modern)
 
 ```{r cpue-params}
 params <- list()
