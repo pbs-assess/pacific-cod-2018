@@ -38,12 +38,14 @@ rootd <- here::here()
 rootd.R <- file.path(rootd, "R")
 rootd.data <- file.path(rootd, "data")
 rootd.models <- file.path(rootd, "models")
+rootd.sens <- file.path(rootd.models, "SensitivityFigures")
 
 source(file.path(rootd.R, "utilities.R"))
+source(file.path(rootd.R, "verify.R"))
+source(file.path(rootd.R, "model-setup.R"))
 source(file.path(rootd.R, "load-models.R"))
-## source(file.path(rootd.R, "verify.R"))
-## source(file.path(rootd.R, "mcmc-diagnostics.R"))
-## source(file.path(rootd.R, "figures-biomass.R"))
+source(file.path(rootd.R, "mcmc-diagnostics.R"))
+source(file.path(rootd.R, "figures-biomass.R"))
 source(file.path(rootd.data, "get-data.R"))
 ##
 ## # Code to setup the model names, and start/end years for various things

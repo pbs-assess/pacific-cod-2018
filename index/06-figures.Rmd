@@ -2,6 +2,10 @@
 
 # FIGURES
 
+```{r fig-catch-5abcd, fig.cap="Catch for Area 5ABCD"}
+make.catches.plot(catch.5)
+```
+
 ```{r fig-base-biomass, fig.cap="Biomass for the Reference Model, Area 5ABCD"}
 make.biomass.mcmc.plot(
   base.model,

@@ -46,12 +46,6 @@ model.dir <- rootd.models
 if(verbose) cat0("Models directory: \n  ", model.dir)
 
 ## -----------------------------------------------------------------------------
-## Directory in which the retrospective model directories reside
-## -----------------------------------------------------------------------------
-retro.dir <- file.path(model.dir, "0_1_5CD_2018_Base")
-if(verbose) cat0("Retrospectives directory: \n  ", retro.dir)
-
-## -----------------------------------------------------------------------------
 ## File names which must exists in each model directory
 ## -----------------------------------------------------------------------------
 exe.file.name <- "iscam.exe"
@@ -89,29 +83,30 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 ## Base model names and directories
 ## -----------------------------------------------------------------------------
-base.model.name <- "Reference model"
-base.model.dir.name <- "0_1_5CD_2018_Base"
+base.model.3cd.name <- "Reference model 3CD"
+base.model.3cd.dir.name <- file.path(model.dir,
+                                     "1_1a_3CD_BASE_loc-yr-interact_rsoleq_0228sd03")
 
-verify.models(model.dir, base.model.dir.name, base.model.name)
+base.model.5abcd.name <- "Reference model 5ABCD"
+base.model.5abcd.dir.name <- file.path(model.dir,
+                                       "0_1a_5ABCD_BASE_loc-yr-interact_rsoleq_06_019")
 
 if(verbose){
-  cat0("Base model directory name for reference model:\n", base.model.dir.name)
-  cat0("Base model pretty name for reference model:\n", base.model.name)
+  cat0("Base model directory name for reference model 5abcd:\n", base.model.5abcd.dir.name)
+  cat0("Base model pretty name for reference model 5abcd:\n", base.model.5abcd.name)
+  cat0("Base model directory name for reference model 3cd:\n", base.model.3cd.dir.name)
+  cat0("Base model pretty name for reference model 3cd:\n", base.model.3cd.name)
 }
 
 ## -----------------------------------------------------------------------------
-## Sensitivity models group 1
+## Sensitivity models group 1 (5ABCD)
 ## -----------------------------------------------------------------------------
-sens.models.dir.name.1 <- c("0_2_5CD_2018_sig02",
-                            "0_2a_5CD_2018_sig015",
-                            "0_2b_5CD_2018_sig01")
-sens.models.name.1 <- c("Sigma = 0.2",
-                        "Sigma = 0.15",
-                        "Sigma = 0.1")
-verify.models(model.dir,
-              sens.models.dir.name.1,
-              sens.models.name.1)
-
+sens.models.dir.name.1 <- c(file.path(model.dir,
+                                      "0_1b_5ABCD_NO_loc-yr-interact_rsoleq_06_019"),
+                            file.path(model.dir,
+                                      "0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV"))
+sens.models.name.1 <- c("No locality/yr q mean = 06 sd = 0.19",
+                        "No locality/yr q mean = 06 sd = 0.19, double CV")
 if(verbose){
   print.model.message(sens.models.dir.name.1,
                       sens.models.name.1,
@@ -120,12 +115,42 @@ if(verbose){
 }
 
 ## -----------------------------------------------------------------------------
+## Sensitivity models group 2 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.2 <- c(file.path(model.dir,
+                                      "1_1b_3CD_NO_loc-yr-interact_rsoleq_0228sd03"),
+                            file.path(model.dir,
+                                      "1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV"))
+sens.models.name.2 <- c("No locality/yr q mean = 0.228 sd = 0.3",
+                        "No locality/yr q mean = 0.228 sd = 0.3, double CV")
+if(verbose){
+  print.model.message(sens.models.dir.name.2,
+                      sens.models.name.2,
+                      2,
+                      model.type = "Sensitivity")
+}
+
+## -----------------------------------------------------------------------------
 ## Retrospectives
 ## -----------------------------------------------------------------------------
-retro.dir.names <- c("Retrospective01",
-                     "Retrospective02",
-                     "Retrospective03",
-                     "Retrospective04")
+retro.dir.names.3cd <- c(file.path(base.model.3cd.dir.name,
+                                   "Retrospective01"),
+                         file.path(base.model.3cd.dir.name,
+                                   "Retrospective02"),
+                         file.path(base.model.3cd.dir.name,
+                                   "Retrospective03"),
+                         file.path(base.model.3cd.dir.name,
+                                   "Retrospective04"))
+retro.dir.names.5abcd <- c(file.path(base.model.5abcd.dir.name,
+                                   "Retrospective01"),
+                           file.path(base.model.5abcd.dir.name,
+                                     "Retrospective02"),
+                           file.path(base.model.5abcd.dir.name,
+                                     "Retrospective03"),
+                           file.path(base.model.5abcd.dir.name,
+                                     "Retrospective04"))
+retro.dir.names <- c(retro.dir.names.3cd,
+                     retro.dir.names.5abcd)
 retro.names <- c("- 1 year",
                  "- 2 years",
                  "- 3 years",
@@ -136,11 +161,14 @@ retro.names <- c("- 1 year",
 ## as the other model setup and should be changed if bridge models
 ## and sensitivity models change in the model.dir.names above..
 load.models.into.parent.env <- function(){
-  base.model <<- load.models(model.dir, base.model.dir.name)
-  sens.models.1 <<- load.models(model.dir, sens.models.dir.name.1)
+  base.model.5abcd <<- load.models(base.model.5abcd.dir.name)
+  sens.models.1 <<- load.models(sens.models.dir.name.1)
 
-  base.retro.models <<- load.models(retro.dir, retro.dir.names)
+  base.model.3cd <<- load.models(base.model.3cd.dir.name)
+  sens.models.1 <<- load.models(sens.models.dir.name.1)
 
+  base.retro.models.5abcd <<- load.models(retro.dir.names.5abcd)
+  base.retro.models.3cd <<- load.models(retro.dir.names.3cd)
 }
 
 build <- function(ovwrt.base = FALSE,
@@ -157,8 +185,16 @@ build <- function(ovwrt.base = FALSE,
   ## ovwrt.sens - overwrite the RData files for the sensitivity models?
   ## ovwrt.retro - overwrite the RData files for the retrospective models?
 
-  ## Base model
-  create.rdata.file(model.name = base.model.dir.name,
+  ## Base models
+  create.rdata.file(base.model.5abcd.dir.name,
+                    ovwrt.rdata = ovwrt.base,
+                    load.proj = TRUE,
+                    burnin = burnin,
+                    thin = thin,
+                    low = confidence.vals[1],
+                    high = confidence.vals[2],
+                    verbose = ss.verbose)
+  create.rdata.file(base.model.3cd.dir.name,
                     ovwrt.rdata = ovwrt.base,
                     load.proj = TRUE,
                     burnin = burnin,
@@ -169,8 +205,8 @@ build <- function(ovwrt.base = FALSE,
 
   ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the for loop below to work right
-  sens.models.names.list <- c(unlist(sens.models.dir.name.1))
-                             ## unlist(sens.model.dir.name.2),
+  sens.models.names.list <- c(unlist(sens.models.dir.name.1),
+                              unlist(sens.models.dir.name.2))
                              ## unlist(sens.model.dir.name.3),
                              ## unlist(sens.model.dir.name.4),
                              ## unlist(sens.model.dir.name.5),
@@ -179,32 +215,25 @@ build <- function(ovwrt.base = FALSE,
                              ## unlist(sens.model.dir.name.8))
   ## Sensitivity models
   for(model.nm in sens.models.names.list){
-    create.rdata.file(
-      model.name = model.nm,
-      ovwrt.rdata = ovwrt.sens,
-      load.proj = TRUE,
-      burnin = burnin,
-      thin = thin,
-      low = confidence.vals[1],
-      high = confidence.vals[2],
-      verbose = verbose)
+    create.rdata.file(model.nm,
+                      ovwrt.rdata = ovwrt.sens,
+                      load.proj = TRUE,
+                      burnin = burnin,
+                      thin = thin,
+                      low = confidence.vals[1],
+                      high = confidence.vals[2],
+                      verbose = verbose)
   }
 
   ## Retrospective models
   for(model.nm in retro.dir.names){
-    if(dir.exists(retro.dir)){
-      if(dir.exists(file.path(retro.dir, model.nm))){
-        create.rdata.file(
-          models.dir = retro.dir,
-          model.name = model.nm,
-          ovwrt.rdata = ovwrt.retro,
-          load.proj = TRUE,
-          burnin = burnin,
-          thin = thin,
-          low = confidence.vals[1],
-          high = confidence.vals[2],
-          verbose = verbose)
-      }
-    }
+    create.rdata.file(model.nm,
+                      ovwrt.rdata = ovwrt.retro,
+                      load.proj = TRUE,
+                      burnin = burnin,
+                      thin = thin,
+                      low = confidence.vals[1],
+                      high = confidence.vals[2],
+                      verbose = verbose)
   }
 }
