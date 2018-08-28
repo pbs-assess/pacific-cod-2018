@@ -13,9 +13,10 @@ x <- filter(d$survey_samples,
   is.element(survey_abbrev, c("SYN HS", "SYN QCS","SYN WCVI")))
 ```
 
-```{r, age-temp, echo=FALSE, eval=FALSE}
+
+```{r, length-temp, echo=FALSE, eval=TRUE}
 xx <- d$commercial_samples %>%
-  filter(!is.na(length), sampling_desc == "UNSORTED")
+  filter(!is.na(length))  #, sampling_desc == "UNSORTED"
 
 areas <- c("^3[CD]+", "^5[AB]+", "^5[CD]+")
 areas <- c("^3[CD]+", "^5[ABCD]+")
@@ -24,6 +25,7 @@ for (i in seq_along(areas)) {
   xx[grepl(areas[[i]], xx$major_stat_area_name), "area"] <-
     gsub("\\[|\\]|\\+", "", areas[[i]])
 }
+
 xx %>%
   filter(!is.na(area)) %>%
   group_by(area, year) %>%
@@ -38,16 +40,30 @@ xx %>%
   geom_line(aes(colour = area), lwd = 1.2)
 ```
 
+```{r age-total_aged}
+total_aged <- tidy_ages_raw(x,
+  survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
+  ageing_method_codes = 6) %>%
+  group_by(survey_abbrev, year) %>%
+  summarise(n = total[1]) %>% ungroup() %>%
+  summarise(n = sum(n)) %>% pull(n)
+```
 
-# Age- and length-based analyses for Pacific Cod
+
+# Analysis of biological data
 
 In this appendix we analyse length, maturity and available ageing data to update growth and maturity parameters. We also plot age-frequency data derived from an age-length key to visualise the probable age composition in survey and commercial catch data.
 
-## Database queries
 
-Survey age, length and maturity data were extracted from the GFBio database using the following query:
+## Length, weight and maturity samples
 
-*TO DO: Add query details for survey data. Improve bullets for commercial data below. Not really clear what it means*
+*TO DO: Add query details for length data (survey and comm).  See previous assessment and update with recent modifications if any. Do a similar summary as for ages. See GFplot*
+
+Survey length, weight and maturity data were extracted from the GFBio database using the following criteria:
+
+*TO DO: Add query details for survey data.* 
+
+*TO DO: Improve bullets for commercial data below. Not really clear what it means*
 
 In addition, commercial length and maturity samples were extracted from GFBio using the following options:
 
@@ -60,34 +76,14 @@ In addition, commercial length and maturity samples were extracted from GFBio us
 
 - Filtered for `SAMPLE_SOURCE_CODE` NULL, 1, 2, 3 to extract both sorted and unsorted samples for later filtration for desired analysis (removes stomach contents samples).
 
-
-```{r age-total_aged}
-total_aged <- tidy_ages_raw(x,
-  survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
-  ageing_method_codes = 6) %>%
-  group_by(survey_abbrev, year) %>%
-  summarise(n = total[1]) %>% ungroup() %>%
-  summarise(n = sum(n)) %>% pull(n)
-```
-
-## Length data
-
-This assessment does not attempt to analyze length-frequency data in detail,
-but does present length-frequencies as auxiliary information.
-
-Length-frequencies from commercial vessels for the years 1996-2017 are
-presented in Appendix XX. The sample data were extracted from the GFBio, using
-the criteria given in Table XX. Examination of the sample length frequencies
+Length data from commercial vessels were extracted from the GFBio database, using
+the criteria given below. Examination of the sample length frequencies
 revealed 7 samples that were coded as being Pacific Cod but the size
 composition was uncharacteristic of the species. These samples, listed in
 Table XX, were eliminated from the analysis.
 
-Length data for all Pacific Cod from the Hecate Strait assemblage survey,
-Hecate Strait synoptic survey and Queen Charlotte Sound synoptic survey were
-extracted and are presented in Appendix XX. All samples taken on these
-surveys were taken from unsorted catches, i.e., specimens were not selected
-based on size or sex.
 
+<!--
 As a general rule the survey retains smaller fish than the commercial
 vessels and, in particular, there was evidence of a large proportion of
 small (< 20 cm) fish in Hecate Strait in 2013 (Figure XX). A visual assessment
@@ -103,21 +99,26 @@ large recruitment event, a change in selectivity, the introduction of
 onboard observers, or an artefact of sampling. Changes in selectivity can
 result from changes to the fishing gear (e.g., mesh size) or changes in
 fishing location (e.g., depth).
+-->
 
 
 ## Age samples
 
-*TO DO: add references below to bib and cite correctly*
+*TO DO: add references below to bib and cite correctly.  Add info on length-stratification in surveys.*
 
 Pacific Cod are difficult to age due to inconsistency in annual marks, especially in the first few years of life (Beamish, 1981; Johnstone and Anderl, 2012; Kastelle, 2017).A recent microchemistry-based validation study of Alaskan Pacific Cod otoliths revealed that visual aging of otoliths resulted in a high probability of over-ageing fish of ages 3-4 y. This was due to difficulty of readers distinguishing growth checks (translucent zones) from annuli (Kastelle, 2017). Due to large difficulties in interpreting growth patterns on otoliths from BC Pacific Cod, they are here aged using dorsal finray sections, although this method is unvalidated (Beamish, 1981). Ageing finray sections is resource intensive, since fins must be dried, sectioned and mounted in resin before reading. Therefore, production ageing of Pacific Cod has not been routinely done for BC populations.
 
-A request was made in 2012 to age Pacific Cod from dorsal fin rays collected in recent Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. A total of `r total_aged` fin rays were aged, covering the years 2007, 2009, 2011 for SYN HS; 2011 for SYN QCS and 2006, 2008 and 2010 for SYN WCVI. A summary of number of fish aged by year, survey and sex is provided in Table \@ref(tab:age-biosamples). Proportions at each age are shown in Figure \@ref(fig:age-plotages).
+A request was made in 2012 to age Pacific Cod from dorsal fin rays collected in recent Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island synoptic surveys. A total of `r total_aged` fin rays were aged, covering the years 2007, 2009, 2011 for SYN HS; 2011 for SYN QCS and 2006, 2008 and 2010 for SYN WCVI. A summary of number of fish aged by year, survey and sex is provided in Table \@ref(tab:age-biosamples). Proportions at each age are shown in Figure \@ref(fig:age-plotages).
 
 Due to the difficulties with interpreting annuli for Pacific Cod, a subset of fin rays were read by a second reader. There were 162 such secondary reads for Area 5CD and 57 for Area 3CD. Results showed that precision reads sometimes differed from the primary read by one or more years, particularly for older fish (Figure \@ref(fig:age-precision)).
 
 Given the small ranges of years with aged fish, these data are insufficient to support an age-structured stock assessment model. However, they can be used to estimate growth and maturity parameters, and may be useful for visualizing probable age compositions in the commercial catch data.
 
 *TO DO. Improve fig and table captions. Improve figure spacing.*
+
+
+
+
 
 ```{r age-plotages, fig.cap="Proportions at age of fish aged in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Grey circles = males. Red circles = females."}
 tidy_ages_raw(x,
@@ -175,7 +176,7 @@ L_{s} = L_{\infty,s}\left( 1 - e^{- k_{s}\left( a_{s} - {a_{0}}_{s} \right)} \ri
 
 where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $a_{s}$ are paired length ($L$) and age ($a$) observations from synoptic surveys (Table \@ref(tab:biosamples)). The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples. Results are shown in Figure \@ref(fig:vb-figs).
 
-Length-weight parameters (Equation \@ref(eq:weight-length)) were also estimated using paired length and weight data from the same surveys
+Length-weight parameters (Equation \@ref(eq:weight-length)) were also estimated using paired length and weight data from the same surveys.
 
 \begin{equation}
 W_{s} = \alpha_{s}{L_{s}}^{\beta_{s}}
