@@ -168,6 +168,57 @@ latex.supscr <- function(main.txt, supscr.txt){
 
 ## -----------------------------------------------------------------------------
 
+get.rows.cols <- function(num){
+  ## Returns a vector of length 2 representing the number of rows and columns
+  ##  to use to pack a plot in a grid.
+  if(num <= 64 && num > 49){
+    if(num <= 56){
+      nside <- c(8,7)
+    }else{
+      nside <- c(8,8)
+    }
+  }else if(num <= 49 && num > 36){
+    if(num <= 42){
+      nside <- c(7,6)
+    }else{
+      nside <- c(7,7)
+    }
+  }else if(num <= 36 && num > 25){
+    if(num <= 30){
+      nside <- c(6,5)
+    }else{
+      nside <- c(6,6)
+    }
+  }else if(num <= 25 && num > 16){
+    if(num <= 20){
+      nside <- c(5,4)
+    }else{
+      nside <- c(5,5)
+    }
+  }else if(num <= 16 && num > 9){
+    if(num <= 12){
+      nside <- c(4,3)
+    }else{
+      nside <- c(4,4)
+    }
+  }else if(num <=  9 && num > 4){
+    if(num <= 6){
+      nside <- c(3,2)
+    }else{
+      nside <- c(3,3)
+    }
+  }else if(num <=  4 && num > 1){
+    if(num == 2){
+      nside <- c(2,1)
+    }else{
+      nside <- c(2,2)
+    }
+  }else{
+    nside <- c(1,1)
+  }
+  return(nside)
+}
+
 get.quants <- function(data,
                        probs){
   ## Return the column quantiles for data matrix.
@@ -585,7 +636,7 @@ plotBars.fn <- function(x,y,gap=0,scalar=1e6,add=F,ciCol="black",ciLty=1,ciLwd=1
   if(!add) plot(x,y$value/scalar,...)
   if(add) points(x,y$value/scalar,...)
   segments(x,y$lo/scalar,x,y$value/scalar-gap,col=ciCol,lty=ciLty,lwd=ciLwd)
-  segments(x,y$hi/scalar,x,y$value/scalar+gap,col=ciCol,lty=ciLty,lwd=ciLwd) 
+  segments(x,y$hi/scalar,x,y$value/scalar+gap,col=ciCol,lty=ciLty,lwd=ciLwd)
 }
 
 panel.letter <- function(letter){
