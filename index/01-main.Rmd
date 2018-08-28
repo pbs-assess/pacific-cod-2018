@@ -515,15 +515,12 @@ similar to those adopted in Area 5ABCD, were explored.
 # SENSITIVITY ANALYSES
 
 We present a number of sensitivity analyses to show the influence of certain data sources, fixed
-parameters and prior probability distributions in the Area 5ABCD and 3CD base case models.
+parameters and prior probability distributions in the Area 5ABCD and 3CD Base Case models.Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
 
-### Summary of prior probability distributions common to all models. *Note Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15*.
-
-
-### 5ABCD Base Case settings
 *TO DO: Move these tables to model description and refer to them here*
 
-```{r}
+
+```{r priors-base5ABCD}
 
 df <- data.frame(Parameter = c("ln M",
                      "Steepness",
@@ -555,15 +552,13 @@ df <- data.frame(Parameter = c("ln M",
                         "0.3",
                         "0.3",
                         "1",
-                        "1"))
-knitr::kable(df)
+                        "1"))  
+   knitr::kable(df, caption = "Prior probability distributions used for the Base Case 5ABCD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "") 
 
 ```
 
-### 3CD Base Case settings
 
-
-```{r}
+```{r priors-base3CD}
 
 df <- data.frame(Parameter = c("ln M",
                      "Steepness",
@@ -592,8 +587,8 @@ df <- data.frame(Parameter = c("ln M",
                         "0.3",
                         "1",
                         "1",
-                        "1"))
-knitr::kable(df)
+                        "1"))  
+   knitr::kable(df, caption = "Prior probability distributions used for the Base Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
 ```
 
