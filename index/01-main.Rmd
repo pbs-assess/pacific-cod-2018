@@ -256,44 +256,14 @@ year [@efron1982].
 
 ### NMFS Triennial Survey (in Canadian waters)
 
-## Commercial Annua
+## Biological data
+
+*TO DO. Add dynamic references to Appendix A for annual mean weight, age and length data
 
 The methodology for calculating the mean weight of Pacific Cod from commercial
-vessels for the years 1956--2017 is presented in Appendix XX.
+vessels for the years 1956--2017 is presented in Appendix A.
 
-## LENGTH DATA
 
-This assessment does not attempt to analyze length-frequency data in detail,
-but does present length-frequencies as auxiliary information.
-
-Length-frequencies from commercial vessels for the years 1996-2017 are
-presented in Appendix XX. The sample data were extracted from the GFBio, using
-the criteria given in Table XX. Examination of the sample length frequencies
-revealed 7 samples that were coded as being Pacific Cod but the size
-composition was uncharacteristic of the species. These samples, listed in
-Table XX, were eliminated from the analysis.
-
-Length data for all Pacific Cod from the Hecate Strait assemblage survey,
-Hecate Strait synoptic survey and Queen Charlotte Sound synoptic survey were
-extracted and are presented in Appendix XX. All samples taken on these
-surveys were taken from unsorted catches, i.e., specimens were not selected
-based on size or sex.
-
-As a general rule the survey retains smaller fish than the commercial
-vessels and, in particular, there was evidence of a large proportion of
-small (< 20 cm) fish in Hecate Strait in 2013 (Figure XX). A visual assessment
-of the commercial length frequencies for Area 5CD (Figure XX) showed some
-evidence of smaller fish in 1999, 2003 and 2007. There was no indication of
-small (< 20 cm) fish in the recent Queen Charlotte Sound synoptic surveys
-(Figure XX). Commercial length-frequencies from Area 5AB indicated large
-proportions of smaller fish in 2000 and 2007 (Figure XX).
-
-It should be noted in any visual assessment of commercial length-frequency
-data that an increase in frequency of small fish could be explained by a
-large recruitment event, a change in selectivity, the introduction of
-onboard observers, or an artefact of sampling. Changes in selectivity can
-result from changes to the fishing gear (e.g., mesh size) or changes in
-fishing location (e.g., depth).
 
 # STOCK ASSESSMENT MODEL
 
