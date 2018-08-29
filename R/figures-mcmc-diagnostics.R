@@ -30,15 +30,18 @@ make.priors.posts.plot <- function(model,
   f.names <- c(dunif, dnorm, dlnorm, dbeta, dgamma)
 
   mc <- model$mcmccalcs$p.dat.log
-  ## Remove selectivity parameters, bo, vartheta, sigma, tau from the posts
-  mc <- mc[, -grep("^sel.*", names(mc))]
+
+  ## Remove bo, vartheta, sigma, tau from the posts
+  ## mc <- mc[, -grep("^sel.*", names(mc))]
   mc <- mc[, -grep("bo", names(mc))]
   mc <- mc[, -grep("vartheta", names(mc))]
-  mc <- mc[, -grep("tau", names(mc))]
-  mc <- mc[, -grep("sigma", names(mc))]
+  ## mc <- mc[, -grep("tau", names(mc))]
+  ## mc <- mc[, -grep("sigma", names(mc))]
+  mc <- mc[, -grep("log_rinit", names(mc))]
+  mc <- mc[, -grep("log_ro", names(mc))]
   post.names <- names(mc)
 
-  prior.specs <- as.data.frame(model$ctl$param)
+  prior.specs <- as.data.frame(model$ctl$params)
   ## Remove fixed parameters
   prior.specs <- prior.specs[prior.specs$phz > 0,]
   ## Remove upper and lower bound, and phase information, but keep initial
@@ -66,6 +69,7 @@ make.priors.posts.plot <- function(model,
   ## Get MPD estimates for the parameters in the posteriors
   mpd <- model$mpd
   q.pattern <- "^log_q([1-9]+)$"
+
   mpd.lst <- lapply(1:length(post.names),
                     function(x){
                       mle <- NULL

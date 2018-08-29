@@ -543,12 +543,15 @@ read.control.file <- function(file = NULL,
   n.par <- as.numeric(dat1)
   param.names <- vector()
   ## Lazy matching with # so that the first instance matches, not any other
-  pattern <- "^.*?#([[:alnum:]]+_*[[:alnum:]]*).*"
+  pattern <- "^.*?# *([[:alnum:]]+[_.]*[[:alnum:]]*).*"
   for(param.name in 1:n.par){
     ## Each parameter line in dat which starts at index 2,
     ##  retrieve the parameter name for that line
     param.names[param.name] <- sub(pattern, "\\1", dat[param.name + 1])
   }
+  ## Replace any periods in the names with underscores
+  param.names <- gsub("[.]", "_", param.names)
+
   ## Now that parameter names are stored, parse the file.
   ##  remove comments which come at the end of a line
   dat <- gsub("#.*", "", dat)

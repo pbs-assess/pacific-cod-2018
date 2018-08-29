@@ -21,6 +21,10 @@ b.plot(base.model.5abcd)
 make.traces.plot(base.model.5abcd)
 ```
 
+```{r fig-base-mcmc-priors-5abcd, fig.cap="Prior probability distributions used in the Area 5ABCD base reference model."}
+make.priors.posts.plot(base.model.5abcd)
+```
+
 \clearpage
 
 ## Area 3CD
@@ -41,3 +45,8 @@ b.plot(base.model.3cd)
 ```{r fig-base-mcmc-trace-3cd, fig.cap="Traceplots of posterior samples for the Area 3CD base reference model."}
 make.traces.plot(base.model.3cd)
 ```
+
+```{r fig-base-mcmc-priors-3cd, fig.cap="Prior probability distributions used in the Area 3CD base reference model."}
+make.priors.posts.plot(base.model.3cd)
+```
+

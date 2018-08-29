@@ -5,7 +5,7 @@ rmd_files: ["index.Rmd",
             "01-main.Rmd",
             "06-figures.Rmd",
             "age-key-app.Rmd",
-            #"cpue-app.Rmd",
+            "cpue-app.Rmd",
             "05-model-description.Rmd",
             # "98-colophon.Rmd",
             "99-references.Rmd"]
