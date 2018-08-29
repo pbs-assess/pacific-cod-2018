@@ -327,20 +327,7 @@ as.ts.mcmc <- function(x, ...){
   y
 }
 
-make.pairs.plot <- function(model,
-                            params = c("ro",
-                                       "h",
-                                       "m",
-                                       "rbar",
-                                       "rinit",
-                                       "q1",
-                                       "q2",
-                                       "sel1",
-                                       "selsd1",
-                                       "sel2",
-                                       "selsd2",
-                                       "sel3",
-                                       "selsd3")){
+make.pairs.plot <- function(model){
 
   ## Plot the pairs scatterplots for the estimated parameters
 
@@ -368,8 +355,13 @@ make.pairs.plot <- function(model,
   }
 
   mc <- as.data.frame(model$mcmc$params.est)
+  ## Remove some of them
+  mc <- mc[, -grep("ro", colnames(mc))]
+  mc <- mc[, -grep("rinit", colnames(mc))]
+  mc <- mc[, -grep("bo", colnames(mc))]
+  mc <- mc[, -grep("msy", colnames(mc))]
+  mc <- mc[, -grep("ssb", colnames(mc))]
 
-  mc <- mc[,params]
   c.names <- colnames(mc)
   latex.names <- NULL
   for(param in 1:ncol(mc)){
