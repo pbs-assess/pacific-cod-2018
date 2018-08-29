@@ -242,6 +242,13 @@ make.autocor.plot <- function(model){
   }
 
   mc <- model$mcmc$params.est
+  ## Remove some of them
+  mc <- mc[, -grep("ro", colnames(mc))]
+  mc <- mc[, -grep("rinit", colnames(mc))]
+  mc <- mc[, -grep("bo", colnames(mc))]
+  mc <- mc[, -grep("msy", colnames(mc))]
+  mc <- mc[, -grep("ssb", colnames(mc))]
+
   n.side <- get.rows.cols(ncol(mc))
   par(mfrow = n.side,
       oma = c(2, 3, 1, 1),
