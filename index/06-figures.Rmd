@@ -8,15 +8,6 @@
 make.catches.plot(catch.5)
 ```
 
-```{r fig-base-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD"}
-b.plot(base.model.5abcd)
-# make.biomass.mcmc.plot(
-#   base.model.5abcd,
-#   base.model.5abcd.name,
-#   ylim = c(0, 100000),
-#   opacity = 50)
-```
-
 ```{r fig-base-mcmc-trace-5abcd, fig.cap="Traceplots of posterior samples for the Area 5ABCD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = Hecate Strait Assemblage survey, $q_2$ = Queen Charlotte Sound Synoptic Survey, $q_3$ = Hecate Strait Synoptic Survey, $q_4$ = Commercial CPUE pre-1996, and $q_5$ = Commercial CPUE post-1995."}
 make.traces.plot(base.model.5abcd)
 ```
@@ -45,6 +36,11 @@ print(i.plot(base.model.5abcd, 2, "b"), vp = ggvp(1, 2))
 print(i.plot(base.model.5abcd, 3, "c"), vp = ggvp(1, 3))
 print(i.plot(base.model.5abcd, 4, "d"), vp = ggvp(2, 1))
 print(i.plot(base.model.5abcd, 5, "e"), vp = ggvp(2, 2))
+```
+
+
+```{r fig-base-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD"}
+b.plot(base.model.5abcd)
 ```
 
 \clearpage

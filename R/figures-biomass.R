@@ -1,29 +1,76 @@
 b.plot <- function(models,
-                   model.names = "Base"){
+                   add.hist.ref = FALSE,
+                   lrp = NA,
+                   usr = NA){
+  ## lrp usr are year ranges (2-element vectors) to take the mean of
+  ## the biomass for the reference points
 
   sbt.quants <- lapply(models,
                        function(x){
                          x$mcmccalcs$sbt.quants})
+  r.quants <- lapply(models,
+                     function(x){
+                       x$mcmccalcs$r.quants})
+  bo.raw <- lapply(r.quants,
+                    function(x){
+                      x[rownames(x) == "bo", ]})
+  bo <- lapply(bo.raw,
+                function(x){
+                  as.numeric(x[,2:4])})[[1]]
   yrs <- lapply(sbt.quants,
                 function(x){
                   as.numeric(colnames(x))})
 
   tmp <- as.tibble(t(sbt.quants[[1]])) %>%
     mutate(Year = yrs[[1]]) %>%
-    rename(`Catch (t)` = `50%`)
+    rename(`Biomass (t)` = `50%`)
 
-  ggplot(tmp) +
+  p <- ggplot(tmp) +
     aes(x = Year) +
     theme_pbs() +
-    geom_line(aes(y = `Catch (t)`),
-              color = "blue") +
+    geom_line(aes(y = `Biomass (t)`),
+              color = "blue",
+              size = 1) +
     scale_y_continuous(labels = comma,
                        limits = c(min(tmp$`5%`),
                                   1.1 * max(tmp$`95%`))) +
     geom_ribbon(aes(ymin = `5%`, ymax = `95%`),
                 fill = "blue",
-                alpha = 0.2)
+                alpha = 0.2) +
+    geom_point(aes(x = min(tmp$Year),
+                   y = bo[2]),
+               size = 2) +
+    geom_segment(aes(x = min(tmp$Year),
+                     xend = min(tmp$Year),
+                     y = bo[1],
+                     yend = bo[3]),
+                 size = 1)
 
+  if(add.hist.ref){
+    if(is.na(lrp) | is.na(usr)){
+      cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
+    }else{
+      cal <- tmp %>%
+        filter(Year >= lrp[1] & Year <= lrp[2])
+      lrp.val <- mean(cal$`Biomass (t)`)
+
+      cau <- tmp %>%
+        filter(Year >= usr[1] & Year <= usr[2])
+      usr.val <- mean(cau$`Biomass (t)`)
+
+      p +
+        geom_hline(aes(yintercept = lrp.val),
+                   linetype = "dashed",
+                   color = "red",
+                   size = 1,
+                   show.guide = TRUE) +
+        geom_hline(aes(yintercept = usr.val),
+                   linetype = "dashed",
+                   color = "green",
+                   size = 1,
+                   show.guide = TRUE)
+    }
+  }
 }
 
 make.biomass.mcmc.plot <- function(models,
@@ -60,7 +107,7 @@ make.biomass.mcmc.plot <- function(models,
                        x$mcmccalcs$r.quants})
   sbo.raw <- lapply(r.quants,
                     function(x){
-                      x[rownames(x) == "sbo", ]})
+                      x[rownames(x) == "bo", ]})
   sbo <- lapply(sbo.raw,
                 function(x){
                   as.numeric(x[,2:4])})
