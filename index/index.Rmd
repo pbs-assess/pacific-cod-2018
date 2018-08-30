@@ -4,14 +4,18 @@ author: |
   Robyn E. Forrest^1^,
   Sean C. Anderson^1^,
   Chris J. Grandin^1^,
+  Paul J. Starr^2^,
   ...
-author_list: "Forrest, R.E., Anderson, S.C., Grandin, C.J., ..."
+author_list: "Forrest, R.E., Anderson, S.C., Grandin, C.J., Paul J. Starr, ..."
 address: |
   ^1^Pacific Biological Station\
      Fisheries and Oceans Canada, 3190 Hammond Bay Road\
      Nanaimo, British Columbia, V9T 6N7, Canada\
-  ^2^Far, far away\
-     Another Galaxy
+     \
+  ^2^Canadian Groundfish Research and Conservation Society\
+      1406 Rose Ann Drive\
+      Nanaimo, British Columbia, V9T 4K8, Canada\
+
 year: "2018"
 report_number: "nnn"
 abstract: |
