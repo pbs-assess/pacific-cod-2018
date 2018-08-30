@@ -18,6 +18,7 @@ library(PBSmodelling)
 library(xtable)
 library(tidyverse)
 library(RColorBrewer)
+library(kableExtra)
 
 rootd <- here::here()
 rootd.R <- file.path(rootd, "R")

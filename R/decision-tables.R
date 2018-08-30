@@ -1,4 +1,8 @@
 #**********************************************************************************
+#decision-tables.R
+#Robyn Forrest, Pacific Biological Station
+#August 23, 2018
+
 #This code creates a model-averaged decision table based on X scenarios. 
 #It reads in the iscammcmc_proj_Gear1.csv file from each of the scenarios to be used in the decision table
 
