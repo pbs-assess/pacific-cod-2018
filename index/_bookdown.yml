@@ -7,7 +7,7 @@ rmd_files: ["index.Rmd",
             "age-key-app.Rmd",
             "cpue-app.Rmd",
             "05-model-description.Rmd",
-             "98-colophon.Rmd",
+            # "98-colophon.Rmd",
             "99-references.Rmd"]
 download: [["resdoc.pdf", "PDF"], ["resdoc.docx", "Word"]]
 delete_merged_file: true
