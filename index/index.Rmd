@@ -2,8 +2,10 @@
 title: "Assessment of Pacific Cod (*Gadus macrocephalus*) for Hecate Strait (5CD), Queen Charlotte Sound (5AB), and West Coast Vancouver Island (3CD) in 2018"
 author: |
   Robyn E. Forrest^1^,
-  Alex B. Smith Etc.^2^,
-author_list: "Forrest, R.E. and Smith, A.B."
+  Sean C. Anderson^1^,
+  Chris J. Grandin^1^,
+  ...
+author_list: "Forrest, R.E., Anderson, S.C., Grandin, C.J., ..."
 address: |
   ^1^Pacific Biological Station\
      Fisheries and Oceans Canada, 3190 Hammond Bay Road\

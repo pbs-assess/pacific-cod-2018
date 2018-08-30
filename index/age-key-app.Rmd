@@ -14,18 +14,14 @@ x <- filter(d$survey_samples,
 ```
 
 
-```{r, length-temp, echo=TRUE, eval=TRUE}
-xx <- d$commercial_samples %>%
-  dplyr::filter(!is.na(length))  #, sampling_desc == "UNSORTED"
+```{r, length-temp, echo=FALSE, eval=TRUE}
+xx <- d$commercial_samples %>% 
+  dplyr::filter(!is.na(length)) 
 
-areas <- c("3[CD]+", "5[AB]+", "5[CD]+")
-areas <- c("3[CD]+", "5[ABCD]+")
-xx$area <- NA
-for (i in seq_along(areas)) {
-  xx[grepl(areas[[i]], xx$major_stat_area_name), "area"] <-
-    gsub("\\[|\\]|\\+", "", areas[[i]])
-}
-glimpse(xx)
+xx <- xx[!duplicated(xx$specimen_id), , drop = FALSE]
+xx$area <- gfplot::assign_areas(xx$major_stat_area_name,
+ area_regex = c("3[CD]+", "5[ABCD]+"))
+
 ```
 
 
@@ -58,13 +54,14 @@ Length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound a
 
 *TO DO: Add query details for length data (survey and comm). Or maybe here is where description of gfplot goes. *
 
+*TO DO: Tabulate criteria for commercial data below. Not really clear what it means. See main body and Appendix C of 2013 assessment and update with recent modifications if any.*
+
 A total of `r total_survey_lengths` fish were measured in the three synoptic surveys ...
 A summary of number of fish aged by year, survey and sex is provided in Table \@ref(tab:length-biosamples-surv) ...
 Survey length-frequencies are shown in Figure \@ref(fig:length-plotfrequencies-surv) ...
 
 Assessment of maturity is done by visual inspection of the gonads. Fish are assessed as being in one of six states: immature, maturing, mature (resting), mature, mature (spent) and mature (ripe). For the purposes of estimating proportion mature-at-age, fish were considered mature if they were assessed to be in any one of the latter four states. A summary of number of maturity records by year and survey is provided in Table \@ref(tab:mat-biosamples)
 
-*TO DO: Tabulate criteria for commercial data below. Not really clear what it means. See main body and Appendix C of 2013 assessment and update with recent modifications if any.*
 
 Length data from commercial vessels were extracted from the GFBio database, using
 the criteria given below. Examination of the sample length frequencies
@@ -88,6 +85,41 @@ Summaries of number of fish aged by year, survey and sex are provided in Tables 
 
 *TO DO: Update gfplot code to not plot by sex. Commercial samples unsexed after 1999""
 
+
+```{r length-plotfrequencies-surv, fig.cap="Length-frequencies of Pacific Cod taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Note that for clarity only male and female specimens are plotted."}
+
+ x %>% 
+  tidy_lengths_raw(survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
+  bin_size = 2,
+  year_range = c(2002, Inf)) %>%
+  plot_lengths()
+
+
+```
+
+
+```{r length-plot-frequencies, fig.cap="Length-frequencies of Pacific Cod taken in the commercial trawl fishery. For clarity only lengths since 1996 are shown.", fig.asp=1.2}
+
+xx %>%
+ filter(!is.na(area)) %>%
+ filter(year >= 1996) %>%
+  filter(year < 2018) %>%
+ filter(species_category_code %in% 1) %>%
+ do(gfplot:::bin_lengths(., value = length, bin_size = 2)) %>%
+ rename(length_bin = length) %>%
+ group_by(year, length_bin, area) %>%
+ summarise(n = n()) %>%
+ group_by(year, area) %>%
+ mutate(proportion = n / sum(n), total = sum(n)) %>%
+ ungroup() %>%
+ mutate(sex = "M", survey_abbrev = area) %>% # sex = "M" is a trick to plot them all
+ plot_lengths() + xlab("Length") +
+ guides(colour = FALSE, fill = FALSE) 
+ 
+
+```
+
+
 ```{r length-biosamples-surv, results='asis'}
 x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
@@ -102,21 +134,52 @@ x %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nlength_m,
     `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "")
+  knitr::kable(caption = "Number (N) of length measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "")%>%
+  kableExtra::kable_styling(latex_options = c("hold_position"), font_size = 9)
+```
+
+\clearpage
+
+```{r length-biosamples-com-5ABCD, results='asis'}
+xx %>%
+  filter(area %in% c("5ABCD")) %>%
+  filter(!is.na(length), year > 1955) %>%
+  filter(year < 2018) %>%
+  group_by(area, year) %>%
+  summarize(
+    nlength_m = sum(sex == 1),
+    nlength_f = sum(sex == 2),
+    nlength_u = sum(sex == 0)
+    
+  ) %>%
+  rename(
+    Area = area, Year = year, `N male` = nlength_m,
+    `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
+  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 5ABCD", booktabs = TRUE, linesep = "", longtable=TRUE)%>%
+  kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 9)
 ```
 
 
-```{r length-plotfrequencies-surv, fig.cap="Length-frequencies of Pacific Cod taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Note that for clarity only male and female specimens are plotted."}
-
- x %>% 
-  tidy_lengths_raw(survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
-  bin_size = 2,
-  year_range = c(2002, Inf)) %>%
-  plot_lengths()
-
-
+```{r length-biosamples-com-3CD, results='asis'}
+xx %>%
+  filter(area %in% c("3CD")) %>%
+  filter(!is.na(length), year > 1955) %>%
+  filter(year < 2018) %>%
+  group_by(area, year) %>%
+  summarize(
+    nlength_m = sum(sex == 1),
+    nlength_f = sum(sex == 2),
+    nlength_u = sum(sex == 0)
+    
+  ) %>%
+  rename(
+    Area = area, Year = year, `N male` = nlength_m,
+    `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
+  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 3CD", booktabs = TRUE, linesep = "", longtable=TRUE)%>%
+  kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 9)
 ```
 
+\clearpage
 
 ```{r mat-biosamples, results='asis'}
 x %>%
@@ -135,68 +198,6 @@ x %>%
   knitr::kable(caption = "Number (N) of maturities recorded in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "")%>%
   kableExtra::kable_styling(font_size = 9)
 ```
-
-
-```{r length-plot-frequencies, fig.cap="Length-frequencies of Pacific Cod taken in the commercial trawl fishery. For clarity only lengths since 1996 are shown."}
-
-xx %>%
-  filter(!is.na(area)) %>%
-  group_by(area) %>%
-  do({
-    tidy_lengths_raw(.,
-      bin_size = 2,
-      year_range = c(1996, 2017),
-      sample_type = "commercial")
-  }) %>%
-  plot_lengths() +
-  facet_grid(year~area)
-
-
-```
-
-
-\clearpage
-
-```{r length-biosamples-com-5ABCD, results='asis'}
-xx %>%
-  filter(area %in% c("5ABCD")) %>%
-  filter(!is.na(length), year > 1955) %>%
-  group_by(area, year) %>%
-  summarize(
-    nlength_m = sum(sex == 1),
-    nlength_f = sum(sex == 2),
-    nlength_u = sum(sex == 0)
-    
-  ) %>%
-  rename(
-    Area = area, Year = year, `N male` = nlength_m,
-    `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 5ABCD", booktabs = TRUE, linesep = "", longtable=TRUE)%>%
-  kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 9)
-```
-
-
-\clearpage
-
-
-```{r length-biosamples-com-3CD, results='asis'}
-xx %>%
-  filter(area %in% c("3CD")) %>%
-  filter(!is.na(length), year > 1955) %>%
-  group_by(area, year) %>%
-  summarize(
-    nlength_m = sum(sex == 1),
-    nlength_f = sum(sex == 2),
-    nlength_u = sum(sex == 0)
-    
-  ) %>%
-  rename(
-    Area = area, Year = year, `N male` = nlength_m,
-    `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 3CD", booktabs = TRUE, linesep = "", longtable=TRUE)%>%
-  kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 9)
-```
-
 
 <!--
 As a general rule the survey retains smaller fish than the commercial
