@@ -1,6 +1,6 @@
 # Introduction
 
-## STOCK STRUCTURE AND LIFE HISTORY
+## Stock Structure and Life History
 
 Pacific Cod (*Gadus macrocephalus*) is a relatively short-lived, fast-growing member of the family Gadidae. Other common names in British Columbia (BC) include grey cod (or gray cod). Populations of Pacific Cod are distributed from California, throughout the waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China [@hart1973]. Maximum observed age in British Columbia is around 10-11 years [@westrheim1996, this document], while a maximum age of approximately 13 years has been reported for Alaskan stocks [@roberson2001]. Maximum length recorded in British Columbia is 100 cm [@hart1973], although some larger specimens have been observed in Alaska and Russia [@westrheim1996]. Pacific Cod are demersal spawners, with several studies reporting that spawning most likely occurs during February to March. A comprehensive review of the biology, life history and distribution of Pacific Cod in British Columbia is provided by @westrheim1996.
 
@@ -10,7 +10,7 @@ Recent genetic analyses have identified a distinction between North American and
 
 Population dynamics of Pacific Cod in BC have been characterized by large variations in abundance, based on reconstructions driven by fishery catch rates, most likely as a function of large recruitment events followed by large opportunistic fishery catches. However, other hypotheses, including predator-prey cycles, density-dependent growth and mortality,and northward water transport have also been proposed (reviewed by @westrheim1996). Natural mortality has been estimated as high as 0.6 - 0.65 y-1 in some stock assessments (e.g., @fournier1983; @sinclair2005) although lower estimates (~0.4 y-1) have also been obtained [@sinclair2001]. The combination of apparently volatile dynamics with short life span and high natural mortality suggests periods of over/under harvest could result if harvest strategies are not designed to be robust to these features. However, in the context of the BC integrated groundfish fishery, constraints imposed by quotas for other species mean that single-species considerations alone do not always dictate the best harvest strategy.
 
-## ECOSYSTEM CONSIDERATIONS
+## Ecosystem Considerations
 
 ### Prey and Predators
 
@@ -26,7 +26,7 @@ A large number of studies have investigated linkages between recruitment and env
 
 Other species caught with Pacific Cod include Arrowtooth Flounder (*Atheresthes stomias*), Yellowtail Rockfish (*Sebastes flavidus*), Pacific Ocean Perch (*S. alutus*), Lingcod (*Ophiodon elongatus*), Silvergray Rockfish (*S. brevispinis*), English Sole (*Parophrys vetulus*) and Big Skate (*Raja binoculata*) (Figure XX). Vessels catching Pacific Cod must hold quota for all quota species encountered. Since 1996, there has been 100% at-sea observer coverage on commercial bottom trawl vessels in BC. At-sea releases are recorded by observers and counted against the vessel's quota, according to agreed-upon discard mortality rates published in the integrated fishery management plan [@dfo2015]).
 
-## FISHERIES
+## Fisheries
 
 Pacific Cod in British Columbia are caught almost entirely in the groundfish bottom trawl fishery, which is part of BC's integrated groundfish fishery. Pacific Cod is one of the principal target species of the trawl fishery in Hecate Strait. Currently, the majority of the BC Pacific Cod catch is taken from in Hecate Strait (Area 5CD) (Figure XX).
 
@@ -42,7 +42,7 @@ Japanese and Soviet vessels also trawled in waters off BC in the late 1960s and 
 
 Bottom trawl fishing effort has been somewhat cyclic in both areas, especially in Hecate Strait (Figure XX). Total effort of all trawl vessels has declined in both areas since peaking in 1993 (Hecate Strait) and 1995 (Queen Charlotte Sound). A detailed analysis of catch per unit effort (CPUE) is provided in Appendix B. As noted by Sinclair (2000), however, there are a number of problems with the use of commercial catch per unit effort data as an index of biomass for Pacific Cod. It has been suggested that changes in the management regime from an unrestricted fishery prior to 1992, to the introduction of TACs (1992-1996) and then to Individual Vessel Quotas (IVQs) (1997-present), as well as several increases in mesh size, have affected the underlying relationship between commercial CPUE and abundance, and the relationship between fishing effort and fishing mortality. In recent years of lower Pacific Cod quotas, many fishing masters report actively avoiding Pacific Cod to prevent their Pacific Cod quota being exceeded before catching available quotas for other species. @fournier1983 noted similar problems with relating fishing effort to fishing mortality for this fishery. @sinclair2001 analyzed the spatial distribution of fishing effort in Hecate Strait and reported that there had been little fishing over Butterworth, White Rock, Bonilla and Horseshoe grounds (Figure XX), which had previously been locations with the highest CPUE. They also cited industry reports that key Pacific Cod fishing grounds had been avoided to preserve Pacific Cod quota for bycatch in other fisheries [@sinclair2001]. We do not provide a detailed analysis of spatial fishing effort in this document but recommend it as an avenue of future research to improve understanding of the CPUE data and drivers of fishing effort (e.g., @branch2008).
 
-## MANAGEMENT HISTORY
+## Management History
 
 The history of Pacific Cod management from 1984 to 2013 is summarized in Tables XX--XX. The tables list total allowable catches (TACs), landings and carryovers, area closures and mesh restrictions.
 
@@ -63,7 +63,7 @@ Other management measures have been used to control the Pacific Cod fishery in A
 
 TO DO. Waiting for GMU to send historical TACs. RF to check 2001 and 2002 assessments.
 
-## ASSESSMENT HISTORY
+## Assessment History
 
 A number of methods have been used to assess Pacific Cod in Hecate Strait since the 1980s. @fournier1983 developed an age-structured model and used it to test for evidence of age-dependent trends in natural mortality, density-dependent natural mortality and catchability, and also for evidence of an environmental factor affecting recruitment. Evidence was found for a relationship between mean sea level at Prince Rupert and recruitment, and also for density-dependent natural mortality. Natural mortality was estimated to be 0.65 y-1 by @fournier1983. This author cautioned about the possibility of confounding among model parameters and systematic data biases that could influence conclusions from the analysis. Estimates of age were obtained from length-frequency analysis [@foucher1982].
 
@@ -87,7 +87,7 @@ Key uncertainties of the analysis noted by @sinclair2005 were:
 * uncertainty in the growth function (model parameters and assumptions of stationarity); and
 * the possibility of violating the assumption of knife-edged recruitment at age 2 years, given evidence for younger
   fish in the length composition data from the commercial fishery.
-  
+
   TO DO. Edit above to include 3CD
 
 # DATA SOURCES
@@ -117,7 +117,7 @@ Canada (DFO) Fishery Operations (FOS) database. Groundfish Section, Marine
 Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans
 Canada, Pacific Biological Station.
 
-## CATCH DATA
+## Catch Data
 Commercial fishing data are presented in this document by fishing year which
 includes the period April through March, e.g., fishing year 1956 comprises
 the period April 1, 1956 to March 31, 1957. Landings data are presented
@@ -133,7 +133,7 @@ database for the period April 1, 2007 until the present. The annual size
 composition of commercial catches and landings were estimated from port samples
 and at-sea samples collected by observers archived in the GFBio database.
 
-##INDICES OF ABUNDANCE
+## Indices of abundance
 
 ### Hecate Strait Assemblage Survey
 
@@ -258,14 +258,12 @@ year [@efron1982].
 
 ## Biological data
 
-*TO DO. Add dynamic references to Appendix A for annual mean weight, age and length data
+*TO DO. Add dynamic references to Appendix A for annual mean weight, age and length data*
 
 The methodology for calculating the mean weight of Pacific Cod from commercial
 vessels for the years 1956--2017 is presented in Appendix A.
 
-
-
-# STOCK ASSESSMENT MODEL
+# Stock Assessment Model
 
 All models presented in this document are Bayesian models implemented in
 AD Model Builder [@fournier2012]. The models are based on the Integrated
@@ -276,7 +274,7 @@ adapt the code for the purpose of assessing Pacific Cod in BC, as described
 below. The model in its present formulation is fully described in the present
 document.
 
-# REFERENCE POINTS AND HARVEST CONTROL RULE
+# Reference Points and Harvest Control Rule
 
 The DFO Fishery Decision-making Framework Incorporating the Precautionary
 Approach (PA) policy [@dfo2009] requires stock status to be characterized using
@@ -367,7 +365,7 @@ on spawning biomass per recruit; @clark1991), but recommend exploration and
 simulation-testing of alternatives in the context of a feedback simulation
 analysis.
 
-# BRIDGING ANALYSIS
+# Bridging Analysis
 
 In Appendix XX we present a bridging analysis, beginning with a model that
 emulated the results of the 2013 stock assessment with fixed parameters,
@@ -380,11 +378,11 @@ For brevity, we do not present the full suite of sensitivity analyses that were
 explored but list key steps leading up to development of the candidate Base
 Case models.
 
-# BASE CASE MODELS
+# Base Case Models
 
 The Base Case models for both areas 5ABCD and 3CD are XX.
 
-## PRIOR PROBABILITY DISTRIBUTIONS
+## Prior Probability Distributions
 
 Prior probability distributions for the Area 5ABCD and 3CD Base Case models
 are shown in Figure XX and Table XX.
@@ -434,9 +432,9 @@ A total of XX model parameters were conditionally estimated in Area 5ABCD;
 while XX parameters were estimated for Area 3CD, which had one fewer survey
 q parameters (Table XX).
 
-# RESULTS
+# Results
 
-## AREA 5ABCD: QUEEN CHARLOTTE SOUND AND HECATE STRAIT
+## Area 5ABCD: Queen Charlotte Sound and Hecate Strait
 
 The joint posterior distribution was numerically approximated using the
 Markov Chain Monte Carlo routines built into AD Model Builder
@@ -512,7 +510,7 @@ chains (Figure XX).
 Alternative reference points based on estimates of average historical biomass,
 similar to those adopted in Area 5ABCD, were explored.
 
-# SENSITIVITY ANALYSES
+# Sensitivity Analyses
 
 We present a number of sensitivity analyses to show the influence of certain data sources, fixed
 parameters and prior probability distributions in the Area 5ABCD and 3CD Base Case models.Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
@@ -552,8 +550,8 @@ df <- data.frame(Parameter = c("ln M",
                         "0.3",
                         "0.3",
                         "1",
-                        "1"))  
-   knitr::kable(df, caption = "Prior probability distributions used for the Base Case 5ABCD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "") 
+                        "1"))
+   knitr::kable(df, caption = "Prior probability distributions used for the Base Case 5ABCD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
 ```
 
@@ -587,7 +585,7 @@ df <- data.frame(Parameter = c("ln M",
                         "0.3",
                         "1",
                         "1",
-                        "1"))  
+                        "1"))
    knitr::kable(df, caption = "Prior probability distributions used for the Base Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
 ```
@@ -618,13 +616,9 @@ were dropped to allow for sufficient burn-in.
 ## Sc 1b and Sc 1c. Exclusion of a year-location interaction as random effect in commercial CPUE indices
 The base case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix B). Two sensitivity analyses are shown to illustrate the effect of removing the interaction term from both indices (i.e., fitting the delay difference model to historical and modern CPUE indices calculated using equation \@ref(eq:cpuesens2)):
 
-\begin{itemize}
-  
-\item[] \textbf{Sc 1b.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Use the annual CVs resulting from the analysis as annual weighting terms in objective function of delay difference model (Equation TX.X).
+- \textbf{Sc 1b.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Use the annual CVs resulting from the analysis as annual weighting terms in objective function of delay difference model (Equation TX.X).
 
-\item[] \textbf{Sc 1c.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Double the annual CVs resulting from the analysis directly as weighting terms in objective function of delay difference model (Equation TX.X).
-
-\end{itemize}
+- \textbf{Sc 1c.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Double the annual CVs resulting from the analysis directly as weighting terms in objective function of delay difference model (Equation TX.X).
 
 Sc 1c was done because the annual CVs of the CPUE indices were very small (less than 0.1 in some years). Annual CVs were doubled to addres concerns that the objective function of the delay difference model may be giving the CPUE indices too much weight when CVs were very small.
 
@@ -643,8 +637,7 @@ A sensitivity analysis was done where the modern CPUE index was removed from the
 \end{itemize}
 
 
-
-## Sc 1e. Exclusion of the NMFS Triennial survey index for Area 3CD 
+## Sc 1e. Exclusion of the NMFS Triennial survey index for Area 3CD
 
 A sensitivity analysis was done where the NMFS Triennial Survey index was removed from the model.
 
@@ -691,7 +684,7 @@ parameters of the normal prior distribution assumed for $ln(M)$:
   the Base Case value of 0.1.
 \item[] \textbf{Sc 3c.} The mean was reduced to 0.4 and the standard deviation was increased
   to 0.2.
-  
+
 \end{itemize}
 
 <!--
@@ -731,7 +724,7 @@ Two sensitivity analyses were done to illustrate the effect of the prior probabi
 
 \item[] \textbf{Sc 4a.} Use a uniform prior for steepness bounded between 0.21 and 0.999.
 \item[] \textbf{Sc 4b.} Use a beta prior for steepness with mean = 0.85 and sd = 0.75.
-  
+
 \end{itemize}
 
 <!--
@@ -751,24 +744,22 @@ having a very large influence on biomass estimates (Figure XX).
 
 One sensitivity analysis was done to illustrate the effect of the assumption that fish recruit to the fishery, all surveys and mature at age 2 *y*:
 
-\begin{itemize}
+- **Sc 5a.** Set $kage = 3 y$ and update Ford-Walford parameters accordingly
 
-\item[] \textbf{Sc 5a.} Set \textit{kage} = 3 \textit{y} and update Ford-Walford parameters accordingly
-  
-\end{itemize}
+<!-- TODO: the following should be Markdown not LaTeX -->
 
 TO DO: More explanatory text here referring to new maturity estimates. Possibly add "ageless" catch-age model sensitvity separating maturity and selectivity at age 3 and age 2 respectively (but would still be assuming knife-edged so maybe no point)
 
 ## Sc 5b. Updated growth parameters
-One sensitivity analysis was done to illustrate the effect of updating the von Bertalanffy growth parameters using available age and length data (see Appendix XX). 
+One sensitivity analysis was done to illustrate the effect of updating the von Bertalanffy growth parameters using available age and length data (see Appendix XX).
 
 \begin{itemize}
 
 \item[] \textbf{Sc 5b.} Use von Bertalanffy growth parameters used in the previous stock assessment (@forrest2013)
-  
+
 \end{itemize}
 
-TO DO: More explanatory text here 
+TO DO: More explanatory text here
 
 ## Sc 6a - 6c. Assumed fixed value of observation error $\sigma_O$
 In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
@@ -778,7 +769,7 @@ In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two
 \item[] \textbf{Sc 6a.} Fix $\sigma_O$ = 0.1.
 \item[] \textbf{Sc 6b.} Fix $\sigma_O$ = 0.15.
 \item[] \textbf{Sc 6c.} Fix $\sigma_O$ = 0.25.
-  
+
 \end{itemize}
 
 
@@ -792,7 +783,7 @@ analysis was done to test the effect of increasing the assumed value of $\sigma_
 \begin{itemize}
 
 \item[] \textbf{Sc 6d.} Fix $\sigma_R$ = 1.0
-  
+
 \end{itemize}
 
 <!--
@@ -822,8 +813,5 @@ to provide direct information for scaling the population size, two sensitivity a
 
 \item[] \textbf{Sc 7a.} Fix $\sigma_w$ = 0.4
 \item[] \textbf{Sc 7b.} Fix $\sigma_w$ = 0.15
-  
+
 \end{itemize}
-
-
-
