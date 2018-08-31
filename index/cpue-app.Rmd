@@ -1,3 +1,6 @@
+<!-- TODO: mention p and phi estimates, sigmas -->
+<!-- TODO: show shapes that Tweedie can take -->
+
 # Commercial CPUE standardization
 
 We sought to generate an index of Pacific Cod abundance from commercial trawl
@@ -6,7 +9,7 @@ month, vessel, and latitude, when available. Before fitting a standardization
 model, we had to filter and manipulate the available catch and effort data to
 generate a dataset appropriate for model fitting. In the following sections we
 describe those decisions for the 'historical' (1956--1995) and 'modern' data
-(1996--2007). We then describe our index standardization model, explore the
+(1996--2017). We then describe our index standardization model, explore the
 contribution of the various standardization components, and identify the effect
 of including or ignoring space-time interactions.
 
@@ -22,7 +25,7 @@ data, we removed any trawl events that were longer than five hours, since these
 are likely to be data entry errors. During these time periods, the variables
 depth, date, and locality are available as model covariates.
 
-## Defining the 1996--2007 fleet
+## Defining the 1996--2017 fleet
 
 Commercial groundfish bottom trawl data from 1996 to present have been recorded
 to the fishing-event level in the presence of on-board observers or video
