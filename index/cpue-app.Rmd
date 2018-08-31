@@ -589,6 +589,20 @@ for (i in seq_along(params$area_name)) {
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
 
+```{r cpue-quantile-residuals, fig.asp=0.8, fig.cap="Histograms of randomized quantile residuals for the CPUE GLMM standardization models. The histograms illustrate the actual density distribution of 10,000 randomly selected randomized quantile residuals. The dashed lines show the probability density for a normal distribution with the same standard deviation."}
+stopifnot(length(m_historic) == 12L)
+stopifnot(length(m_modern) == 16L)
+qr1 <- qres_tweedie(m_historic[[6]], "cpue")
+gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("Historic", params$area_name[1]))
+qr2 <- qres_tweedie(m_historic[[12]], "cpue")
+gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("Historic", params$area_name[2]))
+qr3 <- qres_tweedie(m_modern[[8]], "cpue")
+gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("Modern", params$area_name[1]))
+qr4 <- qres_tweedie(m_modern[[16]], "cpue")
+gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("Modern", params$area_name[2]))
+cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
+```
+
 ```{r cpue-re-int-ts-funcs, message=FALSE, warning=FALSE, results='hide'}
 most_common <- function(x) names(rev(sort(table(as.character(x)))))[[1]]
 basel_level <- function(x) levels(x)[[1]]
