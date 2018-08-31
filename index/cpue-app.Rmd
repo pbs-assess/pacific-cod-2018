@@ -1,3 +1,6 @@
+<!-- TODO: mention p and phi estimates, sigmas -->
+<!-- TODO: show shapes that Tweedie can take -->
+
 # Commercial CPUE standardization
 
 We sought to generate an index of Pacific Cod abundance from commercial trawl
@@ -6,7 +9,7 @@ month, vessel, and latitude, when available. Before fitting a standardization
 model, we had to filter and manipulate the available catch and effort data to
 generate a dataset appropriate for model fitting. In the following sections we
 describe those decisions for the 'historical' (1956--1995) and 'modern' data
-(1996--2007). We then describe our index standardization model, explore the
+(1996--2017). We then describe our index standardization model, explore the
 contribution of the various standardization components, and identify the effect
 of including or ignoring space-time interactions.
 
@@ -22,7 +25,7 @@ data, we removed any trawl events that were longer than five hours, since these
 are likely to be data entry errors. During these time periods, the variables
 depth, date, and locality are available as model covariates.
 
-## Defining the 1996--2007 fleet
+## Defining the 1996--2017 fleet
 
 Commercial groundfish bottom trawl data from 1996 to present have been recorded
 to the fishing-event level in the presence of on-board observers or video
@@ -585,6 +588,65 @@ for (i in seq_along(params$area_name)) {
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
+
+```{r cpue-quantile-residuals, fig.asp=0.8, fig.cap="Histograms of randomized quantile residuals for the CPUE GLMM standardization models. The histograms illustrate the actual density distribution of 10,000 randomly selected randomized quantile residuals. The dashed lines show the probability density for a normal distribution with the same standard deviation."}
+stopifnot(length(m_historic) == 12L)
+stopifnot(length(m_modern) == 16L)
+qr1 <- qres_tweedie(m_historic[[6]], "cpue")
+gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("Historic", params$area_name[1]))
+qr2 <- qres_tweedie(m_historic[[12]], "cpue")
+gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("Historic", params$area_name[2]))
+qr3 <- qres_tweedie(m_modern[[8]], "cpue")
+gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("Modern", params$area_name[1]))
+qr4 <- qres_tweedie(m_modern[[16]], "cpue")
+gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("Modern", params$area_name[2]))
+cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
+```
+
+```{r cpue-tweedie-ex, fig.asp=0.7, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
+plot_tweedie_ex <- function(df, max = 15) {
+  xx <- seq(0, max, length.out = 1000)
+  out <- plyr::mdply(df, function(mu, power, phi) {
+    data.frame(x = xx,
+      y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
+  }) %>%
+    mutate(phi = paste("ϕ =", phi)) %>%
+    mutate(power = paste("p =", power)) %>%
+    mutate(mu = paste("μ =", mu))
+
+  ggplot(out, aes(x, y, colour = mu)) +
+    geom_line() +
+    facet_grid(power~phi, scales = "free") +
+    gfplot::theme_pbs() +
+    labs(colour = "μ") +
+    xlab("Value") + ylab("Density") +
+    coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x)))
+}
+
+df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
+plot_tweedie_ex(df)
+```
+
+```{r cpue-pars, results='asis'}
+get_cpue_pars <- function(obj, name = "") {
+  re <- broom.mixed::tidy(obj, effects = "ran_pars")
+  re$group <- gsub("_", "-", re$group)
+  re <- tibble(Model = name, Parameter = paste(re$group, "SD"),
+    Estimate = round(re$estimate, 2))
+  p <- round(stats::plogis(obj$fit$par[["thetaf"]]) + 1, 2)
+  phi <- round(exp(obj$fit$par[["betad"]]), 2)
+  bind_rows(re,
+    tibble(Model = name, Parameter = c("$p$", "$\\phi$"), Estimate = c(p, phi)))
+}
+pars <- list()
+pars[[1]] <- get_cpue_pars(m_historic[[12]], "Historical 3CD")
+pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historical 5ABCD")
+pars[[3]] <- get_cpue_pars(m_modern[[16]], "Modern 3CD")
+pars[[4]] <- get_cpue_pars(m_modern[[8]], "Modern 5ABCD")
+bind_rows(pars) %>%
+  knitr::kable(caption = "Random effect standard deviation (SD) and Tweedie observation model power ($p$) and dispersion ($\\phi$) parameter estimates.", booktabs = TRUE, linesep = "", escape = FALSE)
+```
+
 
 ```{r cpue-re-int-ts-funcs, message=FALSE, warning=FALSE, results='hide'}
 most_common <- function(x) names(rev(sort(table(as.character(x)))))[[1]]

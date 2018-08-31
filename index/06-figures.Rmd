@@ -40,7 +40,17 @@ print(i.plot(base.model.5abcd, 5, "e"), vp = ggvp(2, 2))
 
 
 ```{r fig-base-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD"}
-b.plot(base.model.5abcd)
+b.plot(base.model.5abcd,
+       base.model.5abcd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       c(1971, 1971),
+       c(1986,2004))
+```
+
+
+```{r fig-sens1-biomass-5abcd, fig.cap="Biomass for the Sensitivity to, Area 5ABCD"}
+b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
 ```
 
 \clearpage
@@ -49,15 +59,6 @@ b.plot(base.model.5abcd)
 
 ```{r fig-catch-3cd, fig.cap="Catch for Area 3CD"}
 make.catches.plot(catch.3)
-```
-
-```{r fig-base-biomass-3cd, fig.cap="Biomass for the Reference Model, Area 3CD"}
-b.plot(base.model.3cd)
-# make.biomass.mcmc.plot(
-#   base.model.3cd,
-#   base.model.3cd.name,
-#   ylim = c(0, 100000),
-#   opacity = 50)
 ```
 
 ```{r fig-base-mcmc-trace-3cd, fig.cap="Traceplots of posterior samples for the Area 3CD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = West Coast Vancouver Island Synoptic Survey, $q_2$ = Commercial CPUE pre-1996, $q_3$ = Commercial CPUE post-1995, and $q_3$ = NMFS Triennial Survey (Canadian portion)."}
@@ -87,4 +88,12 @@ print(i.plot(base.model.3cd, 1, "a"), vp = ggvp(1, 1))
 print(i.plot(base.model.3cd, 2, "b"), vp = ggvp(1, 2))
 print(i.plot(base.model.3cd, 3, "c"), vp = ggvp(2, 1))
 print(i.plot(base.model.3cd, 4, "d"), vp = ggvp(2, 2))
+```
+
+```{r fig-base-biomass-3cd, fig.cap="Biomass for the Reference Model, Area 3CD"}
+b.plot(base.model.3cd, base.model.3cd.name)
+```
+
+```{r fig-sens1-biomass-3cd, fig.cap="Biomass for the Sensitivity to, Area 3CD"}
+b.plot(c(base.model.3cd, sens.models.1), c(base.model.3cd.name, sens.models.name.1))
 ```

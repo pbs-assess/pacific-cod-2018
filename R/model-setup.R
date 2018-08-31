@@ -107,28 +107,168 @@ sens.models.dir.name.1 <- c(file.path(model.dir,
                                       "0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV"))
 sens.models.name.1 <- c("No locality/yr q mean = 06 sd = 0.19",
                         "No locality/yr q mean = 06 sd = 0.19, double CV")
-if(verbose){
-  print.model.message(sens.models.dir.name.1,
-                      sens.models.name.1,
-                      1,
-                      model.type = "Sensitivity")
-}
 
 ## -----------------------------------------------------------------------------
-## Sensitivity models group 2 (3CD)
+## Sensitivity models group 2 (5ABCD)
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.2 <- c(file.path(model.dir,
+                                      "0_2a_5ABCD_rsoleq_019_019"),
+                            file.path(model.dir,
+                                      "0_2b_5ABCD_q_all_unif"))
+sens.models.name.2 <- c("0_2a_5ABCD_rsoleq_019_019",
+                        "0_2b_5ABCD_q_all_unif")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 3 (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.3 <- c(file.path(model.dir,
+                                      "0_3a_5ABCD_Mprior_mean04_sd01"),
+                            file.path(model.dir,
+                                      "0_3b_5ABCD_Mprior_mean04_sd025"),
+                            file.path(model.dir,
+                                      "0_3c_5ABCD_Mprior_mean05_sd025"))
+sens.models.name.3 <- c("0_3a_5ABCD_Mprior_mean04_sd01",
+                        "0_3b_5ABCD_Mprior_mean04_sd025",
+                        "0_3c_5ABCD_Mprior_mean05_sd025")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 4 (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.4 <- c(file.path(model.dir,
+                                      "0_4a_5ABCD_hprior_unif"),
+                            file.path(model.dir,
+                                      "0_4b_5ABCD_hprior_085"))
+sens.models.name.4 <- c("0_4a_5ABCD_hprior_unif",
+                        "0_4b_5ABCD_hprior_085")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 5 (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.5 <- c(file.path(model.dir,
+                                      "0_5a_5ABCD_kage_3"),
+                            file.path(model.dir,
+                                      "0_5b_5ABCD_old_growth_pars"))
+sens.models.name.5 <- c("0_5a_5ABCD_kage_3",
+                        "0_5b_5ABCD_old_growth_pars")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 6 (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.6 <- c(file.path(model.dir,
+                                      "0_6a_5ABCD_sig01"),
+                            file.path(model.dir,
+                                      "0_6b_5ABCD_sig015"),
+                            file.path(model.dir,
+                                      "0_6c_5ABCD_sig025"),
+                            file.path(model.dir,
+                                      "0_6d_5ABCD_tau1"))
+sens.models.name.6 <- c("0_6a_5ABCD_sig01",
+                        "0_6b_5ABCD_sig015",
+                        "0_6c_5ABCD_sig025",
+                        "0_6d_5ABCD_tau1")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 7 (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.7 <- c(file.path(model.dir,
+                                      "0_7a_5ABCD_sigW_04"),
+                            file.path(model.dir,
+                                      "0_7b_5ABCD_sigW_015"))
+sens.models.name.7 <- c("0_7a_5ABCD_sigW_04",
+                        "0_7b_5ABCD_sigW_015")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 8 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.8 <- c(file.path(model.dir,
                                       "1_1b_3CD_NO_loc-yr-interact_rsoleq_0228sd03"),
                             file.path(model.dir,
-                                      "1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV"))
-sens.models.name.2 <- c("No locality/yr q mean = 0.228 sd = 0.3",
-                        "No locality/yr q mean = 0.228 sd = 0.3, double CV")
-if(verbose){
-  print.model.message(sens.models.dir.name.2,
-                      sens.models.name.2,
-                      2,
-                      model.type = "Sensitivity")
-}
+                                      "1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV"),
+                            file.path(model.dir,
+                                      "1_1d_3CD_no_recent_CPUE"),
+                            file.path(model.dir,
+                                      "1_1e_3CD_BASE_loc-yr-interact_no_histCPUE"),
+                            file.path(model.dir,
+                                      "1_1f_3CD_BASE_loc-yr-interact_no_CPUE"),
+                            file.path(model.dir,
+                                      "1_1g_3CD_no_triennial"))
+
+sens.models.name.8 <- c("No locality/yr q mean = 0.228 sd = 0.3",
+                        "No locality/yr q mean = 0.228 sd = 0.3, double CV",
+                        "1_1d_3CD_no_recent_CPUE",
+                        "1_1e_3CD_BASE_loc-yr-interact_no_histCPUE",
+                        "1_1f_3CD_BASE_loc-yr-interact_no_CPUE",
+                        "1_1g_3CD_no_triennial")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 9 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.9 <- c(file.path(model.dir,
+                                      "1_2a_3CD_rsoleq_0228sd0448"),
+                            file.path(model.dir,
+                                      "1_2b_3CD_q_all_unif"))
+sens.models.name.9 <- c("1_2a_3CD_rsoleq_0228sd0448",
+                        "1_2b_3CD_q_all_unif")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 10 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.10 <- c(file.path(model.dir,
+                                       "1_3a_3CD_Mprior_mean04_sd01"),
+                             file.path(model.dir,
+                                       "1_3b_3CD_Mprior_mean04_sd025"),
+                             file.path(model.dir,
+                                       "1_3c_3CD_Mprior_mean05_sd-25"))
+sens.models.name.10 <- c("1_3a_3CD_Mprior_mean04_sd01",
+                         "1_3b_3CD_Mprior_mean04_sd025",
+                         "1_3c_3CD_Mprior_mean05_sd-25")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 11 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.11 <- c(file.path(model.dir,
+                                      "1_4a_3CD_hprior_unif"),
+                            file.path(model.dir,
+                                      "1_4b_3CD_hprior_085"))
+sens.models.name.11 <- c("1_4a_3CD_hprior_unif",
+                         "1_4b_3CD_hprior_085")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 12 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.12 <- c(file.path(model.dir,
+                                      "1_5a_3CD_kage3"),
+                            file.path(model.dir,
+                                      "1_5b_3CD_old_growth_pars"))
+sens.models.name.12 <- c("1_5a_3CD_kage3",
+                         "1_5b_3CD_old_growth_pars")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 13 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.13 <- c(file.path(model.dir,
+                                      "1_6a_3CD_sig01"),
+                             file.path(model.dir,
+                                      "1_6b_3CD_sig015"),
+                             file.path(model.dir,
+                                      "1_6c_3CD_sig025"),
+                             file.path(model.dir,
+                                      "1_6d_3CD_tau1"))
+
+sens.models.name.13 <- c("1_6a_3CD_sig01",
+                         "1_6b_3CD_sig015",
+                         "1_6c_3CD_sig025",
+                         "1_6d_3CD_tau1")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 14 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.14 <- c(file.path(model.dir,
+                                      "1_7a_3CD_sigW04"),
+                            file.path(model.dir,
+                                      "1_7a_3CD_sigW015"))
+sens.models.name.14 <- c("1_7a_3CD_sigW04",
+                        "1_7a_3CD_sigW015")
 
 ## -----------------------------------------------------------------------------
 ## Retrospectives
@@ -163,9 +303,21 @@ retro.names <- c("- 1 year",
 load.models.into.parent.env <- function(){
   base.model.5abcd <<- load.models(base.model.5abcd.dir.name)
   sens.models.1 <<- load.models(sens.models.dir.name.1)
+  sens.models.2 <<- load.models(sens.models.dir.name.2)
+  sens.models.3 <<- load.models(sens.models.dir.name.3)
+  sens.models.4 <<- load.models(sens.models.dir.name.4)
+  sens.models.5 <<- load.models(sens.models.dir.name.5)
+  sens.models.6 <<- load.models(sens.models.dir.name.6)
+  sens.models.7 <<- load.models(sens.models.dir.name.7)
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
-  sens.models.1 <<- load.models(sens.models.dir.name.1)
+  sens.models.8 <<- load.models(sens.models.dir.name.8)
+  sens.models.9 <<- load.models(sens.models.dir.name.9)
+  sens.models.10 <<- load.models(sens.models.dir.name.10)
+  sens.models.11 <<- load.models(sens.models.dir.name.11)
+  sens.models.12 <<- load.models(sens.models.dir.name.12)
+  sens.models.13 <<- load.models(sens.models.dir.name.13)
+  sens.models.14 <<- load.models(sens.models.dir.name.14)
 
   base.retro.models.5abcd <<- load.models(retro.dir.names.5abcd)
   base.retro.models.3cd <<- load.models(retro.dir.names.3cd)
@@ -206,13 +358,19 @@ build <- function(ovwrt.base = FALSE,
   ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the for loop below to work right
   sens.models.names.list <- c(unlist(sens.models.dir.name.1),
-                              unlist(sens.models.dir.name.2))
-                             ## unlist(sens.model.dir.name.3),
-                             ## unlist(sens.model.dir.name.4),
-                             ## unlist(sens.model.dir.name.5),
-                             ## unlist(sens.model.dir.name.6),
-                             ## unlist(sens.model.dir.name.7),
-                             ## unlist(sens.model.dir.name.8))
+                              unlist(sens.models.dir.name.2),
+                              unlist(sens.models.dir.name.3),
+                              unlist(sens.models.dir.name.4),
+                              unlist(sens.models.dir.name.5),
+                              unlist(sens.models.dir.name.6),
+                              unlist(sens.models.dir.name.7),
+                              unlist(sens.models.dir.name.8),
+                              unlist(sens.models.dir.name.9),
+                              unlist(sens.models.dir.name.10),
+                              unlist(sens.models.dir.name.11),
+                              unlist(sens.models.dir.name.12),
+                              unlist(sens.models.dir.name.13),
+                              unlist(sens.models.dir.name.14))
   ## Sensitivity models
   for(model.nm in sens.models.names.list){
     create.rdata.file(model.nm,
