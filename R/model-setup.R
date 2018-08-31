@@ -104,9 +104,20 @@ if(verbose){
 sens.models.dir.name.1 <- c(file.path(model.dir,
                                       "0_1b_5ABCD_NO_loc-yr-interact_rsoleq_06_019"),
                             file.path(model.dir,
-                                      "0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV"))
+                                      "0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV"),
+                            file.path(model.dir,
+                                      "0_1d_5ABCD_loc-yr-interact_no_recentCPUE"),
+                            file.path(model.dir,
+                                      "0_1e_5ABCD_BASE_loc-yr-interact_no_histCPUE"),
+                            file.path(model.dir,
+                                      "0_1f_5ABCD_BASE_loc-yr-interact_no_CPUE"))
+
+
 sens.models.name.1 <- c("No locality/yr q mean = 06 sd = 0.19",
-                        "No locality/yr q mean = 06 sd = 0.19, double CV")
+                        "No locality/yr q mean = 06 sd = 0.19, double CV",
+                        "Remove post-1995 CPUE",
+                        "Remove pre-1996 CPUE",
+                        "Remove all CPUE")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 2 (5ABCD)
@@ -115,8 +126,8 @@ sens.models.dir.name.2 <- c(file.path(model.dir,
                                       "0_2a_5ABCD_rsoleq_019_019"),
                             file.path(model.dir,
                                       "0_2b_5ABCD_q_all_unif"))
-sens.models.name.2 <- c("0_2a_5ABCD_rsoleq_019_019",
-                        "0_2b_5ABCD_q_all_unif")
+sens.models.name.2 <- c("HSSS mean q = QCSSS mean q, $ln(q) = 0.186$",
+                        "HSSS and QSSSS have Uniform prior")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 3 (5ABCD)
@@ -127,9 +138,9 @@ sens.models.dir.name.3 <- c(file.path(model.dir,
                                       "0_3b_5ABCD_Mprior_mean04_sd025"),
                             file.path(model.dir,
                                       "0_3c_5ABCD_Mprior_mean05_sd025"))
-sens.models.name.3 <- c("0_3a_5ABCD_Mprior_mean04_sd01",
-                        "0_3b_5ABCD_Mprior_mean04_sd025",
-                        "0_3c_5ABCD_Mprior_mean05_sd025")
+sens.models.name.3 <- c("M mean = 0.5, SD = 0.2",
+                        "M mean = 0.4, SD = 0.1",
+                        "M mean = 0.4, SD = 0.2")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 4 (5ABCD)
@@ -138,8 +149,8 @@ sens.models.dir.name.4 <- c(file.path(model.dir,
                                       "0_4a_5ABCD_hprior_unif"),
                             file.path(model.dir,
                                       "0_4b_5ABCD_hprior_085"))
-sens.models.name.4 <- c("0_4a_5ABCD_hprior_unif",
-                        "0_4b_5ABCD_hprior_085")
+sens.models.name.4 <- c("Steepness uniform prior 0.12-0.999",
+                        "Steepness beta prior mean=0.85, SD=0.75")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 5 (5ABCD)
@@ -148,8 +159,8 @@ sens.models.dir.name.5 <- c(file.path(model.dir,
                                       "0_5a_5ABCD_kage_3"),
                             file.path(model.dir,
                                       "0_5b_5ABCD_old_growth_pars"))
-sens.models.name.5 <- c("0_5a_5ABCD_kage_3",
-                        "0_5b_5ABCD_old_growth_pars")
+sens.models.name.5 <- c("kage = 3y and update FW parameters",
+                        "Use previous vonB")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 6 (5ABCD)
@@ -162,10 +173,10 @@ sens.models.dir.name.6 <- c(file.path(model.dir,
                                       "0_6c_5ABCD_sig025"),
                             file.path(model.dir,
                                       "0_6d_5ABCD_tau1"))
-sens.models.name.6 <- c("0_6a_5ABCD_sig01",
-                        "0_6b_5ABCD_sig015",
-                        "0_6c_5ABCD_sig025",
-                        "0_6d_5ABCD_tau1")
+sens.models.name.6 <- c("Fix sigma O = 0.1",
+                        "Fix sigma O = 0.15",
+                        "Fix sigma O = 0.25",
+                        "Fix sigma R = 1.0")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 7 (5ABCD)
@@ -174,8 +185,8 @@ sens.models.dir.name.7 <- c(file.path(model.dir,
                                       "0_7a_5ABCD_sigW_04"),
                             file.path(model.dir,
                                       "0_7b_5ABCD_sigW_015"))
-sens.models.name.7 <- c("0_7a_5ABCD_sigW_04",
-                        "0_7b_5ABCD_sigW_015")
+sens.models.name.7 <- c("Fix sigma W = 0.4",
+                        "Fix sigma W = 0.15")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 8 (3CD)
@@ -195,10 +206,10 @@ sens.models.dir.name.8 <- c(file.path(model.dir,
 
 sens.models.name.8 <- c("No locality/yr q mean = 0.228 sd = 0.3",
                         "No locality/yr q mean = 0.228 sd = 0.3, double CV",
-                        "1_1d_3CD_no_recent_CPUE",
-                        "1_1e_3CD_BASE_loc-yr-interact_no_histCPUE",
-                        "1_1f_3CD_BASE_loc-yr-interact_no_CPUE",
-                        "1_1g_3CD_no_triennial")
+                        "Remove post-1995 CPUE",
+                        "Remove pre-1996 CPUE",
+                        "Remove all CPUE",
+                        "Remove Triennial survey")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 9 (3CD)
@@ -207,8 +218,8 @@ sens.models.dir.name.9 <- c(file.path(model.dir,
                                       "1_2a_3CD_rsoleq_0228sd0448"),
                             file.path(model.dir,
                                       "1_2b_3CD_q_all_unif"))
-sens.models.name.9 <- c("1_2a_3CD_rsoleq_0228sd0448",
-                        "1_2b_3CD_q_all_unif")
+sens.models.name.9 <- c("WCVISS q SD = 0.3",
+                        "WCVISS q has uniform prior")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 10 (3CD)
@@ -219,9 +230,9 @@ sens.models.dir.name.10 <- c(file.path(model.dir,
                                        "1_3b_3CD_Mprior_mean04_sd025"),
                              file.path(model.dir,
                                        "1_3c_3CD_Mprior_mean05_sd-25"))
-sens.models.name.10 <- c("1_3a_3CD_Mprior_mean04_sd01",
-                         "1_3b_3CD_Mprior_mean04_sd025",
-                         "1_3c_3CD_Mprior_mean05_sd-25")
+sens.models.name.10 <- c("M mean = 0.5, SD = 0.2",
+                         "M mean = 0.4, SD = 0.1",
+                         "M mean = 0.4, SD = 0.2")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 11 (3CD)
@@ -230,8 +241,8 @@ sens.models.dir.name.11 <- c(file.path(model.dir,
                                       "1_4a_3CD_hprior_unif"),
                             file.path(model.dir,
                                       "1_4b_3CD_hprior_085"))
-sens.models.name.11 <- c("1_4a_3CD_hprior_unif",
-                         "1_4b_3CD_hprior_085")
+sens.models.name.11 <- c("Steepness uniform prior 0.12-0.999",
+                         "Steepness beta prior mean=0.85, SD=0.75")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 12 (3CD)
@@ -240,8 +251,8 @@ sens.models.dir.name.12 <- c(file.path(model.dir,
                                       "1_5a_3CD_kage3"),
                             file.path(model.dir,
                                       "1_5b_3CD_old_growth_pars"))
-sens.models.name.12 <- c("1_5a_3CD_kage3",
-                         "1_5b_3CD_old_growth_pars")
+sens.models.name.12 <- c("kage = 3y and update FW parameters",
+                         "Use previous vonB")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 13 (3CD)
@@ -255,10 +266,10 @@ sens.models.dir.name.13 <- c(file.path(model.dir,
                              file.path(model.dir,
                                       "1_6d_3CD_tau1"))
 
-sens.models.name.13 <- c("1_6a_3CD_sig01",
-                         "1_6b_3CD_sig015",
-                         "1_6c_3CD_sig025",
-                         "1_6d_3CD_tau1")
+sens.models.name.13 <- c("Fix sigma O = 0.1",
+                         "Fix sigma O = 0.15",
+                         "Fix sigma O = 0.25",
+                         "Fix sigma R = 1.0")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 14 (3CD)
@@ -267,8 +278,8 @@ sens.models.dir.name.14 <- c(file.path(model.dir,
                                       "1_7a_3CD_sigW04"),
                             file.path(model.dir,
                                       "1_7a_3CD_sigW015"))
-sens.models.name.14 <- c("1_7a_3CD_sigW04",
-                        "1_7a_3CD_sigW015")
+sens.models.name.14 <- c("Fix sigma W = 0.4",
+                         "Fix sigma W = 0.15")
 
 ## -----------------------------------------------------------------------------
 ## Retrospectives
