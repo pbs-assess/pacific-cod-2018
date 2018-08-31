@@ -61,3 +61,5 @@ dat <- readRDS(dat.file)
 ggplot2::theme_set(gfplot::theme_pbs())
 scale_colour_continuous <- scale_colour_viridis_c
 scale_fill_continuous <- scale_fill_viridis_c
+scale_colour_discrete <- function(...) scale_colour_brewer(..., palette = "Set1")
+scale_fill_discrete <- function(...) scale_fill_brewer(... , palette = "Set1")

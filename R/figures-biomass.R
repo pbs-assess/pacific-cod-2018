@@ -64,13 +64,15 @@ b.plot <- function(models,
     scale_y_continuous(labels = comma,
                        limits = c(0, NA)) +
     coord_cartesian(expand = FALSE) +
-    xlim(c(min(bt$Year - 1), NA))
+    xlim(c(min(bt$Year - 1), NA)) +
+    scale_x_continuous(breaks = seq(0, 3000, 5))
 
   if(!depl){
     p <- p + geom_pointrange(data = bo,
-                             size = 0.5,
+                             size = 0.25,
                              position = position_dodge(width = horiz.offset),
-                             mapping = aes(color = Sensitivity))
+                             mapping = aes(color = Sensitivity),
+                             show.legend = FALSE)
   }
 
   if(!depl & add.hist.ref){
@@ -84,15 +86,13 @@ b.plot <- function(models,
       cau <- bt %>%
         filter(Year >= usr[1] & Year <= usr[2])
       usr.val <- mean(cau$`Biomass (t)`)
-
-      p <- p + geom_hline(aes(yintercept = lrp.val),
-                          linetype = "dashed",
-                          color = "red",
-                          size = 1,
-                          show.guide = TRUE) +
-        geom_hline(aes(yintercept = usr.val),
+      j <- data.frame("Intercept" = c(lrp.val, usr.val),
+                      "Color" = c("red", "green"))
+      p <- p +
+        geom_hline(data = j,
+                   aes(yintercept = Intercept),
+                   color = j$Color,
                    linetype = "dashed",
-                   color = "green",
                    size = 1,
                    show.guide = TRUE)
     }
@@ -102,81 +102,10 @@ b.plot <- function(models,
     p <- p + ylab("Reletive biomass")
   }
 
+  ## if(length(models) == 1){
+  ##   p <- p + theme(legend.position="none")
+  ## }
   p
-}
-
-make.depletion.mcmc.plot <- function(models,
-                                     model.names = NULL,
-                                     ylim = c(0, 1),
-                                     opacity = 75,
-                                     append.base.txt = NULL,
-                                     ind.letter = NULL,
-                                     leg = NULL,
-                                     ...
-                                     ){
-  ## Plot the depletion with credibility intervals for the mcmc
-  ##  case of the model
-  ##
-  ## opacity - how opaque the envelope is
-  ## append.base.txt - text to append to the name of the first model
-
-  par(mar = c(5.1, 5.1, 4.1, 3.1))
-
-  depl <- lapply(models,
-                 function(x){
-                   x$mcmccalcs$depl.quants})
-  yrs <- lapply(depl,
-                function(x){
-                  as.numeric(colnames(x))})
-  xlim <- lapply(1:length(yrs),
-                 function(x){
-                   c(min(yrs[[x]]), max(yrs[[x]]))})
-  xlim <- do.call(rbind, xlim)
-  xlim <- c(min(xlim), max(xlim))
-
-  if(is.null(dev.list())){
-    ## If layout() is used outside this function,
-    ##  it calls plot.new and will mess up the figures
-    ##  if we call it again
-    plot.new()
-  }
-  plot.window(xlim = xlim,
-              ylim = ylim,
-              xlab = "",
-              ylab = "")
-
-  lapply(1:length(yrs),
-         function(x){
-           draw.envelope(yrs[[x]],
-                         depl[[x]],
-                         ylab = "",
-                         xlab = "",
-                         col = x,
-                         las = 1,
-                         xlim = xlim,
-                         ylim = ylim,
-                         opacity = opacity,
-                         first = ifelse(x == 1, TRUE, FALSE),
-                         ...)})
-  mtext("Year", 1, line = 3)
-  mtext("Depletion", 2, line = 3)
-
-  if(!is.null(model.names) & !is.null(leg)){
-    if(!is.null(append.base.txt)){
-      model.names[[1]] <- paste0(model.names[[1]],
-                                 append.base.txt)
-    }
-    legend(leg,
-           model.names,
-           bg = "transparent",
-           col = 1:length(models),
-           lty = 1,
-           lwd = 2)
-  }
-
-  if(!is.null(ind.letter)){
-    panel.letter(ind.letter)
-  }
 }
 
 make.biomass.retro.mpd.plot <- function(base.model,
