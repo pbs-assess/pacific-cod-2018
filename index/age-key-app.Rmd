@@ -13,17 +13,14 @@ x <- filter(d$survey_samples,
   is.element(survey_abbrev, c("SYN HS", "SYN QCS","SYN WCVI")))
 ```
 
-
-```{r, length-temp, echo=FALSE, eval=TRUE}
-xx <- d$commercial_samples %>% 
-  dplyr::filter(!is.na(length)) 
+```{r length-temp, echo=FALSE, eval=TRUE}
+xx <- d$commercial_samples %>%
+  dplyr::filter(!is.na(length))
 
 xx <- xx[!duplicated(xx$specimen_id), , drop = FALSE]
 xx$area <- gfplot::assign_areas(xx$major_stat_area_name,
  area_regex = c("3[CD]+", "5[ABCD]+"))
-
 ```
-
 
 ```{r age-total_aged}
 total_aged <- tidy_ages_raw(x,
@@ -37,15 +34,13 @@ total_aged <- tidy_ages_raw(x,
 
 ```{r length-total_lengths}
 total_survey_lengths <- gfplot::tidy_lengths_raw(x,
-                       survey = c("SYN HS", "SYN QCS", "SYN WCVI")) %>% 
+                       survey = c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
   group_by(survey_abbrev, year) %>%
   summarise(n = total[1]) %>% ungroup() %>%
   summarise(n = sum(n)) %>% pull(n)
 ```
 
-
 # Analysis of biological data
-
 
 *TO DO: Synoptic survey data section: Add query details for length data (survey and comm). Or maybe here is where description of gfplot goes. *
 
@@ -64,7 +59,7 @@ In this appendix we analyse length, maturity and available ageing data to update
 ### Synoptic survey data
 Length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island synoptic surveys were extracted from the GFBio database using the following criteria in SQL queries ...
 
-A summary of number of fish measured by year, survey and sex is provided in Table \@ref(tab:length-biosamples-surv). Survey length-frequencies are shown in Figure \@ref(fig:length-plotfrequencies-surv). 
+A summary of number of fish measured by year, survey and sex is provided in Table \@ref(tab:length-biosamples-surv). Survey length-frequencies are shown in Figure \@ref(fig:length-plotfrequencies-surv).
 
 A summary of number of fish weighed by year, survey and sex is provided in Table \@ref(tab:weight-biosamples).
 
@@ -79,7 +74,7 @@ x %>%
     nlength_m = sum(sex == 1),
     nlength_f = sum(sex == 2),
     nlength_u = sum(sex == 0)
-    
+
   ) %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nlength_m,
@@ -97,7 +92,7 @@ x %>%
     nweight_m = sum(sex == 1),
     nweight_f = sum(sex == 2),
     nweight_u = sum(sex == 0)
-   
+
   ) %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nweight_m,
@@ -116,7 +111,7 @@ x %>%
   summarize(
     nmat_m = sum(sex == 1),
     nmat_f = sum(sex == 2)
-   
+
   ) %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nmat_m,
@@ -128,7 +123,7 @@ x %>%
 
 ```{r length-plotfrequencies-surv, fig.cap="Length-frequencies of Pacific Cod taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Note that for clarity only male and female specimens are plotted."}
 
- x %>% 
+ x %>%
   tidy_lengths_raw(survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
   bin_size = 2,
   year_range = c(2002, Inf)) %>%
@@ -169,7 +164,7 @@ xx %>%
     nlength_m = sum(sex == 1),
     nlength_f = sum(sex == 2),
     nlength_u = sum(sex == 0)
-    
+
   ) %>%
   rename(
     Area = area, Year = year, `N male` = nlength_m,
@@ -190,7 +185,7 @@ xx %>%
     nlength_m = sum(sex == 1),
     nlength_f = sum(sex == 2),
     nlength_u = sum(sex == 0)
-    
+
   ) %>%
   rename(
     Area = area, Year = year, `N male` = nlength_m,
@@ -217,8 +212,8 @@ xx %>%
  ungroup() %>%
  mutate(sex = "M", survey_abbrev = area) %>% # sex = "M" is a trick to plot them all
  plot_lengths() + xlab("Length (cm)") +
- guides(colour = FALSE, fill = FALSE) 
- 
+ guides(colour = FALSE, fill = FALSE)
+
 
 ```
 
@@ -251,7 +246,7 @@ x %>%
   ) %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nage_m,
-    `N female` = nage_f #, 
+    `N female` = nage_f #,
     #`P male` = proportion_male,
     #`P female` = proportion_female
   ) %>%
@@ -295,9 +290,9 @@ L_{s} = L_{\infty,s}\left( 1 - e^{- k_{s}\left( a_{s} - {a_{0}}_{s} \right)} \ri
  (\#eq:vB)
 \end{equation}
 
-where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $a_{s}$ are paired length ($L$) and age ($a$) observations from synoptic surveys (Tables  \@ref(tab:length-biosamples-surv) and \@ref(tab:age-biosamples)). 
+where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $a_{s}$ are paired length ($L$) and age ($a$) observations from synoptic surveys (Tables  \@ref(tab:length-biosamples-surv) and \@ref(tab:age-biosamples)).
 
-The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)). 
+The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)).
 
 *TO DO: TABULATE COEFFICIENTS*
 
@@ -366,7 +361,7 @@ W_{s} = \alpha_{s}{L_{s}}^{\beta_{s}}
  (\#eq:weight-length)
 \end{equation}
 
-where $\alpha_s$ and $\beta_s$ are the parameters of the equation specific to sex, and $L_s$ and $W_s$ are paired length ($L$) and weight ($W$) observations from synoptic surveys (Tables  \@ref(tab:length-biosamples-surv) and \@ref(tab:weight-biosamples)). 
+where $\alpha_s$ and $\beta_s$ are the parameters of the equation specific to sex, and $L_s$ and $W_s$ are paired length ($L$) and weight ($W$) observations from synoptic surveys (Tables  \@ref(tab:length-biosamples-surv) and \@ref(tab:weight-biosamples)).
 
 
 
