@@ -6,9 +6,9 @@ rmd_files: ["index.Rmd",
             "06-figures.Rmd",
             "age-key-app.Rmd",
             "cpue-app.Rmd",
-            #"05-model-description.Rmd",
+            "05-model-description.Rmd",
             # "98-colophon.Rmd",
             "99-references.Rmd"
             ]
-download: [["resdoc.pdf", "PDF"]]  #, ["resdoc.docx", "Word"]
+download: [["resdoc.pdf", "PDF"], ["resdoc.docx", "Word"]]  #
 delete_merged_file: true
