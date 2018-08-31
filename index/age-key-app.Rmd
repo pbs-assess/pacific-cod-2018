@@ -279,8 +279,6 @@ tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
 
 \clearpage
 
-
-
 ## Growth
 
 Growth parameters were estimated by fitting age and length data to the von Bertalanffy growth function (Equation \@ref(eq:vB))
@@ -292,13 +290,11 @@ L_{s} = L_{\infty,s}\left( 1 - e^{- k_{s}\left( a_{s} - {a_{0}}_{s} \right)} \ri
 
 where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $a_{s}$ are paired length ($L$) and age ($a$) observations from synoptic surveys (Tables  \@ref(tab:length-biosamples-surv) and \@ref(tab:age-biosamples)).
 
-<<<<<<< HEAD
 The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars); Table \@ref(tab:age-coeff-table)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)). 
-=======
-The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)).
->>>>>>> 14c524e47d38662ee05ed92e8c68380144657e50
 
-*TO DO: TABULATE COEFFICIENTS*
+
+\clearpage
+
 ```{r age-fit-vb, results='hide'}
 surveys_list <- list(
   `SYN HS, SYN QCS, SYN WCVI` = c("SYN HS", "SYN QCS","SYN WCVI"),
@@ -330,10 +326,9 @@ vb_fits <-
   get_par_df(vb_fits, 1) %>%
   bind_rows(get_par_df(vb_fits, 2)) %>%
   mutate(surveys = factor(surveys, levels = rev(names(surveys_list))))     %>%
-  knitr::kable(caption = "von Bertalanffy growth coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "")
+  knitr::kable(caption = "von Bertalanffy growth coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", digits=3)
 
 ```
-
 
 
 ```{r vb-figs, fig.cap = "Caption for vb model fits", fig.asp=0.3, fig.width=9, out.width="6.5in"}
@@ -357,7 +352,7 @@ get_par_df <- function(.d, element = 1) {
 })}
 get_par_df(vb_fits, 1) %>%
   bind_rows(get_par_df(vb_fits, 2)) %>%
-  mutate(surveys = factor(surveys, levels = rev(names(surveys_list)))) %>%
+  mutate(surveys = factor(surveys, levels = rev(names(surveys_list))))  %>%
   ggplot(aes(surveys, estimate, colour = Sex, ymin = conf.low, ymax = conf.high)) +
   geom_pointrange(position = position_dodge(width = 0.2)) +
   facet_wrap(~term, scales = "free_x") +
@@ -368,23 +363,22 @@ get_par_df(vb_fits, 1) %>%
   scale_color_manual(values = c("female" = "red", "male" = "grey40"))
 ```
 
-Estimates of growth rate $k$ were higher in the WCVI survey compared to HS/QCS. The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound Pacific Cod stocks (Forrest et al., 2015) used the same growth parameters that had been used in the previous assessment for the Hecate Strait stock, i.e., $L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y (Sinclair and Starr 2004). These values had been reported by Westrheim (1996) for the WCVI stock. Westrheim (1996) reported  values for the Hecate Strait stock closer to those estimated in the current analysis, especially the key productivity parameter $k$, i.e., $L_{\infty}$ = 84.01 cm; $k$ = 0.203 y^-1^ and $a_0$ = -0.806 y. In those analyses, age-frequencies were derived from length-frequency data, using the methods described in Foucher and Fournier (1982).
+Estimates of the von Bertalanffy growth rate $k$ were higher in the WCVI survey (male $k$ = 0.264 y^-1^; female $k$ = 0.265 y^-1^) compared to estimates of $k$ from the HS-QCS  surveys combined (male $k$ = 0.208 y^-1^; female $k$ = 0.184 y^-1^), and all surveys combined (male $k$ = 0.230 y^-1^; female $k$ = 0.208 y^-1^) (Table \@ref(tab:age-coeff-table)). The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound [@forrest2013] used the same growth parameters that had been used in the 2004 assessment for Hecate Strait ($L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y [@sinclair2005]). These values had been reported by @westrheim1996 for the WCVI stock, based on analyses of length-frequency data [@foucher1982]. @westrheim1996 had actually reported a lower growth rate for the Hecate Strait stock, i.e., $k$ = 0.203 y^-1^.  
 
-- The current results Figs \@ref(fig:vb-pars) and \@ref(fig:lw-pars), which are based on sampled age and length observations (Table \@ref(tab:biosamples)), are consistent with the parameters reported by Westrheim (1996), where Hecate Strait fish appear to grow more slowly and reach a smaller size compared with those from West Coast Vancouver Island. This suggests that the current assessment should calculate the growth parameters of the delay-difference model using updated von Bertalanffy growth parameters, as the values used in the 2013 assessment may have been too high.
+The current results for Hecate Strait (Table \@ref(tab:age-coeff-table)), are consistent with the parameters reported by @westrheim1996. This suggests that the growth rate use in the delay difference models in @forrest2013 and @sinclair2005 may have been too high for the Hecate Strait stock. The current Base Case models therefore uses the growth parameters reported for females in Table \@ref(tab:age-coeff-table), i.e., "SYN HS, SYN QCS" for Area 5ABCD; and "SYN WCVI" for the 3CD stocks.
 
-- Comment on sample sizes and imprecision --- insufficient secondary reads to account for ageing error in calculation of growth parameters [e.g., as in @cope2007].
+*TO DO IF TIME: Comment on sample sizes and imprecision --- insufficient secondary reads to account for ageing error in calculation of growth parameters [e.g., as in @cope2007].*
 
 \clearpage
 
-Length-weight parameters (Equation \@ref(eq:weight-length)) were also estimated using paired length and weight data from the same surveys.
+Length-weight parameters (Equation \@ref(eq:weight-length)) were  estimated using paired length and weight data from the synoptic surveys.
 
 \begin{equation}
 W_{s} = \alpha_{s}{L_{s}}^{\beta_{s}}
  (\#eq:weight-length)
 \end{equation}
 
-where $\alpha_s$ and $\beta_s$ are the parameters of the equation specific to sex, and $L_s$ and $W_s$ are paired length ($L$) and weight ($W$) observations from synoptic surveys (Tables  \@ref(tab:length-biosamples-surv) and \@ref(tab:weight-biosamples)).
-
+where $\alpha_s$ and $\beta_s$ are the parameters of the equation specific to sex, and $L_s$ and $W_s$ are paired length ($L$) and weight ($W$) observations from synoptic surveys (Tables  \@ref(tab:length-biosamples-surv) and \@ref(tab:weight-biosamples)). As for the growth parameters, Equation \@ref(eq:weight-length) was evaluated using data from all surveys combined; the HS-QCS  surveys combined; and the WCVI survey (Figures \@ref(fig:age-lw-figs) and \@ref(fig:age-lw-pars), Table \@ref(tab:lw-coeff-table)).
 
 
 ```{r age-fit-lw, results='hide'}
@@ -396,6 +390,26 @@ lw_fits <-
     })
   })
 ```
+
+
+```{r lw-coeff-table}
+get_par_df <- function(.d, element = 1) {
+  map_df(lw_fits, function(.x) {
+    broom::tidy(.x[[element]]$model) %>%
+    mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+    mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+    mutate(Sex = sexes[element]) %>%
+    filter(term != "statistic")
+})}
+get_par_df(lw_fits, 1) %>%
+  bind_rows(get_par_df(lw_fits, 2)) %>%
+  mutate(conf.low = estimate - 1.96 * std.error, conf.high = estimate + 1.96 * std.error) %>%
+  mutate(surveys = factor(surveys, levels = rev(names(surveys_list)))) %>%
+  mutate(term = gsub("\\(Intercept\\)", "ln(a_s)", term)) %>%
+  mutate(term = gsub("log\\(length\\)", "b_s", term)) %>%
+  knitr::kable(caption = "Length-weight coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", digits=2)
+```
+
 
 ```{r age-lw-figs, fig.cap = "Caption", fig.asp=0.28, fig.width=9, out.width="6.5in"}
 lw_figs <- map(lw_fits, ~ plot_length_weight(
@@ -430,7 +444,7 @@ get_par_df(lw_fits, 1) %>%
   scale_color_manual(values = c("female" = "red", "male" = "grey40"))
 ```
 
-
+\clearpage
 
 ## Maturity
 
