@@ -1,23 +1,30 @@
 b.plot <- function(models,
                    models.names,
+                   depl = FALSE,
                    add.hist.ref = FALSE,
                    lrp = NA,
                    usr = NA){
   ## lrp usr are year ranges (2-element vectors) to take the mean of
   ## the biomass for the reference points
 
-  ## Biomass
-  sbt.quants <- lapply(models,
-                       function(x){
-                         x$mcmccalcs$sbt.quants})
-  names(sbt.quants) <- models.names
-  sbt.quants <- lapply(sbt.quants,
-                       function(x){
-                         tmp <- as.data.frame(t(x))
-                         tmp %>% mutate(Year = rownames(tmp))})
-  sbt <- bind_rows(sbt.quants, .id = "Sensitivity")
+  ## Biomass or Depletion
+  if(depl){
+    bt.quants <- lapply(models,
+                        function(x){
+                          x$mcmccalcs$depl.quants})
+  }else{
+    bt.quants <- lapply(models,
+                        function(x){
+                          x$mcmccalcs$sbt.quants})
+  }
 
-  sbt <- as.tibble(sbt) %>%
+  names(bt.quants) <- models.names
+  bt.quants <- lapply(bt.quants,
+                      function(x){
+                        tmp <- as.data.frame(t(x))
+                        tmp %>% mutate(Year = rownames(tmp))})
+  bt <- bind_rows(bt.quants, .id = "Sensitivity") %>%
+    as.tibble() %>%
     rename(`Biomass (t)` = `50%`) %>%
     mutate(Year = as.numeric(Year)) %>%
     mutate(Sensitivity = forcats::fct_relevel(Sensitivity,
@@ -25,29 +32,25 @@ b.plot <- function(models,
                                               after = 0)) %>%
     select(-MPD)
 
-  yrs <- lapply(sbt.quants,
-                function(x){
-                  as.numeric(colnames(x))})
-
   ## B0 values
   r.quants <- lapply(models,
                      function(x){
                        x$mcmccalcs$r.quants})
   bo.raw <- lapply(r.quants,
-                    function(x){
-                      x[rownames(x) == "bo", ]})
+                   function(x){
+                     x[rownames(x) == "bo", ]})
   bo <- lapply(bo.raw,
-                function(x){
-                  as.numeric(x[,2:4])})
+               function(x){
+                 as.numeric(x[,2:4])})
   bo <- as.data.frame(do.call(rbind, bo))
   bo <- cbind(models.names, bo)
   names(bo) <- c("Sensitivity", "5%", "50%", "95%")
   bo <- as.tibble(bo) %>%
-    mutate(Year = min(sbt$Year)) %>%
+    mutate(Year = min(bt$Year)) %>%
     rename("Biomass (t)" = "50%")
 
   horiz.offset <- 1.7
-  p <- ggplot(sbt, aes(x = Year,
+  p <- ggplot(bt, aes(x = Year,
                        y = `Biomass (t)`,
                        ymin = `5%`,
                        ymax = `95%`,
@@ -61,21 +64,24 @@ b.plot <- function(models,
     scale_y_continuous(labels = comma,
                        limits = c(0, NA)) +
     coord_cartesian(expand = FALSE) +
-    xlim(c(min(sbt$Year - 1), NA)) +
-    geom_pointrange(data = bo,
-                    size = 0.5,
-                    position = position_dodge(width = horiz.offset),
-                    mapping = aes(color = Sensitivity))
+    xlim(c(min(bt$Year - 1), NA))
 
-  if(add.hist.ref){
+  if(!depl){
+    p <- p + geom_pointrange(data = bo,
+                             size = 0.5,
+                             position = position_dodge(width = horiz.offset),
+                             mapping = aes(color = Sensitivity))
+  }
+
+  if(!depl & add.hist.ref){
     if(is.na(lrp) | is.na(usr)){
       cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
     }else{
-      cal <- sbt %>%
+      cal <- bt %>%
         filter(Year >= lrp[1] & Year <= lrp[2])
       lrp.val <- mean(cal$`Biomass (t)`)
 
-      cau <- sbt %>%
+      cau <- bt %>%
         filter(Year >= usr[1] & Year <= usr[2])
       usr.val <- mean(cau$`Biomass (t)`)
 
@@ -91,6 +97,11 @@ b.plot <- function(models,
                    show.guide = TRUE)
     }
   }
+
+  if(depl){
+    p <- p + ylab("Reletive biomass")
+  }
+
   p
 }
 
