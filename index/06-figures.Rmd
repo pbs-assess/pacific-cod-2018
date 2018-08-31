@@ -40,7 +40,7 @@ print(i.plot(base.model.5abcd, 5, "e"), vp = ggvp(2, 2))
 
 
 ```{r fig-base-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD"}
-b.plot(base.model.5abcd)
+b.plot(base.model.5abcd, c(1971,1971), c(1986,2004))
 ```
 
 \clearpage
@@ -53,11 +53,6 @@ make.catches.plot(catch.3)
 
 ```{r fig-base-biomass-3cd, fig.cap="Biomass for the Reference Model, Area 3CD"}
 b.plot(base.model.3cd)
-# make.biomass.mcmc.plot(
-#   base.model.3cd,
-#   base.model.3cd.name,
-#   ylim = c(0, 100000),
-#   opacity = 50)
 ```
 
 ```{r fig-base-mcmc-trace-3cd, fig.cap="Traceplots of posterior samples for the Area 3CD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = West Coast Vancouver Island Synoptic Survey, $q_2$ = Commercial CPUE pre-1996, $q_3$ = Commercial CPUE post-1995, and $q_3$ = NMFS Triennial Survey (Canadian portion)."}

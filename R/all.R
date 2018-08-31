@@ -55,3 +55,8 @@ if(!file.exists(dat.file)){
                                   "pcod-cache"))
 }
 dat <- readRDS(dat.file)
+
+## ggplot globals for project
+ggplot2::theme_set(gfplot::theme_pbs())
+scale_colour_continuous <- scale_colour_viridis_c
+scale_fill_continuous <- scale_fill_viridis_c

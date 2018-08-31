@@ -27,8 +27,4 @@ build(ovwrt.base = FALSE,
       thin = 1)
 load.models.into.parent.env()
 source(file.path(rootd.R, "custom-knitr-variables.R"))
-
-ggplot2::theme_set(gfplot::theme_pbs())
-scale_colour_continuous <- scale_colour_viridis_c
-scale_fill_continuous <- scale_fill_viridis_c
 ```
