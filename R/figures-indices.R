@@ -1,154 +1,55 @@
-i.plot <- function(model,
+i.plot <- function(models,
+                   models.names,
                    ind,
                    pan.let = ""){
 
-  model <- model[[1]]
-  index.fit <- model$mpd$it_hat[ind,]
-  index.fit <- index.fit[!is.na(index.fit)]
-
-  dat <- as.tibble(model$dat$indices[[ind]]) %>%
-    select(-c(gear, area, group, sex, timing)) %>%
-    mutate(fit = index.fit) %>%
-    mutate(lowercv = it - it * (1 / wt),
-           uppercv = it + it * (1 / wt)) %>%
-    select(-wt) %>%
-    rename(Year = iyr, `Survey biomass index (t)` = fit)
-
-  ggplot(dat) +
-    aes(x = Year, y = `Survey biomass index (t)`) +
-    theme_pbs() +
-    geom_line(color = "blue") +
-    geom_point(shape = 3) +
-    geom_point(aes(x = dat$Year, y = dat$it)) +
-    geom_errorbar(aes(ymin = dat$lowercv,
-                      ymax = dat$uppercv,
-                      width = 0.1 * nrow(dat))) +
-    scale_y_continuous(labels = comma,
-                       limits = c(min(dat$`Survey biomass index (t)`, dat$lowercv),
-                                  1.1 * max(dat$`Survey biomass index (t)`, dat$uppercv))) +
-    geom_text(x = min(dat$Year),
-              y = max(1.1 * max(dat$`Survey biomass index (t)`, dat$uppercv)),
-              label = ggpanel.letter(pan.let))
-}
-
-make.index.fit.plot <- function(models,
-                                model.names = NULL,
-                                leg = NULL,
-                                start.yr,
-                                end.yr,
-                                ind,
-                                ylim = c(0, 20),
-                                ind.letter = NULL,
-                                show.cv = FALSE){
-  ## Plot the index fits for MPDs
-  ##
-  ## models - a list of  model objects (list can be length 1)
-  ##  and the class must be model.list
-  ## model.names - optional names for the legend. The length must match
-  ##  the length of the models list.
-  ## leg - location of legend (if model.names is present). e.g. "topright"
-  ## ind - the index to plot. Must be a single value.
-
-  if(length(ind) > 1){
-    stop("The length of ind cannot be greater than 1.")
-  }
-
-  ## Get index names for the models
+  index.fit <- lapply(models,
+                      function(x){
+                        tmp <- x$mpd$it_hat[ind,]
+                        tmp[!is.na(tmp)]
+                      })
   index.dat <- lapply(models,
                       function(x){
                         as.data.frame(x$dat$indices[[ind]])
                       })
-  index.fit <- lapply(models,
-                      function(x){
-                        x$mpd$it_hat[ind,]
-                      })
-  index.fit <- do.call(rbind, index.fit)
 
-  index.fit <- apply(index.fit,
-                     1,
-                     function(x){
-                       x[!is.na(x)]})
+  i <- lapply(1:length(models),
+              function(x){
+                cbind(index.dat[[x]], fit = index.fit[[x]])
+              })
+  names(i) <- models.names
+  i <- bind_rows(i, .id = "Sensitivity") %>%
+    as.tibble() %>%
+    mutate(lowercv = it - it * (1 / wt),
+           uppercv = it + it * (1 / wt)) %>%
+    rename("Year" = iyr,
+           "Survey biomass index (t)" = it) %>%
+    select(-c(gear, area, group, sex, wt, timing)) %>%
+    mutate(Year = as.integer(Year)) %>%
+    mutate(Sensitivity = forcats::fct_relevel(Sensitivity,
+                                              models.names[1],
+                                              after = 0))
 
-  xlim <- c(start.yr, end.yr)
-  yrs <- lapply(index.dat,
-                function(x){
-                  x$iyr})
-  index <- lapply(index.dat,
-                  function(x){
-                    x$it})
-  cv <- lapply(index.dat,
-               function(x){
-                 1 / x$wt})
 
-  ## Plot the fit first
-  plot.new()
-  plot.window(xlim = xlim,
-              ylim = ylim,
-              xlab = "",
-              ylab = "")
+  ggplot(i) +
+    aes(x = Year, y = `Survey biomass index (t)`) +
+    geom_pointrange(aes(ymin = lowercv,
+                        ymax = uppercv),
+                    size = 0.25) +
+    geom_line(aes(color = Sensitivity),
+              y = i$fit,
+              size = 1) +
+    theme(legend.position = c(1, 1),
+          legend.justification = c(1, 1),
+          legend.title = element_blank()) +
+    scale_y_continuous(labels = comma,
+                       limits = c(0, NA)) +
+    coord_cartesian(expand = FALSE) +
+    scale_x_continuous(breaks = seq(0, 3000, 1),
+                       limits = c(min(i$Year - 1),
+                                  max(i$Year + 1))) +
+    geom_text(x = min(i$Year),
+              y = max(0.9 * max(i$uppercv, i$fit)),
+              label = ggpanel.letter(pan.let))
 
-  p.lines <- lapply(1:length(yrs),
-                    function(x){
-                      lines(yrs[[x]],
-                            index.fit[,x],
-                            lwd = 2,
-                            xlim = xlim,
-                            ylim = ylim,
-                            col = x)})
-
-  is.equal <- function(mylist) {
-    check.eq <- sapply(mylist[-1],
-                       function(x){
-                         x == mylist[[1]]})
-    as.logical(apply(check.eq, 1, prod))
-  }
-  ## If all the input data are equal, this is TRUE and
-  ##  the crosses will be black
-  if(length(index) > 1){
-    inp.are.eq <- all(is.equal(index))
-  }else{
-    inp.are.eq <- FALSE
-  }
-
-  ## Then the points and arrows for the index inputs
-  p.pts <- lapply(1:length(yrs),
-                  function(x){
-                    points(yrs[[x]],
-                           index[[x]],
-                           pch = 3,
-                           col = ifelse(inp.are.eq, 1, x),
-                           lwd = 2)})
-  if(show.cv){
-    p.arrows <- lapply(1:length(yrs),
-                       function(x){
-                         arrows(yrs[[x]],
-                                index[[x]] + cv[[x]] * index[[x]],
-                                yrs[[x]],
-                                index[[x]] - cv[[x]] * index[[x]],
-                                code = 3,
-                                angle = 90,
-                                length = 0.0,
-                                col = 1,
-                                lwd = 2)})
-  }
-  axis(1,
-       at = seq(min(xlim), max(xlim)),
-       labels = seq(min(xlim), max(xlim)))
-  axis(2)
-  box()
-  mtext("Year", 1, line = 3)
-  mtext("1,000 t", 2, line = 3)
-
-  if(!is.null(model.names) & !is.null(leg)){
-    legend(leg,
-           model.names,
-           bg = "transparent",
-           col = 1:length(models),
-           lty = 1,
-           lwd = 2)
-  }
-
-  if(!is.null(ind.letter)){
-    panel.letter(ind.letter)
-  }
 }
