@@ -603,6 +603,31 @@ gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("Modern", params$area_name[2]))
 cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
 ```
 
+```{r cpue-tweedie-ex, fig.asp=1.0, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
+plot_tweedie_ex <- function(df, max = 15) {
+  xx <- seq(0, max, length.out = 1000)
+  out <- plyr::mdply(df, function(mu, power, phi) {
+    data.frame(x = xx,
+      y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
+  }) %>%
+    mutate(phi = paste("ϕ =", phi)) %>%
+    mutate(power = paste("p =", power)) %>%
+    mutate(mu = paste("μ =", mu))
+
+  ggplot(out, aes(x, y, colour = mu)) +
+    geom_line() +
+    facet_grid(power~phi, scales = "free") +
+    gfplot::theme_pbs() +
+    labs(colour = "μ") +
+    xlab("Value") + ylab("Density") +
+    coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x)))
+}
+
+df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
+plot_tweedie_ex(df)
+```
+
+
 ```{r cpue-re-int-ts-funcs, message=FALSE, warning=FALSE, results='hide'}
 most_common <- function(x) names(rev(sort(table(as.character(x)))))[[1]]
 basel_level <- function(x) levels(x)[[1]]
