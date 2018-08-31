@@ -603,7 +603,7 @@ gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("Modern", params$area_name[2]))
 cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
 ```
 
-```{r cpue-tweedie-ex, fig.asp=1.0, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
+```{r cpue-tweedie-ex, fig.asp=0.7, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
 plot_tweedie_ex <- function(df, max = 15) {
   xx <- seq(0, max, length.out = 1000)
   out <- plyr::mdply(df, function(mu, power, phi) {
@@ -625,6 +625,26 @@ plot_tweedie_ex <- function(df, max = 15) {
 
 df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
 plot_tweedie_ex(df)
+```
+
+```{r cpue-pars, results='asis'}
+get_cpue_pars <- function(obj, name = "") {
+  re <- broom.mixed::tidy(obj, effects = "ran_pars")
+  re$group <- gsub("_", "-", re$group)
+  re <- tibble(Model = name, Parameter = paste(re$group, "SD"),
+    Estimate = round(re$estimate, 2))
+  p <- round(stats::plogis(obj$fit$par[["thetaf"]]) + 1, 2)
+  phi <- round(exp(obj$fit$par[["betad"]]), 2)
+  bind_rows(re,
+    tibble(Model = name, Parameter = c("$p$", "$\\phi$"), Estimate = c(p, phi)))
+}
+pars <- list()
+pars[[1]] <- get_cpue_pars(m_historic[[12]], "Historical 3CD")
+pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historical 5ABCD")
+pars[[3]] <- get_cpue_pars(m_modern[[16]], "Modern 3CD")
+pars[[4]] <- get_cpue_pars(m_modern[[8]], "Modern 5ABCD")
+bind_rows(pars) %>%
+  knitr::kable(caption = "Random effect standard deviation (SD) and Tweedie observation model power ($p$) and dispersion ($\\phi$) parameter estimates.", booktabs = TRUE, linesep = "", escape = FALSE)
 ```
 
 
