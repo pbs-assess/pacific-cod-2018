@@ -616,9 +616,15 @@ were dropped to allow for sufficient burn-in.
 ## Sc 1b and Sc 1c. Exclusion of a year-location interaction as random effect in commercial CPUE indices
 The base case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix B). Two sensitivity analyses are shown to illustrate the effect of removing the interaction term from both indices (i.e., fitting the delay difference model to historical and modern CPUE indices calculated using equation \@ref(eq:cpuesens2)):
 
-- \textbf{Sc 1b.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Use the annual CVs resulting from the analysis as annual weighting terms in objective function of delay difference model (Equation TX.X).
+- \textbf{Sc 1b.} Use equations without the interaction term to create CPUE
+  indices for historical and modern periods. Use the annual CVs resulting from
+  the analysis as annual weighting terms in objective function of delay
+  difference model (Equation TX.X, Figure \@ref(fig:fig-sens1-biomass-5abcd)).
 
-- \textbf{Sc 1c.} Use equations without the interaction term to create CPUE indices for historical and modern periods. Double the annual CVs resulting from the analysis directly as weighting terms in objective function of delay difference model (Equation TX.X).
+- \textbf{Sc 1c.} Use equations without the interaction term to create CPUE
+  indices for historical and modern periods. Double the annual CVs resulting
+  from the analysis directly as weighting terms in objective function of delay
+  difference model (Equation TX.X, Figure \@ref(fig:fig-sens1-biomass-5abcd)).
 
 Sc 1c was done because the annual CVs of the CPUE indices were very small (less than 0.1 in some years). Annual CVs were doubled to addres concerns that the objective function of the delay difference model may be giving the CPUE indices too much weight when CVs were very small.
 
@@ -628,64 +634,45 @@ A sensitivity analysis was done where the modern CPUE index was removed from the
 
 *TO DO: improve above text*
 
-\begin{itemize}
-
-\item[] \textbf{Sc 1d.} Remove modern CPUE index from the model. Historical index includes year-location interaction term as a random effect.
-\item[] \textbf{Sc 1e.} Remove historical CPUE index from the model. Modern index includes year-location interaction term as a random effect.
-\item[] \textbf{Sc 1f.} Remove both CPUE indices from the model.
-
-\end{itemize}
-
+- \textbf{Sc 1d.} Remove modern CPUE index from the model. Historical
+index includes year-location interaction term as a random effect, Figure \@ref(fig:fig-sens1-biomass-5abcd).
+- \textbf{Sc 1e.} Remove historical CPUE index from the model. Modern
+index includes year-location interaction term as a random effect, Figure \@ref(fig:fig-sens1-biomass-5abcd).
+- \textbf{Sc 1f.} Remove both CPUE indices from the model, Figure \@ref(fig:fig-sens1-biomass-5abcd).
 
 ## Sc 1e. Exclusion of the NMFS Triennial survey index for Area 3CD
 
 A sensitivity analysis was done where the NMFS Triennial Survey index was removed from the model.
 
-\begin{itemize}
-
-\item[] \textbf{Sc 1g (Area 3CD only).} Remove NMFS Triennial Survey index from the model.
-
-\end{itemize}
+- \textbf{Sc 1g (Area 3CD only).} Remove NMFS Triennial Survey index from the model, Figure \@ref(fig:fig-sens8-biomass-3cd).
 
 
 ## Sc 2a and 2b. Prior probability distribution for $ln(q)$
 
 For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $ln(q)$ for the QCS and HS Synoptic Surveys:
 
-\begin{itemize}
-
-\item[] \textbf{Sc 2a.} The mean of the QCS Synoptic survey was set to the same mean as for the HS Synoptic survey, i.e., mean $ln(q)$ = $ln(0.186)$ .
-
-\item[] \textbf{Sc 2b.} A uniform prior was used for \textit{q} for both the QCS and HS Synoptic Surveys.
-
-\end{itemize}
+- \textbf{Sc 2a.} The mean of the QCS Synoptic survey was set to the same mean
+- as for the HS Synoptic survey, i.e., mean $ln(q)$ = $ln(0.186)$, Figure \@ref(fig:fig-sens2-biomass-5abcd).
+- \textbf{Sc 2b.} A uniform prior was used for \textit{q} for both the QCS and HS Synoptic Surveys, Figure \@ref(fig:fig-sens2-biomass-5abcd).
 
 For 3CD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $ln(q)$ for the WCVI Synoptic Survey:
 
-\begin{itemize}
-
-\item[] \textbf{Sc 2a.} The sd of the WCVI Synoptic survey was set to the same sd as for the QCS and HS Synoptic surveys, i.e., sd = 0.3.
-
-\item[] \textbf{Sc 2b.} A uniform prior was used for \textit{q} for the WCVI Synoptic Surveys.
-
-\end{itemize}
-
+- \textbf{Sc 2a.} The sd of the WCVI Synoptic survey was set to the same sd as for the QCS and HS Synoptic surveys, i.e., sd = 0.3, Figure \@ref(fig:fig-sens9-biomass-3cd).
+- \textbf{Sc 2b.} A uniform prior was used for \textit{q} for the WCVI Synoptic Surveys, Figure \@ref(fig:fig-sens9-biomass-3cd).
 
 ## Sc 3a to 3c. Prior probability distribution for $ln(M)$
 
 Three sensitivity analyses are shown to illustrate the effect of the
 parameters of the normal prior distribution assumed for $ln(M)$:
 
-\begin{itemize}
-
-\item[] \textbf{Sc 3a.} The mean was held at the Base Case value of 0.5, while the standard
-  deviation was increased to 0.2.
-\item[] \textbf{Sc 3b.} The mean was reduced to 0.4 and the standard deviation was held at
-  the Base Case value of 0.1.
-\item[] \textbf{Sc 3c.} The mean was reduced to 0.4 and the standard deviation was increased
-  to 0.2.
-
-\end{itemize}
+- \textbf{Sc 3a.} The mean was held at the Base Case value of 0.5, while the standard
+  deviation was increased to 0.2, Figures \@ref(fig:fig-sens3-biomass-5abcd) and
+  \@ref(fig:fig-sens10-biomass-3cd).
+- \textbf{Sc 3b.} The mean was reduced to 0.4 and the standard deviation was held at
+  the Base Case value of 0.1, Figures \@ref(fig:fig-sens3-biomass-5abcd) and
+  \@ref(fig:fig-sens10-biomass-3cd).
+- \textbf{Sc 3c.} The mean was reduced to 0.4 and the standard deviation was increased
+  to 0.2, Figures \@ref(fig:fig-sens3-biomass-5abcd) and \@ref(fig:fig-sens10-biomass-3cd).
 
 <!--
 
@@ -720,12 +707,9 @@ to the historical averages as estimates of M declined.
 
 Two sensitivity analyses were done to illustrate the effect of the prior probability distribution assumed for steepness in the base case model:
 
-\begin{itemize}
-
-\item[] \textbf{Sc 4a.} Use a uniform prior for steepness bounded between 0.21 and 0.999.
-\item[] \textbf{Sc 4b.} Use a beta prior for steepness with mean = 0.85 and sd = 0.75.
-
-\end{itemize}
+- \textbf{Sc 4a.} Use a uniform prior for steepness bounded between 0.21 and
+- 0.999, Figures \@ref(fig:fig-sens4-biomass-5abcd) and \@ref(fig:fig-sens11-biomass-3cd).
+- \textbf{Sc 4b.} Use a beta prior for steepness with mean = 0.85 and sd = 0.75, Figures \@ref(fig:fig-sens4-biomass-5abcd) and \@ref(fig:fig-sens11-biomass-3cd).
 
 <!--
 Biomass and parameter estimates are shown in Figures XX and XX, where it can be seen that there was
@@ -744,34 +728,23 @@ having a very large influence on biomass estimates (Figure XX).
 
 One sensitivity analysis was done to illustrate the effect of the assumption that fish recruit to the fishery, all surveys and mature at age 2 *y*:
 
-- **Sc 5a.** Set $kage = 3 y$ and update Ford-Walford parameters accordingly
-
-<!-- TODO: the following should be Markdown not LaTeX -->
+- **Sc 5a.** Set $kage = 3 y$ and update Ford-Walford parameters accordingly, Figures \@ref(fig:fig-sens5-biomass-5abcd) and \@ref(fig:fig-sens12-biomass-3cd).
 
 TO DO: More explanatory text here referring to new maturity estimates. Possibly add "ageless" catch-age model sensitvity separating maturity and selectivity at age 3 and age 2 respectively (but would still be assuming knife-edged so maybe no point)
 
 ## Sc 5b. Updated growth parameters
 One sensitivity analysis was done to illustrate the effect of updating the von Bertalanffy growth parameters using available age and length data (see Appendix XX).
 
-\begin{itemize}
-
-\item[] \textbf{Sc 5b.} Use von Bertalanffy growth parameters used in the previous stock assessment (@forrest2013)
-
-\end{itemize}
+- \textbf{Sc 5b.} Use von Bertalanffy growth parameters used in the previous stock assessment (@forrest2013), Figures \@ref(fig:fig-sens6-biomass-5abcd) and \@ref(fig:fig-sens13-biomass-3cd).
 
 TO DO: More explanatory text here
 
 ## Sc 6a - 6c. Assumed fixed value of observation error $\sigma_O$
 In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
 
-\begin{itemize}
-
-\item[] \textbf{Sc 6a.} Fix $\sigma_O$ = 0.1.
-\item[] \textbf{Sc 6b.} Fix $\sigma_O$ = 0.15.
-\item[] \textbf{Sc 6c.} Fix $\sigma_O$ = 0.25.
-
-\end{itemize}
-
+- \textbf{Sc 6a.} Fix $\sigma_O$ = 0.1, Figures \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd), .
+- \textbf{Sc 6b.} Fix $\sigma_O$ = 0.15, \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd)
+- \textbf{Sc 6c.} Fix $\sigma_O$ = 0.25, \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd)
 
 ## Sc 6c. Assumed fixed value of process error $\sigma_R$
 
@@ -780,11 +753,7 @@ value for $\sigma_R$, as this stock appears to have had very variable
 recruitment throughout the history of the fishery. One sensitivity
 analysis was done to test the effect of increasing the assumed value of $\sigma_R$:
 
-\begin{itemize}
-
-\item[] \textbf{Sc 6d.} Fix $\sigma_R$ = 1.0
-
-\end{itemize}
+- \textbf{Sc 6d.} Fix $\sigma_R$ = 1.0, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
 
 <!--
 Resulting estimates of historical biomass are shown in Figure XX. As for the
@@ -809,9 +778,5 @@ estimation of model parameters but was down-weighted in the objective function.
 Given the uncertainties in interpreting this time series and its potential
 to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$, which was fixed at 0.2 in the base case:
 
-\begin{itemize}
-
-\item[] \textbf{Sc 7a.} Fix $\sigma_w$ = 0.4
-\item[] \textbf{Sc 7b.} Fix $\sigma_w$ = 0.15
-
-\end{itemize}
+- \textbf{Sc 7a.} Fix $\sigma_w$ = 0.4, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
+- \textbf{Sc 7b.} Fix $\sigma_w$ = 0.15, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).

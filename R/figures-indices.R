@@ -1,7 +1,12 @@
 i.plot <- function(models,
                    models.names,
                    ind,
-                   pan.let = ""){
+                   pan.let = "",
+                   every = 1,
+                   leg.loc = "topright"){
+  ## ind is the index number
+  ## every is show every nth year on the x-axis
+  ## leg.loc: topright, topleft, bottomright, bottomleft
 
   index.fit <- lapply(models,
                       function(x){
@@ -30,6 +35,19 @@ i.plot <- function(models,
                                               models.names[1],
                                               after = 0))
 
+  if(leg.loc == "topright"){
+    leg.just <- c(1, 1)
+    leg.pos <- c(1, 1)
+  }else if(leg.loc == "topleft"){
+    leg.just <- c(0, 1)
+    leg.pos <- c(0, 1)
+  }else if(leg.loc == "bottomright"){
+    leg.just <- c(1, 0)
+    leg.pos <- c(1, 0)
+  }else if(leg.loc == "bottomleft"){
+    leg.just <- c(0, 0)
+    leg.pos <- c(0, 0)
+  }
 
   p <- ggplot(i) +
     aes(x = Year, y = `Survey biomass index (t)`) +
@@ -39,13 +57,13 @@ i.plot <- function(models,
     geom_line(aes(color = Sensitivity),
               y = i$fit,
               size = 1) +
-    theme(legend.position = c(1, 1),
-          legend.justification = c(1, 1),
+    theme(legend.position = leg.pos,
+          legend.justification = leg.just,
           legend.title = element_blank()) +
     scale_y_continuous(labels = comma,
                        limits = c(0, NA)) +
     coord_cartesian(expand = FALSE) +
-    scale_x_continuous(breaks = seq(0, 3000, 1),
+    scale_x_continuous(breaks = seq(0, 3000, every),
                        limits = c(min(i$Year - 1),
                                   max(i$Year + 1))) +
     geom_text(x = min(i$Year),

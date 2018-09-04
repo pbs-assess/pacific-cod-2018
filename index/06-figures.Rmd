@@ -31,26 +31,77 @@ make.pairs.plot(base.model.5abcd)
 ```{r fig-base-index-fits-5abcd, fig.cap="MPD fits to observed indices of abundance (points) for the Area 5ABCD base reference model from: (a) the Hecate Strait Assemblage survey, (b) the Queen Charlotte Sound Synoptic Survey, (c) the Hecate Strait Synoptic Survey, (d) the Commercial CPUE pre-1996, and (e) the Commercial CPUE post-1995."}
 grid.newpage()
 pushViewport(viewport(layout = grid.layout(2, 3)))
-print(i.plot(base.model.5abcd, 1, "a"), vp = ggvp(1, 1))
-print(i.plot(base.model.5abcd, 2, "b"), vp = ggvp(1, 2))
-print(i.plot(base.model.5abcd, 3, "c"), vp = ggvp(1, 3))
-print(i.plot(base.model.5abcd, 4, "d"), vp = ggvp(2, 1))
-print(i.plot(base.model.5abcd, 5, "e"), vp = ggvp(2, 2))
+print(i.plot(base.model.5abcd, base.model.5abcd.name, 1, "a", every = 5), vp = ggvp(1, 1))
+print(i.plot(base.model.5abcd, base.model.5abcd.name, 2, "b", every = 5), vp = ggvp(1, 2))
+print(i.plot(base.model.5abcd, base.model.5abcd.name, 3, "c", every = 5), vp = ggvp(1, 3))
+print(i.plot(base.model.5abcd, base.model.5abcd.name, 4, "d", every = 10), vp = ggvp(2, 1))
+print(i.plot(base.model.5abcd, base.model.5abcd.name, 5, "e", every = 5), vp = ggvp(2, 2))
 ```
 
 
-```{r fig-base-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD"}
+```{r fig-base-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD.  The green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1986--2004. The red dashed line shows the Limit Reference Point (LRP) which is the lowest biomass from which the stock has recovered, in this case it is the biomass estimate for 1971."}
 b.plot(base.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
        add.hist.ref = TRUE,
-       c(1971, 1971),
-       c(1986,2004))
+       lrp = c(1971, 1971),
+       usr = c(1986,2004))
 ```
 
-
-```{r fig-sens1-biomass-5abcd, fig.cap="Biomass for the Sensitivity to, Area 5ABCD"}
+```{r fig-sens1-biomass-5abcd, fig.cap="Biomass for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of the CPUE indices, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
+```
+
+```{r fig-sens1-depletion-5abcd, fig.cap="Reletive biomass for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of the CPUE indices, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1), depl = TRUE)
+```
+
+```{r fig-sens1-f-5abcd, fig.cap="Fishing mortality for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of the CPUE indices, Area 5ABCD."}
+f.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
+```
+
+```{r fig-sens2-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
+```
+
+```{r fig-sens3-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
+```
+
+```{r fig-sens4-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
+```
+
+```{r fig-sens5-biomass-5abcd, fig.cap="Biomass for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
+```
+
+```{r fig-sens6-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the assumed value of observation and process errors, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
+```
+
+```{r fig-sens6-index-hsmas-5abcd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, HSMAS, Area 5ABCD."}
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 1)
+```
+
+```{r fig-sens6-index-qcss-5abcd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, QCSS, Area 5ABCD."}
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 2)
+```
+
+```{r fig-sens6-index-hsss-5abcd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, HSSS, Area 5ABCD."}
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 3)
+```
+
+```{r fig-sens6-index-cpue-pre1996-5abcd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, commercial CPUE pre-1996, Area 5ABCD."}
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 4, every = 5)
+```
+
+```{r fig-sens6-index-cpue-post1995-5abcd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 5ABCD."}
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft")
+```
+
+```{r fig-sens7-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
 \clearpage
@@ -84,16 +135,56 @@ make.pairs.plot(base.model.3cd)
 ```{r fig-base-index-fits-3cd, fig.cap="MPD fits to observed indices of abundance (points) for the Area 3CD base reference model from: (a) the West Coast Vancouver Island Synoptic Survey, (b) the Commercial CPUE pre-1996, (c) the Commercial CPUE post-1995, and (d) the NMFS Triennial Survey (Canadian portion)."}
 grid.newpage()
 pushViewport(viewport(layout = grid.layout(2, 2)))
-print(i.plot(base.model.3cd, 1, "a"), vp = ggvp(1, 1))
-print(i.plot(base.model.3cd, 2, "b"), vp = ggvp(1, 2))
-print(i.plot(base.model.3cd, 3, "c"), vp = ggvp(2, 1))
-print(i.plot(base.model.3cd, 4, "d"), vp = ggvp(2, 2))
+print(i.plot(base.model.3cd, base.model.3cd.name, 1, "a", every = 5), vp = ggvp(1, 1))
+print(i.plot(base.model.3cd, base.model.3cd.name, 2, "b", every = 5), vp = ggvp(1, 2))
+print(i.plot(base.model.3cd, base.model.3cd.name, 3, "c", every = 5), vp = ggvp(2, 1))
+print(i.plot(base.model.3cd, base.model.3cd.name, 4, "d", every = 5), vp = ggvp(2, 2))
 ```
 
-```{r fig-base-biomass-3cd, fig.cap="Biomass for the Reference Model, Area 3CD"}
+```{r fig-base-biomass-3cd, fig.cap="Biomass for the Reference Model, Area 3CD."}
 b.plot(base.model.3cd, base.model.3cd.name)
 ```
 
-```{r fig-sens1-biomass-3cd, fig.cap="Biomass for the Sensitivity to, Area 3CD"}
-b.plot(c(base.model.3cd, sens.models.1), c(base.model.3cd.name, sens.models.name.1))
+```{r fig-sens8-biomass-3cd, fig.cap="Biomass for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, to removal of the CPUE indices, and to the removal of the Triennial survey index, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
 ```
+
+```{r fig-sens9-biomass-3cd, fig.cap="Biomass for the Sensitivity to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.2), c(base.model.3cd.name, sens.models.name.2))
+```
+```{r fig-sens10-biomass-3cd, fig.cap="Biomass for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
+```
+
+```{r fig-sens11-biomass-3cd, fig.cap="Biomass for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
+```
+
+```{r fig-sens12-biomass-3cd, fig.cap="Biomass for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
+```
+
+```{r fig-sens13-biomass-3cd, fig.cap="Biomass for the Sensitivity to the assumed value of observation and process errors, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
+```
+
+```{r fig-sens13-index-wcviss-3cd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, WCVISS, Area 3CD."}
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 1, leg.loc = "topleft")
+```
+
+```{r fig-sens13-index-cpue-pre1996-3cd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errows, commercial CPUE pre-1996, Area 3CD."}
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 2, every = 5)
+```
+
+```{r fig-sens13-index-cpue-post1995-3cd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 3CD."}
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 3, leg.loc = "topleft")
+```
+
+```{r fig-sens13-index-triennial-3cd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, NMFS Triennial survey, Area 3CD."}
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 4)
+```
+
+```{r fig-sens14-biomass-3cd, fig.cap="Biomass for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
+```
+
