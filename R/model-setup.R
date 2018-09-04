@@ -99,6 +99,17 @@ if(verbose){
 }
 
 ## -----------------------------------------------------------------------------
+## Sensitivity models group 1 subset (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.1.sub <- c(file.path(model.dir,
+                                          "0_1b_5ABCD_NO_loc-yr-interact_rsoleq_06_019"),
+                                file.path(model.dir,
+                                          "0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV"))
+
+sens.models.name.1.sub <- c("No locality/yr q mean = 06 sd = 0.19",
+                            "No locality/yr q mean = 06 sd = 0.19, double CV")
+
+## -----------------------------------------------------------------------------
 ## Sensitivity models group 1 (5ABCD)
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.1 <- c(file.path(model.dir,
@@ -187,6 +198,17 @@ sens.models.dir.name.7 <- c(file.path(model.dir,
                                       "0_7b_5ABCD_sigW_015"))
 sens.models.name.7 <- c("Fix sigma W = 0.4",
                         "Fix sigma W = 0.15")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 8 subset (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.8.sub <- c(file.path(model.dir,
+                                      "1_1b_3CD_NO_loc-yr-interact_rsoleq_0228sd03"),
+                                file.path(model.dir,
+                                          "1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV"))
+
+sens.models.name.8.sub <- c("No locality/yr q mean = 0.228 sd = 0.3",
+                        "No locality/yr q mean = 0.228 sd = 0.3, double CV")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 8 (3CD)
@@ -313,6 +335,7 @@ retro.names <- c("- 1 year",
 ## and sensitivity models change in the model.dir.names above..
 load.models.into.parent.env <- function(){
   base.model.5abcd <<- load.models(base.model.5abcd.dir.name)
+  sens.models.1.sub <<- load.models(sens.models.dir.name.1.sub)
   sens.models.1 <<- load.models(sens.models.dir.name.1)
   sens.models.2 <<- load.models(sens.models.dir.name.2)
   sens.models.3 <<- load.models(sens.models.dir.name.3)
@@ -322,6 +345,7 @@ load.models.into.parent.env <- function(){
   sens.models.7 <<- load.models(sens.models.dir.name.7)
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
+  sens.models.8.sub <<- load.models(sens.models.dir.name.8.sub)
   sens.models.8 <<- load.models(sens.models.dir.name.8)
   sens.models.9 <<- load.models(sens.models.dir.name.9)
   sens.models.10 <<- load.models(sens.models.dir.name.10)
