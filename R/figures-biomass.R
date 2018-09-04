@@ -102,9 +102,9 @@ b.plot <- function(models,
     p <- p + ylab("Reletive biomass")
   }
 
-  ## if(length(models) == 1){
-  ##   p <- p + theme(legend.position="none")
-  ## }
+  if(length(models) == 1){
+    p <- p + theme(legend.position = "none")
+  }
   p
 }
 

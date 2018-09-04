@@ -64,5 +64,9 @@ f.plot <- function(models,
                    show.guide = TRUE)
     }
   }
+
+  if(length(models) == 1){
+    p <- p + theme(legend.position = "none")
+  }
   p
 }

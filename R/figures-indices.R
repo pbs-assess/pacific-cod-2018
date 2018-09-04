@@ -31,7 +31,7 @@ i.plot <- function(models,
                                               after = 0))
 
 
-  ggplot(i) +
+  p <- ggplot(i) +
     aes(x = Year, y = `Survey biomass index (t)`) +
     geom_pointrange(aes(ymin = lowercv,
                         ymax = uppercv),
@@ -52,4 +52,8 @@ i.plot <- function(models,
               y = max(0.9 * max(i$uppercv, i$fit)),
               label = ggpanel.letter(pan.let))
 
+  if(length(models) == 1){
+    p <- p + theme(legend.position = "none")
+  }
+  p
 }
