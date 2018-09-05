@@ -70,7 +70,7 @@ r.plot(c(base.model.5abcd, sens.models.1.sub),
        c(base.model.5abcd.name, sens.models.name.1.sub))
 ```
 
-```{r fig-sens1-depletion-5abcd, fig.cap="Reletive biomass for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of the CPUE indices, Area 5ABCD."}
+```{r fig-sens1-depletion-5abcd, fig.cap="Relative biomass for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of the CPUE indices, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1), depl = TRUE)
 ```
 
@@ -81,21 +81,85 @@ f.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.
 ```{r fig-sens2-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
+```{r fig-sens2-recr-5abcd, fig.cap="Recruitment for the Sensitivity to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
+r.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
+```
+
+```{r fig-sens2-depl-5abcd, fig.cap="Relative biomass for the Sensitivity to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name,
+sens.models.name.2), depl = TRUE)
+```
+
+```{r fig-sens2-f-5abcd, fig.cap="Fishing mortality for the Sensitivity to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
+f.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
+```
 
 ```{r fig-sens3-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
+```
+
+```{r fig-sens3-recr-5abcd, fig.cap="Recruitment for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 5ABCD."}
+r.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
+```
+
+```{r fig-sens3-depl-5abcd, fig.cap="Relative biomass for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name,
+sens.models.name.3), depl = TRUE)
+```
+
+```{r fig-sens3-f-5abcd, fig.cap="Fishing mortality for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 5ABCD."}
+f.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
 ```
 
 ```{r fig-sens4-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
 ```
 
+```{r fig-sens4-recr-5abcd, fig.cap="Recruitment for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 5ABCD."}
+r.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
+```
+
+```{r fig-sens4-depl-5abcd, fig.cap="Relative biomass for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name,
+sens.models.name.4), depl = TRUE)
+```
+
+```{r fig-sens4-f-5abcd, fig.cap="Fishing mortality for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 5ABCD."}
+f.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
+```
+
 ```{r fig-sens5-biomass-5abcd, fig.cap="Biomass for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
+```{r fig-sens5-recr-5abcd, fig.cap="Recruitment for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 5ABCD."}
+r.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
+```
+
+```{r fig-sens5-depl-5abcd, fig.cap="Relative biomass for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name,
+sens.models.name.5), depl = TRUE)
+```
+
+```{r fig-sens5-f-5abcd, fig.cap="Fishing mortality for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 5ABCD."}
+f.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
+```
+
 ```{r fig-sens6-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the assumed value of observation and process errors, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
+```
+
+```{r fig-sens6-recr-5abcd, fig.cap="Recruitment for the Sensitivity to the assumed value of observation and process errors, Area 5ABCD."}
+r.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
+```
+
+```{r fig-sens6-depl-5abcd, fig.cap="Relative biomass for the Sensitivity to the assumed value of observation and process errors, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name,
+sens.models.name.6), depl = TRUE)
+```
+
+```{r fig-sens6-f-5abcd, fig.cap="Fishing mortality for the Sensitivity to the assumed value of observation and process errors, Area 5ABCD."}
+f.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
 
 ```{r fig-sens6-index-hsmas-5abcd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, HSMAS, Area 5ABCD."}
@@ -120,6 +184,19 @@ i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.
 
 ```{r fig-sens7-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
+```
+
+```{r fig-sens7-recr-5abcd, fig.cap="Recruitment for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
+```
+
+```{r fig-sens7-depl-5abcd, fig.cap="Relative biomass for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name,
+sens.models.name.7), depl = TRUE)
+```
+
+```{r fig-sens7-f-5abcd, fig.cap="Fishing mortality for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
 \clearpage
@@ -188,20 +265,86 @@ r.plot(c(base.model.3cd, sens.models.8.sub),
 ```{r fig-sens9-biomass-3cd, fig.cap="Biomass for the Sensitivity to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
 b.plot(c(base.model.3cd, sens.models.2), c(base.model.3cd.name, sens.models.name.2))
 ```
+
+```{r fig-sens9-recr-3cd, fig.cap="Recruitment for the Sensitivity to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
+r.plot(c(base.model.3cd, sens.models.2), c(base.model.3cd.name, sens.models.name.2))
+```
+
+```{r fig-sens9-depl-3cd, fig.cap="Relative biomass for the Sensitivity to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.2), c(base.model.3cd.name,
+sens.models.name.2), depl = TRUE)
+```
+
+```{r fig-sens9-f-3cd, fig.cap="Fishing mortality for the Sensitivity to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
+f.plot(c(base.model.3cd, sens.models.2), c(base.model.3cd.name, sens.models.name.2))
+```
+
 ```{r fig-sens10-biomass-3cd, fig.cap="Biomass for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 3CD."}
 b.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
+```
+
+```{r fig-sens10-recr-3cd, fig.cap="Recruitment for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 3CD."}
+r.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
+```
+
+```{r fig-sens10-depl-3cd, fig.cap="Relative biomass for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name,
+sens.models.name.10), depl = TRUE)
+```
+
+```{r fig-sens10-f-3cd, fig.cap="Fishing mortality for the Sensitivity to the parameters on the normal prior for natural mortality, M, Area 3CD."}
+f.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
 ```
 
 ```{r fig-sens11-biomass-3cd, fig.cap="Biomass for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 3CD."}
 b.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
 ```
 
+```{r fig-sens11-recr-3cd, fig.cap="Recruitment for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 3CD."}
+r.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
+```
+
+```{r fig-sens11-depl-3cd, fig.cap="Relative biomass for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name,
+sens.models.name.11), depl = TRUE)
+```
+
+```{r fig-sens11-f-3cd, fig.cap="Fishing mortality for the Sensitivity to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 3CD."}
+f.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
+```
+
 ```{r fig-sens12-biomass-3cd, fig.cap="Biomass for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 3CD."}
 b.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
 
+```{r fig-sens12-recr-3cd, fig.cap="Recruitment for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 3CD."}
+r.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
+```
+
+```{r fig-sens12-depl-3cd, fig.cap="Relative biomass for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name,
+sens.models.name.12), depl = TRUE)
+```
+
+```{r fig-sens12-f-3cd, fig.cap="Fishing mortality for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 3CD."}
+f.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
+```
+
 ```{r fig-sens13-biomass-3cd, fig.cap="Biomass for the Sensitivity to the assumed value of observation and process errors, Area 3CD."}
 b.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
+```
+
+```{r fig-sens13-recr-3cd, fig.cap="Recruitment for the Sensitivity to the assumed value of observation and process errors, Area 3CD."}
+r.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
+```
+
+```{r fig-sens13-depl-3cd, fig.cap="Relative biomass for the Sensitivity to the assumed value of observation and process errors, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name,
+sens.models.name.13), depl = TRUE)
+```
+
+```{r fig-sens13-f-3cd, fig.cap="Fishing mortality for the Sensitivity to the assumed value of observation and process errors, Area 3CD."}
+f.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
 ```
 
 ```{r fig-sens13-index-wcviss-3cd, fig.cap="Index fit for the Sensitivity to the assumed value of observation and process errors, WCVISS, Area 3CD."}
@@ -224,3 +367,15 @@ i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.nam
 b.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
+```{r fig-sens14-recr-3cd, fig.cap="Recruitment for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 3CD."}
+r.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
+```
+
+```{r fig-sens14-depl-3cd, fig.cap="Relative biomass for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name,
+sens.models.name.14), depl = TRUE)
+```
+
+```{r fig-sens14-f-3cd, fig.cap="Fishing mortality for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 3CD."}
+f.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
+```

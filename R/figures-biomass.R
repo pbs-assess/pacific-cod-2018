@@ -180,7 +180,7 @@ b.plot.mpd <- function(models,
   }
 
   if(depl){
-    p <- p + ylab("Reletive biomass")
+    p <- p + ylab("Relative biomass")
   }
 
   if(length(models) == 1){
