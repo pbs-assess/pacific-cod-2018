@@ -275,7 +275,7 @@ tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
 
 \clearpage
 
-## Growth
+## Growth parameters
 
 Growth parameters were estimated by fitting age and length data to the von Bertalanffy growth function (Equation \@ref(eq:vB))
 
@@ -448,7 +448,7 @@ get_par_df(lw_fits, 1) %>%
 
 \clearpage
 
-## Maturity
+## Maturity parameters
 
 Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage.Fish are assessed as being in one of six states: 1.immature; 2.maturing; 3.mature (resting); 4.mature; 5.mature (spent); and 6.mature (ripe). For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
 
@@ -470,6 +470,8 @@ mature. We can then calculate of the age at 50% maturity as: $-(\log(1 / 0.5 - 1
 Estimated parameters are provided in Tables \@ref(tab:mat-fifty-tab) and \@ref(tab:age-mat-coefs-table), and Figure \@ref(fig:age-mat-coefs). Estimated maturity ogives are shown in Figure \@ref(fig:age-mat-figs).
 
 *TO DO: Use proper notation in coefficients table (term column: intercept_male, slope_male etc ... convert to betas. RF not good enough at ////regular////expressions!*
+
+*TO DO: update mat-fifty-tab with coefficients directly from fit_mat_ogive. See Slack conversation #pcod Sept 5*
 
 Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2 y.
 
@@ -597,3 +599,43 @@ inner_join(est, se) %>%
 ```
 
 
+## Age-length keys
+For illustrative purposes, age-length keys (ALKs) were constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys for Pacific Cod. 
+
+For each area (3CD and 5ABCD), for each year in which age samples were available, the ALK was used to probabilistically “assign” ages to observed lengths from synoptic surveys and commercial catch data, using methods described in Isermann and Knight (2005), coded in the R package FSA (Ogle, 2012; 2018). 
+
+### Steps
+
+#### 1. Get the "age sample"" and construct the ALK
+The “age sample” contains all the specimen records with *both* an age (y) and length (cm) observations. Age samples are made using data from: 1. the Hecate Strait and Queen Charlotte Sound Synoptic surveys combined; and 2.the West Coast Vancouver Island Synoptic Survey.
+
+
+```{r}
+
+#Get annual obsered proportions at age
+prop.age.obs <-d_survey_samples %>% 
+  pcodALK::get_age_sample(surveys = c("SYN HS", "SYN QCS"),alkyr=c(2007, 2009, 2011)) %>%
+  pcodALK::get_age_proportions() %>%
+  write.csv("./Results/PropAgeObs_5ABCD.csv", row.names=T) 
+  
+prop.age.obs <-d_survey_samples %>% 
+  pcodALK::get_age_sample(surveys = c("SYN WCVI"),alkyr=c(2006, 2008, 2010)) %>% 
+  pcodALK::get_age_proportions() %>% 
+  write.csv("./Results/PropAgeObs_3CD.csv", row.names=T)
+
+
+#Filter the survey data then get age sample, then get age-length key (ALK)
+#one ALK per year
+#5ABCD
+yrs <- c(2007,2009,2011)
+alk_list <- list()
+for(i in seq_along(yrs)){
+  pcod.age <- d_survey_samples %>% 
+    pcodALK::get_age_sample(surveys = c("SYN HS", "SYN QCS"),alkyr=c(yrs[i])) %>% 
+    pcodALK::get_ALK(bin=2) %>% 
+    write.csv(paste0("./Results/ALK_5ABCD_",yrs[i],".csv"), row.names=T) 
+  alk_list[[i]] <- pcod.age
+}
+
+
+```
