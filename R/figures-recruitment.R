@@ -1,7 +1,9 @@
 r.plot <- function(models,
                    models.names,
-                   add.meds = FALSE){
+                   add.meds = FALSE,
+                   x.axis.angle = 0){
   ## add.meds: Add median and mean line
+  ## x.axis.angle: Angle of x-axis labels
 
   rt <- lapply(models,
                function(x){
@@ -39,7 +41,8 @@ r.plot <- function(models,
                     mapping = aes(color = Sensitivity)) +
     theme(legend.position = c(1, 1),
           legend.justification = c(1, 1),
-          legend.title = element_blank()) +
+          legend.title = element_blank(),
+          axis.text.x = element_text(angle = x.axis.angle)) +
     scale_y_continuous(labels = comma,
                        limits = c(0, NA)) +
     coord_cartesian(expand = FALSE) +
@@ -63,7 +66,8 @@ r.plot <- function(models,
 }
 
 r.devs.plot <- function(models,
-                        models.names){
+                        models.names,
+                        x.axis.angle = 0){
 
   rt <- lapply(models,
                function(x){
@@ -80,18 +84,18 @@ r.devs.plot <- function(models,
                  tmp %>% mutate(Year = rownames(tmp))})
   rt <- bind_rows(rt, .id = "Sensitivity") %>%
     as.tibble() %>%
-    rename(`Recruitment deviations` = `50%`) %>%
+    rename(`Log recruitment deviations` = `50%`) %>%
     mutate(Year = as.numeric(Year)) %>%
     mutate(Sensitivity = forcats::fct_relevel(Sensitivity,
                                               models.names[1],
                                               after = 0))
 
-  rt.median <- median(rt$`Recruitment deviations`)
-  rt.mean <- mean(rt$`Recruitment deviations`)
+  rt.median <- median(rt$`Log recruitment deviations`)
+  rt.mean <- mean(rt$`Log recruitment deviations`)
 
   horiz.offset <- 2
   p <- ggplot(rt, aes(x = Year,
-                      y = `Recruitment deviations`,
+                      y = `Log recruitment deviations`,
                       ymin = `5%`,
                       ymax = `95%`)) +
     geom_pointrange(data = rt,
@@ -100,7 +104,8 @@ r.devs.plot <- function(models,
                     mapping = aes(color = Sensitivity)) +
     theme(legend.position = c(1, 1),
           legend.justification = c(1, 1),
-          legend.title = element_blank()) +
+          legend.title = element_blank(),
+          axis.text.x = element_text(angle = x.axis.angle)) +
     scale_y_continuous(labels = comma) +
     coord_cartesian(expand = FALSE) +
     scale_x_continuous(breaks = seq(0, 3000, 5)) +

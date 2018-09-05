@@ -1,7 +1,6 @@
 i.plot <- function(models,
                    models.names,
                    ind,
-                   pan.let = "",
                    every = 1,
                    leg.loc = "topright"){
   ## ind is the index number
@@ -65,10 +64,7 @@ i.plot <- function(models,
     coord_cartesian(expand = FALSE) +
     scale_x_continuous(breaks = seq(0, 3000, every),
                        limits = c(min(i$Year - 1),
-                                  max(i$Year + 1))) +
-    geom_text(x = min(i$Year),
-              y = max(0.9 * max(i$uppercv, i$fit)),
-              label = ggpanel.letter(pan.let))
+                                  max(i$Year + 1))) #+
 
   if(length(models) == 1){
     p <- p + theme(legend.position = "none")
