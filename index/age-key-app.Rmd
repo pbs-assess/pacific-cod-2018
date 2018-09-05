@@ -57,13 +57,9 @@ In this appendix we analyse length, maturity and available ageing data to update
 ## Length, weight and maturity samples
 
 ### Synoptic survey data
-Length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island synoptic surveys were extracted from the GFBio database using the following criteria in SQL queries ...
+Length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island synoptic surveys were extracted from the GFBio database using the following criteria in SQL queries ... *TO DO*
 
-A summary of number of fish measured by year, survey and sex is provided in Table \@ref(tab:length-biosamples-surv). Survey length-frequencies are shown in Figure \@ref(fig:length-plotfrequencies-surv).
-
-A summary of number of fish weighed by year, survey and sex is provided in Table \@ref(tab:weight-biosamples).
-
-Assessment of maturity was done by visual inspection of the gonads. Fish are assessed as being in one of six states: immature, maturing, mature (resting), mature, mature (spent) and mature (ripe). For the purposes of estimating proportion mature-at-age, fish were considered mature if they were assessed to be in any one of the latter four states. A summary of number of maturity records by year and survey is provided in Table \@ref(tab:mat-biosamples).
+A summary of number of fish measured by year, survey and sex is provided in Table \@ref(tab:length-biosamples-surv). Survey length-frequencies are shown in Figure \@ref(fig:length-plotfrequencies-surv).A summary of number of fish weighed by year, survey and sex is provided in Table \@ref(tab:weight-biosamples).A summary of number of maturity records by year and survey is provided in Table \@ref(tab:mat-biosamples).
 
 ```{r length-biosamples-surv, results='asis'}
 x %>%
@@ -292,6 +288,8 @@ where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equati
 
 The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars); Table \@ref(tab:age-coeff-table)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)). 
 
+*TO DO: Use proper notation in coefficients table (term column: linf, k, t0. RF not good enough at ////regular////expressions!*
+
 
 \clearpage
 
@@ -311,21 +309,23 @@ vb_fits <-
   })
 ```
 
+\clearpage
 
-
-```{r age-coeff-table}
+```{r age-coeff-table, results='asis'}
   get_par_df <- function(.d, element = 1) {
   map_df(vb_fits, function(.x) {
     broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.9) %>%
     select(-std.error) %>%
-    mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+    mutate(Surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = sexes[element]) %>%
     filter(term != "sigma")
 })}
   get_par_df(vb_fits, 1) %>%
   bind_rows(get_par_df(vb_fits, 2)) %>%
-  mutate(surveys = factor(surveys, levels = rev(names(surveys_list))))     %>%
+  mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list))))     %>%
+  rename(Term = term, Estimate = estimate, Conf.low = conf.low, Conf.high = conf.high) %>%
+  dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>% 
   knitr::kable(caption = "von Bertalanffy growth coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", digits=3)
 
 ```
@@ -371,7 +371,7 @@ The current results for Hecate Strait (Table \@ref(tab:age-coeff-table)), are co
 
 \clearpage
 
-Length-weight parameters (Equation \@ref(eq:weight-length)) were  estimated using paired length and weight data from the synoptic surveys.
+Length-weight parameters (Equation \@ref(eq:weight-length)) were estimated using paired length and weight data from the synoptic surveys.
 
 \begin{equation}
 W_{s} = \alpha_{s}{L_{s}}^{\beta_{s}}
@@ -396,22 +396,24 @@ lw_fits <-
 get_par_df <- function(.d, element = 1) {
   map_df(lw_fits, function(.x) {
     broom::tidy(.x[[element]]$model) %>%
-    mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+    mutate(Surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = sexes[element]) %>%
     filter(term != "statistic")
 })}
 get_par_df(lw_fits, 1) %>%
   bind_rows(get_par_df(lw_fits, 2)) %>%
-  mutate(conf.low = estimate - 1.96 * std.error, conf.high = estimate + 1.96 * std.error) %>%
-  mutate(surveys = factor(surveys, levels = rev(names(surveys_list)))) %>%
-  mutate(term = gsub("\\(Intercept\\)", "ln(a_s)", term)) %>%
-  mutate(term = gsub("log\\(length\\)", "b_s", term)) %>%
-  knitr::kable(caption = "Length-weight coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", digits=2)
+  mutate(Conf.low = estimate - 1.96 * std.error, Conf.high = estimate + 1.96 * std.error) %>%
+  mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list)))) %>%
+  mutate(term = gsub("\\(Intercept\\)", "$ln(\\\\alpha_s)$", term)) %>%
+  mutate(term = gsub("log\\(length\\)", "$\\\\beta_s$", term)) %>%
+  rename(Term = term, Estimate = estimate) %>%
+  dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>% 
+  knitr::kable(caption = "Length-weight coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", digits=2, escape=FALSE)
 ```
 
 
-```{r age-lw-figs, fig.cap = "Caption", fig.asp=0.28, fig.width=9, out.width="6.5in"}
+```{r age-lw-figs, fig.cap = "Length-weight fits ...", fig.asp=0.28, fig.width=9, out.width="6.5in"}
 lw_figs <- map(lw_fits, ~ plot_length_weight(
   object_male = .x[[1]], object_female = .x[[2]],
       col = c(Female = "red", Male = "grey40"), lab_x_gap = 0.45) +
@@ -419,7 +421,7 @@ lw_figs <- map(lw_fits, ~ plot_length_weight(
 cowplot::plot_grid(plotlist = lw_figs, nrow = 1)
 ```
 
-```{r age-lw-pars, fig.asp=0.4, fig.cap = "Caption"}
+```{r age-lw-pars, fig.asp=0.4, fig.cap = "Length-weight coefficients ..."}
 get_par_df <- function(.d, element = 1) {
   map_df(lw_fits, function(.x) {
     broom::tidy(.x[[element]]$model) %>%
@@ -448,7 +450,7 @@ get_par_df(lw_fits, 1) %>%
 
 ## Maturity
 
-Maturity-at-age parameters were estimated by fitting observed age and maturity data to the logistic function
+Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage.Fish are assessed as being in one of six states: 1.immature; 2.maturing; 3.mature (resting); 4.mature; 5.mature (spent); and 6.mature (ripe). For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
 
 We fit maturity ogives as logistic regressions of maturity (mature vs. not mature) against length or age:
 
@@ -460,12 +462,16 @@ y_i &\sim \mathrm{Binomial}(\pi_i)\\
 
 where $y_i$ represents a 1 if fish $i$ is considered mature and a 0 if fish $i$
 is considered immature. The $\beta$ parameters represent estimated coefficients,
-$x_i$ represents either the length or age of fish $i$, and $F_i$ represents
+$x_i$ represents the age of fish $i$, and $F_i$ represents
 a binary predictor that is 1 if the fish is female and 0 if the fish is male.
 The variable $\pi_i$ represents the expected probability of fish $i$ being
 mature. We can then calculate of the age at 50% maturity as: $-(\log(1 / 0.5 - 1) + \beta_0) / \beta_1$ or $-(\log(1) + \beta_0) / \beta_1$ for males and $-(\log(1) + \beta_0 + \beta_2) / (\beta_1 + \beta_3)$ for females.
 
-Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage. For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
+Estimated parameters are provided in Tables \@ref(tab:mat-fifty-tab) and \@ref(tab:age-mat-coefs-table), and Figure \@ref(fig:age-mat-coefs). Estimated maturity ogives are shown in Figure \@ref(fig:age-mat-figs).
+
+*TO DO: Use proper notation in coefficients table (term column: intercept_male, slope_male etc ... convert to betas. RF not good enough at ////regular////expressions!*
+
+Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2 y.
 
 ```{r age-fit-maturity}
 surveys_list <- list(
@@ -479,7 +485,89 @@ mat_fits <- map(surveys_list, function(.survey) {
 })
 ```
 
-```{r age-mat-figs, fig.cap = "Caption", fig.asp=1.7, fig.width=4.5, out.width="3.4in"}
+\clearpage
+
+```{r age-mat-coefs-table, results='asis'}
+
+mat_coefs <- plyr::ldply(mat_fits, function(.x) {
+  broom::tidy(.x$model, conf.int = TRUE)
+})
+
+est <- group_by(mat_coefs, .id) %>%
+  summarise(
+    intercept_male = estimate[term == "(Intercept)"],
+    intercept_female = estimate[term == "(Intercept)"] + estimate[term == "female"],
+    slope_male = estimate[term == "age_or_length"],
+    slope_female = estimate[term == "age_or_length"] +
+    estimate[term == "age_or_length:female"]
+  ) %>% reshape2::melt(variable.name = "term", value.name = "estimate")
+
+combine_se <- function(se1, se2) {
+  sqrt(se2^2 - se1^2)
+}
+
+se <- group_by(mat_coefs, .id) %>%
+  summarise(
+    intercept_male = std.error[term == "(Intercept)"],
+    intercept_female = combine_se(std.error[term == "(Intercept)"],
+      std.error[term == "female"]),
+    slope_male = std.error[term == "age_or_length"],
+    slope_female = combine_se(std.error[term == "age_or_length"],
+      std.error[term == "age_or_length:female"])
+  ) %>% reshape2::melt(variable.name = "term", value.name = "std.error")
+inner_join(est, se) %>%
+  mutate(.id = factor(.id, levels = names(surveys_list))) %>% 
+  mutate(Conf.low = estimate - 1.96 * std.error, Conf.high = estimate + 1.96 * std.error) %>%
+  rename(Survey = .id, Term = term, Estimate = estimate) %>%  
+  dplyr::select(Survey,Term, Estimate, Conf.low, Conf.high) %>% 
+   knitr::kable(caption = "coefficients from the logistic regression maturity ogives", booktabs = TRUE, linesep = "", digits=2)
+
+```
+
+
+```{r mat-fifty-tab, results = 'asis'}
+  
+ #based on outputs from age-mat-coefs-table
+  New <- inner_join(est, se) %>%
+    mutate(.id = factor(.id, levels = names(surveys_list))) %>%
+    rename(Survey = .id, Term = term, Estimate = estimate) %>%
+    dplyr::select(Survey,Term, Estimate)
+
+ #Get age at 50% maturity
+ Survs <- c("SYN HS, SYN QCS, SYN WCVI", "SYN HS, SYN QCS", "SYN WCVI")
+ a50table <- as.data.frame(matrix(nrow=6, ncol=3))
+ colnames(a50table) <- c("Survey", "Sex", "Estimated age-at-50% maturity")
+ ii <- 0
+
+ for(i in seq_along(Survs)){
+  Pars <- New %>%
+    dplyr::filter(Survey==Survs[i])
+
+  beta0 <- Pars$Estimate[which(Pars$Term=="intercept_male")]
+  beta1 <- Pars$Estimate[which(Pars$Term=="slope_male")]
+  beta2 <- Pars$Estimate[which(Pars$Term=="intercept_female")]
+  beta3 <- Pars$Estimate[which(Pars$Term=="slope_female")]
+
+   a50table[ii+1,1] <- Survs[i]
+   a50table[ii+2,1] <- Survs[i]
+   a50table[ii+1,2] <- "Female"
+   a50table[ii+2,2] <- "Male"
+   a50table[ii+1,3] <- -(log(1)+beta0+beta2)/(beta1 + beta3)
+   a50table[ii+2,3] <- -(log(1)+beta0)/beta1
+
+     ii <- ii+2
+
+ }
+  a50table %>%
+  as.data.frame() %>%
+  knitr::kable(caption = "Estimates of age at 50 per cent maturity from the logistic regression maturity  ogives.",     booktabs = TRUE, linesep = "", digits=1)
+  
+```
+
+
+\clearpage
+
+```{r age-mat-figs, fig.cap = "Age at maturity ...", fig.asp=1.7, fig.width=4.5, out.width="3.4in"}
 mat_figs <- map(mat_fits, ~ plot_mat_ogive(.x) +
     coord_cartesian(xlim = c(0, 8.2), ylim = c(0, 1), expand = FALSE))
 for (i in seq_along(mat_figs))
@@ -487,19 +575,14 @@ for (i in seq_along(mat_figs))
 cowplot::plot_grid(plotlist = mat_figs, ncol = 1)
 ```
 
+
+
 ```{r age-mat-coefs, fig.cap = "Rearranged coefficients from the logistic regression maturity ogives. Parameters are in logit or log odds space. The intercept refers to the log odds of maturity for a theoretical fish of age zero.", fig.width=6, out.width="4.5in"}
+
 mat_coefs <- plyr::ldply(mat_fits, function(.x) {
   broom::tidy(.x$model, conf.int = TRUE)
 })
 
-# mutate(mat_coefs, .id = factor(.id, levels = names(surveys_list))) %>%
-# ggplot(
-#   aes(ymin = conf.low, ymax = conf.high, y = estimate, x = term, colour = .id)) +
-#   geom_pointrange(position = position_dodge(width = 0.4)) +
-#   coord_flip() +
-#   theme_pbs() +
-#   xlab("") + ylab("Coefficient") +
-#   labs(colour = "Survey group")
 
 est <- group_by(mat_coefs, .id) %>%
   summarise(
@@ -535,9 +618,7 @@ inner_join(est, se) %>%
   xlab("") + ylab("Coefficient") +
   labs(colour = "Survey group") +
   scale_color_brewer(palette = "Dark2")
+
 ```
 
 
-Estimated parameters are provided in Table TODO Estimated maturity ogives are shown in Figure \@ref(fig:mat-figs). Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2. Estimates older for WCVI than HS/QCS.
-
-- RF to check Westrheim report for previous estimates

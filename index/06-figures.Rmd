@@ -39,13 +39,13 @@ print(i.plot(base.model.5abcd, base.model.5abcd.name, 5, "e", every = 5), vp = g
 ```
 
 
-```{r fig-base-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD.  The green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1986--2004. The red dashed line shows the Limit Reference Point (LRP) which is the lowest biomass from which the stock has recovered, in this case it is the biomass estimate for 1971."}
+```{r fig-base-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD.  The green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the Limit Reference Point (LRP) which is the lowest biomass from which the stock has recovered, in this case it is the biomass estimate for 1971."}
 b.plot(base.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
        add.hist.ref = TRUE,
        lrp = c(1971, 1971),
-       usr = c(1986,2004))
+       usr = c(1956,2004))
 ```
 
 ```{r fig-base-recr-5abcd, fig.cap="Recruitment for the Reference Model, Area 5ABCD.  The green dashed line shows the mean of the MCMC posterior medians, the blue dashed line shows the median of the MCMC posterior medians."}
