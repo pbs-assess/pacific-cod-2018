@@ -55,6 +55,12 @@ r.plot(base.model.5abcd,
        add.meds = TRUE)
 ```
 
+```{r fig-base-retro-biomass-5abcd, fig.cap="Retrospective biomass for the Reference Model, Area 5ABCD."}
+b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
+           c(base.model.5abcd.name, retro.names),
+           depl = FALSE)
+```
+
 ```{r fig-sens1-biomass-5abcd, fig.cap="Biomass for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of the CPUE indices, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
 ```
@@ -162,6 +168,12 @@ r.plot(base.model.3cd,
        base.model.3cd.name,
        type = 1,
        add.meds = TRUE)
+```
+
+```{r fig-base-retro-biomass-3cd, fig.cap="Retrospective biomass for the Reference Model, Area 3CD."}
+b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
+           c(base.model.3cd.name, retro.names),
+           depl = FALSE)
 ```
 
 ```{r fig-sens8-biomass-3cd, fig.cap="Biomass for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, to removal of the CPUE indices, and to the removal of the Triennial survey index, Area 3CD."}
