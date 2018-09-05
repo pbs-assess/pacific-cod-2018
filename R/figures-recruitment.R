@@ -1,17 +1,14 @@
 r.plot <- function(models,
                    models.names,
-                   type = 1,
-                   add.meds = FALSE){
-  ## type: 1 = recruitment, not 1 = recruitment deviations
+                   add.meds = FALSE,
+                   x.axis.angle = 0){
   ## add.meds: Add median and mean line
+  ## x.axis.angle: Angle of x-axis labels
 
   rt <- lapply(models,
                function(x){
-                 if(type == 1){
-                   x$mcmccalcs$recr.quants
-                 }else{
-                   x$mcmccalcs$recr.devs.quants
-                 }})
+                   x$mcmccalcs$recr.quants})
+
   yrs <- lapply(rt,
                 function(x){
                   as.numeric(colnames(x))})
@@ -44,7 +41,8 @@ r.plot <- function(models,
                     mapping = aes(color = Sensitivity)) +
     theme(legend.position = c(1, 1),
           legend.justification = c(1, 1),
-          legend.title = element_blank()) +
+          legend.title = element_blank(),
+          axis.text.x = element_text(angle = x.axis.angle)) +
     scale_y_continuous(labels = comma,
                        limits = c(0, NA)) +
     coord_cartesian(expand = FALSE) +
@@ -60,6 +58,60 @@ r.plot <- function(models,
                         size = 1,
                         show.guide = FALSE)
   }
+
+  if(length(models) == 1){
+    p <- p + theme(legend.position = "none")
+  }
+  p
+}
+
+r.devs.plot <- function(models,
+                        models.names,
+                        x.axis.angle = 0){
+
+  rt <- lapply(models,
+               function(x){
+                   x$mcmccalcs$recr.devs.quants})
+
+  yrs <- lapply(rt,
+                function(x){
+                  as.numeric(colnames(x))})
+
+  names(rt) <- models.names
+  rt <- lapply(rt,
+               function(x){
+                 tmp <- as.data.frame(t(x))
+                 tmp %>% mutate(Year = rownames(tmp))})
+  rt <- bind_rows(rt, .id = "Sensitivity") %>%
+    as.tibble() %>%
+    rename(`Log recruitment deviations` = `50%`) %>%
+    mutate(Year = as.numeric(Year)) %>%
+    mutate(Sensitivity = forcats::fct_relevel(Sensitivity,
+                                              models.names[1],
+                                              after = 0))
+
+  rt.median <- median(rt$`Log recruitment deviations`)
+  rt.mean <- mean(rt$`Log recruitment deviations`)
+
+  horiz.offset <- 2
+  p <- ggplot(rt, aes(x = Year,
+                      y = `Log recruitment deviations`,
+                      ymin = `5%`,
+                      ymax = `95%`)) +
+    geom_pointrange(data = rt,
+                    size = 0.25,
+                    position = position_dodge(width = horiz.offset),
+                    mapping = aes(color = Sensitivity)) +
+    theme(legend.position = c(1, 1),
+          legend.justification = c(1, 1),
+          legend.title = element_blank(),
+          axis.text.x = element_text(angle = x.axis.angle)) +
+    scale_y_continuous(labels = comma) +
+    coord_cartesian(expand = FALSE) +
+    scale_x_continuous(breaks = seq(0, 3000, 5)) +
+    geom_hline(yintercept = 0,
+               linetype = "dashed",
+               size = 1)
 
   if(length(models) == 1){
     p <- p + theme(legend.position = "none")

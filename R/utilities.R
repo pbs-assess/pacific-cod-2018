@@ -639,22 +639,6 @@ plotBars.fn <- function(x,y,gap=0,scalar=1e6,add=F,ciCol="black",ciLty=1,ciLwd=1
   segments(x,y$hi/scalar,x,y$value/scalar+gap,col=ciCol,lty=ciLty,lwd=ciLwd)
 }
 
-ggvp <- function(x, y){
-  viewport(layout.pos.row = x, layout.pos.col = y)
-}
-
-ggpanel.letter <- function(letter){
-  if(letter == ""){
-    return("")
-  }
-  if(is.character(letter)){
-    let <- letter
-  }else{
-    let <- letters[letter]
-  }
-  paste0("(", let, ")")
-}
-
 panel.letter <- function(letter){
   ## Adds letters to plot panels
   ## letter - the letter to place on the panel
