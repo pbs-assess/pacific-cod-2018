@@ -38,7 +38,6 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5),
           ncol = 3,
           labels = c("(a)", "(b)", "(c)", "(d)", "(e)"),
           label_x = 0.2)
-
 ```
 
 
@@ -48,7 +47,18 @@ b.plot(base.model.5abcd,
        depl = FALSE,
        add.hist.ref = TRUE,
        lrp = c(1971, 1971),
-       usr = c(1986,2004))
+       usr = c(1956, 2004))
+```
+
+```{r fig-base-depl-5abcd, fig.cap="Relative biomass for the Reference Model, Area 5ABCD."}
+b.plot(base.model.5abcd,
+       base.model.5abcd.name,
+       depl = TRUE)
+```
+
+```{r fig-base-f-5abcd, fig.cap="Fishing mortality for the Reference Model, Area 5ABCD."}
+f.plot(base.model.5abcd,
+       base.model.5abcd.name)
 ```
 
 ```{r fig-base-recr-5abcd, fig.cap="Recruitment (a) and recruitment deviations (b) for the Reference Model, Area 5ABCD.  The green dashed line shows the mean of the MCMC posterior medians, the blue dashed line shows the median of the MCMC posterior medians."}
@@ -245,11 +255,22 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
           nrow = 2,
           ncol = 2,
           labels = c("(a)", "(b)", "(c)", "(d)"),
-          label_x = 0.2)
+          label_x = c(0.15, 0.13, 0.13, 0.2))
 ```
 
 ```{r fig-base-biomass-3cd, fig.cap="Biomass for the Reference Model, Area 3CD."}
 b.plot(base.model.3cd, base.model.3cd.name)
+```
+
+```{r fig-base-depl-3cd, fig.cap="Relative biomass for the Reference Model, Area 3CD."}
+b.plot(base.model.3cd,
+       base.model.3cd.name,
+       depl = TRUE)
+```
+
+```{r fig-base-f-3cd, fig.cap="Fishing mortality for the Reference Model, Area 3CD."}
+f.plot(base.model.3cd,
+       base.model.3cd.name)
 ```
 
 ```{r fig-base-recr-3cd, fig.cap="Recruitment (a) and recruitment deviations (b) for the Reference Model, Area 3CD.  The green dashed line shows the mean of the MCMC posterior medians, the blue dashed line shows the median of the MCMC posterior medians."}
@@ -258,7 +279,7 @@ plot_grid(r.plot(base.model.3cd, base.model.3cd.name, add.meds = TRUE, x.axis.an
           nrow = 1,
           ncol = 2,
           labels = c("(a)", "(b)"),
-          label_x = c(0.15, 0.1))
+          label_x = c(0.17, 0.1))
 ```
 
 ```{r fig-base-retro-biomass-3cd, fig.cap="Retrospective biomass for the Reference Model, Area 3CD."}
