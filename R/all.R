@@ -38,7 +38,10 @@ source(file.path(rootd.R, "figures-catch.R"))
 source(file.path(rootd.R, "figures-indices.R"))
 source(file.path(rootd.R, "figures-fishing-mortality.R"))
 source(file.path(rootd.R, "figures-mcmc-diagnostics.R"))
+source(file.path(rootd.R, "get-alk.R"))
+source(file.path(rootd.R, "get-age-sample.R"))
 source(file.path(rootd.data, "get-data.R"))
+
 
 ## # Code to setup forecast model runs
 ## # source("forecast-catch-levels.r")
