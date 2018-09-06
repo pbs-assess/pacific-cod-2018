@@ -574,6 +574,9 @@ inner_join(est, se) %>%
 
 ```
 
+## Mean weight in commercial catch
+
+*TO DO*
 
 ## Age-length keys
 For illustrative purposes, age-length keys (ALKs) were constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys. 
