@@ -573,7 +573,7 @@ inner_join(est, se) %>%
 
 
 ## Age-length keys
-For illustrative purposes, age-length keys (ALKs) were constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys for Pacific Cod. 
+For illustrative purposes, age-length keys (ALKs) were constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys. 
 
 For each area (3CD and 5ABCD), for each year in which age samples were available, the ALK was used to probabilistically “assign” ages to observed lengths from synoptic surveys and commercial catch data, using methods described in Isermann and Knight (2005), coded in the R package FSA (Ogle, 2012; 2018). 
 
@@ -582,33 +582,35 @@ For each area (3CD and 5ABCD), for each year in which age samples were available
 #### 1. Get the "age sample"" and construct the ALK
 The “age sample” contains all the specimen records with *both* an age (y) and length (cm) observations. Age samples are made using data from: 1. the Hecate Strait and Queen Charlotte Sound Synoptic surveys combined; and 2.the West Coast Vancouver Island Synoptic Survey.
 
-
-```{r}
-
-#Get annual obsered proportions at age
-prop.age.obs <-d_survey_samples %>% 
-  pcodALK::get_age_sample(surveys = c("SYN HS", "SYN QCS"),alkyr=c(2007, 2009, 2011)) %>%
-  pcodALK::get_age_proportions() %>%
-  write.csv("./Results/PropAgeObs_5ABCD.csv", row.names=T) 
-  
-prop.age.obs <-d_survey_samples %>% 
-  pcodALK::get_age_sample(surveys = c("SYN WCVI"),alkyr=c(2006, 2008, 2010)) %>% 
-  pcodALK::get_age_proportions() %>% 
-  write.csv("./Results/PropAgeObs_3CD.csv", row.names=T)
-
+```{r, echo=TRUE}
 
 #Filter the survey data then get age sample, then get age-length key (ALK)
 #one ALK per year
 #5ABCD
 yrs <- c(2007,2009,2011)
-alk_list <- list()
+alk_listHQ <- list()
 for(i in seq_along(yrs)){
-  pcod.age <- d_survey_samples %>% 
-    pcodALK::get_age_sample(surveys = c("SYN HS", "SYN QCS"),alkyr=c(yrs[i])) %>% 
-    pcodALK::get_ALK(bin=2) %>% 
-    write.csv(paste0("./Results/ALK_5ABCD_",yrs[i],".csv"), row.names=T) 
-  alk_list[[i]] <- pcod.age
+  pcod.age <- x %>% 
+    get_age_sample(surveys = c("SYN HS", "SYN QCS"),alkyr=c(yrs[i])) %>% 
+    get_ALK(bin=2) 
+    alk_listHQ[[i]] <- pcod.age
 }
+
+#3CD
+yrs <- c(2006,2008,2010)
+alk_listWC <- list()
+for(i in seq_along(yrs)){
+  pcod.age <- x %>% 
+    get_age_sample(surveys = c("SYN WCVI"),alkyr=c(yrs[i])) %>% 
+    get_ALK(bin=2) 
+    alk_listWC[[i]] <- pcod.age
+}
+
+```
+
+```{r}
+
 
 
 ```
+
