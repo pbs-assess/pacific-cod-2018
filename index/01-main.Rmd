@@ -140,36 +140,38 @@ in substantial uncertainties in MSY-based reference points for Hecate Strait Pac
 
 @sinclair2005 and @forrest2013 acknowledged that the absolute estimate of biomass in 1971 is dependent on model formulation, but found that most model formulations agreed that 1971 was the year in which the stock was lowest and subsequently recovered to above average levels. Therefore, they recommended the LRP be set at $B_{1971}$ estimated by the assessment model, rather than the absolute 1971 biomass estimated in their specific stock assessment. The Groundfish Subcommittee of PSARC [@fargo2005] subsequently recommended the use of $B_{1971}$ as the LRP for the Hecate Strait stock and it was again acepted as LRP by a Regional Peer Review (RPR) process in 2014 [@dfo2015]. Concurrently, long-term average Biomass ($B_{Avg}$) between 1956 and 2004, and long-term average fishing mortality ($F_{Avg}$) for the same period were accepted by the RPR for the USR and LRR, respectively [@dfo2015].
 
-While there was no precedent for reference points in Queen Charlotte Sound, the minimum stock size from which the biomass was estimated to have recovered to an above average level occurred in 1985 [@forrest2013] These authors proposed $B_{1985}$ as the LRP for the Queen Charlotte Sound, with average biomass and fishing mortality for the period 1956-2004 as the USR and LRR, but no reference points were accepted by the RPR for Queen Charlotte Sound [@dfo2015-2]. The main reason cited was that the fishery in Area 5AB had essentially become an "avoidance" fishery for Pacifc Cod (to avoid breaching the Pacific Cod TAC before TACs for other groundfish species had been realised). Therefore the RPR participants felt that post-1996 estimates of abundance, which were largely informed by low catches, could not be assumed to accurately reflect abundance.
+While there was no precedent for reference points in Queen Charlotte Sound, the minimum stock size from which the biomass was estimated to have recovered to an above average level occurred in 1985 [@forrest2013]. These authors proposed $B_{1985}$ as the LRP for the Queen Charlotte Sound, with average biomass and fishing mortality for the period 1956-2004 as the USR and LRR, respectively. However, no reference points were accepted at the RPR for Queen Charlotte Sound [@dfo2015-2]. The main reason cited was that the fishery in Area 5AB had essentially become an "avoidance" fishery for Pacifc Cod (to avoid breaching the Pacific Cod TAC before TACs for other groundfish species had been realised). Therefore the RPR participants felt that post-1996 estimates of abundance, which were largely informed by low catches, could not be assumed to accurately reflect abundance.
 
-Based on the recommendations of the 2005 Scientific Review Committee [@fargo2005], we recommend continued use of historical-based reference points for the present assessment cycle. However, we note that the recommendation of @fargo2005 was unclear as to whether the calculation of average biomass and fishing mortality should continue to be fixed for the period 1956-2004, or whether the average should be updated to include recent years. In a later section, we show that there is little difference between the estimated
-average biomass for the period 1956-2004 compared to the period 1956-2017. For consistency and stability, we suggest continuing to use averages based on the shorter period 1956-2004.
+@forrest2018 simulation-tested a set of alternative reference points for Hecate Strait Pacific Cod and Rock Sole (*Lepidopsetta* spp.). They found that the "history-based" reference points (or operational control points, OCPs) that had been used for Pacific Cod in 2013 [@forrest2013] were robust to stock assessment biases because they scaled in the same direction as bias in estimates of biomass and fishing mortality. However, they were not necessarily good proxies for MSY-based reference points and tended to produce more precautionary catch recommendations than reference points based on $B_{MSY}$, $B_{0}$ and the spawning potential ratio (SPR; @clark1991). While the "history-based" reference points outperformed others in terms of long-term conservation outcomes, there were sometimes large trade-offs in terms of catch and catch stability [@forrest2018]. Reference points based on estimated $B_{0}$ performed similarly to the "history-based" reference points but tended to have better trade-off properties [@forrest2018].
 
-A list of candidate reference points to use in decision tables for Pacific Cod is shown in Table XX. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included:
+In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. Suggested reference points are provided in Table \@ref(tab:suggested-ref-points). In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2018}$ and (ii) $B_{2019}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative 2018 projected catch levels; and whether biomass is projected to increase or decrease under alternative 2018 projected catch levels.
 
-- $F_{2013}$
-- $B_{2014}$
+The list of performance measures that will be used in decision tables for the Pacific Cod stocks in Hecate Strait and Queen Charlotte Sound (Area 5ABCD) is given in Table XX. Biomass-based performance measures were calculated as projected 2019 biomass relative to reference points, under alternative 2018 projected catch levels. Fishing mortality-based performance measures were calculated as projected 2018 fishing mortality relative to the reference points, under alternative 2018 projected catch levels. We do not currently present alternative reference points in this assessment (e.g., reference points based $B_{0}$), but suggest these could be explored for these stocks.
 
-These will be used in the decision tables to show whether:
+*TO DO: Move this table to Tables section when it is made*
 
-- fishing mortality is projected to increase or decrease under alternative
-  2018 projected catch levels; and
-- whether biomass is projected to increase or decrease under alternative
-  2018 projected catch levels. Estimates of other candidate reference points,
-  based on MSY calculations; and historical averages based on a longer time
-  period are presented for comparison but are not used in decision tables.
+```{r suggested-ref-points}
 
-The list of performance measures that will be used in decision tables for the
-Pacific Cod stocks in Hecate Strait and Queen Charlotte Sound (Area 5ABCD) is
-given in Table XX. Biomass-based performance measures were calculated as
-projected 2019 biomass relative to reference points, under alternative 2018
-projected catch levels. Fishing mortality-based performance measures were
-calculated as projected 2018 fishing mortality relative to the reference points,
-under alternative 2018 projected catch levels. We did not explore any
-alternative reference points in this assessment (e.g., reference points based
-on spawning biomass per recruit; @clark1991), but recommend exploration and
-simulation-testing of alternatives in the context of a feedback simulation
-analysis.
+df <- data.frame(Reference_point = c("Bmin",
+                     "Bavg",
+                     "Favg",
+                     "B2019",
+                     "F2018"),
+                 Definition = c(
+                   "Minimum biomass from which the stock recovered to above average level. Area 5ABCD: Biomass in 1971; Area 3CD: Biomass in 1986",
+                   "Average biomass for the period 1956-2004",
+                   "Average fishing mortality for the period 1956-2004",
+                   "Projected biomass in 2019",
+                   "Projected fishing mortality in 2018"),
+                 Role = c("LRP",
+                        "USR",
+                        "LRR",
+                        "Benchmark",
+                        "Benchmark")) 
+   knitr::kable(df, caption = "List of reference points used for the Reference Case 5ABCD and 3CD models.", booktabs = TRUE, linesep = "")
+
+```
+
 
 
 # REFERENCE CASE MODELS
