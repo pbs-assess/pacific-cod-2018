@@ -68,7 +68,19 @@ many species as possible.
 
 ### West Coast Vancouver Island Synoptic Survey
 
-*TO DO*
+*TODO* edit as needed:
+
+The West Coast Vancouver Island synoptic bottom trawl survey was first
+conducted in 2004 and is conducted in alternating (even-numbered) years on
+a chartered commercial trawler. The survey area is off the west coast of
+Vancouver Island from approximately 49$^\circ$ 12$^\prime$ to 50$^\circ$
+36$^\prime$ North latitude and approximately 124$^\circ$ 48$^\prime$ to
+128$^\circ$ 30$^\prime$ West longitude . The southern boundary is contiguous
+with the Canada/U.S. boundary. The survey has a single aerial stratum in
+Pacific Fishery Management Area regions 3C and 3D  separated into four depth
+strata: 50-125 m; 125-200 m; 200-330 m; and 330-500 m. Approximately 150 to 180
+4 km^2^ blocks are selected randomly among the four depth strata when
+conducting each survey.
 
 ### Swept area analysis
 For all Canadian surveys, a swept area estimate of biomass in any year y was obtained
