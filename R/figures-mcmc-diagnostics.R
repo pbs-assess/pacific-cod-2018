@@ -220,8 +220,9 @@ make.traces.plot <- function(model,
 
   mc <- model$mcmc$params.est
   ## Remove some of them
-  mc <- mc[, -grep("ro", colnames(mc))]
+  ## mc <- mc[, -grep("ro", colnames(mc))]
   mc <- mc[, -grep("rinit", colnames(mc))]
+  mc <- mc[, -grep("rbar", colnames(mc))]
   mc <- mc[, -grep("bo", colnames(mc))]
   mc <- mc[, -grep("msy", colnames(mc))]
   mc <- mc[, -grep("ssb", colnames(mc))]
@@ -264,8 +265,9 @@ make.autocor.plot <- function(model){
 
   mc <- model$mcmc$params.est
   ## Remove some of them
-  mc <- mc[, -grep("ro", colnames(mc))]
+  ## mc <- mc[, -grep("ro", colnames(mc))]
   mc <- mc[, -grep("rinit", colnames(mc))]
+  mc <- mc[, -grep("rbar", colnames(mc))]
   mc <- mc[, -grep("bo", colnames(mc))]
   mc <- mc[, -grep("msy", colnames(mc))]
   mc <- mc[, -grep("ssb", colnames(mc))]
@@ -377,8 +379,9 @@ make.pairs.plot <- function(model){
 
   mc <- as.data.frame(model$mcmc$params.est)
   ## Remove some of them
-  mc <- mc[, -grep("ro", colnames(mc))]
+  ## mc <- mc[, -grep("ro", colnames(mc))]
   mc <- mc[, -grep("rinit", colnames(mc))]
+  mc <- mc[, -grep("rbar", colnames(mc))]
   mc <- mc[, -grep("bo", colnames(mc))]
   mc <- mc[, -grep("msy", colnames(mc))]
   mc <- mc[, -grep("ssb", colnames(mc))]
