@@ -4,6 +4,18 @@
 
 ## Area 5ABCD
 
+
+```{r fig-sens15-biomass-5abcd, fig.cap="Biomass."}
+b.plot(c(base.model.5abcd, sens.models.15), c(base.model.5abcd.name, sens.models.name.15))
+```
+
+```{r fig-sens15-biomass-3cd, fig.cap="Biomass."}
+b.plot(c(base.model.3cd, sens.models.16), c(base.model.3cd.name, sens.models.name.16))
+```
+
+
+
+
 ```{r fig-catch-5abcd, fig.cap="Catch for Area 5ABCD"}
 make.catches.plot(catch.5)
 ```

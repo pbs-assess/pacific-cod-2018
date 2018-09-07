@@ -85,11 +85,11 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 base.model.3cd.name <- "Reference model 3CD"
 base.model.3cd.dir.name <- file.path(model.dir,
-                                     "1_1a_3CD_BASE_loc-yr-interact_rsoleq_0228sd03")
+                                     "1_1a_3CD_BASE_fix-localities")
 
 base.model.5abcd.name <- "Reference model 5ABCD"
 base.model.5abcd.dir.name <- file.path(model.dir,
-                                       "0_1a_5ABCD_BASE_loc-yr-interact_rsoleq_06_019")
+                                       "0_1a_5ABCD_BASE_fix-localities")
 
 if(verbose){
   cat0("Base model directory name for reference model 5abcd:\n", base.model.5abcd.dir.name)
@@ -304,6 +304,20 @@ sens.models.name.14 <- c("Fix sigma W = 0.4",
                          "Fix sigma W = 0.15")
 
 ## -----------------------------------------------------------------------------
+## Sensitivity models group 15 (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.15 <- c(file.path(model.dir,
+                                      "0_1a_5ABCD_BASE_loc-yr-interact_rsoleq_06_019"))
+sens.models.name.15 <- c("Old base model -- localities incorrect")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 16 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.16 <- c(file.path(model.dir,
+                                      "1_1a_3CD_BASE_loc-yr-interact_rsoleq_0228sd03"))
+sens.models.name.16 <- c("Old base model - localities incorrect")
+
+## -----------------------------------------------------------------------------
 ## Retrospectives
 ## -----------------------------------------------------------------------------
 retro.dir.names.3cd <- c(file.path(base.model.3cd.dir.name,
@@ -353,6 +367,10 @@ load.models.into.parent.env <- function(){
   sens.models.12 <<- load.models(sens.models.dir.name.12)
   sens.models.13 <<- load.models(sens.models.dir.name.13)
   sens.models.14 <<- load.models(sens.models.dir.name.14)
+
+  ## fix localities TEST
+  sens.models.15 <<- load.models(sens.models.dir.name.15)
+  sens.models.16 <<- load.models(sens.models.dir.name.16)
 
   base.retro.models.5abcd <<- load.models(retro.dir.names.5abcd)
   base.retro.models.3cd <<- load.models(retro.dir.names.3cd)
@@ -405,7 +423,9 @@ build <- function(ovwrt.base = FALSE,
                               unlist(sens.models.dir.name.11),
                               unlist(sens.models.dir.name.12),
                               unlist(sens.models.dir.name.13),
-                              unlist(sens.models.dir.name.14))
+                              unlist(sens.models.dir.name.14),
+                              unlist(sens.models.dir.name.15),
+                              unlist(sens.models.dir.name.16))
   ## Sensitivity models
   for(model.nm in sens.models.names.list){
     create.rdata.file(model.nm,

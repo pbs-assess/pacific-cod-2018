@@ -38,7 +38,8 @@ make.priors.posts.plot <- function(model,
   ## mc <- mc[, -grep("tau", names(mc))]
   ## mc <- mc[, -grep("sigma", names(mc))]
   mc <- mc[, -grep("log_rinit", names(mc))]
-  mc <- mc[, -grep("log_ro", names(mc))]
+  mc <- mc[, -grep("log_rbar", names(mc))]
+  ## mc <- mc[, -grep("log_ro", names(mc))]
   post.names <- names(mc)
 
   prior.specs <- as.data.frame(model$ctl$params)
@@ -65,6 +66,26 @@ make.priors.posts.plot <- function(model,
   rownames(q.specs) <- paste0("log_q", 1:num.q.params)
   colnames(q.specs) <- colnames(prior.specs)
   prior.specs <- rbind(prior.specs, q.specs)
+
+  ## Remove log part for q's with uniform priors
+  j <- prior.specs
+  non.q <- j[-grep("q", rownames(j)),]
+  non.q <- non.q %>%
+    rownames_to_column() %>%
+    as.tibble()
+
+  q <- j[grep("q", rownames(j)),]
+
+  q <- q %>%
+    rownames_to_column() %>%
+    mutate(rowname = if_else(!prior,
+                             gsub("log_", "", rowname),
+                             rowname))
+
+  prior.specs <- as.data.frame(rbind(non.q, q))
+  rownames(prior.specs) <- prior.specs$rowname
+  prior.specs <- prior.specs %>% select(-rowname)
+  rownames(prior.specs)[rownames(prior.specs) == "steepness"] = "h"
 
   ## Get MPD estimates for the parameters in the posteriors
   mpd <- model$mpd
@@ -102,7 +123,7 @@ make.priors.posts.plot <- function(model,
                p1 = as.numeric(specs[3]),
                p2 = as.numeric(specs[4]),
                fn = prior.fn,
-               nm = post.names[i],
+               nm = rownames(prior.specs)[i],
                mle = as.numeric(mpd.param.vals[i]))
 
     xx$nm <- get.latex.name(xx$nm)
