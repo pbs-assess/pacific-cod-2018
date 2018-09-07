@@ -4,11 +4,11 @@
 
 `r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
 
-# Fishery-independent indices of abundance
+# FISHERY-INDEPENDENT INDICES OF ABUNDANCE
 
-## Canadian surveys
+## CANADIAN SURVEYS
 
-### Hecate Strait Assemblage Survey
+### HECATE STRAIT ASSEMBLAGE SURVEY
 
 A series of multi-species groundfish bottom trawl surveys was conducted in
 Hecate Strait in May-June of 1984, 1987, 1989, 1991, 1993, 1995, 1996, 1998,
@@ -31,7 +31,7 @@ this approach had high survey variance [@sinclair2007]. In 2004 the Hecate
 Strait Assemblage survey was discontinued in favour of the Hecate Strait
 Synoptic survey (described below).
 
-### Hecate Strait Synoptic Survey
+### HECATE STRAIT SYNOPTIC SURVEY
 
 The Hecate Strait synoptic groundfish bottom trawl survey is part of a
 coordinated set of long-term surveys that together cover the continental shelf
@@ -47,7 +47,7 @@ modeling the expected catches of groundfish and determining the target number
 of tows per stratum that would provide the most precise catch rate data for
 as many species as possible.
 
-### Queen Charlotte Sound Synoptic Survey
+### QUEEN CHARLOTTE SOUND SYNOPTIC SURVEY
 
 The Queen Charlotte Sound synoptic groundfish bottom trawl survey is part of
 a coordinated set of long-term surveys that together cover the continental shelf
@@ -66,7 +66,7 @@ modeling the expected catches of groundfish and determining the target number
 of tows per stratum that would provide the most precise catch rate data for as
 many species as possible.
 
-### West Coast Vancouver Island Synoptic Survey
+### WEST COAST VANCOUVER ISLAND SYNOPTIC SURVEY
 
 *TODO* edit as needed:
 
@@ -82,7 +82,7 @@ strata: 50-125 m; 125-200 m; 200-330 m; and 330-500 m. Approximately 150 to 180
 4 km^2^ blocks are selected randomly among the four depth strata when
 conducting each survey.
 
-### Swept area analysis
+### SWEPT AREA ANALYSIS
 For all Canadian surveys, a swept area estimate of biomass in any year y was obtained
 by summing the product of the CPUE and the area surveyed across the surveyed
 strata $i$:
@@ -137,6 +137,6 @@ One thousand bootstrap replicates with replacement were constructed from the
 survey data to estimate bias corrected 95% confidence regions for each survey
 year [@efron1982].
 
-## NMFS Triennial Survey (in Canadian waters)
+## NMFS TRIENNIAL SURVEY (IN CANADIAN WATERS)
 
 *TO DO: Add Paul's text*
