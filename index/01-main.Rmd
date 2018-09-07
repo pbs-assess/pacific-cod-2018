@@ -557,14 +557,14 @@ One sensitivity analysis was done to illustrate the effect of updating the von B
 
 TO DO: More explanatory text here
 
-## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\SIGMA_O$
+## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\sigma_O$
 In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
 
 - \textbf{Sc 6a.} Fix $\sigma_O$ = 0.1, Figures \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd), .
 - \textbf{Sc 6b.} Fix $\sigma_O$ = 0.15, \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd)
 - \textbf{Sc 6c.} Fix $\sigma_O$ = 0.25, \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd)
 
-## SC 6C. ASSUMED FIXED VALUE OF PROCESS ERROR $\SIGMA_R$
+## SC 6C. ASSUMED FIXED VALUE OF PROCESS ERROR $\sigma_R$
 
 In the Base Case and in @forrest2013, 0.8 was assumed to be an appropriate
 value for $\sigma_R$, as this stock appears to have had very variable
@@ -583,7 +583,7 @@ $\sigma_R$ = 0.4; and much higher and uncertain posterior estimates with
 $\sigma_R$ = 1.0 as a function of the increased recruitment variation.
 -->
 
-## SC 7A. ASSUMED FIXED VALUE OF $\SIGMA_W$
+## SC 7A. ASSUMED FIXED VALUE OF $\sigma_W$
 
 Problems with interpreting the mean weight data were discussed in Appendix XX.
 These problems stem from changes over time in the sample sizes of different
