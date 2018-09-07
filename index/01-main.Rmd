@@ -126,59 +126,61 @@ The reference models for the Area 5ABCD and 3CD asessments are discussed in more
 
 The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy [@dfo2009] requires stock status to be characterized using three reference points:
 
-- a Reference Removal Rate
-- an Upper Stock Reference point (USR)
-- a Limit Reference Point (LRP)
+- A Reference Removal Rate;
+- A Limit Reference Point (LRP);
+- An Upper Stock Reference point (USR).
 
 In the current assessment, these reference points are incorporated into the decision tables (Section  \@ref(decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
 
 Provisional values of $USR = 0.8B_{MSY}$ and $LRP = 0.4B_{MSY}$ are suggested in the absence of stock-specific reference points [@dfo2009]. The framework specifies a limit reference removal rate of $F_{MSY}$. We refer to the reference removal rate as the limit removal rate (LRR) throughout this
-document. 
+document. The PA policy also endorses “history-based” proxies based on estimated average spawning biomass and fishing mortality over a productive historical period [@dfo2009].
 
 As already noted, large uncertainties in the productivity parameters *M* and *h* have resulted
-in substantial uncertainties in MSY-based reference points for Hecate Strait Pacific Cod in previous assessments [@Starr2002; @sinclair2005; @forrest2013]. Given uncertainty in productivity parameters for this stock, @sinclair2005 suggested using alternative reference points based on the reconstructed history of the stock. They recommended the Limit Reference Point to be the minimum spawning biomass from which the stock recovered to above average levels. This was estimated to have occurred in 1971 (i.e., $LRP = *B*_{1971}$). @sinclair2005 suggested long-term average Biomass ($*B*_{Avg}$) as a candidate proxy Upper Stock Reference and long-term average harvest rate ($*U*_{Avg}$) as a proxy for the reference removal rate.
+in substantial uncertainties in MSY-based reference points for Hecate Strait Pacific Cod in previous assessments [@Starr2002; @sinclair2005; @forrest2013]. Given uncertainty in productivity parameters for this stock, @sinclair2005 suggested using alternative reference points based on the reconstructed history of the stock, i.e., "history-based" reference points. They recommended the Limit Reference Point to be the minimum spawning biomass from which the stock recovered to above average levels. This was estimated to have occurred in 1971 (i.e., $LRP = B_{1971}$). @sinclair2005 suggested long-term average Biomass ($B_{Avg}$) as a candidate proxy Upper Stock Reference and long-term average harvest rate ($U_{Avg}$) as a proxy for the reference removal rate.
 
-@sinclair2005 and @forrest2013 acknowledged that the absolute estimate of biomass in 1971 is dependent on model formulation, but found that most model formulations agreed that 1971 was the year in which the stock was lowest and subsequently recovered to above average levels. Therefore, they recommended the LRP be set at $*B*_{1971}$ estimated by the assessment model, rather than the absolute 1971 biomass estimated in their specific stock assessment. The Groundfish Subcommittee of PSARC [@fargo2005] subsequently recommended the use of $*B*_{1971}$ as the LRP for the Hecate Strait stock and it was again acepted as LRP by a Regional Peer Review (RPR) process in 2014 [@dfo2015]. Concurrently, long-term average Biomass ($*B*_{Avg}$) between 1956 and 2004, and long-term average fishing mortality ($*F*_{Avg}$) for the same period were accepted by the RPR for the USR and LRR, respectively [@dfo2015].
+@sinclair2005 and @forrest2013 acknowledged that the absolute estimate of biomass in 1971 is dependent on model formulation, but found that most model formulations agreed that 1971 was the year in which the stock was lowest and subsequently recovered to above average levels. Therefore, they recommended the LRP be set at $B_{1971}$ estimated by the assessment model, rather than the absolute 1971 biomass estimated in their specific stock assessment. The Groundfish Subcommittee of PSARC [@fargo2005] subsequently recommended the use of $B_{1971}$ as the LRP for the Hecate Strait stock and it was again acepted as LRP by a Regional Peer Review (RPR) process in 2014 [@dfo2015]. Concurrently, long-term average Biomass ($B_{Avg}$) between 1956 and 2004, and long-term average fishing mortality ($F_{Avg}$) for the same period were accepted by the RPR for the USR and LRR, respectively [@dfo2015].
 
-While there was no precedent for reference points in Queen Charlotte Sound, the minimum stock size from which the biomass was estimated to have recovered to an above average level occurred in 1985 [@forrest2013] These authors proposed $*B*_{1985}$ as the LRP for the Queen Charlotte Sound, with average biomass and fishing mortality for the period 1956-2004 as the USR and LRR, but no reference points were accepted by the RPR for Queen Charlotte Sound [@dfo2015-2]. The main reason cited was that the fishery in Area 5AB had essentially become an "avoidance" fishery for Pacifc Cod (to avoid breaching the Pacific Cod TAC before TACs for other groundfish species had been realised). Therefore the RPR participants felt that post-1996 estimates of abundance, which were largely informed by low catches, could not be assumed to accurately reflect abundance.
+While there was no precedent for reference points in Queen Charlotte Sound, the minimum stock size from which the biomass was estimated to have recovered to an above average level occurred in 1985 [@forrest2013]. These authors proposed $B_{1985}$ as the LRP for the Queen Charlotte Sound, with average biomass and fishing mortality for the period 1956-2004 as the USR and LRR, respectively. However, no reference points were accepted at the RPR for Queen Charlotte Sound [@dfo2015-2]. The main reason cited was that the fishery in Area 5AB had essentially become an "avoidance" fishery for Pacifc Cod (to avoid breaching the Pacific Cod TAC before TACs for other groundfish species had been realised). Therefore the RPR participants felt that post-1996 estimates of abundance, which were largely informed by low catches, could not be assumed to accurately reflect abundance.
 
-Based on the recommendations of the 2005 Scientific Review Committee [@fargo2005], we recommend continued use of historical-based reference points for the present assessment cycle. However, we note that the recommendation of @fargo2005 was unclear as to whether the calculation of average biomass and fishing mortality should continue to be fixed for the period 1956-2004, or whether the average should be updated to include recent years. In a later section, we show that there is little difference between the estimated
-average biomass for the period 1956-2004 compared to the period 1956-2017. For consistency and stability, we suggest continuing to use averages based on the shorter period 1956-2004.
+@forrest2018 simulation-tested a set of alternative reference points for Hecate Strait Pacific Cod and Rock Sole (*Lepidopsetta* spp.). They found that the "history-based" reference points (or operational control points, OCPs) that had been used for Pacific Cod in 2013 [@forrest2013] were robust to stock assessment biases because they scaled in the same direction as bias in estimates of biomass and fishing mortality. However, they were not necessarily good proxies for MSY-based reference points and tended to produce more precautionary catch recommendations than reference points based on $B_{MSY}$, $B_{0}$ and the spawning potential ratio (SPR; @clark1991). While the "history-based" reference points outperformed others in terms of long-term conservation outcomes, there were sometimes large trade-offs in terms of catch and catch stability [@forrest2018]. Reference points based on estimated $B_{0}$ performed similarly to the "history-based" reference points but tended to have better trade-off properties [@forrest2018].
 
-A list of candidate reference points to use in decision tables for Pacific Cod is shown in Table XX. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included:
+In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. Suggested reference points are provided in Table \@ref(tab:suggested-ref-points). In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2018}$ and (ii) $B_{2019}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative 2018 projected catch levels; and whether biomass is projected to increase or decrease under alternative 2018 projected catch levels.
 
-- $F_{2013}$
-- $B_{2014}$
+The list of performance measures that will be used in decision tables for the Pacific Cod stocks in Hecate Strait and Queen Charlotte Sound (Area 5ABCD) is given in Table XX. Biomass-based performance measures were calculated as projected 2019 biomass relative to reference points, under alternative 2018 projected catch levels. Fishing mortality-based performance measures were calculated as projected 2018 fishing mortality relative to the reference points, under alternative 2018 projected catch levels. We do not currently present alternative reference points in this assessment (e.g., reference points based $B_{0}$), but suggest these could be explored for these stocks.
 
-These will be used in the decision tables to show whether:
+*TO DO: Move this table to Tables section when it is made*
 
-- fishing mortality is projected to increase or decrease under alternative
-  2018 projected catch levels; and
-- whether biomass is projected to increase or decrease under alternative
-  2018 projected catch levels. Estimates of other candidate reference points,
-  based on MSY calculations; and historical averages based on a longer time
-  period are presented for comparison but are not used in decision tables.
+```{r suggested-ref-points}
 
-The list of performance measures that will be used in decision tables for the
-Pacific Cod stocks in Hecate Strait and Queen Charlotte Sound (Area 5ABCD) is
-given in Table XX. Biomass-based performance measures were calculated as
-projected 2019 biomass relative to reference points, under alternative 2018
-projected catch levels. Fishing mortality-based performance measures were
-calculated as projected 2018 fishing mortality relative to the reference points,
-under alternative 2018 projected catch levels. We did not explore any
-alternative reference points in this assessment (e.g., reference points based
-on spawning biomass per recruit; @clark1991), but recommend exploration and
-simulation-testing of alternatives in the context of a feedback simulation
-analysis.
+df <- data.frame(Reference_point = c("Bmin",
+                     "Bavg",
+                     "Favg",
+                     "B2019",
+                     "F2018"),
+                 Definition = c(
+                   "Minimum biomass from which the stock recovered to above average level. Area 5ABCD: Biomass in 1971; Area 3CD: Biomass in 1986",
+                   "Average biomass for the period 1956-2004",
+                   "Average fishing mortality for the period 1956-2004",
+                   "Projected biomass in 2019",
+                   "Projected fishing mortality in 2018"),
+                 Role = c("LRP",
+                        "USR",
+                        "LRR",
+                        "Benchmark",
+                        "Benchmark")) 
+   knitr::kable(df, caption = "List of reference points used for the Reference Case 5ABCD and 3CD models.", booktabs = TRUE, linesep = "")
+
+```
 
 
-# BASE CASE MODELS
 
-The Base Case models for both areas 5ABCD and 3CD are XX.
+# REFERENCE CASE MODELS
+
+The Reference Case models for both areas 5ABCD and 3CD are XX.
 
 ## PRIOR PROBABILITY DISTRIBUTIONS
 
-Prior probability distributions for the Area 5ABCD and 3CD Base Case models
+Prior probability distributions for the Area 5ABCD and 3CD Reference Case models
 are shown in Figure XX and Table XX.
 
 Broad, uniform prior probability distributions were used for $ln(R_0)$,
@@ -203,7 +205,7 @@ and SD = 0.1 XX. @sinclair2005 obtained MPD estimates of natural mortality
 of 0.596 and 0.567 in their two "preferred" scenarios. The bridging
 analysis provided in Appendix XX of this document suggested that natural
 mortality could be considerably lower, depending on the values of other
-fixed or estimated parameters. For the base cases presented here, we chose
+fixed or estimated parameters. For the reference cases presented here, we chose
 to centre the prior probability distribution a little lower than the MPD
 values reported by @sinclair2005. Model sensitivity to both the mean and
 the standard deviation of the distribution is presented below.
@@ -307,7 +309,7 @@ similar to those adopted in Area 5ABCD, were explored.
 # SENSITIVITY ANALYSES
 
 We present a number of sensitivity analyses to show the influence of certain data sources, fixed
-parameters and prior probability distributions in the Area 5ABCD and 3CD Base Case models.Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
+parameters and prior probability distributions in the Area 5ABCD and 3CD Reference Case models.Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
 
 *TO DO: Move these tables to model description and refer to them here*
 
@@ -345,7 +347,7 @@ df <- data.frame(Parameter = c("ln M",
                         "0.3",
                         "1",
                         "1"))
-   knitr::kable(df, caption = "Prior probability distributions used for the Base Case 5ABCD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
+   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 5ABCD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
 ```
 
@@ -380,7 +382,7 @@ df <- data.frame(Parameter = c("ln M",
                         "1",
                         "1",
                         "1"))
-   knitr::kable(df, caption = "Prior probability distributions used for the Base Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
+   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
 ```
 
@@ -400,7 +402,7 @@ For both stocks, we tested sensitivity of the model outputs to the following dat
 - The assumed fixed value of $\sigma_R$
 - The assumed fixed value of $\sigma_W$
 
-Results are presented under these headings below, with Base Case parameter
+Results are presented under these headings below, with Reference Case parameter
 settings provided in Table XX. In all sensitivity runs, posterior samples were
 drawn systematically every 5,000 iterations from a chain of length 10
 million, resulting in 2,000 posterior samples. The first 1,000 samples
@@ -408,7 +410,7 @@ were dropped to allow for sufficient burn-in.
 
 
 ## SC 1B AND SC 1C. EXCLUSION OF A YEAR-LOCATION INTERACTION AS RANDOM EFFECT IN COMMERCIAL CPUE INDICES
-The base case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix B). Two sensitivity analyses are shown to illustrate the effect of removing the interaction term from both indices (i.e., fitting the delay difference model to historical and modern CPUE indices calculated using equation \@ref(eq:cpuesens2)):
+The reference case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix B). Two sensitivity analyses are shown to illustrate the effect of removing the interaction term from both indices (i.e., fitting the delay difference model to historical and modern CPUE indices calculated using equation \@ref(eq:cpuesens2)):
 
 - \textbf{Sc 1b.} Use equations without the interaction term to create CPUE
   indices for historical and modern periods. Use the annual CVs resulting from
@@ -459,11 +461,11 @@ For 3CD, two sensitivity analyses are shown to illustrate the effect of the norm
 Three sensitivity analyses are shown to illustrate the effect of the
 parameters of the normal prior distribution assumed for $ln(M)$:
 
-- \textbf{Sc 3a.} The mean was held at the Base Case value of 0.5, while the standard
+- \textbf{Sc 3a.} The mean was held at the Reference Case value of 0.5, while the standard
   deviation was increased to 0.2, Figures \@ref(fig:fig-sens3-biomass-5abcd) and
   \@ref(fig:fig-sens10-biomass-3cd).
 - \textbf{Sc 3b.} The mean was reduced to 0.4 and the standard deviation was held at
-  the Base Case value of 0.1, Figures \@ref(fig:fig-sens3-biomass-5abcd) and
+  the Reference Case value of 0.1, Figures \@ref(fig:fig-sens3-biomass-5abcd) and
   \@ref(fig:fig-sens10-biomass-3cd).
 - \textbf{Sc 3c.} The mean was reduced to 0.4 and the standard deviation was increased
   to 0.2, Figures \@ref(fig:fig-sens3-biomass-5abcd) and \@ref(fig:fig-sens10-biomass-3cd).
@@ -476,20 +478,20 @@ Respective median posterior estimates of M were:
 - 0.347 y^-1^ XX
 - 0.300 y^-1^ XX
 
-compared to the median posterior Base Case estimate of M = 0.393 y^-1^. It
+compared to the median posterior Reference Case estimate of M = 0.393 y^-1^. It
 therefore appears that the assumed prior probability distribution for natural
 mortality does influence posterior estimates of M and that the prior used in
-the Base Case model may have resulted in higher estimates of M than if a less
+the Reference Case model may have resulted in higher estimates of M than if a less
 informative prior had been used. Convergence properties appeared to be poor
 for Case 1, with large auto-correlation in several chains. However, convergence
 properties for Cases 2 and 3 were the same or better than those obtained for
-the Base Case model, particularly for Case 3 (not shown).
+the Reference Case model, particularly for Case 3 (not shown).
 
 The biomass estimates that resulted from each sensitivity case are shown in
 Figure XX. There was almost no discernible difference in recent biomass
 estimates among scenarios for the three cases. However, there were large
 differences in estimated historical biomasses, with historical biomasses
-estimated to be smaller than for the Base Case in all three scenarios. Because
+estimated to be smaller than for the Reference Case in all three scenarios. Because
 of this, estimates of current stock status relative to the USR and LRP were
 different for these three sensitivity cases. We only show results for cases
 2 and 3, which had much better convergence properties than case 1, in
@@ -499,7 +501,7 @@ to the historical averages as estimates of M declined.
 
 ## SC 4A AND SC 4B. PRIOR PROBABILITY DISTRIBUTION FOR STEEPNESS
 
-Two sensitivity analyses were done to illustrate the effect of the prior probability distribution assumed for steepness in the base case model:
+Two sensitivity analyses were done to illustrate the effect of the prior probability distribution assumed for steepness in the reference case model:
 
 - \textbf{Sc 4a.} Use a uniform prior for steepness bounded between 0.21 and
 - 0.999, Figures \@ref(fig:fig-sens4-biomass-5abcd) and \@ref(fig:fig-sens11-biomass-3cd).
@@ -534,7 +536,7 @@ One sensitivity analysis was done to illustrate the effect of updating the von B
 TO DO: More explanatory text here
 
 ## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\sigma_O$
-In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
+In the Reference Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
 
 - \textbf{Sc 6a.} Fix $\sigma_O$ = 0.1, Figures \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd), .
 - \textbf{Sc 6b.} Fix $\sigma_O$ = 0.15, \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd)
@@ -542,7 +544,7 @@ In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two
 
 ## SC 6C. ASSUMED FIXED VALUE OF PROCESS ERROR $\sigma_R$
 
-In the Base Case and in @forrest2013, 0.8 was assumed to be an appropriate
+In the Reference Case and in @forrest2013, 0.8 was assumed to be an appropriate
 value for $\sigma_R$, as this stock appears to have had very variable
 recruitment throughout the history of the fishery. One sensitivity
 analysis was done to test the effect of increasing the assumed value of $\sigma_R$:
@@ -552,7 +554,7 @@ analysis was done to test the effect of increasing the assumed value of $\sigma_
 <!--
 Resulting estimates of historical biomass are shown in Figure XX. As for the
 steepness sensitivity test, there was very little discernible difference in
-the estimated historical time series between the Base Case model and the two
+the estimated historical time series between the Reference Case model and the two
 sensitivity cases. The largest effects were seen in the estimates of $B_0$
 (Figure XX), which showed much lower posterior estimates obtained with
 $\sigma_R$ = 0.4; and much higher and uncertain posterior estimates with
@@ -570,7 +572,97 @@ the 2005 assessment [@fargo2005]. This issue was acknowledged by
 estimation of model parameters but was down-weighted in the objective function.
 
 Given the uncertainties in interpreting this time series and its potential
-to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$, which was fixed at 0.2 in the base case:
+to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$, which was fixed at 0.2 in the reference case:
 
 - \textbf{Sc 7a.} Fix $\sigma_w$ = 0.4, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
 - \textbf{Sc 7b.} Fix $\sigma_w$ = 0.15, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
+
+
+# DECISION TABLES
+*TO DO: Update. This is 2014 text. Fix equations and dynamic references*
+
+Performance measures were calculated over a sequence of alternative 2014 projected catch levels and are based on one-year projections to 2015.
+
+Projected recruitment anomalies in 2015 were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
+
+Reference points and performance measures are listed in Tables 12 and 13.
+The decision tables are designed to present probabilities of undesirable states under alternative 2014 projected catch levels.
+
+An undesirable biomass-based performance measure occurs when 2015 projected biomass is below the reference point, i.e., $B_{2015}/B_\text{ReferencePoint} < 1$.
+Probabilities using biomass-based reference points are only presented for Area 5CD for the reasons given above.
+
+An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2014}/F_\text{ReferencePoint} > 1$.
+
+Probabilities of undesirable states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures). 
+
+In the previous section, we identified some key sources of uncertainty in this assessment and suggested three solutions to presenting advice incorporating this uncertainty.
+In both management Areas 5CD and 5AB, we suggested that we cannot further reduce the uncertainty arising from the prior probability distribution for ln($M$) (Figures 32 and 45); the goodness of fit to the mean weight data (Figures 36 and 47); or how well the model should fit to the commercial CPUE data, if at all (Figures 41, 44, 49 and 50).
+
+In the following sections we present the Reference Case decision tables for each area, then present alternative ``model averaged'' decision tables that incorporate the uncertainty from the above sensitivity cases and Reference Cases.
+
+The model averaging approach is described below.
+
+We did not attempt to assign different weights to the alternative models in the construction of the model-averaged results.
+
+## Reference case models
+
+The decision table for the Area 5CD Reference Case model is provided in Table 26.
+The probability of the 2015 biomass being below the 2014 biomass ranged from 12.4\% under no 2014 catch to 64.1\% under 2400 t, double the current TAC.
+
+The probability of being below the LRP ranged from 12.3\% to 24.9\% over the range of catch levels considered.
+
+The probability of being below the USR was higher and ranged from 51.2\% under no 2014 catch to 66.0\% over the range of catch levels considered.
+
+The probability of the 2014 fishing mortality being greater than the 2013 fishing mortality ranged from 0.0\% to 100\%.
+
+The probability of the 2014 fishing mortality being greater than the LRR ranged from 0.0\% to 33.9\%.
+Estimated probabilities at the current TAC 1200 t are shown in bold (Table 26).
+
+Under a 2014 catch level of 1200 t, there is an estimated 60\% probability that the 2015 biomass will be below the USR and an 18.2\% probability that the 2015 biomass will be below the LRP.
+
+
+## Model Averaging
+
+### Area 5CD: Hecate Strait
+
+For Area 5CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
+\begin{resdoclist}
+\item Reference Case; 
+\item the sensitivity case with prior probability distribution for ln($M$): $\mathcal{N}\sim(0.4,0.2)$;
+\item the sensitivity case with $\sigma_W = 0.4$; 
+\item the sensitivity case with $\sigma_0 = 0.15$; and 
+\item the sensitivity case without commercial CPUE data.
+\end{resdoclist}
+We selected the sensitivity case for the prior on ln($M$) that had biomass estimates most divergent from the Reference Case model to better bracket the uncertainty due to this parameter.
+Posterior estimates of biomass relative to the LRP and USR from each scenario are summarized in Figure 53. 
+
+The vectors of 1,000 burned-in posterior samples from each of the five models, for each performance measure, under each alternative 2014 catch level, were combined into a single vector of 5,000 samples and probabilities of undesirable states (see above) were calculated from the combined samples. 
+
+A similar approach was used in the 2011 assessment of Pacific Hake (Stewart et al. 2011), where two alternative stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible.
+Another approach, based on Maximum Posterior Density model results, was used by Stewart et al. (2013) for the 2012 assessment of Pacific Halibut, where the magnitude of natural mortality was considered to be the primary axis of uncertainty.
+A similar approach is being used for the 2013 assessment of Pacific Halibut, where three alternative, structurally different models, are being used to develop catch advice (Stewart and Martell. 2014).
+The latter example draws from the ensemble modeling approach commonly used in weather forecasting (e.g., Hamill et al. 2012).
+
+The ``Model-Averaged'' decision table probabilities for Area 5CD are presented in Table 28.
+For most performance measures, probabilities were similar to those in the Reference Case model.
+For example, the probability of B2015 < B2014 under a 2014 TAC of 1200 t was 39.6\% for the Reference Case model (Table 26), and 42.1\% from the averaged models (Table 28).
+The probability of B2015 < LRP under a 2014 catch level of 1200 t  was 18.8\% for the averaged models, compared with 18.2\% for the Reference Case model.
+The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8\% for the averaged models, compared with 60.0\% for the Reference Case model.
+
+
+### Area 3CD: WEST COAST VANCOUVER ISLAND
+
+## Summary
+
+We presented the alternative, model averaged decision tables for Areas 5CD (Table 28) and 5AB (Table 29) in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
+
+However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
+\begin{resdoclist}
+\item The effects of the assumption of constant selectivity in the trawl fishery;
+\item The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;
+\item The impact of uncertainty in stock structure in understanding patterns in abundance; 
+\item The impact of uncertainty in the magnitude of historical discarding and foreign catches;
+\item The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
+\end{resdoclist}
+Uncertainty is therefore under-represented in this assessment.
+
