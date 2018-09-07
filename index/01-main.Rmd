@@ -34,21 +34,19 @@ Pacific Cod in BC are caught almost entirely in the groundfish bottom trawl fish
 
 Pacific Cod are distributed throughout Area 5CD at depths mainly less than 150 m. Pacific Cod density appears to be highest over the Two Peaks/Butterworth, White Rocks, Shell Ground, Reef Island, and Horseshoe fishing grounds [@forrest2013]. In Queen Charlotte Sound (Area 5AB), Pacific Cod are caught mainly off Cape Scott and Mexicana Banks, north of Vancouver Island, in Area 5A, and around the edge of Goose Island Bank in Area 5B  [@forrest2013]. The depth range of capture in 5ABCD ranges from around 60 - 100 m, with data showing a shift to deeper depths since 1996 (Appendix B, Figure \@ref(fig:cpue-depth-hists)). The transition to deeper fishing grounds partially reflects a larger proportion of catches coming from deeper waters in Queen Charlotte Sound in more recent years (\@ref(fig:fig-catch-5abcd),as well as general expansion into deeper water. Annual reported catches of Pacific Cod in both Hecate Strait and Queen Charlotte Sound have shown considerable variability since the beginning of the time series in 1956 (Figure \@ref(fig:fig-catch-5abcd)). The depth range of catches off West Coast Vancouver Island (Area 3CD) is similar to Area 5ABCD, with the majority of catch coming from 0-200 m depth zones (Appendix B, Figure \@ref(fig:cpue-depth-hists)). See @sinclair2001 for description of changes in historical depth ranges of the fishery. See also Appendix B. Historical catches in Area 3CD have shown a similarly variable pattern to Area 5ABCD (Figure \@ref(fig:fig-catch-3cd))
 
-*TO DO: check catch numbers below once tables are in. These numbers include US and discards*
+*TO DO: check catch numbers below once tables are in. These numbers include US and discards. Maybe delete these summaries*
 
 In Area 5CD (Figure \@ref(fig:fig-catch-5abcd)), major peaks in catches occurred in 1958 (5,702 t), 1965 and 1966 (8,870 t and 9,156 t), 1979 (5,736 t), 1987 (9,542 t), and 1991 (7,747 t). These peak years may be contrasted with years of low catches in 1961 (1,528 t), 1970 and 1971 (1,188 t and 1,333 t), 1985 (1,053 t), and the minimum on record in 2001 (214 t). Reported catches have increased since 2001 to 701 t in 2012, although it should be noted that recent low catches are partially a result of lowered quotas in the early to mid-2000s. Catch was reported by USA vessels from 1956 to 1978. The estimated USA portion of the total catch was approximately 15% over these years (Table XX).
 
 Major peaks in catches in Area 5AB occurred in 1957 (2,625 t), 1965 (1,983 t), 1972 and 1975 (2,415 t and 2,470 t), 1987 (3,209 t), and 1991 (2,206 t). Low catch years included 1961 (259 t), 1970 (278 t), 1983 (184 t), 2000 (67 t) and the lowest year on record 2008 (35 t). Significant catches were reported by USA vessels from 1956 to 1980. The estimated USA portion of the total catch was approximately 50% over these years (Table XX).
 
-Major peaks in catches in Area 3CD occurred in ... Low catch years included ... and the lowest year on record was ... Significant catches were reported by USA vessels from 1956 to 1980. The estimated USA portion of the total catch was approximately XX% over these years (Table XX).
+Major peaks in catches in Area 3CD occurred in ... XXX ... Low catch years included ...XXX ... and the lowest year on record was ... XXX ...Significant catches were reported by USA vessels from 1956 to 1980. The estimated USA portion of the total catch was approximately XX% over these years (Table XX).
 
 Prior to the introduction of at-sea observer coverage in 1996, estimates of at-sea releases (discards) for the period 1956-1995 were obtained from fishing logbooks. These estimates are considered an underestimate of the actual releases (Table XX). Estimates in years following the introduction of 100% at-sea observer coverage in 1996 can be considered to be  accurate. Since 1996, the proportions of estimated discards have been considerably higher than in years before at-sea observers (Tables XX and XX ... landings, discards, usa), especially in Queen Charlotte Sound, largely as a result of reduced total catches and TACs (Table XX ... TACs). Pacific Cod can be legally discarded by trawlers in BC. However, on-board observers first estimate the quantity being discarded. This is assigned a discard mortality rate which is counted against the vessel's Pacific Cod quota. Therefore, in addition to greater accuracy in reporting of discards since 1996, incentives to avoid discarding have also been greater.
 
 Japanese and Soviet vessels also trawled in waters off BC in the late 1960s and early 1970s. These vessels were mainly targeting rockfish and likely at depths greater than 150 m. The bycatch of Pacific Cod in these fisheries is, however, unknown. Given uncertainty in foreign catches and discards in the earlier parts of the time series, total catch estimates should be considered underestimates prior to 1996.
 
 Bottom trawl fishing effort has been somewhat cyclic in all areas, especially in Hecate Strait [@forrest2013]. Total effort of all trawl vessels has declined in all areas in recent years. A detailed analysis of catch per unit effort (CPUE) is provided in Appendix B. As noted by @sinclair2000, there are a number of problems with the use of commercial catch per unit effort as an index of biomass for Pacific Cod. Changes in the management regime from an unrestricted fishery prior to 1992, to the introduction of TACs (1992-1996) and then to Individual Vessel Quotas (IVQs) (1997-present), as well as several increases in mesh size (@forrest2013, their Table 5), have affected the underlying relationship between commercial CPUE and abundance, and the relationship between fishing effort and fishing mortality. In recent years of lower Pacific Cod quotas (Table XX), many fishing masters report actively avoiding Pacific Cod to prevent their Pacific Cod quota being exceeded before catching available quotas for other species. In the present assessment CPUE series are split into pre- and post-1996 series, and general linear mixed models are used to attempt to standardize the indices (Appendix B). 
-
-Groundfish fisheries were managed by calendar year until 1996. Beginning in 1997-98 the fishing year changed to April 1--March 31. In 2010--2011 the fishing year was changed again to February 21 to February 20. Throughout this document, fishing years are defined as beginning on April 1 for all years, and are referenced by starting year, e.g., fishing year 1957 runs from April 1, 1957 to March 31, 1958. These definitions were used consistently in all calculations involving commercial catch data, including calculation of annual average mean weight in the catch (Appendix \@ref(analysis-of-biological-data)), and commercial CPUE (Appendix \@ref(commercial-cpue-standardization)). Appendix \@ref(delay-difference-model)
 
 ## Assessment History
 
@@ -61,7 +59,6 @@ Pacific Cod are one of the most difficult Pacific groundfish species to age. Ann
 @sinclair2001 developed a delay-difference model [@deriso1980; @schnute1985] containing a Ricker stock-recruit function to assess Pacific Cod in Areas 3CD and 5CD. Recruitment was assumed to be knife-edged at age 2 years. A report card summary of information available for the stock was also developed. The delay difference model provided a better statistical fit to the data than the previously-applied surplus production model [@sinclair2000]. However, biomass estimates followed a similar trend and magnitude.The 2001 Area 3CD stock was updated in 2002 [@Starr2002], using the same delay-difference model developed the previous year [@sinclair2001] and adding data from DFO's shrimp trawl survey. The authors of the 2002 assessment noted that the estimated MSY-based reference points /*F*_MSY/ and /*B*_MSY/ were not well estimated [@Starr2002].
 
 The Area 5CD assessment was updated in 2004 [@sinclair2005], using a similar delay difference model to that used by @sinclair2001. Model fits were presented with alternative combinations of fixing or estimating natural mortality (*M*) and the steepness parameter of the stock-recruit function, *h* (Mace and Doonan 1988). They reported similar fits and biomass estimates for both scenarios but noted very different estimates of equilibrium MSY-based management parameters under alternative combinations of fixed and estimated *h* and *M*. They proposed "history-based" reference points, based on estimated historical biomass and fishing mortality, due to unreliability of MSY-based reference points.  The Area 5AB and 5CD stocks were last assessed in 2013 [@forrest2013] using a new delay difference model with a Beverton-Holt stock-recruit function and the assumption of knife-edged selectivity at 2 y. The model had some minor structural differences from the previous assessment, although bridging analyses showed these to have a relatively minor effect [@forrest2013, their Appendix A]. The 2013 assessment adopted the same historical reference points that had been used in 2004 and these were accepted during peer review for Area 5CD [@dfo2015]. However, no reference points were accepted for Area 5AB [@dfo2015-2]. Key uncertainties of noted by @forrest2013 were:
-
 
 1. Uncertainty in fixed variance parameters, particularly the assumed observation error in the surveys, and the objective function component of the fit to annual mean weights;
 2. Reliability of commercial CPUE as an index of abundance, and effects on CPUE of management changes post-1996;
@@ -90,161 +87,33 @@ collected using a variety of sampling methods.
 Canadian trawl landings, 1954-1995 [@rutherford1999].
 
 **PacHarvTrawl**
-Canadian trawl landings, 1996 to March 31, 2007. SQL Server database, Groundfish
-Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries
-and Oceans Canada, Pacific Biological Station.
+Canadian trawl landings, 1996 to March 31, 2007. SQL Server database, Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
 
 **GFFOS**
-Canadian trawl landings, April 1, 2007 to 2018. View of the Fisheries and Oceans
-Canada (DFO) Fishery Operations (FOS) database. Groundfish Section, Marine
-Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans
-Canada, Pacific Biological Station.
+Canadian trawl landings, April 1, 2007 to 2018. View of the Fisheries and Oceans Canada (DFO) Fishery Operations (FOS) database. Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
 
 ## Catch Data
-Commercial fishing data are presented in this document by fishing year which
-includes the period April through March, e.g., fishing year 1956 comprises
-the period April 1, 1956 to March 31, 1957. Landings data are presented
-separately for Canada and the USA (Tables XX and XX). Combined USA-Canada
-landings data were obtained from the Pacific Marine Fisheries Commission
-reports for 1956-1981 and the USA landed portion was determined by subtracting
-the Canadian landed amount from the combined total for each year. In cases where
-the difference was negative, the USA landed amount was set to zero
-(Tables XX and XX). Canadian data were obtained: from the GFCatch database for
-the period 1954-1995 [@rutherford1999]; from the PacHarvest database for the
-period 1996-March 31, 2007; and from the Fisheries and Oceans Canada (DFO) FOS
-database for the period April 1, 2007 until the present. The annual size
-composition of commercial catches and landings were estimated from port samples
-and at-sea samples collected by observers archived in the GFBio database.
+Groundfish fisheries were managed by calendar year until 1996. Beginning in 1997-98 the fishing year changed to April 1--March 31. In 2010--2011 the fishing year was changed again to February 21 to February 20. Throughout this document, fishing years are defined as beginning on April 1 for all years, and are referenced by starting year, e.g., fishing year 1957 runs from April 1, 1957 to March 31, 1958. These definitions were used consistently in all calculations involving commercial catch data, including calculation of annual average mean weight in the catch (Appendix \@ref(analysis-of-biological-data)), and commercial CPUE (Appendix \@ref(commercial-cpue-standardization)). Landings data are presented
+separately for Canada and the USA (Tables XX and XX). Combined USA-Canada landings data were obtained from the Pacific Marine Fisheries Commission reports for 1956-1981 and the USA landed portion was determined by subtracting the Canadian landed amount from the combined total for each year. In cases where
+the difference was negative, the USA landed amount was set to zero (Tables XX and XX). Canadian data were obtained: from the GFCatch database for the period 1954-1995 [@rutherford1999]; from the PacHarvest database for the period 1996-March 31, 2007; and from the Fisheries and Oceans Canada (DFO) FOS
+database for the period April 1, 2007 until the present. The annual size composition of commercial catches and landings were estimated from port samples and at-sea samples collected by observers archived in the GFBio database.
 
 ## Indices of abundance
+Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices,  from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
 
-### Hecate Strait Assemblage Survey
 
-A series of multi-species groundfish bottom trawl surveys was conducted in
-Hecate Strait in May-June of 1984, 1987, 1989, 1991, 1993, 1995, 1996, 1998,
-2000, 2002, and 2003 @westrheim1984, @fargo1984, @fargo1988,
-@wilson1991, @hand1994, @workman1996, @workman1997, @choromanski2002).
-The results up to 2000 were reported in the 2001 assessment
-[@sinclair2001] and results from 2002 and 2003 were presented in the
-2005 assessment [@sinclair2005].
+Stock assessment models in Area 3CD were fit to two fishery-independent survey indices (West Coast Vancouver Island Synoptic Survey and NMFS Triennial Survey in Canada) and two commercial CPUE indices,  from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
 
-The original design of this survey assigned fishing locations by 10 fm depth
-intervals within a 10 nm grid of Hecate Strait. The survey was
-post-stratified for the purpose of calculating an abundance index for Pacific
-Cod [@sinclair2000]. The post stratification used 10 fm depth intervals for
-the entire survey area, thereby treating each depth interval as a single
-stratum.
+The fishery-independent indices of abundance were developed using swept area analyses. Details are provided in Appendix \@ref(fishery-independent-indices-of-abundance).
 
-The Hecate Strait Assemblage survey was designed as a systematic
-fixed-station survey. Despite attempts to apply post-sampling stratification,
-this approach had high survey variance [@sinclair2007]. In 2004 the Hecate
-Strait Assemblage survey was discontinued in favour of the Hecate Strait
-Synoptic survey (described below).
-
-### Hecate Strait Synoptic Survey
-
-The Hecate Strait synoptic groundfish bottom trawl survey is part of a
-coordinated set of long-term surveys that together cover the continental shelf
-and upper slope of most of the BC coast. The Hecate Strait synoptic survey has
-been conducted during May-June, in odd years since 2005. All the synoptic
-surveys follow a random depth stratified design. The survey area is divided
-into 2 km by 2 km blocks and each block is assigned to one of four depth
-strata based on the average bottom depth in the block. The four depth strata
-for the Hecate Strait survey are 10--70m, 70--130m, 130--220m, and
-220--500m. Each year blocks are randomly selected within each depth strata.
-The relative allocation of blocks amongst depth strata was determined by
-modeling the expected catches of groundfish and determining the target number
-of tows per stratum that would provide the most precise catch rate data for
-as many species as possible.
-
-### Queen Charlotte Sound Synoptic Survey
-
-The Queen Charlotte Sound synoptic groundfish bottom trawl survey is part of
-a coordinated set of long-term surveys that together cover the continental shelf
-and upper slope of most of the BC coast. The Queen Charlotte Sound survey has
-been conducted in July-August in 2003, 2004 and in odd years since 2005. All
-the synoptic surveys follow a random depth stratified design. The survey area
-is divided into 2 km by 2 km blocks and each block is assigned to one of four
-depth strata based on the average bottom depth in the block. The four depth
-strata for the QCS survey are 50--125m, 125--200m, 200--330m,
-and 330--500 m. Each year blocks are randomly selected within each depth strata.
-In addition, for the purposes of allocating blocks, the QCS survey is divided
-into northern and southern spatial strata.
-
-The relative allocation of blocks amongst depth strata was determined by
-modeling the expected catches of groundfish and determining the target number
-of tows per stratum that would provide the most precise catch rate data for as
-many species as possible.
-
-### West Coast Vancouver Island Synoptic Survey
-
-TO DO
-
-### Survey index of abundance: Canadian Synoptic Surveys, swept area analysis
-TO DO possibly add this to Appendix called Fishery Independent Surveys including Paul's write up of the NMFS Triennial
-
-For all surveys, a swept area estimate of biomass in any year y was obtained
-by summing the product of the CPUE and the area surveyed across the surveyed
-strata $i$:
-
-\begin{equation}
-  B_y = \sum_{i=1}^kC_{y_i}A_i=\sum_{i=1}^kB_{y_i}
-  (\#eq:sweptareabiomass)
-\end{equation}
-
-where
-$C_{y_i}$ = mean CPUE density (kg/km^2^) for Pacific Cod in stratum $i$
-$A_i$ = area of stratum $i$ (km^2^), and
-$B_{y_i}$ = biomass of Pacific Cod in stratum $i$ for year $y$
-$k$ = number of strata
-
-CPUE ($C_{y_i}$) for Pacific Cod in stratum $i$ for year $y$ was
-calculated as a density in kg/km^2^ by
-
-\begin{equation}
-  C_{y_i}=\frac{1}{n_{y_i}} \sum\limits_{j=1}^{n_{y_i}} \frac{W_{y_i,j}}{D_{y_i,j}w_{y_i,j}}
-  (\#eq:sweptareacpue)
-\end{equation}
-
-where
-$W_{y_i,j}$ = catch weight (kg) for Pacific Cod in stratum $i$ for year $y$ and tow $j$
-$D_{y_i,j}$ = distance travelled (km) by tow $j$ in stratum $i$ for year $y$
-$w_{y_i,j}$ = net opening (km) by tow $j$ in stratum $i$ for year $y$
-$n_{y_i}$ = number of tows in stratum $i$
-
-The variance of the survey biomass estimate $V_y$ for Pacific Cod in year $y$
-is calculated in kg^2^ as follows:
-
-\begin{equation}
-  V_y=\sum_{i=1}^k\frac{\sigma_{y_i}^2A_i^2}{n_{y_i}}=\sum_{i=1}^kV_{y_i}
-  (\#eq:sweptareavariance)
-\end{equation}
-
-where $\sigma_{y_i}^2$ is the variance of the CPUE in $kg^2/km^4$ for year $y$ in
-stratum $i$, $V_{y_i}$ is the variance of Pacific Cod in stratum $i$ for year $y$,
-where $\sigma_{y_i}^2$ was obtained from bootstrapped samples (see below).
-
-The CV for Pacific Code for each year $y$ was calculated as follows:
-
-\begin{equation}
-  (CV)_y=\frac{{V_y}^{1/2}}{B_y}
-  (\#eq:sweptareacv)
-\end{equation}
-
-where $(CV)_y$ is the CV for year $y$.
-
-One thousand bootstrap replicates with replacement were constructed from the
-survey data to estimate bias corrected 95% confidence regions for each survey
-year [@efron1982].
-
-### NMFS Triennial Survey (in Canadian waters)
+The commercial CPUE indices were standardized standardized for depth, fishing locality, month, vessel, and latitude, when available, using generalized linear mixed models (GLMMs), based on a Tweedie distribution. Details are provided in Appendix \@ref(commercial-cpue-standardization). 
 
 ## Biological data
 
 *TO DO. Add dynamic references to Appendix A for annual mean weight, age and length data*
 
 The methodology for calculating the mean weight of Pacific Cod from commercial
-vessels for the years 1956--2017 is presented in Appendix A.
+vessels for the years 1956--2017 is presented in Appendix \@ref(analysis-of-biological-data).
 
 # Stock Assessment Model
 

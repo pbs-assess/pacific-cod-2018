@@ -1,8 +1,5 @@
 \clearpage
 
-`r if(knitr:::is_latex_output()) '\\Appendices'`
-
-`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
 
 ```{r age-data}
 d <- readRDS(file.path(rootd.data, "pcod-cache/pacific-cod.rds"))
