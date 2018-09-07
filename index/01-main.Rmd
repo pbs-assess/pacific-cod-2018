@@ -67,8 +67,7 @@ The Area 5CD assessment was updated in 2004 [@sinclair2005], using a similar del
 5. The possibility of violating the assumption of knife-edged recruitment at age 2 years, given evidence for younger fish in the length composition data from the commercial fishery; and
 6. Uncertainty in stock structure.
 
-Sensitivity to the first three of these uncertainties was partially addressed through the presentation of sensitivity analyses and alternative "model-averaged" decision tables for Areas 5AB and 5CD. The fourth and fifth uncertainties are partially addressed in the current assessment through the addition of extra sensitivity analyses. The sixth is still a key uncertainty for Pacific Cod. In the current assessment, data from Areas 5AB and 5CD are combined, under the assumption that Pacific Cod in Queen Charlotte Sound and Hecate Strait are a single stock.
-
+Sensitivity to the first three of these uncertainties was partially addressed in @forrest2013 through the presentation of sensitivity analyses and alternative "model-averaged" decision tables for Areas 5AB and 5CD. The fourth and fifth uncertainties are partially addressed in the current assessment through the addition of extra sensitivity analyses comparing the previous and updated growth parameters, and comparing results with the assumption of knife-edged selectivity (Section \@ref(sensitivity-analyses). The sixth is still a key uncertainty for Pacific Cod. In the current assessment, data from Areas 5AB and 5CD are combined, under the assumption that Pacific Cod in Queen Charlotte Sound and Hecate Strait are a single stock.
 
 # DATA SOURCES
 
@@ -125,51 +124,28 @@ The reference models for the Area 5ABCD and 3CD asessments are discussed in more
 
 # REFERENCE POINTS AND HARVEST CONTROL RULE
 
-The DFO Fishery Decision-making Framework Incorporating the Precautionary
-Approach (PA) policy [@dfo2009] requires stock status to be characterized using
-three reference points:
+The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy [@dfo2009] requires stock status to be characterized using three reference points:
 
 - a Reference Removal Rate
 - an Upper Stock Reference point (USR)
 - a Limit Reference Point (LRP)
 
-Provisional values of $USR = 0.8B_{MSY}$ and $LRP = 0.4B_{MSY}$ are suggested in the absence of stock-specific reference points. The framework specifies a limit reference removal rate of $F_{MSY}$. Therefore, we refer to the reference removal rate as the limit removal rate (LRR) throughout this
-document.
+In the current assessment, these reference points are incorporated into the decision tables (Section  \@ref(decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
 
-As already noted, large uncertainties in the productivity parameters natural
-mortality (*M*) and steepness of the stock-recruit relationship (*h*) have resulted
-in substantial uncertainties in MSY-based reference points for Hecate Strait
-Pacific Cod in previous assessments [@Starr2002; @sinclair2005; @forrest2013]. Given uncertainty in
-productivity parameters for this stock, @sinclair2005 suggested using alternative reference points based on the reconstructed history of the stock. They recommended the Limit Reference Point to be the minimum spawning biomass from which the stock recovered to above average levels. This was estimated
-to have occurred in 1971 (i.e., $LRP = B_{1971}$). @sinclair2005 suggested long-term average Biomass ($B_{Avg}$) as a candidate proxy Upper Stock Reference and long-term average harvest rate ($U_{Avg}$) as a proxy for the reference removal rate.
+Provisional values of $USR = 0.8B_{MSY}$ and $LRP = 0.4B_{MSY}$ are suggested in the absence of stock-specific reference points [@dfo2009]. The framework specifies a limit reference removal rate of $F_{MSY}$. We refer to the reference removal rate as the limit removal rate (LRR) throughout this
+document. 
 
-@sinclair2005 and @forrest2013 acknowledged that the absolute estimate of biomass in 1971
-is dependent on model formulation (e.g., see Figure XX), but found that most
-model formulations agreed that 1971 was the year in which the stock was lowest
-and subsequently recovered to above average levels. Therefore, they
-recommended the LRP be set at $B_{1971}$ estimated by the assessment model,
-rather than the absolute 1971 biomass estimated in their specific stock
-assessment. The Groundfish Subcommittee of PSARC [@fargo2005] subsequently
-recommended the use of $B_{1971}$ as the LRP for the Hecate Strait stock.
-While there is no precedent for reference points in Queen Charlotte Sound,
-the minimum stock size from which the biomass was estimated to have
-recovered in this assessment occurred in 1985. $B_{1985}$ was therefore
-proposed as the LRP for Queen Charlotte Sound.
+As already noted, large uncertainties in the productivity parameters *M* and *h* have resulted
+in substantial uncertainties in MSY-based reference points for Hecate Strait Pacific Cod in previous assessments [@Starr2002; @sinclair2005; @forrest2013]. Given uncertainty in productivity parameters for this stock, @sinclair2005 suggested using alternative reference points based on the reconstructed history of the stock. They recommended the Limit Reference Point to be the minimum spawning biomass from which the stock recovered to above average levels. This was estimated to have occurred in 1971 (i.e., $LRP = *B*_{1971}$). @sinclair2005 suggested long-term average Biomass ($*B*_{Avg}$) as a candidate proxy Upper Stock Reference and long-term average harvest rate ($*U*_{Avg}$) as a proxy for the reference removal rate.
 
-Based on the recommendations of the 2005 Scientific Review Committee
-[@fargo2005], we recommend continued use of historical-based reference points
-for the present assessment cycle. However, we note that the recommendation
-of @fargo2005 was unclear as to whether the calculation of average biomass
-and fishing mortality should continue to be fixed for the period 1956-2004,
-or whether the average should be updated to include recent years. In a later
-section, we show that there is little difference between the estimated
-average biomass for the period 1956-2004 compared to the period 1956-2017.
-For consistency and stability, we suggest continuing to use averages based
-on the shorter period 1956-2004.
+@sinclair2005 and @forrest2013 acknowledged that the absolute estimate of biomass in 1971 is dependent on model formulation, but found that most model formulations agreed that 1971 was the year in which the stock was lowest and subsequently recovered to above average levels. Therefore, they recommended the LRP be set at $*B*_{1971}$ estimated by the assessment model, rather than the absolute 1971 biomass estimated in their specific stock assessment. The Groundfish Subcommittee of PSARC [@fargo2005] subsequently recommended the use of $*B*_{1971}$ as the LRP for the Hecate Strait stock and it was again acepted as LRP by a Regional Peer Review (RPR) process in 2014 [@dfo2015]. Concurrently, long-term average Biomass ($*B*_{Avg}$) between 1956 and 2004, and long-term average fishing mortality ($*F*_{Avg}$) for the same period were accepted by the RPR for the USR and LRR, respectively [@dfo2015].
 
-A list of candidate reference points to use in decision tables for Pacific Cod
-is shown in Table XX. In addition to the LRR, LRP and USR discussed above,
-two benchmark measures are also included:
+While there was no precedent for reference points in Queen Charlotte Sound, the minimum stock size from which the biomass was estimated to have recovered to an above average level occurred in 1985 [@forrest2013] These authors proposed $*B*_{1985}$ as the LRP for the Queen Charlotte Sound, with average biomass and fishing mortality for the period 1956-2004 as the USR and LRR, but no reference points were accepted by the RPR for Queen Charlotte Sound [@dfo2015-2]. The main reason cited was that the fishery in Area 5AB had essentially become an "avoidance" fishery for Pacifc Cod (to avoid breaching the Pacific Cod TAC before TACs for other groundfish species had been realised). Therefore the RPR participants felt that post-1996 estimates of abundance, which were largely informed by low catches, could not be assumed to accurately reflect abundance.
+
+Based on the recommendations of the 2005 Scientific Review Committee [@fargo2005], we recommend continued use of historical-based reference points for the present assessment cycle. However, we note that the recommendation of @fargo2005 was unclear as to whether the calculation of average biomass and fishing mortality should continue to be fixed for the period 1956-2004, or whether the average should be updated to include recent years. In a later section, we show that there is little difference between the estimated
+average biomass for the period 1956-2004 compared to the period 1956-2017. For consistency and stability, we suggest continuing to use averages based on the shorter period 1956-2004.
+
+A list of candidate reference points to use in decision tables for Pacific Cod is shown in Table XX. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included:
 
 - $F_{2013}$
 - $B_{2014}$
