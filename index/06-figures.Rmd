@@ -9,6 +9,7 @@ include_graphics("figure/Pcod_3CD5ABCDE_Pic.png")
 
 ## Area 5ABCD
 
+<--
 ```{r fig-sens15-biomass-5abcd, fig.cap="Biomass."}
 b.plot(c(base.model.5abcd, sens.models.15), c(base.model.5abcd.name, sens.models.name.15))
 ```
@@ -16,12 +17,24 @@ b.plot(c(base.model.5abcd, sens.models.15), c(base.model.5abcd.name, sens.models
 ```{r fig-sens15-biomass-3cd, fig.cap="Biomass."}
 b.plot(c(base.model.3cd, sens.models.16), c(base.model.3cd.name, sens.models.name.16))
 ```
+-->
 
 
 
-
-```{r fig-catch-5abcd, fig.cap="Catch for Area 5ABCD"}
+```{r fig-catch-5abcd, fig.cap="Catch for Area 5ABCD. Canadian catch includes at-sea releases."}
 make.catches.plot(catch.5)
+```
+
+```{r fig-catch-5ab, fig.cap="Catch for Area 5AB. Canadian catch includes at-sea releases."}
+make.catches.plot(catch.5ab)
+```
+
+```{r fig-catch-5cd, fig.cap="Catch for Area 5CD. Canadian catch includes at-sea releases."}
+make.catches.plot(catch.5cd)
+```
+
+```{r fig-catch-5e, fig.cap="Catch for Area 5E. Canadian catch includes at-sea releases."}
+make.catches.plot(catch.5e)
 ```
 
 ```{r fig-base-mcmc-trace-5abcd, fig.cap="Traceplots of posterior samples for the Area 5ABCD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = Hecate Strait Assemblage survey, $q_2$ = Queen Charlotte Sound Synoptic Survey, $q_3$ = Hecate Strait Synoptic Survey, $q_4$ = Commercial CPUE pre-1996, and $q_5$ = Commercial CPUE post-1995."}
@@ -239,7 +252,7 @@ f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.
 
 ## AREA 3CD
 
-```{r fig-catch-3cd, fig.cap="Catch for Area 3CD"}
+```{r fig-catch-3cd, fig.cap="Catch for Area 3CD. Canadian catch includes at-sea releases."}
 make.catches.plot(catch.3)
 ```
 

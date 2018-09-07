@@ -136,7 +136,7 @@ total.catch.yr.qtr <- function(dat,
                      grep("[0-9]", areas),
                      grep("[0-9]", areas))
 
-  usa <- NULL
+  usa <- tibble(year = 0L, usa_catch = 0L)
   if(length(grep("AB", areas))){
     fn <- paste0(file.path(rootd.data, "usa-catch-"), area.num, "AB.csv")
     usa <- as_tibble(read.csv(fn))
@@ -144,7 +144,7 @@ total.catch.yr.qtr <- function(dat,
   if(length(grep("CD", areas))){
     fn <- paste0(file.path(rootd.data, "usa-catch-"), area.num, "CD.csv")
     usa.cd <- as_tibble(read.csv(fn))
-    if(!is.null(usa)){
+    if(nrow(usa) > 1){
       ## Merge the two area catches (sum) into a single tibble
       usa <- left_join(usa, usa.cd, by = "year") %>%
         mutate(usa_catch.x, usa_catch.x = if_else(is.na(usa_catch.x),
@@ -159,6 +159,7 @@ total.catch.yr.qtr <- function(dat,
       usa <- usa.cd
     }
   }
+
   if(!include.usa){
     ## Set all USA catch to 0
     usa <- mutate(usa, usa_catch = 0L)
@@ -192,7 +193,6 @@ total.catch.yr.qtr <- function(dat,
     select(-c(usa_catch, usa_catch1)) %>%
     rename(canada_catch = catch_weight,
            usa_catch = usa_catch2)
-
 }
 
 #' Extract survey biomass and CV for the requested survey
@@ -489,4 +489,3 @@ plot.spec <- function(area = "5[CD]+"){
          units = "in")
 
 }
-

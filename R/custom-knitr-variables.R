@@ -18,9 +18,11 @@ if (!"major_stat_area_name" %in% names(dat$catch)) {
   dat$catch <- left_join(dat$catch, gfplot::pbs_areas, by = "major_stat_area_code") %>%
     rename(major_stat_area_name = major_stat_area_description)
 }
+
 catch.3 <- total.catch.yr.qtr(dat$catch,
                               areas = "3[CD]+",
                               include.usa = TRUE)
+
 ## Example of how to view by year for 3CD:
 ## c3cd <- catch.3 %>%
 ##   group_by(year) %>%
@@ -31,6 +33,18 @@ catch.3 <- total.catch.yr.qtr(dat$catch,
 catch.5 <- total.catch.yr.qtr(dat$catch,
                               areas = "5[ABCD]+",
                               include.usa = TRUE)
+
+catch.5ab <- total.catch.yr.qtr(dat$catch,
+                                areas = "5[AB]+",
+                                include.usa = TRUE)
+
+catch.5cd <- total.catch.yr.qtr(dat$catch,
+                                areas = "5[CD]+",
+                                include.usa = TRUE)
+
+catch.5e <- total.catch.yr.qtr(dat$catch,
+                                areas = "5[E]+",
+                                include.usa = FALSE)
 
 ################################################################################
 ## Base models and some of their outputs simplified
