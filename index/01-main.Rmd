@@ -1,6 +1,6 @@
-# Introduction
+# INTRODUCTION
 
-## Stock Structure and Life History
+## STOCK STRUCTURE AND LIFE HISTORY
 
 Pacific Cod (*Gadus macrocephalus*) is a relatively short-lived, fast-growing member of the family Gadidae. A common name in British Columbia (BC) is grey cod (or gray cod). Populations of Pacific Cod are distributed from California, throughout the waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China [@hart1973]. Maximum observed age in British Columbia is around 10-11 years [@westrheim1996, this document], while a maximum age of approximately 13 years has been reported for Alaskan stocks [@roberson2001]. Maximum length recorded in British Columbia is 100 cm [@hart1973], although some larger specimens have been observed in Alaska and Russia [@westrheim1996]. In recent Synoptic trawl surveys in BC, the maximum recorded length was 93 cm (Appendix A, Table \@ref(tab:length-biosamples-surv)). Pacific Cod are demersal spawners, with several studies reporting that spawning most likely occurs during February to March. A comprehensive review of the biology, life history and distribution of Pacific Cod in BC is provided by @westrheim1996.
 
@@ -10,25 +10,25 @@ Recent genetic analyses have identified a distinction between North American and
 
 The choice to provide science advice for combined areas 5AB and 5CD into a single assessment was due in part to poor model diagnostics and lack of historical fishery-independent indices of abundance for Area 5AB (@forrest2013), and in part due to lack of evidence for genetic distinction between the stocks. Provision of science advice for Areas 5ABCD combined should not imply that the Areas should be managed as a single area, which is a choice for fishery managers in consultation with fishing industry members and other interested parties.
 
-## Ecosystem Considerations
+## ECOSYSTEM CONSIDERATIONS
 
 Population dynamics of Pacific Cod in BC have been characterized by large estimated variations in abundance [e.g., @sinclair2001; @forrest2013], although the causes are not clear. Hypotheses for apparent cyclic abundance in Hecate Strait include predator-prey cycles [@walters1986], density-dependent growth and mortality [@fournier1983],and northward water transport of larvae [@tyler1986; @tyler1991]. Natural mortality has been estimated as high as 0.6 - 0.65 *y*^-1^ in some stock assessments [e.g., @fournier1983; @sinclair2005] although lower estimates (~0.4 *y*^-1^) have also been obtained [@sinclair2001; @forrest2013]. The combination of apparently volatile dynamics with short life span and high natural mortality suggests periods of over/under harvest could result if harvest strategies are not designed to be robust to these features. However, in the context of the BC integrated groundfish fishery, constraints imposed by quotas for other species can mean that single-species considerations alone do not always dictate the best harvest strategy.
 
-### Prey and Predators
+### PREY AND PREDATORS
 
 Pacific Cod are omnivores, eating a diet of mainly marine invertebrates, including amphipods, euphausiids, shrimp and crabs. At around 50-55 cm they also become piscivorous, with Pacific Sand Lance (*Ammodytes hexapterus*) and Pacific Herring (*Clupea pallasi*) becoming important components of the diet [@westrheim1996]. Juvenile Sablefish (*Anoplopoma fimbria*) and adult Pacific Hake (*Merluccius productus*) have also been reported in the diet of Pacific Cod off the west coast of Vancouver Island @ware1986. Pacific Cod have been reported in the diets of Pacific Halibut (*Hippoglossus stenolepis*), North Pacific Spiny Dogfish (*Squalus suckleyi*), sea birds, seals and sealions @westrheim1996.
 
 @walters1986 demonstrated a Pacific Cod-Herring predator-prey interaction in Hecate Strait, in contrast to @ware1986. Simulation models developed by @walters1986 concluded that availability of Pacific Herring prey could be an important driver of Pacific Cod production in Hecate Strait, and, similarly, that Pacific Cod predation could be a significant driver of Pacific Herring abundance. These authors acknowledged that there are alternative hypotheses for cycles in abundance of Pacific Cod and Pacific Herring (e.g., environmental forcing; see below) and suggested that large-scale management experiments may be the only way to distinguish among competing hypotheses.
 
-### Environment
+### ENVIRONMENT
 
 Several studies have investigated linkages between recruitment and environmental indices for Pacific Cod in Hecate Strait (see @westrheim1996 for review). The dominant hypothesis is an inverse relationship between recruitment and northward  advection of larvae (@tyler1986; @tyler1991). Northward advection has been shown to be positively correlated with mean annual sea level at Prince Rupert during the spawning season, which in turn has been used as an explanatory variable for recruitment by a number of authors [@fournier1983]; [@sinclair2001]; @sinclair2005-2; @sinclair2005). However, recent updates of the analyses by @tyler1991 failed to find a continuing correlation between Prince Rupert Sea level and recruitment of Pacific Cod in Hecate Strait (R. Forrest, Pacific Biological Station, unpublished data).This could in part be due to low quotas (and therefore lower catches) since 2001, contributing to stock assessment estimates of lower recruitment in recent years [@forrest2013].
 
-### Other species
+### OTHER SPECIES
 
 Other species caught with Pacific Cod include Arrowtooth Flounder (*Atheresthes stomias*), Yellowtail Rockfish (*Sebastes flavidus*), Pacific Ocean Perch (*S. alutus*), Lingcod (*Ophiodon elongatus*), Silvergray Rockfish (*S. brevispinis*), English Sole (*Parophrys vetulus*) and Big Skate (*Raja binoculata*) [@forrest2013]. Vessels catching Pacific Cod must hold quota for all quota species encountered [@dfo2017]. Since 1996, there has been 100% at-sea observer coverage on commercial bottom trawl vessels in BC. At-sea releases are recorded by observers and counted against the vessel's quota, according to agreed-upon discard mortality rates.
 
-## Fisheries
+## FISHERIES
 
 Pacific Cod in BC are caught almost entirely in the groundfish bottom trawl fishery, which is part of BC's integrated groundfish fishery [@dfo2017]. Pacific Cod is one of the principal target species of the trawl fishery in Hecate Strait. Currently, the majority of the BC Pacific Cod catch is taken from in Hecate Strait (Area 5CD) (Figures \@ref(fig:fig-catch-5abcd) and \@ref(fig:fig-catch-3cd)).
 
@@ -46,9 +46,9 @@ Prior to the introduction of at-sea observer coverage in 1996, estimates of at-s
 
 Japanese and Soviet vessels also trawled in waters off BC in the late 1960s and early 1970s. These vessels were mainly targeting rockfish and likely at depths greater than 150 m. The bycatch of Pacific Cod in these fisheries is, however, unknown. Given uncertainty in foreign catches and discards in the earlier parts of the time series, total catch estimates should be considered underestimates prior to 1996.
 
-Bottom trawl fishing effort has been somewhat cyclic in all areas, especially in Hecate Strait [@forrest2013]. Total effort of all trawl vessels has declined in all areas in recent years. A detailed analysis of catch per unit effort (CPUE) is provided in Appendix B. As noted by @sinclair2000, there are a number of problems with the use of commercial catch per unit effort as an index of biomass for Pacific Cod. Changes in the management regime from an unrestricted fishery prior to 1992, to the introduction of TACs (1992-1996) and then to Individual Vessel Quotas (IVQs) (1997-present), as well as several increases in mesh size (@forrest2013, their Table 5), have affected the underlying relationship between commercial CPUE and abundance, and the relationship between fishing effort and fishing mortality. In recent years of lower Pacific Cod quotas (Table XX), many fishing masters report actively avoiding Pacific Cod to prevent their Pacific Cod quota being exceeded before catching available quotas for other species. In the present assessment CPUE series are split into pre- and post-1996 series, and general linear mixed models are used to attempt to standardize the indices (Appendix B). 
+Bottom trawl fishing effort has been somewhat cyclic in all areas, especially in Hecate Strait [@forrest2013]. Total effort of all trawl vessels has declined in all areas in recent years. A detailed analysis of catch per unit effort (CPUE) is provided in Appendix B. As noted by @sinclair2000, there are a number of problems with the use of commercial catch per unit effort as an index of biomass for Pacific Cod. Changes in the management regime from an unrestricted fishery prior to 1992, to the introduction of TACs (1992-1996) and then to Individual Vessel Quotas (IVQs) (1997-present), as well as several increases in mesh size (@forrest2013, their Table 5), have affected the underlying relationship between commercial CPUE and abundance, and the relationship between fishing effort and fishing mortality. In recent years of lower Pacific Cod quotas (Table XX), many fishing masters report actively avoiding Pacific Cod to prevent their Pacific Cod quota being exceeded before catching available quotas for other species. In the present assessment CPUE series are split into pre- and post-1996 series, and general linear mixed models are used to attempt to standardize the indices (Appendix B).
 
-## Assessment History
+## ASSESSMENT HISTORY
 
 A number of methods have been used to assess Pacific Cod in Hecate Strait since the 1980s. @fournier1983 developed an age-structured model and used it to test for evidence of age-dependent trends in natural mortality, density-dependent natural mortality and catchability, and also for evidence of an environmental factor affecting recruitment. Evidence was found for a relationship between mean sea level at Prince Rupert and recruitment, and also for density-dependent natural mortality. Natural mortality was estimated to be 0.65 y-1 by @fournier1983. This author cautioned about the possibility of confounding among model parameters and systematic data biases that could influence conclusions from the analysis. Estimates of age were obtained from length-frequency analysis [@foucher1982].
 
@@ -62,12 +62,12 @@ The Area 5CD assessment was updated in 2004 [@sinclair2005], using a similar del
 
 1. Uncertainty in fixed variance parameters, particularly the assumed observation error in the surveys, and the objective function component of the fit to annual mean weights;
 2. Reliability of commercial CPUE as an index of abundance, and effects on CPUE of management changes post-1996;
-3. Uncertainty in the prior probability distribution used for natural mortality *M*; 
-4. Uncertainty in the growth function (model parameters and assumptions of stationarity); 
+3. Uncertainty in the prior probability distribution used for natural mortality *M*;
+4. Uncertainty in the growth function (model parameters and assumptions of stationarity);
 5. The possibility of violating the assumption of knife-edged recruitment at age 2 years, given evidence for younger fish in the length composition data from the commercial fishery; and
 6. Uncertainty in stock structure.
 
-Sensitivity to the first three of these uncertainties was partially addressed through the presentation of sensitivity analyses and alternative "model-averaged" decision tables for Areas 5AB and 5CD. The fourth and fifth uncertainties are partially addressed in the current assessment through the addition of extra sensitivity analyses. The sixth is still a key uncertainty for Pacific Cod. In the current assessment, data from Areas 5AB and 5CD are combined, under the assumption that Pacific Cod in Queen Charlotte Sound and Hecate Strait are a single stock. 
+Sensitivity to the first three of these uncertainties was partially addressed through the presentation of sensitivity analyses and alternative "model-averaged" decision tables for Areas 5AB and 5CD. The fourth and fifth uncertainties are partially addressed in the current assessment through the addition of extra sensitivity analyses. The sixth is still a key uncertainty for Pacific Cod. In the current assessment, data from Areas 5AB and 5CD are combined, under the assumption that Pacific Cod in Queen Charlotte Sound and Hecate Strait are a single stock.
 
 
 # DATA SOURCES
@@ -92,13 +92,13 @@ Canadian trawl landings, 1996 to March 31, 2007. SQL Server database, Groundfish
 **GFFOS**
 Canadian trawl landings, April 1, 2007 to 2018. View of the Fisheries and Oceans Canada (DFO) Fishery Operations (FOS) database. Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
 
-## Catch Data
+## CATCH DATA
 Groundfish fisheries were managed by calendar year until 1996. Beginning in 1997-98 the fishing year changed to April 1--March 31. In 2010--2011 the fishing year was changed again to February 21 to February 20. Throughout this document, fishing years are defined as beginning on April 1 for all years, and are referenced by starting year, e.g., fishing year 1957 runs from April 1, 1957 to March 31, 1958. These definitions were used consistently in all calculations involving commercial catch data, including calculation of annual average mean weight in the catch (Appendix \@ref(analysis-of-biological-data)), and commercial CPUE (Appendix \@ref(commercial-cpue-standardization)). Landings data are presented
 separately for Canada and the USA (Tables XX and XX). Combined USA-Canada landings data were obtained from the Pacific Marine Fisheries Commission reports for 1956-1981 and the USA landed portion was determined by subtracting the Canadian landed amount from the combined total for each year. In cases where
 the difference was negative, the USA landed amount was set to zero (Tables XX and XX). Canadian data were obtained: from the GFCatch database for the period 1954-1995 [@rutherford1999]; from the PacHarvest database for the period 1996-March 31, 2007; and from the Fisheries and Oceans Canada (DFO) FOS
 database for the period April 1, 2007 until the present. The annual size composition of commercial catches and landings were estimated from port samples and at-sea samples collected by observers archived in the GFBio database.
 
-## Indices of abundance
+## INDICES OF ABUNDANCE
 Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
 
 
@@ -106,14 +106,14 @@ Stock assessment models in Area 3CD were fit to two fishery-independent survey i
 
 The fishery-independent indices of abundance were developed using swept area analyses. Details are provided in Appendix \@ref(fishery-independent-indices-of-abundance).
 
-The commercial CPUE indices were standardized standardized for depth, fishing locality, month, vessel, and latitude, when available, using generalized linear mixed models (GLMMs), based on a Tweedie distribution. Details are provided in Appendix \@ref(commercial-cpue-standardization). 
+The commercial CPUE indices were standardized standardized for depth, fishing locality, month, vessel, and latitude, when available, using generalized linear mixed models (GLMMs), based on a Tweedie distribution. Details are provided in Appendix \@ref(commercial-cpue-standardization).
 
-## Biological data
+## BIOLOGICAL DATA
 Updates to estimated growth, maturity, annual mean weights in commercial catches, and probabilistic distributions of length-at-age are provided in Appendix \@ref(analysis-of-biological-data).
 
 *TO DO: probably need to say a little more here*
 
-# Stock Assessment Model
+# STOCK ASSESSMENT MODEL
 
 All models presented in this document are Bayesian models implemented in AD Model Builder [@fournier2012]. The models are based on the Integrated Statistical Catch Age Model (iSCAM), first reported in @martell2011. A number of modifications have been made to the code from its original version by the authors of this assessment to include delay difference calculations. The model in its present formulation is fully described in Appendix \@ref(delay-difference-model). Two major differences between the current model and the previous assessment [@forrest2013] are:
 
@@ -123,7 +123,7 @@ All models presented in this document are Bayesian models implemented in AD Mode
 
 The reference models for the Area 5ABCD and 3CD asessments are discussed in more detail in Section (\@ref(base-case-models)).
 
-# Reference Points and Harvest Control Rule
+# REFERENCE POINTS AND HARVEST CONTROL RULE
 
 The DFO Fishery Decision-making Framework Incorporating the Precautionary
 Approach (PA) policy [@dfo2009] requires stock status to be characterized using
@@ -196,11 +196,11 @@ simulation-testing of alternatives in the context of a feedback simulation
 analysis.
 
 
-# Base Case Models
+# BASE CASE MODELS
 
 The Base Case models for both areas 5ABCD and 3CD are XX.
 
-## Prior Probability Distributions
+## PRIOR PROBABILITY DISTRIBUTIONS
 
 Prior probability distributions for the Area 5ABCD and 3CD Base Case models
 are shown in Figure XX and Table XX.
@@ -250,9 +250,9 @@ A total of XX model parameters were conditionally estimated in Area 5ABCD;
 while XX parameters were estimated for Area 3CD, which had one fewer survey
 q parameters (Table XX).
 
-# Results
+# RESULTS
 
-## Area 5ABCD: Queen Charlotte Sound and Hecate Strait
+## AREA 5ABCD: QUEEN CHARLOTTE SOUND AND HECATE STRAIT
 
 The joint posterior distribution was numerically approximated using the
 Markov Chain Monte Carlo routines built into AD Model Builder
@@ -308,7 +308,7 @@ of the prior distribution in both cases (Figure XX).
 
 Spawning biomass is shown in Figure \@ref(fig:fig-base-biomass).
 
-### Reference Points
+### REFERENCE POINTS
 
 Posterior estimates of $F_{2017}$ and $B_{2018}$ are shown in Figures XX and
 XX, and Table XX. Fishing mortality in 2017 was low compared to the historical
@@ -323,12 +323,12 @@ sufficient burn-in). Convergence was diagnosed using visual inspection of the
 trace plots (Figure XX) and visual examination of autocorrelation in posterior
 chains (Figure XX).
 
-### Reference Points
+### REFERENCE POINTS
 
 Alternative reference points based on estimates of average historical biomass,
 similar to those adopted in Area 5ABCD, were explored.
 
-# Sensitivity Analyses
+# SENSITIVITY ANALYSES
 
 We present a number of sensitivity analyses to show the influence of certain data sources, fixed
 parameters and prior probability distributions in the Area 5ABCD and 3CD Base Case models.Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
@@ -431,7 +431,7 @@ million, resulting in 2,000 posterior samples. The first 1,000 samples
 were dropped to allow for sufficient burn-in.
 
 
-## Sc 1b and Sc 1c. Exclusion of a year-location interaction as random effect in commercial CPUE indices
+## SC 1B AND SC 1C. EXCLUSION OF A YEAR-LOCATION INTERACTION AS RANDOM EFFECT IN COMMERCIAL CPUE INDICES
 The base case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix B). Two sensitivity analyses are shown to illustrate the effect of removing the interaction term from both indices (i.e., fitting the delay difference model to historical and modern CPUE indices calculated using equation \@ref(eq:cpuesens2)):
 
 - \textbf{Sc 1b.} Use equations without the interaction term to create CPUE
@@ -446,7 +446,7 @@ The base case models were fit to historical and modern commercial CPUE indices t
 
 Sc 1c was done because the annual CVs of the CPUE indices were very small (less than 0.1 in some years). Annual CVs were doubled to addres concerns that the objective function of the delay difference model may be giving the CPUE indices too much weight when CVs were very small.
 
-## Sc 1d. Exclusion of commercial CPUE index for the modern period
+## SC 1D. EXCLUSION OF COMMERCIAL CPUE INDEX FOR THE MODERN PERIOD
 
 A sensitivity analysis was done where the modern CPUE index was removed from the model altogether. This was to address concerns that CPUE in the post-IVQ period (post-1995) may not be a good index of abundance, as some skippers reported avoiding Pacific Cod when quotas were low (@forrest2013). For comparison, to illustrate the effect of the historical CPUE index on model output, the historical CPUE index was removed. Finally, both commercial CPUE indexes were removed.
 
@@ -458,14 +458,14 @@ index includes year-location interaction term as a random effect, Figure \@ref(f
 index includes year-location interaction term as a random effect, Figure \@ref(fig:fig-sens1-biomass-5abcd).
 - \textbf{Sc 1f.} Remove both CPUE indices from the model, Figure \@ref(fig:fig-sens1-biomass-5abcd).
 
-## Sc 1e. Exclusion of the NMFS Triennial survey index for Area 3CD
+## SC 1E. EXCLUSION OF THE NMFS TRIENNIAL SURVEY INDEX FOR AREA 3CD
 
 A sensitivity analysis was done where the NMFS Triennial Survey index was removed from the model.
 
 - \textbf{Sc 1g (Area 3CD only).} Remove NMFS Triennial Survey index from the model, Figure \@ref(fig:fig-sens8-biomass-3cd).
 
 
-## Sc 2a and 2b. Prior probability distribution for $ln(q)$
+## SC 2A AND 2B. PRIOR PROBABILITY DISTRIBUTION FOR $LN(Q)$
 
 For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $ln(q)$ for the QCS and HS Synoptic Surveys:
 
@@ -478,7 +478,7 @@ For 3CD, two sensitivity analyses are shown to illustrate the effect of the norm
 - \textbf{Sc 2a.} The sd of the WCVI Synoptic survey was set to the same sd as for the QCS and HS Synoptic surveys, i.e., sd = 0.3, Figure \@ref(fig:fig-sens9-biomass-3cd).
 - \textbf{Sc 2b.} A uniform prior was used for \textit{q} for the WCVI Synoptic Surveys, Figure \@ref(fig:fig-sens9-biomass-3cd).
 
-## Sc 3a to 3c. Prior probability distribution for $ln(M)$
+## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR $LN(M)$
 
 Three sensitivity analyses are shown to illustrate the effect of the
 parameters of the normal prior distribution assumed for $ln(M)$:
@@ -521,7 +521,7 @@ Figure XX. Results show that the stock was estimated to be larger relative
 to the historical averages as estimates of M declined.
 -->
 
-## Sc 4a and Sc 4b. Prior probability distribution for steepness
+## SC 4A AND SC 4B. PRIOR PROBABILITY DISTRIBUTION FOR STEEPNESS
 
 Two sensitivity analyses were done to illustrate the effect of the prior probability distribution assumed for steepness in the base case model:
 
@@ -542,7 +542,7 @@ prior for steepness helped to improve model convergence properties without
 having a very large influence on biomass estimates (Figure XX).
 -->
 
-## Sc 5a. The assumption of knife-edged selectivity and maturity at age 2
+## SC 5A. THE ASSUMPTION OF KNIFE-EDGED SELECTIVITY AND MATURITY AT AGE 2
 
 One sensitivity analysis was done to illustrate the effect of the assumption that fish recruit to the fishery, all surveys and mature at age 2 *y*:
 
@@ -550,21 +550,21 @@ One sensitivity analysis was done to illustrate the effect of the assumption tha
 
 TO DO: More explanatory text here referring to new maturity estimates. Possibly add "ageless" catch-age model sensitvity separating maturity and selectivity at age 3 and age 2 respectively (but would still be assuming knife-edged so maybe no point)
 
-## Sc 5b. Updated growth parameters
+## SC 5B. UPDATED GROWTH PARAMETERS
 One sensitivity analysis was done to illustrate the effect of updating the von Bertalanffy growth parameters using available age and length data (see Appendix XX).
 
 - \textbf{Sc 5b.} Use von Bertalanffy growth parameters used in the previous stock assessment (@forrest2013), Figures \@ref(fig:fig-sens6-biomass-5abcd) and \@ref(fig:fig-sens13-biomass-3cd).
 
 TO DO: More explanatory text here
 
-## Sc 6a - 6c. Assumed fixed value of observation error $\sigma_O$
+## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\SIGMA_O$
 In the Base Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
 
 - \textbf{Sc 6a.} Fix $\sigma_O$ = 0.1, Figures \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd), .
 - \textbf{Sc 6b.} Fix $\sigma_O$ = 0.15, \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd)
 - \textbf{Sc 6c.} Fix $\sigma_O$ = 0.25, \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd)
 
-## Sc 6c. Assumed fixed value of process error $\sigma_R$
+## SC 6C. ASSUMED FIXED VALUE OF PROCESS ERROR $\SIGMA_R$
 
 In the Base Case and in @forrest2013, 0.8 was assumed to be an appropriate
 value for $\sigma_R$, as this stock appears to have had very variable
@@ -583,7 +583,7 @@ $\sigma_R$ = 0.4; and much higher and uncertain posterior estimates with
 $\sigma_R$ = 1.0 as a function of the increased recruitment variation.
 -->
 
-## Sc 7a. Assumed fixed value of $\sigma_W$
+## SC 7A. ASSUMED FIXED VALUE OF $\SIGMA_W$
 
 Problems with interpreting the mean weight data were discussed in Appendix XX.
 These problems stem from changes over time in the sample sizes of different
