@@ -5,7 +5,6 @@
 ```{r fig-map, fig.pos="H", fig.cap="Map of the management areas 5AB (Queen Charlotte Sound), 5CD (Hecate Strait), and 3CD (West Coast Vancouver Island)."}
 include_graphics("figure/Pcod_3CD5ABCDE_Pic.png")
 ```
-
 \clearpage
 
 ## Area 5ABCD
@@ -238,7 +237,7 @@ f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.
 
 \clearpage
 
-## Area 3CD
+## AREA 3CD
 
 ```{r fig-catch-3cd, fig.cap="Catch for Area 3CD"}
 make.catches.plot(catch.3)

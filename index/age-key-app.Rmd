@@ -37,7 +37,7 @@ total_survey_lengths <- gfplot::tidy_lengths_raw(x,
   summarise(n = sum(n)) %>% pull(n)
 ```
 
-# Analysis of biological data
+# ANALYSIS OF BIOLOGICAL DATA
 
 *TO DO: Synoptic survey data section: Add query details for length data (survey and comm). Or maybe here is where description of gfplot goes. *
 
@@ -51,9 +51,9 @@ total_survey_lengths <- gfplot::tidy_lengths_raw(x,
 In this appendix we analyse length, maturity and available ageing data to update growth and maturity parameters. We also plot age-frequency data derived from an age-length key to visualise the probable age composition in survey and commercial catch data.
 
 
-## Length, weight and maturity samples
+## LENGTH, WEIGHT AND MATURITY SAMPLES
 
-### Synoptic survey data
+### SYNOPTIC SURVEY DATA
 Length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island synoptic surveys were extracted from the GFBio database using the following criteria in SQL queries ... *TO DO*
 
 A summary of number of fish measured by year, survey and sex is provided in Table \@ref(tab:length-biosamples-surv). Survey length-frequencies are shown in Figure \@ref(fig:length-plotfrequencies-surv).A summary of number of fish weighed by year, survey and sex is provided in Table \@ref(tab:weight-biosamples).A summary of number of maturity records by year and survey is provided in Table \@ref(tab:mat-biosamples).
@@ -130,7 +130,7 @@ x %>%
 
 \clearpage
 
-### Commercial fishery data
+### COMMERCIAL FISHERY DATA
 Length data from commercial bottom trawl vessels were extracted from the GFBio database, using the criteria given below. Examination of the sample length frequencies revealed 7 samples that were coded as being Pacific Cod but the size
 composition was uncharacteristic of the species. These samples, listed in Table XX, were eliminated from the analysis.
 
@@ -217,7 +217,7 @@ xx %>%
 \clearpage
 
 
-## Age samples
+## AGE SAMPLES
 
 Pacific Cod are difficult to age due to inconsistency in annual marks, especially in the first few years of life (Beamish, 1981; Johnstone and Anderl, 2012; Kastelle, 2017).A recent microchemistry-based validation study of Alaskan Pacific Cod otoliths revealed that visual aging of otoliths resulted in a high probability of over-ageing fish of ages 3-4 y. This was due to difficulty of readers distinguishing growth checks (translucent zones) from annuli (Kastelle, 2017). Due to large difficulties in interpreting growth patterns on otoliths from BC Pacific Cod, they are here aged using dorsal finray sections, although this method is unvalidated (Beamish, 1981). Ageing finray sections is resource intensive, since fins must be dried, sectioned and mounted in resin before reading. Therefore, production ageing of Pacific Cod has not been routinely done for BC populations.
 
@@ -275,7 +275,7 @@ tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
 
 \clearpage
 
-## Growth parameters
+## GROWTH PARAMETERS
 
 Growth parameters were estimated by fitting age and length data to the von Bertalanffy growth function (Equation \@ref(eq:vB))
 
@@ -448,7 +448,7 @@ get_par_df(lw_fits, 1) %>%
 
 \clearpage
 
-## Maturity parameters
+## MATURITY PARAMETERS
 
 Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage.Fish are assessed as being in one of six states: 1.immature; 2.maturing; 3.mature (resting); 4.mature; 5.mature (spent); and 6.mature (ripe). For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
 
@@ -571,16 +571,16 @@ inner_join(est, se) %>%
 
 ```
 
-## Mean weight in commercial catch
+## MEAN WEIGHT IN COMMERCIAL CATCH
 
 *TO DO*
 
-## Age-length keys
+## AGE-LENGTH KEYS
 For illustrative purposes, age-length keys (ALKs) were constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys. 
 
 For each area (3CD and 5ABCD), for each year in which age samples were available, the ALK was used to probabilistically “assign” ages to observed lengths from synoptic surveys and commercial catch data, using methods described in Isermann and Knight (2005), coded in the R package FSA (Ogle, 2012; 2018). 
 
-### Steps
+### STEPS
 
 #### 1. Get the "age sample"" and construct the ALK
 The “age sample” contains all the specimen records with *both* an age (y) and length (cm) observations. Age samples are made using data from: 1. the Hecate Strait and Queen Charlotte Sound Synoptic surveys combined; and 2.the West Coast Vancouver Island Synoptic Survey.

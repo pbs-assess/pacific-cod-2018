@@ -2,7 +2,7 @@
 <!-- TODO: show shapes that Tweedie can take -->
 \clearpage
 
-# Commercial CPUE standardization
+# COMMERCIAL CPUE STANDARDIZATION
 
 We sought to generate an index of Pacific Cod abundance from commercial trawl
 catch per unit effort data that was standardized for depth, fishing locality,
@@ -14,7 +14,7 @@ describe those decisions for the 'historical' (1956--1995) and 'modern' data
 contribution of the various standardization components, and identify the effect
 of including or ignoring space-time interactions.
 
-## Defining the 1956--1995 fleet
+## DEFINING THE 1956--1995 FLEET
 
 Commercial groundfish bottom trawl data prior to 1991 was recorded via dockside
 interviews and aggregated to fishing locality (defined spatial regions) and
@@ -26,7 +26,7 @@ data, we removed any trawl events that were longer than five hours, since these
 are likely to be data entry errors. During these time periods, the variables
 depth, date, and locality are available as model covariates.
 
-## Defining the 1996--2017 fleet
+## DEFINING THE 1996--2017 FLEET
 
 Commercial groundfish bottom trawl data from 1996 to present have been recorded
 to the fishing-event level in the presence of on-board observers or video
@@ -46,7 +46,7 @@ caught the species in at least 100 tows across all years of interest, and to
 have passed a threshold of five trips (trips that recorded some of the species)
 for at least five years --- all from 1996 to 2017.
 
-## Defining the standardization model predictors
+## DEFINING THE STANDARDIZATION MODEL PREDICTORS
 
 For depth and latitude, we binned the values into a sequence of bands to allow
 for nonlinear relationships between these predictors and CPUE [e.g.
@@ -69,7 +69,7 @@ our index because of the form of our model (discussed below). This relative
 magnitude should not affect the outcomes of the stock assessment model because
 we estimated separate catchabilities for each commercial CPUE index.
 
-## A Tweedie GLMM index standardization model
+## A TWEEDIE GLMM INDEX STANDARDIZATION MODEL
 
 Fisheries CPUE data contains both zeros and positive continuous values.
 A variety of approaches have been used in the fishery literature to model such
@@ -167,7 +167,7 @@ each year. This is similar to calculating the geometric mean of CPUE each year
 but with an assumed Tweedie observation model instead of a lognormal
 observation model that does not allow for zeros.
 
-## Commercial CPUE standardization results
+## COMMERCIAL CPUE STANDARDIZATION RESULTS
 
 The raw Pacific Cod catch and total fleet effort show variable trends through
 time in both the historic and modern datasets (Figure
@@ -206,7 +206,7 @@ via coefficient plots (historic: Figures \@ref(fig:cpue-coef-plot1),
 \@ref(fig:cpue-coef-plot1-modern), \@ref(fig:cpue-coef-plot2-modern),
 \@ref(fig:cpue-coef-plot3-modern)).
 
-## Space-time (locality-year) interactions
+## SPACE-TIME (LOCALITY-YEAR) INTERACTIONS
 
 To test the effect of including or not including space-time interactions when
 such interactions are or are not present, we performed a simulation test. While
