@@ -23,6 +23,8 @@ catch.3 <- total.catch.yr.qtr(dat$catch,
                               areas = "3[CD]+",
                               include.usa = TRUE)
 
+catch.3.discards <- total.catch.discards(dat$catch, areas="3[CD]+")
+
 ## Example of how to view by year for 3CD:
 ## c3cd <- catch.3 %>%
 ##   group_by(year) %>%
@@ -33,18 +35,22 @@ catch.3 <- total.catch.yr.qtr(dat$catch,
 catch.5 <- total.catch.yr.qtr(dat$catch,
                               areas = "5[ABCD]+",
                               include.usa = TRUE)
+catch.5.discards <- total.catch.discards(dat$catch, areas="5[ABCD]+")
 
 catch.5ab <- total.catch.yr.qtr(dat$catch,
                                 areas = "5[AB]+",
                                 include.usa = TRUE)
+catch.5ab.discards <- total.catch.discards(dat$catch, areas="5[AB]+")
 
 catch.5cd <- total.catch.yr.qtr(dat$catch,
                                 areas = "5[CD]+",
                                 include.usa = TRUE)
+catch.5cd.discards <- total.catch.discards(dat$catch, areas="5[CD]+")
 
 catch.5e <- total.catch.yr.qtr(dat$catch,
                                 areas = "5[E]+",
                                 include.usa = FALSE)
+catch.5e.discards <- total.catch.discards(dat$catch, areas="5[E]+")
 
 ################################################################################
 ## Base models and some of their outputs simplified

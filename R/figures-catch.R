@@ -29,3 +29,31 @@ make.catches.plot <- function(dat,
                                       color = "darkgreen"))
   }
 }
+
+discards.plot <- function(dat){
+  dat <- dat %>%
+    group_by(year) %>%
+    summarize(`Released at sea` = sum(discarded_kg) / 1000,
+              `Prop. released` = sum(discarded_kg) / sum(landed_kg + discarded_kg)) %>%
+    rename(Year = year)
+
+  g.bottom <- ggplot(dat) +
+    aes(x = Year, y = `Released at sea`) +
+    geom_col(fill = "red", alpha = 0.5) +
+    coord_cartesian(expand = FALSE) +
+    labs(x = "Year",
+         y = "Catch (t)",
+         fill = "") +
+    scale_x_continuous(breaks = seq(0, 2015, 5))
+
+  g.top <- ggplot(dat) +
+    aes(x = Year, y = `Prop. released`) +
+    geom_line(color = "blue",
+              size = 1,
+              alpha = 0.5) +
+    scale_x_continuous(breaks = seq(0, 2015, 5))
+
+
+  grid.arrange(g.top, g.bottom, heights = c(1/3, 2/3))
+
+}

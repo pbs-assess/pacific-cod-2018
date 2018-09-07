@@ -195,6 +195,20 @@ total.catch.yr.qtr <- function(dat,
            usa_catch = usa_catch2)
 }
 
+total.catch.discards <- function(dat,
+                                 areas = NULL){
+
+  if(is.null(areas)){
+    stop("You must supply at least one area.")
+  }
+  dat <- mutate(dat,
+                area = assign_areas(major_stat_area_name,
+                                    area_regex = areas)) %>%
+    filter(!is.na(area))
+  dat %>%
+    select(year, landed_kg, discarded_kg)
+}
+
 #' Extract survey biomass and CV for the requested survey
 #'
 #' @param dat A tibble of the survey index from gfplot package
