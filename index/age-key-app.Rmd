@@ -1,8 +1,5 @@
 \clearpage
 
-`r if(knitr:::is_latex_output()) '\\Appendices'`
-
-`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
 
 ```{r age-data}
 d <- readRDS(file.path(rootd.data, "pcod-cache/pacific-cod.rds"))
@@ -62,6 +59,7 @@ Length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound a
 A summary of number of fish measured by year, survey and sex is provided in Table \@ref(tab:length-biosamples-surv). Survey length-frequencies are shown in Figure \@ref(fig:length-plotfrequencies-surv).A summary of number of fish weighed by year, survey and sex is provided in Table \@ref(tab:weight-biosamples).A summary of number of maturity records by year and survey is provided in Table \@ref(tab:mat-biosamples).
 
 ```{r length-biosamples-surv, results='asis'}
+
 x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
   filter(!is.na(length)) %>%
@@ -69,12 +67,14 @@ x %>%
   summarize(
     nlength_m = sum(sex == 1),
     nlength_f = sum(sex == 2),
-    nlength_u = sum(sex == 0)
-
+    nlength_u = sum(sex == 0),
+    maxlength_m = max(length[which(sex == 1)], na.rm=T),
+    maxlength_f = max(length[which(sex == 2)], na.rm=T),
+    maxlength_u = ifelse(nlength_u >0,  max(length[which(sex == 0)], na.rm=T),NA)
   ) %>%
   rename(
-    Survey = survey_abbrev, Year = year, `N male` = nlength_m,
-    `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
+     Survey = survey_abbrev, Year = year, `N male` = nlength_m,
+     `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) %>%
   knitr::kable(caption = "Number (N) of length measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "")%>%
   kableExtra::kable_styling(latex_options = c("hold_position"), font_size = 9)
 ```
@@ -571,6 +571,9 @@ inner_join(est, se) %>%
 
 ```
 
+## Mean weight in commercial catch
+
+*TO DO*
 
 ## Age-length keys
 For illustrative purposes, age-length keys (ALKs) were constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys. 

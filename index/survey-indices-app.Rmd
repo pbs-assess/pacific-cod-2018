@@ -1,0 +1,142 @@
+\clearpage
+
+`r if(knitr:::is_latex_output()) '\\Appendices'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
+
+# Fishery-independent indices of abundance
+
+## Canadian surveys
+
+### Hecate Strait Assemblage Survey
+
+A series of multi-species groundfish bottom trawl surveys was conducted in
+Hecate Strait in May-June of 1984, 1987, 1989, 1991, 1993, 1995, 1996, 1998,
+2000, 2002, and 2003 @westrheim1984, @fargo1984, @fargo1988,
+@wilson1991, @hand1994, @workman1996, @workman1997, @choromanski2002).
+The results up to 2000 were reported in the 2001 assessment
+[@sinclair2001] and results from 2002 and 2003 were presented in the
+2005 assessment [@sinclair2005].
+
+The original design of this survey assigned fishing locations by 10 fm depth
+intervals within a 10 nm grid of Hecate Strait. The survey was
+post-stratified for the purpose of calculating an abundance index for Pacific
+Cod [@sinclair2000]. The post stratification used 10 fm depth intervals for
+the entire survey area, thereby treating each depth interval as a single
+stratum.
+
+The Hecate Strait Assemblage survey was designed as a systematic
+fixed-station survey. Despite attempts to apply post-sampling stratification,
+this approach had high survey variance [@sinclair2007]. In 2004 the Hecate
+Strait Assemblage survey was discontinued in favour of the Hecate Strait
+Synoptic survey (described below).
+
+### Hecate Strait Synoptic Survey
+
+The Hecate Strait synoptic groundfish bottom trawl survey is part of a
+coordinated set of long-term surveys that together cover the continental shelf
+and upper slope of most of the BC coast. The Hecate Strait synoptic survey has
+been conducted during May-June, in odd years since 2005. All the synoptic
+surveys follow a random depth stratified design. The survey area is divided
+into 2 km by 2 km blocks and each block is assigned to one of four depth
+strata based on the average bottom depth in the block. The four depth strata
+for the Hecate Strait survey are 10--70m, 70--130m, 130--220m, and
+220--500m. Each year blocks are randomly selected within each depth strata.
+The relative allocation of blocks amongst depth strata was determined by
+modeling the expected catches of groundfish and determining the target number
+of tows per stratum that would provide the most precise catch rate data for
+as many species as possible.
+
+### Queen Charlotte Sound Synoptic Survey
+
+The Queen Charlotte Sound synoptic groundfish bottom trawl survey is part of
+a coordinated set of long-term surveys that together cover the continental shelf
+and upper slope of most of the BC coast. The Queen Charlotte Sound survey has
+been conducted in July-August in 2003, 2004 and in odd years since 2005. All
+the synoptic surveys follow a random depth stratified design. The survey area
+is divided into 2 km by 2 km blocks and each block is assigned to one of four
+depth strata based on the average bottom depth in the block. The four depth
+strata for the QCS survey are 50--125m, 125--200m, 200--330m,
+and 330--500 m. Each year blocks are randomly selected within each depth strata.
+In addition, for the purposes of allocating blocks, the QCS survey is divided
+into northern and southern spatial strata.
+
+The relative allocation of blocks amongst depth strata was determined by
+modeling the expected catches of groundfish and determining the target number
+of tows per stratum that would provide the most precise catch rate data for as
+many species as possible.
+
+### West Coast Vancouver Island Synoptic Survey
+
+*TODO* edit as needed:
+
+The West Coast Vancouver Island synoptic bottom trawl survey was first
+conducted in 2004 and is conducted in alternating (even-numbered) years on
+a chartered commercial trawler. The survey area is off the west coast of
+Vancouver Island from approximately 49$^\circ$ 12$^\prime$ to 50$^\circ$
+36$^\prime$ North latitude and approximately 124$^\circ$ 48$^\prime$ to
+128$^\circ$ 30$^\prime$ West longitude. The southern boundary is contiguous
+with the Canada/U.S. boundary. The survey has a single aerial stratum in
+Pacific Fishery Management Area regions 3C and 3D  separated into four depth
+strata: 50-125 m; 125-200 m; 200-330 m; and 330-500 m. Approximately 150 to 180
+4 km^2^ blocks are selected randomly among the four depth strata when
+conducting each survey.
+
+### Swept area analysis
+For all Canadian surveys, a swept area estimate of biomass in any year y was obtained
+by summing the product of the CPUE and the area surveyed across the surveyed
+strata $i$:
+
+\begin{equation}
+  B_y = \sum_{i=1}^kC_{y_i}A_i=\sum_{i=1}^kB_{y_i}
+  (\#eq:sweptareabiomass)
+\end{equation}
+
+where
+$C_{y_i}$ = mean CPUE density (kg/km^2^) for Pacific Cod in stratum $i$
+$A_i$ = area of stratum $i$ (km^2^), and
+$B_{y_i}$ = biomass of Pacific Cod in stratum $i$ for year $y$
+$k$ = number of strata
+
+CPUE ($C_{y_i}$) for Pacific Cod in stratum $i$ for year $y$ was
+calculated as a density in kg/km^2^ by
+
+\begin{equation}
+  C_{y_i}=\frac{1}{n_{y_i}} \sum\limits_{j=1}^{n_{y_i}} \frac{W_{y_i,j}}{D_{y_i,j}w_{y_i,j}}
+  (\#eq:sweptareacpue)
+\end{equation}
+
+where
+$W_{y_i,j}$ = catch weight (kg) for Pacific Cod in stratum $i$ for year $y$ and tow $j$
+$D_{y_i,j}$ = distance travelled (km) by tow $j$ in stratum $i$ for year $y$
+$w_{y_i,j}$ = net opening (km) by tow $j$ in stratum $i$ for year $y$
+$n_{y_i}$ = number of tows in stratum $i$
+
+The variance of the survey biomass estimate $V_y$ for Pacific Cod in year $y$
+is calculated in kg^2^ as follows:
+
+\begin{equation}
+  V_y=\sum_{i=1}^k\frac{\sigma_{y_i}^2A_i^2}{n_{y_i}}=\sum_{i=1}^kV_{y_i}
+  (\#eq:sweptareavariance)
+\end{equation}
+
+where $\sigma_{y_i}^2$ is the variance of the CPUE in $kg^2/km^4$ for year $y$ in
+stratum $i$, $V_{y_i}$ is the variance of Pacific Cod in stratum $i$ for year $y$,
+where $\sigma_{y_i}^2$ was obtained from bootstrapped samples (see below).
+
+The CV for Pacific Code for each year $y$ was calculated as follows:
+
+\begin{equation}
+  (CV)_y=\frac{{V_y}^{1/2}}{B_y}
+  (\#eq:sweptareacv)
+\end{equation}
+
+where $(CV)_y$ is the CV for year $y$.
+
+One thousand bootstrap replicates with replacement were constructed from the
+survey data to estimate bias corrected 95% confidence regions for each survey
+year [@efron1982].
+
+## NMFS Triennial Survey (in Canadian waters)
+
+*TO DO: Add Paul's text*

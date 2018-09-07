@@ -10,7 +10,6 @@ data/cache/*
 *.pdf
 *.png
 *.rds
-*.doc*
 *_cache
 *_files
 *.html
