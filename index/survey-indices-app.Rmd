@@ -6,8 +6,6 @@
 
 # FISHERY-INDEPENDENT INDICES OF ABUNDANCE
 
-*TO DO. Tables of results and cvs for all indices. RF will add CSV files to data folder*
-
 ## CANADIAN SURVEYS
 
 ### HECATE STRAIT ASSEMBLAGE SURVEY
@@ -83,6 +81,7 @@ strata: 50-125 m; 125-200 m; 200-330 m; and 330-500 m. Approximately 150 to 180
 conducting each survey.
 
 ### SWEPT AREA ANALYSIS
+
 For all Canadian surveys, a swept area estimate of biomass in any year y was obtained
 by summing the product of the CPUE and the area surveyed across the surveyed
 strata $i$:
@@ -124,7 +123,7 @@ where $\sigma_{y_i}^2$ is the variance of the CPUE in $kg^2/km^4$ for year $y$ i
 stratum $i$, $V_{y_i}$ is the variance of Pacific Cod in stratum $i$ for year $y$,
 where $\sigma_{y_i}^2$ was obtained from bootstrapped samples (see below).
 
-The CV for Pacific Code for each year $y$ was calculated as follows:
+The CV for Pacific Cod for each year $y$ was calculated as follows:
 
 \begin{equation}
   (CV)_y=\frac{{V_y}^{1/2}}{B_y}
@@ -137,6 +136,20 @@ One thousand bootstrap replicates with replacement were constructed from the
 survey data to estimate bias corrected 95% confidence regions for each survey
 year [@efron1982].
 
+```{r surv-canadian-table, results='asis'}
+surv_syn <- readRDS(here::here("data/pcod-cache/pacific-cod.rds"))$survey_index
+dplyr::filter(surv_syn, survey_abbrev %in%
+  c("SYN QCS", "SYN WCVI", "SYN HS", "SYN WCHG", "OTHER HS MSA")) %>%
+  dplyr::select(survey_abbrev, year, biomass, re, lowerci, upperci, num_sets, num_pos_sets) %>%
+  dplyr::mutate(lowerci = round(lowerci/1000, 1), upperci = round(upperci/1000, 1),
+    biomass = round(biomass/1000, 1), re = round(re, 2)) %>%
+  dplyr::rename(`Survey abbrev.` = survey_abbrev, Year = year, Biomass = biomass,
+    CV = re, `Lower CI` = lowerci, `Upper CI` = upperci, Sets = num_sets, `Positive sets` = num_pos_sets) %>%
+  dplyr::arrange(`Survey abbrev.`, Year) %>%
+  knitr::kable(caption = "Pacific Cod survey data for Canadian trawl surveys. Relative biomass and associated lower and upper confidence intervals (CI) are shown in metric tons (without accounting for survey catchability). Positive sets refers to the number of trawl sets that caught Pacific Cod.", booktabs = TRUE, linesep = "")
+```
+
+
 ## NMFS TRIENNIAL SURVEY (IN CANADIAN WATERS)
 
 A relative abundance index was developed for Area 3CD from data from the National Marine Fisheries Service (NMFS) Triennial survey operated off the lower half of Vancouver Island.
@@ -145,8 +158,12 @@ A relative abundance index was developed for Area 3CD from data from the Nationa
 
 *TO DO: Reformat equations and merge into Methods text above. Get figs working*
 
-###  Data selection
+```{r surv-trien-table, results='asis'}
+surv_tri <- readr::read_csv(here::here("data/NMFSTriennial_Canada-Vancouver.csv"))
+knitr::kable(surv_tri, caption = "TODO", booktabs = TRUE, linesep = "")
+```
 
+###  Data selection
 
 Tow-by-tow data from the US National Marine Fisheries Service (NMFS)
 triennial survey covering the Vancouver INPFC (International North
@@ -353,32 +370,32 @@ distribution of biomass estimates and using the above equations.
 
 
 Catch and effort data for strata \[i\] in year \[y\] yield catch per unit effort (CPUE) values\[{U_{yi}}\]. Given a set of data \[\left\{ {{C_{yij}},{E_{yij}}} \right\}\] for tows\[j = 1, \ldots ,{n_{yi}}\],
-Eq. B.1	\[{U_{yi}} = \frac{1}{{{n_{yi}}}}\sum\limits_{j = 1}^{{n_{yi}}} {\frac{{{C_{yij}}}}{{{E_{yij}}}}} \],	
-where	\[{C_{yij}}\]	=	catch (kg) in tow \[j\], stratum \[i\], year \[y\];
-	\[{E_{yij}}\]	=	effort (h) in tow \[j\], stratum \[i\], year \[y\];
-	\[{n_{yi}}\]	=	number of tows in stratum \[i\], year \[y\].
+Eq. B.1 \[{U_{yi}} = \frac{1}{{{n_{yi}}}}\sum\limits_{j = 1}^{{n_{yi}}} {\frac{{{C_{yij}}}}{{{E_{yij}}}}} \],
+where \[{C_{yij}}\] = catch (kg) in tow \[j\], stratum \[i\], year \[y\];
+  \[{E_{yij}}\] = effort (h) in tow \[j\], stratum \[i\], year \[y\];
+  \[{n_{yi}}\]  = number of tows in stratum \[i\], year \[y\].
 CPUE values \({U_{yi}}\) convert to CPUE densities \[{\delta _{yi}}\] (kg/km2) using:
-Eq. B.2	\[{\delta _{yi}} = \frac{1}{{vw}}{U_{yi}}\],	
-where	\[v\]	=	average vessel speed (km/h);
-	\[w\]	=	average net width (km).
+Eq. B.2 \[{\delta _{yi}} = \frac{1}{{vw}}{U_{yi}}\],
+where \[v\] = average vessel speed (km/h);
+  \[w\] = average net width (km).
 Alternatively, if vessel information exists for every tow, CPUE density can be expressed
-Eq. B.3	\({\delta _{yi}} = \frac{1}{{{n_{yi}}}}\,\,\sum\limits_{j = 1}^{{n_{yi}}} {\,\frac{{{C_{yij}}}}{{{D_{yij}}{w_{yij}}}}} \),	
-where 	\({C_{yij}}\)	=	catch weight (kg) for tow \[j\], stratum \[i\], year \[y\];
-	\({D_{yij}}\)	=	distance travelled (km) for tow\[j\], stratum\[i\], year\[y\];
-	\({w_{yij}}\)	=	net opening (km) for tow\[j\], stratum\[i\], year\[y\];
-	\({n_{yi}}\)	=	number of tows in stratum\[i\], year\[y\].
+Eq. B.3 \({\delta _{yi}} = \frac{1}{{{n_{yi}}}}\,\,\sum\limits_{j = 1}^{{n_{yi}}} {\,\frac{{{C_{yij}}}}{{{D_{yij}}{w_{yij}}}}} \),
+where   \({C_{yij}}\) = catch weight (kg) for tow \[j\], stratum \[i\], year \[y\];
+  \({D_{yij}}\) = distance travelled (km) for tow\[j\], stratum\[i\], year\[y\];
+  \({w_{yij}}\) = net opening (km) for tow\[j\], stratum\[i\], year\[y\];
+  \({n_{yi}}\)  = number of tows in stratum\[i\], year\[y\].
 The annual biomass estimate is then the sum of the product of CPUE densities and bottom areas across \[m\] strata:
-Eq. B.4	\[{B_y} = \sum\limits_{i = 1}^m {{\delta _{yi}}{A_i}}  = \sum\limits_{i = 1}^m {{B_{yi}}} \],	
-where 	\({\delta _{yi}}\)	=	mean CPUE density (kg/km2) for stratum \[i\], year \[y\];
-	\({A_i}\)	=	area (km2) of stratum\[i\];
-	\({B_{yi}}\)	=	biomass (kg) for stratum\[i\], year\[y\];
-	\[m\]	=	number of strata.
+Eq. B.4 \[{B_y} = \sum\limits_{i = 1}^m {{\delta _{yi}}{A_i}}  = \sum\limits_{i = 1}^m {{B_{yi}}} \],
+where   \({\delta _{yi}}\)  = mean CPUE density (kg/km2) for stratum \[i\], year \[y\];
+  \({A_i}\) = area (km2) of stratum\[i\];
+  \({B_{yi}}\)  = biomass (kg) for stratum\[i\], year\[y\];
+  \[m\] = number of strata.
 The variance of the survey biomass estimate \({V_y}\) (kg2) follows:
-Eq. B.5	\({V_y} = \sum\limits_{i = 1}^m {\frac{{\sigma _{yi}^2A_i^2}}{{{n_{yi}}}}\,}  = \,\,\,\sum\limits_{i = 1}^m {{V_{yi}}} \),	
-where 	\(\sigma _{yi}^2\)	=	variance of CPUE density (kg2/km4) for stratum \[i\], year \[y\];
-	\({V_{yi}}\)	=	variance of the biomass estimate (kg2) for stratum\[i\], year \[y\].
+Eq. B.5 \({V_y} = \sum\limits_{i = 1}^m {\frac{{\sigma _{yi}^2A_i^2}}{{{n_{yi}}}}\,}  = \,\,\,\sum\limits_{i = 1}^m {{V_{yi}}} \),
+where   \(\sigma _{yi}^2\)  = variance of CPUE density (kg2/km4) for stratum \[i\], year \[y\];
+  \({V_{yi}}\)  = variance of the biomass estimate (kg2) for stratum\[i\], year \[y\].
 The coefficient of variation (CV) of the annual biomass estimate for year \[y\] is
-Eq. B.6	\(C{V_y} = \frac{{\sqrt {\,{V_y}} }}{{{B_y}}}\).
+Eq. B.6 \(C{V_y} = \frac{{\sqrt {\,{V_y}} }}{{{B_y}}}\).
 
 ### Results
 Pacific Cod (PAC) are characterised with most catches taken along the
