@@ -2,8 +2,13 @@
 
 # FIGURES
 
-## Area 5ABCD
+```{r fig-map, fig.pos="H", fig.cap="Map of the management areas 5AB (Queen Charlotte Sound), 5CD (Hecate Strait), and 3CD (West Coast Vancouver Island)."}
+include_graphics("figure/Pcod_3CD5ABCDE_Pic.png")
+```
 
+\clearpage
+
+## Area 5ABCD
 
 ```{r fig-sens15-biomass-5abcd, fig.cap="Biomass."}
 b.plot(c(base.model.5abcd, sens.models.15), c(base.model.5abcd.name, sens.models.name.15))
