@@ -1,6 +1,5 @@
 make.catches.plot <- function(dat,
                               by.quarter = FALSE){
-
   if(!by.quarter){
     dat <- dat %>%
       select(-total_catch) %>%
