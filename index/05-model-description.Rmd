@@ -1,4 +1,6 @@
-# Delay Difference model
+\clearpage
+
+# Delay difference model
 
 The last assessment for Pacific Cod in QCS and Hecate Strait used a
 delay-difference model [@forrest2013]. Delay difference models represent an

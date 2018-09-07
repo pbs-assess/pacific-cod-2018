@@ -1,5 +1,6 @@
 <!-- TODO: mention p and phi estimates, sigmas -->
 <!-- TODO: show shapes that Tweedie can take -->
+\clearpage
 
 # Commercial CPUE standardization
 
