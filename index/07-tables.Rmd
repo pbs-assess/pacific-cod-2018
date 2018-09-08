@@ -1,3 +1,11 @@
 \clearpage
 
 # TABLES
+
+```{r tab-catch-5abcd, fig.pos="H"}
+catch.table(catch.5, catch.5.discards, area = "5ABCD")
+```
+
+```{r tab-catch-3cd, fig.pos="H"}
+catch.table(catch.3, catch.3.discards, area = "3CD")
+```
