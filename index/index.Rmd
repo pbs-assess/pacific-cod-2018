@@ -4,9 +4,9 @@ author: |
   Robyn E. Forrest^1^,
   Sean C. Anderson^1^,
   Chris J. Grandin^1^,
-  Paul J. Starr^2^,
-  ...
-author_list: "Forrest, R.E., Anderson, S.C., Grandin, C.J., Paul J. Starr, ..."
+  Paul J. Starr^2^
+
+author_list: "Forrest, R.E., Anderson, S.C., Grandin, C.J., and Paul J. Starr"
 address: |
   ^1^Pacific Biological Station\
      Fisheries and Oceans Canada, 3190 Hammond Bay Road\

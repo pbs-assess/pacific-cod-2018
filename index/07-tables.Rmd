@@ -1,6 +1,7 @@
 \clearpage
 
 # TABLES
+<<<<<<< HEAD
 
 ```{r tab-catch-5abcd, fig.pos="H"}
 catch.table(catch.5, catch.5.discards, area = "5ABCD")
@@ -8,4 +9,113 @@ catch.table(catch.5, catch.5.discards, area = "5ABCD")
 
 ```{r tab-catch-3cd, fig.pos="H"}
 catch.table(catch.3, catch.3.discards, area = "3CD")
+=======
+\clearpage
+
+```{r suggested-ref-points}
+
+df <- data.frame(referencepoint = c("Bmin",
+                     "Bavg",
+                     "Favg",
+                     "B2019",
+                     "F2018"),
+                 Definition = c(
+                   "Minimum biomass from which the stock recovered to above average (1971 in  5ABCD; 1986 in 3CD)",
+                   "Average biomass for the period 1956-2004",
+                   "Average fishing mortality for the period 1956-2004",
+                   "Projected biomass in 2019",
+                   "Projected fishing mortality in 2018"),
+                 Role = c("LRP",
+                        "USR",
+                        "LRR",
+                        "Benchmark",
+                        "Benchmark")) %>% 
+  
+  mutate(referencepoint = gsub("Bmin", "$B_{\t{Min}}$", referencepoint)) %>%
+  mutate(referencepoint = gsub("Bavg", "$B_{\t{Avg}}$", referencepoint)) %>%
+  mutate(referencepoint = gsub("Favg", "$F_{\t{Avg}}$", referencepoint)) %>%
+  mutate(referencepoint = gsub("B2019", "$B_{\t{2019}}$", referencepoint)) %>%
+  mutate(referencepoint = gsub("F2018", "$F_{\t{2018}}$", referencepoint)) %>%
+  mutate(Definition = gsub("1971", "$B_{\t{1971}}$", Definition)) %>%
+  mutate(Definition = gsub("1986", "$B_{\t{1986}}$", Definition)) %>%
+  rename("Reference point" = referencepoint)  
+  
+   knitr::kable(df, caption = "Suggested reference points for the Reference Case 5ABCD and 3CD models.", booktabs = TRUE, linesep = "", escape=FALSE) %>% 
+     kableExtra::column_spec(2,width = "10cm")
+
+```
+
+\clearpage
+
+```{r priors-base5ABCD}
+
+df <- data.frame(Parameter = c("ln M",
+                     "Steepness",
+                     "ln R0",
+                     "Tau",
+                     "Sig",
+                     "q HSMSAS",
+                     "ln q QCSS",
+                     "ln q HSSS",
+                     "q CPUE Hist",
+                     "q CPUE 1996+"),
+                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Unif","Norm","Norm","Unif","Unif"),
+                 p1 = c("ln(0.5)",
+                        "5.83",
+                        "1",
+                        "0.8",
+                        "0.2",
+                        "0",
+                        "ln(0.628 x 0.65)",
+                        "ln(0.1869 x 0.35)",
+                        "0",
+                        "0"),
+                 p2 = c("0.1",
+                        "2.5",
+                        "12",
+                        "NA",
+                        "NA",
+                        "1",
+                        "0.3",
+                        "0.3",
+                        "1",
+                        "1"))
+   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 5ABCD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
+
+```
+
+
+```{r priors-base3CD}
+
+df <- data.frame(Parameter = c("ln M",
+                     "Steepness",
+                     "ln R0",
+                     "Tau",
+                     "Sig",
+                     "ln q WCVISS",
+                     "q CPUE Hist",
+                     "q CPUE 1996+",
+                     "q Triennial"),
+                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Norm","Unif","Unif","Unif"),
+                 p1 = c("ln(0.5)",
+                        "5.83",
+                        "1",
+                        "0.8",
+                        "0.2",
+                        "ln(0.228)",
+                        "0",
+                        "0",
+                        "0"),
+                 p2 = c("0.1",
+                        "2.5",
+                        "12",
+                        "NA",
+                        "NA",
+                        "0.3",
+                        "1",
+                        "1",
+                        "1"))
+   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
+
+>>>>>>> e83196c98c50b3b323b490c41b5521792a2f8f8a
 ```

@@ -119,7 +119,7 @@ All models presented in this document are Bayesian models implemented in AD Mode
 
 2. The von Bertalanffy growth parameters have been updated in the current assessment for both stocks, to reflect more recent age and length data. Details are provided in Appendix (\@ref(analysis-of-biological-data)).
 
-The reference models for the Area 5ABCD and 3CD asessments are discussed in more detail in Section (\@ref(base-case-models)).
+The reference models for the Area 5ABCD and 3CD asessments are discussed in more detail in Section (\@ref(reference-case-models)).
 
 # REFERENCE POINTS
 
@@ -147,44 +147,6 @@ In the absence of accepted reference points for Area 5AB, we suggest that some o
 
 Suggested reference points and benchmarks for both areas are provided in Table \@ref(tab:suggested-ref-points). We do not currently present alternative reference points in this assessment (e.g., reference points based on $B_{0}$), but suggest these could be explored for these stocks, as they have been shown to perform well under simulated conditions [@forrest2018].
 
-\clearpage
-
-*TO DO: Move this table to Tables section when it is made*
-
-
-```{r suggested-ref-points}
-
-df <- data.frame(referencepoint = c("Bmin",
-                     "Bavg",
-                     "Favg",
-                     "B2019",
-                     "F2018"),
-                 Definition = c(
-                   "Minimum biomass from which the stock recovered to above average (1971 in  5ABCD; 1986 in 3CD)",
-                   "Average biomass for the period 1956-2004",
-                   "Average fishing mortality for the period 1956-2004",
-                   "Projected biomass in 2019",
-                   "Projected fishing mortality in 2018"),
-                 Role = c("LRP",
-                        "USR",
-                        "LRR",
-                        "Benchmark",
-                        "Benchmark")) %>% 
-  
-  mutate(referencepoint = gsub("Bmin", "$B_{\t{Min}}$", referencepoint)) %>%
-  mutate(referencepoint = gsub("Bavg", "$B_{\t{Avg}}$", referencepoint)) %>%
-  mutate(referencepoint = gsub("Favg", "$F_{\t{Avg}}$", referencepoint)) %>%
-  mutate(referencepoint = gsub("B2019", "$B_{\t{2019}}$", referencepoint)) %>%
-  mutate(referencepoint = gsub("F2018", "$F_{\t{2018}}$", referencepoint)) %>%
-  mutate(Definition = gsub("1971", "$B_{\t{1971}}$", Definition)) %>%
-  mutate(Definition = gsub("1986", "$B_{\t{1986}}$", Definition)) %>%
-  rename("Reference point" = referencepoint)  
-  
-   knitr::kable(df, caption = "Suggested reference points for the Reference Case 5ABCD and 3CD models.", booktabs = TRUE, linesep = "", escape=FALSE) %>% 
-     kableExtra::column_spec(2,width = "10cm")
-
-```
-
 # REFERENCE CASE MODELS
 
 The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics in terms of data choices, prior probability distributions and fixed parameter settings. For brevity both reference case models are described togetherin this section, with differences explained as necessary. The Bayesian delay-difference model is fully described in Appendix \@ref(delay-difference-model).
@@ -194,160 +156,76 @@ Markov Chain Monte Carlo routines built into AD Model Builder [@fournier2012]. P
 chains.
 
 ## Data choices
-Both models were fit to observed catch data, observed mean weight data and fishery-independent and -dependent indices of abundance. 
+Both models were fit to observed catch data, observed average annual mean weight in the commercial catch, and fishery-independent and -dependent indices of abundance. Details on objective function components of the model are provided in Appendix \@ref(delay-difference-model).
 
-Observed catch data is described in Section \@ref(data-sources) and provided in Tables XX and XX; and Figures \@ref(fig: fig-catch-5abcd) to \@ref(fig: fig-discards-5cd) for Area 5ABCD, and Figures \@ref(fig: fig-catch-3cd) to \@ref(fig: fig-discards-3cd) for Area 3CD.
+Data sources for observed catch data were described in Section \@ref(data-sources), with values in Tables XX and XX and Figures \@ref(fig:fig-catch-5abcd) to \@ref(fig:fig-discards-5cd) for Area 5ABCD, and Figures \@ref(fig:fig-catch-3cd) to \@ref(fig:fig-discards-3cd) for Area 3CD.
 
-Fishery independent indices are documented in Appendix \@ref(fishery-independent-indices-of-abundance). 
+Fishery independent swept area abundance indices are documented in Appendix \@ref(fishery-independent-indices-of-abundance), including biomass estimates, CVs and years covered. 
 
 For Area 5ABCD, these are:
-- the Hecate Strait Multispecies Assemblage Survey;
-- the Queen Charlotte Sound Synoptic Survey;
-- the Hecate Strait Synoptic Survey.
+
+* the Hecate Strait Multispecies Assemblage Survey;
+* the Queen Charlotte Sound Synoptic Survey;
+* the Hecate Strait Synoptic Survey.
 
 For Area 3CD, these are:
-- the West Coast Vancouver Island Synoptic Survey;
-- the NMFS Triennial Survey (in Canada).
 
-Fishery dependent indices are fully documented in Appendix \@ref(commercial-cpue-standardization). 
+* the West Coast Vancouver Island Synoptic Survey;
+* the NMFS Triennial Survey (in Canada).
 
-The CPUE time series are standardized GLMM split into two periods: historical (1956-1995) and modern (1996-2017).
+Fishery dependent indices are fully documented in Appendix \@ref(commercial-cpue-standardization). In each area, the CPUE time series are standardized GLMMs, with separate analyses for the periods before and after the introduction of 100% observer coverage in 1996, which resulted in large improvements in estimates ofcatch, discards and general data reliability. The two periods are referred to as: historical (1956-1995) and modern (1996-2017) (Appendix \@ref(commercial-cpue-standardization)). 
 
-, the year before the
-introduction of 100% observer coverage in the fishery, and resulting
-improvements in estimates of discards and general data reliability. In this
-formulation it must be assumed that catches are known with little to no error,
-while it is assumed there is observation error in the commercial CPUE data.
-This assumption is the opposite of the assumption of @sinclair2005, where it
-was assumed the effort data derived from the CPUE data were known without
-error, and observation error was admitted into the fit to the catch data.
+Details on the calculation of average annual mean weight in the commercial fishery are provided in Appendix \@ref(analysis-of-biological-data). Inclusion of average annual mean weight data is intented provide information about recruitment in the absence of age-composition data. This is dependent on the underlying assumption of the delay-difference model (Appendix \@ref(delay-difference-model)) that selectivity, growth and natural mortality are constant throughout the time period covered by the model (1956-2017). It is important to note that lower average annual mean weight in the commercial data could indicate a recruitment event, but could also have other causes including smaller proportions of older/larger fish due to fishing or natural mortality, changes in the spatial distribution of the fishery, or changes in growth.
 
 
 ## Prior probability distributions and fixed parameters
 
-Prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
+The prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD). Graphic presentation of prior probability distribution is provided in Figures \@ref(fig:fig-base-mcmc-priors-5abcd) and \@ref(fig:fig-base-mcmc-priors-3cd). Model sensitivities to prior assumptions are tested in section \@ref(sensitivity-analyses)
 
 \clearpage
 
-*TO DO: Move these tables to Tables section*
+## Leading parameters 
 
+A broad, uniform prior probability distribution was used for $ln(R_0)$, reflecting ignorance the scale of the population.
 
-```{r priors-base5ABCD}
+A Beta distribution was used for steepness with shape parameters that resulted in a distribution with mean = 0.7 and SD = 0.15. These parameter choices resulted in a distribution with little to no probability density for values less than 0.2 (Figure \@ref(fig:fig-base-mcmc-priors-5abcd)), implying that no transformation was necessary.This is the same prior probability distribution accepted for use in the previous stock assessment [@forrest2013]. @sinclair2005 fixed steepness at 0.75 in one of their
+"preferred" scenarios. In their other "preferred" scenario, the MPD estimate of steepness was 0.53. The prior probability distribution chosen here encompasses both of these values. 
 
-df <- data.frame(Parameter = c("ln M",
-                     "Steepness",
-                     "ln R0",
-                     "Tau",
-                     "Sig",
-                     "q HSMSAS",
-                     "ln q QCSS",
-                     "ln q HSSS",
-                     "q CPUE Hist",
-                     "q CPUE 1996+"),
-                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Unif","Norm","Norm","Unif","Unif"),
-                 p1 = c("ln(0.5)",
-                        "5.83",
-                        "1",
-                        "0.8",
-                        "0.2",
-                        "0",
-                        "ln(0.628 x 0.65)",
-                        "ln(0.1869 x 0.35)",
-                        "0",
-                        "0"),
-                 p2 = c("0.1",
-                        "2.5",
-                        "12",
-                        "NA",
-                        "NA",
-                        "1",
-                        "0.3",
-                        "0.3",
-                        "1",
-                        "1"))
-   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 5ABCD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
+A normal distribution was used for $ln(M)$ with mean = $ln(0.5)$ and SD = 0.1, as was used in @forrest2013. @sinclair2005 obtained MPD estimates of *M* of 0.596 and 0.567 in their two "preferred" scenarios, whereas @forrest2013 obtained MPD estimates of 0.393 *y*^-1^ and 0.426 *y*^-1^ for Areas 5CD and 5AB, respectively. A bridging analysis done by @forrest2013 suggested that *M* could be considerably lower, depending on the values of other fixed or estimated parameters, and there has been considerable variability of estimates of *M* for Pacific cod throughout its assessment history (e.g., @fournier1983, @haist1998, @sinclair2001).
 
-```
+## Survey scaling parameters (catchability)
 
+*TO DO: Paul, please provide a more accurate description of why the swept area analyses for HSMAS and Triennial could not be expected to scale up to absolute abundance. Anyone, improvements to the text below are welcome*
 
-```{r priors-base3CD}
+Broad uniform prior probability distributions were used for the scaling parameter $q_{k}$ for indices *k* =:
 
-df <- data.frame(Parameter = c("ln M",
-                     "Steepness",
-                     "ln R0",
-                     "Tau",
-                     "Sig",
-                     "ln q WCVISS",
-                     "q CPUE Hist",
-                     "q CPUE 1996+",
-                     "q Triennial"),
-                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Norm","Unif","Unif","Unif"),
-                 p1 = c("ln(0.5)",
-                        "5.83",
-                        "1",
-                        "0.8",
-                        "0.2",
-                        "ln(0.228)",
-                        "0",
-                        "0",
-                        "0"),
-                 p2 = c("0.1",
-                        "2.5",
-                        "12",
-                        "NA",
-                        "NA",
-                        "0.3",
-                        "1",
-                        "1",
-                        "1"))
-   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
+* Hecate Strait Multispecies Assemblage Survey;
+* NMFS Triennial Survey; and
+* Commercial CPUE indices.
 
-```
+These priors reflected ignorance of the scale of the survey index relative to the population. For the Hecate Strait Multispecies Assemblage Survey and NMFS Triennial Survey, the uniform priors also reflected the fact that the swept area analyses could not be expected to scale up to an absolute index of abundance because the survey designs were not random-stratified surveys intended to represent the entire habitat of Pacific Cod. The commercial CPUE indices were represented standardized catch rates with an unknown relationship to population abundance.   
 
-Broad, uniform prior probability distributions were used for $ln(R_0)$,
-$ln(R_{Avg})$, $ln(R_{Avg\_init}$) and $ln(q_{CPUE}$), where the subscript
-CPUE indicates the commercial CPUE data from 1956-1995. These uniform
-distributions reflect our ignorance the scale of the population.
+Normal distributions were used for $ln(q_{k})$ for indices *k* =:
 
-A Beta distribution was used for steepness with shape parameters that
-resulted in a distribution with mean = 0.7 XX and SD = 0.15 XX. These parameter
-choices resulted in a distribution with almost no probability density for
-values less than 0.2 XX, implying that no transformation was necessary
-(Figure XX). @sinclair2005 fixed steepness at 0.75 in one of their
-"preferred" scenarios. In their other "preferred" scenario, the MPD estimate
-of steepness was 0.53. The prior probability distribution chosen here
-encompasses both of these values. A sensitivity analysis was done for
-both areas with a uniform distribution for steepness between 0.21 XX and
-0.99 XX, with very little impact on posterior estimates of biomass
-(see below).
+* Queen Charlotte Sound Synoptic Survey;
+* Hecate Strait Synoptic Survey; and
+* West Coast Vancouver Island Synoptic Survey.
 
-A normal distribution was used for $ln(M)$ with mean = $ln(0.5)$  XX
-and SD = 0.1 XX. @sinclair2005 obtained MPD estimates of natural mortality
-of 0.596 and 0.567 in their two "preferred" scenarios. The bridging
-analysis provided in Appendix XX of this document suggested that natural
-mortality could be considerably lower, depending on the values of other
-fixed or estimated parameters. For the reference cases presented here, we chose
-to centre the prior probability distribution a little lower than the MPD
-values reported by @sinclair2005. Model sensitivity to both the mean and
-the standard deviation of the distribution is presented below.
+The choice of prior probability distribution for survey scaling parameters has the potential for large impacts on stock assessment outcomes. We therefore present a number of sensitivity analyses in Section \@ref(sensitivity-analyses)
 
-Normal distributions were used for $ln(q_{HSAS})$, $ln(q_{HSSS})$, and
-$ln(q_{QSSS}$ where the subscripts $HSAS$, $HSSS$, and $QSSS$ indicate
-the Hecate Strait Assemblage Survey, Hecate Strait Synoptic Survey, and
-the Queen Charlotte Sound Synoptic Survey respectively (Table XX). Normal
-distributions centred on $ln(1.0)$ were selected because the survey estimates
-of biomass were derived from swept area analysis
-(Eqs. \@ref(eq:sweptareabiomass)--\@ref(eq:sweptareacpue)) and could therefore
-reasonably be expected to be some fraction of unity. A large standard
-deviation was used to reflect ignorance of the scale of the swept area
-analysis compared with the true biomass. Note there was no Assemblage Survey
-in Queen Charlotte Sound (Area 5AB). Broad uniform distributions were used
-for $ln(q_{CPUE})$, reflecting large uncertainty in the scale of the
-relationship between commercial CPUE data and true biomass.
+### Area 5ABCD
+We attempted to use informative prior probability distributions for synoptic surveys based on median posterior estimates of *q* from the most recent stock assessment for Rock Sole [@holt2016]. Rock sole is a flatfish species occupying a similar (although slightly shallower) depth range to Pacific Cod. @holt2016 obtained median posterior estimates of *q* = 0.6280 for Area 5AB and *q* = 0.1869 for Area 5CD. The CV of their estimates was around 0.3. For our combined Area 5ABCD assessment we pro-rated these values according to the relative areas of habitat in Areas 5AB and 5CD. Adding up the areas of all the surveyed depth strata in each area gave a ratio of approximately 0.65:0.35 (5AB:5CD). Therefore the following values were used as means for the normal prior probability distributions for $ln(q_{k})$, for
 
-A total of XX model parameters were conditionally estimated in Area 5ABCD;
-while XX parameters were estimated for Area 3CD, which had one fewer survey
-q parameters (Table XX).
+*k* = Queen Charlotte Sound Synoptic Survey: Mean $ln(q_{k})$ = $ln(0.6280 * 0.65)$ = -0.895998; and
+*k* = Hecate Strait Synoptic Survey: Mean $ln(q_{k})$ = $ln(0.1869 * 0.35)$ = -2.727539;
+
+For both synoptic surveys, the standard deviation of the normal prior probability distribution for $ln(q_{k})$ was set to 0.3 in log space.
+
+### Area 3CD
+As for Area 5ABCD, we attempted to use an informative prior probability distribution for the West Coast Vancouver Island Synoptic Survey based on a median posterior estimate from a recent assessment. There have been fewer recent stock assessments focused on Area 3CD only and none for species in the same depth range as Pacific Cod. Here we used a normal prior probability distribution for $ln(q_{k})$ with mean set to the median posterior estimate of *q* from the most recent assessment for Area 3CD Pacific Ocean Perch (*Sebastes alutus*) [@edwards2013-2], i.e., Mean $ln(q_{k})$ = $ln(0.228)$ = -1.47841. the standard deviation of the normal prior probability distribution for $ln(q_{k})$ was set to 0.3 in log space, as for Area 5ABCD. Pacific Ocean Perch occurs in a deeper depth range than Pacific Cod, but it is a major target species for the trawl fishery and may therefore be informative about catchability in this area.
+
+## Fixed variance parameters
+
 
 # RESULTS
 
