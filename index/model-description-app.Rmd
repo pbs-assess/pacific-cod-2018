@@ -1,6 +1,7 @@
 \clearpage
 
-# DELAY DIFFERENCE MODEL
+
+# MODEL
 
 The last assessment for Pacific Cod in QCS and Hecate Strait used a
 delay-difference model [@forrest2013]. Delay difference models represent an
@@ -96,23 +97,10 @@ annual biomass ($B_t$) for the years 1957-2014 (Eq. XX), with log recruitment
 anomalies in the 2014 projection year drawn from a normal distribution,
 i.e., $\omega_t \sim N(0,\sigma R)$.
 
-### CONDITIONING THE MODEL
+## CONDITIONING THE MODEL
 Models are fit to observed catch data, observed mean weight data and fishery-independent and -dependent indices of abundance.
 
-- the Hecate Strait Multispecies Assemblage Survey
-- the Hecate Strait Synoptic Survey
-- a shortened time series of commercial CPUE data
-
-The CPUE time series spans the period 1956-1995, the year before the
-introduction of 100% observer coverage in the fishery, and resulting
-improvements in estimates of discards and general data reliability. In this
-formulation it must be assumed that catches are known with little to no error,
-while it is assumed there is observation error in the commercial CPUE data.
-This assumption is the opposite of the assumption of @sinclair2005, where it
-was assumed the effort data derived from the CPUE data were known without
-error, and observation error was admitted into the fit to the catch data.
-
-### OBJECTIVE FUNCTION COMPONENTS
+## OBJECTIVE FUNCTION COMPONENTS
 
 Variance parameters and objective function components are listed in Table XX.
 The objective function in the delay difference model contained five major
@@ -135,7 +123,7 @@ parameters, indicating that the other likelihood components and prior
 probability distributions were the most important contributors to the
 objective function.
 
-### INDICES OF ABUNDANCE
+## INDICES OF ABUNDANCE
 
 The abundance indices were treated as relative abundance indices, assumed to be
 directly proportional to the biomass with lognormal errors. The survey
@@ -146,7 +134,7 @@ $j_z$ represents the maximum likelihood estimate of $ln(j_q)$, conditional on
 other model parameters, with $n_j$ the number of observations in index $j$
 [@walters1994].
 
-### CATCH DATA
+## CATCH DATA
 
 The model was conditioned on total catch, with annual log fishing mortality
 rates for the bottom trawl fishery estimated directly. Estimated fishing
@@ -160,7 +148,7 @@ Predicted annual mean weight ($\hat{\bar{W}}_t$) was calculated using
 Eq. XX. Log residuals (Eq. XX) were assumed to be normally distributed with
 fixed standard deviation $\sigma_W$ (Eq. XX).
 
-### RECRUITMENT
+## RECRUITMENT
 
 Bias-corrected annual recruitment (Eq. XX) was estimated as the product of
 estimated mean recruitment ($R_{Avg}$) and estimated annual deviations
@@ -186,7 +174,7 @@ productivity for Pacific Cod recruitment, including re-evaluation of the
 relationship between Prince Rupert sea level and recruitment is recommended
 as a future research priority.
 
-### VARIANCE COMPONENTS AND WEIGHTING OF INDEX DATA
+## VARIANCE COMPONENTS AND WEIGHTING OF INDEX DATA
 
 Variance components of the delay difference model implemented within the
 iScam modelling framework [@martell2011] were partitioned using an errors in
@@ -287,3 +275,8 @@ We present sensitivity analyses to the values of fixed variance parameters
 and suggest that an understanding of the impact of fixed variance assumptions
 on management advice for Pacific Cod can be obtained without an iterative
 re-weighting step.
+
+```{r}
+
+```
+
