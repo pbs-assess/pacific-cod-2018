@@ -147,18 +147,20 @@ While there was no precedent for reference points in Queen Charlotte Sound, the 
 In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. Suggested reference points are provided in Table \@ref(tab:suggested-ref-points). In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2018}$ and (ii) $B_{2019}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative 2018 projected catch levels; and whether biomass is projected to increase or decrease under alternative 2018 projected catch levels.
 
 The list of performance measures that will be used in decision tables for the Pacific Cod stocks in Hecate Strait and Queen Charlotte Sound (Area 5ABCD) is given in Table XX. Biomass-based performance measures were calculated as projected 2019 biomass relative to reference points, under alternative 2018 projected catch levels. Fishing mortality-based performance measures were calculated as projected 2018 fishing mortality relative to the reference points, under alternative 2018 projected catch levels. We do not currently present alternative reference points in this assessment (e.g., reference points based $B_{0}$), but suggest these could be explored for these stocks.
+\clearpage
 
 *TO DO: Move this table to Tables section when it is made*
 
+
 ```{r suggested-ref-points}
 
-df <- data.frame(Reference_point = c("Bmin",
+df <- data.frame(referencepoint = c("Bmin",
                      "Bavg",
                      "Favg",
                      "B2019",
                      "F2018"),
                  Definition = c(
-                   "Minimum biomass from which the stock recovered to above average level. Area 5ABCD: Biomass in 1971; Area 3CD: Biomass in 1986",
+                   "Minimum biomass from which the stock recovered to above average (1971 in  5ABCD; 1986 in 3CD)",
                    "Average biomass for the period 1956-2004",
                    "Average fishing mortality for the period 1956-2004",
                    "Projected biomass in 2019",
@@ -167,8 +169,19 @@ df <- data.frame(Reference_point = c("Bmin",
                         "USR",
                         "LRR",
                         "Benchmark",
-                        "Benchmark"))
-   knitr::kable(df, caption = "List of reference points used for the Reference Case 5ABCD and 3CD models.", booktabs = TRUE, linesep = "")
+                        "Benchmark")) %>% 
+  
+  mutate(referencepoint = gsub("Bmin", "$B_{\t{Min}}$", referencepoint)) %>%
+  mutate(referencepoint = gsub("Bavg", "$B_{\t{Avg}}$", referencepoint)) %>%
+  mutate(referencepoint = gsub("Favg", "$F_{\t{Avg}}$", referencepoint)) %>%
+  mutate(referencepoint = gsub("B2019", "$B_{\t{2019}}$", referencepoint)) %>%
+  mutate(referencepoint = gsub("F2018", "$F_{\t{2018}}$", referencepoint)) %>%
+  mutate(Definition = gsub("1971", "$B_{\t{1971}}$", Definition)) %>%
+  mutate(Definition = gsub("1986", "$B_{\t{1986}}$", Definition)) %>%
+  rename("Reference point" = referencepoint)  
+  
+   knitr::kable(df, caption = "Suggested reference points for the Reference Case 5ABCD and 3CD models.", booktabs = TRUE, linesep = "", escape=FALSE) %>% 
+     kableExtra::column_spec(2,width = "10cm")
 
 ```
 
@@ -311,7 +324,7 @@ similar to those adopted in Area 5ABCD, were explored.
 We present a number of sensitivity analyses to show the influence of certain data sources, fixed
 parameters and prior probability distributions in the Area 5ABCD and 3CD Reference Case models.Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
 
-*TO DO: Move these tables to model description and refer to them here*
+*TO DO: Move these tables to Tables section*
 
 
 ```{r priors-base5ABCD}
