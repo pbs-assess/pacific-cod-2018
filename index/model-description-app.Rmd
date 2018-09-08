@@ -97,53 +97,7 @@ anomalies in the 2014 projection year drawn from a normal distribution,
 i.e., $\omega_t \sim N(0,\sigma R)$.
 
 ### CONDITIONING THE MODEL
-
-The model has some key formulation differences compared to the formulation
-used by @sinclair2005. The 2005 model was conditioned on a qualified effort
-series, derived from the total catch and catch per unit effort (CPUE) series:
-
-\begin{equation}
-  E_t = C_t / CPUE_t
-  (\#eq:ddeffort)
-\end{equation}
-
-where the $CPUE$ was calculated using catch and effort data from key fishing
-locations (Appendix XX, CPUE Analysis XX), while catch was the total estimated
-catch from the whole of Area 5ABCD (Table XX). Annual fishing mortality rates
-($F_t$) in the model were then calculated as a function of the qualified
-effort, i.e.:
-
-\begin{equation}
-  F_t = q_c E_t
-  (\#eq:ddfishingmort)
-\end{equation}
-
-where $q_c$ is an estimated parameter describing a linear relationship between
-the qualified effort data and fishing mortality. The model was then fit to
-the same total catch data from which the effort series was derived, resulting
-in a degree of circularity in the model conditioning and fitting.
-
-As discussed above and noted by @sinclair2000 and @fournier1983, there are a
-number of problems with assuming a constant, linear relationship between
-fishing effort and fishing mortality over time for this fishery. These
-problems include the large changes in the management regime that ranged from
-an unrestricted fishery prior to 1992, to the introduction of total allowable
-catches (TACs) and then IVQs (1997-present). In addition, there have been gear
-changes including several increases in mesh size, which cumulatively have
-affected the underlying relationship between commercial CPUE and abundance,
-and the relationship between fishing effort and fishing mortality. Changes in
-fishing behaviour also bear consideration, as some fishing masters report
-active avoidance of Pacific Cod due to quota constraints since the reduction
-in TAC in the 2000 fishing year (Table XX). This is because reaching or
-exceeding allowable catch limits for Pacific Cod can reduce opportunities to
-fish for other co-occurring species for which vessels also hold quota.
-
-The current assessment relaxes the dependence of model results on the
-commercial CPUE time series by estimating annual log fishing mortality rates
-directly, rather than calculating fishing mortality as a function of
-effort and the estimated qc parameter (Eq. XX). The current model is fit to
-observed catch data, observed mean weight data and three indices of
-abundance:
+Models are fit to observed catch data, observed mean weight data and fishery-independent and -dependent indices of abundance.
 
 - the Hecate Strait Multispecies Assemblage Survey
 - the Hecate Strait Synoptic Survey

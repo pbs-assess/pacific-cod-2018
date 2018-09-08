@@ -100,7 +100,6 @@ database for the period April 1, 2007 until the present. The annual size composi
 ## INDICES OF ABUNDANCE
 Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
 
-
 Stock assessment models in Area 3CD were fit to two fishery-independent survey indices (West Coast Vancouver Island Synoptic Survey and NMFS Triennial Survey in Canada) and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
 
 The fishery-independent indices of abundance were developed using swept area analyses. Details are provided in Appendix \@ref(fishery-independent-indices-of-abundance).
@@ -122,7 +121,7 @@ All models presented in this document are Bayesian models implemented in AD Mode
 
 The reference models for the Area 5ABCD and 3CD asessments are discussed in more detail in Section (\@ref(base-case-models)).
 
-# REFERENCE POINTS AND HARVEST CONTROL RULE
+# REFERENCE POINTS
 
 The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy [@dfo2009] requires stock status to be characterized using three reference points:
 
@@ -144,9 +143,10 @@ While there was no precedent for reference points in Queen Charlotte Sound, the 
 
 @forrest2018 simulation-tested a set of alternative reference points for Hecate Strait Pacific Cod and Rock Sole (*Lepidopsetta* spp.). They found that the "history-based" reference points (or operational control points, OCPs) that had been used for Pacific Cod in 2013 [@forrest2013] were robust to stock assessment biases because they scaled in the same direction as bias in estimates of biomass and fishing mortality. However, they were not necessarily good proxies for MSY-based reference points and tended to produce more precautionary catch recommendations than reference points based on $B_{MSY}$, $B_{0}$ and the spawning potential ratio (SPR; @clark1991). While the "history-based" reference points outperformed others in terms of long-term conservation outcomes, there were sometimes large trade-offs in terms of catch and catch stability [@forrest2018]. Reference points based on estimated $B_{0}$ performed similarly to the "history-based" reference points but tended to have better trade-off properties [@forrest2018].
 
-In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. Suggested reference points are provided in Table \@ref(tab:suggested-ref-points). In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2018}$ and (ii) $B_{2019}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative 2018 projected catch levels; and whether biomass is projected to increase or decrease under alternative 2018 projected catch levels.
+In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2018}$ and (ii) $B_{2019}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative projected catch levels; and whether biomass is projected to increase or decrease under alternative projected catch levels.
 
-The list of performance measures that will be used in decision tables for the Pacific Cod stocks in Hecate Strait and Queen Charlotte Sound (Area 5ABCD) is given in Table XX. Biomass-based performance measures were calculated as projected 2019 biomass relative to reference points, under alternative 2018 projected catch levels. Fishing mortality-based performance measures were calculated as projected 2018 fishing mortality relative to the reference points, under alternative 2018 projected catch levels. We do not currently present alternative reference points in this assessment (e.g., reference points based $B_{0}$), but suggest these could be explored for these stocks.
+Suggested reference points and benchmarks for both areas are provided in Table \@ref(tab:suggested-ref-points). We do not currently present alternative reference points in this assessment (e.g., reference points based on $B_{0}$), but suggest these could be explored for these stocks, as they have been shown to perform well under simulated conditions [@forrest2018].
+
 \clearpage
 
 *TO DO: Move this table to Tables section when it is made*
@@ -185,144 +185,49 @@ df <- data.frame(referencepoint = c("Bmin",
 
 ```
 
-
-
 # REFERENCE CASE MODELS
 
-The Reference Case models for both areas 5ABCD and 3CD are XX.
+The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics in terms of data choices, prior probability distributions and fixed parameter settings. For brevity both reference case models are described togetherin this section, with differences explained as necessary. The Bayesian delay-difference model is fully described in Appendix \@ref(delay-difference-model).
 
-## PRIOR PROBABILITY DISTRIBUTIONS
+The joint posterior distribution for each model was numerically approximated using the
+Markov Chain Monte Carlo routines built into AD Model Builder [@fournier2012]. Posterior samples were drawn systematically every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). Convergence was diagnosed using visual inspection of trace plots and visual examination of autocorrelation in posterior
+chains.
 
-Prior probability distributions for the Area 5ABCD and 3CD Reference Case models
-are shown in Figure XX and Table XX.
+## Data choices
+Both models were fit to observed catch data, observed mean weight data and fishery-independent and -dependent indices of abundance. 
 
-Broad, uniform prior probability distributions were used for $ln(R_0)$,
-$ln(R_{Avg})$, $ln(R_{Avg\_init}$) and $ln(q_{CPUE}$), where the subscript
-CPUE indicates the commercial CPUE data from 1956-1995. These uniform
-distributions reflect our ignorance the scale of the population.
+Observed catch data is described in Section \@ref(data-sources) and provided in Tables XX and XX; and Figures \@ref(fig: fig-catch-5abcd) to \@ref(fig: fig-discards-5cd) for Area 5ABCD, and Figures \@ref(fig: fig-catch-3cd) to \@ref(fig: fig-discards-3cd) for Area 3CD.
 
-A Beta distribution was used for steepness with shape parameters that
-resulted in a distribution with mean = 0.7 XX and SD = 0.15 XX. These parameter
-choices resulted in a distribution with almost no probability density for
-values less than 0.2 XX, implying that no transformation was necessary
-(Figure XX). @sinclair2005 fixed steepness at 0.75 in one of their
-"preferred" scenarios. In their other "preferred" scenario, the MPD estimate
-of steepness was 0.53. The prior probability distribution chosen here
-encompasses both of these values. A sensitivity analysis was done for
-both areas with a uniform distribution for steepness between 0.21 XX and
-0.99 XX, with very little impact on posterior estimates of biomass
-(see below).
+Fishery independent indices are documented in Appendix \@ref(fishery-independent-indices-of-abundance). 
 
-A normal distribution was used for $ln(M)$ with mean = $ln(0.5)$  XX
-and SD = 0.1 XX. @sinclair2005 obtained MPD estimates of natural mortality
-of 0.596 and 0.567 in their two "preferred" scenarios. The bridging
-analysis provided in Appendix XX of this document suggested that natural
-mortality could be considerably lower, depending on the values of other
-fixed or estimated parameters. For the reference cases presented here, we chose
-to centre the prior probability distribution a little lower than the MPD
-values reported by @sinclair2005. Model sensitivity to both the mean and
-the standard deviation of the distribution is presented below.
+For Area 5ABCD, these are:
+- the Hecate Strait Multispecies Assemblage Survey;
+- the Queen Charlotte Sound Synoptic Survey;
+- the Hecate Strait Synoptic Survey.
 
-Normal distributions were used for $ln(q_{HSAS})$, $ln(q_{HSSS})$, and
-$ln(q_{QSSS}$ where the subscripts $HSAS$, $HSSS$, and $QSSS$ indicate
-the Hecate Strait Assemblage Survey, Hecate Strait Synoptic Survey, and
-the Queen Charlotte Sound Synoptic Survey respectively (Table XX). Normal
-distributions centred on $ln(1.0)$ were selected because the survey estimates
-of biomass were derived from swept area analysis
-(Eqs. \@ref(eq:sweptareabiomass)--\@ref(eq:sweptareacpue)) and could therefore
-reasonably be expected to be some fraction of unity. A large standard
-deviation was used to reflect ignorance of the scale of the swept area
-analysis compared with the true biomass. Note there was no Assemblage Survey
-in Queen Charlotte Sound (Area 5AB). Broad uniform distributions were used
-for $ln(q_{CPUE})$, reflecting large uncertainty in the scale of the
-relationship between commercial CPUE data and true biomass.
+For Area 3CD, these are:
+- the West Coast Vancouver Island Synoptic Survey;
+- the NMFS Triennial Survey (in Canada).
 
-A total of XX model parameters were conditionally estimated in Area 5ABCD;
-while XX parameters were estimated for Area 3CD, which had one fewer survey
-q parameters (Table XX).
+Fishery dependent indices are fully documented in Appendix \@ref(commercial-cpue-standardization). 
 
-# RESULTS
+The CPUE time series are standardized GLMM split into two periods: historical (1956-1995) and modern (1996-2017).
 
-## AREA 5ABCD: QUEEN CHARLOTTE SOUND AND HECATE STRAIT
+, the year before the
+introduction of 100% observer coverage in the fishery, and resulting
+improvements in estimates of discards and general data reliability. In this
+formulation it must be assumed that catches are known with little to no error,
+while it is assumed there is observation error in the commercial CPUE data.
+This assumption is the opposite of the assumption of @sinclair2005, where it
+was assumed the effort data derived from the CPUE data were known without
+error, and observation error was admitted into the fit to the catch data.
 
-The joint posterior distribution was numerically approximated using the
-Markov Chain Monte Carlo routines built into AD Model Builder
-[@fournier2012]. Posterior samples were drawn systematically every 50,000 XX
-iterations from a chain of length 100 million XX, resulting in 2,000 XX
-posterior samples (the first 1,000 XX samples were dropped to allow for
-sufficient burn-in). Convergence was diagnosed using visual inspection of the
-trace plots (Figure XX) and visual examination of autocorrelation in posterior
-chains (Figure XX). Autocorrelation was minor for most parameters, except for
-$ln(R_{Avg\_init}$), for which autocorrelation was quite strong. This likely
-reflects lack of information in the data about this parameter. Overall, there
-was no strong evidence for lack of convergence, although the model occasionally
-estimated very large values for $ln(R_0)$, possibly because of this parameter
-was confounded with steepness ($h$, Figure XX). Very high estimates of
-$ln(R_0)$ were obtained when $h$ was estimated to be very low (Figure XX).
-Survey catchability parameters were positively correlated with each other
-and negatively correlated with $ln(M)$, implying that there is limited
-information in the data to distinguish between a small productive population
-or a larger, less productive population (Figure XX).
 
-Maximum posterior density (MPD) model fits to the three indices of abundance
-are shown in Figure XX. Model-estimated indices of abundance followed the
-general trends of all three observed trends, although they failed to reach most
-of the peaks in the respective datasets. As previously discussed above and in
-the bridging analysis (Appendix XX), model outcomes, especially estimates of
-productivity parameters, were very sensitive to the goodness of fit to the
-indices of abundance, particularly peak commercial CPUE observations and the
-2017 Synoptic Survey observation (Table XX). We consider the goodness of fit
-to the indices of abundance to be a primary driver of uncertainty in this
-assessment and present further sensitivity analyses in a later section.
+## Prior probability distributions and fixed parameters
 
-Posterior probability distributions of estimated parameters are shown in
-Figure XX. The median, 2.5^th^ percentile and 97.5^th^ percentile posterior
-parameter estimates, and maximum posterior density (MPD) estimates, are given
-in Table XX. With the exception of steepness, the posterior estimates did not
-appear to be strongly influenced by the prior probability distributions. The
-posterior probability distribution for steepness was very similar to the prior
-probability distribution, implying that there is little information about this
-parameter in the available data. Sensitivity to the prior distribution assumed
-for steepness is tested in a later section. Posterior probability estimates of
-$ln(M)$ tended to be lower than the prior values, although the right-hand tail
-of the posterior distribution did overlap with the left-hand tail of the prior
-distribution (Figure XX). We have already noted that posterior estimates of $M$
-were strongly influenced by the fit to the index of abundance data (Table XX),
-which likely has a stronger influence on estimates of $M$ than the prior
-probability distribution.
+Prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
 
-Normal prior probability distributions were used for the log catchability
-parameters $ln(q)$ for the Hecate Strait Assemblage and Synoptic Surveys
-(Figure XX). These prior probability distributions did not appear to strongly
-affect the posterior estimates, with the posterior distribution far to the left
-of the prior distribution in both cases (Figure XX).
-
-Spawning biomass is shown in Figure \@ref(fig:fig-base-biomass).
-
-### REFERENCE POINTS
-
-Posterior estimates of $F_{2017}$ and $B_{2018}$ are shown in Figures XX and
-XX, and Table XX. Fishing mortality in 2017 was low compared to the historical
-period, with the posterior median estimated to be 0.052y^-1^ XX.
-
-## AREA 3CD: WEST COAST VANCOUVER ISLAND
-
-Posterior samples were drawn systematically every 50,000 XX
-iterations from a chain of length 100 million XX, resulting in 2,000 XX
-posterior samples (the first 1,000 XX samples were dropped to allow for
-sufficient burn-in). Convergence was diagnosed using visual inspection of the
-trace plots (Figure XX) and visual examination of autocorrelation in posterior
-chains (Figure XX).
-
-### REFERENCE POINTS
-
-Alternative reference points based on estimates of average historical biomass,
-similar to those adopted in Area 5ABCD, were explored.
-
-# SENSITIVITY ANALYSES
-
-We present a number of sensitivity analyses to show the influence of certain data sources, fixed
-parameters and prior probability distributions in the Area 5ABCD and 3CD Reference Case models.Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
+\clearpage
 
 *TO DO: Move these tables to Tables section*
 
@@ -398,6 +303,128 @@ df <- data.frame(Parameter = c("ln M",
    knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
 ```
+
+Broad, uniform prior probability distributions were used for $ln(R_0)$,
+$ln(R_{Avg})$, $ln(R_{Avg\_init}$) and $ln(q_{CPUE}$), where the subscript
+CPUE indicates the commercial CPUE data from 1956-1995. These uniform
+distributions reflect our ignorance the scale of the population.
+
+A Beta distribution was used for steepness with shape parameters that
+resulted in a distribution with mean = 0.7 XX and SD = 0.15 XX. These parameter
+choices resulted in a distribution with almost no probability density for
+values less than 0.2 XX, implying that no transformation was necessary
+(Figure XX). @sinclair2005 fixed steepness at 0.75 in one of their
+"preferred" scenarios. In their other "preferred" scenario, the MPD estimate
+of steepness was 0.53. The prior probability distribution chosen here
+encompasses both of these values. A sensitivity analysis was done for
+both areas with a uniform distribution for steepness between 0.21 XX and
+0.99 XX, with very little impact on posterior estimates of biomass
+(see below).
+
+A normal distribution was used for $ln(M)$ with mean = $ln(0.5)$  XX
+and SD = 0.1 XX. @sinclair2005 obtained MPD estimates of natural mortality
+of 0.596 and 0.567 in their two "preferred" scenarios. The bridging
+analysis provided in Appendix XX of this document suggested that natural
+mortality could be considerably lower, depending on the values of other
+fixed or estimated parameters. For the reference cases presented here, we chose
+to centre the prior probability distribution a little lower than the MPD
+values reported by @sinclair2005. Model sensitivity to both the mean and
+the standard deviation of the distribution is presented below.
+
+Normal distributions were used for $ln(q_{HSAS})$, $ln(q_{HSSS})$, and
+$ln(q_{QSSS}$ where the subscripts $HSAS$, $HSSS$, and $QSSS$ indicate
+the Hecate Strait Assemblage Survey, Hecate Strait Synoptic Survey, and
+the Queen Charlotte Sound Synoptic Survey respectively (Table XX). Normal
+distributions centred on $ln(1.0)$ were selected because the survey estimates
+of biomass were derived from swept area analysis
+(Eqs. \@ref(eq:sweptareabiomass)--\@ref(eq:sweptareacpue)) and could therefore
+reasonably be expected to be some fraction of unity. A large standard
+deviation was used to reflect ignorance of the scale of the swept area
+analysis compared with the true biomass. Note there was no Assemblage Survey
+in Queen Charlotte Sound (Area 5AB). Broad uniform distributions were used
+for $ln(q_{CPUE})$, reflecting large uncertainty in the scale of the
+relationship between commercial CPUE data and true biomass.
+
+A total of XX model parameters were conditionally estimated in Area 5ABCD;
+while XX parameters were estimated for Area 3CD, which had one fewer survey
+q parameters (Table XX).
+
+# RESULTS
+
+## AREA 5ABCD: QUEEN CHARLOTTE SOUND AND HECATE STRAIT
+
+Models appeared to have converged and autocorrelation was minor for most parameters, except for
+$ln(R_{Avg\_init}$), for which autocorrelation was quite strong. This likely
+reflects lack of information in the data about this parameter. Overall, there
+was no strong evidence for lack of convergence, although the model occasionally
+estimated very large values for $ln(R_0)$, possibly because of this parameter
+was confounded with steepness ($h$, Figure XX). Very high estimates of
+$ln(R_0)$ were obtained when $h$ was estimated to be very low (Figure XX).
+Survey catchability parameters were positively correlated with each other
+and negatively correlated with $ln(M)$, implying that there is limited
+information in the data to distinguish between a small productive population
+or a larger, less productive population (Figure XX).
+
+Maximum posterior density (MPD) model fits to the three indices of abundance
+are shown in Figure XX. Model-estimated indices of abundance followed the
+general trends of all three observed trends, although they failed to reach most
+of the peaks in the respective datasets. As previously discussed above and in
+the bridging analysis (Appendix XX), model outcomes, especially estimates of
+productivity parameters, were very sensitive to the goodness of fit to the
+indices of abundance, particularly peak commercial CPUE observations and the
+2017 Synoptic Survey observation (Table XX). We consider the goodness of fit
+to the indices of abundance to be a primary driver of uncertainty in this
+assessment and present further sensitivity analyses in a later section.
+
+Posterior probability distributions of estimated parameters are shown in
+Figure XX. The median, 2.5^th^ percentile and 97.5^th^ percentile posterior
+parameter estimates, and maximum posterior density (MPD) estimates, are given
+in Table XX. With the exception of steepness, the posterior estimates did not
+appear to be strongly influenced by the prior probability distributions. The
+posterior probability distribution for steepness was very similar to the prior
+probability distribution, implying that there is little information about this
+parameter in the available data. Sensitivity to the prior distribution assumed
+for steepness is tested in a later section. Posterior probability estimates of
+$ln(M)$ tended to be lower than the prior values, although the right-hand tail
+of the posterior distribution did overlap with the left-hand tail of the prior
+distribution (Figure XX). We have already noted that posterior estimates of $M$
+were strongly influenced by the fit to the index of abundance data (Table XX),
+which likely has a stronger influence on estimates of $M$ than the prior
+probability distribution.
+
+Normal prior probability distributions were used for the log catchability
+parameters $ln(q)$ for the Hecate Strait Assemblage and Synoptic Surveys
+(Figure XX). These prior probability distributions did not appear to strongly
+affect the posterior estimates, with the posterior distribution far to the left
+of the prior distribution in both cases (Figure XX).
+
+Spawning biomass is shown in Figure \@ref(fig:fig-base-biomass).
+
+### REFERENCE POINTS
+
+Posterior estimates of $F_{2017}$ and $B_{2018}$ are shown in Figures XX and
+XX, and Table XX. Fishing mortality in 2017 was low compared to the historical
+period, with the posterior median estimated to be 0.052y^-1^ XX.
+
+## AREA 3CD: WEST COAST VANCOUVER ISLAND
+
+Posterior samples were drawn systematically every 50,000 XX
+iterations from a chain of length 100 million XX, resulting in 2,000 XX
+posterior samples (the first 1,000 XX samples were dropped to allow for
+sufficient burn-in). Convergence was diagnosed using visual inspection of the
+trace plots (Figure XX) and visual examination of autocorrelation in posterior
+chains (Figure XX).
+
+### REFERENCE POINTS
+
+Alternative reference points based on estimates of average historical biomass,
+similar to those adopted in Area 5ABCD, were explored.
+
+# SENSITIVITY ANALYSES
+
+We present a number of sensitivity analyses to show the influence of certain data sources, fixed
+parameters and prior probability distributions in the Area 5ABCD and 3CD Reference Case models.Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
+
 
 \clearpage
 
