@@ -2,13 +2,13 @@ book_filename: "resdoc"
 chapter_name: "Chapter "
 rmd_files: ["index.Rmd",
             "00-load.Rmd",
-            #"01-main.Rmd",
+            "01-main.Rmd",
             "07-tables.Rmd",
-            #"06-figures.Rmd",
-            #"survey-indices-app.Rmd",
-            #"cpue-app.Rmd",
-            #"age-key-app.Rmd",
-            #"model-description-app.Rmd",
+            "06-figures.Rmd",
+            "survey-indices-app.Rmd",
+            "cpue-app.Rmd",
+            "age-key-app.Rmd",
+            "model-description-app.Rmd",
             # "98-colophon.Rmd",
             "99-references.Rmd"
             ]

@@ -30,18 +30,24 @@ catch.table <- function(dat,
   j[,-c(1,5)] = j[,-c(1,5)] / 1000
   j[,-1] <- round(j[,-1], 0)
 
+  j[,c(2,3,4,5,6)] <- apply(j[,c(2,3,4,5,6)],
+                            2,
+                            function(x){
+                              tmp <- as.numeric(x)
+                              f(tmp)
+                            })
+
   kable(j, caption = paste0("Reported catch (mt) of Pacific Cod in Area ", area,
                             " by Canada and the USA, ", min(j$Year), "--", max(j$Year),
                             ". The reported discards for the period ", min(j$Year), "--1995 are ",
                             "unrepresentative of true discarding because the estimates were taken ",
                             "from logbooks. Discard estimates since 1996 are based on at-sea ",
                             "observations and are considered to be more representative of true discarding."),
-        #latex = TRUE,
         booktabs = TRUE,
         longtable = TRUE,
         linesep = "",
-        escape = FALSE) %>%
-    ##    kable_styling() %>%
+        escape = FALSE,
+        align = c("l", "r", "r", "r", "r", "r")) %>%
     column_spec(c(2, 4, 5, 6), width = "2cm") %>%
     column_spec(3, width = "4cm") %>%
     kable_styling(latex_options = c("hold_position", "repeat_header"))
