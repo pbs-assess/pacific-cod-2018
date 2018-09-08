@@ -69,7 +69,6 @@ dat <- readRDS(dat.file)
 tac.file <- file.path(rootd.data,
                       "pcod-tac-1996-2018.csv")
 tac <- read.csv(tac.file, header = TRUE)
-browser()
 
 ## ggplot globals for project
 ggplot2::theme_set(gfplot::theme_pbs())
