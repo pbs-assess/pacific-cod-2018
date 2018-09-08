@@ -6,9 +6,13 @@
 catch.table(catch.5, catch.5.discards, area = "5ABCD")
 ```
 
+\clearpage
+
 ```{r tab-catch-3cd, fig.pos="H"}
 catch.table(catch.3, catch.3.discards, area = "3CD")
 ```
+
+\clearpage
 
 ```{r tab-tac, fig.pos="H"}
 tac.table(tac)
