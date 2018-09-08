@@ -1,15 +1,17 @@
 \clearpage
 
 # TABLES
-<<<<<<< HEAD
 
 ```{r tab-catch-5abcd, fig.pos="H"}
 catch.table(catch.5, catch.5.discards, area = "5ABCD")
 ```
 
+\clearpage
+
 ```{r tab-catch-3cd, fig.pos="H"}
 catch.table(catch.3, catch.3.discards, area = "3CD")
-=======
+```
+
 \clearpage
 
 ```{r suggested-ref-points}
@@ -117,5 +119,4 @@ df <- data.frame(Parameter = c("ln M",
                         "1"))
    knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
->>>>>>> e83196c98c50b3b323b490c41b5521792a2f8f8a
 ```
