@@ -46,3 +46,28 @@ catch.table <- function(dat,
     column_spec(3, width = "4cm") %>%
     kable_styling(latex_options = c("hold_position", "repeat_header"))
 }
+
+tac.table <- function(tac){
+  ## dat is what comes out of the csv file data/pcod-tac-1996-2018.csv
+
+  names(tac) <- gsub("X", "", names(tac))
+
+  tac[,c(2,3,4,5)] <- apply(tac[,c(2,3,4,5)],
+                            2,
+                            function(x){
+                              tmp <- as.numeric(x)
+                              f(tmp)
+                            })
+  tac[grep(" *NA", tac[,2]), 2] = "bycatch only"
+  tac[grep(" *NA", tac[,3]), 3] = "bycatch only"
+  tac[grep(" *NA", tac[,4]), 4] = "bycatch only"
+
+  kable(tac, caption = paste0("Summary of TACs by area."),
+        booktabs = TRUE,
+        longtable = TRUE,
+        linesep = "",
+        escape = FALSE,
+        align = c("l", "r", "r", "r", "r", "l")) %>%
+    kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+}

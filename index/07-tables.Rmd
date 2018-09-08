@@ -1,7 +1,6 @@
 \clearpage
 
 # TABLES
-<<<<<<< HEAD
 
 ```{r tab-catch-5abcd, fig.pos="H"}
 catch.table(catch.5, catch.5.discards, area = "5ABCD")
@@ -9,8 +8,11 @@ catch.table(catch.5, catch.5.discards, area = "5ABCD")
 
 ```{r tab-catch-3cd, fig.pos="H"}
 catch.table(catch.3, catch.3.discards, area = "3CD")
-=======
-\clearpage
+```
+
+```{r tab-tac, fig.pos="H"}
+tac.table(tac)
+```
 
 ```{r suggested-ref-points}
 
@@ -29,8 +31,8 @@ df <- data.frame(referencepoint = c("Bmin",
                         "USR",
                         "LRR",
                         "Benchmark",
-                        "Benchmark")) %>% 
-  
+                        "Benchmark")) %>%
+
   mutate(referencepoint = gsub("Bmin", "$B_{\t{Min}}$", referencepoint)) %>%
   mutate(referencepoint = gsub("Bavg", "$B_{\t{Avg}}$", referencepoint)) %>%
   mutate(referencepoint = gsub("Favg", "$F_{\t{Avg}}$", referencepoint)) %>%
@@ -38,9 +40,9 @@ df <- data.frame(referencepoint = c("Bmin",
   mutate(referencepoint = gsub("F2018", "$F_{\t{2018}}$", referencepoint)) %>%
   mutate(Definition = gsub("1971", "$B_{\t{1971}}$", Definition)) %>%
   mutate(Definition = gsub("1986", "$B_{\t{1986}}$", Definition)) %>%
-  rename("Reference point" = referencepoint)  
-  
-   knitr::kable(df, caption = "Suggested reference points for the Reference Case 5ABCD and 3CD models.", booktabs = TRUE, linesep = "", escape=FALSE) %>% 
+  rename("Reference point" = referencepoint)
+
+   knitr::kable(df, caption = "Suggested reference points for the Reference Case 5ABCD and 3CD models.", booktabs = TRUE, linesep = "", escape=FALSE) %>%
      kableExtra::column_spec(2,width = "10cm")
 
 ```
@@ -117,5 +119,4 @@ df <- data.frame(Parameter = c("ln M",
                         "1"))
    knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
->>>>>>> e83196c98c50b3b323b490c41b5521792a2f8f8a
 ```
