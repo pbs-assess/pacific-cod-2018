@@ -14,7 +14,9 @@ catch.table(catch.3, catch.3.discards, area = "3CD")
 tac.table(tac)
 ```
 
-```{r suggested-ref-points}
+\FloatBarrier
+
+```{r suggested-ref-points, fig.pos="H"}
 
 df <- data.frame(referencepoint = c("Bmin",
                      "Bavg",
@@ -47,9 +49,7 @@ df <- data.frame(referencepoint = c("Bmin",
 
 ```
 
-\clearpage
-
-```{r priors-base5ABCD}
+```{r priors-base5ABCD, fig.pos="H"}
 
 df <- data.frame(Parameter = c("ln M",
                      "Steepness",
@@ -87,7 +87,7 @@ df <- data.frame(Parameter = c("ln M",
 ```
 
 
-```{r priors-base3CD}
+```{r priors-base3CD, fig.pos="H"}
 
 df <- data.frame(Parameter = c("ln M",
                      "Steepness",

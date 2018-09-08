@@ -19,7 +19,6 @@ b.plot(c(base.model.3cd, sens.models.16), c(base.model.3cd.name, sens.models.nam
 
 \clearpage
 
-
 ```{r fig-catch-5abcd, fig.pos="H", fig.cap="Catch for Area 5ABCD. Canadian catch includes at-sea releases."}
 make.catches.plot(catch.5)
 ```
