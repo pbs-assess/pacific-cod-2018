@@ -57,3 +57,29 @@ discards.plot <- function(dat){
   grid.arrange(g.top, g.bottom, heights = c(1/3, 2/3))
 
 }
+
+catch.fit.plot <- function(model,
+                           every = 5,
+                           last.yr = 2015){
+
+  model <- model[[1]]
+  obs <- model$dat$catch %>%
+    as.tibble() %>%
+    select(year, value)
+  fit <- model$mpd$ct
+
+  i <- as.tibble(cbind(obs, fit))
+  names(i) <- c("Year", "Catch (t)", "Fit")
+
+  p <- ggplot(i) +
+    aes(x = Year,
+        y = `Catch (t)`) +
+    geom_point(size = 2) +
+    geom_line(color = "red",
+              y = i$Fit,
+              size = 1) +
+    scale_y_continuous(labels = comma,
+                       limits = c(0, NA)) +
+    scale_x_continuous(breaks = seq(0, last.yr, every))
+  p
+}
