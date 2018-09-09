@@ -65,6 +65,14 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5),
           label_x = 0.2)
 ```
 
+```{r fig-base-mean-weight-5abcd, fig.pos="H", fig.cap="MPD fit to the mean weight data for Area 5ABCD base reference model."}
+mw.plot(base.model.5abcd, cv = 0.2, every = 5, last.yr = 2015)
+```
+
+```{r fig-base-catch-fit-5abcd, fig.pos="H", fig.cap="MPD fit to the catch data for Area 5ABCD base reference model."}
+catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
+```
+
 ```{r fig-base-mcmc-trace-5abcd, fig.pos="H", fig.cap="Traceplots of posterior samples for the Area 5ABCD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = Hecate Strait Assemblage survey, $q_2$ = Queen Charlotte Sound Synoptic Survey, $q_3$ = Hecate Strait Synoptic Survey, $q_4$ = Commercial CPUE pre-1996, and $q_5$ = Commercial CPUE post-1995."}
 make.traces.plot(base.model.5abcd)
 ```
@@ -252,6 +260,14 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
           ncol = 2,
           labels = c("(a)", "(b)", "(c)", "(d)"),
           label_x = c(0.15, 0.13, 0.13, 0.2))
+```
+
+```{r fig-base-mean-weight-3cd, fig.pos="H", fig.cap="MPD fit to the mean weight data for Area 3CD base reference model."}
+mw.plot(base.model.3cd, cv = 0.2, every = 5, last.yr = 2015)
+```
+
+```{r fig-base-catch-fit-3cd, fig.pos="H", fig.cap="MPD fit to the catch data for Area 3CD base reference model."}
+catch.fit.plot(base.model.3cd, every = 5, last.yr = 2015)
 ```
 
 ```{r fig-base-mcmc-trace-3cd, fig.pos="H", fig.cap="Traceplots of posterior samples for the Area 3CD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = West Coast Vancouver Island Synoptic Survey, $q_2$ = Commercial CPUE pre-1996, $q_3$ = Commercial CPUE post-1995, and $q_3$ = NMFS Triennial Survey (Canadian portion)."}
