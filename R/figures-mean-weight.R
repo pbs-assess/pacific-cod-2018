@@ -3,7 +3,6 @@ mw.plot <- function(model,
                     every = 5,
                     last.yr = 2015){
 
-  model <- model[[1]]
   mpd <- model$mpd
   yrs <- model$dat$meanwtdata[,1]
   obs <- mpd$obs_annual_mean_weight

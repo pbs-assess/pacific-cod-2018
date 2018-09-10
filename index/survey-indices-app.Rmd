@@ -173,7 +173,7 @@ Tow-by-tow data from the US National Marine Fisheries Service (NMFS)
 triennial survey covering the Vancouver INPFC (International North
 Pacific Fisheries Commission) region were provided by Mark Wilkins
 (NMFS, pers. comm.) for the seven years that the survey worked in BC
-waters (Table B.1; 1980: Figure B.1; 1983: Figure B.2; 1989: Figure B.3;
+waters (Table A.1; 1980: Figure A.1; 1983: Figure B.2; 1989: Figure B.3;
 1992: Figure B.4; 1995: Figure B.5; 1998: Figure B.6; 2001: Figure B.7).
 These tows were assigned to strata by the NMFS, but the size and
 definition of these strata have changed over the life of the survey
@@ -181,7 +181,7 @@ definition of these strata have changed over the life of the survey
 the tow was located. This information was plotted and checked against
 the accepted Canada/USA marine boundary: all tows appeared to be
 appropriately located with respect to country, based on the tow start
-position (Figure B.1 to Figure B.7). The NMFS designations were accepted
+position (Figure A.1 to Figure B.7). The NMFS designations were accepted
 for tows located near the marine border.
 
 All usable tows had an associated median net width (with 1-99%
@@ -192,10 +192,10 @@ were calculated for the total Vancouver INPFC region and for each of the
 Canadian- and US-Vancouver sub-regions, using appropriate area estimates
 for each stratum and year (Table B.2). Strata that were not surveyed
 consistently in all seven years of the survey were dropped from the
-analysis (Table B.1; Table B.2), allowing the remaining data to provide
+analysis (Table A.1; Table B.2), allowing the remaining data to provide
 a comparable set of data for each year (Table B.3).
 
-Table B.1. Number of tows by stratum and by survey year for the NFMS
+Table A.1. Number of tows by stratum and by survey year for the NFMS
 triennial survey. Strata coloured grey have been excluded from the
 analysis due to incomplete coverage across the seven survey years or
 were from locations outside the Vancouver INPFC area (Table B.2).
@@ -225,7 +225,7 @@ overall number of tows was approximately the same for each country
 (Table B.3). This occurs because the size of the total area fished in
 the INPFC Vancouver area was about twice as large in Canadian waters
 than in US waters (Table B.3). Note that the northern extension of the
-survey has varied from year to year (Figure B.1 to Figure B.7), but this
+survey has varied from year to year (Figure A.1 to Figure B.7), but this
 difference has been compensated for by using a constant survey area for
 all years and assuming that catch rates in the unsampled areas were the
 same as in the sampled area.
@@ -313,7 +313,7 @@ region (17S and 27S; Table B.2) were also dropped.
 
 ###  Methods
 
-The data were analysed using the equations in Section B.1. When
+The data were analysed using the equations in Section A.1. When
 calculating the variance for this survey, it was assumed that the
 variance and CPUE within any stratum were equal, even for strata that
 were split by the Canada/USA border. The total biomass within a stratum
@@ -414,91 +414,54 @@ C{V_y} = \frac{{\sqrt {\,{V_y}} }}{{{B_y}}}.
 
 Pacific Cod (PAC) are characterised with most catches taken along the
 shelf edge and in the deep gully entering Juan de Fuca Strait (e.g.,
-Figure B.1 and Figure B.2). A more consistent biomass estimate was
+Figure A.1 and Figure B.2). A more consistent biomass estimate was
 obtained by excluding deep strata that were not covered in the earlier
 surveys (Table B.2). Figure B.8 shows that this species was mainly found
-between 57 and 256 m (1 and 99% quantiles of \[bottom\_depth\]), with
+between 57 and 256 m (1 and 99% quantiles of \(bottom\_depth\)), with
 infrequent observations at depths up to 326 m which means that the
 deeper strata (\>367 m) are not needed to monitor PAC. Note that the
 deep strata which were not used in the biomass estimation are included
 in Figure B.8.
 
-<!--
-![X-cfv-(1980-01-01)-(1980-12-31)](data/triennial-figs/image66.png){width="3.5555555555555554in"
-height="3.5416666666666665in"}![X-density-(1980-01-01)-(1980-12-31).png](data/triennial-figs/image67.png){width="3.388888888888889in"
-height="3.388888888888889in"}
--->
-
-Figure B.1.
-
-*TO DO. having trouble reading in image files. Commented out for now*
-
-```{r plot_paul_pngs}
-plot_paul_pngs <- function(files, filename = "test.png") {
-  plots <- lapply(
-    ll <- files, function(x){
-    img <- as.raster(png::readPNG(x))
-    grid::rasterGrob(img, interpolate = FALSE)
-  })
-
-  ggplot2::ggsave(filename, width=12, height=6,
-    gridExtra::marrangeGrob(grobs = plots, nrow=1, ncol=2,top=NULL))
-  knitr::include_graphics(filename, dpi = NA)
+```{r tri-fig1, fig.cap="(Left panel): plot of tow locations in the Vancouver INPFC region for the 1980 NMFS triennial survey in US and Canadian waters. Tow locations are colour-coded by depth range: black=55--183m; red=184-366m; grey=367-500m. Dashed line shows approximate position of the Canada/USA marine boundary. Horizontal lines are the stratum boundaries: 47 30, 47 50, 48 20 and 49 50. Tows south of the 47 30 line were not included in the analysis. (Right panel): circle sizes in the density plot are scaled across all years (1980, 1983, 1989, 1992, 1995, 1998, and 2001), with the largest circle = 7,229 kg/km2 in 1989. The red solid lines indicate the boundaries between PMFC areas 3B, 3C and 3D."}
+insert_paul_figure <- function(n) {
+  knitr::include_graphics(here::here("index", "paul-figs", paste0("paul", n, ".png")), dpi = NA)
 }
+insert_paul_figure(1)
 ```
 
-
-```{r tri-fig1, fig.ncol = 2, fig.cap="(Left panel): plot of tow locations in the Vancouver INPFC region for the 1980 NMFS triennial survey in US and Canadian waters. Tow locations are colour-coded by depth range: black=55--183m; red=184-366m; grey=367-500m. Dashed line shows approximate position of the Canada/USA marine boundary. Horizontal lines are the stratum boundaries: 47 30, 47 50, 48 20 and 49 50. Tows south of the 47 30 line were not included in the analysis. (Right panel): circle sizes in the density plot are scaled across all years (1980, 1983, 1989, 1992, 1995, 1998, and 2001), with the largest circle = 7,229 kg/km2 in 1989. The red solid lines indicate the boundaries between PMFC areas 3B, 3C and 3D."}
-plot_paul_pngs(c(
-  file.path(rootd.data, "trienniel-figs", "image66.png"),
-  file.path(rootd.data, "trienniel-figs", "image67.png")),
-  filename = file.path(rootd.data, "trienniel-figs", "tri-fig1.png")
-)
+```{r tri-fig2, fig.cap="Tow locations and density plots for the 1983 NMFS triennial survey in US and Canadian waters (see Figure A.1 caption)."}
+insert_paul_figure(2)
 ```
 
+```{r tri-fig3, fig.cap="Tow locations and density plots for the 1989 NMFS triennial survey in US and Canadian waters (see Figure A.1 caption)."}
+insert_paul_figure(3)
+```
 
-<!--
-![X-cfv-(1983-01-01)-(1983-12-31)](data/triennial-figs/image68.png){width="3.5555555555555554in"
-height="3.5416666666666665in"}![X-density-(1983-01-01)-(1983-12-31).png](data/triennial-figs/image69.png){width="3.388888888888889in"
-height="3.388888888888889in"}
+```{r tri-fig4, fig.cap="Tow locations and density plots for the 1992 NMFS triennial survey in US and Canadian waters (see Figure A.1 caption)."}
+insert_paul_figure(4)
+```
 
-Figure B.2. Tow locations and density plots for the 1983 NMFS triennial
-survey in US and Canadian waters (see Figure B.1 caption).
+```{r tri-fig5, fig.cap="Tow locations and density plots for the 1995 NMFS triennial survey in US and Canadian waters (see Figure A.1 caption)."}
+insert_paul_figure(5)
+```
 
-![X-cfv-(1989-01-01)-(1989-12-31)](data/triennial-figs/image70.png){width="3.5555555555555554in"
-height="3.5416666666666665in"}![X-density-(1989-01-01)-(1989-12-31).png](data/triennial-figs/image71.png){width="3.388888888888889in"
-height="3.388888888888889in"}
+```{r tri-fig6, fig.cap="Tow locations and density plots for the 1998 NMFS triennial survey in US and Canadian waters (see Figure A.1 caption)."}
+insert_paul_figure(6)
+```
 
-Figure B.3. Tow locations and density plots for the 1989 NMFS triennial
-survey in US and Canadian waters (see Figure B.1 caption).
+```{r tri-fig7, fig.cap="Tow locations and density plots for the 2001 NMFS triennial survey in US and Canadian waters (see Figure A.1 caption)."}
+insert_paul_figure(7)
+```
 
-![X-cfv-(1992-01-01)-(1992-12-31)](data/triennial-figs/image72.png){width="3.5555555555555554in"
-height="3.5416666666666665in"}![X-density-(1992-01-01)-(1992-12-31).png](data/triennial-figs/image73.png){width="3.388888888888889in"
-height="3.388888888888889in"}
+```{r tri-fig8, fig.cap="Distribution of Pacific Cod catch weights for each survey year summarised into 25 m depth intervals for all tows (Table B.2) in Canadian and US waters of the Vancouver INPFC area.  Catches are plotted at the mid-point of the interval.  Note that the deep strata introduced in 1995 (see Table B.2) have been included in this plot but were not used in the biomass estimation."}
+insert_paul_figure(8)
+```
 
-Figure B.4. Tow locations and density plots for the 1992 NMFS triennial
-survey in US and Canadian waters (see Figure B.1 caption).
+```{r tri-fig9, fig.cap="Biomass estimates for three series of Pacific Cod in the INPFC Vancouver region (total region, Canadian waters only, US waters only) with 95\\% error bars estimated from 1000 bootstraps."}
+insert_paul_figure(9)
+```
 
-![X-cfv-(1995-01-01)-(1995-12-31)](data/triennial-figs/image74.png){width="3.5555555555555554in"
-height="3.5416666666666665in"}![X-density-(1995-01-01)-(1995-12-31).png](data/triennial-figs/image75.png){width="3.388888888888889in"
-height="3.388888888888889in"}
-
-Figure B.5. Tow locations and density plots for the 1995 NMFS triennial
-survey in US and Canadian waters (see Figure B.1 caption).
-
-![X-cfv-(1998-01-01)-(1998-12-31)](data/triennial-figs/image76.png){width="3.5555555555555554in"
-height="3.5416666666666665in"}![X-density-(1998-01-01)-(1998-12-31).png](data/triennial-figs/image77.png){width="3.388888888888889in"
-height="3.388888888888889in"}
-
-Figure B.6. Tow locations and density plots for the 1998 NMFS triennial
-survey in US and Canadian waters (see Figure B.1 caption).
-
-![X-cfv-(2001-01-01)-(2001-12-31)](data/triennial-figs/image78.png){width="3.5555555555555554in"
-height="3.5416666666666665in"}![X-density-(2001-01-01)-(2001-12-31).png](data/triennial-figs/image79.png){width="3.388888888888889in"
-height="3.388888888888889in"}
-
-Figure B.7. Tow locations and density plots for the 2001 NMFS triennial
-survey in US and Canadian waters (see Figure B.1 caption).
-
-![gfdepth.png](data/triennial-figs/image80.png){width="5.097222222222222in"
--->
+```{r tri-fig10, fig.cap="Proportion of tows with Pacific Cod by year for the Vancouver INPFC region (Canadian and US waters)."}
+insert_paul_figure(10)
+```

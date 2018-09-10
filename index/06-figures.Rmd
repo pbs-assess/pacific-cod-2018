@@ -81,7 +81,7 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5),
 ```
 
 ```{r fig-base-mean-weight-5abcd, fig.pos="H", fig.cap="MPD fit to the mean weight data for Area 5ABCD base reference model."}
-mw.plot(base.model.5abcd, cv = 0.2, every = 5, last.yr = 2015)
+mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
 ```
 
 ```{r fig-base-catch-fit-5abcd, fig.pos="H", fig.cap="MPD fit to the catch data for Area 5ABCD base reference model."}
@@ -161,7 +161,7 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
 ```
 
 ```{r fig-base-mean-weight-3cd, fig.pos="H", fig.cap="MPD fit to the mean weight data for Area 3CD base reference model."}
-mw.plot(base.model.3cd, cv = 0.2, every = 5, last.yr = 2015)
+mw.plot(base.model.3cd[[1]], cv = 0.2, every = 5, last.yr = 2015)
 ```
 
 ```{r fig-base-catch-fit-3cd, fig.pos="H", fig.cap="MPD fit to the catch data for Area 3CD base reference model."}

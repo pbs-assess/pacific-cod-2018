@@ -784,6 +784,30 @@ get.latex.name <- function(name, addToQ = 0){
   NULL
 }
 
+get.rmd.name <- function(name){
+  ## Return a pretty version of the parameter name found in variable 'name'
+  ##
+  if(name == "ro") return("$R_0$")
+  if(name == "m") return("$M$")
+  if(name == "bo") return("$B_0$")
+
+  if(name == "log_ro") return("$ln(R_0)$")
+  if(name == "h") return("$h$")
+  if(name == "log_m") return("$ln(M)$")
+
+  if(length(grep("^q[1-9]+$", name))){
+    digit <- as.numeric(sub("^q([1-9]+)$", "\\1", name))
+    return(paste0("$q_", digit, "$"))
+  }
+
+  if(length(grep("^log_q[1-9]+$", name))){
+    digit <- as.numeric(sub("^log_q([1-9]+)$", "\\1", name))
+    return(paste0("$ln(q_", digit, ")$"))
+  }
+
+  NULL
+}
+
 draw.envelope <- function(yrs,
                           quants,
                           col = "black",

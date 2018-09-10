@@ -1,6 +1,7 @@
 catch.table <- function(dat,
                         dat.disc,
-                        area = "NA"){
+                        area = "NA",
+                        cap = ""){
   ## dat is what comes out of data/get-data.R/total.catch.yr.qtr
   ## dat.disc is what comes out of data/get-data.R/total.catch.discards
 
@@ -37,12 +38,8 @@ catch.table <- function(dat,
                               f(tmp)
                             })
 
-  kable(j, caption = paste0("Reported catch (mt) of Pacific Cod in Area ", area,
-                            " by Canada and the USA, ", min(j$Year), "--", max(j$Year),
-                            ". The reported discards for the period ", min(j$Year), "--1995 are ",
-                            "unrepresentative of true discarding because the estimates were taken ",
-                            "from logbooks. Discard estimates since 1996 are based on at-sea ",
-                            "observations and are considered to be more representative of true discarding."),
+  kable(j,
+        caption = cap,
         booktabs = TRUE,
         longtable = TRUE,
         linesep = "",
@@ -53,7 +50,8 @@ catch.table <- function(dat,
     kable_styling(latex_options = c("hold_position", "repeat_header"))
 }
 
-tac.table <- function(tac){
+tac.table <- function(tac,
+                      cap = ""){
   ## dat is what comes out of the csv file data/pcod-tac-1996-2018.csv
 
   names(tac) <- gsub("X", "", names(tac))
@@ -68,7 +66,7 @@ tac.table <- function(tac){
   tac[grep(" *NA", tac[,3]), 3] = "bycatch only"
   tac[grep(" *NA", tac[,4]), 4] = "bycatch only"
 
-  kable(tac, caption = paste0("Summary of TACs by area."),
+  kable(tac, caption = cap,
         booktabs = TRUE,
         longtable = TRUE,
         linesep = "",

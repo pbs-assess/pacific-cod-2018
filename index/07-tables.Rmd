@@ -3,19 +3,53 @@
 # TABLES
 
 ```{r tab-catch-5abcd, fig.pos="H"}
-catch.table(catch.5, catch.5.discards, area = "5ABCD")
+catch.table(catch.5,
+            catch.5.discards,
+            area = "5ABCD",
+ cap = paste0("Reported catch (mt) of Pacific Cod in Area 5ABCD ",
+              "by Canada and the USA, ",
+              min(catch.5$Year, catch.5.discards$Year), "--", max(catch.5$Year, catch.5.discards$Year),
+              ". The reported discards for the period ", min(catch.5$Year, catch.5.discards$Year),
+              "--1995 are ",
+              "unrepresentative of true discarding because the estimates were taken ",
+              "from logbooks. Discard estimates since 1996 are based on at-sea ",
+              "observations and are considered to be more representative of true discarding."))
 ```
 
 \clearpage
 
 ```{r tab-catch-3cd, fig.pos="H"}
-catch.table(catch.3, catch.3.discards, area = "3CD")
+catch.table(catch.3,
+            catch.3.discards,
+            area = "3CD",
+ cap = paste0("Reported catch (mt) of Pacific Cod in Area 3CD ",
+              "by Canada and the USA, ",
+              min(catch.3$Year, catch.3.discards$Year), "--", max(catch.3$Year, catch.3.discards$Year),
+              ". The reported discards for the period ", min(catch.3$Year, catch.3.discards$Year),
+              "--1995 are ",
+              "unrepresentative of true discarding because the estimates were taken ",
+              "from logbooks. Discard estimates since 1996 are based on at-sea ",
+              "observations and are considered to be more representative of true discarding."))
 ```
 
 \clearpage
 
 ```{r tab-tac, fig.pos="H"}
-tac.table(tac)
+tac.table(tac,
+ cap = paste0("Summary of TACs by area."))
+```
+
+\clearpage
+
+```{r tab-priors-5abcd, fig.pos="H"}
+priors.table(base.model.5abcd,
+ cap = "Priors and their parameters and initial values used in the Area 5ABCD base reference model.
+  $\\bar{R} = R_{Avg}$, $q_1$ = Hecate Strait Assemblage survey, $q_2$ = Queen Charlotte Sound Synoptic Survey, $q_3$ = Hecate Strait Synoptic Survey, $q_4$ = Commercial CPUE pre-1996, and $q_5$ = Commercial CPUE post-1995.")
+```
+
+```{r tab-priors-3cd, fig.pos="H"}
+priors.table(base.model.3cd,
+ cap = "Priors and their parameters and initial values used in the Area 3CD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = West Coast Vancouver Island Synoptic Survey, $q_2$ = Commercial CPUE pre-1996, $q_3$ = Commercial CPUE post-1995, and $q_4$ = NMFS Triennial Survey (Canadian portion).")
 ```
 
 \clearpage
@@ -122,7 +156,40 @@ df <- data.frame(Parameter = c("ln M",
                         "1",
                         "1",
                         "1"))
-   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
+   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean $\\sim$ 0.7 and sd $\\sim$ 0.15.", booktabs = TRUE, linesep = "", escape = FALSE)
 
 ```
 
+\clearpage
+
+```{r parameters-table, fig.pos="H", results='asis', cache=FALSE}
+make.parameters.table(base.model.3cd, caption = "SADF")
+```
+
+```{r parameters-est-table, results='asis', cache=FALSE}
+make.parameters.est.table(base.model.3cd, caption = "SADF")
+```
+
+```{r ref-points-table, results='asis', cache=FALSE}
+make.ref.points.table(base.model.3cd, digits = 2, caption = "SADF")
+```
+
+```{r value-table1, results='asis', cache=FALSE}
+make.value.table(base.model.3cd, 1, digits = 0, caption = "SADF")
+```
+
+```{r value-table2, results='asis', cache=FALSE}
+make.value.table(base.model.3cd, 2, digits = 0, caption = "SADF")
+```
+
+```{r value-table3, results='asis', cache=FALSE}
+make.value.table(base.model.3cd, 3, digits = 2, caption = "SADF")
+```
+
+```{r value-table4, results='asis', cache=FALSE}
+make.value.table(base.model.3cd, 4, digits = 2, caption = "SADF")
+```
+
+```{r value-table5, cache=FALSE}
+make.value.table(base.model.3cd, 5, digits = 2, caption = "SADF")
+```
