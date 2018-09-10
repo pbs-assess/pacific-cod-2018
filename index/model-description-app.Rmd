@@ -1,7 +1,5 @@
 \clearpage
 
-`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
-
 # DELAY-DIFFERENCE MODEL
 
 The last assessment for Pacific Cod in QCS and Hecate Strait used a
@@ -265,3 +263,213 @@ and suggest that an understanding of the impact of fixed variance assumptions
 on management advice for Pacific Cod can be obtained without an iterative
 re-weighting step.
 
+
+## SUMMARY OF EQUILIBRIUM EQUATIONS FOR THE DELAY DIFFERENCE MODEL
+
+**Equilibrium equations for calculation of stock-recruit parameters**
+
+Equilibrium unfished survival:
+
+\begin{equation}
+{S_0} = {e^{ - M}}
+\end{equation}
+
+Equilibrium unfished mean weight:
+
+\begin{equation}
+{\bar w_0} = \frac{{{S_0}{\alpha _g} + {w_k}\left( {1 - {S_0}} \right)}}{{1 - {\rho _g}{S_0}}}
+\end{equation}
+
+Equilibrium unfished numbers:
+
+\begin{equation}
+{N_0} = \frac{{{R_0}}}{{\left( {1 - {S_0}} \right)}}
+\end{equation}
+
+Equilibrium unfished biomass:
+
+\begin{equation}
+{B_0} = {N_0}{\bar w_0}
+\end{equation}
+
+Recruitment compensation ratio (Beverton-Holt):
+
+\begin{equation}
+{\rm{CR}} = \frac{{4h}}{{1 - h}}
+\end{equation}
+
+Parameters of the stock-recruit relationship (Beverton-Holt):
+
+\begin{equation}
+b = \frac{{{\rm{CR}} - 1}}{{\,{B_0}}}
+\end{equation}
+
+**Equilibrium equations for fishery reference points**
+
+Equilibrium survival rate at fixed long-term fishing mortality $F_e$:
+
+\begin{equation}
+{S_e} = {e^{ - \left( {M + {F_e}} \right)}}
+\end{equation}
+
+Equilibrium long-term mean weight at $F_e$:
+
+\begin{equation}
+{\bar w_e} = \frac{{{S_e}{\alpha _g} + {w_k}\left( {1 - {S_e}} \right)}}{{1 - {\rho _g}{S_e}}}
+\end{equation}
+
+Equilibrium long-term biomass at $F_e$:
+
+\begin{equation}
+{B_e} =  - \frac{{\left( {{\rm{ - }}{{{\rm{\bar W}}}_e}{\rm{  +  }}{{\rm{S}}_e}{\alpha _g}{\rm{  +  }}{{\rm{S}}_e}{\rho _g}{{{\rm{\bar W}}}_e} + {W_k}a{{{\rm{\bar W}}}_e}} \right)}}{{b\left( {{\rm{ - }}{{{\rm{\bar W}}}_e}{\rm{  +  }}{{\rm{S}}_e}{\alpha _g}{\rm{  +  }}{{\rm{S}}_e}{\rho _g}{{{\rm{\bar W}}}_e}} \right)}}
+\end{equation}
+
+Equilibrium long-term yield at $F_e$:
+
+\begin{equation}
+{Y_e} = {B_e}\frac{{{F_e}}}{{\left( {{F_e} + M} \right)}}\left( {1 - {e^{ - \left( {{F_e} + M} \right)}}} \right)
+\end{equation}
+
+## Time-dynamic equations and likelihood components for the delay difference model
+
+**Survival rate**
+
+\begin{equation}
+{S_t} = \;{e^{--(M{\rm{ }} + {F_t})}}
+\end{equation}
+
+Initial numbers at age calculations:
+
+\begin{equation}
+\left\{ \begin{array}{l}{N_{2,1}} = {R_{Avg}}{e^{{\omega _1}}}\quad \quad \quad \quad \quad \quad \quad \quad a = 2\\{N_{a,1}} = \left( {{R_{AvgInit}}{e^{\omega Ini{t_a}}}} \right){e^{ - M\left( {a - 2} \right)}}\quad \;\quad 2 < a < A\\{N_{A,1}} = \frac{{\left( {{R_{AvgInit}}{e^{\omega Ini{t_A}}}} \right){e^{ - M\left( {A - 2} \right)}}}}{{\left( {1 - {e^{ - M}}} \right)}}\quad \quad a = A\end{array} \right\}
+\end{equation}
+
+Numbers:
+
+\begin{equation}
+\left\{ \begin{array}{l}{N_t} = \sum\limits_{i = 2}^A {{N_{a,1}}} \quad \quad \quad t = 1956\\{N_t} = {S_{t - 1}}{N_{t - 1}} + {R_t}\quad t > 1956\end{array} \right\}
+\end{equation}
+
+Biomass:
+
+\begin{equation}
+\left\{ \begin{array}{l}{B_t} = \sum\limits_{a = 2}^A {{N_{a,t}}{w_{a,t}}} \quad t = 1956\\{B_t} = {S_{t - 1}}\left( {{\alpha _g}{\rm{ }}{N_{t - 1}} + {\rho _g}{B_{t - 1}}} \right){\rm{ }} + {W_k}{R_t}\quad t > 1956\end{array} \right\}
+\end{equation}
+
+Recruits:
+
+\begin{equation}
+{R_t} = {R_{Avg}}{e^{{\omega _t} - \frac{{\sigma _R^2}}{2}}}
+\end{equation}
+
+**Predicted variables used in objective function**
+
+Predicted catch:
+
+\begin{equation}
+{\hat C_t} = {B_t}\frac{{{F_t}}}{{\left( {{F_t} + M} \right)}}\left( {1 - {e^{ - \left( {{F_t} + M} \right)}}} \right)
+\end{equation}
+
+Predicted mean weight:
+
+\begin{equation}
+{\hat \bar W_t} = \frac{{{B_t}}}{{{N_t}}}
+\end{equation}
+
+Predicted recruits:
+
+\begin{equation}
+{\rm{ }}{\hat R_{\rm{t}}} = {\rm{ }}\frac{{a{B_{{\rm{t - k}} + {\rm{1}}}}}}{{1 + b{B_{{\rm{t - k}} + {\rm{1}}}}}}
+\end{equation}
+
+## CALCULATION OF VARIANCE PARAMETERS, RESIDUALS AND LIKELIHOODS
+
+**Variance parameters**
+
+Base standard deviation in index of abundance residuals:
+
+\begin{equation}
+{\sigma _O} = \sqrt {\frac{\rho }{{{\varphi ^{ - 2}}}}}
+\end{equation}
+
+Standard deviation in ln recruitment residuals:
+
+\begin{equation}
+{\sigma _R} = \sqrt {\frac{{\left( {1 - \rho } \right)}}{{{\varphi ^{ - 2}}}}}
+\end{equation}
+
+Standard deviation in index of abundance observations:
+
+\begin{equation}
+{\sigma _{_{j,t}}} = \frac{{{\sigma _O}}}{{{c_{j,t}}}}
+\end{equation}
+
+Weighting term for index observations:
+
+\begin{equation}
+{c_{j,t}} = \frac{1}{{{\rm{C}}{{\rm{V}}_{j,t}}}}
+\end{equation}
+
+**Indices of abundance**
+
+Residuals:
+
+\begin{equation}
+{z_{j,t}} = \ln \left( {{I_{j,t}}} \right) - \ln \left( {{{\hat B}_t}} \right)
+\end{equation}
+
+\begin{equation}
+{\bar z_j} = \frac{{\sum\limits_t^{{n_j}} {{z_{j,t}}} }}{{{n_j}}}
+\end{equation}
+
+\begin{equation}
+{d_{j,t}} = {z_{j,t}} - {\bar z_j}
+\end{equation}
+
+Ln likelihood:
+
+\begin{equation}
+{L_{j,t}} = \ln \left( {\sigma _{j,t}^2} \right) + \frac{{d_{j,t}^2}}{{2\sigma _{j,t}^2}}
+\end{equation}
+
+**Catch**
+
+Residuals:
+
+\begin{equation}
+{d_C}_t = \ln \left( {{C_t}} \right) - \ln \left( {{{\hat C}_t}} \right)
+\end{equation}
+
+Ln likelihood:
+
+\begin{equation}
+{L_t} = \ln \left( {{\sigma _C}{{^2}}} \right) + \frac{{{d_C}_t^2}}{{2{\sigma _C}^2}}
+\end{equation}
+
+**Mean weight**
+
+Residuals:
+
+\begin{equation}
+{d_W}_t = \ln \left( {{{\bar W}_t}} \right) - \ln \left( {{{\hat \bar W}_t}} \right)
+\end{equation}
+
+Ln likelihood:
+
+\begin{equation}
+{L_t} = \ln \left( {{\sigma _W}{{^2}}} \right) + \frac{{{d_W}_t^2}}{{2{\sigma _W}^2}}
+\end{equation}
+
+**Recruitment**
+
+Residuals:
+
+\begin{equation}
+{d_R}_t = \ln \left( {{R_t}} \right) - \ln \left( {{{\hat R}_t}} \right)
+\end{equation}
+
+Ln likelihood:
+
+\begin{equation}
+{L_t} = \ln \left( {{\sigma _R}{{^2}}} \right) + \frac{{{d_R}_t^2}}{{2{\sigma _R}^2}}
+\end{equation}
