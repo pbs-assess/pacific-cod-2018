@@ -18,7 +18,7 @@ catch.table(catch.3, catch.3.discards, area = "3CD")
 tac.table(tac)
 ```
 
-\FloatBarrier
+\clearpage
 
 ```{r suggested-ref-points, fig.pos="H"}
 
@@ -90,6 +90,7 @@ df <- data.frame(Parameter = c("ln M",
 
 ```
 
+\clearpage
 
 ```{r priors-base3CD, fig.pos="H"}
 
@@ -124,3 +125,4 @@ df <- data.frame(Parameter = c("ln M",
    knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
 ```
+
