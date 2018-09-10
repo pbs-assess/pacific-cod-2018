@@ -330,18 +330,20 @@ Equilibrium long-term yield at $F_e$:
 {Y_e} = {B_e}\frac{{{F_e}}}{{\left( {{F_e} + M} \right)}}\left( {1 - {e^{ - \left( {{F_e} + M} \right)}}} \right)
 \end{equation}
 
-## Time-dynamic equations and likelihood components for the delay difference model
+## TIME-DYNAMIC EQUATIONS AND LIKELIHOOD COMPONENTS FOR THE DELAY DIFFERENCE MODEL
 
-**Survival rate**
+**Time-dynamic equations**
+
+Survival rate:
 
 \begin{equation}
-{S_t} = \;{e^{--(M{\rm{ }} + {F_t})}}
+{S_t} = e^{-(M{ + F_t)}}
 \end{equation}
 
 Initial numbers at age calculations:
 
 \begin{equation}
-\left\{ \begin{array}{l}{N_{2,1}} = {R_{Avg}}{e^{{\omega _1}}}\quad \quad \quad \quad \quad \quad \quad \quad a = 2\\{N_{a,1}} = \left( {{R_{AvgInit}}{e^{\omega Ini{t_a}}}} \right){e^{ - M\left( {a - 2} \right)}}\quad \;\quad 2 < a < A\\{N_{A,1}} = \frac{{\left( {{R_{AvgInit}}{e^{\omega Ini{t_A}}}} \right){e^{ - M\left( {A - 2} \right)}}}}{{\left( {1 - {e^{ - M}}} \right)}}\quad \quad a = A\end{array} \right\}
+\left\{ \begin{array}{l}{N_{2,1}} = {R_{Avg}}{e^{{\omega _1}}}\quad \quad \quad \quad \quad \quad \quad \quad a = 2\\{N_{a,1}} = \left( {{R_{AvgInit}}{e^{\omega Ini{t_a}}}} \right){e^{ - M\left( {a - 2} \right)}} \quad 2 < a < A\\{N_{A,1}} = \frac{{\left( {{R_{AvgInit}}{e^{\omega Ini{t_A}}}} \right){e^{ - M\left( {A - 2} \right)}}}}{{\left( {1 - {e^{ - M}}} \right)}}\quad \quad a = A\end{array} \right\}
 \end{equation}
 
 Numbers:
@@ -473,3 +475,4 @@ Ln likelihood:
 \begin{equation}
 {L_t} = \ln \left( {{\sigma _R}{{^2}}} \right) + \frac{{{d_R}_t^2}}{{2{\sigma _R}^2}}
 \end{equation}
+
