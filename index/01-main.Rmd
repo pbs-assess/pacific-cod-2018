@@ -159,7 +159,8 @@ The joint posterior distribution for each model was numerically approximated usi
 Markov Chain Monte Carlo routines built into AD Model Builder [@fournier2012]. Posterior samples were drawn systematically every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). Convergence was diagnosed using visual inspection of trace plots and visual examination of autocorrelation in posterior
 chains.
 
-## Data choices
+## DATA CHOICES
+
 Both models were fit to observed catch data, observed average annual mean weight in the commercial catch, and fishery-independent and -dependent indices of abundance. Details on objective function components of the model are provided in Appendix \@ref(delay-difference-model).
 
 Data sources for observed catch data were described in Section \@ref(data-sources), with values in Tables XX and XX and Figures \@ref(fig:fig-catch-5abcd) to \@ref(fig:fig-discards-5cd) for Area 5ABCD, and Figures \@ref(fig:fig-catch-3cd) to \@ref(fig:fig-discards-3cd) for Area 3CD.
@@ -182,11 +183,11 @@ Fishery dependent indices are fully documented in Appendix \@ref(commercial-cpue
 Details on the calculation of average annual mean weight in the commercial fishery are provided in Appendix \@ref(analysis-of-biological-data). Inclusion of average annual mean weight data is intented provide information about recruitment in the absence of age-composition data. This is dependent on the underlying assumption of the delay-difference model (Appendix \@ref(delay-difference-model)) that selectivity, growth and natural mortality are constant throughout the time period covered by the model (1956-2017). It is important to note that lower average annual mean weight in the commercial data could indicate a recruitment event, but could also have other causes including smaller proportions of older/larger fish due to fishing or natural mortality, changes in the spatial distribution of the fishery, or changes in growth.
 
 
-## Prior probability distributions and fixed variance parameters
+## PRIOR PROBABILITY DISTRIBUTIONS AND FIXED VARIANCE PARAMETERS
 
 The prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD). Graphic presentation of prior probability distribution is provided in Figures \@ref(fig:fig-base-mcmc-priors-5abcd) and \@ref(fig:fig-base-mcmc-priors-3cd). Model sensitivities to prior assumptions are tested in section \@ref(sensitivity-analyses)
 
-## Leading parameters 
+## LEADING PARAMETERS 
 
 A broad, uniform prior probability distribution was used for $ln(R_0)$, reflecting ignorance the scale of the population.
 
@@ -195,7 +196,7 @@ A Beta distribution was used for steepness with shape parameters that resulted i
 
 A normal distribution was used for $ln(M)$ with mean = $ln(0.5)$ and SD = 0.1, as was used in @forrest2013. @sinclair2005 obtained MPD estimates of *M* of 0.596 and 0.567 in their two "preferred" scenarios, whereas @forrest2013 obtained MPD estimates of 0.393 *y*^-1^ and 0.426 *y*^-1^ for Areas 5CD and 5AB, respectively. A bridging analysis done by @forrest2013 suggested that *M* could be considerably lower, depending on the values of other fixed or estimated parameters, and there has been considerable variability of estimates of *M* for Pacific cod throughout its assessment history (e.g., @fournier1983, @haist1998, @sinclair2001).
 
-## Survey scaling parameters (catchability)
+## SURVEY SCALING PARAMETERS (CATCHABILITY)
 
 *TO DO: Paul, please provide a more accurate description of why the swept area analyses for HSMAS and Triennial could not be expected to scale up to absolute abundance. Anyone, improvements to the text below are welcome*
 
@@ -215,7 +216,8 @@ Normal distributions were used for $ln(q_{k})$ for indices *k* =:
 
 The choice of prior probability distribution for survey scaling parameters has the potential for large impacts on stock assessment outcomes. We therefore present a number of sensitivity analyses in Section \@ref(sensitivity-analyses)
 
-### Area 5ABCD
+### AREA 5ABCD
+
 We attempted to use informative prior probability distributions for synoptic surveys based on median posterior estimates of *q* from the most recent stock assessment for Rock Sole [@holt2016]. Rock sole is a flatfish species occupying a similar (although slightly shallower) depth range to Pacific Cod. @holt2016 obtained median posterior estimates of *q* = 0.6280 for Area 5AB and *q* = 0.1869 for Area 5CD. The CV of their estimates was around 0.3. For our combined Area 5ABCD assessment we pro-rated these values according to the relative areas of habitat in Areas 5AB and 5CD. Adding up the areas of all the surveyed depth strata in each area gave a ratio of approximately 0.65:0.35 (5AB:5CD). Therefore the following values were used as means for the normal prior probability distributions for $ln(q_{k})$, for
 
 - *k* = Queen Charlotte Sound Synoptic Survey: Mean $ln(q_{k})$ = $ln(0.6280 * 0.65)$ = -0.895998; and
@@ -223,10 +225,12 @@ We attempted to use informative prior probability distributions for synoptic sur
 
 For both synoptic surveys, the standard deviation of the normal prior probability distribution for $ln(q_{k})$ was set to 0.3 in log space.
 
-### Area 3CD
+### AREA 3CD
+
 As for Area 5ABCD, we attempted to use an informative prior probability distribution for the West Coast Vancouver Island Synoptic Survey based on a median posterior estimate from a recent assessment. There have been fewer recent stock assessments focused on Area 3CD only and none for species in the same depth range as Pacific Cod. Here we used a normal prior probability distribution for $ln(q_{k})$ with mean set to the median posterior estimate of *q* from the most recent assessment for Area 3CD Pacific Ocean Perch (*Sebastes alutus*) [@edwards2013-2], i.e., Mean $ln(q_{k})$ = $ln(0.228)$ = -1.47841. the standard deviation of the normal prior probability distribution for $ln(q_{k})$ was set to 0.3 in log space, as for Area 5ABCD. Pacific Ocean Perch occurs in a deeper depth range than Pacific Cod, but it is a major target species for the trawl fishery and may therefore be informative about catchability in this area.
 
-## Fixed variance parameters
+## FIXED VARIANCE PARAMETERS
+
 The errors in variables approached used to partition process and observation error is described in detail in Appendix \@ref(delay-difference-model). Briefly, The key variance parameter is the inverse of the total
 variance, i.e., total precision $\phi^{-2}$ (@martell2011). This parameter can be fixed or estimated, and was fixed here. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation
 error [@punt1993, @deriso2007]. These parameters are used to derive the observation error component of the total variance ($\sigma_O$, Eq. XX) the process error term ($\sigma_R$, Eq. XX), which enters the objective function in the log likelihood function for the recruitment residuals (Eq. XX).
@@ -372,7 +376,7 @@ A sensitivity analysis was done where the NMFS Triennial Survey index was remove
 - \textbf{Sc 1g (Area 3CD only).} Remove NMFS Triennial Survey index from the model, Figure \@ref(fig:fig-sens8-biomass-3cd).
 
 
-## SC 2A AND 2B. PRIOR PROBABILITY DISTRIBUTION FOR $LN(Q)$
+## SC 2A AND 2B. PRIOR PROBABILITY DISTRIBUTION FOR $\ln(Q)$
 
 For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $ln(q)$ for the QCS and HS Synoptic Surveys:
 
@@ -385,7 +389,7 @@ For 3CD, two sensitivity analyses are shown to illustrate the effect of the norm
 - \textbf{Sc 2a.} The sd of the WCVI Synoptic survey was set to the same sd as for the QCS and HS Synoptic surveys, i.e., sd = 0.3, Figure \@ref(fig:fig-sens9-biomass-3cd).
 - \textbf{Sc 2b.} A uniform prior was used for \textit{q} for the WCVI Synoptic Surveys, Figure \@ref(fig:fig-sens9-biomass-3cd).
 
-## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR $LN(M)$
+## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR $\ln(M)$
 
 Three sensitivity analyses are shown to illustrate the effect of the
 parameters of the normal prior distribution assumed for $ln(M)$:
@@ -533,7 +537,7 @@ The model averaging approach is described below.
 
 We did not attempt to assign different weights to the alternative models in the construction of the model-averaged results.
 
-## Reference case models
+## REFERENCE CASE MODELS
 
 The decision table for the Area 5CD Reference Case model is provided in Table XX.
 The probability of the 2015 biomass being below the 2014 biomass ranged from 12.4\% under no 2014 catch to 64.1\% under 2400 t, double the current TAC.
@@ -550,7 +554,7 @@ Estimated probabilities at the current TAC 1200 t are shown in bold (Table 26).
 Under a 2014 catch level of 1200 t, there is an estimated 60\% probability that the 2015 biomass will be below the USR and an 18.2\% probability that the 2015 biomass will be below the LRP.
 
 
-## Model Averaging
+## MODEL AVERAGING
 
 ### Area 5CD: Hecate Strait
 
@@ -581,7 +585,7 @@ The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8\% for
 
 ### Area 3CD: WEST COAST VANCOUVER ISLAND
 
-## Summary
+## SUMMARY
 
 We presented the alternative, model averaged decision tables for Areas 5CD (Table XX) and 5AB (Table XX) in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
 

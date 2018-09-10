@@ -7,7 +7,7 @@ include_graphics("figure/Pcod_3CD5ABCDE_Pic.png")
 ```
 \clearpage
 
-## Catch: Area 5ABCD
+## CATCH: AREA 5ABCD
 
 ```{r fig-catch-5abcd, fig.pos="H", fig.cap="Catch for Area 5ABCD. Canadian catch includes at-sea releases."}
 make.catches.plot(catch.5)
@@ -35,7 +35,7 @@ discards.plot(catch.5cd.discards)
 
 \clearpage
 
-## Catch: Area 3CD
+## CATCH: AREA 3CD
 
 ```{r fig-catch-3cd, fig.pos="H", fig.cap="Catch for Area 3CD. Canadian catch includes at-sea releases."}
 make.catches.plot(catch.3)
@@ -47,7 +47,8 @@ discards.plot(catch.3.discards)
 
 \clearpage
 
-## Prior probability distributions
+## PRIOR PROBABILITY DISTRIBUTIONS
+
 ```{r fig-base-mcmc-priors-5abcd, fig.pos="H", fig.cap="Prior probability distributions used in the Area 5ABCD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = Hecate Strait Assemblage survey, $q_2$ = Queen Charlotte Sound Synoptic Survey, $q_3$ = Hecate Strait Synoptic Survey, $q_4$ = Commercial CPUE pre-1996, and $q_5$ = Commercial CPUE post-1995."}
 make.priors.posts.plot(base.model.5abcd)
 ```
@@ -58,7 +59,7 @@ make.priors.posts.plot(base.model.3cd)
 
 \clearpage
 
-## Model results: Area 5ABCD
+## MODEL RESULTS: AREA 5ABCD
 
 ```{r fig-base-mcmc-trace-5abcd, fig.pos="H", fig.cap="Traceplots of posterior samples for the Area 5ABCD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = Hecate Strait Assemblage survey, $q_2$ = Queen Charlotte Sound Synoptic Survey, $q_3$ = Hecate Strait Synoptic Survey, $q_4$ = Commercial CPUE pre-1996, and $q_5$ = Commercial CPUE post-1995."}
 make.traces.plot(base.model.5abcd)
@@ -138,7 +139,7 @@ b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
 
 \clearpage
 
-## Model results: Area 3CD
+## MODEL RESULTS: AREA 3CD
 
 ```{r fig-base-mcmc-trace-3cd, fig.pos="H", fig.cap="Traceplots of posterior samples for the Area 3CD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = West Coast Vancouver Island Synoptic Survey, $q_2$ = Commercial CPUE pre-1996, $q_3$ = Commercial CPUE post-1995, and $q_3$ = NMFS Triennial Survey (Canadian portion)."}
 make.traces.plot(base.model.3cd)
@@ -205,7 +206,7 @@ b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
            depl = FALSE)
 ```
 
-## Sensitivity analyses: Area 5ABCD
+## SENSITIVITY ANALYSES: AREA 5ABCD
 
 ```{r fig-sens1-biomass-5abcd, fig.pos="H", fig.cap="Biomass for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of the CPUE indices, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
@@ -313,7 +314,7 @@ f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.
 
 \clearpage
 
-## Sensitivity analyses: Area 3CD
+## SENSITIVITY ANALYSES: AREA 3CD
 
 ```{r fig-sens8-biomass-3cd, fig.pos="H", fig.cap="Biomass for the Sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, to removal of the CPUE indices, and to the removal of the Triennial survey index, Area 3CD."}
 b.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
