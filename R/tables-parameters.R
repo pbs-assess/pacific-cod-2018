@@ -70,7 +70,11 @@ make.parameters.table <- function(model,
   }
 
   ctl <- model$ctl
+
   params <- as.data.frame(ctl$params)
+  stopifnot(row.names(ctl$params) ==
+      c("log_ro", "steepness", "log_m", "log_avgrec", "log_recinit",
+    "rho", "kappa"))
 
   tab <- data.frame(param = character(),
     num.est = character(),
@@ -287,26 +291,21 @@ make.parameters.est.table <- function(model,
 
   ## The next set of names only pertains to the ARF assessment, the q's
   ##  and sel's are modified to line up with each other.
-  new.col <- c("$R_0$",
-    "$Steepness (h)$",
-    "$M$",
-    "$\\overline{R}$",
-    "$\\overline{R}_{init}$",
-    "$q_2$",
-    "$q_3$",
-    "$q_4$",
-    "$q_5$",
-    "$\\hat{a}_1$",
-    "$\\hat{\\gamma}_1$",
-    "$\\hat{a}_2$",
-    "$\\hat{\\gamma}_2$",
-    "$\\hat{a}_4$",
-    "$\\hat{\\gamma}_4$",
-    "$\\hat{a}_5$",
-    "$\\hat{\\gamma}_5$")
+
+  new.col <- rownames(tab)
+  new.col <- gsub("^ro$", "$R_0$", new.col)
+  new.col <- gsub("^h$", "Steepness ($h$)", new.col)
+  new.col <- gsub("^m$", "$M$", new.col)
+  new.col <- gsub("^rbar$", "$\\\\overline{R}$", new.col)
+  new.col <- gsub("^rinit$", "$\\\\overline{R}_{init}$", new.col)
+  new.col <- gsub("^vartheta$", "$\\\\vartheta$", new.col)
+  new.col <- gsub("^sbo$", "$B_0$", new.col)
+  new.col <- gsub("^q([0-9]+)$", "$q_\\1$", new.col)
+
   col.names <- colnames(tab)
   col.names <- latex.bold(latex.perc(col.names))
   col.names <- c(latex.bold("Parameter"), col.names)
+
   tab <- cbind(new.col, tab)
   colnames(tab) <- col.names
 

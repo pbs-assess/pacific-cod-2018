@@ -160,3 +160,6 @@ make.value.table(base.model.3cd,
                                   "percentile) and MPD estimates of relative biomass ",
                                   "for the base reference case."))
 ```
+
+
+\clearpage
