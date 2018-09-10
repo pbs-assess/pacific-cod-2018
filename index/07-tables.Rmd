@@ -2,7 +2,7 @@
 
 # TABLES
 
-```{r tab-catch-5abcd, fig.pos="H"}
+```{r tab-catch-5abcd}
 catch.table(catch.5,
             catch.5.discards,
             area = "5ABCD",
@@ -16,9 +16,8 @@ catch.table(catch.5,
               "observations and are considered to be more representative of true discarding."))
 ```
 
-\clearpage
 
-```{r tab-catch-3cd, fig.pos="H"}
+```{r tab-catch-3cd}
 catch.table(catch.3,
             catch.3.discards,
             area = "3CD",
@@ -34,28 +33,26 @@ catch.table(catch.3,
 
 \clearpage
 
-```{r tab-tac, fig.pos="H"}
+```{r tab-tac}
 tac.table(tac,
  cap = paste0("Summary of TACs by area."))
 ```
 
 \clearpage
 
-```{r tab-priors-5abcd, fig.pos="H"}
+```{r tab-priors-5abcd}
 priors.table(base.model.5abcd,
              cap = paste0("Priors and their parameters and initial values used in the ",
                           "Area 5ABCD Reference Case model. ", q.5abcd.desc))
 ```
 
-```{r tab-priors-3cd, fig.pos="H"}
+```{r tab-priors-3cd}
 priors.table(base.model.3cd,
              cap = paste0("Priors and their parameters and initial values used in the ",
                           "Area 3CD reference model. ", q.3cd.desc))
 ```
 
-\clearpage
-
-```{r suggested-ref-points, fig.pos="H"}
+```{r suggested-ref-points}
 
 df <- data.frame(referencepoint = c("Bmin",
                      "Bavg",
@@ -89,17 +86,16 @@ df <- data.frame(referencepoint = c("Bmin",
                          booktabs = TRUE,
                          linesep = "",
                          escape = FALSE) %>%
-        column_spec(2, width = "10cm")
+        column_spec(2, width = "10cm") %>%
+    kableExtra::kable_styling(latex_options = "hold_position")
 
 ```
 
 \clearpage
 
-\newpage
-
 ## MODEL RESULTS: AREA 5ABCD
 
-```{r tab-param-table-5abcd, fig.pos="H", results='asis', cache=FALSE}
+```{r tab-param-table-5abcd, results='asis', cache=FALSE}
 make.parameters.table(base.model.3cd,
  caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
                   "in the Reference Case, Area 5ABCD."))
@@ -158,12 +154,20 @@ make.value.table(base.model.5abcd,
 ```
 
 
+```{r tab-post-depl-5abcd, cache=FALSE}
+make.value.table(base.model.5abcd,
+                 5,
+                 digits = 2,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of relative biomass ",
+                                  "for the base reference case, Area 5ABCD."))
+```
+
 \clearpage
-\newpage
 
 ## MODEL RESULTS: AREA 3CD
 
-```{r tab-param-table-3cd, fig.pos="H", results='asis', cache=FALSE}
+```{r tab-param-table-3cd, results='asis', cache=FALSE}
 make.parameters.table(base.model.3cd,
  caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
                   "in the Reference Case, Area 3CD."))
@@ -220,6 +224,5 @@ make.value.table(base.model.3cd,
                                   "percentile) and MPD estimates of fishing mortality, F, ",
                                   "for the Reference Case, Area 3CD."))
 ```
-
 
 \clearpage
