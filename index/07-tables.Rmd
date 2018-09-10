@@ -8,8 +8,8 @@ catch.table(catch.5,
             area = "5ABCD",
  cap = paste0("Reported catch (mt) of Pacific Cod in Area 5ABCD ",
               "by Canada and the USA, ",
-              min(catch.5$Year, catch.5.discards$Year), "--", max(catch.5$Year, catch.5.discards$Year),
-              ". The reported discards for the period ", min(catch.5$Year, catch.5.discards$Year),
+              min(catch.5$year, catch.5.discards$year), "--", max(catch.5$year, catch.5.discards$year),
+              ". The reported discards for the period ", min(catch.5$year, catch.5.discards$year),
               "--1995 are ",
               "unrepresentative of true discarding because the estimates were taken ",
               "from logbooks. Discard estimates since 1996 are based on at-sea ",
@@ -24,8 +24,8 @@ catch.table(catch.3,
             area = "3CD",
  cap = paste0("Reported catch (mt) of Pacific Cod in Area 3CD ",
               "by Canada and the USA, ",
-              min(catch.3$Year, catch.3.discards$Year), "--", max(catch.3$Year, catch.3.discards$Year),
-              ". The reported discards for the period ", min(catch.3$Year, catch.3.discards$Year),
+              min(catch.3$year, catch.3.discards$year), "--", max(catch.3$year, catch.3.discards$year),
+              ". The reported discards for the period ", min(catch.3$year, catch.3.discards$year),
               "--1995 are ",
               "unrepresentative of true discarding because the estimates were taken ",
               "from logbooks. Discard estimates since 1996 are based on at-sea ",
@@ -43,13 +43,14 @@ tac.table(tac,
 
 ```{r tab-priors-5abcd, fig.pos="H"}
 priors.table(base.model.5abcd,
- cap = "Priors and their parameters and initial values used in the Area 5ABCD base reference model.
-  $\\bar{R} = R_{Avg}$, $q_1$ = Hecate Strait Assemblage survey, $q_2$ = Queen Charlotte Sound Synoptic Survey, $q_3$ = Hecate Strait Synoptic Survey, $q_4$ = Commercial CPUE pre-1996, and $q_5$ = Commercial CPUE post-1995.")
+             cap = paste0("Priors and their parameters and initial values used in the ",
+                          "Area 5ABCD base reference model. ", q.5abcd.desc))
 ```
 
 ```{r tab-priors-3cd, fig.pos="H"}
 priors.table(base.model.3cd,
- cap = "Priors and their parameters and initial values used in the Area 3CD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = West Coast Vancouver Island Synoptic Survey, $q_2$ = Commercial CPUE pre-1996, $q_3$ = Commercial CPUE post-1995, and $q_4$ = NMFS Triennial Survey (Canadian portion).")
+             cap = paste0("Priors and their parameters and initial values used in the ",
+                          "Area 3CD base reference model. ", q.3cd.desc))
 ```
 
 \clearpage
@@ -82,116 +83,82 @@ df <- data.frame(referencepoint = c("Bmin",
   mutate(Definition = gsub("1986", "$B_{\t{1986}}$", Definition)) %>%
   rename("Reference point" = referencepoint)
 
-   knitr::kable(df, caption = "Suggested reference points for the Reference Case 5ABCD and 3CD models.", booktabs = TRUE, linesep = "", escape=FALSE) %>%
-     kableExtra::column_spec(2,width = "10cm")
-
-```
-
-```{r priors-base5ABCD, fig.pos="H"}
-
-df <- data.frame(Parameter = c("ln M",
-                     "Steepness",
-                     "ln R0",
-                     "Tau",
-                     "Sig",
-                     "q HSMSAS",
-                     "ln q QCSS",
-                     "ln q HSSS",
-                     "q CPUE Hist",
-                     "q CPUE 1996+"),
-                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Unif","Norm","Norm","Unif","Unif"),
-                 p1 = c("ln(0.5)",
-                        "5.83",
-                        "1",
-                        "0.8",
-                        "0.2",
-                        "0",
-                        "ln(0.628 x 0.65)",
-                        "ln(0.1869 x 0.35)",
-                        "0",
-                        "0"),
-                 p2 = c("0.1",
-                        "2.5",
-                        "12",
-                        "NA",
-                        "NA",
-                        "1",
-                        "0.3",
-                        "0.3",
-                        "1",
-                        "1"))
-   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 5ABCD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
-
-```
-
-\clearpage
-
-```{r priors-base3CD, fig.pos="H"}
-
-df <- data.frame(Parameter = c("ln M",
-                     "Steepness",
-                     "ln R0",
-                     "Tau",
-                     "Sig",
-                     "ln q WCVISS",
-                     "q CPUE Hist",
-                     "q CPUE 1996+",
-                     "q Triennial"),
-                 Distribution = c("Norm", "Beta", "Unif","Fixed","Fixed","Norm","Unif","Unif","Unif"),
-                 p1 = c("ln(0.5)",
-                        "5.83",
-                        "1",
-                        "0.8",
-                        "0.2",
-                        "ln(0.228)",
-                        "0",
-                        "0",
-                        "0"),
-                 p2 = c("0.1",
-                        "2.5",
-                        "12",
-                        "NA",
-                        "NA",
-                        "0.3",
-                        "1",
-                        "1",
-                        "1"))
-   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean $\\sim$ 0.7 and sd $\\sim$ 0.15.", booktabs = TRUE, linesep = "", escape = FALSE)
+  kable(df,
+        caption = paste0("Suggested reference points for the Reference Case ",
+                         "5ABCD and 3CD models."),
+                         booktabs = TRUE,
+                         linesep = "",
+                         escape = FALSE) %>%
+        column_spec(2, width = "10cm")
 
 ```
 
 \clearpage
 
 ```{r parameters-table, fig.pos="H", results='asis', cache=FALSE}
-make.parameters.table(base.model.3cd, caption = "SADF")
+make.parameters.table(base.model.3cd,
+ caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
+                  "in the base reference case for Area 3CD."))
 ```
 
-```{r parameters-est-table, results='asis', cache=FALSE}
-make.parameters.est.table(base.model.3cd, caption = "SADF")
+```{r parameters-est-table-5abcd, results='asis', cache=FALSE}
+make.parameters.est.table(base.model.5abcd,
+  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters from the base reference Case. ",
+                   q.5abcd.desc))
 ```
 
 ```{r ref-points-table, results='asis', cache=FALSE}
-make.ref.points.table(base.model.3cd, digits = 2, caption = "SADF")
+make.ref.points.table(base.model.3cd,
+                      digits = 2,
+                      caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                                       "97.5\\textsuperscript{th} percentile) of proposed reference points. ",
+                                       "Biomass numbers are in tonnes."))
 ```
 
 ```{r value-table1, results='asis', cache=FALSE}
-make.value.table(base.model.3cd, 1, digits = 0, caption = "SADF")
+make.value.table(base.model.3cd,
+                 1,
+                 digits = 0,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of biomass (t) for ",
+                                  "the base reference case."))
 ```
 
 ```{r value-table2, results='asis', cache=FALSE}
-make.value.table(base.model.3cd, 2, digits = 0, caption = "SADF")
+make.value.table(base.model.3cd,
+                 2,
+                 digits = 0,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of recruitment (thousands) for ",
+                                  "the base reference case."))
 ```
 
 ```{r value-table3, results='asis', cache=FALSE}
-make.value.table(base.model.3cd, 3, digits = 2, caption = "SADF")
+make.value.table(base.model.3cd,
+                 3,
+                 digits = 2,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of fishing mortality, F, ",
+                                  "for the base reference case."))
 ```
 
 ```{r value-table4, results='asis', cache=FALSE}
-make.value.table(base.model.3cd, 4, digits = 2, caption = "SADF")
+make.value.table(base.model.3cd,
+                 4,
+                 digits = 2,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of annual harvest rate, U, ",
+                                  "for the base reference case."))
 ```
 
 ```{r value-table5, cache=FALSE}
-make.value.table(base.model.3cd, 5, digits = 2, caption = "SADF")
+make.value.table(base.model.3cd,
+                 5,
+                 digits = 2,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of relative biomass ",
+                                  "for the base reference case."))
 ```
 
 
