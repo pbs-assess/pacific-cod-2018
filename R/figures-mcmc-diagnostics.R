@@ -392,12 +392,28 @@ make.pairs.plot <- function(model){
     name <- c.names[param]
     latex.names <- c(latex.names, get.latex.name(name))
   }
+
+  our.panel.smooth <- function (x, y, col = "#00000060", bg = NA, pch = par("pch"),
+    cex = 1, col.smooth = "red", span = 2/3, iter = 3, ...)
+  {
+    points(x, y, pch = pch, col = col, bg = bg, cex = cex)
+    ok <- is.finite(x) & is.finite(y)
+    if (any(ok))
+      lines(stats::lowess(x[ok], y[ok], f = span, iter = iter),
+        col = col.smooth, ...)
+
+    r <- round(cor(x, y), digits=2)
+    txt <- sprintf("%.2f", r)
+    par(usr = c(0, 1, 0, 1))
+    graphics::text(0.98, 0.9, txt, pos = 2, col = "grey5")
+  }
+
   pairs(mc,
         labels = latex.names,
         cex.labels = 1.0,
         pch = ".",
-        upper.panel = panel.smooth,
+        upper.panel = our.panel.smooth,
         diag.panel = panel.hist,
-        lower.panel = panel.smooth,
+        lower.panel = our.panel.smooth,
         gap = 0.0)
 }
