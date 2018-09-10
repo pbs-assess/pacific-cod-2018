@@ -153,16 +153,6 @@ make.value.table(base.model.5abcd,
                                   "for the Reference Case, Area 5ABCD."))
 ```
 
-
-```{r tab-post-depl-5abcd, cache=FALSE}
-make.value.table(base.model.5abcd,
-                 5,
-                 digits = 2,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of relative biomass ",
-                                  "for the base reference case, Area 5ABCD."))
-```
-
 \clearpage
 
 ## MODEL RESULTS: AREA 3CD
