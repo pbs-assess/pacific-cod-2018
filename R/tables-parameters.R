@@ -1,13 +1,5 @@
 make.parameters.table <- function(model,
-  caption = "default"){
-  ## Returns an xtable in the proper format for parameter estimates and priors
-  ##
-  ## xcaption - caption to appear in the calling document
-  ## digits - number of digits after decimal point
-  ## xlabel - the label used to reference the table in latex
-  ## font.size - size of the font for the table
-  ## space.size - size of the vertical spaces for the table
-  ## placement - latex code for placement of the table in document
+                                  caption = "default"){
 
   get.bounds <- function(ind){
     ## Return the bounds string for row ind of the parameters
@@ -87,12 +79,12 @@ make.parameters.table <- function(model,
     stringsAsFactors = FALSE)
 
   param.text <- c("Log recruitment ($ln(R_0)$)",
-    "Steepness ($h$)",
-    "Log natural mortality ($ln(M)$)",
-    "Log mean recruitment ($\\ln(\\overline{R})$)",
-    "Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
-    "Variance ratio ($\\rho$)",
-    "Inverse total variance ($\\vartheta^2$)")
+                  "Steepness ($h$)",
+                  "Log natural mortality ($ln(M)$)",
+                  "Log mean recruitment ($\\ln(\\overline{R})$)",
+                  "Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
+                  "Variance ratio ($\\rho$)",
+                  "Inverse total variance ($\\vartheta^2$)")
 
   param.vals <- do.call(rbind, lapply(1:nrow(params), get.vals))
 
