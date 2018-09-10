@@ -233,7 +233,7 @@ discards.plot(catch.3.discards)
 
 \clearpage
 
-```{r fig-base-mcmc-priors-3cd, fig.pos="H", fig.cap="Prior probability distributions used in the Area 3CD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = West Coast Vancouver Island Synoptic Survey, $q_2$ = Commercial CPUE pre-1996, $q_3$ = Commercial CPUE post-1995, and $q_3$ = NMFS Triennial Survey (Canadian portion)."}
+```{r fig-base-mcmc-priors-3cd, fig.pos="H", fig.cap="Prior probability distributions used in the Area 3CD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = West Coast Vancouver Island Synoptic Survey, $q_2$ = Commercial CPUE pre-1996, $q_3$ = Commercial CPUE post-1995, and $q_4$ = NMFS Triennial Survey (Canadian portion)."}
 make.priors.posts.plot(base.model.3cd)
 ```
 
