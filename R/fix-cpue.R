@@ -142,9 +142,7 @@ sens.models.names.list <- c(unlist(sens.models.dir.name.1),
                             unlist(sens.models.dir.name.11),
                             unlist(sens.models.dir.name.12),
                             unlist(sens.models.dir.name.13),
-                            unlist(sens.models.dir.name.14),
-                            unlist(sens.models.dir.name.15),
-                            unlist(sens.models.dir.name.16))
+                            unlist(sens.models.dir.name.14))
 
 dat.files <- file.path(sens.models.names.list, "pcod.dat")
 
