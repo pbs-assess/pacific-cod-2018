@@ -193,3 +193,6 @@ make.value.table(base.model.3cd, 4, digits = 2, caption = "SADF")
 ```{r value-table5, cache=FALSE}
 make.value.table(base.model.3cd, 5, digits = 2, caption = "SADF")
 ```
+
+
+\clearpage
