@@ -375,7 +375,7 @@ Predicted catch:
 Predicted mean weight:
 
 \begin{equation}
-{\hat \bar W_t} = \frac{{{B_t}}}{{{N_t}}}
+{\hat{\bar{W_t}}} = \frac{{{B_t}}}{{{N_t}}}
 \end{equation}
 
 Predicted recruits:
@@ -453,7 +453,7 @@ Ln likelihood:
 Residuals:
 
 \begin{equation}
-{d_W}_t = \ln \left( {{{\bar W}_t}} \right) - \ln \left( {{{\hat \bar W}_t}} \right)
+{d_W}_t = \ln \left( {{{\bar W}_t}} \right) - \ln \left( {{{\hat{\bar{W}}_t}}} \right)
 \end{equation}
 
 Ln likelihood:
