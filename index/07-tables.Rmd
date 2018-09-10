@@ -122,7 +122,40 @@ df <- data.frame(Parameter = c("ln M",
                         "1",
                         "1",
                         "1"))
-   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
+   knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean $\\sim$ 0.7 and sd $\\sim$ 0.15.", booktabs = TRUE, linesep = "", escape = FALSE)
 
 ```
 
+\clearpage
+
+```{r parameters-table, fig.pos="H", results='asis', cache=FALSE}
+make.parameters.table(base.model.3cd, caption = "SADF")
+```
+
+```{r parameters-est-table, results='asis', cache=FALSE}
+make.parameters.est.table(base.model.3cd, caption = "SADF")
+```
+
+```{r ref-points-table, results='asis', cache=FALSE}
+make.ref.points.table(base.model.3cd, digits = 2, caption = "SADF")
+```
+
+```{r value-table1, results='asis', cache=FALSE}
+make.value.table(base.model.3cd, 1, digits = 0, caption = "SADF")
+```
+
+```{r value-table2, results='asis', cache=FALSE}
+make.value.table(base.model.3cd, 2, digits = 0, caption = "SADF")
+```
+
+```{r value-table3, results='asis', cache=FALSE}
+make.value.table(base.model.3cd, 3, digits = 2, caption = "SADF")
+```
+
+```{r value-table4, results='asis', cache=FALSE}
+make.value.table(base.model.3cd, 4, digits = 2, caption = "SADF")
+```
+
+```{r value-table5, cache=FALSE}
+make.value.table(base.model.3cd, 5, digits = 2, caption = "SADF")
+```
