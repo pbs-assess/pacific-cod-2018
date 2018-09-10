@@ -32,4 +32,6 @@ bibliography: bib/refs.bib
 csl: csl/csas.csl
 lot: true
 lof: true
+header-includes:
+- \setcounter{section}{1}
 ---

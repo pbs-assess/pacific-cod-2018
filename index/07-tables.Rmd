@@ -52,7 +52,7 @@ priors.table(base.model.3cd,
  cap = "Priors and their parameters and initial values used in the Area 3CD base reference model. $\\bar{R} = R_{Avg}$, $q_1$ = West Coast Vancouver Island Synoptic Survey, $q_2$ = Commercial CPUE pre-1996, $q_3$ = Commercial CPUE post-1995, and $q_4$ = NMFS Triennial Survey (Canadian portion).")
 ```
 
-\FloatBarrier
+\clearpage
 
 ```{r suggested-ref-points, fig.pos="H"}
 
@@ -124,6 +124,7 @@ df <- data.frame(Parameter = c("ln M",
 
 ```
 
+\clearpage
 
 ```{r priors-base3CD, fig.pos="H"}
 
@@ -158,3 +159,4 @@ df <- data.frame(Parameter = c("ln M",
    knitr::kable(df, caption = "Prior probability distributions used for the Reference Case 3CD model. Beta parameters for steepness give distribution with mean ~ 0.7 and sd ~ 0.15.", booktabs = TRUE, linesep = "")
 
 ```
+
