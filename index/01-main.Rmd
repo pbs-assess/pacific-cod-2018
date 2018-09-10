@@ -261,18 +261,18 @@ probability distribution for $ln(M)$. This is discussed further in Section \@ref
 
 Survey scaling parameters ($q_{k}$) were strongly positively correlated with each other, especially the two synoptic surveys $q_2$ and $q_3$ in Figure \@ref(fig:fig-base-mcmc-pairs-5abcd), which were linearly correlated. This implies that changing the prior probability distribution for one of these parameters will strongly affect the other, and correspondingly, the scale of estimated biomass in the model. Because the two synoptic surveys occur in mostly the same years, it appears that the model has little leeway to change the ratio of their relative scales (see Section \@ref(sensitivity-analyses)). Survey scaling parameters were negatively correlated with $M$. $R_0$ was also negatively correlated with $M$, implying that there is limited information in the data to distinguish between a small productive population or a larger, less productive population (\@ref(fig:fig-base-mcmc-pairs-5abcd)).
 
+*TO DO: Update this bit when tables are all there*
+Posterior estimates of $F_{2017}$ and $B_{2018}$ are shown in  Table XX. Fishing mortality in 2017 was low compared to the historical period, with the posterior median estimated to be 0.052y^-1^ XX.
+
 Median posterior estimated biomass $B_{t}$ (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-biomass-5abcd), with values in Table XX. Of note is the estimated downturn in estimated biomass since 20XX. This is in contrast to the 2013 assessment [@forrest2013, their Figure 16], which projected an increase in biomass for 2014.In the current assessment, this downturn is largely driven by a downturn in the synoptic surveys since 2013, as well as in the modern CPUE index (Figure \ref(fig:fig:fig-base-index-fits-5abcd)). Also of note compared to the previous assessment is the lower estimate of $R_0$ and its smaller confidence interval (\@ref(fig:fig-base-biomass-5abcd)). This is entirely due to the structural change in the current assessment, where all average recruitment parameters are now set to the same estimated value (see Section \@ref(stock-assessment-model)). Also of note is that median posterior biomass since 1995 is estimated to be below the LRP ($B_{1971}$). This was also the case in the previous assessment for Area 5CD, with the exception that in that case, the biomass was predicted to have increased to be above the LRP around 2009 [@forrest2013, their Figure 16].
 
 Median posterior estimated relative biomass ($B_{t}/B_0$) (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-depl-5abcd). Median posterior estimated age-2 recruits and recruitment deviations (with 95% credibility interval) are shown in Figure \@ref(fig:fig-base-recr-5abcd). Recruitment is estimated to have been below average since 1990, with negative recruitment deviations since 2010. 
 
-Median posterior estimated fishing mortality ($F_{t}) is shown in Figure \@ref(fig:fig-base-f-5abcd).
+*TO DO: Update this bit when tables are all there*
+Median posterior estimated fishing mortality ($F_{t}) is shown in Figure \@ref(fig:fig-base-f-5abcd). xxx
 
+We ran a retrospective analysis, sequentially removing the terminal year of data for four years to show the effects of each year's data (Figure \@ref(fig:fig-base-retro-biomass-5abcd)). Results clearly show the effects of the biennial synoptic surveys on terminal estimates of biomass. Removing four years of data, reverts the model back to its 2013 state (orange series), with the predicted increase in biomass projected in the previous assessment for the Area 5CD stock [@forrest2013]. Subsequently adding the 2014 data (purple series) had little effect on the model as there were no Area 5AB or 5CD surveys in 2014. However, adding the 2015 and 2016 data (green and blue series) resulted in a lowering of estimated terminal biomass and the previous 2-3 years, because of a large drop in the 2015 Hecate Strait Synoptic Survey index Figure \@ref(fig:fig-base-index-fits-5abcd)).
 
-### REFERENCE POINTS
-
-Posterior estimates of $F_{2017}$ and $B_{2018}$ are shown in Figures XX and
-XX, and Table XX. Fishing mortality in 2017 was low compared to the historical
-period, with the posterior median estimated to be 0.052y^-1^ XX.
 
 ## AREA 3CD: WEST COAST VANCOUVER ISLAND
 
