@@ -96,6 +96,7 @@ make.priors.posts.plot(base.model.5abcd, priors.only = FALSE)
 make.pairs.plot(base.model.5abcd)
 ```
 
+
 ```{r fig-base-biomass-5abcd, fig.pos="H", fig.cap="Biomass for the Reference Model, Area 5ABCD.  The green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the Limit Reference Point (LRP) which is the lowest biomass from which the stock has recovered, in this case it is the biomass estimate for 1971."}
 b.plot(base.model.5abcd,
        base.model.5abcd.name,
