@@ -94,71 +94,146 @@ df <- data.frame(referencepoint = c("Bmin",
 ```
 
 \clearpage
+\newpage
 
-```{r parameters-table, fig.pos="H", results='asis', cache=FALSE}
+## MODEL RESULTS: AREA 5ABCD
+
+```{r tab-param-table-5abcd, fig.pos="H", results='asis', cache=FALSE}
+make.parameters.table(base.model.3cd,
+ caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
+                  "in the base reference case for Area 5ABCD."))
+```
+
+```{r tab-param-est-table-5abcd, results='asis', cache=FALSE}
+make.parameters.est.table(base.model.5abcd,
+  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters from the base reference Case for Area 5ABCD. ",
+                   q.5abcd.desc))
+```
+
+```{r tab-ref-points-table-5abcd, results='asis', cache=FALSE}
+make.ref.points.table(base.model.5abcd,
+                      digits = 2,
+                      caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                                       "97.5\\textsuperscript{th} percentile) of proposed reference points for Area 5ABCD. ",
+                                       "Biomass numbers are in tonnes."))
+```
+
+```{r tab-post-biomass-5abcd, results='asis', cache=FALSE}
+make.value.table(base.model.5abcd,
+                 1,
+                 digits = 0,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of biomass (t) for Area 5ABCD",
+                                  "the base reference case."))
+```
+
+```{r tab-post-recr-5abcd, results='asis', cache=FALSE}
+make.value.table(base.model.5abcd,
+                 2,
+                 digits = 0,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of recruitment (thousands) for the Area 5ABCD ",
+                                  "base reference case."))
+```
+
+```{r tab-post-f-5abcd, results='asis', cache=FALSE}
+make.value.table(base.model.5abcd,
+                 3,
+                 digits = 2,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of fishing mortality, F, ",
+                                  "for the base reference case, Area 5ABCD."))
+```
+
+```{r tab-post-u-5abcd, results='asis', cache=FALSE}
+make.value.table(base.model.5abcd,
+                 4,
+                 digits = 2,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of annual harvest rate, U, ",
+                                  "for the base reference case, Area 5ABCD."))
+```
+
+```{r tab-post-depl-5abcd, cache=FALSE}
+make.value.table(base.model.5abcd,
+                 5,
+                 digits = 2,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of relative biomass ",
+                                  "for the base reference case, Area 5ABCD."))
+```
+\clearpage
+\newpage
+
+## MODEL RESULTS: AREA 3CD
+
+```{r tab-param-table-3cd, fig.pos="H", results='asis', cache=FALSE}
 make.parameters.table(base.model.3cd,
  caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
                   "in the base reference case for Area 3CD."))
 ```
 
-```{r parameters-est-table-5abcd, results='asis', cache=FALSE}
-make.parameters.est.table(base.model.5abcd,
-  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters from the base reference Case. ",
+```{r tab-param-est-table-3cd, results='asis', cache=FALSE}
+make.parameters.est.table(base.model.3cd,
+  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters from the base reference Case for Area 3CD. ",
                    q.5abcd.desc))
 ```
 
-```{r ref-points-table, results='asis', cache=FALSE}
+```{r tab-ref-points-table-3cd, results='asis', cache=FALSE}
 make.ref.points.table(base.model.3cd,
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                                       "97.5\\textsuperscript{th} percentile) of proposed reference points. ",
+                                       "97.5\\textsuperscript{th} percentile) of proposed reference points for Area 3CD. ",
                                        "Biomass numbers are in tonnes."))
 ```
 
-```{r value-table1, results='asis', cache=FALSE}
+```{r tab-post-biomass-3cd, results='asis', cache=FALSE}
 make.value.table(base.model.3cd,
                  1,
                  digits = 0,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass (t) for ",
+                                  "percentile) and MPD estimates of biomass (t) for Area 3CD",
                                   "the base reference case."))
 ```
 
-```{r value-table2, results='asis', cache=FALSE}
+```{r tab-post-recr-3cd, results='asis', cache=FALSE}
 make.value.table(base.model.3cd,
                  2,
                  digits = 0,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of recruitment (thousands) for ",
+                                  "percentile) and MPD estimates of recruitment (thousands) for Area 3CD",
                                   "the base reference case."))
 ```
 
-```{r value-table3, results='asis', cache=FALSE}
+```{r tab-post-f-3cd, results='asis', cache=FALSE}
 make.value.table(base.model.3cd,
                  3,
                  digits = 2,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
                                   "percentile) and MPD estimates of fishing mortality, F, ",
-                                  "for the base reference case."))
+                                  "for the base reference case, Area 3CD."))
 ```
 
-```{r value-table4, results='asis', cache=FALSE}
+```{r tab-post-u-3cd, results='asis', cache=FALSE}
 make.value.table(base.model.3cd,
                  4,
                  digits = 2,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
                                   "percentile) and MPD estimates of annual harvest rate, U, ",
-                                  "for the base reference case."))
+                                  "for the base reference case, Area 3CD."))
 ```
 
-```{r value-table5, cache=FALSE}
+```{r tab-post-depl-3cd, cache=FALSE}
 make.value.table(base.model.3cd,
                  5,
                  digits = 2,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
                                   "percentile) and MPD estimates of relative biomass ",
-                                  "for the base reference case."))
+                                  "for the base reference case, Area 3CD."))
 ```
 
 
