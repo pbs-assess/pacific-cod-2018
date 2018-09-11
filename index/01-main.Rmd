@@ -301,7 +301,7 @@ Median posterior estimated relative biomass ($B_{t}/B_0$) (with 95% credibility 
 
 Median posterior estimated fishing mortality ($F_{t}$) is shown in Figure \@ref(fig:fig-base-f-3cd). Fishing mortality in 2017 is estimated to be very low currently, with the posterior median estimated to be 0.01 y^-1^ (Tables \@ref(tab:tab-ref-points-table-3cd) and \@ref(tab:tab-post-f-3cd)), reflecting low catches during the past decade (Figure \@ref(fig:fig-base-catch-fit-5abcd)) and an apparent growth in biomass (Figure \@ref(fig:fig-base-biomass-3cd)).
 
-We ran a retrospective analysis, sequentially removing the terminal year of data for four years to show the effects of each year's data (Figure \@ref(fig:fig-base-retro-biomass-3cd)). Results were not so systematic as for Area 5ABCD (Figure \@ref(fig:fig-base-retro-biomass-3cd)) and the relative magnitude of the bias was smaller. The largest effect was the addition of the 2017 data which cause the terminal biomass estimate to shift notably downward, most likely due to the large drop in the modern CPUE index in 2017 (Figure \ref(fig:fig-base-index-fits-3cd)).
+We ran a retrospective analysis, sequentially removing the terminal year of data for four years to show the effects of each year's data (Figure \@ref(fig:fig-base-retro-biomass-3cd)). Results were not so systematic as for Area 5ABCD (Figure \@ref(fig:fig-base-retro-biomass-3cd)) and the relative magnitude of the bias was smaller. The largest effect was the addition of the 2017 data which cause the terminal biomass estimate to shift notably downward, most likely due to the large drop in the modern CPUE index in 2017 (Figure @\ref(fig:fig-base-index-fits-3cd)).
 
 
 
