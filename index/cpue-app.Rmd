@@ -516,8 +516,8 @@ make_re_dat <- function(object) {
     rename(par_group = .id) %>%
     rename(est = `(Intercept)`) %>%
     as_tibble() %>%
-    mutate(loc_group = gsub("^([0-9]+)[ -]*([0-9a-zA-Z]+)$", "\\2", par_value)) %>%
-    mutate(loc_year = gsub("^([0-9]+)[ -]*[0-9a-zA-Z]+$", "\\1", par_value))
+    mutate(loc_group = gsub("^([0-9]+)[ -]*([0-9a-zA-Z-]+)$", "\\2", par_value)) %>%
+    mutate(loc_year = gsub("^([0-9]+)[ -]*[0-9a-zA-Z-]+$", "\\1", par_value))
 }
 make_re_plots <- function(object, re_names = c("locality")) {
   re <- make_re_dat(object)
