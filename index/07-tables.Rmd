@@ -105,7 +105,7 @@ make.parameters.table(base.model.3cd,
 make.parameters.est.table(base.model.5abcd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters from the Reference Case, Area 5ABCD. ",
+                   "estimates of key parameters from the Reference Case, Area 5ABCD. TO DO: REMOVE MSY-based pars, Ravg and Rinit.",
                    q.5abcd.desc))
 ```
 
@@ -167,7 +167,7 @@ make.parameters.table(base.model.3cd,
 make.parameters.est.table(base.model.3cd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters from the reference Case, Area 3CD. ",
+                   "estimates of key parameters from the reference Case, Area 3CD. TO DO: REMOVE MSY-based pars, Ravg and Rinit. ",
                    q.5abcd.desc))
 ```
 
@@ -216,3 +216,23 @@ make.value.table(base.model.3cd,
 ```
 
 \clearpage
+
+## SELECTED SENSITIVITY RESULTS: AREA 5ABCD
+
+```{r tab-param-table-sens3a-5abcd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.3[[1]],
+ caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
+                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 5ABCD. TO DO: REMOVE MSY-based pars, Ravg and Rinit."))
+```
+
+```{r tab-param-table-sens3b-5abcd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.3[[2]],
+ caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
+                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 5ABCD. TO DO: REMOVE MSY-based pars, Ravg and Rinit."))
+```
+
+```{r tab-param-table-sens3c-5abcd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.3[[3]],
+ caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
+                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 5ABCD. TO DO: REMOVE MSY-based pars, Ravg and Rinit."))
+```
