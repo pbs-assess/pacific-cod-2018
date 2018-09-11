@@ -65,9 +65,9 @@ northern and southern spatial strata.
 The West Coast Vancouver Island synoptic bottom trawl survey was first
 conducted in 2004 and is conducted in alternating (even-numbered) years on
 a chartered commercial trawler. The survey area is off the west coast of
-Vancouver Island from approximately 49$^\circ$ 12$^\prime$ to 50$^\circ$
-36$^\prime$ North latitude and approximately 124$^\circ$ 48$^\prime$ to
-128$^\circ$ 30$^\prime$ West longitude. The southern boundary is contiguous
+Vancouver Island from approximately 49 $^\circ$  12$^\prime$ to 50 $^\circ$
+36$^\prime$ North latitude and approximately 124 $^\circ$  48$^\prime$ to
+128 $^\circ$  30$^\prime$ West longitude. The southern boundary is contiguous
 with the Canada/U.S. boundary. The survey has a single aerial stratum in
 Pacific Fishery Management Area regions 3C and 3D separated into four depth
 strata: 50--125m; 125--200m; 200--330m; and 330--500m. Approximately 150 to 180
@@ -226,86 +226,78 @@ difference has been compensated for by using a constant survey area for
 all years and assuming that catch rates in the unsampled areas were the
 same as in the sampled area.
 
-Table B.2. Stratum definitions by year used in the NMFS triennial survey
+\FloatBarrier
+
+Table: Stratum definitions by year used in the NMFS triennial survey
 to separate the survey results by country and by INPFC area. Stratum
 definitions in grey are those strata which have been excluded from the
 final analysis due to incomplete coverage across the seven survey years
 or because the locations were outside the Vancouver INPFC area.
+Van. = Vancouver, Col. = Columbia.
 
-  ------------ ------------- -------------- --------------- --------------- --------- ------------ -------------
-  Year         Stratum No.   Area (km^2^)   Start           End             Country   INPFC area   Depth range
-  1980         10            3537           47°30           US-Can Border   US        Vancouver    55-183 m
-  1980         11            6572           US-Can Border   49°15           CDN       Vancouver    55-183 m
-  1980         30            443            47°30           US-Can Border   US        Vancouver    184-219 m
-  1980         31            325            US-Can Border   49°15           CDN       Vancouver    184-219 m
-  1980         50            758            47°30           US-Can Border   US        Vancouver    220-366 m
-  1980         51            503            US-Can Border   49°15           CDN       Vancouver    220-366 m
-  1983         10            1307           47°30           47°55           US        Vancouver    55-183 m
-  1983         11            2230           47°55           US-Can Border   US        Vancouver    55-183 m
-  1983         12            6572           US-Can Border   49°15           CDN       Vancouver    55-183 m
-  1983         30            66             47°30           47°55           US        Vancouver    184-219 m
-  1983         31            377            47°55           US-Can Border   US        Vancouver    184-219 m
-  1983         32            325            US-Can Border   49°15           CDN       Vancouver    184-219 m
-  1983         50            127            47°30           47°55           US        Vancouver    220-366 m
-  1983         51            631            47°55           US-Can Border   US        Vancouver    220-366 m
-  1983         52            503            US-Can Border   49 °15          CDN       Vancouver    220-366 m
-  1989&after   17N           1033           47°30           47°50           US        Vancouver    55-183 m
-  1989&after   17S           3378           46°30           47°30           US        Columbia     55-183 m
-  1989&after   18N           159            47°50           48°20           CDN       Vancouver    55-183 m
-  1989&after   18S           2123           47°50           48°20           US        Vancouver    55-183 m
-  1989&after   19N           8224           48°20           49°40           CDN       Vancouver    55-183 m
-  1989&after   19S           363            48°20           49°40           US        Vancouver    55-183 m
-  1989&after   27N           125            47°30           47°50           US        Vancouver    184-366 m
-  1989&after   27S           412            46°30           47°30           US        Columbia     184-366 m
-  1989&after   28N           88             47°50           48°20           CDN       Vancouver    184-366 m
-  1989&after   28S           787            47°50           48°20           US        Vancouver    184-366 m
-  1989&after   29N           942            48°20           49°40           CDN       Vancouver    184-366 m
-  1989&after   29S           270            48°20           49°40           US        Vancouver    184-366 m
-  1995&after   37N           102            47°30           47°50           US        Vancouver    367-500 m
-  1995&after   37S           218            46°30           47°30           US        Columbia     367-500 m
-  1995&after   38N           66             47°50           48°20           CDN       Vancouver    367-500 m
-  1995&after   38S           175            47°50           48°20           US        Vancouver    367-500 m
-  ------------ ------------- -------------- --------------- --------------- --------- ------------ -------------
+------------ ---------- -------------- ---------------  ---------------  --------- ------- -----------
+Year         Stratum    Area           Start            End              Country   INPFC   Depth
+             No.        (km^2^)                                                    area    range
+------------ ---------- -------------- ---------------  ---------------  --------- ------- -----------
+1980         10         3537           47 $^\circ$ 30   US-Can Border    US        Van.    55-183 m
+1980         11         6572           US-Can Border    49 $^\circ$ 15   CDN       Van.    55-183 m
+1980         30         443            47 $^\circ$ 30   US-Can Border    US        Van.    184-219 m
+1980         31         325            US-Can Border    49 $^\circ$ 15   CDN       Van.    184-219 m
+1980         50         758            47 $^\circ$ 30   US-Can Border    US        Van.    220-366 m
+1980         51         503            US-Can Border    49 $^\circ$ 15   CDN       Van.    220-366 m
+1983         10         1307           47 $^\circ$ 30   47 $^\circ$ 55   US        Van.    55-183 m
+1983         11         2230           47 $^\circ$ 55   US-Can Border    US        Van.    55-183 m
+1983         12         6572           US-Can Border    49 $^\circ$ 15   CDN       Van.    55-183 m
+1983         30         66             47 $^\circ$ 30   47 $^\circ$ 55   US        Van.    184-219 m
+1983         31         377            47 $^\circ$ 55   US-Can Border    US        Van.    184-219 m
+1983         32         325            US-Can Border    49 $^\circ$ 15   CDN       Van.    184-219 m
+1983         50         127            47 $^\circ$ 30   47 $^\circ$ 55   US        Van.    220-366 m
+1983         51         631            47 $^\circ$ 55   US-Can Border    US        Van.    220-366 m
+1983         52         503            US-Can Border    49 $^\circ$ 15   CDN       Van.    220-366 m
+1989 $+$     17N        1033           47 $^\circ$ 30   47 $^\circ$ 50   US        Van.    55-183 m
+1989 $+$     17S        3378           46 $^\circ$ 30   47 $^\circ$ 30   US        Col.    55-183 m
+1989 $+$     18N        159            47 $^\circ$ 50   48 $^\circ$ 20   CDN       Van.    55-183 m
+1989 $+$     18S        2123           47 $^\circ$ 50   48 $^\circ$ 20   US        Van.    55-183 m
+1989 $+$     19N        8224           48 $^\circ$ 20   49 $^\circ$ 40   CDN       Van.    55-183 m
+1989 $+$     19S        363            48 $^\circ$ 20   49 $^\circ$ 40   US        Van.    55-183 m
+1989 $+$     27N        125            47 $^\circ$ 30   47 $^\circ$ 50   US        Van.    184-366 m
+1989 $+$     27S        412            46 $^\circ$ 30   47 $^\circ$ 30   US        Col.    184-366 m
+1989 $+$     28N        88             47 $^\circ$ 50   48 $^\circ$ 20   CDN       Van.    184-366 m
+1989 $+$     28S        787            47 $^\circ$ 50   48 $^\circ$ 20   US        Van.    184-366 m
+1989 $+$     29N        942            48 $^\circ$ 20   49 $^\circ$ 40   CDN       Van.    184-366 m
+1989 $+$     29S        270            48 $^\circ$ 20   49 $^\circ$ 40   US        Van.    184-366 m
+1995 $+$     37N        102            47 $^\circ$ 30   47 $^\circ$ 50   US        Van.    367-500 m
+1995 $+$     37S        218            46 $^\circ$ 30   47 $^\circ$ 30   US        Col.    367-500 m
+1995 $+$     38N        66             47 $^\circ$ 50   48 $^\circ$ 20   CDN       Van.    367-500 m
+1995 $+$     38S        175            47 $^\circ$ 50   48 $^\circ$ 20   US        Van.    367-500 m
+------------ ---------- -------------- ---------------  ---------------  --------- ------- -----------
 
 A reviewer from NOAA for Yellowtail Rockfish in 2014 (DFO 2015) noted
 that a number of the early Triennial survey tows had been deemed "water
 hauls" (catching no fish or invertebrates) and should be discarded. The
 tows used to estimate relative Pacific Cod biomass (summarised in
-Table B.3) exclude these water haul tows.
+Table A.4) exclude these water haul tows.
 
-Table B.3. Number of usable tows performed and area surveyed in the
+Table: Number of usable tows performed and area surveyed in the
 INPFC Vancouver region separated by the international border between
-Canada and the United States. Strata 18N, 28N, 37, 38 and 39 (Table B.2)
+Canada and the United States. Strata 18N, 28N, 37, 38 and 39 (Table A.3)
 were dropped from this analysis as they were not consistently conducted
 over the survey period. All strata occurring in the Columbia INPFC
-region (17S and 27S; Table B.2) were also dropped.
+region (17S and 27S; Table A.3) were also dropped.
 
-+---------+---------+---------+---------+---------+---------+---------+
-|         | Number  | Area    |         |         |         |         |
-|         | of tows | surveye |         |         |         |         |
-|         |         | d       |         |         |         |         |
-|         |         | (km^2^) |         |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| Survey  | CDN     | US      | Total   | CDN     | US      | Total   |
-| year    | waters  |         |         | waters  |         |         |
-|         |         | waters  |         |         | waters  |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| 1980    | 48      | 23      | 71      | 7,399   | 4,738   | 12,137  |
-+---------+---------+---------+---------+---------+---------+---------+
-| 1983    | 39      | 65      | 104     | 7,399   | 4,738   | 12,137  |
-+---------+---------+---------+---------+---------+---------+---------+
-| 1989    | 63      | 54      | 117     | 9,166   | 4,699   | 13,865  |
-+---------+---------+---------+---------+---------+---------+---------+
-| 1992    | 59      | 47      | 106     | 9,166   | 4,699   | 13,865  |
-+---------+---------+---------+---------+---------+---------+---------+
-| 1995    | 62      | 35      | 97      | 9,166   | 4,699   | 13,865  |
-+---------+---------+---------+---------+---------+---------+---------+
-| 1998    | 54      | 42      | 96      | 9,166   | 4,699   | 13,865  |
-+---------+---------+---------+---------+---------+---------+---------+
-| 2001    | 36      | 37      | 73      | 9,166   | 4,699   | 13,865  |
-+---------+---------+---------+---------+---------+---------+---------+
-| Total   | 361     | 303     | 664     | --      | --      | --      |
-+---------+---------+---------+---------+---------+---------+---------+
+---------- --------- --------- --------- --------- --------- ----------
+  Survey    Tows CDN  Tows US  Tows total Area CDN  Area US   Area total
+  year      waters    waters              waters    waters
+---------- --------- --------- --------- --------- --------- ----------
+  1980      48        23        71        7,399     4,738     12,137
+  1983      39        65        104       7,399     4,738     12,137
+  1989      63        54        117       9,166     4,699     13,865
+  1992      59        47        106       9,166     4,699     13,865
+  1995      62        35        97        9,166     4,699     13,865
+  1998      54        42        96        9,166     4,699     13,865
+  2001      36        37        73        9,166     4,699     13,865
+  Total     361       303       664       --        --        --
+---------- --------- --------- --------- --------- --------- ----------
 
 ###  Methods
 
@@ -315,6 +307,8 @@ variance and CPUE within any stratum were equal, even for strata that
 were split by the Canada/USA border. The total biomass within a stratum
 that straddled the border was split between the two countries by the
 ratio of the relative area within each country:
+
+TODO - MORE MATHTYPE EQUATIONS!!!!
 
 Eq. B.7 ,
 
