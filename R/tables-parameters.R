@@ -218,7 +218,8 @@ make.parameters.table <- function(model,
 
 make.parameters.est.table <- function(model,
                                       digits = 3,
-                                      caption = "default"){
+                                      caption = "default",
+                                      omit_pars = NULL){
   ## Returns an xtable in the proper format for parameter estimates and priors
   ##
   ## digits - number of decimal points on % columns
@@ -319,6 +320,11 @@ make.parameters.est.table <- function(model,
 
   tab <- cbind(new.col, tab)
   colnames(tab) <- col.names
+
+  tab <- as.data.frame(tab)
+  if (!is.null(omit_pars)) {
+    tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
+  }
 
   knitr::kable(tab,
     caption = caption,
