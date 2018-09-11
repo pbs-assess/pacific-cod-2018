@@ -226,8 +226,6 @@ difference has been compensated for by using a constant survey area for
 all years and assuming that catch rates in the unsampled areas were the
 same as in the sampled area.
 
-\FloatBarrier
-
 Table: Stratum definitions by year used in the NMFS triennial survey
 to separate the survey results by country and by INPFC area. Stratum
 definitions in grey are those strata which have been excluded from the
