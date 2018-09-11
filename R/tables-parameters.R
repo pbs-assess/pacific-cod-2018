@@ -202,7 +202,8 @@ make.parameters.table <- function(model,
   knitr::kable(tab,
     caption = caption,
     align = get.align(ncol(tab))[-1],
-    booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE)
+    booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
+    kableExtra::kable_styling(latex_options = "hold_position")
 }
 
 make.parameters.est.table <- function(model,
@@ -312,7 +313,8 @@ make.parameters.est.table <- function(model,
   knitr::kable(tab,
     caption = caption,
     align = get.align(ncol(tab))[-1],
-    booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE)
+    booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
+    kableExtra::kable_styling(latex_options = "hold_position")
 }
 
 make.ref.points.table <- function(model,
@@ -341,7 +343,8 @@ make.ref.points.table <- function(model,
   knitr::kable(tab,
     caption = caption,
     align = get.align(ncol(tab))[-1],
-    booktabs = TRUE, linesep = "", row.names = FALSE, escape = FALSE)
+    booktabs = TRUE, linesep = "", row.names = FALSE, escape = FALSE) %>%
+    kableExtra::kable_styling(latex_options = "hold_position")
 }
 
 make.value.table <- function(model,
