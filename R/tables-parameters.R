@@ -206,8 +206,8 @@ make.parameters.table <- function(model,
 }
 
 make.parameters.est.table <- function(model,
-  digits = 3,
-  caption = "default"){
+                                      digits = 3,
+                                      caption = "default"){
   ## Returns an xtable in the proper format for parameter estimates and priors
   ##
   ## digits - number of decimal points on % columns
@@ -394,4 +394,79 @@ make.value.table <- function(model,
     align = get.align(ncol(tab))[-1],
     booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
     kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"))
+}
+
+
+model.param.desc.table <- function(cap = ""){
+
+  j <- tribble(
+    ~Parameter,          ~Description,                                                                  ~Value,
+    "\\textbf{Indices}", "",                                                                            "",
+    "$t$",               "Time (years)",                                                                paste0(start.yr, "--", end.yr),
+    "$j$",               "Gear (fishery or index of abundance)",                                        "",
+    "$a$",               "Age (years) used for initializing numbers in first year",                     paste0(sage, "--", nage, " y"),
+    "$A$",               "Maximum age (years) used for initializing numbers in first year",             paste0(nage, " y"),
+    "\\textbf{Fixed input parameters}", "", "",
+    "$k$",               "Age at knife-edge recruitment",                                               paste0(sage, " y"),
+    "$L_\\infty$",       "Theoretical maximum length",                                                  paste0(linf, " cm"),
+    "$K_{VB}$",          "von Bertalannfy growth rate",                                                 k,
+    "$a_{LW}$",          "Scaling parameter of the length/weight relationship",                         lwscal,
+    "$b_{LW}$",          "Exponent of the length/weight relationship",                                  lwpow,
+    "$t_0$",             "Theoretical age at 0 cm",                                                     t0,
+    "$\\alpha_g$",       "Intercept of the Ford-Walford plot, for all ages > $k$",                      alpha.g,
+    "$\\rho_g$",         "Slope of the Ford-Walford plot, for all ages > $k$",                          rho.g,
+    "$W_k$",             "Weight at age of recruitment $k$",                                            wk,
+    "\\textbf{Annual input data}", "", "",
+    "$C_t$",             "Catch (metric tonnes)",                                                       "",
+    "$W_t$",             "Mean weight of individuals in the population",                                "",
+    "$I_{j,t}$",         "Index of abundance $j$ (Survey or commercail trawl CPUE)",                    "",
+    "$CV_{j,t}$",        "Annual coefficients of variation in index of abundance observations",         "",
+    "\\textbf{Time-invariant parameters}", "", "",
+    "$R_0$",             "\\textbf{Equilibrium unfished age-0 recruits} $^a$",                          "",
+    "$h$",               "\\textbf{Steepness of the stock-recruit relationship}",                       "",
+    "$M$",               "\\textbf{Natural mortality} $^a$",                                            "",
+    "$R_{AVG}$",         "\\textbf{Average annual recruitment} $^a$",                                   "",
+    "$R_{AVG\\_init}$",  "\\textbf{Average annual recuitment for initializing the model} $^a$",         "",
+    "$CR$",              "Recruitment compensation ratio",                                              "",
+    "$a$",               "Slope of the stock-recruit function at the origin",                           "",
+    "$b$",               "Scaling parameter of the stock-recruit function",                             "",
+    "$N_0$",             "Equilibrium unfished numbers",                                                "",
+    "$B_0$",             "Equilibrium unfished biomass",                                                "",
+    "$S_0$",             "Equilibrium unfished survival rate",                                          "",
+    "$\\bar{W}_0$",      "Equilibrium unfished mean weight",                                            "",
+    "$c_j$",             "Additional process error in index of abundance observations for gear $j$",    "",
+    "\\textbf{Time-varying parameters}", "", "",
+    "$\\omega_t$",       "Log-recruitment deviations$^a$",                                              "",
+    "$F_t$",             "Fishing mortality in the trawl fishery",                                      "",
+    "$S_t$",             "Annual survival rate",                                                        "",
+    "$N_t$",             "Numbers",                                                                     "",
+    "$R_t$",             "Recruits",                                                                    "",
+    "$B_t$",             "Biomass",                                                                     "",
+    "$\\bar{W}_t$",      "Predicted mean weight",                                                       "",
+    "\\textbf{Likelihood components}", "", "",
+    "$\\sigma_R$",       "Standard deviation in log-recruitment residuals",                             "",
+    "$\\sigma_O$",       "Overall standard deviation in observation residuals",                         "",
+    "$\\sigma_{i,j}$",   "Annual standard deviation in observation residuals for each survey",          "",
+    "$\\sigma_C$",       "Standard deviation in catch",                                                 "",
+    "$\\sigma_W$",       "Standard deviation in mean weight",                                           "",
+    "$\\vartheta^{-2}$", "\\textbf{Inverse of the total variance (total precision)}",                   "",
+    "$\\rho$",           "\\textbf{Proportion of total variance due to observation error}",             "",
+    "$\\tau$",           "\\textbf{Variance in age composition residuals} $^b$",                        "",
+    "$q_j$",             "\\textbf{Constant of proportionality in indices of (catchability)} $^{a,b}$", "",
+    "$d_{j,t}^2$",       "Residual log difference for $j$ indices of abundance",                        "",
+    "$d_{C_t}^2$",       "Residual log difference for catch data",                                      "",
+    "$d_{W_t}^2$",       "Residual log difference for mean weight data",                                "")
+
+  names(j) <- paste0("\\textbf{", names(j), "}")
+
+  kable(j,
+        caption = cap,
+        booktabs = TRUE,
+        longtable = TRUE,
+        linesep = "",
+        escape = FALSE) %>%
+    kable_styling(latex_options = c("hold_position", "repeat_header"),
+                  font_size = 9) %>%
+    footnote(alphabet = c("Estimated in log space",
+                          "Conditional MPD estimates"))
 }

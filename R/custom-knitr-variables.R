@@ -62,3 +62,17 @@ q.3cd.desc <- paste0("$q_1$ = West Coast Vancouver Island Synoptic Survey, ",
                      "$q_2$ = Commercial CPUE pre-1996, ",
                      "$q_3$ = Commercial CPUE post-1995, and ",
                      "$q_4$ = NMFS Triennial Survey (Canadian portion).")
+
+b <- base.model.5abcd[[1]]
+start.yr <- b$dat$syr
+end.yr <- b$dat$nyr
+sage <- b$dat$sage
+nage <- b$dat$nage
+linf <- b$dat$linf
+k <- b$dat$k
+lwscal <- b$dat$lwscal
+lwpow <- b$dat$lwpow
+t0 <- b$dat$to
+alpha.g <- b$dat$dd.alpha.g
+rho.g <- b$dat$dd.rho.g
+wk <- b$dat$dd.wk
