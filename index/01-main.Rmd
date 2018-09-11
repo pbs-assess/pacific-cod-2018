@@ -56,9 +56,9 @@ Pacific Cod are one of the most difficult Pacific groundfish species to age. Ann
 
 @sinclair2000 used a simple surplus production model fit to a commercial CPUE index to assess the Area 5CD stock in 2000. This author cited significant structural changes in the fishery during the 1990s resulting in changes in quality and comparability of fishery-dependent data available for the analysis. Changes included voluntary increases in mesh size in the commercial fishery and introduction of individual vessel quotas (IVQs) in 1997 as discussed above. Given the large structural differences between the previous length-based models and the surplus production model, @sinclair2000 noted that results were remarkably comparable until 1994, with three estimated peaks in abundance occurring in 1965, 1974-5 and 1986-7. The two approaches diverged significantly after 1994, with the the length-based Multifan model [@haist1998] estimating an increase in biomass while the surplus production model estimated a decline. The differences were interpreted to be due to differences in the indices of abundance used to tune the models, as well as structural model differences.
 
-@sinclair2001 developed a delay-difference model [@deriso1980; @schnute1985] containing a Ricker stock-recruit function to assess Pacific Cod in Areas 3CD and 5CD. Recruitment was assumed to be knife-edged at age 2 years. A report card summary of information available for the stock was also developed. The delay difference model provided a better statistical fit to the data than the previously-applied surplus production model [@sinclair2000]. However, biomass estimates followed a similar trend and magnitude.The 2001 Area 3CD stock was updated in 2002 [@Starr2002], using the same delay-difference model developed the previous year [@sinclair2001] and adding data from DFO's shrimp trawl survey. The authors of the 2002 assessment noted that the estimated MSY-based reference points /*F*_MSY/ and /*B*_MSY/ were not well estimated [@Starr2002].
+@sinclair2001 developed a delay-difference model [@deriso1980; @schnute1985] containing a Ricker stock-recruit function to assess Pacific Cod in Areas 3CD and 5CD. Recruitment was assumed to be knife-edged at age 2 years. A report card summary of information available for the stock was also developed. The delay-difference model provided a better statistical fit to the data than the previously-applied surplus production model [@sinclair2000]. However, biomass estimates followed a similar trend and magnitude.The 2001 Area 3CD stock was updated in 2002 [@Starr2002], using the same delay-difference model developed the previous year [@sinclair2001] and adding data from DFO's shrimp trawl survey. The authors of the 2002 assessment noted that the estimated MSY-based reference points /*F*_MSY/ and /*B*_MSY/ were not well estimated [@Starr2002].
 
-The Area 5CD assessment was updated in 2004 [@sinclair2005], using a similar delay difference model to that used by @sinclair2001. Model fits were presented with alternative combinations of fixing or estimating natural mortality (*M*) and the steepness parameter of the stock-recruit function, *h* (Mace and Doonan 1988). They reported similar fits and biomass estimates for both scenarios but noted very different estimates of equilibrium MSY-based management parameters under alternative combinations of fixed and estimated *h* and *M*. They proposed "history-based" reference points, based on estimated historical biomass and fishing mortality, due to unreliability of MSY-based reference points.  The Area 5AB and 5CD stocks were last assessed in 2013 [@forrest2013] using a new delay difference model with a Beverton-Holt stock-recruit function and the assumption of knife-edged selectivity at 2 y. The model had some minor structural differences from the previous assessment, although bridging analyses showed these to have a relatively minor effect [@forrest2013, their Appendix A]. The 2013 assessment adopted the same historical reference points that had been used in 2004 and these were accepted during peer review for Area 5CD [@dfo2015]. However, no reference points were accepted for Area 5AB [@dfo2015-2]. Key uncertainties of noted by @forrest2013 were:
+The Area 5CD assessment was updated in 2004 [@sinclair2005], using a similar delay-difference model to that used by @sinclair2001. Model fits were presented with alternative combinations of fixing or estimating natural mortality (*M*) and the steepness parameter of the stock-recruit function, *h* (Mace and Doonan 1988). They reported similar fits and biomass estimates for both scenarios but noted very different estimates of equilibrium MSY-based management parameters under alternative combinations of fixed and estimated *h* and *M*. They proposed "history-based" reference points, based on estimated historical biomass and fishing mortality, due to unreliability of MSY-based reference points.  The Area 5AB and 5CD stocks were last assessed in 2013 [@forrest2013] using a new delay-difference model with a Beverton-Holt stock-recruit function and the assumption of knife-edged selectivity at 2 y. The model had some minor structural differences from the previous assessment, although bridging analyses showed these to have a relatively minor effect [@forrest2013, their Appendix A]. The 2013 assessment adopted the same historical reference points that had been used in 2004 and these were accepted during peer review for Area 5CD [@dfo2015]. However, no reference points were accepted for Area 5AB [@dfo2015-2]. Key uncertainties of noted by @forrest2013 were:
 
 1. Uncertainty in fixed variance parameters, particularly the assumed observation error in the surveys, and the objective function component of the fit to annual mean weights;
 2. Reliability of commercial CPUE as an index of abundance, and effects on CPUE of management changes post-1996;
@@ -109,15 +109,13 @@ The commercial CPUE indices were standardized standardized for depth, fishing lo
 ## BIOLOGICAL DATA
 Updates to estimated growth, maturity, annual mean weights in commercial catches, and probabilistic distributions of length-at-age are provided in Appendix \@ref(analysis-of-biological-data).
 
-*TO DO: probably need to say a little more here*
-
 # STOCK ASSESSMENT MODEL
 
 *TO DO: Find out why Appendix D (model-description-app.Rmd) is being referred to as a subsection of Appendix C: Appendix C.6.1.1*
 
-All models presented in this document are Bayesian models implemented in AD Model Builder [@fournier2012]. The models are based on the Integrated Statistical Catch Age Model (iSCAM), first reported in @martell2011. A number of modifications have been made to the code from its original version by the authors of this assessment to include delay difference calculations. The model in its present formulation is fully described in Appendix \@ref(delay-difference-model). Two major differences between the current model and the previous assessment [@forrest2013] are:
+All models presented in this document are Bayesian models implemented in AD Model Builder [@fournier2012]. The models are based on the Integrated Statistical Catch Age Model (iSCAM), first reported in @martell2011. A number of modifications have been made to the code from its original version by the authors of this assessment to include delay-difference calculations. The model in its present formulation is fully described in Appendix \@ref(delay-difference-model). Two major differences between the current model and the previous assessment [@forrest2013] are:
 
-1. The current model estimates only one average recruitment parameter ($R_{0}$). The models in @forrest2013 and @martell2011 estimated three average recruitment parameters (1. $R_{0}$, average unfished recruitment used in derivation of stock-recruit parameters; 2. $R_{Init}$ initial average recruitment used to initialise the age structure in the first year; and 3. $R_{Avg}$ average recruitment for the time series). The decision to use just one average recruitment parameter was made because there is little to no information for estimating three parameters in the delay difference model, which contains no explicit age composition information.
+1. The current model estimates only one average recruitment parameter ($R_{0}$). The models in @forrest2013 and @martell2011 estimated three average recruitment parameters (1. $R_{0}$, average unfished recruitment used in derivation of stock-recruit parameters; 2. $R_{Init}$ initial average recruitment used to initialise the age structure in the first year; and 3. $R_{Avg}$ average recruitment for the time series). The decision to use just one average recruitment parameter was made because there is little to no information for estimating three parameters in the delay-difference model, which contains no explicit age composition information.
 
 2. The von Bertalanffy growth parameters have been updated in the current assessment for both stocks, to reflect more recent age and length data. Details are provided in Appendix \@ref(analysis-of-biological-data).
 
@@ -185,7 +183,7 @@ Details on the calculation of average annual mean weight in the commercial fishe
 
 ## PRIOR PROBABILITY DISTRIBUTIONS AND FIXED VARIANCE PARAMETERS
 
-The prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD). Graphic presentation of prior probability distribution is provided in Figures \@ref(fig:fig-base-mcmc-priors-5abcd) and \@ref(fig:fig-base-mcmc-priors-3cd). Model sensitivities to prior assumptions are tested in section \@ref(sensitivity-analyses)
+The prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:tab-priors-5abcd) and \@ref(tab:tab-priors-3cd). Graphic presentation of prior probability distribution is provided in Figures \@ref(fig:fig-base-mcmc-priors-5abcd) and \@ref(fig:fig-base-mcmc-priors-3cd). Model sensitivities to prior assumptions are tested in section \@ref(sensitivity-analyses)
 
 ## LEADING PARAMETERS 
 
@@ -303,12 +301,12 @@ Median posterior estimated fishing mortality ($F_{t}$) is shown in Figure \@ref(
 
 We ran a retrospective analysis, sequentially removing the terminal year of data for four years to show the effects of each year's data (Figure \@ref(fig:fig-base-retro-biomass-3cd)). Results were not so systematic as for Area 5ABCD (Figure \@ref(fig:fig-base-retro-biomass-3cd)) and the relative magnitude of the bias was smaller. The largest effect was the addition of the 2017 data which cause the terminal biomass estimate to shift notably downward, most likely due to the large drop in the modern CPUE index in 2017 (Figure @\ref(fig:fig-base-index-fits-3cd)).
 
-
-
 # SENSITIVITY ANALYSES
 
+*TO DO: Complete this section*
+
 We present a number of sensitivity analyses to show the influence of certain data sources, fixed
-parameters and prior probability distributions in the Area 5ABCD and 3CD Reference Case models.Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD).
+parameters and prior probability distributions on model outcomes for the Area 5ABCD and 3CD Reference Case models. Prior probability distributions for leading parameters are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD). Fixed parameters are provided in Section (\@ref(reference-case-models))
 
 
 \clearpage
@@ -327,15 +325,11 @@ For both stocks, we tested sensitivity of the model outputs to the following dat
 - The assumed fixed value of $\sigma_R$
 - The assumed fixed value of $\sigma_W$
 
-Results are presented under these headings below, with Reference Case parameter
-settings provided in Table XX. In all sensitivity runs, posterior samples were
-drawn systematically every 5,000 iterations from a chain of length 10
-million, resulting in 2,000 posterior samples. The first 1,000 samples
-were dropped to allow for sufficient burn-in.
+Results are presented under these headings below. In all sensitivity runs, as for the Reference Case models, posterior samples were drawn systematically every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples. The first 1,000 samples were dropped to allow for sufficient burn-in.
 
 
 ## SC 1B AND SC 1C. EXCLUSION OF A YEAR-LOCATION INTERACTION AS RANDOM EFFECT IN COMMERCIAL CPUE INDICES
-The reference case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see model description and Appendix B). Two sensitivity analyses are shown to illustrate the effect of removing the interaction term from both indices (i.e., fitting the delay difference model to historical and modern CPUE indices calculated using equation \@ref(eq:cpuesens2)):
+The reference case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see Appendix \@ref(commercial-cpue-standardization)). Two sensitivity analyses are shown to illustrate the effect of removing the year-location interaction term from both indices (i.e., fitting the delay-difference model to historical and modern CPUE indices calculated using equation \@ref(eq:cpuesens2)):
 
 - \textbf{Sc 1b.} Use equations without the interaction term to create CPUE
   indices for historical and modern periods. Use the annual CVs resulting from
@@ -347,7 +341,7 @@ The reference case models were fit to historical and modern commercial CPUE indi
   from the analysis directly as weighting terms in objective function of delay
   difference model (Equation TX.X, Figure \@ref(fig:fig-sens1-biomass-5abcd)).
 
-Sc 1c was done because the annual CVs of the CPUE indices were very small (less than 0.1 in some years). Annual CVs were doubled to addres concerns that the objective function of the delay difference model may be giving the CPUE indices too much weight when CVs were very small.
+Sc 1c was done because the annual CVs of the CPUE indices were very small (less than 0.1 in some years). Annual CVs were doubled to addres concerns that the objective function of the delay-difference model may have been giving the CPUE indices too much weight with the CVs in Sc 1b.
 
 ## SC 1D. EXCLUSION OF COMMERCIAL CPUE INDEX FOR THE MODERN PERIOD
 
@@ -460,6 +454,8 @@ One sensitivity analysis was done to illustrate the effect of updating the von B
 
 TO DO: More explanatory text here
 
+Fits to the average annual mean weight in the commercial fishery for Scenarios 5a and 5b are shown in Figures \@ref(fig:fig-sens5-meanweightfit-5abcd) and \@ref(fig:fig-sens12-meanweightfit-3cd).
+
 ## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\sigma_O$
 In the Reference Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
 
@@ -503,7 +499,9 @@ to provide direct information for scaling the population size, two sensitivity a
 - \textbf{Sc 7b.} Fix $\sigma_w$ = 0.15, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
 
 
+
 # DECISION TABLES
+
 *TO DO: Update. This is 2014 text. Fix equations and dynamic references*
 
 Performance measures were calculated over a sequence of alternative 2014 projected catch levels and are based on one-year projections to 2015.
@@ -579,7 +577,7 @@ The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8\% for
 
 ## SUMMARY
 
-We presented the alternative, model averaged decision tables for Areas 5CD (Table XX) and 5AB (Table XX) in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
+We presented the alternative, model averaged decision tables for Areas 3CD (Table XX) and 5AB (Table XX) in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
 
 However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
 \begin{resdoclist}
