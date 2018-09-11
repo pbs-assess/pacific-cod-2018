@@ -1,5 +1,5 @@
 make.parameters.table <- function(model,
-                                  caption = "default"){
+                                  caption = "default", omit_pars = NULL){
 
   get.bounds <- function(ind){
     ## Return the bounds string for row ind of the parameters
@@ -198,6 +198,12 @@ make.parameters.table <- function(model,
       "[low, high")),
     latex.mlc(c("Prior (mean, SD)",
       "(single value = fixed)")))
+
+  tab <- as.data.frame(tab)
+
+  if (!is.null(omit_pars)) {
+    tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
+  }
 
   knitr::kable(tab,
     caption = caption,

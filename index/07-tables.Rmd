@@ -96,9 +96,11 @@ df <- data.frame(referencepoint = c("Bmin",
 ## MODEL RESULTS: AREA 5ABCD
 
 ```{r tab-param-table-5abcd, results='asis', cache=FALSE}
-make.parameters.table(base.model.3cd,
- caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
-                  "in the Reference Case, Area 5ABCD. TO DO: REMOVE selectivity pars, Ravg and Rinit."))
+make.parameters.table(base.model.5abcd,
+  caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
+    "in the Reference Case, Area 5ABCD."),
+  omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)", 
+    "Log mean recruitment ($\\ln(\\overline{R})$)"))
 ```
 
 ```{r tab-param-est-table-5abcd, results='asis', cache=FALSE}
@@ -160,8 +162,10 @@ make.value.table(base.model.5abcd,
 
 ```{r tab-param-table-3cd, results='asis', cache=FALSE}
 make.parameters.table(base.model.3cd,
- caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
-                  "in the Reference Case, Area 3CD.TO DO: REMOVE selectivity pars, Ravg and Rinit"))
+  caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
+    "in the Reference Case, Area 3CD."),
+  omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)", 
+    "Log mean recruitment ($\\ln(\\overline{R})$)"))
 ```
 
 ```{r tab-param-est-table-3cd, results='asis', cache=FALSE}
