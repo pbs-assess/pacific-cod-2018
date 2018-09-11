@@ -105,7 +105,7 @@ make.parameters.table(base.model.3cd,
 make.parameters.est.table(base.model.5abcd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters from the Reference Case, Area 5ABCD. TO DO: REMOVE MSY-based pars, Ravg and Rinit.",
+                   "estimates of key parameters from the Reference Case, Area 5ABCD. TO DO: REMOVE Ravg and Rinit.",
                    q.5abcd.desc))
 ```
 
@@ -167,7 +167,7 @@ make.parameters.table(base.model.3cd,
 make.parameters.est.table(base.model.3cd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters from the reference Case, Area 3CD. TO DO: REMOVE MSY-based pars, Ravg and Rinit. ",
+                   "estimates of key parameters from the reference Case, Area 3CD. TO DO: REMOVE Ravg and Rinit. ",
                    q.5abcd.desc))
 ```
 
@@ -227,12 +227,76 @@ make.parameters.est.table(sens.models.3[[1]],
 
 ```{r tab-param-table-sens3b-5abcd, results='asis', cache=FALSE}
 make.parameters.est.table(sens.models.3[[2]],
- caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
-                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 5ABCD. TO DO: REMOVE MSY-based pars, Ravg and Rinit."))
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 5ABCD. TO DO: REMOVE Ravg and Rinit."))
 ```
 
 ```{r tab-param-table-sens3c-5abcd, results='asis', cache=FALSE}
 make.parameters.est.table(sens.models.3[[3]],
- caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
-                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 5ABCD. TO DO: REMOVE MSY-based pars, Ravg and Rinit."))
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 5ABCD. TO DO: REMOVE Ravg and Rinit."))
+```
+
+```{r tab-param-table-sens4a-5abcd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.4[[1]],
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 4a (Uniform prior for steepness), Area 5ABCD. TO DO: REMOVE Ravg and Rinit."))
+```
+
+```{r tab-param-table-sens4b-5abcd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.4[[2]],
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 5ABCD. TO DO: REMOVE Ravg and Rinit."))
+```
+
+\clearpage
+
+## SELECTED SENSITIVITY RESULTS: AREA 3CD
+
+```{r tab-param-table-sens3a-3cd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.10[[1]],
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 3CD. TO DO: REMOVE Ravg and Rinit."))
+```
+
+```{r tab-param-table-sens3b-3cd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.10[[2]],
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 3CD. TO DO: REMOVE Ravg and Rinit."))
+```
+
+```{r tab-param-table-sens3c-3cd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.10[[3]],
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 3CD. TO DO: REMOVE Ravg and Rinit."))
+```
+
+```{r tab-param-table-sens4a-3cd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.11[[1]],
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 4a (Uniform prior for steepness), Area 3CD. TO DO: REMOVE Ravg and Rinit."))
+```
+
+```{r tab-param-table-sens4b-3cd, results='asis', cache=FALSE}
+make.parameters.est.table(sens.models.11[[2]],
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 3CD. TO DO: REMOVE Ravg and Rinit."))
 ```

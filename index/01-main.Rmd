@@ -388,18 +388,11 @@ Three sensitivity analyses are shown to illustrate the effect of the parameters 
 - \textbf{Sc 3c.} The mean was reduced to 0.4 and the standard deviation was increased
   to 0.2.
   
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens3-biomass-5abcd) to \@ref(fig:fig-sens3-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens10-biomass-3cd) to \@ref(fig:fig-sens10-f-3cd) for Area 3CD.
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens3-biomass-5abcd) to \@ref(fig:fig-sens3-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens10-biomass-3cd) to \@ref(fig:fig-sens10-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens3a-5abcd) to \@ref(tab:tab-param-table-sens3c-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens3a-3cd) to \@ref(tab:tab-param-table-sens3c-3cd) for Area 3CD.
 
-Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens3a-5abcd) to \@ref(tab:tab-param-table-sens3c-5abcd).
+For Area 5ABCD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.323 y^-1^, 0.347 y^-1^ and 0.298 y^-1^. For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.392 y^-1^, 0.391 y^-1^ and 0.398 y^-1^.
 
 <!--
-
-Respective median posterior estimates of M were:
-
-- 0.323 y^-1^ XX
-- 0.347 y^-1^ XX
-- 0.300 y^-1^ XX
-
 compared to the median posterior Reference Case estimate of M = 0.393 y^-1^. It
 therefore appears that the assumed prior probability distribution for natural
 mortality does influence posterior estimates of M and that the prior used in
@@ -425,9 +418,12 @@ to the historical averages as estimates of M declined.
 
 Two sensitivity analyses were done to illustrate the effect of the prior probability distribution assumed for steepness in the reference case model:
 
-- \textbf{Sc 4a.} Use a uniform prior for steepness bounded between 0.21 and
-- 0.999, Figures \@ref(fig:fig-sens4-biomass-5abcd) and \@ref(fig:fig-sens11-biomass-3cd).
-- \textbf{Sc 4b.} Use a beta prior for steepness with mean = 0.85 and sd = 0.75, Figures \@ref(fig:fig-sens4-biomass-5abcd) and \@ref(fig:fig-sens11-biomass-3cd).
+\parindent{12pt}\textbf{Sc 4a.} Use a uniform prior for steepness bounded between 0.21 and 0.999.
+\parindent{12pt}\textbf{Sc 4b.} Use a beta prior for steepness with mean = 0.85 and sd = 0.15.
+
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens4-biomass-5abcd) to \@ref(fig:fig-sens4-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens11-biomass-3cd) to \@ref(fig:fig-sens11-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens4a-5abcd) to \@ref(tab:tab-param-table-sens4b-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens4a-3cd) to \@ref(tab:tab-param-table-sens4b-3cd) for Area 3CD.
+
+For Area 5ABCD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.479 and 0.883. For Area 3CD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.497 and 0.889.
 
 <!--
 Biomass and parameter estimates are shown in Figures XX and XX, where it can be seen that there was
