@@ -183,7 +183,7 @@ Details on the calculation of average annual mean weight in the commercial fishe
 
 ## PRIOR PROBABILITY DISTRIBUTIONS AND FIXED VARIANCE PARAMETERS
 
-The prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:priors-base5ABCD) and \@ref(tab:priors-base3CD). Graphic presentation of prior probability distribution is provided in Figures \@ref(fig:fig-base-mcmc-priors-5abcd) and \@ref(fig:fig-base-mcmc-priors-3cd). Model sensitivities to prior assumptions are tested in section \@ref(sensitivity-analyses)
+The prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:tab-priors-5abcd) and \@ref(tab:tab-priors-3cd). Graphic presentation of prior probability distribution is provided in Figures \@ref(fig:fig-base-mcmc-priors-5abcd) and \@ref(fig:fig-base-mcmc-priors-3cd). Model sensitivities to prior assumptions are tested in section \@ref(sensitivity-analyses)
 
 ## LEADING PARAMETERS 
 
