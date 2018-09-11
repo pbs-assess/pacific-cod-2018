@@ -454,6 +454,8 @@ One sensitivity analysis was done to illustrate the effect of updating the von B
 
 TO DO: More explanatory text here
 
+Fits to the average annual mean weight in the commercial fishery for Scenarios 5a and 5b are shown in Figures \@ref(fig:fig-sens5-meanweightfit-5abcd) and \@ref(fig:fig-sens12-meanweightfit-3cd).
+
 ## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\sigma_O$
 In the Reference Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
 

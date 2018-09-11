@@ -269,6 +269,16 @@ r.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.
 f.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
+```{r fig-sens5-meanweightfit-5abcd, fig.cap="Fits to the average annual mean weights for (a) the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and (b) to using the growth parameters used in the previous Area 5CD stock assessment. Area 5ABCD."}
+plot_grid(
+  mw.plot(sens.models.5[[1]], cv = 0.2, every = 5, last.yr = 2015),
+  mw.plot(sens.models.5[[2]], cv = 0.2, every = 5, last.yr = 2015),
+          nrow = 1,
+          ncol = 2,
+          labels = c("(a)", "(b)"),
+         label_x = c(0.15, 0.13, 0.13, 0.2))
+```
+
 ```{r fig-sens6-biomass-5abcd, fig.cap="Biomass for the Sensitivity to the assumed value of observation and process errors, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
@@ -373,6 +383,17 @@ r.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.nam
 ```{r fig-sens12-f-3cd, fig.cap="Fishing mortality for the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 3CD."}
 f.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
+
+```{r fig-sens12-meanweightfit-3cd, fig.cap="Fits to the average annual mean weights for (a) the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and (b) to using the growth parameters used in the previous Area 5CD stock assessment. Area 3CD."}
+plot_grid(
+  mw.plot(sens.models.12[[1]], cv = 0.2, every = 5, last.yr = 2015),
+  mw.plot(sens.models.12[[2]], cv = 0.2, every = 5, last.yr = 2015),
+          nrow = 1,
+          ncol = 2,
+          labels = c("(a)", "(b)"),
+         label_x = c(0.15, 0.13, 0.13, 0.2))
+```
+
 
 ```{r fig-sens13-biomass-3cd, fig.cap="Biomass for the Sensitivity to the assumed value of observation and process errors, Area 3CD."}
 b.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
