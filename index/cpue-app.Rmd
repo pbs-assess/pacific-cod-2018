@@ -76,7 +76,7 @@ A variety of approaches have been used in the fishery literature to model such
 data. One approach has been to fit a delta-GLM (generalized linear model) ---
 a model that fits the zero vs. non-zero values with a logistic regression (a
 binomial GLM and a logit link) and the positive values with a linear regression
-fit to log-transformed data or a Gamma GLM with a log link (e.g. REFS). The
+fit to log-transformed data or a Gamma GLM with a log link (e.g. TODO-REFS). The
 probability of a non-zero CPUE from the first component can then be multiplied
 by the expected CPUE from the second component to derive an unconditional
 estimate of CPUE. However, this approach suffers from a number of issues:
@@ -84,7 +84,7 @@ estimate of CPUE. However, this approach suffers from a number of issues:
 1. The delta-GLM approach adds complexity by needing to fit and report on two
    models.
 1. In the typical delta-GLM approach, the two models are fit with separate
-links and so the coefficients cannot be combined.
+   links and so the coefficients cannot be combined.
 1. The delta-GLM approach assumes independence among the two components [e.g.
    @thorson2017].
 1. The delta-GLM approach has shown to be insufficiently robust to variable
@@ -104,9 +104,10 @@ and random effect parameters either with custom written TMB models or via the
 glmmTMB R package [@brooks2017].
 
 In addition to a mean parameter, the Tweedie distribution has two other
-parameters: a power parameter $p$ and a dispersion parameter $\phi$. If $1
-> p > 2$ then the Tweedie distribution represents a compound distribution
-between the Poisson ($p = 1$) and the Gamma distribution ($p = 2$). In fact,
+parameters: a power parameter $p$ and a dispersion parameter $\phi$. If
+$1 > p > 2$ then the Tweedie distribution represents a compound distribution
+between the Poisson ($p = 1$) and the Gamma distribution ($p = 2$)
+(Figure \@ref(fig:cpue-tweedie-ex)). In fact,
 the Tweedie is alternatively referred to as the compound-Poisson-Gamma
 distribution in this bounded case. We note, however, that the
 compound-Poisson-Gamma distribution is often used to refer to
@@ -182,6 +183,14 @@ changes to the distribution of fished depths, latitudes, and months through
 time, along with changes to the vessels participating in the 'fleet' and the
 localities fished (Figure \@ref(fig:cpue-bubble-plots-modern-3CD),
 \@ref(fig:cpue-bubble-plots-modern-5ABCD)).
+
+The Tweedie GLMM index standardization models fit the data relatively well
+(Figure \@ref(fig:cpue-quantile-residuals)). The Tweedie $p$ parameters tended
+to be around $1.6$, indicating a distribution roughly midway between the Poisson
+and Gamma distributions and the $\phi$ parameters indicated relatively dispersed
+observations (Table \@ref(tab:cpue-pars)). There was considerably more
+variability across the locality and locality-year random effects than the vessel
+random effects (Table \@ref(tab:cpue-pars)).
 
 For the 1956--1995 time period, depth and locality had a moderate effect on the
 standardized CPUE index for 3CD, but the standardized and unstandardized series
@@ -375,6 +384,64 @@ dfleet_modern %>% make_bubble_dat() %>%
   ggtitle("1996+ 5ABCD")
 ```
 
+```{r cpue-tweedie-ex, fig.asp=0.7, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
+plot_tweedie_ex <- function(df, max = 15) {
+  xx <- seq(0, max, length.out = 1000)
+  out <- plyr::mdply(df, function(mu, power, phi) {
+    data.frame(x = xx,
+      y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
+  }) %>%
+    mutate(phi = paste("ϕ =", phi)) %>%
+    mutate(power = paste("p =", power)) %>%
+    mutate(mu = paste("μ =", mu))
+
+  ggplot(out, aes(x, y, colour = mu)) +
+    geom_line() +
+    facet_grid(power~phi, scales = "free") +
+    gfplot::theme_pbs() +
+    labs(colour = "μ") +
+    xlab("Value") + ylab("Density") +
+    coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x)))
+}
+
+df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
+plot_tweedie_ex(df)
+```
+
+```{r cpue-quantile-residuals, fig.asp=0.8, fig.cap="Histograms of randomized quantile residuals for the CPUE GLMM standardization models. The histograms illustrate the actual density distribution of 10,000 randomly selected randomized quantile residuals. The dashed lines show the probability density for a normal distribution with the same standard deviation."}
+stopifnot(length(m_historic) == 12L)
+stopifnot(length(m_modern) == 16L)
+qr1 <- qres_tweedie(m_historic[[6]], "cpue")
+gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("Historic", params$area_name[1]))
+qr2 <- qres_tweedie(m_historic[[12]], "cpue")
+gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("Historic", params$area_name[2]))
+qr3 <- qres_tweedie(m_modern[[8]], "cpue")
+gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("Modern", params$area_name[1]))
+qr4 <- qres_tweedie(m_modern[[16]], "cpue")
+gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("Modern", params$area_name[2]))
+cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
+```
+
+```{r cpue-pars, results='asis'}
+get_cpue_pars <- function(obj, name = "") {
+  re <- broom.mixed::tidy(obj, effects = "ran_pars")
+  re$group <- gsub("_", "-", re$group)
+  re <- tibble(Model = name, Parameter = paste(re$group, "SD"),
+    Estimate = round(re$estimate, 2))
+  p <- round(stats::plogis(obj$fit$par[["thetaf"]]) + 1, 2)
+  phi <- round(exp(obj$fit$par[["betad"]]), 2)
+  bind_rows(re,
+    tibble(Model = name, Parameter = c("$p$", "$\\phi$"), Estimate = c(p, phi)))
+}
+pars <- list()
+pars[[1]] <- get_cpue_pars(m_historic[[12]], "Historical 3CD")
+pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historical 5ABCD")
+pars[[3]] <- get_cpue_pars(m_modern[[16]], "Modern 3CD")
+pars[[4]] <- get_cpue_pars(m_modern[[8]], "Modern 5ABCD")
+bind_rows(pars) %>%
+  knitr::kable(caption = "Random effect standard deviation (SD) and Tweedie observation model power ($p$) and dispersion ($\\phi$) parameter estimates.", booktabs = TRUE, linesep = "", escape = FALSE)
+```
+
 ```{r cpue-index-ts-funcs}
 make_cpue_ts_dat <- function(dat) {
   pp <- dat %>%
@@ -466,7 +533,9 @@ make_cpue_ts_plot_noint <- function(dat) {
     geom_line(aes(colour = formula_version)) +
     facet_wrap(~area, ncol = 2) +
     ylab("CPUE (kg/hour) divided\nby geometric mean") +
-    guides(fill = FALSE, colour = FALSE) + xlab("")
+    guides(fill = FALSE, colour = FALSE) + xlab("") +
+    scale_colour_brewer(palette = "Dark2") +
+    scale_fill_brewer(palette = "Dark2")
 }
 ```
 
@@ -593,65 +662,6 @@ for (i in seq_along(params$area_name)) {
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
-
-```{r cpue-quantile-residuals, fig.asp=0.8, fig.cap="Histograms of randomized quantile residuals for the CPUE GLMM standardization models. The histograms illustrate the actual density distribution of 10,000 randomly selected randomized quantile residuals. The dashed lines show the probability density for a normal distribution with the same standard deviation."}
-stopifnot(length(m_historic) == 12L)
-stopifnot(length(m_modern) == 16L)
-qr1 <- qres_tweedie(m_historic[[6]], "cpue")
-gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("Historic", params$area_name[1]))
-qr2 <- qres_tweedie(m_historic[[12]], "cpue")
-gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("Historic", params$area_name[2]))
-qr3 <- qres_tweedie(m_modern[[8]], "cpue")
-gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("Modern", params$area_name[1]))
-qr4 <- qres_tweedie(m_modern[[16]], "cpue")
-gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("Modern", params$area_name[2]))
-cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
-```
-
-```{r cpue-tweedie-ex, fig.asp=0.7, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
-plot_tweedie_ex <- function(df, max = 15) {
-  xx <- seq(0, max, length.out = 1000)
-  out <- plyr::mdply(df, function(mu, power, phi) {
-    data.frame(x = xx,
-      y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
-  }) %>%
-    mutate(phi = paste("ϕ =", phi)) %>%
-    mutate(power = paste("p =", power)) %>%
-    mutate(mu = paste("μ =", mu))
-
-  ggplot(out, aes(x, y, colour = mu)) +
-    geom_line() +
-    facet_grid(power~phi, scales = "free") +
-    gfplot::theme_pbs() +
-    labs(colour = "μ") +
-    xlab("Value") + ylab("Density") +
-    coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x)))
-}
-
-df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
-plot_tweedie_ex(df)
-```
-
-```{r cpue-pars, results='asis'}
-get_cpue_pars <- function(obj, name = "") {
-  re <- broom.mixed::tidy(obj, effects = "ran_pars")
-  re$group <- gsub("_", "-", re$group)
-  re <- tibble(Model = name, Parameter = paste(re$group, "SD"),
-    Estimate = round(re$estimate, 2))
-  p <- round(stats::plogis(obj$fit$par[["thetaf"]]) + 1, 2)
-  phi <- round(exp(obj$fit$par[["betad"]]), 2)
-  bind_rows(re,
-    tibble(Model = name, Parameter = c("$p$", "$\\phi$"), Estimate = c(p, phi)))
-}
-pars <- list()
-pars[[1]] <- get_cpue_pars(m_historic[[12]], "Historical 3CD")
-pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historical 5ABCD")
-pars[[3]] <- get_cpue_pars(m_modern[[16]], "Modern 3CD")
-pars[[4]] <- get_cpue_pars(m_modern[[8]], "Modern 5ABCD")
-bind_rows(pars) %>%
-  knitr::kable(caption = "Random effect standard deviation (SD) and Tweedie observation model power ($p$) and dispersion ($\\phi$) parameter estimates.", booktabs = TRUE, linesep = "", escape = FALSE)
-```
-
 
 ```{r cpue-re-int-ts-funcs, message=FALSE, warning=FALSE, results='hide'}
 most_common <- function(x) names(rev(sort(table(as.character(x)))))[[1]]
@@ -863,7 +873,7 @@ orig_dat <- select(x, yr, yr_ef) %>% unique() %>%
   rename(year = yr)
 ```
 
-```{r cpue-sim-test-tweedie-glmm-plot, fig.cap="An example simulation illustrating the effect of modelling or not modelling space-time interactions as random effects in a CPUE index standardization model. Left panel shows a scenario where the data were generated with the same trend for all localities in space. Right panel shows a scenario where the data were generated with space-time interactions. The red and blue lines and shaded regions represent estimated CPUE indices from models that allow for space-time interactions or do not allow for space-time interactions along with 95\\% confidence intervals. The dashed black line indicates the true mean CPUE for each year. All model and data combinations have correct 95\\% coverage except for the no-space-time-interactions model fitted to data that does have space-time interactions, which has 55\\% coverage.", fig.asp=0.45}
+```{r cpue-sim-test-tweedie-glmm-plot, fig.cap="An example simulation illustrating the effect of modelling or not modelling space-time interactions as random effects in a CPUE index standardization model. Left panel shows a scenario where the data were generated with the same trend for all localities in space. Right panel shows a scenario where the data were generated with space-time interactions. The red and blue lines and shaded regions represent estimated CPUE indices from models that allow for space-time interactions or do not allow for space-time interactions along with 95\\% confidence intervals. The dashed black line indicates the true mean CPUE for each year. All model and data combinations have correct 95\\% coverage except for the no-space-time-interactions model fitted to data that does have space-time interactions, which has 55\\% coverage. Note that the confidence intervals in the left panel are completely overlapping.", fig.asp=0.45}
 pp <- left_join(pp, orig_dat, by = "year") %>%
   mutate(est_link = est_link - mean(est_link)) %>%
   ungroup() %>%
@@ -881,7 +891,9 @@ pp %>% group_by(model, variable) %>%
   geom_line(data = orig_dat, aes(x = year, y = exp(yr_ef)), lwd = 0.9, col = "grey20", lty = 2) +
   labs(fill = "Model", colour = "Model", x = "Year", y = "CPUE") +
   gfplot::theme_pbs() +
-  theme(legend.position = c(0.02, 0.97), legend.justification = c(0, 1))
+  theme(legend.position = c(0.02, 0.97), legend.justification = c(0, 1))  +
+  scale_colour_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2")
 ```
 
 ```{r cpue-sim-test-tweedie-glmm-table, results='asis'}
