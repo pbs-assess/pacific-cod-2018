@@ -1,5 +1,6 @@
 make.parameters.table <- function(model,
-                                  caption = "default", omit_pars = NULL){
+                                  caption = "default", omit_pars = NULL,
+                                  omit_selectivity_pars = FALSE){
 
   get.bounds <- function(ind){
     ## Return the bounds string for row ind of the parameters
@@ -200,10 +201,13 @@ make.parameters.table <- function(model,
       "(single value = fixed)")))
 
   tab <- as.data.frame(tab)
-
   if (!is.null(omit_pars)) {
     tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
   }
+  if (omit_selectivity_pars) {
+    tab <- dplyr::filter(tab, !grepl("selectivity", `\\textbf{Parameter}`))
+  }
+
 
   knitr::kable(tab,
     caption = caption,
