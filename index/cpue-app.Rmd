@@ -247,6 +247,34 @@ allowing for the interactions has no qualitative effect on model performance or
 coverage if the interactions are not present (Figure
 \@ref(fig:cpue-sim-test-tweedie-glmm-plot)).
 
+\clearpage
+
+```{r cpue-tweedie-ex, fig.asp=0.7, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
+plot_tweedie_ex <- function(df, max = 15) {
+  xx <- seq(0, max, length.out = 1000)
+  out <- plyr::mdply(df, function(mu, power, phi) {
+    data.frame(x = xx,
+      y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
+  }) %>%
+    mutate(phi = paste("ϕ =", phi)) %>%
+    mutate(power = paste("p =", power)) %>%
+    mutate(mu = paste("μ =", mu))
+
+  ggplot(out, aes(x, y, colour = mu)) +
+    geom_line() +
+    facet_grid(power~phi, scales = "free") +
+    gfplot::theme_pbs() +
+    labs(colour = "μ") +
+    xlab("Value") + ylab("Density") +
+    coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x))) +
+    scale_colour_brewer(palette = "Dark2") +
+    scale_fill_brewer(palette = "Dark2")
+}
+
+df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
+plot_tweedie_ex(df)
+```
+
 ```{r cpue-params}
 params <- list()
 params$species_proper <- "Pacific Cod"
@@ -301,13 +329,17 @@ g1 <- gg_cpue_modern$depth + ylab("Fishing event count") + xlab("Depth") +
   labs(fill = "Fishing event\ncaught\nPacific Cod") +
   theme(legend.position = c(0.95, 0.95), legend.background = element_rect(fill = "white"),
     legend.justification = c(1, 1)) +
-  ggtitle("1996+ data")
+  ggtitle("1996+ data") +
+  scale_colour_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2")
 
 g2 <- gg_cpue_hist$depth + ylab("Trip count") + xlab("Depth") +
   labs(fill = "Trip\ncaught\nPacific Cod") +
   theme(legend.position = c(0.95, 0.95), legend.background = element_rect(fill = "white"),
     legend.justification = c(1, 1)) +
-  ggtitle("1956-1995 data")
+  ggtitle("1956-1995 data")  +
+  scale_colour_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2")
 
 cowplot::plot_grid(g2, g1, ncol = 1)
 ```
@@ -382,30 +414,6 @@ dfleet_modern %>% make_bubble_dat() %>%
   filter(area == "5ABCD") %>%
   make_facet_bubble_plot() +
   ggtitle("1996+ 5ABCD")
-```
-
-```{r cpue-tweedie-ex, fig.asp=0.7, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
-plot_tweedie_ex <- function(df, max = 15) {
-  xx <- seq(0, max, length.out = 1000)
-  out <- plyr::mdply(df, function(mu, power, phi) {
-    data.frame(x = xx,
-      y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
-  }) %>%
-    mutate(phi = paste("ϕ =", phi)) %>%
-    mutate(power = paste("p =", power)) %>%
-    mutate(mu = paste("μ =", mu))
-
-  ggplot(out, aes(x, y, colour = mu)) +
-    geom_line() +
-    facet_grid(power~phi, scales = "free") +
-    gfplot::theme_pbs() +
-    labs(colour = "μ") +
-    xlab("Value") + ylab("Density") +
-    coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x)))
-}
-
-df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
-plot_tweedie_ex(df)
 ```
 
 ```{r cpue-quantile-residuals, fig.asp=0.8, fig.cap="Histograms of randomized quantile residuals for the CPUE GLMM standardization models. The histograms illustrate the actual density distribution of 10,000 randomly selected randomized quantile residuals. The dashed lines show the probability density for a normal distribution with the same standard deviation."}
