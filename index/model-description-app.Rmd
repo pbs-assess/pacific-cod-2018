@@ -271,7 +271,7 @@ model.param.desc.table(cap = paste0("List of parameters for the delay-difference
                                     "other parameters."))
 ```
 
-## SUMMARY OF EQUILIBRIUM EQUATIONS FOR THE delay-difference MODEL
+## SUMMARY OF EQUILIBRIUM EQUATIONS FOR THE DELAY-DIFFERENCE MODEL
 
 **Equilibrium equations for calculation of stock-recruit parameters**
 
@@ -337,7 +337,7 @@ Equilibrium long-term yield at $F_e$:
 {Y_e} = {B_e}\frac{{{F_e}}}{{\left( {{F_e} + M} \right)}}\left( {1 - {e^{ - \left( {{F_e} + M} \right)}}} \right)
 \end{equation}
 
-## TIME-DYNAMIC EQUATIONS AND LIKELIHOOD COMPONENTS FOR THE delay-difference MODEL
+## TIME-DYNAMIC EQUATIONS AND LIKELIHOOD COMPONENTS FOR THE DELAY-DIFFERENCE MODEL
 
 **Time-dynamic equations**
 
