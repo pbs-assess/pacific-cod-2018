@@ -223,6 +223,7 @@ f.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.
 ```{r fig-sens2-biomass-5abcd, fig.pos="H", fig.cap="Biomass for the Sensitivity to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
+
 ```{r fig-sens2-recr-5abcd, fig.pos="H", fig.cap="Recruitment for the Sensitivity to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
