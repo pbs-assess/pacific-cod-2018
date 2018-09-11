@@ -32,6 +32,7 @@ data/cache/*
 *.snm
 *.upa
 *.upb
+*.doc*
 doc/figure
 doc/res-doc.tex
 docMSE/res-docMSE.tex
