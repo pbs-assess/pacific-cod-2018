@@ -111,6 +111,7 @@ make.parameters.est.table(base.model.5abcd,
 
 ```{r tab-ref-points-table-5abcd, results='asis', cache=FALSE}
 make.ref.points.table(base.model.5abcd,
+                      omit_msy = TRUE,
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                                        "97.5\\textsuperscript{th} percentile) of proposed reference points for Area 5ABCD. ",
@@ -173,6 +174,7 @@ make.parameters.est.table(base.model.3cd,
 
 ```{r tab-ref-points-table-3cd, results='asis', cache=FALSE}
 make.ref.points.table(base.model.3cd,
+                      omit_msy = TRUE,
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                                        "97.5\\textsuperscript{th} percentile) of proposed reference points for Area 3CD. ",

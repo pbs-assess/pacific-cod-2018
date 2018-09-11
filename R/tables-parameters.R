@@ -319,7 +319,7 @@ make.parameters.est.table <- function(model,
 
 make.ref.points.table <- function(model,
   digits = 3,
-  caption = "default"
+  caption = "default", omit_msy = FALSE
   ){
   ## Returns an xtable in the proper format for reference points
   ##
@@ -339,6 +339,10 @@ make.ref.points.table <- function(model,
 
   tab <- model$mcmccalcs$r.quants
   tab[,-1] <- f(tab[,-1], digits)
+
+  if (omit_msy) {
+    tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`))
+  }
 
   knitr::kable(tab,
     caption = caption,
