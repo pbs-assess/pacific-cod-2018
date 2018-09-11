@@ -2,8 +2,9 @@
 
 # DELAY-DIFFERENCE MODEL
 
-The last assessment for Pacific Cod in QCS and Hecate Strait used a
-delay-difference model [@forrest2013]. Delay difference models represent an
+*TO DO: Update equation numbers. Replace references to RAvg an Rinit with R0.*
+
+The last assessment for Pacific Cod in QCS and Hecate Strait used a delay-difference model [@forrest2013]. delay-difference models represent an
 intermediate between aggregated surplus production models and fully
 age-structured models. The delay-difference structure tracks the effects of
 recruitment, survival and growth on biomass, without requiring a fully
@@ -16,7 +17,7 @@ adjusting for growth and adding next year's recruitment. An advantage of delay
 difference models over simpler production models is that they do not assume
 constant recruitment over time.
 
-The key assumptions of the delay difference model are:
+The key assumptions of the delay-difference model are:
 
 - Growth in mean body weight Wa follows the linear relationship described by the
   Ford-Walford equation, $W_a = \alpha_g + \rho W_{a-1}$;
@@ -25,7 +26,7 @@ The key assumptions of the delay difference model are:
 - Constant mortality at age, i.e., all fish aged $k$ and older have the same
   mortality rate.
 
-The delay difference model collapses all the equations needed to fully describe
+The delay-difference model collapses all the equations needed to fully describe
 the population's age structure into equations for the total numbers ($N_t$) and
 biomass ($B_t$) at time $t$:
 
@@ -88,10 +89,10 @@ natural mortality used to calculate survival, was used to fill the first
 year of the numbers-at-age matrix (Eq. XX and XX). The number of fish in
 the first year was then calculated as the sum of numbers at age in the first
 year. For the years 1957-2013, annual numbers of fish ($N_t$) were calculated
-using delay difference equations (Eq. XX). Biomass in the first year was
+using delay-difference equations (Eq. XX). Biomass in the first year was
 calculated as the sum over ages of the product of numbers-at-age and the
 weight-at-age, with the latter derived from the von Bertlanffy growth
-parameters (Table XX). Delay difference equations were used to calculate
+parameters (Table XX). delay-difference equations were used to calculate
 annual biomass ($B_t$) for the years 1957-2014 (Eq. XX), with log recruitment
 anomalies in the 2014 projection year drawn from a normal distribution,
 i.e., $\omega_t \sim N(0,\sigma R)$.
@@ -102,7 +103,7 @@ Models are fit to observed catch data, observed mean weight data and fishery-ind
 ## OBJECTIVE FUNCTION COMPONENTS
 
 Variance parameters and objective function components are listed in Table XX.
-The objective function in the delay difference model contained five major
+The objective function in the delay-difference model contained five major
 components:
 
 - the negative log-likelihood for the relative abundance data
@@ -175,7 +176,7 @@ as a future research priority.
 
 ## VARIANCE COMPONENTS AND WEIGHTING OF INDEX DATA
 
-Variance components of the delay difference model implemented within the
+Variance components of the delay-difference model implemented within the
 iScam modelling framework [@martell2011] were partitioned using an errors in
 variables approach. The key variance parameter is the inverse of the total
 variance $\phi^{-2}$ (i.e., total precision). This parameter can be fixed or
@@ -264,13 +265,13 @@ on management advice for Pacific Cod can be obtained without an iterative
 re-weighting step.
 
 ```{r tab-param-list, fig.pos="H"}
-model.param.desc.table(cap = paste0("List of parameters for the delay difference model.",
+model.param.desc.table(cap = paste0("List of parameters for the delay-difference model.",
                                     "Estimated (or fixed) leading parameters are highlighted ",
                                     "in bold type. See Tables XX-XX for derivation of ",
                                     "other parameters."))
 ```
 
-## SUMMARY OF EQUILIBRIUM EQUATIONS FOR THE DELAY DIFFERENCE MODEL
+## SUMMARY OF EQUILIBRIUM EQUATIONS FOR THE delay-difference MODEL
 
 **Equilibrium equations for calculation of stock-recruit parameters**
 
@@ -336,7 +337,7 @@ Equilibrium long-term yield at $F_e$:
 {Y_e} = {B_e}\frac{{{F_e}}}{{\left( {{F_e} + M} \right)}}\left( {1 - {e^{ - \left( {{F_e} + M} \right)}}} \right)
 \end{equation}
 
-## TIME-DYNAMIC EQUATIONS AND LIKELIHOOD COMPONENTS FOR THE DELAY DIFFERENCE MODEL
+## TIME-DYNAMIC EQUATIONS AND LIKELIHOOD COMPONENTS FOR THE delay-difference MODEL
 
 **Time-dynamic equations**
 
