@@ -323,6 +323,16 @@ r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.
 f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
+```{r fig-sens7-meanweightfit-5abcd, fig.cap="Fits to the average annual mean weights for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+plot_grid(
+  mw.plot(sens.models.7[[1]], cv = 0.2, every = 5, last.yr = 2015),
+  mw.plot(sens.models.7[[2]], cv = 0.2, every = 5, last.yr = 2015),
+          nrow = 1,
+          ncol = 2,
+          labels = c("(a)", "(b)"),
+         label_x = c(0.15, 0.13, 0.13, 0.2))
+```
+
 \clearpage
 
 ## SENSITIVITY ANALYSES: AREA 3CD
@@ -433,4 +443,14 @@ r.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.nam
 
 ```{r fig-sens14-f-3cd, fig.cap="Fishing mortality for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 3CD."}
 f.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
+```
+
+```{r fig-sens14-meanweightfit-5abcd, fig.cap="Fits to the average annual mean weights for the Sensitivity to the assumed value of $\\sigma_{W}$, Area 3CD."}
+plot_grid(
+  mw.plot(sens.models.14[[1]], cv = 0.2, every = 5, last.yr = 2015),
+  mw.plot(sens.models.14[[2]], cv = 0.2, every = 5, last.yr = 2015),
+          nrow = 1,
+          ncol = 2,
+          labels = c("(a)", "(b)"),
+         label_x = c(0.15, 0.13, 0.13, 0.2))
 ```

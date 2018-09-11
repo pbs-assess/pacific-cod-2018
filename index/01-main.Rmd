@@ -498,7 +498,7 @@ to provide direct information for scaling the population size, two sensitivity a
 - \textbf{Sc 7a.} Fix $\sigma_w$ = 0.4, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
 - \textbf{Sc 7b.} Fix $\sigma_w$ = 0.15, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
 
-
+Fits to the average annual mean weight in the commercial fishery for Scenarios 7a and 7b are shown in Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) and \@ref(fig:fig-sens14-meanweightfit-3cd).
 
 # DECISION TABLES
 
