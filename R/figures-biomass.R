@@ -76,7 +76,7 @@ b.plot <- function(models,
   }
 
   if(!depl & add.hist.ref){
-    if(is.na(lrp) | is.na(usr)){
+    if(is.na(lrp) || is.na(usr)){
       cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
     }else{
       cal <- bt %>%
