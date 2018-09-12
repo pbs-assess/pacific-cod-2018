@@ -94,7 +94,7 @@ df <- data.frame(referencepoint = c("Bmin",
 
 ## MODEL RESULTS: AREA 5ABCD
 
-```{r tab-param-table-5abcd, results='asis', cache=FALSE}
+```{r tab-param-table-5abcd, results='asis'}
 make.parameters.table(base.model.5abcd,
   caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
     "in the Reference Case, Area 5ABCD."),
@@ -103,7 +103,7 @@ make.parameters.table(base.model.5abcd,
   omit_selectivity_pars = TRUE)
 ```
 
-```{r tab-param-est-table-5abcd, results='asis', cache=FALSE}
+```{r tab-param-est-table-5abcd, results='asis'}
 pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(base.model.5abcd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -113,7 +113,7 @@ make.parameters.est.table(base.model.5abcd,
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-ref-points-table-5abcd, results='asis', cache=FALSE}
+```{r tab-ref-points-table-5abcd, results='asis'}
 make.ref.points.table(base.model.5abcd,
                       omit_msy = TRUE,
                       add.hist.ref = TRUE,
@@ -125,7 +125,7 @@ make.ref.points.table(base.model.5abcd,
                                        "Biomass numbers are in tonnes."))
 ```
 
-```{r tab-post-biomass-5abcd, results='asis', cache=FALSE}
+```{r tab-post-biomass-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
                  1,
                  digits = 0,
@@ -134,7 +134,7 @@ make.value.table(base.model.5abcd,
                                   "Area 5ABCD."))
 ```
 
-```{r tab-post-depl-5abcd, cache=FALSE}
+```{r tab-post-depl-5abcd}
 make.value.table(base.model.5abcd,
                  5,
                  digits = 2,
@@ -143,7 +143,7 @@ make.value.table(base.model.5abcd,
                                   "for the Reference Case, Area 5ABCD."))
 ```
 
-```{r tab-post-recr-5abcd, results='asis', cache=FALSE}
+```{r tab-post-recr-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
                  2,
                  digits = 0,
@@ -152,7 +152,7 @@ make.value.table(base.model.5abcd,
                                   "Area 5ABCD."))
 ```
 
-```{r tab-post-f-5abcd, results='asis', cache=FALSE}
+```{r tab-post-f-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
                  3,
                  digits = 2,
@@ -165,7 +165,7 @@ make.value.table(base.model.5abcd,
 
 ## MODEL RESULTS: AREA 3CD
 
-```{r tab-param-table-3cd, results='asis', cache=FALSE}
+```{r tab-param-table-3cd, results='asis'}
 make.parameters.table(base.model.3cd,
   caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
     "in the Reference Case, Area 3CD."),
@@ -174,7 +174,7 @@ make.parameters.table(base.model.3cd,
   omit_selectivity_pars = TRUE)
 ```
 
-```{r tab-param-est-table-3cd, results='asis', cache=FALSE}
+```{r tab-param-est-table-3cd, results='asis'}
 make.parameters.est.table(base.model.3cd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
     "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -183,7 +183,7 @@ make.parameters.est.table(base.model.3cd,
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-ref-points-table-3cd, results='asis', cache=FALSE}
+```{r tab-ref-points-table-3cd, results='asis'}
 make.ref.points.table(base.model.3cd,
                       omit_msy = TRUE,
                       digits = 2,
@@ -192,7 +192,7 @@ make.ref.points.table(base.model.3cd,
                                        "Biomass numbers are in tonnes."))
 ```
 
-```{r tab-post-biomass-3cd, results='asis', cache=FALSE}
+```{r tab-post-biomass-3cd, results='asis'}
 make.value.table(base.model.3cd,
                  1,
                  digits = 0,
@@ -201,7 +201,7 @@ make.value.table(base.model.3cd,
                                   "the Reference Case, Area 3CD."))
 ```
 
-```{r tab-post-depl-3cd, cache=FALSE}
+```{r tab-post-depl-3cd}
 make.value.table(base.model.3cd,
                  5,
                  digits = 2,
@@ -210,7 +210,7 @@ make.value.table(base.model.3cd,
                                   "for the Reference Case, Area 3CD."))
 ```
 
-```{r tab-post-recr-3cd, results='asis', cache=FALSE}
+```{r tab-post-recr-3cd, results='asis'}
 make.value.table(base.model.3cd,
                  2,
                  digits = 0,
@@ -219,7 +219,7 @@ make.value.table(base.model.3cd,
                                   "Area 3CD."))
 ```
 
-```{r tab-post-f-3cd, results='asis', cache=FALSE}
+```{r tab-post-f-3cd, results='asis'}
 make.value.table(base.model.3cd,
                  3,
                  digits = 2,
@@ -232,14 +232,14 @@ make.value.table(base.model.3cd,
 
 ## SELECTED SENSITIVITY RESULTS: AREA 5ABCD
 
-```{r tab-param-table-sens3a-5abcd, results='asis', cache=FALSE}
+```{r tab-param-table-sens3a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[1]],
  caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
                   "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 5ABCD."),
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens3b-5abcd, results='asis', cache=FALSE}
+```{r tab-param-table-sens3b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -248,7 +248,7 @@ make.parameters.est.table(sens.models.3[[2]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens3c-5abcd, results='asis', cache=FALSE}
+```{r tab-param-table-sens3c-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -257,7 +257,7 @@ make.parameters.est.table(sens.models.3[[3]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens4a-5abcd, results='asis', cache=FALSE}
+```{r tab-param-table-sens4a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.4[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -266,7 +266,7 @@ make.parameters.est.table(sens.models.4[[1]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens4b-5abcd, results='asis', cache=FALSE}
+```{r tab-param-table-sens4b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.4[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -275,7 +275,7 @@ make.parameters.est.table(sens.models.4[[2]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens6a-5abcd, results='asis', cache=FALSE}
+```{r tab-param-table-sens6a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.6[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -284,7 +284,7 @@ make.parameters.est.table(sens.models.6[[1]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens6b-5abcd, results='asis', cache=FALSE}
+```{r tab-param-table-sens6b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.6[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -293,7 +293,7 @@ make.parameters.est.table(sens.models.6[[2]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens6c-5abcd, results='asis', cache=FALSE}
+```{r tab-param-table-sens6c-5abcd, results='asis'}
 make.parameters.est.table(sens.models.6[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -307,7 +307,7 @@ make.parameters.est.table(sens.models.6[[3]],
 
 ## SELECTED SENSITIVITY RESULTS: AREA 3CD
 
-```{r tab-param-table-sens3a-3cd, results='asis', cache=FALSE}
+```{r tab-param-table-sens3a-3cd, results='asis'}
 make.parameters.est.table(sens.models.10[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -316,7 +316,7 @@ make.parameters.est.table(sens.models.10[[1]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens3b-3cd, results='asis', cache=FALSE}
+```{r tab-param-table-sens3b-3cd, results='asis'}
 make.parameters.est.table(sens.models.10[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -325,7 +325,7 @@ make.parameters.est.table(sens.models.10[[2]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens3c-3cd, results='asis', cache=FALSE}
+```{r tab-param-table-sens3c-3cd, results='asis'}
 make.parameters.est.table(sens.models.10[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -334,7 +334,7 @@ make.parameters.est.table(sens.models.10[[3]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens4a-3cd, results='asis', cache=FALSE}
+```{r tab-param-table-sens4a-3cd, results='asis'}
 make.parameters.est.table(sens.models.11[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -343,7 +343,7 @@ make.parameters.est.table(sens.models.11[[1]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens4b-3cd, results='asis', cache=FALSE}
+```{r tab-param-table-sens4b-3cd, results='asis'}
 make.parameters.est.table(sens.models.11[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -353,7 +353,7 @@ make.parameters.est.table(sens.models.11[[2]],
 ```
 
 
-```{r tab-param-table-sens13a-3cd, results='asis', cache=FALSE}
+```{r tab-param-table-sens13a-3cd, results='asis'}
 make.parameters.est.table(sens.models.13[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -362,7 +362,7 @@ make.parameters.est.table(sens.models.13[[1]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens13b-3cd, results='asis', cache=FALSE}
+```{r tab-param-table-sens13b-3cd, results='asis'}
 make.parameters.est.table(sens.models.13[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
@@ -371,7 +371,7 @@ make.parameters.est.table(sens.models.13[[2]],
   omit_pars = pars_est_omit)
 ```
 
-```{r tab-param-table-sens13c-3cd, results='asis', cache=FALSE}
+```{r tab-param-table-sens13c-3cd, results='asis'}
 make.parameters.est.table(sens.models.13[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
