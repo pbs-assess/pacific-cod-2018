@@ -286,7 +286,7 @@ L_{s} = L_{\infty,s}\left( 1 - e^{- k_{s}\left( a_{s} - {a_{0}}_{s} \right)} \ri
 
 where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $a_{s}$ are paired length ($L$) and age ($a$) observations from synoptic surveys (Tables  \@ref(tab:length-biosamples-surv) and \@ref(tab:age-biosamples)).
 
-The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars); Table \@ref(tab:age-coeff-table)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)). 
+The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars); Table \@ref(tab:age-coeff-table)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)).
 
 *TO DO: Use proper notation in coefficients table (term column: linf, k, t0. RF not good enough at ////regular////expressions!*
 
@@ -325,7 +325,7 @@ vb_fits <-
   bind_rows(get_par_df(vb_fits, 2)) %>%
   mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list))))     %>%
   rename(Term = term, Estimate = estimate, Conf.low = conf.low, Conf.high = conf.high) %>%
-  dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>% 
+  dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
   knitr::kable(caption = "von Bertalanffy growth coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", digits=3)
 
 ```
@@ -363,7 +363,7 @@ get_par_df(vb_fits, 1) %>%
   scale_color_manual(values = c("female" = "red", "male" = "grey40"))
 ```
 
-Estimates of the von Bertalanffy growth rate $k$ were higher in the WCVI survey (male $k$ = 0.264 y^-1^; female $k$ = 0.265 y^-1^) compared to estimates of $k$ from the HS-QCS  surveys combined (male $k$ = 0.208 y^-1^; female $k$ = 0.184 y^-1^), and all surveys combined (male $k$ = 0.230 y^-1^; female $k$ = 0.208 y^-1^) (Table \@ref(tab:age-coeff-table)). The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound [@forrest2013] used the same growth parameters that had been used in the 2004 assessment for Hecate Strait ($L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y [@sinclair2005]). These values had been reported by @westrheim1996 for the WCVI stock, based on analyses of length-frequency data [@foucher1982]. @westrheim1996 had actually reported a lower growth rate for the Hecate Strait stock, i.e., $k$ = 0.203 y^-1^.  
+Estimates of the von Bertalanffy growth rate $k$ were higher in the WCVI survey (male $k$ = 0.264 y^-1^; female $k$ = 0.265 y^-1^) compared to estimates of $k$ from the HS-QCS  surveys combined (male $k$ = 0.208 y^-1^; female $k$ = 0.184 y^-1^), and all surveys combined (male $k$ = 0.230 y^-1^; female $k$ = 0.208 y^-1^) (Table \@ref(tab:age-coeff-table)). The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound [@forrest2013] used the same growth parameters that had been used in the 2004 assessment for Hecate Strait ($L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y [@sinclair2005]). These values had been reported by @westrheim1996 for the WCVI stock, based on analyses of length-frequency data [@foucher1982]. @westrheim1996 had actually reported a lower growth rate for the Hecate Strait stock, i.e., $k$ = 0.203 y^-1^.
 
 The current results for Hecate Strait (Table \@ref(tab:age-coeff-table)), are consistent with the parameters reported by @westrheim1996. This suggests that the growth rate use in the delay difference models in @forrest2013 and @sinclair2005 may have been too high for the Hecate Strait stock. The current Base Case models therefore uses the growth parameters reported for females in Table \@ref(tab:age-coeff-table), i.e., "SYN HS, SYN QCS" for Area 5ABCD; and "SYN WCVI" for the 3CD stocks.
 
@@ -408,7 +408,7 @@ get_par_df(lw_fits, 1) %>%
   mutate(term = gsub("\\(Intercept\\)", "$ln(\\\\alpha_s)$", term)) %>%
   mutate(term = gsub("log\\(length\\)", "$\\\\beta_s$", term)) %>%
   rename(Term = term, Estimate = estimate) %>%
-  dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>% 
+  dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
   knitr::kable(caption = "Length-weight coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", digits=2, escape=FALSE)
 ```
 
@@ -518,11 +518,11 @@ se <- group_by(mat_coefs, .id) %>%
       std.error[term == "age_or_length:female"])
   ) %>% reshape2::melt(variable.name = "term", value.name = "std.error")
 inner_join(est, se) %>%
-  mutate(.id = factor(.id, levels = names(surveys_list))) %>% 
+  mutate(.id = factor(.id, levels = names(surveys_list))) %>%
   mutate(Conf.low = estimate - 1.96 * std.error, Conf.high = estimate + 1.96 * std.error) %>%
-  rename(Survey = .id, Term = term, Estimate = estimate) %>%  
-  dplyr::select(Survey,Term, Estimate, Conf.low, Conf.high) %>% 
-   knitr::kable(caption = "coefficients from the logistic regression maturity ogives", 
+  rename(Survey = .id, Term = term, Estimate = estimate) %>%
+  dplyr::select(Survey,Term, Estimate, Conf.low, Conf.high) %>%
+   knitr::kable(caption = "coefficients from the logistic regression maturity ogives",
      booktabs = TRUE, linesep = "", digits=2)
 
 ```
@@ -531,13 +531,13 @@ inner_join(est, se) %>%
 ```{r mat-fifty-tab, results = 'asis'}
 plyr::ldply(mat_fits, function(.x)
   data.frame(Female = .x$mat_perc$f.p0.5, Male = .x$mat_perc$m.p0.5)) %>%
-  melt() %>% 
-  mutate(.id = factor(.id, levels = names(surveys_list))) %>% 
-  rename(Survey = .id, Sex = variable, `Estimated age-at-50% maturity` = value) %>% 
+  melt() %>%
+  mutate(.id = factor(.id, levels = names(surveys_list))) %>%
+  rename(Survey = .id, Sex = variable, `Estimated age-at-50% maturity` = value) %>%
   arrange(Survey, Sex) %>%
   knitr::kable(
     caption = "Estimates of age at 50 per cent maturity from the logistic regression maturity ogives.", booktabs = TRUE, linesep = "", digits=1)
-  
+
 ```
 
 \clearpage
@@ -580,9 +580,9 @@ inner_join(est, se) %>%
 
 *TO DO: complete or delete this as time permits*
 
-For illustrative purposes, age-length keys (ALKs) were constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys. 
+For illustrative purposes, age-length keys (ALKs) were constructed using age and length data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island Synoptic surveys.
 
-For each area (3CD and 5ABCD), for each year in which age samples were available, the ALK was used to probabilistically “assign” ages to observed lengths from synoptic surveys and commercial catch data, using methods described in Isermann and Knight (2005), coded in the R package FSA (Ogle, 2012; 2018). 
+For each area (3CD and 5ABCD), for each year in which age samples were available, the ALK was used to probabilistically “assign” ages to observed lengths from synoptic surveys and commercial catch data, using methods described in Isermann and Knight (2005), coded in the R package FSA (Ogle, 2012; 2018).
 
 ### STEPS
 
@@ -610,9 +610,9 @@ The number of age records in each length category in the age sample was then tab
 yrs <- c(2007,2009,2011)
 alk_listHQ <- list()
 for(i in seq_along(yrs)){
-  pcod.age <- x %>% 
-    get_age_sample(surveys = c("SYN HS", "SYN QCS"),alkyr=c(yrs[i])) %>% 
-    get_ALK(bin=2) 
+  pcod.age <- x %>%
+    get_age_sample(surveys = c("SYN HS", "SYN QCS"),alkyr=c(yrs[i])) %>%
+    get_ALK(bin=2)
     alk_listHQ[[i]] <- pcod.age
 }
 
@@ -620,9 +620,9 @@ for(i in seq_along(yrs)){
 yrs <- c(2006,2008,2010)
 alk_listWC <- list()
 for(i in seq_along(yrs)){
-  pcod.age <- x %>% 
-    get_age_sample(surveys = c("SYN WCVI"),alkyr=c(yrs[i])) %>% 
-    get_ALK(bin=2) 
+  pcod.age <- x %>%
+    get_age_sample(surveys = c("SYN WCVI"),alkyr=c(yrs[i])) %>%
+    get_ALK(bin=2)
     alk_listWC[[i]] <- pcod.age
 }
 
