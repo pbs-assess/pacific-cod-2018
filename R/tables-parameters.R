@@ -386,7 +386,7 @@ make.ref.points.table <- function(model,
   }
 
   if(add.hist.ref){
-    if(is.na(lrp) | is.na(usr)){
+    if(is.na(lrp) || is.na(usr)){
       cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
     }else{
       bt <- model$mcmccalcs$sbt.quants
