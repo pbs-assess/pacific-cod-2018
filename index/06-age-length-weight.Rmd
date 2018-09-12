@@ -57,7 +57,7 @@ We extracted length, weight and maturity data from the Hecate Strait, Queen Char
 
 1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, or 7: to eliminate samples sorted on unknown criteria.
 
-1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2: to extract sorted and unsorted samples but remove stomach content samples. 
+1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2: to extract sorted and unsorted samples but remove stomach content samples.
 
 <!-- We extracted biological data using `gfplot::get_survey_samples()` and -->
 <!-- `gfplot::get_commercial_samples()` for research survey and commercial samples, -->
@@ -162,7 +162,7 @@ We extracted length and weight data from commercial bottom trawl vessels from th
 
 1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, or 7: to eliminate samples sorted on unknown criteria.
 
-1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2, 3: to extract sorted and unsorted samples but remove stomach content samples. 
+1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2, 3: to extract sorted and unsorted samples but remove stomach content samples.
 
 1. `SAMPLE_ID` not in 173726, 173740, 191471, 184243, 184159, 215903, or 223726: these samples were coded as Pacific Cod but have size composition inconsistent with the species. These species were therefore excluded from further analysis.
 
