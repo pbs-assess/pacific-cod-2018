@@ -139,7 +139,7 @@ While there was no precedent for reference points in Queen Charlotte Sound, the 
 
 In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2017}$ and (ii) $B_{2018}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative projected 2018 catch levels; and whether biomass is projected to increase or decrease under alternative projected 2018 catch levels.
 
-Suggested reference points and benchmarks for both areas are provided in Table \@ref(tab:suggested-ref-points). 
+Suggested reference points and benchmarks for both areas are provided in Table \@ref(tab:suggested-ref-points).
 
 # REFERENCE CASE MODELS
 
@@ -265,7 +265,7 @@ In addition to the overall observation error term $\sigma_O$, annual index point
 
 As for the previous stock assessment for Pacific Cod (@forrest2013), fixed variance components were used for the likelihood components for annual catch ($\sigma_C$) and average annual mean weight ($\sigma_W$).Problems with interpreting the mean weight data were discussed in @forrest2013, their Appendix C.These problems stem from changes over time in the sample sizes of different categories of length data, i.e., sorted and unsorted categories, and lack of data for smaller fish before observers measured fish at sea. Concerns about the use of the mean weight data were also recorded in the review of the 2005 assessment [@fargo2005]. This issue was acknowledged by @sinclair2005, who noted that the mean weight series was necessary for estimation of model parameters but was down-weighted in the objective function.As in @forrest2013, $\sigma_W$ was set to 0.2 in the Reference Case models. However, sensitivity tests are provided in Section \@ref(sensitivity-analyses).
 
-Because the model assumes observed catches are known without error, $\sigma_C$ was set to a small value, i.e., $\sigma_C$ = 0.05. 
+Because the model assumes observed catches are known without error, $\sigma_C$ was set to a small value, i.e., $\sigma_C$ = 0.05.
 
 # RESULTS
 
@@ -336,7 +336,7 @@ parameters and prior probability distributions on model outcomes for the Area 5A
 
 For both stocks, we tested sensitivity of the model outputs to the following data and assumptions:
 
-* Inclusion of a year-location interaction as a random effect in the commercial CPUE data (historical period: pre-1996 and modern period: post-1995)
+* Inclusion of a locality-year interaction as a random effect in the commercial CPUE data (historical period: pre-1996 and modern period: post-1995)
 * Inclusion of commercial CPUE indices for the historical and modern periods.
 * Inclusion of the NMFS Triennial Survey index for Area 3CD
 * The prior probability distribution for $ln(q)$
@@ -350,23 +350,21 @@ For both stocks, we tested sensitivity of the model outputs to the following dat
 
 Results are presented under these headings below. In all sensitivity runs, as for the Reference Case models, posterior samples were drawn systematically every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples. The first 1,000 samples were dropped to allow for sufficient burn-in.
 
-## SC 1B AND SC 1C. EXCLUSION OF A YEAR-LOCATION INTERACTION AS RANDOM EFFECT IN COMMERCIAL CPUE INDICES
+## SC 1B AND SC 1C. EXCLUSION OF A LOCALITY-YEAR INTERACTION AS RANDOM EFFECT IN COMMERCIAL CPUE INDICES
 
-*TO DO: Sean can you please correct this text as needed and add correct equation references*
+The reference case models were fit to historical and modern commercial CPUE indices that included a locality-year interaction as random effect (see Appendix \@ref(commercial-cpue-standardization), Equation \@ref(eq:cpue-locality-year)). Two sensitivity analyses are shown to illustrate the effect of omitting the locality-year interaction term from both historical and modern indices:
 
-The reference case models were fit to historical and modern commercial CPUE indices that included a year-location interaction as random effect (see Appendix \@ref(commercial-cpue-standardization)). Two sensitivity analyses are shown to illustrate the effect of removing the year-location interaction term from both historical and modern indices (i.e., fitting the delay-difference model to historical and modern CPUE indices calculated using equations without the interaction term:
+> **Sc 1b.** Use equations without the interaction term to create CPUE indices
+> for historical and modern periods. Use the annual CVs resulting from the
+> analysis as annual weighting terms in objective function of delay difference
+> model (Equation \@ref(eq:index-weighting)).
 
-> **Sc 1b.** Use equations without the interaction term to create CPUE
-  indices for historical and modern periods. Use the annual CVs resulting from
-  the analysis as annual weighting terms in objective function of delay
-  difference model (Equation TX.X).
+> **Sc 1c.** Use equations without the interaction term to create CPUE indices
+> for historical and modern periods **and** double the annual CVs resulting
+> from the analysis. Input the doubled CVs as weighting terms in objective
+> function of delay difference model (Equation \@ref(eq:index-weighting)).
 
-> **Sc 1c.** Use equations without the interaction term to create CPUE
-  indices for historical and modern periods AND Double the annual CVs resulting
-  from the analysis. Input the doubled CVs as weighting terms in objective function of delay
-  difference model (Equation TX.X).
-
-Sc 1c was done because the annual CVs of the CPUE indices were very small (less than 0.1 in some years). Annual CVs were doubled to address concerns that the objective function of the delay-difference model may have been giving the CPUE indices too much weight with the CVs in Sc 1b.
+Sc 1c was done because the annual CVs of the CPUE indices with omitted locality-year interactions were very small (less than 0.1 in some years). Annual CVs were doubled to address concerns that the objective function of the delay-difference model may have been giving the CPUE indices too much weight with the CVs in Sc 1b.
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens1-biomass-5abcd) to \@ref(fig:fig-sens1-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd) for Area 3CD.
 
@@ -375,10 +373,10 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 A sensitivity analysis was done where the modern CPUE index was removed from the model altogether (Sc 1d). This was to address concerns that CPUE in the post-IVQ period (post-1995) may not be a good index of abundance, as some skippers reported avoiding Pacific Cod when quotas were low, especially in Area 5AB (@forrest2013). For comparison, to illustrate the effect of the historical CPUE index on model output, the historical CPUE index was removed (Sc 1e). Finally, to show the overall influence of the commercial CPUE data on model outcomes, both commercial CPUE indexes were removed (Sc 1f):
 
 > **Sc 1d.** Remove modern CPUE index from the model. Historical
-index includes year-location interaction term as a random effect.
+index includes locality-year interaction term as a random effect.
 
 > **Sc 1e.** Remove historical CPUE index from the model. Modern
-index includes year-location interaction term as a random effect.
+index includes locality-year interaction term as a random effect.
 
 > **Sc 1f.** Remove both CPUE indices from the model.
 
@@ -394,13 +392,13 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 ## SC 2A AND 2B. PRIOR PROBABILITY DISTRIBUTION FOR SURVEY SCALING PARAMETERS (CATCHABILITY)
 
-For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(Survey-scaling-parameters-for-area-5abcd) and \@ref(Survey-scaling-parameters-for-area-3cd) for Reference Case details:
+For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(Survey-scaling-parameters-for-area-5abcd) and \@ref(Survey-scaling-parameters-for-area-3cd) for Reference Case details:
 
 > **Sc 2a.** The mean of the QCS Synoptic survey was set to the same mean as for the HS Synoptic survey, i.e., mean $ln(q)$ = $ln(0.186)$.
 
 > **Sc 2b.** A uniform prior was used for \textit{q} for both the QCS and HS Synoptic Surveys.
 
-For 3CD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $ln(q)$ for the WCVI Synoptic Survey:
+For 3CD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $\ln(q)$ for the WCVI Synoptic Survey:
 
 > **Sc 2a.** The sd of the WCVI Synoptic survey was set to the same sd as for the QCS and HS Synoptic surveys, i.e., sd = 0.3.
 
@@ -410,7 +408,7 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 ## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR $\ln(M)$
 
-Three sensitivity analyses are shown to illustrate the effect of the parameters of the normal prior distribution assumed for $ln(M)$:
+Three sensitivity analyses are shown to illustrate the effect of the parameters of the normal prior distribution assumed for $\ln(M)$:
 
 > **Sc 3a.** The mean was held at the Reference Case value of 0.5, while the standard
   deviation was increased to 0.2.
@@ -423,6 +421,7 @@ Three sensitivity analyses are shown to illustrate the effect of the parameters 
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens3-biomass-5abcd) to \@ref(fig:fig-sens3-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens10-biomass-3cd) to \@ref(fig:fig-sens10-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens3a-5abcd) to \@ref(tab:tab-param-table-sens3c-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens3a-3cd) to \@ref(tab:tab-param-table-sens3c-3cd) for Area 3CD.
 
+<!-- TODO: longterm, should be dynamic values: -->
 For Area 5ABCD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.323 y^-1^, 0.347 y^-1^ and 0.298 y^-1^. For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.392 y^-1^, 0.391 y^-1^ and 0.398 y^-1^.
 
 <!--
@@ -455,6 +454,7 @@ Two sensitivity analyses were done to illustrate the effect of the prior probabi
 
 > **Sc 4b.** Use a beta prior for steepness with mean = 0.85 and sd = 0.15.
 
+<!-- TODO: longterm, should be dynamic values: -->
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens4-biomass-5abcd) to \@ref(fig:fig-sens4-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens11-biomass-3cd) to \@ref(fig:fig-sens11-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens4a-5abcd) to \@ref(tab:tab-param-table-sens4b-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens4a-3cd) to \@ref(tab:tab-param-table-sens4b-3cd) for Area 3CD.
 
 For Area 5ABCD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.479 and 0.883. For Area 3CD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.497 and 0.889.
@@ -503,7 +503,7 @@ analysis was done to test the effect of increasing the assumed value of $\sigma_
 
 > **Sc 6d.** Fix $\sigma_R$ = 1.0.
 
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD. 
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD.
 
 <!--
  As for the
@@ -533,7 +533,7 @@ Performance measures were calculated over a sequence of alternative 2018 project
 
 Projected recruitment anomalies for the projection year were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
 
-Reference points and performance measures are listed in Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-ref-points-table-3cd). 
+Reference points and performance measures are listed in Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-ref-points-table-3cd).
 
 Decision tables are designed to present probabilities of "undesirable" states under alternative 2018 projected catch levels.
 
