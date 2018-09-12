@@ -1,3 +1,16 @@
+mcmc_monitor <- function(model) {
+  x <- model[[1L]]$mcmccalcs$p.dat
+  a <- array(NA, dim = c(nrow(x), 1L, ncol(x)))
+  for (i in seq_len(ncol(x))) {
+    a[,,i] <- x[,i]
+  }
+  dimnames(a)[3L] <- list(colnames(x))
+  out <- as.data.frame(rstan::monitor(a, print = FALSE, warmup = 0))
+  out$par <- row.names(out)
+  out %>% select(par, n_eff, Rhat) %>%
+    mutate(n_eff = round(n_eff, 0), Rhat = f(round(Rhat, 2), 2))
+}
+
 make.parameters.table <- function(model,
                                   caption = "default", omit_pars = NULL,
                                   omit_selectivity_pars = FALSE){
@@ -325,6 +338,14 @@ make.parameters.est.table <- function(model,
   if (!is.null(omit_pars)) {
     tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
   }
+
+  tab$par <- row.names(tab)
+  mon <- mcmc_monitor(base.model.5abcd)
+  tab <- left_join(tab, mon, by = "par")
+  tab$par <- NULL
+  tab$Rhat[tab$Rhat == " NaN"] <- "--"
+  names(tab) <- gsub("n_eff", "$n_{eff}$", names(tab))
+  names(tab) <- gsub("Rhat", "$\\\\hat{R}$", names(tab))
 
   knitr::kable(tab,
     caption = caption,
