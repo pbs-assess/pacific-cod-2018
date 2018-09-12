@@ -98,7 +98,7 @@ df <- data.frame(referencepoint = c("Bmin",
 make.parameters.table(base.model.5abcd,
   caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
     "in the Reference Case, Area 5ABCD."),
-  omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)", 
+  omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
     "Log mean recruitment ($\\ln(\\overline{R})$)"),
   omit_selectivity_pars = TRUE)
 ```
@@ -115,6 +115,9 @@ make.parameters.est.table(base.model.5abcd,
 ```{r tab-ref-points-table-5abcd, results='asis', cache=FALSE}
 make.ref.points.table(base.model.5abcd,
                       omit_msy = TRUE,
+                      add.hist.ref = TRUE,
+                      lrp = c(1971, 1971),
+                      usr = c(1956, 2004),
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                                        "97.5\\textsuperscript{th} percentile) of proposed reference points for Area 5ABCD. ",
@@ -165,7 +168,7 @@ make.value.table(base.model.5abcd,
 make.parameters.table(base.model.3cd,
   caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
     "in the Reference Case, Area 3CD."),
-  omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)", 
+  omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
     "Log mean recruitment ($\\ln(\\overline{R})$)"),
   omit_selectivity_pars = TRUE)
 ```

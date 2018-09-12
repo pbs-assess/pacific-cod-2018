@@ -334,9 +334,12 @@ make.parameters.est.table <- function(model,
 }
 
 make.ref.points.table <- function(model,
-  digits = 3,
-  caption = "default", omit_msy = FALSE
-  ){
+                                  add.hist.ref = TRUE,
+                                  digits = 3,
+                                  caption = "default",
+                                  omit_msy = FALSE,
+                                  lrp = NA,
+                                  usr = NA){
   ## Returns an xtable in the proper format for reference points
   ##
   ## digits - number of decimal places for the values
@@ -358,6 +361,55 @@ make.ref.points.table <- function(model,
 
   if (omit_msy) {
     tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`))
+  }
+
+  if(add.hist.ref){
+    if(is.na(lrp) | is.na(usr)){
+      cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
+    }else{
+      bt <- model$mcmccalcs$sbt.quants
+      yrs <- colnames(bt)
+      bt <- t(bt)
+
+      bt <- bt %>%
+        as.tibble() %>%
+        mutate(Year = yrs)
+
+      cal <- bt %>%
+        filter(Year >= lrp[1] & Year <= lrp[2])
+      lrp.5 <- mean(cal$`5%`)
+      lrp.50 <- mean(cal$`50%`)
+      lrp.95 <- mean(cal$`95%`)
+
+      cau <- bt %>%
+        filter(Year >= usr[1] & Year <= usr[2])
+
+      usr.5 <- mean(cau$`5%`)
+      usr.50 <- mean(cau$`50%`)
+      usr.95 <- mean(cau$`95%`)
+      lrp.desc <- paste0("LRP (",
+                         ifelse(lrp[1] == lrp[2],
+                                lrp[1],
+                                paste0(lrp[1], "--", lrp[2])),
+                         ")")
+      usr.desc <- paste0("USR (",
+                         ifelse(usr[1] == usr[2],
+                                usr[1],
+                                paste0(usr[1], "--", usr[2])),
+                         ")")
+      tab[,1] <- as.character(tab[,1])
+      tab <- rbind(tab,
+                   c(lrp.desc,
+                     f(lrp.5),
+                     f(lrp.50),
+                     f(lrp.95)))
+
+      tab <- rbind(tab,
+                   c(usr.desc,
+                     f(usr.5),
+                     f(usr.50),
+                     f(usr.95)))
+    }
   }
 
   knitr::kable(tab,
