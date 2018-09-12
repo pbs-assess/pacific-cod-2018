@@ -395,6 +395,8 @@ For 3CD, two sensitivity analyses are shown to illustrate the effect of the norm
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens2-biomass-5abcd) to \@ref(fig:fig-sens2-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens9-biomass-3cd) to \@ref(fig:fig-sens9-f-3cd) for Area 3CD.
 
+Models were sensitive to priors assumed for the synoptic survey scaling parameters. Notably, removing the informative prior resulted in very low estimates of $q$ for these suveys (Tables ) and very large and uncertain estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)).
+
 ## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR $\ln(M)$
 
 Three sensitivity analyses are shown to illustrate the effect of the parameters of the normal prior distribution assumed for $\ln(M)$:
