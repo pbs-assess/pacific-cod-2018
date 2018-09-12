@@ -104,12 +104,13 @@ make.parameters.table(base.model.5abcd,
 ```
 
 ```{r tab-param-est-table-5abcd, results='asis', cache=FALSE}
+pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(base.model.5abcd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
     "97.5\\textsuperscript{th} percentile) and MPD ",
     "estimates of key parameters from the Reference Case, Area 5ABCD.",
     q.5abcd.desc),
-  omit_pars = c("$\\overline{R}_{init}$", "$\\overline{R}$"))
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-ref-points-table-5abcd, results='asis', cache=FALSE}
@@ -179,7 +180,7 @@ make.parameters.est.table(base.model.3cd,
     "97.5\\textsuperscript{th} percentile) and MPD ",
     "estimates of key parameters from the reference Case, Area 3CD.",
     q.5abcd.desc),
-  omit_pars = c("$\\overline{R}_{init}$", "$\\overline{R}$"))
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-ref-points-table-3cd, results='asis', cache=FALSE}
@@ -234,7 +235,8 @@ make.value.table(base.model.3cd,
 ```{r tab-param-table-sens3a-5abcd, results='asis', cache=FALSE}
 make.parameters.est.table(sens.models.3[[1]],
  caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
-                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 5ABCD."))
+                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 5ABCD."),
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens3b-5abcd, results='asis', cache=FALSE}
@@ -242,7 +244,8 @@ make.parameters.est.table(sens.models.3[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 5ABCD."))
+                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 5ABCD."),
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens3c-5abcd, results='asis', cache=FALSE}
@@ -250,7 +253,8 @@ make.parameters.est.table(sens.models.3[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 5ABCD."))
+                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 5ABCD."),
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens4a-5abcd, results='asis', cache=FALSE}
@@ -258,7 +262,8 @@ make.parameters.est.table(sens.models.4[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 4a (Uniform prior for steepness), Area 5ABCD."))
+                  "for Sc 4a (Uniform prior for steepness), Area 5ABCD."),
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens4b-5abcd, results='asis', cache=FALSE}
@@ -266,7 +271,8 @@ make.parameters.est.table(sens.models.4[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 5ABCD."))
+                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 5ABCD."),
+  omit_pars = pars_est_omit)
 ```
 
 \clearpage
@@ -278,7 +284,8 @@ make.parameters.est.table(sens.models.10[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 3CD."))
+                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 3CD."),
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens3b-3cd, results='asis', cache=FALSE}
@@ -286,7 +293,8 @@ make.parameters.est.table(sens.models.10[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 3CD."))
+                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 3CD."),
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens3c-3cd, results='asis', cache=FALSE}
@@ -294,7 +302,8 @@ make.parameters.est.table(sens.models.10[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 3CD."))
+                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 3CD."),
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens4a-3cd, results='asis', cache=FALSE}
@@ -302,7 +311,8 @@ make.parameters.est.table(sens.models.11[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 4a (Uniform prior for steepness), Area 3CD."))
+                  "for Sc 4a (Uniform prior for steepness), Area 3CD."),
+  omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens4b-3cd, results='asis', cache=FALSE}
@@ -310,5 +320,6 @@ make.parameters.est.table(sens.models.11[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 3CD."))
+                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 3CD."),
+  omit_pars = pars_est_omit)
 ```
