@@ -34,19 +34,13 @@ Pacific Cod in BC are caught almost entirely in the groundfish bottom trawl fish
 
 Pacific Cod are distributed throughout Area 5CD at depths mainly less than 150 m. Pacific Cod density appears to be highest over the Two Peaks/Butterworth, White Rocks, Shell Ground, Reef Island, and Horseshoe fishing grounds [@forrest2013]. In Queen Charlotte Sound (Area 5AB), Pacific Cod are caught mainly off Cape Scott and Mexicana Banks, north of Vancouver Island, in Area 5A, and around the edge of Goose Island Bank in Area 5B  [@forrest2013]. The depth range of capture in 5ABCD ranges from around 60 - 100 m, with data showing a shift to deeper depths since 1996 (Appendix B, Figure \@ref(fig:cpue-depth-hists)). The transition to deeper fishing grounds partially reflects a larger proportion of catches coming from deeper waters in Queen Charlotte Sound in more recent years (\@ref(fig:fig-catch-5abcd),as well as general expansion into deeper water. Annual reported catches of Pacific Cod in both Hecate Strait and Queen Charlotte Sound have shown considerable variability since the beginning of the time series in 1956 (Figure \@ref(fig:fig-catch-5abcd)). The depth range of catches off West Coast Vancouver Island (Area 3CD) is similar to Area 5ABCD, with the majority of catch coming from 0-200 m depth zones (Appendix B, Figure \@ref(fig:cpue-depth-hists)). See @sinclair2001 for description of changes in historical depth ranges of the fishery. See also Appendix B. Historical catches in Area 3CD have shown a similarly variable pattern to Area 5ABCD (Figure \@ref(fig:fig-catch-3cd))
 
-*TO DO: check catch numbers below once tables are in. These numbers include US and discards. Maybe delete these summaries*
+*TO DO: check catch numbers below once tables are in*
 
-In Area 5CD (Figure \@ref(fig:fig-catch-5abcd)), major peaks in catches occurred in 1958 (5,702 t), 1965 and 1966 (8,870 t and 9,156 t), 1979 (5,736 t), 1987 (9,542 t), and 1991 (7,747 t). These peak years may be contrasted with years of low catches in 1961 (1,528 t), 1970 and 1971 (1,188 t and 1,333 t), 1985 (1,053 t), and the minimum on record in 2001 (214 t). Reported catches have increased since 2001 to 701 t in 2012, although it should be noted that recent low catches are partially a result of lowered quotas in the early to mid-2000s. Catch was reported by USA vessels from 1956 to 1978. The estimated USA portion of the total catch was approximately 15% over these years (Table XX).
-
-Major peaks in catches in Area 5AB occurred in 1957 (2,625 t), 1965 (1,983 t), 1972 and 1975 (2,415 t and 2,470 t), 1987 (3,209 t), and 1991 (2,206 t). Low catch years included 1961 (259 t), 1970 (278 t), 1983 (184 t), 2000 (67 t) and the lowest year on record 2008 (35 t). Significant catches were reported by USA vessels from 1956 to 1980. The estimated USA portion of the total catch was approximately 50% over these years (Table XX).
-
-Major peaks in catches in Area 3CD occurred in ... XXX ... Low catch years included ...XXX ... and the lowest year on record was ... XXX ...Significant catches were reported by USA vessels from 1956 to 1980. The estimated USA portion of the total catch was approximately XX% over these years (Table XX).
-
-Prior to the introduction of at-sea observer coverage in 1996, estimates of at-sea releases (discards) for the period 1956-1995 were obtained from fishing logbooks. These estimates are considered an underestimate of the actual releases (Table XX). Estimates in years following the introduction of 100% at-sea observer coverage in 1996 can be considered to be  accurate. Since 1996, the proportions of estimated discards have been considerably higher than in years before at-sea observers (Tables XX and XX ... landings, discards, usa), especially in Queen Charlotte Sound, largely as a result of reduced total catches and TACs (Table XX ... TACs). Pacific Cod can be legally discarded by trawlers in BC. However, on-board observers first estimate the quantity being discarded. This is assigned a discard mortality rate which is counted against the vessel's Pacific Cod quota. Therefore, in addition to greater accuracy in reporting of discards since 1996, incentives to avoid discarding have also been greater.
+Prior to the introduction of at-sea observer coverage in 1996, estimates of at-sea releases (discards) for the period 1956-1995 were obtained from fishing logbooks. These estimates are considered an underestimate of the actual releases (Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd)). Estimates in years following the introduction of 100% at-sea observer coverage in 1996 can be considered to be  accurate. Since 1996, the proportions of estimated discards have been considerably higher than in years before at-sea observers (Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd)), especially in Queen Charlotte Sound, largely as a result of reduced total catches and TACs (Table \@ref(tab:tab-tac)). Pacific Cod can be legally discarded by trawlers in BC. However, on-board observers first estimate the quantity being discarded. This is assigned a discard mortality rate which is counted against the vessel's Pacific Cod quota. Therefore, in addition to greater accuracy in reporting of discards since 1996, incentives to avoid discarding have also been greater.
 
 Japanese and Soviet vessels also trawled in waters off BC in the late 1960s and early 1970s. These vessels were mainly targeting rockfish and likely at depths greater than 150 m. The bycatch of Pacific Cod in these fisheries is, however, unknown. Given uncertainty in foreign catches and discards in the earlier parts of the time series, total catch estimates should be considered underestimates prior to 1996.
 
-Bottom trawl fishing effort has been somewhat cyclic in all areas, especially in Hecate Strait [@forrest2013]. Total effort of all trawl vessels has declined in all areas in recent years. A detailed analysis of catch per unit effort (CPUE) is provided in Appendix B. As noted by @sinclair2000, there are a number of problems with the use of commercial catch per unit effort as an index of biomass for Pacific Cod. Changes in the management regime from an unrestricted fishery prior to 1992, to the introduction of TACs (1992-1996) and then to Individual Vessel Quotas (IVQs) (1997-present), as well as several increases in mesh size (@forrest2013, their Table 5), have affected the underlying relationship between commercial CPUE and abundance, and the relationship between fishing effort and fishing mortality. In recent years of lower Pacific Cod quotas (Table XX), many fishing masters report actively avoiding Pacific Cod to prevent their Pacific Cod quota being exceeded before catching available quotas for other species. In the present assessment CPUE series are split into pre- and post-1996 series, and general linear mixed models are used to attempt to standardize the indices (Appendix B).
+Bottom trawl fishing effort has been somewhat cyclic in all areas, especially in Hecate Strait [@forrest2013]. Total effort of all trawl vessels has declined in all areas in recent years. A detailed analysis of catch per unit effort (CPUE) is provided in Appendix B. As noted by @sinclair2000, there are a number of problems with the use of commercial catch per unit effort as an index of biomass for Pacific Cod. Changes in the management regime from an unrestricted fishery prior to 1992, to the introduction of TACs (1992-1996) and then to Individual Vessel Quotas (IVQs) (1997-present), as well as several increases in mesh size (@forrest2013, their Table 5), have affected the underlying relationship between commercial CPUE and abundance, and the relationship between fishing effort and fishing mortality. In recent years of lower Pacific Cod quotas (Table \@ref(tab:tab-tac)), many fishing masters report actively avoiding Pacific Cod to prevent their Pacific Cod quota being exceeded before catching available quotas for other species. In the present assessment CPUE series are split into pre- and post-1996 series, and general linear mixed models are used to attempt to standardize the indices (Appendix \@ref(commercial-cpue-standardization)).
 
 ## ASSESSMENT HISTORY
 
@@ -111,7 +105,7 @@ Updates to estimated growth, maturity, annual mean weights in commercial catches
 
 # STOCK ASSESSMENT MODEL
 
-*TO DO: Find out why Appendix D (model-description-app.Rmd) is being referred to as a subsection of Appendix C: Appendix C.6.1.1*
+*TO DO: Find out why Appendix D (model-description-app.Rmd) is being referred to as a subsection of Appendix C: Appendix C.6.1.1 (Robyn only)*
 
 All models presented in this document are Bayesian models implemented in AD Model Builder [@fournier2012]. The models are based on the Integrated Statistical Catch Age Model (iSCAM), first reported in @martell2011. A number of modifications have been made to the code from its original version by the authors of this assessment to include delay-difference calculations. The model in its present formulation is fully described in Appendix \@ref(delay-difference-model). Two major differences between the current model and the previous assessment [@forrest2013] are:
 
@@ -143,7 +137,7 @@ While there was no precedent for reference points in Queen Charlotte Sound, the 
 
 @forrest2018 simulation-tested a set of alternative reference points for Hecate Strait Pacific Cod and Rock Sole (*Lepidopsetta* spp.). They found that the "history-based" reference points (or operational control points, OCPs) that had been used for Pacific Cod in 2013 [@forrest2013] were robust to stock assessment biases because they scaled in the same direction as bias in estimates of biomass and fishing mortality. However, they were not necessarily good proxies for MSY-based reference points and tended to produce more precautionary catch recommendations than reference points based on $B_{MSY}$, $B_{0}$ and the spawning potential ratio (SPR; @clark1991). While the "history-based" reference points outperformed others in terms of long-term conservation outcomes, there were sometimes large trade-offs in terms of catch and catch stability [@forrest2018]. Reference points based on estimated $B_{0}$ performed similarly to the "history-based" reference points but tended to have better trade-off properties [@forrest2018].
 
-In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2017}$ and (ii) $B_{2018}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative projected 2019 catch levels; and whether biomass is projected to increase or decrease under alternative projected 2019 catch levels.
+In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2017}$ and (ii) $B_{2018}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative projected 2018 catch levels; and whether biomass is projected to increase or decrease under alternative projected 2018 catch levels.
 
 Suggested reference points and benchmarks for both areas are provided in Table \@ref(tab:suggested-ref-points). 
 
@@ -154,8 +148,89 @@ Suggested reference points and benchmarks for both areas are provided in Table \
 The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics in terms of data choices, prior probability distributions and fixed parameter settings. For brevity both reference case models are described togetherin this section, with differences explained as necessary. The Bayesian delay-difference model is fully described in Appendix \@ref(delay-difference-model).
 
 The joint posterior distribution for each model was numerically approximated using the
-Markov Chain Monte Carlo routines built into AD Model Builder [@fournier2012]. Posterior samples were drawn systematically every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). Convergence was diagnosed using visual inspection of trace plots and visual examination of autocorrelation in posterior
-chains.
+Markov Chain Monte Carlo routines built into AD Model Builder [@fournier2012]. Posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). We assessed consistency with chain convergence by visual inspection of trace plots and autocorrelation plots and through the potential scale reduction factor $\hat{R}$ and the effective sample size ($n_{eff}$).
+
+The potential scale reduction statistic is a common metric used in Bayesian statistics to assess chain convergence. It measures the the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. In this case, we only had a single chain, but in following the advice of TODO and STAN REF, we first divided the chain into two before calculating it.
+
+<!-- https://github.com/stan-dev/stan/blob/238faf42b556c007197c9faca20214ad9b37f0b2/src/docs/reference-manual/analysis.Rmd -->
+
+The *variance estimator* is a mixture of the within-chain and
+cross-chain sample variances,
+
+$$
+\widehat{\mbox{var}}^{+}\!(\theta|y)
+= \frac{N-1}{N}\, W \, + \, \frac{1}{N} \, B.
+$$
+
+Finally, the *potential scale reduction statistic* is defined by
+
+$$
+\hat{R}
+\, = \,
+\sqrt{\frac{\widehat{\mbox{var}}^{+}\!(\theta|y)}{W}}.
+$$
+
+
+<!--
+rstan:::ess_rfun
+function (sims)
+{
+    if (is.vector(sims))
+        dim(sims) <- c(length(sims), 1)
+    chains <- ncol(sims)
+    n_samples <- nrow(sims)
+    acov <- lapply(1:chains, FUN = function(i) {
+        cov <- acf(sims[, i], lag.max = n_samples - 1, plot = FALSE,
+            type = c("covariance"))
+        cov$acf[, , 1]
+    })
+    acov <- do.call(cbind, acov)
+    chain_mean <- apply(sims, 2, mean)
+    mean_var <- mean(acov[1, ]) * n_samples/(n_samples - 1)
+    var_plus <- mean_var * (n_samples - 1)/n_samples
+    if (chains > 1)
+        var_plus <- var_plus + var(chain_mean)
+    rho_hat_sum <- 0
+    for (t in 2:nrow(acov)) {
+        rho_hat <- 1 - (mean_var - mean(acov[t, ]))/var_plus
+        if (is.nan(rho_hat))
+            rho_hat <- 0
+        if (rho_hat < 0)
+            break
+        rho_hat_sum <- rho_hat_sum + rho_hat
+    }
+    ess <- chains * n_samples
+    if (rho_hat_sum > 0)
+        ess <- ess/(1 + 2 * rho_hat_sum)
+    ess
+}
+
+rstan:::split_rhat_rfun
+function (sims)
+{
+    if (is.vector(sims))
+        dim(sims) <- c(length(sims), 1)
+    chains <- ncol(sims)
+    n_samples <- nrow(sims)
+    half_n <- floor(n_samples/2)
+    idx_2nd <- n_samples - half_n + 1
+    split_chain_mean <- numeric(chains * 2)
+    split_chain_var <- numeric(chains * 2)
+    for (i in 1:chains) {
+        split_chain_mean[i] <- mean(sims[1:half_n, i])
+        split_chain_var[i] <- var(sims[1:half_n, i])
+        split_chain_mean[chains + i] <- mean(sims[idx_2nd:n_samples,
+            i])
+        split_chain_var[chains + i] <- var(sims[idx_2nd:n_samples,
+            i])
+    }
+    var_between <- half_n * var(split_chain_mean)
+    var_within <- mean(split_chain_var)
+    sqrt((var_between/var_within + half_n - 1)/half_n)
+}
+-->
+
+ensured that R < 1.05 (the potential scale reduction factor), and that the effective sample size, as calculated by the rstan R package (45), was >200 for all parameters (
 
 ## DATA CHOICES
 
@@ -196,15 +271,13 @@ A normal distribution was used for $ln(M)$ with mean = $ln(0.5)$ and SD = 0.1, a
 
 ## SURVEY SCALING PARAMETERS (CATCHABILITY)
 
-*TO DO: Paul, please provide a more accurate description of why the swept area analyses for HSMAS and Triennial could not be expected to scale up to absolute abundance. Anyone, improvements to the text below are welcome*
-
 Broad uniform prior probability distributions were used for the scaling parameter $q_{k}$ for indices *k* =:
 
 * Hecate Strait Multispecies Assemblage Survey;
 * NMFS Triennial Survey; and
 * Commercial CPUE indices.
 
-These priors reflected ignorance of the scale of the survey index relative to the population. For the Hecate Strait Multispecies Assemblage Survey and NMFS Triennial Survey, the uniform priors also reflected the fact that the swept area analyses could not be expected to scale up to an absolute index of abundance because the survey designs were not random-stratified surveys intended to represent the entire habitat of Pacific Cod. The commercial CPUE indices were represented standardized catch rates with an unknown relationship to population abundance.
+These priors reflected ignorance of the scale of the survey index relative to the population. The Hecate Strait Multispecies Assemblage (HSMA) Survey was never designed as a stratified random trawl survey. Instead, it was a grid survey with one fixed location station per grid.  @sinclair1999 assigned each station to a depth stratum and analysed the data as if the survey used a stratified random design. Because of this post-hoc stratification approach, the relationship between the survey index and the Pacific cod population is unknown.  The National Marine Fisheries Service (NMFS) Triennial Survey ventured into Canadian waters seven times in the period 1980 to 2001. The survey was a random transect design, using a random start and then progressing up the west coast of the United States and Canada at 50 nm intervals.  Each transect was stratified by depth and stations along the transect were selected randomly.  The extent that the Triennial survey extened into Canada varied by survey, but the data were analysed as if the survey had the same areal coverage in every year (see Appendix \@ref(fishery-independent-indices-of-abundance)).  This survey was included in the current 3CD stock assessment to provide fishery independent biomass information in the 1980s and 1990s. However, as for the HSMA survey, the relationship between the survey index and the 3CD Pacific Cod population is not known. The commercial CPUE indices are standardized catch rates (\@ref(commercial-cpue-standardization)) with an unknown relationship to population abundance.
 
 Normal distributions were used for $ln(q_{k})$ for indices *k* =:
 
@@ -212,11 +285,11 @@ Normal distributions were used for $ln(q_{k})$ for indices *k* =:
 * Hecate Strait Synoptic Survey; and
 * West Coast Vancouver Island Synoptic Survey.
 
-The choice of prior probability distribution for survey scaling parameters has the potential for large impacts on stock assessment outcomes. We therefore present a number of sensitivity analyses in Section \@ref(sensitivity-analyses)
+The choice of prior probability distribution for survey scaling parameters has the potential for large impacts on stock assessment outcomes. We therefore present a number of alternative prior formulations as sensitivity analyses for the following informative prior probability distributions in Section \@ref(sensitivity-analyses).
 
 ### Survey scaling parameters for Area 5ABCD
 
-We attempted to use informative prior probability distributions for synoptic surveys based on median posterior estimates of *q* from the most recent stock assessment for Rock Sole [@holt2016]. Rock sole is a flatfish species occupying a similar (although slightly shallower) depth range to Pacific Cod. @holt2016 obtained median posterior estimates of *q* = 0.6280 for Area 5AB and *q* = 0.1869 for Area 5CD. The CV of their estimates was around 0.3. For our combined Area 5ABCD assessment we pro-rated these values according to the relative areas of habitat in Areas 5AB and 5CD. Adding up the areas of all the surveyed depth strata in each area gave a ratio of approximately 0.65:0.35 (5AB:5CD). Therefore the following values were used as means for the normal prior probability distributions for $ln(q_{k})$, for
+We used informative prior probability distributions for the two synoptic surveys based on median posterior estimates of *q* from the most recent stock assessment for Rock Sole [@holt2016]. This was done to constrain the tendency in the model towards estimating implausibly high stock sizes. Rock sole is a flatfish species occupying a similar (although slightly shallower) depth range to Pacific Cod. @holt2016 obtained median posterior estimates of *q* = 0.6280 for Area 5AB and *q* = 0.1869 for Area 5CD. The CV of their estimates was around 0.3. For our combined Area 5ABCD assessment we pro-rated these values according to the relative areas of habitat in Areas 5AB and 5CD. Adding up the areas of all the surveyed depth strata in each area gave a ratio of approximately 0.65:0.35 (5AB:5CD). Therefore the following values were used as means for the normal prior probability distributions for $ln(q_{k})$, for
 
 - *k* = Queen Charlotte Sound Synoptic Survey: Mean $ln(q_{k})$ = $ln(0.6280 * 0.65)$ = -0.895998; and
 - *k* = Hecate Strait Synoptic Survey: Mean $ln(q_{k})$ = $ln(0.1869 * 0.35)$ = -2.727539;
@@ -225,11 +298,11 @@ For both synoptic surveys, the standard deviation of the normal prior probabilit
 
 ### Survey scaling parameters for Area 3CD
 
-As for Area 5ABCD, we attempted to use an informative prior probability distribution for the West Coast Vancouver Island Synoptic Survey based on a median posterior estimate from a recent assessment. There have been fewer recent stock assessments focused on Area 3CD only and none for species in the same depth range as Pacific Cod. Here we used a normal prior probability distribution for $ln(q_{k})$ with mean set to the median posterior estimate of *q* from the most recent assessment for Area 3CD Pacific Ocean Perch (*Sebastes alutus*) [@edwards2013-2], i.e., Mean $ln(q_{k})$ = $ln(0.228)$ = -1.47841. the standard deviation of the normal prior probability distribution for $ln(q_{k})$ was set to 0.3 in log space, as for Area 5ABCD. Pacific Ocean Perch occurs in a deeper depth range than Pacific Cod, but it is a major target species for the trawl fishery and may therefore be informative about catchability in this area.
+As for Area 5ABCD, we used an informative prior probability distribution for the West Coast Vancouver Island Synoptic Survey based on a median posterior estimate from a recent assessment. Again this was done to constrain the very large stock size estimates made by the model when a uniform prior was applied. There have been fewer recent stock assessments focused on Area 3CD only and none for species in the same depth range as Pacific Cod. Here we used a normal prior probability distribution for $ln(q_{k})$ with mean set to the median posterior estimate of *q* from the most recent assessment for Area 3CD Pacific Ocean Perch (*Sebastes alutus*) [@edwards2013-2], i.e., Mean $ln(q_{k})$ = $ln(0.228)$ = -1.47841. the standard deviation of the normal prior probability distribution for $ln(q_{k})$ was set to 0.3 in log space, as for Area 5ABCD. Pacific Ocean Perch occurs in a deeper depth range than Pacific Cod, but it is a major target species for the trawl fishery and may therefore be informative about catchability in this area.
 
 ## FIXED VARIANCE PARAMETERS
 
-The errors in variables approached used to partition process and observation error is described in detail in Appendix \@ref(delay-difference-model). Briefly, The key variance parameter is the inverse of the total
+The errors in variables approach used to partition process and observation error is described in detail in Appendix \@ref(delay-difference-model). Briefly, The key variance parameter is the inverse of the total
 variance, i.e., total precision $\phi^{-2}$ (@martell2011). This parameter can be fixed or estimated, and was fixed here. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation
 error [@punt1993, @deriso2007]. These parameters are used to derive the observation error component of the total variance ($\sigma_O$, Eq. XX) the process error term ($\sigma_R$, Eq. XX), which enters the objective function in the log likelihood function for the recruitment residuals (Eq. XX).
 
@@ -481,7 +554,7 @@ analysis was done to test the effect of increasing the assumed value of $\sigma_
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD. 
 
 <!--
-Resulting estimates of historical biomass are shown in Figure XX. As for the
+ As for the
 steepness sensitivity test, there was very little discernible difference in
 the estimated historical time series between the Reference Case model and the two
 sensitivity cases. The largest effects were seen in the estimates of $B_0$
@@ -504,15 +577,15 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 *TO DO: Update. This is 2014 text. Fix equations and dynamic references*
 
-Performance measures were calculated over a sequence of alternative 2019 projected catch levels and are based on two-year projections to 2020.
+Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019.
 
-Projected recruitment anomalies for the projection period (2019-2020) were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
+Projected recruitment anomalies for the projection year were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
 
 Reference points and performance measures are listed in Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-ref-points-table-3cd). 
 
-Decision tables are designed to present probabilities of "undesirable" states under alternative 2019 projected catch levels.
+Decision tables are designed to present probabilities of "undesirable" states under alternative 2018 projected catch levels.
 
-For example, an undesirable biomass-based performance measure occurs when 2020 projected biomass is below the LRP, i.e., $B_{2020}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2019}/LRR > 1$.
+For example, an undesirable biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
 
 Probabilities of such states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
 
@@ -526,7 +599,7 @@ We did not attempt to assign different weights to the alternative models in the 
 
 *TO DO. Update with results*
 
-The decision table for the Area 5CD Reference Case model is provided in Table XX.
+The decision table for the Area 5ABCD Reference Case model is provided in Table XX.
 The probability of the 2015 biomass being below the 2014 biomass ranged from 12.4\% under no 2014 catch to 64.1\% under 2400 t, double the current TAC.
 
 The probability of being below the LRP ranged from 12.3\% to 24.9\% over the range of catch levels considered.
