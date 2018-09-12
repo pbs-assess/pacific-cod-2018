@@ -55,7 +55,8 @@ load.iscam.files <- function(model.dir,
                                  load.proj = load.proj)
     model$mcmc$params <- strip.areas.groups(model$mcmc$params)
     model$mcmc$params <- fix.m(model$mcmc$params)
-    model$mcmc$params.est <- get.estimated.params(model$mcmc$params)
+    model$mcmc$params.est <- as.data.frame(get.estimated.params(model$mcmc$params))
+    model$mcmc$params.est <- mcmc.thin(model$mcmc$params.est, burnin, thin)
     model$mcmc$params.est.log <- calc.logs(model$mcmc$params.est)
   }else{
     model$mcmccalcs <- NULL
