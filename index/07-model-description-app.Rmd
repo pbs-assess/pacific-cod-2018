@@ -2,16 +2,16 @@
 
 # DELAY-DIFFERENCE MODEL
 
-The last assessment for Pacific Cod in QCS and Hecate Strait used a delay-difference model [@forrest2013]. Essentially a delay-difference model is a collapsed age-structured model, subject to certain assumptions
+The last assessment for Pacific Cod for Areas 5AB and 5CD used a delay-difference model [@forrest2013]. A delay-difference model is essentially a collapsed age-structured model, subject to certain assumptions
 age-structured models. The delay-difference structure tracks the effects of recruitment, survival and growth on biomass, without requiring a fully age-structured framework. Difference equations, which allow for a time-delay between spawning and recruitment, are used to build the population model in discrete annual time-steps, in which the surviving biomass for next year is predicted from the surviving biomass from last year, afte adjusting for growth and adding recruitment. An advantage of delay-difference models over simpler production models is that they do not assume constant recruitment over time.
 
 The key assumptions of the delay-difference model are:
 
 - Growth in mean body weight Wa follows the linear relationship described by the
   Ford-Walford equation, $W_a = \alpha_g + \rho W_{a-1}$, where $W_a$ is derived from the von Bertalanffy growth parameters;
-- Knife edge selectivity, where all fish aged $k$ *y* and older are equally
-  vulnerable to the fishing gear, and knife-edged maturity at age $k$ *y*; and
-- Constant mortality at age.
+- Knife edge selectivity, where all fish aged $k$ and older are equally
+  vulnerable to the fishing gear, and knife-edged maturity at age $k$; and
+- Constant mortality $M$ at age.
 
 The delay-difference model collapses all the equations needed to fully describe the population's age structure into equations for the total numbers ($N_t$) and biomass ($B_t$) at time $t$:
 
@@ -36,9 +36,9 @@ where $S$ is survival, given by
 
 where $M$ is natural mortality rate; $F$ is the estimated instantaneous fishing mortality rate; $\alpha_g$ and $\rho_g$ are the intercept and slope of the Ford-Walford equation, for all ages > $k$, where $k$ is the age at which fish are assumed to become fully vulnerable to fishing; $w_k$ is the weight at $k$; and $R_t$ is the assumed stock-recruit function, here constrained to conform to a Beverton-Holt function with $a$ and $b$ the constants of this equation (Eq. \@ref(eq:ddrt)). For both 5ABCD and 3CD stocks, it is assumed that recruitment to the fishery, survey and spawning stock occurs at age 2 y (i.e., $k$ = 2 *y*), as assumed by @sinclair2001, @sinclair2005 and @forrest2013.
 
-A list of model parameters is given in Table \@ref(tab:tab-param-list). Equilibrium and dynamic equations are given in Sections \@ref(summary of equilibrium-equations-for-the-delay-difference-model) and \@ref(time-dynamic-equations-and-likelihood-components-for-the-delay-difference-model). Variance parameters and components of the objective function are given in are given in Section \@ref(time-dynamic-equations-and-likelihood-components-for-the-delay-difference-model). Leading estimated
+A list of model parameters is given in Table \@ref(tab:tab-param-list). Equilibrium and dynamic equations are given in Sections \@ref(summary-of-equilibrium-equations-for-the-delay-difference-model) and \@ref(time-dynamic-equations-and-likelihood-components-for-the-delay-difference-model). Variance parameters and components of the objective function are given in are given in Section \@ref(time-dynamic-equations-and-likelihood-components-for-the-delay-difference-model). Leading estimated
 parameters are shown in bold type in Table \@ref(tab:tab-param-list). Fixed parameter values
-and prior probability distributions are given in the description of the Reference Case models (Section \@ref(reference-case-models).
+and prior probability distributions are given in the description of the Reference Case models (Section \@ref(reference-case-models)).
 
 To avoid the assumption that the stocks were at equilibrium in 1956, @forrest2013 used the same approach as an age-structured model for initializing numbers in the first year. The same approach was used here (Eq. \@ref(eq:ddn1)). 
 
@@ -51,15 +51,15 @@ Models were fit to observed catch data, observed mean weight data and fishery-in
 
 The objective function in the delay-difference model contained five major components:
 
-- the negative log-likelihood for the relative abundance data
-- the negative log-likelihood for the catch data
-- the negative log-likelihood for the mean weight data
-- the prior distributions for model parameters
+- the negative log-likelihood for the relative abundance data;
+- the negative log-likelihood for the catch data;
+- the negative log-likelihood for the mean weight data;
+- the prior distributions for model parameters;
 - three penalty functions that:
-  - constrain the estimates of annual recruitment to conform to a
+>  i. constrain the estimates of annual recruitment to conform to a
     Beverton-Holt stock-recruit function (Eq. \@ref(eq:ddrt));
-  - weakly constrain the log recruitment deviations to a normal distribution ($\sim N(0,2)$);
-  - very weakly constrain estimates of log fishing mortality to a normal
+>  ii. weakly constrain the log recruitment deviations to a normal distribution ($\sim N(0,2)$);
+>  iii. very weakly constrain estimates of log fishing mortality to a normal
     distribution ($\sim N(ln(0.2), 4.0)$), to prevent estimates of catch
     from exceeding estimated biomass.
 
@@ -68,20 +68,19 @@ objective function.
 
 ## INDICES OF ABUNDANCE
 
-The abundance indices (Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization)) were treated as relative abundance indices, assumed to be directly proportional to the biomass with lognormal errors. The survey scaling (catchability) parameter for each survey $q_j$ was treated as an uncertain parameter, with the conditional maximum posterior density (MPD) estimate of $q_j$ used in the objective function (Eq. \@ref(eq(ddljt)), where the parameter
-$j_z$ represents the maximum likelihood estimate of $ln(j_q)$, conditional on other model parameters, with $n_j$ the number of observations in index $j$ [@walters1994; Eqs. \@ref(eq(ddzjt)--\@ref(eq(dddjt)].
+The fishery-independent and -dependent abundance indices (Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization)) were treated as relative abundance indices, assumed to be directly proportional to the biomass with lognormal errors. The survey scaling (catchability) parameter $q_j$ for each survey $j$ was treated as an uncertain parameter, with the conditional maximum posterior density (MPD) estimate of $q_j$ used in the objective function (Eq. \@ref(eq:ddljt), where the parameter $j_z$ represents the maximum likelihood estimate of $ln(j_q)$, conditional on other model parameters, with $n_j$ the number of observations in index $j$ [@walters1994; Eqs. \@ref(eq:ddzjt)--\@ref(eq:dddjt)].
 
 ## CATCH DATA
 
-The model was conditioned on total catch, with annual log fishing mortality rates for the bottom trawl fishery estimated directly. Estimated fishing mortality rates ($F_t$) were then used to predict catch using the Baranov catch equation (Eq. \@ref(eq(ddzjt)). Log residuals (Eq. \@ref(eq(dddct)) were assumed to be normally distributed with fixed standard deviation $\sigma_C$ (Eq. \@ref(eq(ddclt)).
+The model was conditioned on total catch, with annual log fishing mortality rates for the bottom trawl fishery estimated directly. Estimated fishing mortality rates ($F_t$) were then used to predict catch using the Baranov catch equation (Eq. \@ref(eq:ddzjt)). Log residuals (Eq. \@ref(eq:dddct)) were assumed to be normally distributed with fixed standard deviation $\sigma_C$ (Eq. \@ref(eq:ddclt)).
 
 ### MEAN WEIGHT
 
-Predicted annual mean weight ($\hat{\bar{W}}_t$) was calculated using Eq. \@ref(eq(ddwt). Log residuals (Eq. \@ref(eq(dddwt)) were assumed to be normally distributed with fixed standard deviation $\sigma_W$ (Eq. \@ref(eq(ddwlt)).
+Predicted annual mean weight ($\hat{\bar{W}}_t$) was calculated using Eq. \@ref(eq:ddwt). Log residuals (Eq. \@ref(eq:dddwt)) were assumed to be normally distributed with fixed standard deviation $\sigma_W$ (Eq. \@ref(eq:ddwlt)).
 
 ## RECRUITMENT
 
-Bias-corrected annual recruitment (Eq. \@ref(eq(ddrt)) was estimated as the product of estimated mean unfished recruitment ($R_{0}$) and estimated annual deviations ($\omega_t$), with both parameters estimated in log space. Predicted recruits ($\hat{R}_t$) were assumed to come from Beverton-Holt stock-recruit function. Log recruitment residuals (Eq. \@ref(eq(dddrt)) were assumed to be normally distributed with standard deviation $\sigma_R$ (Eq. \@ref(eq(ddrlt)).
+Bias-corrected annual recruitment (Eq. \@ref(eq:ddrt)) was estimated as the product of estimated mean unfished recruitment ($R_{0}$) and estimated annual deviations ($\omega_t$), with both parameters estimated in log space. Predicted recruits ($\hat{R}_t$) were assumed to come from Beverton-Holt stock-recruit function. Log recruitment residuals (Eq. \@ref(eq:dddrt)) were assumed to be normally distributed with standard deviation $\sigma_R$ (Eq. \@ref(eq:ddrlt)).
 
 @sinclair2005 included an environmental correlate into the stock-recruit relationship, linking recruitment anomalies to Prince Rupert Sea Level anomalies (after @sinclair2005-2). @sinclair2005 reported that the effect of including the environmental correlate made very little difference to estimates of biomass. Unpublished analyses by the authors of the current assessment suggested that model estimates of biomass and recruitment were most strongly influenced by catch and commercial annual mean weight data; and that
 incorporating a parameter relating the stock-recruit function to an updated time series of air pressure adjusted Prince Rupert sea level data (@forrest2013, their Figure 55) simply resulted in a shift in estimated recruitment anomalies, resulting in almost identical estimates of biomass and recruits. For this reason, the current assessment does not incorporate the Prince Rupert sea level data for Area 5ABCD.
@@ -91,80 +90,28 @@ incorporating a parameter relating the stock-recruit function to an updated time
 Variance components of the delay-difference model implemented within the iScam modelling framework [@martell2011] were partitioned using an errors in variables approach. The key variance parameter is the inverse of the total variance $\phi^{-2}$ (i.e., total precision). This parameter can be fixed or
 estimated, and was fixed here. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation error [@punt1993, @deriso2007].
 
-The equation for the observation error component of the total variance ($\sigma_O$) is given in Eq. \@ref(eq(ddsigo), while the process error term, $\sigma_R$ is given in Eq. \@ref(eq(ddsigo). The process error term ($\sigma_R$) enters the objective function in the log likelihood function for the recruitment residuals (Eq. \@ref(eq(ddrlt)). In cases when the index of abundance data are informative about absolute abundance (e.g.,an acoustic survey), one or both of these parameters, $\phi^{-2}$ and $\rho$, may be estimable. In practice, however, one or both of these parameters usually must be fixed.
+The equation for the observation error component of the total variance ($\sigma_O$) is given in Eq. \@ref(eq:ddsigo), while the process error term, $\sigma_R$ is given in Eq. \@ref(eq:ddsigo). The process error term ($\sigma_R$) enters the objective function in the log likelihood function for the recruitment residuals (Eq. \@ref(eq:ddrlt)). In cases when the index of abundance data are informative about absolute abundance (e.g.,an acoustic survey), one or both of these parameters, $\phi^{-2}$ and $\rho$, may be estimable. In practice, however, one or both of these parameters usually must be fixed.
 
-The overall observation error term $\sigma_O$ influences the fit to all indices of abundance through its contribution to $\sigma_{j,t}$, the standard deviation of log observation residuals for each index $j$ in survey year $t$ in the log-likelihood function (Eq. \@ref(eq(ddljt)). For a theoretical assessment with only one
-index of abundance with equally weighted observations, $\sigma_{j,t}$ would be
-equal to $\sigma_O$ for all observations. Commonly, however, there are multiple
-surveys available. Within a given survey, annual coefficients of variation
-($CV_{j,t}$) for each observation may also differ from year to year, due to
-annual sampling differences (e.g., sample size, spatial effects, etc.). It is
-therefore desirable to weight each observation according to its $CV_{j,t}$,
-where a low $CV_{j,t}$ for a given observation gives it a higher weight (and
-lower standard deviation in the objective function). This is implemented
-multiplicatively using Eq. XX, where the $c_{j,t}$ term allows each observation
-to be weighted relative to the total observation error $\sigma_O$. In this
-case, $c_{j,t}$ is simply obtained from the inverse of $CV_{j,t}$ (Eq. XX). For
-consistency with the use of an overall observation error term applied to all
-indices of abundance, the vector of $c_{j,t}$ terms was normalized across all
-surveys by dividing by the mean value of $c_{j,t}$. This choice had the effect
+The overall observation error term $\sigma_O$ influences the fit to all indices of abundance through its contribution to $\sigma_{j,t}$, the standard deviation of log observation residuals for each index $j$ in survey year $t$ in the log-likelihood function (Eq. \@ref(eq:ddljt)). For a theoretical assessment with only one index of abundance with equally weighted observations, $\sigma_{j,t}$ would be equal to $\sigma_O$ for all observations. Commonly, however, there are multiple surveys available. Within a given survey, annual coefficients of variation ($CV_{j,t}$) for each observation may also differ from year to year, due to annual sampling differences (e.g., sample size, spatial effects, etc.). It is therefore desirable to weight each observation according to its $CV_{j,t}$,where a low $CV_{j,t}$ for a given observation gives it a higher weight (and lower standard deviation in the objective function). This is implemented multiplicatively using Eqs. \@ref(eq:ddsigjt) and \@ref(eq:ddcjt), where the $c_{j,t}$ term allows each observation to be weighted relative to the total observation error $\sigma_O$. In this case, $c_{j,t}$ is simply obtained from the inverse of $CV_{j,t}$ (Eq. \@ref(eq:ddcjt)). For consistency with the use of an overall observation error term applied to all indices of abundance, the vector of $c_{j,t}$ terms was normalized across all surveys by dividing by the mean value of $c_{j,t}$. This had the effect
 weighting each survey observation consistently across all three datasets.
 
-In Eq. XX, annual coefficients of variation ($CV_{j,t}$) were derived from
-bootstrapping the swept area estimates for the Multispecies Assemblage and
-Synoptic Surveys, using the procedure described in Eqs.
-\@ref(eq:sweptareabiomass)--\@ref(eq:sweptareacv). Annual CVs were not available
-for the commercial CPUE data, which were obtained from a simple arithmetic
-approach described in Appendix XX. A CV of 0.25 was assumed for each
-observation in the commercial CPUE data. This was a subjective decision
-intended to allow the model to fit to the commercial CPUE data without
-overweighting them. Model sensitivity to this assumption was tested.
+For the fishery-independent survey indices, annual coefficients of variation ($CV_{j,t}$) were derived from
+bootstrapping the swept area estimates (Appendix \@ref(fishery-independent-indices-of-abundance)). For the commercial CPUE indices, annual coefficients of variation were derived from the GLMMs used to produce the indices (Appendix \@ref(commercial-cpue-standardization)).
 
-A number of authors have noted that there is little consensus on the best
-approach to managing the relative weighting of multiple survey indices, and
-that there is always a degree of subjectivity in the choice of weighting
-strategy (e.g., @francis2011, @mcallister2001). In particular, there is no
-objective means of deciding how well a model should fit to commercial CPUE data,
-given that there is no independent means of knowing the degree to which
-commercial CPUE data are proportional to the underlying biomass. Commercial
-fisheries do not sample populations randomly; catchability and selectivity
-are unlikely to be constant through time; and spatial effects can impact the
-underlying relationship between CPUE and abundance [@hilborn1992]. Surveys are
-assumed to be proportional to abundance by virtue of survey design, however
+A number of authors have noted that there is little consensus on the best approach to managing the relative weighting of multiple survey indices, and that there is always a degree of subjectivity in the choice of weighting strategy (e.g., @francis2011, @mcallister2001). In particular, there is no objective means of deciding how well a model should fit to commercial CPUE data, given that there is no independent means of knowing the degree to which commercial CPUE data are proportional to the underlying biomass. Commercial
+fisheries do not sample populations randomly; catchability and selectivity are unlikely to be constant through time; and spatial effects can impact the underlying relationship between CPUE and abundance [@hilborn1992]. Surveys are assumed to be proportional to abundance by virtue of survey design, however
 this assumption too can be vulnerable to various effects.
 
-@francis2011 reviewed some approaches to weighting abundance indices in
-fisheries stock assessment and advised against subjective down-weighting of
-commercial CPUE data. He described a two-stage approach to weighting some or
-all of the datasets with the intention of making data weights more consistent
-with model output, i.e., satisfying a statistical fit criterion. He proposed
-a survey-specific weighting term, set so that the standard deviation of
-normalized Pearson residuals (SDNR) for each index of abundance dataset is
-equal to about 1.0 [@francis2011].
+@francis2011 reviewed some approaches to weighting abundance indices in fisheries stock assessment and advised against subjective down-weighting of commercial CPUE data. He described a two-stage approach to weighting some or all of the datasets with the intention of making data weights more consistent
+with model output, i.e., satisfying a statistical fit criterion. He proposed a survey-specific weighting term, set so that the standard deviation of normalized Pearson residuals (SDNR) for each index of abundance dataset is equal to about 1.0 [@francis2011].
 
-In the current assessment, adopting an iterative re-weighting approach similar
-to that reported in @francis2011 would necessitate introducing a third,
-survey-specific weighting term to the calculation of $\sigma_{j,t}$. That is,
-$\sigma_{j,t}$ would be composed of $\sigma_O$, $c_{j,t}$, and a
-survey-specific weighting term $w_j$ that would bring SDNR close to 1.0
-@francis2011. Given that both $\sigma_O$ and the commercial CPUE $CV_{j,t}$
-terms were already fixed at subjectively-determined values, and that
-$c_{j,t}$ was already normalized across surveys, it seemed an unwarranted
-addition to introduce another fixed weighting term. @francis2011 stated that
-the overall goal is a stock assessment that fits all indices of abundance
-well, and that the SDNR provides a means of judging whether that is the
-case. However, expert judgment can also be employed [@mcallister2001].
-
-We present sensitivity analyses to the values of fixed variance parameters
-and suggest that an understanding of the impact of fixed variance assumptions
-on management advice for Pacific Cod can be obtained without an iterative
-re-weighting step.
+In the current assessment, adopting an iterative re-weighting approach similar to that reported in @francis2011 would necessitate introducing a third, survey-specific weighting term to the calculation of $\sigma_{j,t}$. That is, $\sigma_{j,t}$ would be composed of $\sigma_O$, $c_{j,t}$, and a survey-specific weighting term $w_j$ that would bring SDNR close to 1.0 @francis2011. Given that both $\sigma_O$ and the commercial CPUE $CV_{j,t}$ terms were already fixed at subjectively-determined values, and that
+$c_{j,t}$ was already normalized across surveys, it seemed an unwarranted addition to introduce another fixed weighting term. @francis2011 stated that the overall goal is a stock assessment that fits all indices of abundance well, and that the SDNR provides a means of judging whether that is the case. However, expert judgment can also be employed [@mcallister2001]. We present sensitivity analyses to the values of fixed variance parameters (Section \@ref(sensitivity-analyses)) and suggest that an understanding of the impact of fixed variance assumptions on management advice for Pacific Cod can be obtained without an iterative re-weighting step.
 
 ```{r tab-param-list, fig.pos="H"}
 model.param.desc.table(cap = paste0("List of parameters for the delay-difference model.",
                                     "Estimated (or fixed) leading parameters are highlighted ",
-                                    "in bold type. See Tables XX-XX for derivation of ",
-                                    "other parameters."))
+                                    "in bold type."))
 ```
 
 ## SUMMARY OF EQUILIBRIUM EQUATIONS FOR THE DELAY-DIFFERENCE MODEL
@@ -257,7 +204,7 @@ Survival rate:
 Initial numbers at age calculations:
 
 \begin{equation}
-\left\{ \begin{array}{l}{N_{2,1}} = {R_{Avg}}{e^{{\omega _1}}}\quad \quad \quad \quad \quad \quad \quad \quad a = 2\\{N_{a,1}} = \left( {{R_{AvgInit}}{e^{\omega Ini{t_a}}}} \right){e^{ - M\left( {a - 2} \right)}} \quad 2 < a < A\\{N_{A,1}} = \frac{{\left( {{R_{AvgInit}}{e^{\omega Ini{t_A}}}} \right){e^{ - M\left( {A - 2} \right)}}}}{{\left( {1 - {e^{ - M}}} \right)}}\quad \quad a = A\end{array} \right\}
+\left\{ \begin{array}{l}{N_{2,1}} = {R_{0}}{e^{{\omega _1}}}\quad \quad \quad \quad \quad \quad \quad \quad a = 2\\{N_{a,1}} = \left( {{R_{0}}{e^{\omega Ini{t_a}}}} \right){e^{ - M\left( {a - 2} \right)}} \quad 2 < a < A\\{N_{A,1}} = \frac{{\left( {{R_{0}}{e^{\omega Ini{t_A}}}} \right){e^{ - M\left( {A - 2} \right)}}}}{{\left( {1 - {e^{ - M}}} \right)}}\quad \quad a = A\end{array} \right\}
 (\#eq:ddn1)
 \end{equation}
 
@@ -278,7 +225,7 @@ Biomass:
 Recruits:
 
 \begin{equation}
-{R_t} = {R_{Avg}}{e^{{\omega _t} - \frac{{\sigma _R^2}}{2}}}
+{R_t} = {R_{0}}{e^{{\omega _t} - \frac{{\sigma _R^2}}{2}}}
 (\#eq:ddrt)
 \end{equation}
 
