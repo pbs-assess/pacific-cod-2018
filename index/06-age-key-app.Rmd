@@ -49,13 +49,12 @@ We extracted, manipulated, and plotted biological data using the R package gfplo
 
 *TO DO. General: Improve fig and table captions. Improve figure spacing.*
 
-In this appendix we analyse length, maturity and available ageing data to update growth and maturity parameters. We also plot age-frequency data derived from an age-length key to visualise the probable age composition in survey and commercial catch data.
+In this appendix we analyse length, maturity, and available ageing data to update growth and maturity parameters. We also plot age-frequency data derived from an age-length key to visualise the probable age composition in survey and commercial catch data.
 
-## LENGTH, WEIGHT AND MATURITY SAMPLES
-
-Length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound, and West Coast Vancouver Island synoptic surveys were extracted from the GFBio database using the following criteria:
 
 ### SYNOPTIC SURVEY DATA
+
+We extracted length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound, and West Coast Vancouver Island synoptic surveys from the GFBio database using the following criteria:
 
 <!--
 We developed a package gfplot for the statistical software R to automate data
@@ -74,7 +73,7 @@ We extracted length, weight, and age data from the trawl surveys from the GFBio 
 
 1. `TRIP_SUB_TYPE_CODE` = 2 or 3: research trips.
 
-1. `SAMPLE_TYPE_CODE` = 1 or 2 or 7 or 8: random or total samples.
+1. `SAMPLE_TYPE_CODE` = 1, 2, 6, 7, or 8: include only samples that are of type 'random' or 'total'.
 
 1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, or 7: to eliminate samples sorted on unknown criteria.
 
@@ -173,7 +172,7 @@ x %>%
 
 ### COMMERCIAL FISHERY DATA
 
-Length and weight data from commercial bottom trawl vessels were extracted from the GFBio database, using the following criteria:
+We extracted length and weight data from commercial bottom trawl vessels from the GFBio database using the following criteria:
 
 1. `SPECIES_CODE` = 222: Pacific Cod.
 
@@ -181,13 +180,13 @@ Length and weight data from commercial bottom trawl vessels were extracted from 
 
 1. `GEAR_CODE` = 1: Bottom trawl.
 
-1. `SAMPLE_TYPE_CODE` = 1 or 2 or 6 or 7
+1. `SAMPLE_TYPE_CODE` = 1, 2, 6, 7, or 8: include only samples that are of type 'random' or 'total'.
 
 1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, or 7: to eliminate samples sorted on unknown criteria.
 
 1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2, 3: to extract sorted and unsorted samples but remove stomach content samples. 
 
-1. `SAMPLE_ID` not in 173726, 173740, 191471, 184243, 184159, 215903, or 223726: These samples were coded as Pacific Cod but have size composition inconsistent with the species. These species were therefore excluded from further analysis.
+1. `SAMPLE_ID` not in 173726, 173740, 191471, 184243, 184159, 215903, or 223726: these samples were coded as Pacific Cod but have size composition inconsistent with the species. These species were therefore excluded from further analysis.
 
 1. Fishing year: April 1 to March 31 based on `trip_start_date`.
 

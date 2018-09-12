@@ -34,8 +34,7 @@ monitoring. We have treated this modern dataset separately from the historic
 dataset to (1) take advantage of the higher data resolution, (2) include
 information on latitude and vessel ID in our standardization model, and (3) to
 avoid assuming a constant catchability and relationship between CPUE and the
-standardization covariates across large regulatory changes in 1996 (TODO insert
-details).
+standardization covariates across major regulatory changes.
 
 Since we have data on individual vessels for this modern fleet, and in keeping
 with previous analyses for Pacific groundfish stocks, we defined a 'fleet' for
@@ -71,15 +70,16 @@ we estimated separate catchabilities for each commercial CPUE index.
 
 ## A TWEEDIE GLMM INDEX STANDARDIZATION MODEL
 
-Fisheries CPUE data contains both zeros and positive continuous values.
-A variety of approaches have been used in the fishery literature to model such
-data. One approach has been to fit a delta-GLM (generalized linear model) ---
-a model that fits the zero vs. non-zero values with a logistic regression (a
+Fisheries CPUE data contains both zeros and positive continuous values. A
+variety of approaches have been used in the fishery literature to model such
+data. One approach has been to fit a delta-GLM (generalized linear model) --- a
+model that fits the zero vs. non-zero values with a logistic regression (a
 binomial GLM and a logit link) and the positive values with a linear regression
-fit to log-transformed data or a Gamma GLM with a log link (e.g. TODO-REFS). The
-probability of a non-zero CPUE from the first component can then be multiplied
-by the expected CPUE from the second component to derive an unconditional
-estimate of CPUE. However, this approach suffers from a number of issues:
+fit to log-transformed data or a Gamma GLM with a log link [e.g. @maunder2004a;
+@thorson2013]. The probability of a non-zero CPUE from the first component can
+then be multiplied by the expected CPUE from the second component to derive an
+unconditional estimate of CPUE. However, this approach suffers from a number of
+issues:
 
 1. The delta-GLM approach adds complexity by needing to fit and report on two
    models.
@@ -327,7 +327,7 @@ g2 <- make_catch_effort_ts_plot(dfleet_modern) +
 cowplot::plot_grid(g1, g2, ncol = 1)
 ```
 
-```{r, cpue-depth-hists, fig.asp=0.8, fig.cap="The depth distribution for fishing trips (top row) and fishing trawl events (bottom row) that caught Pacific Cod (blue) or did not catch Pacific Cod (red)."}
+```{r, cpue-depth-hists, fig.asp=0.8, fig.cap="The depth distribution for fishing trips (top row) and fishing trawl events (bottom row) that caught Pacific Cod or did not catch Pacific Cod."}
 g1 <- gg_cpue_modern$depth + ylab("Fishing event count") + xlab("Depth") +
   labs(fill = "Fishing event\ncaught\nPacific Cod") +
   theme(legend.position = c(0.95, 0.95), legend.background = element_rect(fill = "white"),
@@ -419,7 +419,9 @@ dfleet_modern %>% make_bubble_dat() %>%
   ggtitle("1996+ 5ABCD")
 ```
 
-```{r cpue-quantile-residuals, fig.asp=0.8, fig.cap="Histograms of randomized quantile residuals for the CPUE GLMM standardization models. The histograms illustrate the actual density distribution of 10,000 randomly selected randomized quantile residuals. The dashed lines show the probability density for a normal distribution with the same standard deviation."}
+(ref:caption-cpue-quantile-residuals) Histograms of randomized quantile residuals [@dunn1996] for the CPUE GLMM standardization models. The histograms illustrate the actual density distribution of 10,000 randomly selected randomized quantile residuals. The dashed lines show the probability density for a normal distribution with the same standard deviation.
+
+```{r cpue-quantile-residuals, fig.asp=0.8, fig.cap="(ref:caption-cpue-quantile-residuals)"}
 stopifnot(length(m_historic) == 12L)
 stopifnot(length(m_modern) == 16L)
 qr1 <- qres_tweedie(m_historic[[6]], "cpue")
@@ -550,7 +552,7 @@ make_cpue_ts_plot_noint <- function(dat) {
 }
 ```
 
-```{r cpue-int-test-plot, fig.asp=0.85, fig.cap="A comparison of CPUE timeseries standardized with a model that does not include locality-year (space-time) random effects (black/grey) and a model that does include the locality-year random effects (red)."}
+```{r cpue-int-test-plot, fig.asp=0.85, fig.cap="A comparison of CPUE timeseries standardized with a model that does not include locality-year (space-time) random effects (black/grey) and a model that does include the locality-year random effects (coloured)."}
 g1 <- make_cpue_ts_dat_noint(cpue_pred_hist) %>% make_cpue_ts_plot_noint() +
   ggtitle("1956-1995 CPUE")
 g2 <- make_cpue_ts_dat_noint(cpue_pred_modern) %>% make_cpue_ts_plot_noint() +
@@ -885,7 +887,7 @@ orig_dat <- select(x, yr, yr_ef) %>% unique() %>%
   rename(year = yr)
 ```
 
-```{r cpue-sim-test-tweedie-glmm-plot, fig.cap="An example simulation illustrating the effect of modelling or not modelling space-time interactions as random effects in a CPUE index standardization model. Left panel shows a scenario where the data were generated with the same trend for all localities in space. Right panel shows a scenario where the data were generated with space-time interactions. The red and blue lines and shaded regions represent estimated CPUE indices from models that allow for space-time interactions or do not allow for space-time interactions along with 95\\% confidence intervals. The dashed black line indicates the true mean CPUE for each year. All model and data combinations have correct 95\\% coverage except for the no-space-time-interactions model fitted to data that does have space-time interactions, which has 55\\% coverage. Note that the confidence intervals in the left panel are completely overlapping.", fig.asp=0.45}
+```{r cpue-sim-test-tweedie-glmm-plot, fig.cap="An example simulation illustrating the effect of modelling or not modelling space-time interactions as random effects in a CPUE index standardization model. Left panel shows a scenario where the data were generated with the same trend for all localities in space. Right panel shows a scenario where the data were generated with space-time interactions. The green and orange lines and shaded regions represent estimated CPUE indices from models that allow for space-time interactions or do not allow for space-time interactions along with 95\\% confidence intervals. The dashed black line indicates the true mean CPUE for each year. All model and data combinations have correct 95\\% coverage except for the no-space-time-interactions model fitted to data that does have space-time interactions, which has 55\\% coverage. Note that the confidence intervals in the left panel are completely overlapping.", fig.asp=0.45}
 pp <- left_join(pp, orig_dat, by = "year") %>%
   mutate(est_link = est_link - mean(est_link)) %>%
   ungroup() %>%
