@@ -335,10 +335,6 @@ make.parameters.est.table <- function(model,
   colnames(tab) <- col.names
 
   tab <- as.data.frame(tab)
-  if (!is.null(omit_pars)) {
-    tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
-  }
-
   tab$par <- row.names(tab)
   mon <- mcmc_monitor(base.model.5abcd)
   tab <- left_join(tab, mon, by = "par")
@@ -347,6 +343,9 @@ make.parameters.est.table <- function(model,
   names(tab) <- gsub("n_eff", "$n_{eff}$", names(tab))
   names(tab) <- gsub("Rhat", "$\\\\hat{R}$", names(tab))
 
+  if (!is.null(omit_pars)) {
+    tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
+  }
   knitr::kable(tab,
     caption = caption,
     align = get.align(ncol(tab))[-1],
