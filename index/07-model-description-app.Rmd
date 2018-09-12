@@ -438,7 +438,7 @@ Weighting term for index observations:
 
 \begin{equation}
 {c_{j,t}} = \frac{1}{{{\rm{C}}{{\rm{V}}_{j,t}}}}
- (\#eq:index-weighting)
+ (\#eq:ddcjt)
 \end{equation}
 
 **Indices of abundance**
