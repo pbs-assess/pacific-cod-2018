@@ -7,8 +7,10 @@ mcmc_monitor <- function(model) {
   dimnames(a)[3L] <- list(colnames(x))
   out <- as.data.frame(rstan::monitor(a, print = FALSE, warmup = 0))
   out$par <- row.names(out)
-  out %>% select(par, n_eff, Rhat) %>%
-    mutate(n_eff = round(n_eff, 0), Rhat = f(round(Rhat, 2), 2))
+  out %>% select(par, Rhat) %>%
+    mutate(
+      # n_eff = round(n_eff, 0),
+      Rhat = f(round(Rhat, 2), 2))
 }
 
 make.parameters.table <- function(model,
