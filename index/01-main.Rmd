@@ -148,14 +148,13 @@ Suggested reference points and benchmarks for both areas are provided in Table \
 The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics in terms of data choices, prior probability distributions and fixed parameter settings. For brevity both reference case models are described togetherin this section, with differences explained as necessary. The Bayesian delay-difference model is fully described in Appendix \@ref(delay-difference-model).
 
 The joint posterior distribution for each model was numerically approximated using the
-Markov Chain Monte Carlo routines built into AD Model Builder [@fournier2012]. Posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). We assessed consistency with chain convergence by visual inspection of trace plots and autocorrelation plots and through the potential scale reduction factor $\hat{R}$ and the effective sample size ($n_{eff}$).
+Markov Chain Monte Carlo routines built into AD Model Builder [@fournier2012]. Posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). We assessed consistency with chain convergence by visual inspection of trace plots and autocorrelation plots and through the potential scale reduction statistic $\hat{R}$.
 
-The potential scale reduction statistic ($\hat{R}$) [@gelman1992] is a common metric used in Bayesian statistics to assess chain convergence [@gelman2014; @hobbs2015]. The statistic measures the the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. As $\hat{R}$ approaches 1.0, the chains are consistent with convergence.
+The potential scale reduction statistic [@gelman1992] is a common metric used in Bayesian statistics to assess chain convergence [@gelman2014; @hobbs2015]. The statistic measures the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. As $\hat{R}$ approaches 1.0, the chains are consistent with convergence.
 
 In our case, we only had a single chain for each model run, but in following the advice of @gelman2014, we first divided the chain into two, effectively treating the first and second half as separate chains. Following the notation of @hobbs2015, we can calculate $\hat{R}$ for a given parameter $\theta$ as follows. For $j = 1, ..., m$ chains (two half chains here), we calculate the mean of the variances $w$ as:
 
 <!-- https://github.com/stan-dev/stan/blob/238faf42b556c007197c9faca20214ad9b37f0b2/src/docs/reference-manual/analysis.Rmd -->
-
 
 $$
 w = \frac { 1 } { m } \sum _ { j = 1 } ^ { m } \operatorname { var } \left( \theta_{ j } \right)
