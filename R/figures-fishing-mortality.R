@@ -45,7 +45,7 @@ f.plot <- function(models,
     scale_x_continuous(breaks = seq(0, 3000, 5))
 
   if(add.hist.ref){
-    if(is.na(lrp) | is.na(usr)){
+    if(is.na(lrp) || is.na(usr)){
       cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
     }else{
       cal <- f %>%

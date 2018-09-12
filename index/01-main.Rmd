@@ -150,87 +150,41 @@ The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics
 The joint posterior distribution for each model was numerically approximated using the
 Markov Chain Monte Carlo routines built into AD Model Builder [@fournier2012]. Posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). We assessed consistency with chain convergence by visual inspection of trace plots and autocorrelation plots and through the potential scale reduction factor $\hat{R}$ and the effective sample size ($n_{eff}$).
 
-The potential scale reduction statistic is a common metric used in Bayesian statistics to assess chain convergence. It measures the the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. In this case, we only had a single chain, but in following the advice of TODO and STAN REF, we first divided the chain into two before calculating it.
+The potential scale reduction statistic [@gelman1992] is a common metric used in Bayesian statistics to assess chain convergence [@gelman2014; @hobbs2015. It measures the the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. In this case, we only had a single chain, but in following the advice of @gelman2014, we first divided the chain into two, effectively treating the first and second half as separate chains.
 
 <!-- https://github.com/stan-dev/stan/blob/238faf42b556c007197c9faca20214ad9b37f0b2/src/docs/reference-manual/analysis.Rmd -->
 
-The *variance estimator* is a mixture of the within-chain and
-cross-chain sample variances,
+Following the notation of @hobbs2015, we can calculate $\hat{R}$ as follows. For $j = 1, ..., m$ chains (two half chains here), we calculate the mean of the variances $w$ as:
 
 $$
-\widehat{\mbox{var}}^{+}\!(\theta|y)
-= \frac{N-1}{N}\, W \, + \, \frac{1}{N} \, B.
+w = \frac { 1 } { m } \sum _ { j = 1 } ^ { m } \operatorname { var } \left( \theta_{ j } \right)
 $$
 
-Finally, the *potential scale reduction statistic* is defined by
+where the mean of each chain \(\theta_{j}\) is defined as
+$\theta_{j}=\frac{1}{K-1}\sum_{n=1}^{K}\left(\theta_{kj}-\overline{\theta}_{j}\right)^{2}$
+and across $k = 1, ..., K$ iterations.
+
+We then define the among-chain variance $b$ as:
 
 $$
-\hat{R}
-\, = \,
-\sqrt{\frac{\widehat{\mbox{var}}^{+}\!(\theta|y)}{W}}.
+b = \frac { K } { m - 1 } \sum _ { j = 1 } ^ { m } \left( \overline { \theta } _ { j } - \overline { \overline { \theta } } \right) ^ { 2 }
 $$
 
+where
+$\overline{\overline{\theta}}=\frac{1}{m}\sum_{j=1}^{m}\overline{\theta}_{j}$.
+The variance of a stationary distribution of $\theta$ is then a weighted mean:
 
-<!--
-rstan:::ess_rfun
-function (sims)
-{
-    if (is.vector(sims))
-        dim(sims) <- c(length(sims), 1)
-    chains <- ncol(sims)
-    n_samples <- nrow(sims)
-    acov <- lapply(1:chains, FUN = function(i) {
-        cov <- acf(sims[, i], lag.max = n_samples - 1, plot = FALSE,
-            type = c("covariance"))
-        cov$acf[, , 1]
-    })
-    acov <- do.call(cbind, acov)
-    chain_mean <- apply(sims, 2, mean)
-    mean_var <- mean(acov[1, ]) * n_samples/(n_samples - 1)
-    var_plus <- mean_var * (n_samples - 1)/n_samples
-    if (chains > 1)
-        var_plus <- var_plus + var(chain_mean)
-    rho_hat_sum <- 0
-    for (t in 2:nrow(acov)) {
-        rho_hat <- 1 - (mean_var - mean(acov[t, ]))/var_plus
-        if (is.nan(rho_hat))
-            rho_hat <- 0
-        if (rho_hat < 0)
-            break
-        rho_hat_sum <- rho_hat_sum + rho_hat
-    }
-    ess <- chains * n_samples
-    if (rho_hat_sum > 0)
-        ess <- ess/(1 + 2 * rho_hat_sum)
-    ess
-}
+$$
+\sigma _ { \theta } ^ { 2 } = \left( 1 - \frac { 1 } { K } \right) w + \frac { 1 } { K } b
+$$
 
-rstan:::split_rhat_rfun
-function (sims)
-{
-    if (is.vector(sims))
-        dim(sims) <- c(length(sims), 1)
-    chains <- ncol(sims)
-    n_samples <- nrow(sims)
-    half_n <- floor(n_samples/2)
-    idx_2nd <- n_samples - half_n + 1
-    split_chain_mean <- numeric(chains * 2)
-    split_chain_var <- numeric(chains * 2)
-    for (i in 1:chains) {
-        split_chain_mean[i] <- mean(sims[1:half_n, i])
-        split_chain_var[i] <- var(sims[1:half_n, i])
-        split_chain_mean[chains + i] <- mean(sims[idx_2nd:n_samples,
-            i])
-        split_chain_var[chains + i] <- var(sims[idx_2nd:n_samples,
-            i])
-    }
-    var_between <- half_n * var(split_chain_mean)
-    var_within <- mean(split_chain_var)
-    sqrt((var_between/var_within + half_n - 1)/half_n)
-}
--->
+and we can define the potential scale reduction factor as:
 
-ensured that R < 1.05 (the potential scale reduction factor), and that the effective sample size, as calculated by the rstan R package (45), was >200 for all parameters (
+$$
+\hat { R } = \sqrt { \frac { \sigma _ { \theta } ^ { 2 } } { w } }.
+$$
+
+If $\hat{R}$ is large, it is indicative that we need to increase the number of samples. As $\hat{R}$ approaches 1.0, the chains are consistent with convergence. We ensured that $\hat{R}<1.05$ for all parameters.
 
 ## DATA CHOICES
 

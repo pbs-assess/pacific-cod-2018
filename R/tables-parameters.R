@@ -7,8 +7,10 @@ mcmc_monitor <- function(model) {
   dimnames(a)[3L] <- list(colnames(x))
   out <- as.data.frame(rstan::monitor(a, print = FALSE, warmup = 0))
   out$par <- row.names(out)
-  out %>% select(par, n_eff, Rhat) %>%
-    mutate(n_eff = round(n_eff, 0), Rhat = f(round(Rhat, 2), 2))
+  out %>% select(par, Rhat) %>%
+    mutate(
+      # n_eff = round(n_eff, 0),
+      Rhat = f(round(Rhat, 2), 2))
 }
 
 make.parameters.table <- function(model,
@@ -384,7 +386,7 @@ make.ref.points.table <- function(model,
   }
 
   if(add.hist.ref){
-    if(is.na(lrp) | is.na(usr)){
+    if(is.na(lrp) || is.na(usr)){
       cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
     }else{
       bt <- model$mcmccalcs$sbt.quants
