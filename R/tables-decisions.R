@@ -10,24 +10,24 @@ decision.table <- function(models,
   dat <- as.data.frame(matrix(NA,
                               ncol = 6,
                               nrow = length(tac)))
-  colnames(dat) <- c("$TAC$",
-                     "$P(B_{2019}<B_{2018})$",
-                     "$P(F_{2018}<F_{2017})$",
-                     #"$P(B_{2019}<B_{0.8B_{MSY}})$",
-                     #"$P(B_{2019}<B_{0.4B_{MSY}})$",
-                     #"$P(F_{2018}>F_{MSY})$",
-                     "$P(B_{2019}<B_{min}}$)",
-                     "$P(B_{2019}<B_{AVG})$",
-                     "$P(F_{2018}>F_{AVG})$")
-  ## colnames(dat) <- c("TAC",
-  ##                    "P(B2019<B2018)",
-  ##                    "P(F2018>F2017)",
-  ##                    #"P(B2019<0.8BMSY)",
-  ##                    #"P(B2019<0.4BMSY)",
-  ##                    #"P(F2018>FMSY)",
-  ##                    "P(B2019<Bmin)",
-  ##                    "P(B2019<BAvg)",
-  ##                    "P(F2018>FAvg)")
+  # colnames(dat) <- c("$TAC$",
+  #                    "$P(B_{2019} LESS THAN B_{2018})$",
+  #                    "$P(F_{2018} LESS THAN  F_{2017})$",
+  #                    #"$P(B_{2019}<B_{0.8B_{MSY}})$",
+  #                    #"$P(B_{2019}<B_{0.4B_{MSY}})$",
+  #                    #"$P(F_{2018}>F_{MSY})$",
+  #                    "$P(B_{2019} LESS THAN B_{min}}$)",
+  #                    "$P(B_{2019} LESS THAN B_{AVG})$",
+  #                    "$P(F_{2018} MORE THAN F_{AVG})$")
+  colnames(dat) <- c("TAC",
+                     "P(B2019<B2018)",
+                     "P(F2018>F2017)",
+                     #"P(B2019<0.8BMSY)",
+                     #"P(B2019<0.4BMSY)",
+                     #"P(F2018>FMSY)",
+                     "P(B2019<Bmin)",
+                     "P(B2019<BAvg)",
+                     "P(F2018>FAvg)")
 
   proj.dat <- data.frame()
   for(t in seq_along(tac)){
