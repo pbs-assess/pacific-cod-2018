@@ -5,6 +5,7 @@
 ```{r fig-map, fig.cap="Map of the management areas 5AB (Queen Charlotte Sound), 5CD (Hecate Strait), and 3CD (West Coast Vancouver Island)."}
 include_graphics("figure/Pcod_3CD5ABCDE_Pic.png")
 ```
+
 \clearpage
 
 ## CATCH: AREA 5ABCD
@@ -205,6 +206,8 @@ b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
            c(base.model.3cd.name, retro.names),
            depl = FALSE)
 ```
+
+\clearpage
 
 ## SENSITIVITY ANALYSES: AREA 5ABCD
 
