@@ -8,7 +8,8 @@ b.plot <- function(models,
                    tac_vector = 0,
                    burnin = 1000,
                    thin = 1,
-                   year_range = NULL
+                   year_range = NULL,
+                   probs = c(0.025, 0.975)
   ){
   ## lrp usr are year ranges (2-element vectors) to take the mean of
   ## the biomass for the reference points
@@ -39,9 +40,9 @@ b.plot <- function(models,
       as_tibble() %>%
       group_by(TAC, year) %>%
       summarise(
-        q05 = quantile(B, probs = 0.05),
+        q05 = quantile(B, probs = probs[[1]]),
         q50 = quantile(B, probs = 0.50),
-        q95 = quantile(B, probs = 0.95)
+        q95 = quantile(B, probs = probs[[2]])
       )
   }
 
