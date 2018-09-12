@@ -3,7 +3,13 @@ b.plot <- function(models,
                    depl = FALSE,
                    add.hist.ref = FALSE,
                    lrp = NA,
-                   usr = NA){
+                   usr = NA,
+                   proj_columns = NULL,
+                   tac_vector = 0,
+                   burnin = 1000,
+                   thin = 1,
+                   year_range = NULL
+  ){
   ## lrp usr are year ranges (2-element vectors) to take the mean of
   ## the biomass for the reference points
 
@@ -16,6 +22,27 @@ b.plot <- function(models,
     bt.quants <- lapply(models,
                         function(x){
                           x$mcmccalcs$sbt.quants})
+  }
+
+  if (!is.null(proj_columns)) {
+    m <- models[[1]]
+    stopifnot(all(tac_vector %in% unique(m$mcmc$proj$TAC)))
+    proj_dat <- dplyr::filter(m$mcmc$proj, TAC %in% tac_vector)
+    proj_dat <- proj_dat[,c("TAC", proj_columns),drop=FALSE]
+    proj_dat <- group_by(proj_dat, TAC) %>%
+      do(mcmc.thin(., burnin = burnin, thin = thin))
+    names(proj_dat) <- gsub("^B", "", names(proj_dat))
+    proj_dat <- reshape2::melt(proj_dat, id.vars = "TAC") %>%
+      mutate(year = as.numeric(as.character(variable))) %>%
+      select(-variable) %>%
+      rename(B = value) %>%
+      as_tibble() %>%
+      group_by(TAC, year) %>%
+      summarise(
+        q05 = quantile(B, probs = 0.05),
+        q50 = quantile(B, probs = 0.50),
+        q95 = quantile(B, probs = 0.95)
+      )
   }
 
   names(bt.quants) <- models.names
@@ -53,12 +80,29 @@ b.plot <- function(models,
   p <- ggplot(bt, aes(x = Year,
                        y = `Biomass (t)`,
                        ymin = `5%`,
-                       ymax = `95%`,
-                       fill = Sensitivity)) +
-    geom_ribbon(alpha = 0.2) +
-    geom_line(aes(color = Sensitivity),
-              size = 1) +
-    theme(legend.position = c(1, 1),
+                       ymax = `95%`))
+
+  if (is.null(proj_columns)) {
+    p <- p + geom_ribbon(alpha = 0.2, aes(fill = Sensitivity)) +
+      geom_line(aes(color = Sensitivity), size = 1)
+    if(!depl){
+      p <- p + geom_pointrange(data = bo,
+        size = 0.25,
+        position = position_dodge(width = horiz.offset),
+        mapping = aes(color = Sensitivity),
+        show.legend = FALSE)
+    }
+  } else {
+    p <- p + geom_ribbon(alpha = 0.2, fill = "grey30") +
+      geom_line(size = 1, colour = "grey30")
+    if(!depl){
+      p <- p + geom_pointrange(data = bo,
+        size = 0.25,
+        position = position_dodge(width = horiz.offset),
+        show.legend = FALSE)
+    }
+  }
+  p <- p + theme(legend.position = c(1, 1),
           legend.justification = c(1, 1),
           legend.title = element_blank()) +
     scale_y_continuous(labels = comma,
@@ -67,13 +111,7 @@ b.plot <- function(models,
     xlim(c(min(bt$Year - 1), NA)) +
     scale_x_continuous(breaks = seq(0, 3000, 5))
 
-  if(!depl){
-    p <- p + geom_pointrange(data = bo,
-                             size = 0.25,
-                             position = position_dodge(width = horiz.offset),
-                             mapping = aes(color = Sensitivity),
-                             show.legend = FALSE)
-  }
+
 
   if(!depl & add.hist.ref){
     if(is.na(lrp) || is.na(usr)){
@@ -105,6 +143,26 @@ b.plot <- function(models,
   if(length(models) == 1){
     p <- p + theme(legend.position = "none")
   }
+
+  if (!is.null(proj_columns)) {
+    p <- p +
+      geom_ribbon(data = proj_dat, aes(x = year, ymin = q05, ymax = q95,
+        fill = as.factor(TAC)),
+        inherit.aes = FALSE, alpha = 0.2) +
+      geom_line(data = proj_dat, aes(x = year, y = q50, colour = as.factor(TAC)),
+        inherit.aes = FALSE, lwd = 1, alpha = 1, lty = 1.2) +
+      scale_fill_viridis_d(end = 0.9) +
+      scale_colour_viridis_d(end = 0.9) +
+      theme(legend.position = c(0.90, 1), legend.title = element_text(size = 9, hjust = 0)) +
+      labs(fill = "TAC (t)", colour = "TAC (t)") +
+      geom_vline(xintercept = min(proj_dat$year), lty = 2, col = "grey80")
+  }
+
+  if (!is.null(year_range)) {
+    p <- p + scale_x_continuous(breaks = seq(year_range[[1]], year_range[[2]], 2))
+    p <- p + xlim(year_range)
+  }
+
   p
 }
 
