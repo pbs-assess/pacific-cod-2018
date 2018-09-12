@@ -2,33 +2,18 @@
 
 # DELAY-DIFFERENCE MODEL
 
-*TO DO: Update equation numbers. Replace references to RAvg an Rinit with R0.*
-
-The last assessment for Pacific Cod in QCS and Hecate Strait used a delay-difference model [@forrest2013]. delay-difference models represent an
-intermediate between aggregated surplus production models and fully
-age-structured models. The delay-difference structure tracks the effects of
-recruitment, survival and growth on biomass, without requiring a fully
-age-structured framework, and can perform well, as long as its major
-assumptions are met [@hilborn1992]. Difference equations, which allow for a
-time-delay between spawning and recruitment, are used to build population models
-in discrete time-steps (i.e., 1 year), in which the surviving biomass for
-next year is predicted from the surviving biomass from last year, after
-adjusting for growth and adding next year's recruitment. An advantage of delay
-difference models over simpler production models is that they do not assume
-constant recruitment over time.
+The last assessment for Pacific Cod in QCS and Hecate Strait used a delay-difference model [@forrest2013]. Essentially a delay-difference model is a collapsed age-structured model, subject to certain assumptions
+age-structured models. The delay-difference structure tracks the effects of recruitment, survival and growth on biomass, without requiring a fully age-structured framework. Difference equations, which allow for a time-delay between spawning and recruitment, are used to build the population model in discrete annual time-steps, in which the surviving biomass for next year is predicted from the surviving biomass from last year, afte adjusting for growth and adding recruitment. An advantage of delay-difference models over simpler production models is that they do not assume constant recruitment over time.
 
 The key assumptions of the delay-difference model are:
 
 - Growth in mean body weight Wa follows the linear relationship described by the
-  Ford-Walford equation, $W_a = \alpha_g + \rho W_{a-1}$;
-- Knife edge selectivity, i.e., all fish aged $k$ and older are equally
-  vulnerable to the fishing gear; and
-- Constant mortality at age, i.e., all fish aged $k$ and older have the same
-  mortality rate.
+  Ford-Walford equation, $W_a = \alpha_g + \rho W_{a-1}$, where $W_a$ is derived from the von Bertalanffy growth parameters;
+- Knife edge selectivity, where all fish aged $k$ *y* and older are equally
+  vulnerable to the fishing gear, and knife-edged maturity at age $k$ *y*; and
+- Constant mortality at age.
 
-The delay-difference model collapses all the equations needed to fully describe
-the population's age structure into equations for the total numbers ($N_t$) and
-biomass ($B_t$) at time $t$:
+The delay-difference model collapses all the equations needed to fully describe the population's age structure into equations for the total numbers ($N_t$) and biomass ($B_t$) at time $t$:
 
 \begin{equation}
   B_t = S_{t-1}(\alpha_g N_{t-1} + \rho_g B_{t-1}) + w_k R_t
@@ -49,62 +34,22 @@ where $S$ is survival, given by
   (\#eq:ddsurvival)
 \end{equation}
 
-where $M$ is natural mortality; $F$ is the estimated instantaneous fishing
-mortality rate; $\alpha_g$ and $\rho_g$ are the slope and intercept of the
-Ford-Walford equation, for all ages > $k$, where $k$ is the age at which
-fish are assumed to become fully vulnerable to fishing; $w_k$ is the weight
-at $k$; and $R_t$ is the assumed stock-recruit function, here constrained
-to conform to a Beverton-Holt form with $a$ and $b$ the constants of this
-equation (Eq. XX). It is here assumed that recruitment to the fishery,
-survey and spawning stock occurs at age 2 y (i.e., $k$ = 2y), as assumed by
-@sinclair2005.
+where $M$ is natural mortality rate; $F$ is the estimated instantaneous fishing mortality rate; $\alpha_g$ and $\rho_g$ are the intercept and slope of the Ford-Walford equation, for all ages > $k$, where $k$ is the age at which fish are assumed to become fully vulnerable to fishing; $w_k$ is the weight at $k$; and $R_t$ is the assumed stock-recruit function, here constrained to conform to a Beverton-Holt function with $a$ and $b$ the constants of this equation (Eq. \@ref(eq:ddrt)). For both 5ABCD and 3CD stocks, it is assumed that recruitment to the fishery, survey and spawning stock occurs at age 2 y (i.e., $k$ = 2 *y*), as assumed by @sinclair2001, @sinclair2005 and @forrest2013.
 
-A list of model parameters is given in Table XX. Equilibrium and dynamic
-equations are given in Tables XX and XX. Variance parameters and components
-of the objective function are given in Table XX. Leading estimated
-parameters are shown in bold type in Table XX. Fixed parameter values
-and prior probability distributions are given in the description of the
-candidate Base Case models.
+A list of model parameters is given in Table \@ref(tab:tab-param-list). Equilibrium and dynamic equations are given in Sections \@ref(summary of equilibrium-equations-for-the-delay-difference-model) and \@ref(time-dynamic-equations-and-likelihood-components-for-the-delay-difference-model). Variance parameters and components of the objective function are given in are given in Section \@ref(time-dynamic-equations-and-likelihood-components-for-the-delay-difference-model). Leading estimated
+parameters are shown in bold type in Table \@ref(tab:tab-param-list). Fixed parameter values
+and prior probability distributions are given in the description of the Reference Case models (Section \@ref(reference-case-models).
 
-@sinclair2005 initialized the model using an estimated ratio parameter that
-scaled the biomass in 1956 to unfished equilibrium biomass. This ratio was
-introduced to avoid the assumption that the stock was in an unfished
-equilibrium state in 1956. Two alternative means of initializing the model
-while avoiding the unfished equilibrium assumption are:
+To avoid the assumption that the stocks were at equilibrium in 1956, @forrest2013 used the same approach as an age-structured model for initializing numbers in the first year. The same approach was used here (Eq. \@ref(eq:ddn1)). 
 
-- to assume the stock was in an "equilibrium fished" state in 1956 using
-  equations XX-XX; or
-- use the same approach as an age-structured model for initializing numbers
-  in the first year (Eq. XX and XX). The latter alternative was selected
-  for the purposes of this assessment because it was assumed that stocks
-  were not at equilibrium in 1956.
-
-From 1956-2017, bias-corrected annual recruitments were estimated as the
-product of an estimated mean recruitment ($R_{Avg}$, estimated in log space)
-and bias-corrected annual log recruitment deviations ($\omega_t$), weakly
-constrained to a normal distribution with $\omega_t \sim N(0,2)$. A separate
-estimated log mean recruitment $ln(R_{Avg\_init})$ and estimated vector
-of eight years of log deviates (age 3--age 10; $\omega_{t\_init}$), with
-natural mortality used to calculate survival, was used to fill the first
-year of the numbers-at-age matrix (Eq. XX and XX). The number of fish in
-the first year was then calculated as the sum of numbers at age in the first
-year. For the years 1957-2013, annual numbers of fish ($N_t$) were calculated
-using delay-difference equations (Eq. XX). Biomass in the first year was
-calculated as the sum over ages of the product of numbers-at-age and the
-weight-at-age, with the latter derived from the von Bertlanffy growth
-parameters (Table XX). delay-difference equations were used to calculate
-annual biomass ($B_t$) for the years 1957-2014 (Eq. XX), with log recruitment
-anomalies in the 2014 projection year drawn from a normal distribution,
-i.e., $\omega_t \sim N(0,\sigma R)$.
+From 1956-2017, bias-corrected annual recruitments were estimated as the product of an estimated average unfished recruitment ($R_{0}$, estimated in log space) and bias-corrected annual log recruitment deviations ($\omega_t$), which were weakly constrained to a normal distribution with $\omega_t \sim N(0,2)$.  $ln(R_{0})$ and an estimated vector of eight years of log deviates (age 3--age 10; $\omega_{t\_init}$),  was used to fill the first year of the numbers-at-age matrix, with natural mortality used to calculate survival Eq. \@ref(eq:ddn1). The number of fish in the first year was then calculated as the sum of numbers at age in the first year Eq. \@ref(eq:ddnt). For the years 1957-2013, annual numbers of fish ($N_t$) were calculated using (Eq. \@ref(eq:ddnt)). Biomass in the first year was calculated as the sum over ages of the product of numbers-at-age and the weight-at-age (Eq. \@ref(eq:ddbt)), with the latter derived from the von Bertlanffy growth parameters (Table \@ref(tab:tab-param-list)). Delay-difference equations were used to calculate annual biomass ($B_t$) for the years 1957-2014 (Eq. \@ref(eq:ddbt)), with recruitment given by Eq. \@ref(eq:ddrt). Log recruitment anomalies in the 2018 projection year were drawn from a normal distribution, $\omega_t \sim N(0,\sigma R)$.
 
 ## CONDITIONING THE MODEL
-Models are fit to observed catch data, observed mean weight data and fishery-independent and -dependent indices of abundance.
+Models were fit to observed catch data, observed mean weight data and fishery-independent and -dependent indices of abundance.
 
 ## OBJECTIVE FUNCTION COMPONENTS
 
-Variance parameters and objective function components are listed in Table XX.
-The objective function in the delay-difference model contained five major
-components:
+The objective function in the delay-difference model contained five major components:
 
 - the negative log-likelihood for the relative abundance data
 - the negative log-likelihood for the catch data
@@ -112,92 +57,43 @@ components:
 - the prior distributions for model parameters
 - three penalty functions that:
   - constrain the estimates of annual recruitment to conform to a
-    Beverton-Holt stock-recruit function (Table eq XX)
-  - weakly constrain the log recruitment deviations to a normal distribution
-  - weakly constrain estimates of log fishing mortality to a normal
+    Beverton-Holt stock-recruit function (Eq. \@ref(eq:ddrt));
+  - weakly constrain the log recruitment deviations to a normal distribution ($\sim N(0,2)$);
+  - very weakly constrain estimates of log fishing mortality to a normal
     distribution ($\sim N(ln(0.2), 4.0)$), to prevent estimates of catch
-    from exceeding estimated biomass
+    from exceeding estimated biomass.
 
-Tests showed the model was insensitive to changes in the penalty function
-parameters, indicating that the other likelihood components and prior
-probability distributions were the most important contributors to the
+Tests showed the model was insensitive to changes in the penalty function parameters, indicating that the other likelihood components and prior probability distributions were the most important contributors to the
 objective function.
 
 ## INDICES OF ABUNDANCE
 
-The abundance indices were treated as relative abundance indices, assumed to be
-directly proportional to the biomass with lognormal errors. The survey
-catchability parameter for each survey $q_j$ was treated as an uncertain
-parameter, with the conditional maximum posterior density (MPD) estimate of
-$q_j$ used in the objective function (Eqs. XX-XX). In Eq. XX, the parameter
-$j_z$ represents the maximum likelihood estimate of $ln(j_q)$, conditional on
-other model parameters, with $n_j$ the number of observations in index $j$
-[@walters1994].
+The abundance indices (Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization)) were treated as relative abundance indices, assumed to be directly proportional to the biomass with lognormal errors. The survey scaling (catchability) parameter for each survey $q_j$ was treated as an uncertain parameter, with the conditional maximum posterior density (MPD) estimate of $q_j$ used in the objective function (Eq. \@ref(eq(ddljt)), where the parameter
+$j_z$ represents the maximum likelihood estimate of $ln(j_q)$, conditional on other model parameters, with $n_j$ the number of observations in index $j$ [@walters1994; Eqs. \@ref(eq(ddzjt)--\@ref(eq(dddjt)].
 
 ## CATCH DATA
 
-The model was conditioned on total catch, with annual log fishing mortality
-rates for the bottom trawl fishery estimated directly. Estimated fishing
-mortality rates ($F_t$) were then used to predict catch using the Baranov catch
-equation (Eq. XX). Log residuals (Eq. XX) were assumed to be normally
-distributed with fixed standard deviation $\sigma_C$ (Eq. XX).
+The model was conditioned on total catch, with annual log fishing mortality rates for the bottom trawl fishery estimated directly. Estimated fishing mortality rates ($F_t$) were then used to predict catch using the Baranov catch equation (Eq. \@ref(eq(ddzjt)). Log residuals (Eq. \@ref(eq(dddct)) were assumed to be normally distributed with fixed standard deviation $\sigma_C$ (Eq. \@ref(eq(ddclt)).
 
 ### MEAN WEIGHT
 
-Predicted annual mean weight ($\hat{\bar{W}}_t$) was calculated using
-Eq. XX. Log residuals (Eq. XX) were assumed to be normally distributed with
-fixed standard deviation $\sigma_W$ (Eq. XX).
+Predicted annual mean weight ($\hat{\bar{W}}_t$) was calculated using Eq. \@ref(eq(ddwt). Log residuals (Eq. \@ref(eq(dddwt)) were assumed to be normally distributed with fixed standard deviation $\sigma_W$ (Eq. \@ref(eq(ddwlt)).
 
 ## RECRUITMENT
 
-Bias-corrected annual recruitment (Eq. XX) was estimated as the product of
-estimated mean recruitment ($R_{Avg}$) and estimated annual deviations
-($\omega_t$), with both parameters estimated in log space. Predicted recruits
-($\hat{R}_t$) were assumed to come from Beverton-Holt stock-recruit function
-(Eq. XX). Log recruitment residuals (Eq. XX) were assumed to be normally
-distributed with standard deviation $\sigma_R$ (Eq. XX).
+Bias-corrected annual recruitment (Eq. \@ref(eq(ddrt)) was estimated as the product of estimated mean unfished recruitment ($R_{0}$) and estimated annual deviations ($\omega_t$), with both parameters estimated in log space. Predicted recruits ($\hat{R}_t$) were assumed to come from Beverton-Holt stock-recruit function. Log recruitment residuals (Eq. \@ref(eq(dddrt)) were assumed to be normally distributed with standard deviation $\sigma_R$ (Eq. \@ref(eq(ddrlt)).
 
-@sinclair2005 included an environmental correlate into the stock-recruit
-relationship, linking recruitment anomalies to Prince Rupert Sea Level
-anomalies (after @sinclair2005-2). @sinclair2005 reported that the effect
-of including the environmental correlate made very little difference to
-estimates of biomass. Unpublished analyses by the authors of the current
-assessment suggested that model estimates of biomass and recruitment were most
-strongly influenced by catch and commercial annual mean weight data; and that
-incorporating a parameter relating the stock-recruit function to an updated
-time series of air pressure adjusted Prince Rupert sea level data (Figure XX)
-simply resulted in a shift in estimated recruitment anomalies, resulting in
-almost identical estimates of biomass and recruits. For this reason, the
-present assessment does not incorporate the Prince Rupert sea level data.
-A comprehensive re-analysis of alternative hypotheses for drivers of
-productivity for Pacific Cod recruitment, including re-evaluation of the
-relationship between Prince Rupert sea level and recruitment is recommended
-as a future research priority.
+@sinclair2005 included an environmental correlate into the stock-recruit relationship, linking recruitment anomalies to Prince Rupert Sea Level anomalies (after @sinclair2005-2). @sinclair2005 reported that the effect of including the environmental correlate made very little difference to estimates of biomass. Unpublished analyses by the authors of the current assessment suggested that model estimates of biomass and recruitment were most strongly influenced by catch and commercial annual mean weight data; and that
+incorporating a parameter relating the stock-recruit function to an updated time series of air pressure adjusted Prince Rupert sea level data (@forrest2013, their Figure 55) simply resulted in a shift in estimated recruitment anomalies, resulting in almost identical estimates of biomass and recruits. For this reason, the current assessment does not incorporate the Prince Rupert sea level data for Area 5ABCD.
 
 ## VARIANCE COMPONENTS AND WEIGHTING OF INDEX DATA
 
-Variance components of the delay-difference model implemented within the
-iScam modelling framework [@martell2011] were partitioned using an errors in
-variables approach. The key variance parameter is the inverse of the total
-variance $\phi^{-2}$ (i.e., total precision). This parameter can be fixed or
-estimated, and was fixed here. The total variance is partitioned into
-observation and process error components by the model parameter $\rho$, which
-represents the proportion of the total variance that is due to observation
-error [@punt1993, @deriso2007].
+Variance components of the delay-difference model implemented within the iScam modelling framework [@martell2011] were partitioned using an errors in variables approach. The key variance parameter is the inverse of the total variance $\phi^{-2}$ (i.e., total precision). This parameter can be fixed or
+estimated, and was fixed here. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation error [@punt1993, @deriso2007].
 
-The equation for the observation error component of the total variance
-($\sigma_O$) is given in Eq. XX, while the process error term, $\sigma_R$ is
-given in Eq. XX. The process error term  R enters the objective function in the
-log likelihood function for the recruitment residuals (Eq. XX). In cases when
-the index of abundance data are informative about absolute abundance (e.g.,
-an acoustic survey), one or both of these parameters, $\phi^{-2}$ and $\rho$,
-may be estimable. In practice, however, one or both of these parameters usually
-must be fixed.
+The equation for the observation error component of the total variance ($\sigma_O$) is given in Eq. \@ref(eq(ddsigo), while the process error term, $\sigma_R$ is given in Eq. \@ref(eq(ddsigo). The process error term ($\sigma_R$) enters the objective function in the log likelihood function for the recruitment residuals (Eq. \@ref(eq(ddrlt)). In cases when the index of abundance data are informative about absolute abundance (e.g.,an acoustic survey), one or both of these parameters, $\phi^{-2}$ and $\rho$, may be estimable. In practice, however, one or both of these parameters usually must be fixed.
 
-The overall observation error term $\sigma_O$ influences the fit to all indices
-of abundance through its contribution to $\sigma_{j,t}$, the standard deviation
-of log observation residuals for each index $j$ in survey year $t$ in the
-log-likelihood function (Eq. XX). For a theoretical assessment with only one
+The overall observation error term $\sigma_O$ influences the fit to all indices of abundance through its contribution to $\sigma_{j,t}$, the standard deviation of log observation residuals for each index $j$ in survey year $t$ in the log-likelihood function (Eq. \@ref(eq(ddljt)). For a theoretical assessment with only one
 index of abundance with equally weighted observations, $\sigma_{j,t}$ would be
 equal to $\sigma_O$ for all observations. Commonly, however, there are multiple
 surveys available. Within a given survey, annual coefficients of variation
