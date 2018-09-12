@@ -56,6 +56,7 @@ The objective function in the delay-difference model contained five major compon
 - the negative log-likelihood for the mean weight data;
 - the prior distributions for model parameters;
 - three penalty functions that:
+
 >  i. constrain the estimates of annual recruitment to conform to a
     Beverton-Holt stock-recruit function (Eq. \@ref(eq:ddrt));
     
@@ -110,11 +111,15 @@ with model output, i.e., satisfying a statistical fit criterion. He proposed a s
 In the current assessment, adopting an iterative re-weighting approach similar to that reported in @francis2011 would necessitate introducing a third, survey-specific weighting term to the calculation of $\sigma_{j,t}$. That is, $\sigma_{j,t}$ would be composed of $\sigma_O$, $c_{j,t}$, and a survey-specific weighting term $w_j$ that would bring SDNR close to 1.0 @francis2011. Given that both $\sigma_O$ and the commercial CPUE $CV_{j,t}$ terms were already fixed at subjectively-determined values, and that
 $c_{j,t}$ was already normalized across surveys, it seemed an unwarranted addition to introduce another fixed weighting term. @francis2011 stated that the overall goal is a stock assessment that fits all indices of abundance well, and that the SDNR provides a means of judging whether that is the case. However, expert judgment can also be employed [@mcallister2001]. We present sensitivity analyses to the values of fixed variance parameters (Section \@ref(sensitivity-analyses)) and suggest that an understanding of the impact of fixed variance assumptions on management advice for Pacific Cod can be obtained without an iterative re-weighting step.
 
+\clearpage
+
 ```{r tab-param-list, fig.pos="H"}
 model.param.desc.table(cap = paste0("List of parameters for the delay-difference model.",
                                     "Estimated (or fixed) leading parameters are highlighted ",
                                     "in bold type."))
 ```
+
+\clearpage
 
 ## SUMMARY OF EQUILIBRIUM EQUATIONS FOR THE DELAY-DIFFERENCE MODEL
 
@@ -191,6 +196,8 @@ Equilibrium long-term yield at $F_e$:
 {Y_e} = {B_e}\frac{{{F_e}}}{{\left( {{F_e} + M} \right)}}\left( {1 - {e^{ - \left( {{F_e} + M} \right)}}} \right)
 (\#eq:ddye)
 \end{equation}
+
+\clearpage
 
 ## TIME-DYNAMIC EQUATIONS AND LIKELIHOOD COMPONENTS FOR THE DELAY-DIFFERENCE MODEL
 
