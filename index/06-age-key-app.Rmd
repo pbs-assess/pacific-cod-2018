@@ -39,6 +39,8 @@ total_survey_lengths <- gfplot::tidy_lengths_raw(x,
 
 # ANALYSIS OF BIOLOGICAL DATA
 
+We extracted, manipulated, and plotted biological data using the R package gfplot (TODO-REF).
+
 *TO DO: Synoptic survey data section: Add query details for length data (survey and comm). Or maybe here is where description of gfplot goes. *
 
 *TO DO: Commercial fishery data section: Tabulate criteria for commercial data below. Not really clear what it means. See main body and Appendix C of 2013 assessment and update with recent modifications if any.*
@@ -47,19 +49,58 @@ total_survey_lengths <- gfplot::tidy_lengths_raw(x,
 
 *TO DO. General: Improve fig and table captions. Improve figure spacing.*
 
-
 In this appendix we analyse length, maturity and available ageing data to update growth and maturity parameters. We also plot age-frequency data derived from an age-length key to visualise the probable age composition in survey and commercial catch data.
-
 
 ## LENGTH, WEIGHT AND MATURITY SAMPLES
 
-### SYNOPTIC SURVEY DATA
-Length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island synoptic surveys were extracted from the GFBio database using the following criteria in SQL queries ... *TO DO*
+Length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound, and West Coast Vancouver Island synoptic surveys were extracted from the GFBio database using the following criteria:
 
-A summary of number of fish measured by year, survey and sex is provided in Table \@ref(tab:length-biosamples-surv). Survey length-frequencies are shown in Figure \@ref(fig:length-plotfrequencies-surv).A summary of number of fish weighed by year, survey and sex is provided in Table \@ref(tab:weight-biosamples).A summary of number of maturity records by year and survey is provided in Table \@ref(tab:mat-biosamples).
+### SYNOPTIC SURVEY DATA
+
+<!--
+We developed a package gfplot for the statistical software R to automate data
+extraction from these databases in a consistent, reproducible manner. The
+functions extract data using SQL queries, developed with support from the
+Groundfish Data Unit, which select and filter for specific data depending on the
+analyses for which they will be used. The SQL file names mentioned in this
+section can be viewed at
+\url{https://github.com/pbs-assess/gfplot/tree/master/inst/sql} and may be
+archived in the final version of this document.
+-->
+
+We extracted length, weight, and age data from the trawl surveys from the GFBio database, using the following criteria:
+
+1. `SPECIES_CODE` = 222: Pacific Cod.
+
+1. `TRIP_SUB_TYPE_CODE` = 2 or 3: research trips.
+
+1. `SAMPLE_TYPE_CODE` = 1 or 2 or 7 or 8: random or total samples.
+
+1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, or 7: to eliminate samples sorted on unknown criteria.
+
+1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2: to extract sorted and unsorted samples but remove stomach content samples. 
+
+<!-- We extracted biological data using `gfplot::get_survey_samples()` and -->
+<!-- `gfplot::get_commercial_samples()` for research survey and commercial samples, -->
+<!-- respectively.  -->
+
+<!-- We designated samples as one of three sample descriptions -->
+<!-- based on combinations of two codes relating to sampling protocols: -->
+<!-- `SPECIES_CATEGORY_CODE` and `SAMPLE_SOURCE_CODE`.  -->
+
+<!-- Samples can be designated as 'unsorted samples' in which data were collected for -->
+<!-- all specimens in the sample, or 'sorted samples' where specimens were sorted or -->
+<!-- selected into 'keepers', which were sampled, and 'discards' which were not -->
+<!-- sampled: -->
+
+A summary of number of fish measured by year, survey and sex is provided in
+Table \@ref(tab:length-biosamples-surv). Survey length-frequencies are shown in
+Figure \@ref(fig:length-plotfrequencies-surv). A summary of number of fish
+weighed by year, survey and sex is provided in Table
+\@ref(tab:weight-biosamples). A summary of number of maturity records by year
+and survey is provided in Table \@ref(tab:mat-biosamples).
 
 ```{r length-biosamples-surv, results='asis'}
-
 x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
   filter(!is.na(length)) %>%
@@ -131,20 +172,26 @@ x %>%
 \clearpage
 
 ### COMMERCIAL FISHERY DATA
-Length data from commercial bottom trawl vessels were extracted from the GFBio database, using the criteria given below. Examination of the sample length frequencies revealed 7 samples that were coded as being Pacific Cod but the size
-composition was uncharacteristic of the species. These samples, listed in Table XX, were eliminated from the analysis.
 
-- Filtered out `TRIP_SUBTYPE_CODE` in 2, 3 (research trips) to extract only commercial data.
+Length and weight data from commercial bottom trawl vessels were extracted from the GFBio database, using the following criteria:
 
-- Filtered for `SAMPLE_TYPE_CODE` in 1, 2, 6, 7, 8 (random or total) to extract only those records of sample type 'random' or 'total'.
+1. `SPECIES_CODE` = 222: Pacific Cod.
 
-- Filtered out `TRIP_SUBTYPE_CODE` in 2, 3 (research trips) to extract only commercial data.
-- Filtered for `SPECIES_CATEGORY_CODE` NULL, 0, 1, 3, 4, 5, 6, 7 to remove samples sorted on unknown criteria.
+1. `TRIP_SUB_TYPE_CODE` = 1 or 4: 1 = non-observed domestic; 4 = observed domestic.
 
-- Filtered for `SAMPLE_SOURCE_CODE` NULL, 1, 2, 3 to extract both sorted and unsorted samples for later filtration for desired analysis (removes stomach contents samples).
+1. `GEAR_CODE` = 1: Bottom trawl.
 
-- Filtered out 7 samples ...
+1. `SAMPLE_TYPE_CODE` = 1 or 2 or 6 or 7
 
+1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, or 7: to eliminate samples sorted on unknown criteria.
+
+1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2, 3: to extract sorted and unsorted samples but remove stomach content samples. 
+
+1. `SAMPLE_ID` not in 173726, 173740, 191471, 184243, 184159, 215903, or 223726: These samples were coded as Pacific Cod but have size composition inconsistent with the species. These species were therefore excluded from further analysis.
+
+1. Fishing year: April 1 to March 31 based on `trip_start_date`.
+
+1. Quarter: months 4--6 = 1, months 7--9 = 2, months 10--12 = 3, months 1--3 = 4.
 
 Summaries of number of fish measured by year, survey and sex are provided in Tables \@ref(tab:length-biosamples-com-5ABCD) and \@ref(tab:length-biosamples-com-3CD). Commercial length-frequencies are shown in Figure  \@ref(fig:length-plot-frequencies-com).
 
