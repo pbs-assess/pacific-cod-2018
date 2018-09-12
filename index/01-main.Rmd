@@ -89,7 +89,7 @@ Canadian trawl landings, 1954-1995 [@rutherford1999].
 Canadian trawl landings, 1996 to March 31, 2007. SQL Server database, Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
 
 **GFFOS**
-Canadian trawl landings, April 1, 2007 to 2018. View of the Fisheries and Oceans Canada (DFO) Fishery Operations (FOS) database. Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
+Canadian trawl landings, April 1, 2007 to 2017. View of the Fisheries and Oceans Canada (DFO) Fishery Operations (FOS) database. Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
 
 ## CATCH DATA
 Groundfish fisheries were managed by calendar year until 1996. Beginning in 1997-98 the fishing year changed to April 1--March 31. In 2010--2011 the fishing year was changed again to February 21 to February 20. Throughout this document, fishing years are defined as beginning on April 1 for all years, and are referenced by starting year, e.g., fishing year 1957 runs from April 1, 1957 to March 31, 1958. These definitions were used consistently in all calculations involving commercial catch data, including calculation of annual average mean weight in the catch (Appendix \@ref(analysis-of-biological-data)), and commercial CPUE (Appendix \@ref(commercial-cpue-standardization)). Landings data are presented
@@ -143,9 +143,9 @@ While there was no precedent for reference points in Queen Charlotte Sound, the 
 
 @forrest2018 simulation-tested a set of alternative reference points for Hecate Strait Pacific Cod and Rock Sole (*Lepidopsetta* spp.). They found that the "history-based" reference points (or operational control points, OCPs) that had been used for Pacific Cod in 2013 [@forrest2013] were robust to stock assessment biases because they scaled in the same direction as bias in estimates of biomass and fishing mortality. However, they were not necessarily good proxies for MSY-based reference points and tended to produce more precautionary catch recommendations than reference points based on $B_{MSY}$, $B_{0}$ and the spawning potential ratio (SPR; @clark1991). While the "history-based" reference points outperformed others in terms of long-term conservation outcomes, there were sometimes large trade-offs in terms of catch and catch stability [@forrest2018]. Reference points based on estimated $B_{0}$ performed similarly to the "history-based" reference points but tended to have better trade-off properties [@forrest2018].
 
-In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2018}$ and (ii) $B_{2019}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative projected catch levels; and whether biomass is projected to increase or decrease under alternative projected catch levels.
+In the absence of accepted reference points for Area 5AB, we suggest that some of the model concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest the same. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2017}$ and (ii) $B_{2018}$. These will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative projected 2019 catch levels; and whether biomass is projected to increase or decrease under alternative projected 2019 catch levels.
 
-Suggested reference points and benchmarks for both areas are provided in Table \@ref(tab:suggested-ref-points). We do not currently present alternative reference points in this assessment (e.g., reference points based on $B_{0}$), but suggest these could be explored for these stocks, as they have been shown to perform well under simulated conditions [@forrest2018].
+Suggested reference points and benchmarks for both areas are provided in Table \@ref(tab:suggested-ref-points). 
 
 # REFERENCE CASE MODELS
 
@@ -303,6 +303,8 @@ Median posterior estimated fishing mortality ($F_{t}$) is shown in Figure \@ref(
 We ran a retrospective analysis, sequentially removing the terminal year of data for four years to show the effects of each year's data (Figure \@ref(fig:fig-base-retro-biomass-3cd)). Results were not so systematic as for Area 5ABCD (Figure \@ref(fig:fig-base-retro-biomass-3cd)) and the relative magnitude of the bias was smaller. The largest effect was the addition of the 2017 data which cause the terminal biomass estimate to shift notably downward, most likely due to the large drop in the modern CPUE index in 2017 (Figure @\ref(fig:fig-base-index-fits-3cd)).
 
 # SENSITIVITY ANALYSES
+
+*TO DO: RF to add commentary to sensitivities*
 
 We present a number of sensitivity analyses to show the influence of certain data sources, fixed
 parameters and prior probability distributions on model outcomes for the Area 5ABCD and 3CD Reference Case models. Prior probability distributions for leading parameters are provided in Tables \@ref(tab:tab-priors-5abcd) and \@ref(tab:tab-priors-3cd). Fixed parameters are provided in Section (\@ref(reference-case-models)).
@@ -502,30 +504,27 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 *TO DO: Update. This is 2014 text. Fix equations and dynamic references*
 
-Performance measures were calculated over a sequence of alternative 2014 projected catch levels and are based on one-year projections to 2015.
+Performance measures were calculated over a sequence of alternative 2019 projected catch levels and are based on two-year projections to 2020.
 
-Projected recruitment anomalies in 2015 were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
+Projected recruitment anomalies for the projection period (2019-2020) were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
 
-Reference points and performance measures are listed in Tables 12 and 13.
-The decision tables are designed to present probabilities of undesirable states under alternative 2014 projected catch levels.
+Reference points and performance measures are listed in Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-ref-points-table-3cd). 
 
-An undesirable biomass-based performance measure occurs when 2015 projected biomass is below the reference point, i.e., $B_{2015}/B_\text{ReferencePoint} < 1$.
-Probabilities using biomass-based reference points are only presented for Area 5CD for the reasons given above.
+Decision tables are designed to present probabilities of "undesirable" states under alternative 2019 projected catch levels.
 
-An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2014}/F_\text{ReferencePoint} > 1$.
+For example, an undesirable biomass-based performance measure occurs when 2020 projected biomass is below the LRP, i.e., $B_{2020}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2019}/LRR > 1$.
 
-Probabilities of undesirable states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
+Probabilities of such states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
 
-In the previous section, we identified some key sources of uncertainty in this assessment and suggested three solutions to presenting advice incorporating this uncertainty.
-In both management Areas 5CD and 5AB, we suggested that we cannot further reduce the uncertainty arising from the prior probability distribution for ln($M$) (Figures 32 and 45); the goodness of fit to the mean weight data (Figures 36 and 47); or how well the model should fit to the commercial CPUE data, if at all (Figures 41, 44, 49 and 50).
+@forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from multiple sensitivity cases. They did this to address some of the key irresolvable uncertainties associated with the stock assessment.
 
-In the following sections we present the Reference Case decision tables for each area, then present alternative ``model averaged'' decision tables that incorporate the uncertainty from the above sensitivity cases and Reference Cases.
-
-The model averaging approach is described below.
+In the following sections we present the Reference Case decision tables for each area, then present alternative "model-averaged" decision tables that incorporate the uncertainty from the Reference Case models \@ref(reference-case models) and a subset of the above sensitivity cases (Section \@ref(sensitivity-analyses)). Details of the model averaging approach for Area 5ABCD and Area 3CD are provided below.
 
 We did not attempt to assign different weights to the alternative models in the construction of the model-averaged results.
 
 ## REFERENCE CASE MODELS
+
+*TO DO. Update with results*
 
 The decision table for the Area 5CD Reference Case model is provided in Table XX.
 The probability of the 2015 biomass being below the 2014 biomass ranged from 12.4\% under no 2014 catch to 64.1\% under 2400 t, double the current TAC.

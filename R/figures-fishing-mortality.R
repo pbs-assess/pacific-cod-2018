@@ -1,3 +1,5 @@
+scaleFUN <- function(x) sprintf("%.2f", x)
+
 f.plot <- function(models,
                    models.names,
                    add.hist.ref = FALSE,
@@ -36,7 +38,7 @@ f.plot <- function(models,
     theme(legend.position = c(1, 1),
           legend.justification = c(1, 1),
           legend.title = element_blank()) +
-    scale_y_continuous(labels = comma,
+    scale_y_continuous(labels = scaleFUN,
                        limits = c(0, NA)) +
     coord_cartesian(expand = FALSE) +
     xlim(c(min(f$Year - 1), NA)) +
