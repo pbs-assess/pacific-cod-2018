@@ -229,7 +229,7 @@ The choice of prior probability distribution for survey scaling parameters has t
 
 ### Survey scaling parameters for Area 5ABCD
 
-We used informative prior probability distributions for the two synoptic surveys based on median posterior estimates of *q* from the most recent stock assessment for Rock Sole [@holt2016]. This was done to constrain the tendency in the model towards estimating implausibly high stock sizes. Rock sole is a flatfish species occupying a similar (although slightly shallower) depth range to Pacific Cod. @holt2016 obtained median posterior estimates of *q* = 0.6280 for Area 5AB and *q* = 0.1869 for Area 5CD. The CV of their estimates was around 0.3. For our combined Area 5ABCD assessment we pro-rated these values according to the relative areas of habitat in Areas 5AB and 5CD. Adding up the areas of all the surveyed depth strata in each area gave a ratio of approximately 0.65:0.35 (5AB:5CD). Therefore the following values were used as means for the normal prior probability distributions for $\ln(q_{k})$, for
+We used informative prior probability distributions for the two synoptic surveys based on median posterior estimates of *q* from the most recent stock assessment for Rock Sole [@holt2016]. This was done to constrain the tendency in the model towards estimating implausibly high stock sizes. Rock sole is a flatfish species occupying a similar (although slightly shallower) depth range to Pacific Cod. @holt2016 obtained median posterior estimates of *q* = 0.6280 for Area 5AB and *q* = 0.1869 for Area 5CD. They did not use an informative prior probability distribution for *q*. The CV of their estimates was around 0.3. For our combined Area 5ABCD assessment we pro-rated these values according to the relative areas of habitat in Areas 5AB and 5CD. Adding up the areas of all the surveyed depth strata in each area gave a ratio of approximately 0.65:0.35 (5AB:5CD). Therefore the following values were used as means for the normal prior probability distributions for $\ln(q_{k})$, for
 
 - *k* = Queen Charlotte Sound Synoptic Survey: Mean $\ln(q_{k})$ = $\ln(0.6280 * 0.65)$ = -0.895998; and
 - *k* = Hecate Strait Synoptic Survey: Mean $\ln(q_{k})$ = $\ln(0.1869 * 0.35)$ = -2.727539;
@@ -238,7 +238,7 @@ For both synoptic surveys, the standard deviation of the normal prior probabilit
 
 ### Survey scaling parameters for Area 3CD
 
-As for Area 5ABCD, we used an informative prior probability distribution for the West Coast Vancouver Island Synoptic Survey based on a median posterior estimate from a recent assessment. Again this was done to constrain the very large stock size estimates made by the model when a uniform prior was applied. There have been fewer recent stock assessments focused on Area 3CD only and none for species in the same depth range as Pacific Cod. Here we used a normal prior probability distribution for $\ln(q_{k})$ with mean set to the median posterior estimate of *q* from the most recent assessment for Area 3CD Pacific Ocean Perch (*Sebastes alutus*) [@edwards2013-2], i.e., Mean $\ln(q_{k})$ = $\ln(0.228)$ = -1.47841. the standard deviation of the normal prior probability distribution for $\ln(q_{k})$ was set to 0.3 in log space, as for Area 5ABCD. Pacific Ocean Perch occurs in a deeper depth range than Pacific Cod, but it is a major target species for the trawl fishery and may therefore be informative about catchability in this area.
+As for Area 5ABCD, we used an informative prior probability distribution for the West Coast Vancouver Island Synoptic Survey based on a median posterior estimate from a recent assessment. Again this was done to constrain the very large stock size estimates made by the model when a uniform prior was applied. There have been fewer recent stock assessments focused on Area 3CD only and none for species in the same depth range as Pacific Cod. Here we used a normal prior probability distribution for $\ln(q_{k})$ with mean set to the median posterior estimate of *q* from the most recent assessment for Area 3CD Pacific Ocean Perch (*Sebastes alutus*) [@edwards2013-2], i.e., Mean $\ln(q_{k})$ = $\ln(0.228)$ = -1.47841. the standard deviation of the normal prior probability distribution for $\ln(q_{k})$ was set to 0.3 in log space, as for Area 5ABCD. Pacific Ocean Perch occurs in a deeper depth range than Pacific Cod, but it is a major target species for the trawl fishery and may therefore be informative about catchability in this area. @edwards2013-2 did not use an informative prior probability distribution for *q*. 
 
 ## FIXED VARIANCE PARAMETERS
 
@@ -317,8 +317,6 @@ We ran a retrospective analysis, sequentially removing the terminal year of data
 
 # SENSITIVITY ANALYSES
 
-*TO DO: RF to add commentary to sensitivities*
-
 We present a number of sensitivity analyses to show the influence of certain data sources, fixed
 parameters and prior probability distributions on model outcomes for the Area 5ABCD and 3CD Reference Case models. Prior probability distributions for leading parameters are provided in Tables \@ref(tab:tab-priors-5abcd) and \@ref(tab:tab-priors-3cd). Fixed parameters are provided in Section (\@ref(reference-case-models)).
 
@@ -383,19 +381,23 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(Survey-scaling-parameters-for-area-5abcd) and \@ref(Survey-scaling-parameters-for-area-3cd) for Reference Case details:
 
-> **Sc 2a.** The mean of the QCS Synoptic survey was set to the same mean as for the HS Synoptic survey, i.e., mean $\ln(q)$ = $\ln(0.186)$.
+> **Sc 2a.** The mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey, i.e., mean $\ln(q)$ = $\ln(0.186)$.
 
 > **Sc 2b.** A uniform prior was used for \textit{q} for both the QCS and HS Synoptic Surveys.
 
 For 3CD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $\ln(q)$ for the WCVI Synoptic Survey:
 
-> **Sc 2a.** The sd of the WCVI Synoptic survey was set to the same sd as for the QCS and HS Synoptic surveys, i.e., sd = 0.3.
+> **Sc 2a.** The sd of the WCVI Synoptic Survey was set to the same sd as for the QCS and HS Synoptic Surveys, i.e., sd = 0.3.
 
 > **Sc 2b.** A uniform prior was used for \textit{q} for the WCVI Synoptic Surveys.
 
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens2-biomass-5abcd) to \@ref(fig:fig-sens2-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens9-biomass-3cd) to \@ref(fig:fig-sens9-f-3cd) for Area 3CD.
+Models were sensitive to priors assumed for the synoptic survey scaling parameters. Models were moderately sensitive to choice of the parameters used for the normal prior for $\ln(q)$ (Sc 2a; Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)). Essentially, lowering the value of the mean (Area 5ABCD), or increasing the variance (Area 3CD) resulted in lower estimates of $q$ (Tables \@ref(tab:param-table-sens2a-5abcd) and \@ref(tab:param-table-sens2a-3cd)), leading to larger estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)).
 
-Models were sensitive to priors assumed for the synoptic survey scaling parameters. Notably, removing the informative prior resulted in very low estimates of $q$ for these suveys (Tables ) and very large and uncertain estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)).
+Notably, removing the informative prior resulted in very low estimates of $q$ for these suveys (Tables \@ref(tab:param-table-sens2b-5abcd) and \@ref(tab:param-table-sens2b-3cd)),leading to very large and uncertain estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)). This was extremely pronounced for Area 3CD (Table \@ref(tab:param-table-sens2b-3cd) and Figure \@ref(fig:fig-sens9-biomass-3cd)).
+
+For both areas, increased estimates of biomass led to decreased estimates of $F_{t}$ (Figures \@ref(fig:fig-sens2-f-5abcd and \@ref(fig:fig-sens9-f-3cd)).
+
+Given model sensitivity to priors assumed for survey $ln(q)$, and the tendency of the estimates to run to very low values without prior constraint, it seems justified to use a prior probability distribution informed by age-structured assessments for groundfish species caught in the same area with the same gear, even though those estimates are conditional on the assumptions inherent in those models. Synoptic survey *q* should be considered a major source of uncertainty in this assessment and we suggest inclusion of Sc 2a (both areas) in the ensemble of models for model-averaged decision tables (Section \@ref(decision-tables)).
 
 ## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR $\ln(M)$
 

@@ -232,6 +232,15 @@ make.value.table(base.model.3cd,
 
 ## SELECTED SENSITIVITY RESULTS: AREA 5ABCD
 
+```{r tab-param-table-sens2a-5abcd, results='asis'}
+make.parameters.est.table(sens.models.2[[1]],
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 2a (mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey), Area 5ABCD."),
+  omit_pars = pars_est_omit)
+```
+
 ```{r tab-param-table-sens2b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.2[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -318,6 +327,14 @@ make.parameters.est.table(sens.models.6[[3]],
 \clearpage
 
 ## SELECTED SENSITIVITY RESULTS: AREA 3CD
+```{r tab-param-table-sens2a-3cd, results='asis'}
+make.parameters.est.table(sens.models.9[[1]],
+ caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+                   "97.5\\textsuperscript{th} percentile) and MPD ",
+                   "estimates of key parameters ",
+                  "for Sc 2a (sd of the WCVI Synoptic Survey was set to the same sd as for the QCS and HS Synoptic Surveys), Area 3CD."),
+  omit_pars = pars_est_omit)
+```
 
 ```{r tab-param-table-sens2b-3cd, results='asis'}
 make.parameters.est.table(sens.models.9[[2]],
