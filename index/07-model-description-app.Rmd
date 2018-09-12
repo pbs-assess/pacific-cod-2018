@@ -58,7 +58,9 @@ The objective function in the delay-difference model contained five major compon
 - three penalty functions that:
 >  i. constrain the estimates of annual recruitment to conform to a
     Beverton-Holt stock-recruit function (Eq. \@ref(eq:ddrt));
+    
 >  ii. weakly constrain the log recruitment deviations to a normal distribution ($\sim N(0,2)$);
+
 >  iii. very weakly constrain estimates of log fishing mortality to a normal
     distribution ($\sim N(ln(0.2), 4.0)$), to prevent estimates of catch
     from exceeding estimated biomass.
