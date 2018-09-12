@@ -150,19 +150,20 @@ The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics
 The joint posterior distribution for each model was numerically approximated using the
 Markov Chain Monte Carlo routines built into AD Model Builder [@fournier2012]. Posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). We assessed consistency with chain convergence by visual inspection of trace plots and autocorrelation plots and through the potential scale reduction factor $\hat{R}$ and the effective sample size ($n_{eff}$).
 
-The potential scale reduction statistic [@gelman1992] is a common metric used in Bayesian statistics to assess chain convergence [@gelman2014; @hobbs2015. It measures the the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. In this case, we only had a single chain, but in following the advice of @gelman2014, we first divided the chain into two, effectively treating the first and second half as separate chains.
+The potential scale reduction statistic ($\hat{R}$) [@gelman1992] is a common metric used in Bayesian statistics to assess chain convergence [@gelman2014; @hobbs2015]. The statistic measures the the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. As $\hat{R}$ approaches 1.0, the chains are consistent with convergence.
+
+In our case, we only had a single chain for each model run, but in following the advice of @gelman2014, we first divided the chain into two, effectively treating the first and second half as separate chains. Following the notation of @hobbs2015, we can calculate $\hat{R}$ for a given parameter $\theta$ as follows. For $j = 1, ..., m$ chains (two half chains here), we calculate the mean of the variances $w$ as:
 
 <!-- https://github.com/stan-dev/stan/blob/238faf42b556c007197c9faca20214ad9b37f0b2/src/docs/reference-manual/analysis.Rmd -->
 
-Following the notation of @hobbs2015, we can calculate $\hat{R}$ as follows. For $j = 1, ..., m$ chains (two half chains here), we calculate the mean of the variances $w$ as:
 
 $$
 w = \frac { 1 } { m } \sum _ { j = 1 } ^ { m } \operatorname { var } \left( \theta_{ j } \right)
 $$
 
-where the mean of each chain \(\theta_{j}\) is defined as
+where \(\theta_{j}\) is defined as
 $\theta_{j}=\frac{1}{K-1}\sum_{n=1}^{K}\left(\theta_{kj}-\overline{\theta}_{j}\right)^{2}$
-and across $k = 1, ..., K$ iterations.
+across $k = 1, ..., K$ iterations.
 
 We then define the among-chain variance $b$ as:
 
@@ -172,7 +173,7 @@ $$
 
 where
 $\overline{\overline{\theta}}=\frac{1}{m}\sum_{j=1}^{m}\overline{\theta}_{j}$.
-The variance of a stationary distribution of $\theta$ is then a weighted mean:
+The variance of a stationary distribution of $\theta$ is then calculated as a weighted mean:
 
 $$
 \sigma _ { \theta } ^ { 2 } = \left( 1 - \frac { 1 } { K } \right) w + \frac { 1 } { K } b
@@ -183,8 +184,6 @@ and we can define the potential scale reduction factor as:
 $$
 \hat { R } = \sqrt { \frac { \sigma _ { \theta } ^ { 2 } } { w } }.
 $$
-
-If $\hat{R}$ is large, it is indicative that we need to increase the number of samples. As $\hat{R}$ approaches 1.0, the chains are consistent with convergence. We ensured that $\hat{R}<1.05$ for all parameters.
 
 ## DATA CHOICES
 
