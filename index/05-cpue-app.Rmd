@@ -286,7 +286,7 @@ params$skip_single_variable_models <- FALSE
 
 ```{r cpue-run-historic, message=FALSE, warning=FALSE, results='hide'}
 params$era <- "historic"
-source(here::here("index/cpue.R"))
+source(here::here("R/cpue.R"))
 dfleet_hist <- dfleet
 gg_cpue_hist <- gg_cpue
 cpue_pred_hist <- predictions
@@ -296,7 +296,7 @@ m_historic <- readRDS(here::here("data/generated/cpue-models-pcod-historic.rds")
 
 ```{r cpue-run-modern, message=FALSE, warning=FALSE, results='hide'}
 params$era <- "modern"
-source(here::here("index/cpue.R"))
+source(here::here("R/cpue.R"))
 dfleet_modern <- dfleet
 gg_cpue_modern <- gg_cpue
 cpue_pred_modern <- predictions
