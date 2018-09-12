@@ -129,8 +129,9 @@ We fit the Tweedie GLMM (generalized linear mixed effect model) as
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality}}),\\
 \alpha^\mathrm{locality-year}_k &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality-year}}),\\
+ (\#eq:cpue-locality-year)
 \alpha^\mathrm{vessel}_l &\sim
-  \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{vessel}}),\\
+  \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{vessel}}),
 \end{align}
 
 where $i$ represents a single trip (historical data) or tow (modern data),
