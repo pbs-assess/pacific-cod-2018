@@ -238,7 +238,9 @@ $\phi^{-2}$ for their Base Case model. Any attempt to estimate $\phi^{-2}$ resul
 
 In addition to the overall observation error term $\sigma_O$, annual index points for each index of abundance series were weighted by annual CVs, using a multiplicative weighting approach fully described in Appendix \@ref(delay-difference-model).
 
-As for the previous stock assessment for Pacific Cod (@forrest2013), fixed variance components were used for the likelihood components for annual catch ($\sigma_C$) and average annual mean weight ($\sigma_W$). Because the model assumes observed catches are known without error, $\sigma_C$ was set to a small value, i.e., $\sigma_C$ = 0.05. As in @forrest2013, $\sigma_W$ = 0.2. Sensitivity tests are provided in Section \@ref(sensitivity-analyses).
+As for the previous stock assessment for Pacific Cod (@forrest2013), fixed variance components were used for the likelihood components for annual catch ($\sigma_C$) and average annual mean weight ($\sigma_W$).Problems with interpreting the mean weight data were discussed in @forrest2013, their Appendix C.These problems stem from changes over time in the sample sizes of different categories of length data, i.e., sorted and unsorted categories, and lack of data for smaller fish before observers measured fish at sea. Concerns about the use of the mean weight data were also recorded in the review of the 2005 assessment [@fargo2005]. This issue was acknowledged by @sinclair2005, who noted that the mean weight series was necessary for estimation of model parameters but was down-weighted in the objective function.As in @forrest2013, $\sigma_W$ was set to 0.2 in the Reference Case models. However, sensitivity tests are provided in Section \@ref(sensitivity-analyses).
+
+Because the model assumes observed catches are known without error, $\sigma_C$ was set to a small value, i.e., $\sigma_C$ = 0.05. 
 
 # RESULTS
 
@@ -271,7 +273,6 @@ Median posterior estimated relative biomass ($B_{t}/B_0$) (with 95% credibility 
 Median posterior estimated fishing mortality ($F_{t}$) is shown in Figure \@ref(fig:fig-base-f-5abcd). Fishing mortality in 2017 was low compared to the historical period, with the posterior median estimated to be 0.03 y^-1^ (Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-post-f-5abcd)).
 
 We ran a retrospective analysis, sequentially removing the terminal year of data for four years to show the effects of each year's data (Figure \@ref(fig:fig-base-retro-biomass-5abcd)). Results clearly show the effects of the biennial synoptic surveys on terminal estimates of biomass. Removing four years of data, reverts the model back to its 2013 state (orange series), with the predicted increase in biomass projected in the previous assessment for the Area 5CD stock [@forrest2013]. Subsequently adding the 2014 data (purple series) had little effect on the model as there were no Area 5AB or 5CD surveys in 2014. However, adding the 2015 and 2016 data (green and blue series) resulted in a lowering of estimated terminal biomass and the previous 2-3 years, because of a large drop in the 2015 Hecate Strait Synoptic Survey index (Figure \@ref(fig:fig-base-index-fits-5abcd)).
-
 
 ## AREA 3CD: WEST COAST VANCOUVER ISLAND
 
@@ -360,7 +361,7 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 For Area 3CD only, a sensitivity analysis was done where the NMFS Triennial Survey index was removed from the model:
 
-> **Sc 1g (Area 3CD only).** Remove NMFS Triennial Survey index from the model, Figure \@ref(fig:fig-sens8-biomass-3cd).
+> **Sc 1g (Area 3CD only).** Remove NMFS Triennial Survey index from the model.
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are included in Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd).
 
@@ -457,22 +458,25 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 Fits to the average annual mean weight in the commercial fishery for Scenarios 5a and 5b are shown in Figures \@ref(fig:fig-sens5-meanweightfit-5abcd) and \@ref(fig:fig-sens12-meanweightfit-3cd).
 
 ## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\sigma_O$
-In the Reference Case, 0.2 was assumed to be an appropriate value for $\sigma_O$. Two sensitivity analyses were done that reduced this value:
+The observation error parameter was $\sigma_O$ was fixed at 0.2 in the Reference Case models (Section \@ref(fixed-variance-parameters)). Three sensitivity analyses were done to explore the impacts of changing this value:
 
-> **Sc 6a.** Fix $\sigma_O$ = 0.1, Figures \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd), .
+> **Sc 6a.** Fix $\sigma_O$ = 0.1.
 
-> **Sc 6b.** Fix $\sigma_O$ = 0.15, \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd)
+> **Sc 6b.** Fix $\sigma_O$ = 0.15.
 
-> **Sc 6c.** Fix $\sigma_O$ = 0.25, \@ref(fig:fig-sens6-biomass-5abcd) -- \@ref(fig:fig-sens6-index-cpue-post1995-5abcd), \@ref(fig:fig-sens13-biomass-3cd) -- \@ref(fig:fig-sens13-index-triennial-3cd)
+> **Sc 6c.** Fix $\sigma_O$ = 0.25.
+
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD. Fits to the indices of abundance are shown in Figures \@ref(fig:fig-sens6-index-cpue-post1995-5abcd) and \@ref(fig:fig-sens13-index-triennial-3cd). Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens6a-5abcd) to \@ref(tab:tab-param-table-sens6c-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens13a-3cd) to \@ref(tab:tab-param-table-sens13c-3cd) for Area 3CD.
 
 ## SC 6C. ASSUMED FIXED VALUE OF PROCESS ERROR $\sigma_R$
 
-In the Reference Case and in @forrest2013, 0.8 was assumed to be an appropriate
-value for $\sigma_R$, as this stock appears to have had very variable
+The process error parameter was $\sigma_R$ was fixed at 0.8 in the Reference Case models (Section \@ref(fixed-variance-parameters)), as this stock appears to have had very variable
 recruitment throughout the history of the fishery. One sensitivity
 analysis was done to test the effect of increasing the assumed value of $\sigma_R$:
 
-> **Sc 6d.** Fix $\sigma_R$ = 1.0, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
+> **Sc 6d.** Fix $\sigma_R$ = 1.0.
+
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD. 
 
 <!--
 Resulting estimates of historical biomass are shown in Figure XX. As for the
@@ -486,22 +490,13 @@ $\sigma_R$ = 1.0 as a function of the increased recruitment variation.
 
 ## SC 7A. ASSUMED FIXED VALUE OF $\sigma_W$
 
-Problems with interpreting the mean weight data were discussed in Appendix XX.
-These problems stem from changes over time in the sample sizes of different
-categories of length data, i.e., sorted and unsorted categories. Concerns
-about the use of the mean weight data were also recorded in the review of
-the 2005 assessment [@fargo2005]. This issue was acknowledged by
-@sinclair2005, who noted that the mean weight series was necessary for
-estimation of model parameters but was down-weighted in the objective function.
+Given the uncertainties in interpreting the mean weight time series (see Section \@ref(reference-case-models)) and its potential to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$:
 
-Given the uncertainties in interpreting this time series and its potential
-to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$, which was fixed at 0.2 in the reference case:
+> **Sc 7a.** Fix $\sigma_w$ = 0.4.
 
-> **Sc 7a.** Fix $\sigma_w$ = 0.4, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
+> **Sc 7b.** Fix $\sigma_w$ = 0.15.
 
-> **Sc 7b.** Fix $\sigma_w$ = 0.15, Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd).
-
-Fits to the average annual mean weight in the commercial fishery for Scenarios 7a and 7b are shown in Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) and \@ref(fig:fig-sens14-meanweightfit-3cd).
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens7-biomass-5abcd) to \@ref(fig:fig-sens7-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens14-biomass-3cd) to \@ref(fig:fig-sens14-f-3cd) for Area 3CD. Fits to the average annual mean weight in the commercial fishery for Scenarios 7a and 7b are shown in Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) and \@ref(fig:fig-sens14-meanweightfit-3cd).
 
 # DECISION TABLES
 
