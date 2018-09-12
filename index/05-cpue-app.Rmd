@@ -118,6 +118,7 @@ in the Tweedie distribution [@foster2013; @lecomte2013].
 We fit the Tweedie GLMM (generalized linear mixed effect model) as
 
 \begin{align}
+   (\#eq:cpue-tweedie)
   y_i &\sim \mathrm{Tweedie}(\mu_i, p, \phi), \quad 1 < p < 2,\\
   \mu_i &= \exp \left(
   \bm{X}_i \bm{\beta}
@@ -127,9 +128,10 @@ We fit the Tweedie GLMM (generalized linear mixed effect model) as
   \right),\\
 \alpha^\mathrm{locality}_j &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality}}),\\
+ (\#eq:cpue-locality-year)
 \alpha^\mathrm{locality-year}_k &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality-year}}),\\
- (\#eq:cpue-locality-year)
+ (\#eq:cpue-vessel)
 \alpha^\mathrm{vessel}_l &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{vessel}}),
 \end{align}

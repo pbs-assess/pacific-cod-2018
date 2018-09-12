@@ -352,17 +352,17 @@ Results are presented under these headings below. In all sensitivity runs, as fo
 
 ## SC 1B AND SC 1C. EXCLUSION OF A LOCALITY-YEAR INTERACTION AS RANDOM EFFECT IN COMMERCIAL CPUE INDICES
 
-The reference case models were fit to historical and modern commercial CPUE indices that included a locality-year interaction as random effect (see Appendix \@ref(commercial-cpue-standardization), Equation \@ref(eq:cpue-locality-year)). Two sensitivity analyses are shown to illustrate the effect of omitting the locality-year interaction term from both historical and modern indices:
+The reference case models were fit to historical and modern commercial CPUE indices that included a locality-year interaction as random effect (see Appendix \@ref(commercial-cpue-standardization), Equations \@ref(eq:cpue-tweedie) to \@ref(eq:cpue-vessel)). Two sensitivity analyses are shown to illustrate the effect of omitting the locality-year interaction term (Equation \@ref(eq:cpue-locality-year)) from both historical and modern indices:
 
 > **Sc 1b.** Use equations without the interaction term to create CPUE indices
 > for historical and modern periods. Use the annual CVs resulting from the
 > analysis as annual weighting terms in objective function of delay difference
-> model (Equation \@ref(eq:index-weighting)).
+> model (Equations \@ref(eq:index-sd), \@ref(eq:index-weighting)).
 
 > **Sc 1c.** Use equations without the interaction term to create CPUE indices
 > for historical and modern periods **and** double the annual CVs resulting
 > from the analysis. Input the doubled CVs as weighting terms in objective
-> function of delay difference model (Equation \@ref(eq:index-weighting)).
+> function of delay difference model (Equations \@ref(eq:index-sd), \@ref(eq:index-weighting)).
 
 Sc 1c was done because the annual CVs of the CPUE indices with omitted locality-year interactions were very small (less than 0.1 in some years). Annual CVs were doubled to address concerns that the objective function of the delay-difference model may have been giving the CPUE indices too much weight with the CVs in Sc 1b.
 
