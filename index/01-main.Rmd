@@ -543,7 +543,6 @@ The probability of the 2018 fishing mortality being greater than the 2017 fishin
 Under a 2018 catch level of 500 mt, the 2017 TAC, there is an estimated 0.001\% probability that the 2019 biomass will be below $B_{1986}$ and a 96.2\% probability that the 2019 biomass will be below $B_{Avg}$.
 
 ## MODEL AVERAGED DECISION TABLES
-
 *TO DO: THIS IS 2014 TEXT. decide on which scenarios and make decision tables*
 
 ### Area 5ABCD
@@ -588,3 +587,7 @@ However, we emphasize that there are major structural uncertainties that we have
 \item The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
 \end{resdoclist}
 Uncertainty is therefore under-represented in this assessment.
+
+# ACKNOWLEDGEMENTS
+
+Show some love to your people
