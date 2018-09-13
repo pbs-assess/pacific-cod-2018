@@ -19,15 +19,15 @@ decision.table <- function(models,
   #                    "$P(B_{2019} LESS THAN B_{min}}$)",
   #                    "$P(B_{2019} LESS THAN B_{AVG})$",
   #                    "$P(F_{2018} MORE THAN F_{AVG})$")
-  colnames(dat) <- c("2018 Catch (mt)",
-                     "P(B2019<B2018)",
-                     "P(F2018>F2017)",
+  colnames(dat) <- c("$2018$ Catch (mt)",
+                     "$P(B_{2019} < B_{2018})$",
+                     "$P(F_{2018} > F_{2017})$",
                      #"P(B2019<0.8BMSY)",
                      #"P(B2019<0.4BMSY)",
                      #"P(F2018>FMSY)",
-                     "P(B2019<LRP)",
-                     "P(B2019<USR)",
-                     "P(F2018>LRR)")
+                     "$P(B_{2019} < B_{\\mathrm{min}})$",
+                     "$P(B_{2019} < B_{\\mathrm{avg}})$",
+                     "$P(F_{2018} > F_{\\mathrm{avg}})$")
 
   proj.dat <- data.frame()
   for(t in seq_along(tac)){
@@ -44,15 +44,15 @@ decision.table <- function(models,
       d <- results[[1]]
     }
 
-    dat[t, 1] <- tac[t]
-    dat[t, 2] <- mean(d$B2019B2018 < 1)   #P(B2019<B2018)
-    dat[t, 3] <- mean(d$F2018F2017 > 1)   #P(F2018>F2017)
+    dat[t, 1] <- f(tac[t], 0)
+    dat[t, 2] <- f(mean(d$B2019B2018 < 1), 2)   #P(B2019<B2018)
+    dat[t, 3] <- f(mean(d$F2018F2017 > 1), 2)   #P(F2018>F2017)
 #    dat[t, 4] <- mean(d$B20190.8BMSY < 1) #P(B2019<0.8BMSY)
 #    dat[t, 5] <- mean(d$B20190.4BMSY < 1) #P(B2019<0.4BMSY)
 #    dat[t, 6] <- mean(d$F2018FMSY > 1)    #P(F2018>FMSY)
-    dat[t, 4] <- mean(d$B2019Bmin < 1)   #P(B2019<Bmin)
-    dat[t, 5] <- mean(d$B2019BAvgS < 1)  #P(B2019<BAvg) #Avg 1956-2004
-    dat[t, 6] <- mean(d$F2018FAvgS > 1)  #P(F2018>FAvg) #Avg 1956-2004
+    dat[t, 4] <- f(mean(d$B2019Bmin < 1), 2)   #P(B2019<Bmin)
+    dat[t, 5] <- f(mean(d$B2019BAvgS < 1), 2)  #P(B2019<BAvg) #Avg 1956-2004
+    dat[t, 6] <- f(mean(d$F2018FAvgS > 1), 2)  #P(F2018>FAvg) #Avg 1956-2004
   }
 
   kable(dat,
@@ -64,5 +64,7 @@ decision.table <- function(models,
 #        align = c("l", "r", "r", "r", "r", "r")) %>%
 #    column_spec(c(2, 4, 5, 6), width = "2cm") %>%
 #    column_spec(3, width = "4cm") %>%
-  kable_styling(latex_options = c("hold_position", "repeat_header"))
+  kable_styling(latex_options = c("hold_position", "repeat_header")) %>%
+  kableExtra::column_spec(1, width = "2.7cm") %>%
+  kableExtra::column_spec(2:6, width = "2.0cm")
 }
