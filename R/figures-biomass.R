@@ -164,7 +164,7 @@ b.plot <- function(models,
       scale_fill_viridis_d(end = 0.9) +
       scale_colour_viridis_d(end = 0.9) +
       theme(legend.position = c(0.90, 1), legend.title = element_text(size = 9, hjust = 0)) +
-      labs(fill = "TAC (t)", colour = "TAC (t)") +
+      labs(fill = "TAC (mt)", colour = "TAC (mt)") +
       geom_vline(xintercept = min(proj_dat$year), lty = 2, col = "grey80")
   }
 
