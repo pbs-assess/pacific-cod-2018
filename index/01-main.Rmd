@@ -4,7 +4,7 @@
 
 Pacific Cod (*Gadus macrocephalus*) is a relatively short-lived, fast-growing member of the family Gadidae. A common name in British Columbia (BC) is grey cod (or gray cod). Populations of Pacific Cod are distributed from California, throughout the waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China [@hart1973]. Maximum observed age in British Columbia is around 10-11 years [@westrheim1996, this document], while a maximum age of approximately 13 years has been reported for Alaskan stocks [@roberson2001]. Maximum length recorded in British Columbia is 100 cm [@hart1973], although some larger specimens have been observed in Alaska and Russia [@westrheim1996]. In recent Synoptic trawl surveys in BC, the maximum recorded length was 93 cm (Appendix A, Table \@ref(tab:length-biosamples-surv)). Pacific Cod are demersal spawners, with several studies reporting that spawning most likely occurs during February to March. A comprehensive review of the biology, life history and distribution of Pacific Cod in BC is provided by @westrheim1996.
 
-Four stocks of Pacific Cod are defined for management purposes on the BC coast: Strait of Georgia (4B); West Coast Vancouver Island (3CD); Queen Charlotte Sound (5AB); and Hecate Strait (5CD). This study focuses on the populations in Queen Charlotte Sound combined with Hecate Strait (5ABCD), and the West Coast Vancouver Island (3CD) (Figure XX).
+Four stocks of Pacific Cod are defined for management purposes on the BC coast: Strait of Georgia (4B); West Coast Vancouver Island (3CD); Queen Charlotte Sound (5AB); and Hecate Strait (5CD). This study focuses on the populations in Queen Charlotte Sound combined with Hecate Strait (5ABCD), and the West Coast Vancouver Island (3CD) (Figure \@ref(fig:fig-map)).
 
 Recent genetic analyses have identified a distinction between North American and Asian Pacific Cod populations, and have shown some evidence for distinction between Alaskan populations and those south of Dixon Entrance in British Columbia (reviewed in @forrest2013). There is also evidence that fish taken off the coast of Washington and the west coast of Vancouver Island may be distinct from fish sampled within the Strait of Georgia or Puget Sound. However, linkages, if any, among stocks in BC and those in Alaska remain poorly understood. To date it is uncertain whether genetic population structure exists within BC waters [@forrest2013]. Genetic samples have been collected from spawning grounds in Hecate Strait and Queen Charlotte Sound since the 2013 assessment but these have not yet been analysed.
 
@@ -87,9 +87,7 @@ Canadian trawl landings, April 1, 2007 to 2017. View of the Fisheries and Oceans
 
 ## CATCH DATA
 Groundfish fisheries were managed by calendar year until 1996. Beginning in 1997-98 the fishing year changed to April 1--March 31. In 2010--2011 the fishing year was changed again to February 21 to February 20. Throughout this document, fishing years are defined as beginning on April 1 for all years, and are referenced by starting year, e.g., fishing year 1957 runs from April 1, 1957 to March 31, 1958. These definitions were used consistently in all calculations involving commercial catch data, including calculation of annual average mean weight in the catch (Appendix \@ref(analysis-of-biological-data)), and commercial CPUE (Appendix \@ref(commercial-cpue-standardization)). Landings data are presented
-separately for Canada and the USA (Tables XX and XX). Combined USA-Canada landings data were obtained from the Pacific Marine Fisheries Commission reports for 1956-1981 and the USA landed portion was determined by subtracting the Canadian landed amount from the combined total for each year. In cases where
-the difference was negative, the USA landed amount was set to zero (Tables XX and XX). Canadian data were obtained: from the GFCatch database for the period 1954-1995 [@rutherford1999]; from the PacHarvest database for the period 1996-March 31, 2007; and from the Fisheries and Oceans Canada (DFO) FOS
-database for the period April 1, 2007 until the present. The annual size composition of commercial catches and landings were estimated from port samples and at-sea samples collected by observers archived in the GFBio database.
+separately for Canada and the USA (Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd)). Combined USA-Canada landings data were obtained from the Pacific Marine Fisheries Commission reports for 1956-1981 and the USA landed portion was determined by subtracting the Canadian landed amount from the combined total for each year. In cases where the difference was negative, the USA landed amount was set to zero. Canadian data were obtained: from the GFCatch database for the period 1954-1995 [@rutherford1999]; from the PacHarvest database for the period 1996-March 31, 2007; and from the Fisheries and Oceans Canada (DFO) FOS database for the period April 1, 2007 until the present. The annual size composition of commercial catches and landings were estimated from port samples and at-sea samples collected by observers archived in the GFBio database.
 
 ## INDICES OF ABUNDANCE
 Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
@@ -123,7 +121,7 @@ The DFO Fishery Decision-making Framework Incorporating the Precautionary Approa
 - A Limit Reference Point (LRP);
 - An Upper Stock Reference point (USR).
 
-In the current assessment, these reference points are incorporated into the decision tables (Section XX), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
+In the current assessment, these reference points are incorporated into the decision tables (Section \@ref(decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
 
 Provisional values of $USR = 0.8B_{MSY}$ and $LRP = 0.4B_{MSY}$ are suggested in the absence of stock-specific reference points [@dfo2009]. The framework specifies a limit reference removal rate of $F_{MSY}$. We refer to the reference removal rate as the limit removal rate (LRR) throughout this
 document. The PA policy also endorses “history-based” proxies based on estimated average spawning biomass and fishing mortality over a productive historical period [@dfo2009].
@@ -244,10 +242,10 @@ As for Area 5ABCD, we used an informative prior probability distribution for the
 
 The errors in variables approach used to partition process and observation error is described in detail in Appendix \@ref(delay-difference-model). Briefly, The key variance parameter is the inverse of the total
 variance, i.e., total precision $\phi^{-2}$ (@martell2011). This parameter can be fixed or estimated, and was fixed here. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation
-error [@punt1993, @deriso2007]. These parameters are used to derive the observation error component of the total variance ($\sigma_O$, Eq. XX) the process error term ($\sigma_R$, Eq. XX), which enters the objective function in the log likelihood function for the recruitment residuals (Eq. XX).
+error [@punt1993, @deriso2007]. These parameters are used to derive the observation error component of the total variance ($\sigma_O$, Eq. \@ref(eq:ddsigo)) the process error term ($\sigma_R$, Eq. \@ref(eq:ddsigr)), which enters the objective function in the log likelihood function for the recruitment residuals (Eq. \@ref(eq:ddrlt)).
 
 @forrest2013 found it was not possible to obtain plausible estimates of the variance term
-$\phi^{-2}$ for their Base Case model. Any attempt to estimate $\phi^{-2}$ resulted in estimates of $\sigma_R$ close to 2.0 and estimates of $\sigma_O$ close to 1.5, with extremely poor fits to the indices of abundance, particularly the commercial CPUE data. It was therefore necessary to fix $\phi^{-2}$ and $\rho$ to give fixed values of $\sigma_O$ and $\sigma_R$. @sinclair2005 also used fixed variance parameters in their assessment of Area 5CD Pacific Cod. @forrest2013 used values of $\phi^{-2}$ and $\rho$ that resulted in $\sigma_O$ = 0.25 and $\sigma_R$ = 0.8 (Equations XX and XX). Preliminary model runs with the current dataset found that $\sigma_O$ = 0.25 resulted in poor fits to the synoptic survey indices of abundance, especially in Area 5ABCD. Therefore in the current assessment $\sigma_O$ was reduced to 0.2 in both Reference Case models. Sensitivity tests are provided in Section \@ref(sensitivity-analyses).
+$\phi^{-2}$ for their Base Case model. Any attempt to estimate $\phi^{-2}$ resulted in estimates of $\sigma_R$ close to 2.0 and estimates of $\sigma_O$ close to 1.5, with extremely poor fits to the indices of abundance, particularly the commercial CPUE data. It was therefore necessary to fix $\phi^{-2}$ and $\rho$ to give fixed values of $\sigma_O$ and $\sigma_R$. @sinclair2005 also used fixed variance parameters in their assessment of Area 5CD Pacific Cod. @forrest2013 used values of $\phi^{-2}$ and $\rho$ that resulted in $\sigma_O$ = 0.25 and $\sigma_R$ = 0.8. Preliminary model runs with the current dataset found that $\sigma_O$ = 0.25 resulted in poor fits to the synoptic survey indices of abundance, especially in Area 5ABCD. Therefore in the current assessment $\sigma_O$ was reduced to 0.2 in both Reference Case models. Sensitivity tests are provided in Section \@ref(sensitivity-analyses).
 
 In addition to the overall observation error term $\sigma_O$, annual index points for each index of abundance series were weighted by annual CVs, using a multiplicative weighting approach fully described in Appendix \@ref(delay-difference-model).
 
@@ -544,11 +542,13 @@ The probability of the 2018 fishing mortality being greater than the 2017 fishin
 
 Under a 2018 catch level of 500 mt, the 2017 TAC, there is an estimated 0.001\% probability that the 2019 biomass will be below $B_{1986}$ and a 96.2\% probability that the 2019 biomass will be below $B_{Avg}$.
 
-## MODEL AVERAGING
+## MODEL AVERAGED DECISION TABLES
 
-### Area 5CD: Hecate Strait
+*TO DO: THIS IS 2014 TEXT. decide on which scenarios and make decision tables*
 
-For Area 5CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
+### Area 5ABCD
+
+For Area 5ABCD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
 \begin{resdoclist}
 \item Reference Case;
 \item the sensitivity case with prior probability distribution for ln($M$): $\mathcal{N}\sim(0.4,0.2)$;
@@ -573,7 +573,7 @@ The probability of B2015 < LRP under a 2014 catch level of 1200 t  was 18.8\% fo
 The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8\% for the averaged models, compared with 60.0\% for the Reference Case model.
 
 
-### Area 3CD: WEST COAST VANCOUVER ISLAND
+### Area 3CD
 
 ## SUMMARY
 
