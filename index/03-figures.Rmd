@@ -51,6 +51,7 @@ discards.plot(catch.3.discards)
 ## PRIOR PROBABILITY DISTRIBUTIONS
 
 ```{r fig-base-mcmc-priors-5abcd, fig.cap=paste0("Prior probability distributions used in the Area 5ABCD base reference model. ", q.5abcd.desc)}
+make.priors.posts.plot(base.model.5abcd)
 ```
 
 ```{r fig-base-mcmc-priors-3cd, fig.cap=paste0("Prior probability distributions used in the Area 3CD base reference model. ", q.3cd.desc)}

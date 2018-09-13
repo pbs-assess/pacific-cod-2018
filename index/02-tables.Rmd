@@ -241,6 +241,7 @@ make.parameters.est.table(sens.models.2[[1]],
   omit_pars = pars_est_omit)
 ```
 
+
 ```{r tab-param-table-sens2b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.2[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -327,6 +328,7 @@ make.parameters.est.table(sens.models.6[[3]],
 \clearpage
 
 ## SELECTED SENSITIVITY RESULTS: AREA 3CD
+
 ```{r tab-param-table-sens2a-3cd, results='asis'}
 make.parameters.est.table(sens.models.9[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
