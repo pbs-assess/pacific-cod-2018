@@ -37,7 +37,6 @@ b.plot <- function(models,
     m <- models[[1]]
     stopifnot(all(tac_vector %in% unique(m$mcmc$proj$TAC)))
     proj_dat <- dplyr::filter(m$mcmc$proj, TAC %in% tac_vector)
-    browser()
     proj_dat <- proj_dat[,c("TAC", proj_columns),drop=FALSE]
     proj_dat <- group_by(proj_dat, TAC) %>%
       do(mcmc.thin(., burnin = burnin, thin = thin))
