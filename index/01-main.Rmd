@@ -61,7 +61,7 @@ The Area 5CD assessment was updated in 2004 [@sinclair2005], using a similar del
 5. The possibility of violating the assumption of knife-edged recruitment at age 2 years, given evidence for younger fish in the length composition data from the commercial fishery; and
 6. Uncertainty in stock structure.
 
-Sensitivity to the first three of these uncertainties was partially addressed in @forrest2013 through the presentation of sensitivity analyses and alternative "model-averaged" decision tables for Areas 5AB and 5CD. The fourth and fifth uncertainties are partially addressed in the current assessment through the addition of extra sensitivity analyses comparing the previous and updated growth parameters, and comparing results with the assumption of knife-edged selectivity (Section \@ref(sensitivity-analyses). The sixth is still a key uncertainty for Pacific Cod. In the current assessment, data from Areas 5AB and 5CD are combined, under the assumption that Pacific Cod in Queen Charlotte Sound and Hecate Strait are a single stock.
+Sensitivity to the first three of these uncertainties was partially addressed in @forrest2013 through the presentation of sensitivity analyses and alternative "model-averaged" decision tables for Areas 5AB and 5CD. The fourth and fifth uncertainties are partially addressed in the current assessment through the addition of extra sensitivity analyses comparing the previous and updated growth parameters, and comparing results with the assumption of knife-edged selectivity (Section (\@ref(sensitivity-analyses)). The sixth is still a key uncertainty for Pacific Cod. In the current assessment, data from Areas 5AB and 5CD are combined, under the assumption that Pacific Cod in Queen Charlotte Sound and Hecate Strait are a single stock.
 
 # DATA SOURCES
 
@@ -113,7 +113,7 @@ All models presented in this document are Bayesian models implemented in AD Mode
 
 2. The von Bertalanffy growth parameters have been updated in the current assessment for both stocks, to reflect more recent age and length data. Details are provided in Appendix \@ref(analysis-of-biological-data).
 
-The reference models for the Area 5ABCD and 3CD assessments are discussed in more detail in Section \@ref(reference-case-models).
+The reference models for the Area 5ABCD and 3CD assessments are discussed in more detail in Section (\@ref(reference-case-models)).
 
 # REFERENCE POINTS
 
@@ -123,7 +123,7 @@ The DFO Fishery Decision-making Framework Incorporating the Precautionary Approa
 - A Limit Reference Point (LRP);
 - An Upper Stock Reference point (USR).
 
-In the current assessment, these reference points are incorporated into the decision tables (Section \@ref(decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
+In the current assessment, these reference points are incorporated into the decision tables (Section (\@ref(decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
 
 Provisional values of $USR = 0.8B_{MSY}$ and $LRP = 0.4B_{MSY}$ are suggested in the absence of stock-specific reference points [@dfo2009]. The framework specifies a limit reference removal rate of $F_{MSY}$. We refer to the reference removal rate as the limit removal rate (LRR) throughout this document. The PA policy also endorses “history-based” proxies based on estimated average spawning biomass and fishing mortality over a productive historical period [@dfo2009].
 
@@ -175,7 +175,7 @@ and we can define the potential scale reduction factor as $\hat { R } = \sqrt{\f
 
 Both models were fit to observed catch data, observed average annual mean weight in the commercial catch, and fishery-independent and -dependent indices of abundance. Details on objective function components of the model are provided in Appendix \@ref(delay-difference-model).
 
-Data sources for observed catch data were described in Section \@ref(data-sources), with values in Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd) and Figures \@ref(fig:fig-catch-5abcd) to \@ref(fig:fig-discards-5cd) for Area 5ABCD, and Figures \@ref(fig:fig-catch-3cd) to \@ref(fig:fig-discards-3cd) for Area 3CD.
+Data sources for observed catch data were described in Section (\@ref(data-sources)), with values in Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd) and Figures \@ref(fig:fig-catch-5abcd) to \@ref(fig:fig-discards-5cd) for Area 5ABCD, and Figures \@ref(fig:fig-catch-3cd) to \@ref(fig:fig-discards-3cd) for Area 3CD.
 
 Fishery independent swept area abundance indices are documented in Appendix \@ref(fishery-independent-indices-of-abundance), including biomass estimates, CVs and years covered.
 
@@ -201,9 +201,9 @@ The prior probability distributions for leading parameters in the Area 5ABCD and
 
 ## LEADING PARAMETERS
 
-A broad, uniform prior probability distribution was used for $\ln(R_0)$, reflecting ignorance the scale of the population.
+A broad, uniform prior probability distribution was used for $\ln(R_0)$, reflecting an ignorance the scale of the population.
 
-A Beta distribution was used for steepness with shape parameters that resulted in a distribution with mean = 0.7 and SD = 0.15. These parameter choices resulted in a distribution with little to no probability density for values less than 0.2 (Figure \@ref(fig:fig-base-mcmc-priors-5abcd)), implying that no transformation was necessary.This is the same prior probability distribution accepted for use in the previous stock assessment [@forrest2013]. @sinclair2005 fixed steepness at 0.75 in one of their
+A beta distribution was used for prior far steepness with shape parameters that resulted in a distribution with mean = 0.7 and SD = 0.15. These parameter choices resulted in a distribution with little to no probability density for values less than 0.2 (Figure \@ref(fig:fig-base-mcmc-priors-5abcd)), implying that no transformation was necessary. This is the same prior probability distribution accepted for use in the previous stock assessment [@forrest2013]. @sinclair2005 fixed steepness at 0.75 in one of their
 "preferred" scenarios. In their other "preferred" scenario, the MPD estimate of steepness was 0.53. The prior probability distribution chosen here encompasses both of these values.
 
 A normal distribution was used for $\ln(M)$ with mean = $\ln(0.5)$ and SD = 0.1, as was used in @forrest2013. @sinclair2005 obtained MPD estimates of *M* of 0.596 and 0.567 in their two "preferred" scenarios, whereas @forrest2013 obtained MPD estimates of 0.393 *y*^-1^ and 0.426 *y*^-1^ for Areas 5CD and 5AB, respectively. A bridging analysis done by @forrest2013 suggested that *M* could be considerably lower, depending on the values of other fixed or estimated parameters, and there has been considerable variability of estimates of *M* for Pacific cod throughout its assessment history (e.g., @fournier1983, @haist1998, @sinclair2001).
@@ -224,7 +224,7 @@ Normal distributions were used for $\ln(q_{k})$ for indices *k* =:
 * Hecate Strait Synoptic Survey; and
 * West Coast Vancouver Island Synoptic Survey.
 
-The choice of prior probability distribution for survey scaling parameters has the potential for large impacts on stock assessment outcomes. We therefore present a number of alternative prior formulations as sensitivity analyses for the following informative prior probability distributions in Section \@ref(sensitivity-analyses).
+The choice of prior probability distribution for survey scaling parameters has the potential for large impacts on stock assessment outcomes. We therefore present a number of alternative prior formulations as sensitivity analyses for the following informative prior probability distributions in Section (\@ref(sensitivity-analyses)).
 
 ### Survey scaling parameters for Area 5ABCD
 
@@ -246,11 +246,11 @@ variance, i.e., total precision $\phi^{-2}$ (@martell2011). This parameter can b
 error [@punt1993, @deriso2007]. These parameters are used to derive the observation error component of the total variance ($\sigma_O$, Eq. \@ref(eq:ddsigo)) the process error term ($\sigma_R$, Eq. \@ref(eq:ddsigr)), which enters the objective function in the log likelihood function for the recruitment residuals (Eq. \@ref(eq:ddrlt)).
 
 @forrest2013 found it was not possible to obtain plausible estimates of the variance term
-$\phi^{-2}$ for their Base Case model. Any attempt to estimate $\phi^{-2}$ resulted in estimates of $\sigma_R$ close to 2.0 and estimates of $\sigma_O$ close to 1.5, with extremely poor fits to the indices of abundance, particularly the commercial CPUE data. It was therefore necessary to fix $\phi^{-2}$ and $\rho$ to give fixed values of $\sigma_O$ and $\sigma_R$. @sinclair2005 also used fixed variance parameters in their assessment of Area 5CD Pacific Cod. @forrest2013 used values of $\phi^{-2}$ and $\rho$ that resulted in $\sigma_O$ = 0.25 and $\sigma_R$ = 0.8. Preliminary model runs with the current dataset found that $\sigma_O$ = 0.25 resulted in poor fits to the synoptic survey indices of abundance, especially in Area 5ABCD. Therefore in the current assessment $\sigma_O$ was reduced to 0.2 in both Reference Case models. Sensitivity tests are provided in Section \@ref(sensitivity-analyses).
+$\phi^{-2}$ for their Base Case model. Any attempt to estimate $\phi^{-2}$ resulted in estimates of $\sigma_R$ close to 2.0 and estimates of $\sigma_O$ close to 1.5, with extremely poor fits to the indices of abundance, particularly the commercial CPUE data. It was therefore necessary to fix $\phi^{-2}$ and $\rho$ to give fixed values of $\sigma_O$ and $\sigma_R$. @sinclair2005 also used fixed variance parameters in their assessment of Area 5CD Pacific Cod. @forrest2013 used values of $\phi^{-2}$ and $\rho$ that resulted in $\sigma_O$ = 0.25 and $\sigma_R$ = 0.8. Preliminary model runs with the current dataset found that $\sigma_O$ = 0.25 resulted in poor fits to the synoptic survey indices of abundance, especially in Area 5ABCD. Therefore in the current assessment $\sigma_O$ was reduced to 0.2 in both Reference Case models. Sensitivity tests are provided in Section (\@ref(sensitivity-analyses)).
 
 In addition to the overall observation error term $\sigma_O$, annual index points for each index of abundance series were weighted by annual CVs, using a multiplicative weighting approach fully described in Appendix \@ref(delay-difference-model).
 
-As for the previous stock assessment for Pacific Cod (@forrest2013), fixed variance components were used for the likelihood components for annual catch ($\sigma_C$) and average annual mean weight ($\sigma_W$).Problems with interpreting the mean weight data were discussed in @forrest2013, their Appendix C.These problems stem from changes over time in the sample sizes of different categories of length data, i.e., sorted and unsorted categories, and lack of data for smaller fish before observers measured fish at sea. Concerns about the use of the mean weight data were also recorded in the review of the 2005 assessment [@fargo2005]. This issue was acknowledged by @sinclair2005, who noted that the mean weight series was necessary for estimation of model parameters but was down-weighted in the objective function.As in @forrest2013, $\sigma_W$ was set to 0.2 in the Reference Case models. However, sensitivity tests are provided in Section \@ref(sensitivity-analyses).
+As for the previous stock assessment for Pacific Cod (@forrest2013), fixed variance components were used for the likelihood components for annual catch ($\sigma_C$) and average annual mean weight ($\sigma_W$).Problems with interpreting the mean weight data were discussed in @forrest2013, their Appendix C.These problems stem from changes over time in the sample sizes of different categories of length data, i.e., sorted and unsorted categories, and lack of data for smaller fish before observers measured fish at sea. Concerns about the use of the mean weight data were also recorded in the review of the 2005 assessment [@fargo2005]. This issue was acknowledged by @sinclair2005, who noted that the mean weight series was necessary for estimation of model parameters but was down-weighted in the objective function.As in @forrest2013, $\sigma_W$ was set to 0.2 in the Reference Case models. However, sensitivity tests are provided in Section (\@ref(sensitivity-analyses)).
 
 Because the model assumes observed catches are known without error, $\sigma_C$ was set to a small value, i.e., $\sigma_C$ = 0.05.
 
@@ -262,23 +262,23 @@ The model appeared to have converged (Figure \@ref(fig:fig-base-mcmc-trace-5abcd
 
 Maximum posterior density (MPD) model fits to the five indices of abundance are shown in Figure \@ref(fig:fig-base-index-fits-5abcd). The model followed the general trends of the three fishery-independent indices, but could not fit some of the larger peaks (for example 2004 and 2005 peaks in the Queen Charlotte Sound Synoptic Survey, and the 2013 peak in the Hecate Strait Synoptic Survey, Figure \@ref(fig:fig-base-index-fits-5abcd). Similarly, the model followed the major patterns in the two CPUE indices but did not capture all the peaks (Figure \@ref(fig:fig-base-index-fits-5abcd)).
 
-@forrest2013 considered goodness of fit to the indices of abundance to be a primary driver of uncertainty in their assessment, as estimates of productivity parameters were sensitive to how well the model fit observed peaks in the indices. They presented a number of sensitivity analyses to treatment of the observation error parameter $\sigma_O$, some of which are explored in the current assessment (Section \@ref(sensitivity-analyses)).
+@forrest2013 considered goodness of fit to the indices of abundance to be a primary driver of uncertainty in their assessment, as estimates of productivity parameters were sensitive to how well the model fit observed peaks in the indices. They presented a number of sensitivity analyses to treatment of the observation error parameter $\sigma_O$, some of which are explored in the current assessment (Section (\@ref(sensitivity-analyses)).
 
-Model fit to the average annual weight in the commercial fishery (Figure \@ref(fig:fig-base-mean-weight-5abcd)) was slightly better than in the 2013 assessment [@forrest2013, their Figure 37], which tended to underestimate annual mean weight. However, the current model also tended to underestimate annual mean weight, especially between 1970 and 2000. The slightly improved fit compared to the previous assessment is likely partly due to the updated growth parameters used in the current model compared to the previous assessment (see Section \@ref(sensitivity-analyses)). The effects of alternative values of $\sigma_W$ are evaluated in Section \@ref(sensitivity-analyses)).
+Model fit to the average annual weight in the commercial fishery (Figure \@ref(fig:fig-base-mean-weight-5abcd)) was slightly better than in the 2013 assessment [@forrest2013, their Figure 37], which tended to underestimate annual mean weight. However, the current model also tended to underestimate annual mean weight, especially between 1970 and 2000. The slightly improved fit compared to the previous assessment is likely partly due to the updated growth parameters used in the current model compared to the previous assessment (see Section (\@ref(sensitivity-analyses)). The effects of alternative values of $\sigma_W$ are evaluated in Section (\@ref(sensitivity-analyses))).
 
 Model fit to the total commercial catch is shown in Figure \@ref(fig:fig-base-catch-fit-5abcd). Model fits are almost perfect due to the setting $\sigma_C$ = 0.05 in the objective function (Appendix \@ref(delay-difference-model)). This was done so that the model was essentially conditioned on the catch data, which was assumed to be known with very little error.
 
-Posterior probability distributions of estimated parameters are provided in Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd). The median, 2.5^th^ percentile and 97.5^th^ percentile posterior parameter estimates, and maximum posterior density (MPD) estimates, are provided in Table \@ref(tab:tab-param-est-table-5abcd). With the exception of steepness, the posterior estimates did not appear to be strongly influenced by the prior probability distributions. The posterior probability distribution for steepness was very similar to the prior probability distribution (Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd)), implying that there is little information about this parameter in the available data.This is common in stock assessments and was also noted in the previous stock assessments for Areas 5AB and 5CD [@forrest2013]. Sensitivity to the prior distribution assumed for steepness is tested in Section \@ref(sensitivity-analyses).
+Posterior probability distributions of estimated parameters are provided in Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd). The median, 2.5^th^ percentile and 97.5^th^ percentile posterior parameter estimates, and maximum posterior density (MPD) estimates, are provided in Table \@ref(tab:tab-param-est-table-5abcd). With the exception of steepness, the posterior estimates did not appear to be strongly influenced by the prior probability distributions. The posterior probability distribution for steepness was very similar to the prior probability distribution (Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd)), implying that there is little information about this parameter in the available data.This is common in stock assessments and was also noted in the previous stock assessments for Areas 5AB and 5CD [@forrest2013]. Sensitivity to the prior distribution assumed for steepness is tested in Section (\@ref(sensitivity-analyses)).
 
-Posterior probability estimates of $\ln(M)$ tended to be lower than the prior values (Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd)), with a posterior median estimate of 0.346 *y*^-1^, which is slightly lower than the median posterior estimate of 0.393 *y*^-1^ obtained by @forrest2013 for the Area 5CD stock. As noted above, @forrest2013 reported that posterior estimates of $M$ were strongly influenced by the fit to the index of abundance data. Therefore the value assumed for $\sigma_O$ likely has a stronger influence on estimates of $M$ than the prior probability distribution for $\ln(M)$. This is discussed further in Section \@ref(sensitivity-analyses).
+Posterior probability estimates of $\ln(M)$ tended to be lower than the prior values (Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd)), with a posterior median estimate of 0.346 *y*^-1^, which is slightly lower than the median posterior estimate of 0.393 *y*^-1^ obtained by @forrest2013 for the Area 5CD stock. As noted above, @forrest2013 reported that posterior estimates of $M$ were strongly influenced by the fit to the index of abundance data. Therefore the value assumed for $\sigma_O$ likely has a stronger influence on estimates of $M$ than the prior probability distribution for $\ln(M)$. This is discussed further in Section (\@ref(sensitivity-analyses)).
 
-Survey scaling parameters ($q_{k}$) were strongly positively correlated with each other, especially the two synoptic surveys $q_2$ and $q_3$ in Figure \@ref(fig:fig-base-mcmc-pairs-5abcd), which were linearly correlated. This implies that changing the prior probability distribution for one of these parameters will strongly affect the other, and correspondingly, the scale of estimated biomass in the model. Because the two synoptic surveys occur in mostly the same years, it appears that the model has little leeway to change the ratio of their relative scales (see Section \@ref(sensitivity-analyses)). Survey scaling parameters were negatively correlated with $M$. $R_0$ was also negatively correlated with $M$, implying that there is limited information in the data to distinguish between a small productive population or a larger, less productive population (Figure \@ref(fig:fig-base-mcmc-pairs-5abcd)).
+Survey scaling parameters ($q_{k}$) were strongly positively correlated with each other, especially the two synoptic surveys $q_2$ and $q_3$ in Figure \@ref(fig:fig-base-mcmc-pairs-5abcd), which were linearly correlated. This implies that changing the prior probability distribution for one of these parameters will strongly affect the other, and correspondingly, the scale of estimated biomass in the model. Because the two synoptic surveys occur in mostly the same years, it appears that the model has little leeway to change the ratio of their relative scales (see Section (\@ref(sensitivity-analyses))). Survey scaling parameters were negatively correlated with $M$. $R_0$ was also negatively correlated with $M$, implying that there is limited information in the data to distinguish between a small productive population or a larger, less productive population (Figure \@ref(fig:fig-base-mcmc-pairs-5abcd)).
 
 *TO DO. Complete ref points discussion when table is updated with historical ref points*
 
 Estimates of reference points and benchmarks are provided in Table \@ref(tab:tab-ref-points-table-5abcd).
 
-Median posterior estimated biomass $B_{t}$ (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-biomass-5abcd), with values in Table \@ref(tab:tab-post-biomass-5abcd). Of note is the estimated downturn in estimated biomass since 2011. This is in contrast to the 2013 assessment [@forrest2013, their Figure 16], which projected an increase in biomass for 2014.In the current assessment, this downturn is largely driven by a downturn in the synoptic surveys since 2013, as well as in the modern CPUE index (Figure \ref(fig:fig-base-index-fits-5abcd)). Also of note compared to the previous assessment is the lower estimate of $R_0$ and its smaller confidence interval (Figure \@ref(fig:fig-base-biomass-5abcd)). This is entirely due to the structural change in the current assessment, where all average recruitment parameters are now set to the same estimated value (see Section \@ref(stock-assessment-model)). Also of note is that median posterior biomass since 1995 is estimated to be below the LRP ($B_{1971}$). This was also the case in the previous assessment for Area 5CD, with the exception that in that case, the biomass was predicted to have increased to be above the LRP around 2009 [@forrest2013, their Figure 16].
+Median posterior estimated biomass $B_{t}$ (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-biomass-5abcd), with values in Table \@ref(tab:tab-post-biomass-5abcd). Of note is the estimated downturn in estimated biomass since 2011. This is in contrast to the 2013 assessment [@forrest2013, their Figure 16], which projected an increase in biomass for 2014.In the current assessment, this downturn is largely driven by a downturn in the synoptic surveys since 2013, as well as in the modern CPUE index (Figure \ref(fig:fig-base-index-fits-5abcd)). Also of note compared to the previous assessment is the lower estimate of $R_0$ and its smaller confidence interval (Figure \@ref(fig:fig-base-biomass-5abcd)). This is entirely due to the structural change in the current assessment, where all average recruitment parameters are now set to the same estimated value (see Section (\@ref(stock-assessment-model))). Also of note is that median posterior biomass since 1995 is estimated to be below the LRP ($B_{1971}$). This was also the case in the previous assessment for Area 5CD, with the exception that in that case, the biomass was predicted to have increased to be above the LRP around 2009 [@forrest2013, their Figure 16].
 
 Median posterior estimated relative biomass ($B_{t}/B_0$) (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-depl-5abcd) and Table \@ref(tab:tab-post-depl-5abcd). Median posterior estimated age-2 recruits and recruitment deviations (with 95% credibility interval) are shown in Figure \@ref(fig:fig-base-recr-5abcd) and Table \@ref(tab:tab-post-recr-5abcd). Recruitment is estimated to have been below average since 1990, with negative recruitment deviations since 2010.
 
@@ -292,11 +292,11 @@ The model appeared to have converged (Figure \@ref(fig:fig-base-mcmc-trace-3cd))
 
 Maximum posterior density (MPD) model fits to the four indices of abundance are shown in Figure \@ref(fig:fig-base-index-fits-3cd). The model fit the two fishery-independent indices quite closely (Figure \@ref(fig:fig-base-index-fits-3cd), a and d), but did not fit the 2012 data point in the West Coast Vancouver Island Synoptic Survey. Similarly, the model followed the major patterns in the two CPUE indices but did not capture all the peaks (\@ref(fig:fig-base-index-fits-3cd), b and c).
 
-As for Area 5ABCD, the model tended to underfit average annual weight in the commercial fishery (Figure \@ref(fig:fig-base-mean-weight-3cd)). The effects of alternative values of $\sigma_W$ are evaluated in Section \@ref(sensitivity-analyses)).
+As for Area 5ABCD, the model tended to underfit average annual weight in the commercial fishery (Figure \@ref(fig:fig-base-mean-weight-3cd)). The effects of alternative values of $\sigma_W$ are evaluated in Section (\@ref(sensitivity-analyses)).
 
 Model fit to the total commercial catch is shown in Figure \@ref(fig:fig-base-catch-fit-3cd).
 
-Posterior probability distributions of estimated parameters are provided in Figure \@ref(fig:fig-base-mcmc-priors-posts-3cd). The median, 2.5^th^ percentile and 97.5^th^ percentile posterior parameter estimates, and maximum posterior density (MPD) estimates, are provided in Table \@ref(tab:tab-param-est-table-3cd). As for Area 5ABCD, again with the exception of steepness, the posterior estimates did not appear to be strongly influenced by the prior probability distributions. The posterior probability distribution for steepness, however, was very similar to the prior probability distribution \@ref(fig:fig-base-mcmc-priors-posts-3cd), implying that there is little information about this parameter in the available data. Sensitivity to the prior distribution assumed for steepness is tested in Section \@ref(sensitivity-analyses).
+Posterior probability distributions of estimated parameters are provided in Figure \@ref(fig:fig-base-mcmc-priors-posts-3cd). The median, 2.5^th^ percentile and 97.5^th^ percentile posterior parameter estimates, and maximum posterior density (MPD) estimates, are provided in Table \@ref(tab:tab-param-est-table-3cd). As for Area 5ABCD, again with the exception of steepness, the posterior estimates did not appear to be strongly influenced by the prior probability distributions. The posterior probability distribution for steepness, however, was very similar to the prior probability distribution \@ref(fig:fig-base-mcmc-priors-posts-3cd), implying that there is little information about this parameter in the available data. Sensitivity to the prior distribution assumed for steepness is tested in Section (\@ref(sensitivity-analyses)).
 
 As for Area 5ABCD, posterior probability estimates of $\ln(M)$ tended to be lower than the prior values \@ref(fig:fig-base-mcmc-priors-posts-3cd), with a posterior median estimate of 0.413 *y*^-1^. This is slightly higher than the median posterior estimate of 0.346 *y*^-1^ obtained here for the Area 5CD stock, and very similar to the value of 0.42 *y*^-1^ obtained by @sinclair2001 for the Area 3CD stock.
 
@@ -380,7 +380,7 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 ## SC 2A AND 2B. PRIOR PROBABILITY DISTRIBUTION FOR SURVEY SCALING PARAMETERS (CATCHABILITY)
 
-For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(Survey-scaling-parameters-for-area-5abcd) and \@ref(Survey-scaling-parameters-for-area-3cd) for Reference Case details:
+For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections (\@ref(Survey-scaling-parameters-for-area-5abcd)) and (\@ref(Survey-scaling-parameters-for-area-3cd)) for Reference Case details:
 
 > **Sc 2a.** The mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey, i.e., mean $\ln(q)$ = $\ln(0.186)$.
 
@@ -398,7 +398,7 @@ Notably, removing the informative prior resulted in very low estimates of $q$ fo
 
 For both areas, increased estimates of biomass led to decreased estimates of $F_{t}$ (Figures \@ref(fig:fig-sens2-f-5abcd and \@ref(fig:fig-sens9-f-3cd)).
 
-Given model sensitivity to priors assumed for survey $ln(q)$, and the tendency of the estimates to run to very low values without prior constraint, it seems justified to use a prior probability distribution informed by age-structured assessments for groundfish species caught in the same area with the same gear, even though those estimates are conditional on the assumptions inherent in those models. Synoptic survey *q* should be considered a major source of uncertainty in this assessment and we suggest inclusion of Sc 2a (both areas) in the ensemble of models for model-averaged decision tables (Section \@ref(decision-tables)).
+Given model sensitivity to priors assumed for survey $ln(q)$, and the tendency of the estimates to run to very low values without prior constraint, it seems justified to use a prior probability distribution informed by age-structured assessments for groundfish species caught in the same area with the same gear, even though those estimates are conditional on the assumptions inherent in those models. Synoptic survey *q* should be considered a major source of uncertainty in this assessment and we suggest inclusion of Sc 2a (both areas) in the ensemble of models for model-averaged decision tables (Section (\@ref(decision-tables))).
 
 ## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR $\ln(M)$
 
@@ -422,7 +422,7 @@ For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b 
 
 For Area 5ABCD, all sensitivity runs resulted in lower estimates of biomass than the Reference Case model (Figure \@ref(fig:fig-sens3-biomass-5abcd)).This was not surprising, given that all had lower posterior median estimates of *M*. Differences in estimated biomass among scenarios were smaller for Area 3CD, although all were slightly lower than for the Reference Case model (Figure \@ref(fig:fig-sens3-biomass-3cd)).
 
-We suggest inclusion of Sc 3b (both areas) in the ensemble of models for model-averaged decision tables (Section \@ref(decision-tables)), as this scenario resulted in the biggest difference in estimated biomass in both areas.
+We suggest inclusion of Sc 3b (both areas) in the ensemble of models for model-averaged decision tables (Section (\@ref(decision-tables))), as this scenario resulted in the biggest difference in estimated biomass in both areas.
 
 ## SC 4A AND SC 4B. PRIOR PROBABILITY DISTRIBUTION FOR STEEPNESS
 
@@ -466,7 +466,7 @@ For Sc 5b in Area 5ABCD, estimates of biomass were lower than for the Reference 
 For Area 3CD, results were broadly similar to those in Area 5ABCD, although differences in biomass between the Reference Case and the two scenarios were more distinct (Figure \@ref(fig:fig-sens12-biomass-3cd)). The fit to the average annual mean weight data was very poor for Sc 5a, and fairly similar to the Reference Case model for Sc 5b (Figure \@ref(fig:fig-sens12-meanweightfit-3cd)). As for Area 5ABCD, the growth rate used in the Reference Case model was lower than that used in Sc 5b. Therefore the model needed to explain catches of a less productive population with a larger historical biomass.
 
 ## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\sigma_O$
-The observation error parameter was $\sigma_O$ was fixed at 0.2 in the Reference Case models (Section \@ref(fixed-variance-parameters)). Three sensitivity analyses were done to explore the impacts of changing this value:
+The observation error parameter was $\sigma_O$ was fixed at 0.2 in the Reference Case models (Section (\@ref(fixed-variance-parameters))). Three sensitivity analyses were done to explore the impacts of changing this value:
 
 > **Sc 6a.** Fix $\sigma_O$ = 0.1.
 
@@ -482,7 +482,7 @@ Productivity parameters *M* and *h* were sensitive to changes in $\sigma_O$, as 
 
 ## SC 6C. ASSUMED FIXED VALUE OF PROCESS ERROR $\sigma_R$
 
-The process error parameter was $\sigma_R$ was fixed at 0.8 in the Reference Case models (Section \@ref(fixed-variance-parameters)), as this stock appears to have had very variable
+The process error parameter was $\sigma_R$ was fixed at 0.8 in the Reference Case models (Section (\@ref(fixed-variance-parameters))), as this stock appears to have had very variable
 recruitment throughout the history of the fishery. One sensitivity
 analysis was done to test the effect of increasing the assumed value of $\sigma_R$:
 
@@ -492,7 +492,7 @@ There was very little discernible difference in the estimated biomass, recruitme
 
 ## SC 7A. ASSUMED FIXED VALUE OF $\sigma_W$
 
-Given the uncertainties in interpreting the mean weight time series (see Section \@ref(reference-case-models)) and its potential to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$:
+Given the uncertainties in interpreting the mean weight time series (see Section (\@ref(reference-case-models))) and its potential to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$:
 
 > **Sc 7a.** Fix $\sigma_w$ = 0.4.
 
@@ -512,7 +512,7 @@ Probabilities of such states are measured as the proportion of burned-in posteri
 
 @forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from multiple sensitivity cases. They did this to address some of the key irresolvable uncertainties associated with the stock assessment.
 
-In the following sections we present the Reference Case decision tables for each area, then present alternative "model-averaged" decision tables that incorporate the uncertainty from the Reference Case models \@ref(reference-case models) and a subset of the above sensitivity cases (Section \@ref(sensitivity-analyses)). Details of the model averaging approach for Area 5ABCD and Area 3CD are provided below.
+In the following sections we present the Reference Case decision tables for each area, then present alternative "model-averaged" decision tables that incorporate the uncertainty from the Reference Case models \@ref(reference-case models) and a subset of the above sensitivity cases (Section (\@ref(sensitivity-analyses))). Details of the model averaging approach for Area 5ABCD and Area 3CD are provided below.
 
 We did not attempt to assign different weights to the alternative models in the construction of the model-averaged results.
 
