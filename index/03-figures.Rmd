@@ -215,6 +215,10 @@ b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
 b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
 ```
 
+```{r fig-sens1-sub2-biomass-5abcd, fig.cap="Biomass for the sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of post-1995 CPUE indices, Area 5ABCD."}
+b.plot(c(base.model.5abcd, sens.models.1.sub2), c(base.model.5abcd.name, sens.models.name.1.sub2))
+```
+
 ```{r fig-sens1-recr-5abcd, fig.cap="Recruitment for the sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, Area 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.1.sub),
        c(base.model.5abcd.name, sens.models.name.1.sub))
@@ -344,16 +348,18 @@ plot_grid(
 b.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
 ```
 
+```{r fig-sens8-sub2-biomass-3cd, fig.cap="Biomass for the sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of post-1995 CPUE indices, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.8.sub2), c(base.model.3cd.name, sens.models.name.8.sub2))
+```
+
 ```{r fig-sens8-recr-3cd, fig.cap="Recruitment for the sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, Area 3CD."}
 r.plot(c(base.model.3cd, sens.models.8.sub),
        c(base.model.3cd.name, sens.models.name.8.sub))
 ```
 
-
 ```{r fig-sens8-f-3cd, fig.cap="Fishing mortality for the sensitivity to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, Area 3CD."}
 f.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
 ```
-
 
 ```{r fig-sens9-biomass-3cd, fig.cap="Biomass for the sensitivity to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
 b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))

@@ -110,6 +110,20 @@ sens.models.name.1.sub <- c("1b) No locality/yr q mean = 06 sd = 0.19",
                             "1c) No locality/yr q mean = 06 sd = 0.19, double CV")
 
 ## -----------------------------------------------------------------------------
+## Sensitivity models group 1 subset 2 (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.1.sub2 <- c(file.path(model.dir,
+                                           "0_1b_5ABCD_NO_loc-yr-interact_rsoleq_06_019"),
+                                 file.path(model.dir,
+                                           "0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV"),
+                                 file.path(model.dir,
+                                           "0_1d_5ABCD_loc-yr-interact_no_recentCPUE"))
+
+sens.models.name.1.sub2 <- c("1b) No locality/yr q mean = 06 sd = 0.19",
+                             "1c) No locality/yr q mean = 06 sd = 0.19, double CV",
+                             "1d) Remove post-1995 CPUE")
+
+## -----------------------------------------------------------------------------
 ## Sensitivity models group 1 (5ABCD)
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.1 <- c(file.path(model.dir,
@@ -209,6 +223,20 @@ sens.models.dir.name.8.sub <- c(file.path(model.dir,
 
 sens.models.name.8.sub <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
                             "1c) No locality/yr q mean = 0.228 sd = 0.3, double CV")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 8 subset 2 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.8.sub2 <- c(file.path(model.dir,
+                                           "1_1b_3CD_NO_loc-yr-interact_rsoleq_0228sd03"),
+                                 file.path(model.dir,
+                                           "1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV"),
+                                 file.path(model.dir,
+                                           "1_1d_3CD_no_recent_CPUE"))
+
+sens.models.name.8.sub2 <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
+                             "1c) No locality/yr q mean = 0.228 sd = 0.3, double CV",
+                             "1d) Remove post-1995 CPUE")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 8 (3CD)
@@ -336,6 +364,7 @@ retro.names <- c("- 1 year",
 load.models.into.parent.env <- function(){
   base.model.5abcd <<- load.models(base.model.5abcd.dir.name)
   sens.models.1.sub <<- load.models(sens.models.dir.name.1.sub)
+  sens.models.1.sub2 <<- load.models(sens.models.dir.name.1.sub2)
   sens.models.1 <<- load.models(sens.models.dir.name.1)
   sens.models.2 <<- load.models(sens.models.dir.name.2)
   sens.models.3 <<- load.models(sens.models.dir.name.3)
@@ -346,6 +375,7 @@ load.models.into.parent.env <- function(){
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
   sens.models.8.sub <<- load.models(sens.models.dir.name.8.sub)
+  sens.models.8.sub2 <<- load.models(sens.models.dir.name.8.sub2)
   sens.models.8 <<- load.models(sens.models.dir.name.8)
   sens.models.9 <<- load.models(sens.models.dir.name.9)
   sens.models.10 <<- load.models(sens.models.dir.name.10)
