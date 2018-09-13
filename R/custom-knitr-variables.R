@@ -63,16 +63,30 @@ q.3cd.desc <- paste0("$q_1$ = West Coast Vancouver Island Synoptic Survey, ",
                      "$q_3$ = Commercial CPUE post-1995, and ",
                      "$q_4$ = NMFS Triennial Survey (Canadian portion).")
 
-b <- base.model.5abcd[[1]]
-start.yr <- b$dat$syr
-end.yr <- b$dat$nyr
-sage <- b$dat$sage
-nage <- b$dat$nage
-linf <- b$dat$linf
-k <- b$dat$k
-lwscal <- b$dat$lwscal
-lwpow <- b$dat$lwpow
-t0 <- b$dat$to
-alpha.g <- b$dat$dd.alpha.g
-rho.g <- b$dat$dd.rho.g
-wk <- b$dat$dd.wk
+b5 <- base.model.5abcd[[1]]
+start.yr5 <- b5$dat$syr
+end.yr5 <- b5$dat$nyr
+sage5 <- b5$dat$sage
+nage5 <- b5$dat$nage
+linf5 <- b5$dat$linf
+k5 <- b5$dat$k
+lwscal5 <- b5$dat$lwscal
+lwpow5 <- b5$dat$lwpow
+t05 <- b5$dat$to
+alpha.g5 <- b5$dat$dd.alpha.g
+rho.g5 <- b5$dat$dd.rho.g
+wk5 <- b5$dat$dd.wk
+
+b3 <- base.model.3cd[[1]]
+start.yr3 <- b3$dat$syr
+end.yr3 <- b3$dat$nyr
+sage3 <- b3$dat$sage
+nage3 <- b3$dat$nage
+linf3 <- b3$dat$linf
+k3 <- b3$dat$k
+lwscal3 <- b3$dat$lwscal
+lwpow3 <- b3$dat$lwpow
+t03 <- b3$dat$to
+alpha.g3 <- b3$dat$dd.alpha.g
+rho.g3 <- b3$dat$dd.rho.g
+wk3 <- b3$dat$dd.wk
