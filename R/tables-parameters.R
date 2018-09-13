@@ -399,16 +399,16 @@ make.ref.points.table <- function(model,
 
       cal <- bt %>%
         filter(Year >= lrp[1] & Year <= lrp[2])
-      lrp.5 <- mean(cal$`5%`)
+      lrp.5 <- mean(cal$`2.5%`)
       lrp.50 <- mean(cal$`50%`)
-      lrp.95 <- mean(cal$`95%`)
+      lrp.95 <- mean(cal$`97.5%`)
 
       cau <- bt %>%
         filter(Year >= usr[1] & Year <= usr[2])
 
-      usr.5 <- mean(cau$`5%`)
+      usr.5 <- mean(cau$`2.5%`)
       usr.50 <- mean(cau$`50%`)
-      usr.95 <- mean(cau$`95%`)
+      usr.95 <- mean(cau$`97.5%`)
       lrp.desc <- paste0("LRP (",
                          ifelse(lrp[1] == lrp[2],
                                 lrp[1],

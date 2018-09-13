@@ -18,17 +18,26 @@ b.plot <- function(models,
   if(depl){
     bt.quants <- lapply(models,
                         function(x){
-                          x$mcmccalcs$depl.quants})
+                          j <- x$mcmccalcs$depl.quants
+                          rownames(j)[1] <- "lowercv"
+                          rownames(j)[2] <- "median"
+                          rownames(j)[3] <- "uppercv"
+                          j})
   }else{
     bt.quants <- lapply(models,
                         function(x){
-                          x$mcmccalcs$sbt.quants})
+                          j <- x$mcmccalcs$sbt.quants
+                          rownames(j)[1] <- "lowercv"
+                          rownames(j)[2] <- "median"
+                          rownames(j)[3] <- "uppercv"
+                          j})
   }
 
   if (!is.null(proj_columns)) {
     m <- models[[1]]
     stopifnot(all(tac_vector %in% unique(m$mcmc$proj$TAC)))
     proj_dat <- dplyr::filter(m$mcmc$proj, TAC %in% tac_vector)
+    browser()
     proj_dat <- proj_dat[,c("TAC", proj_columns),drop=FALSE]
     proj_dat <- group_by(proj_dat, TAC) %>%
       do(mcmc.thin(., burnin = burnin, thin = thin))
@@ -53,7 +62,7 @@ b.plot <- function(models,
                         tmp %>% mutate(Year = rownames(tmp))})
   bt <- bind_rows(bt.quants, .id = "Sensitivity") %>%
     as.tibble() %>%
-    rename(`Biomass (t)` = `50%`) %>%
+    rename(`Biomass (t)` = median) %>%
     mutate(Year = as.numeric(Year)) %>%
     mutate(Sensitivity = forcats::fct_relevel(Sensitivity,
                                               models.names[1],
@@ -72,16 +81,17 @@ b.plot <- function(models,
                  as.numeric(x[,2:4])})
   bo <- as.data.frame(do.call(rbind, bo))
   bo <- cbind(models.names, bo)
-  names(bo) <- c("Sensitivity", "5%", "50%", "95%")
+
+  names(bo) <- c("Sensitivity", "lowercv", "median", "uppercv")
   bo <- as.tibble(bo) %>%
     mutate(Year = min(bt$Year)) %>%
-    rename("Biomass (t)" = "50%")
+    rename("Biomass (t)" = median)
 
   horiz.offset <- 1.7
   p <- ggplot(bt, aes(x = Year,
                        y = `Biomass (t)`,
-                       ymin = `5%`,
-                       ymax = `95%`))
+                       ymin = lowercv,
+                       ymax = uppercv))
 
   if (is.null(proj_columns)) {
     p <- p + geom_ribbon(alpha = 0.2, aes(fill = Sensitivity)) +
