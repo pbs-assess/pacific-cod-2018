@@ -437,3 +437,4 @@ decision.table(base.model.3cd,
 
 ## MODEL-AVERAGED DECISION TABLES
 
+\clearpage

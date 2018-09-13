@@ -474,3 +474,5 @@ plot_grid(
           labels = c("(a)", "(b)"),
          label_x = c(0.15, 0.13, 0.13, 0.2))
 ```
+
+\clearpage

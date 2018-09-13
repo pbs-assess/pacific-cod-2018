@@ -456,3 +456,5 @@ insert_paul_figure(9)
 insert_paul_figure(10)
 ```
 --->
+
+\clearpage

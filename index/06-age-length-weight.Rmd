@@ -630,3 +630,5 @@ where $K_j$ is the number of SampleIDs ($j$) in sequential quarter ($s$), where 
 \begin{equation}
 {W_f} = \frac{{\sum\limits_{s=1}^{{4}} {{W_sC_s}}}}{{\sum\limits_{s=1}^{{4}} {{C_s}}}}
 \end{equation}
+
+\clearpage
