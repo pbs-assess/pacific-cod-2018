@@ -414,30 +414,15 @@ Three sensitivity analyses are shown to illustrate the effect of the parameters 
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens3-biomass-5abcd) to \@ref(fig:fig-sens3-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens10-biomass-3cd) to \@ref(fig:fig-sens10-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens3a-5abcd) to \@ref(tab:tab-param-table-sens3c-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens3a-3cd) to \@ref(tab:tab-param-table-sens3c-3cd) for Area 3CD.
 
-<!-- TODO: longterm, should be dynamic values: -->
-For Area 5ABCD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.323 y^-1^, 0.347 y^-1^ and 0.298 y^-1^. For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.392 y^-1^, 0.391 y^-1^ and 0.398 y^-1^.
+<!-- TODO: longterm, should be dynamic values. RF: yes for sure!: -->
+For Area 5ABCD, respective median posterior estimates of *M* for Sc 3a, 3b and 3c were 0.324 y^-1^, 0.287 y^-1^ and 0.298 y^-1^. For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.392 y^-1^, 0.391 y^-1^ and 0.398 y^-1^.
 
-<!--
-compared to the median posterior Reference Case estimate of M = 0.393 y^-1^. It
-therefore appears that the assumed prior probability distribution for natural
-mortality does influence posterior estimates of M and that the prior used in
-the Reference Case model may have resulted in higher estimates of M than if a less
-informative prior had been used. Convergence properties appeared to be poor
-for Case 1, with large auto-correlation in several chains. However, convergence
-properties for Cases 2 and 3 were the same or better than those obtained for
-the Reference Case model, particularly for Case 3 (not shown).
+These values are compared to the median posterior Reference Case estimate of M = 0.346 y^-1^ for Area 5ABCD and 0.413 y^-1^ for Area 3CD. 
 
-The biomass estimates that resulted from each sensitivity case are shown in
-Figure XX. There was almost no discernible difference in recent biomass
-estimates among scenarios for the three cases. However, there were large
-differences in estimated historical biomasses, with historical biomasses
-estimated to be smaller than for the Reference Case in all three scenarios. Because
-of this, estimates of current stock status relative to the USR and LRP were
-different for these three sensitivity cases. We only show results for cases
-2 and 3, which had much better convergence properties than case 1, in
-Figure XX. Results show that the stock was estimated to be larger relative
-to the historical averages as estimates of M declined.
--->
+For Area 5ABCD, all sensitivity runs resulted in lower estimates of biomass than the Reference Case model (Figure \@ref(fig:fig-sens3-biomass-5abcd)).This was not surprising, given that all had lower posterior median estimates of *M*. Differences in estimated biomass among scenarios were smaller for Area 3CD, although all were slightly lower than for the Reference Case model (Figure \@ref(fig:fig-sens3-biomass-3cd)).
+
+We suggest inclusion of Sc 3b (both areas) in the ensemble of models for model-averaged decision tables (Section \@ref(decision-tables)), as this scenario resulted in the biggest difference in estimated biomass in both areas. 
+
 
 ## SC 4A AND SC 4B. PRIOR PROBABILITY DISTRIBUTION FOR STEEPNESS
 
@@ -447,22 +432,16 @@ Two sensitivity analyses were done to illustrate the effect of the prior probabi
 
 > **Sc 4b.** Use a beta prior for steepness with mean = 0.85 and sd = 0.15.
 
-<!-- TODO: longterm, should be dynamic values: -->
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens4-biomass-5abcd) to \@ref(fig:fig-sens4-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens11-biomass-3cd) to \@ref(fig:fig-sens11-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens4a-5abcd) to \@ref(tab:tab-param-table-sens4b-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens4a-3cd) to \@ref(tab:tab-param-table-sens4b-3cd) for Area 3CD.
 
-For Area 5ABCD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.479 and 0.883. For Area 3CD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.497 and 0.889.
+<!-- TODO: longterm, should be dynamic values: -->
 
-Biomass and parameter estimates show that, while differences in estimated *h* among the Reference Cases and two scenarios, there was relatively little effect of the prior probability distribution for steepness on posterior estimates of biomass.
+For Area 5ABCD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.479 and 0.883  For Area 3CD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.497 and 0.889. This was compared compared to 0.744 for the Area 5ABCD Reference Case and 0.747 for the Area 3CD Reference Case. 
 
-<!--
-The median posterior estimate of B0 was much larger than the maximum estimated
-biomass in the time series, and the model showed poor convergence for most
-parameters. The model's tendency to sample very low estimates of steepness with
-this prior resulted in some very large estimates of $\ln(R_0)$ and
-$\ln(R_{Avg\_init})$ (Figure XX). This result suggests that an informative
-prior for steepness helped to improve model convergence properties without
-having a very large influence on biomass estimates (Figure XX).
--->
+Despite the very large range in median posterior estimates of *h* among scenarios for both areas, there was almost no discernable effect on estimated biomass and recruitment, especially for Area 3CD (Figures \@ref(fig:fig-sens4-biomass-5abcd) and \@ref(fig:fig-sens11-biomass-3cd)). Model insensitivity to the prior probability distribution for *h* explains in part why the posterior probability distribution so closely matched the prior for both models (Figures \@ref(fig:fig-base-mcmc-priors-posts-5abcd) and \@ref(fig:fig-base-mcmc-priors-posts-3cd)).
+
+Differences in model sensitivity to the prior for *h* in the current assessment *vs* the previous assessment for Area 5CD can be explained by changes in the treatment of average recruitment. The model used in @forrest2013, estimated $R_{0}$ as a separate parameter to average annual recruitment ($R_{Avg}$). As a result when @forrest2013 tested a uniform prior for *h*, while biomass estimates were unaffected, their posterior estimates of $B_{0}$ became very large [@forrest2013, their Figures 33 and 34]. They described poor model convergence for most parameters and noted the model's tendency to sample very low estimates of steepness coincident with the very large estimates of $\ln(R_0)$. This suggests there was very little information in the data for estimation of a separate $\ln(R_0)$ in the absence of age-composition data, suggesting that it may be preferable to combine average and unfished recruitment, as has been done in the current assessment.
+
 
 ## SC 5A AND 5B. THE ASSUMPTION OF KNIFE-EDGED SELECTIVITY AND MATURITY AT AGE 2, AND EFFECTS OF UPDATING THE GROWTH PARAMETERS
 
