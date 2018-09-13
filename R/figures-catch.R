@@ -14,19 +14,11 @@ make.catches.plot <- function(dat,
       labs(x = "Year",
            y = "Catch (t)",
            fill = "") +
-      scale_fill_hue(labels = c("USA", "Canada")) +
+      scale_fill_brewer(labels = c("USA", "Canada"), palette = "Dark2") +
       scale_y_continuous(labels = comma,
                          limits = c(min(dat$value),
                                     1.1 * max(dat$value))) +
-      ##scale_x_continuous(
-      theme_pbs() +
-      theme(axis.text.x = element_text(size = 14),
-            axis.title.x = element_text(size = 16),
-            axis.text.y = element_text(size = 14),
-            axis.title.y = element_text(size = 16),
-            plot.title = element_text(size = 20,
-                                      face = "bold",
-                                      color = "darkgreen"))
+      theme_pbs()
   }
 }
 
@@ -39,7 +31,7 @@ discards.plot <- function(dat){
 
   g.bottom <- ggplot(dat) +
     aes(x = Year, y = `Released at sea`) +
-    geom_col(fill = "red", alpha = 0.5) +
+    geom_col(fill = RColorBrewer::brewer.pal(3, "Dark2")[[2]]) +
     coord_cartesian(expand = FALSE) +
     labs(x = "Year",
          y = "Catch (t)",
@@ -48,7 +40,7 @@ discards.plot <- function(dat){
 
   g.top <- ggplot(dat) +
     aes(x = Year, y = `Prop. released`) +
-    geom_line(color = "blue",
+    geom_line(color = "grey50",
               size = 1,
               alpha = 0.5) +
     scale_x_continuous(breaks = seq(0, 2015, 5))
