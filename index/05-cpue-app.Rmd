@@ -789,7 +789,7 @@ plot_cpue_int_res <- function(model, fleet, index_data,
 }
 ```
 
-```{r cpue-re-int-ts, fig.cap="Locality-specific CPUE index trends for a standardization model that allows for locality-year (space-time) interactions. The coloured lines indicate the locality-specific estimates with all other predictors set to their base levels. The black line and shaded ribbon indicate the overall average annual CPUE.", fig.asp=0.8}
+```{r cpue-re-int-ts, fig.cap="Locality-specific CPUE index trends for a standardization model that allows for locality-year (space-time) interactions. The coloured lines indicate the locality-specific estimates with all other predictors set to their base levels. The black line and shaded ribbon indicate the overall average annual CPUE.", fig.asp=0.8, eval=FALSE}
 stopifnot(length(m_modern) == 16L)
 g1 <- plot_cpue_int_res(m_modern[[8]], fleet = dfleet_modern[[1]],
   index_data = cpue_pred_modern,
@@ -811,7 +811,7 @@ g4 <- plot_cpue_int_res(m_historic[[12]], fleet = dfleet_hist[[2]],
 cowplot::plot_grid(g4, g3, g2, g1, ncol = 2)
 ```
 
-```{r cpue-re-no-int-ts, fig.cap="Locality-specific CPUE index trends for a standardization model that does not allow for locality-year (space-time) interactions. The coloured lines indicate the locality-specific estimates with all other predictors set to their base levels. The black line and shaded ribbon indicate the overall average annual CPUE.", fig.asp=0.8}
+```{r cpue-re-no-int-ts, fig.cap="Locality-specific CPUE index trends for a standardization model that does not allow for locality-year (space-time) interactions. The coloured lines indicate the locality-specific estimates with all other predictors set to their base levels. The black line and shaded ribbon indicate the overall average annual CPUE.", fig.asp=0.8, eval=FALSE}
 g1 <- plot_cpue_int_res(m_modern[[7]], fleet = dfleet_modern[[1]],
   index_data = cpue_pred_modern,
   the_formula_version = "Full standardization minus interactions",
