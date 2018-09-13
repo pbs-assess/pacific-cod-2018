@@ -417,6 +417,8 @@ make.parameters.est.table(sens.models.13[[3]],
   omit_pars = pars_est_omit)
 ```
 
+\clearpage
+
 ## REFERENCE CASE DECISION TABLES
 
 ```{r tab-decision-5abcd, results='asis', cache=FALSE}
@@ -424,10 +426,14 @@ decision.table(base.model.5abcd,
                caption = "Decision table for Area 5ABCD.")
 ```
 
+\clearpage
+
 ```{r tab-decision-3cd, results='asis', cache=FALSE}
 decision.table(base.model.3cd,
                caption = "Decision table for Area 3CD.")
 ```
+
+\clearpage
 
 ## MODEL-AVERAGED DECISION TABLES
 
