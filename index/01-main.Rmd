@@ -142,8 +142,6 @@ Suggested reference points and benchmarks for both areas are provided in Table \
 
 # REFERENCE CASE MODELS
 
-*TO DO: Find out why Appendix D (model-description-app.Rmd) is being referred to as a subsection of Appendix C: Appendix C.6.1.1 (for Robyn only)*
-
 The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics in terms of data choices, prior probability distributions and fixed parameter settings. For brevity both reference case models are described togetherin this section, with differences explained as necessary. The Bayesian delay-difference model is fully described in Appendix \@ref(delay-difference-model).
 
 The joint posterior distribution for each model was numerically approximated using the
