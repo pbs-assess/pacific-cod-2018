@@ -142,8 +142,6 @@ Suggested reference points and benchmarks for both areas are provided in Table \
 
 # REFERENCE CASE MODELS
 
-*TO DO: Find out why Appendix D (model-description-app.Rmd) is being referred to as a subsection of Appendix C: Appendix C.6.1.1 (for Robyn only)*
-
 The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics in terms of data choices, prior probability distributions and fixed parameter settings. For brevity both reference case models are described togetherin this section, with differences explained as necessary. The Bayesian delay-difference model is fully described in Appendix \@ref(delay-difference-model).
 
 The joint posterior distribution for each model was numerically approximated using the
@@ -181,14 +179,14 @@ Fishery independent swept area abundance indices are documented in Appendix \@re
 
 For Area 5ABCD, these are:
 
-* the Hecate Strait Multispecies Assemblage Survey;
-* the Queen Charlotte Sound Synoptic Survey;
-* the Hecate Strait Synoptic Survey.
+1. the Hecate Strait Multispecies Assemblage Survey;
+1. the Queen Charlotte Sound Synoptic Survey;
+1. the Hecate Strait Synoptic Survey.
 
 For Area 3CD, these are:
 
-* the West Coast Vancouver Island Synoptic Survey;
-* the NMFS Triennial Survey (in Canada).
+1. the West Coast Vancouver Island Synoptic Survey;
+1. the NMFS Triennial Survey (in Canada).
 
 Fishery dependent indices are fully documented in Appendix \@ref(commercial-cpue-standardization). In each area, the CPUE time series are standardized GLMMs, with separate analyses for the periods before and after the introduction of 100% observer coverage in 1996, which resulted in large improvements in estimates ofcatch, discards and general data reliability. The two periods are referred to as: historical (1956-1995) and modern (1996-2017) (Appendix \@ref(commercial-cpue-standardization)).
 
@@ -321,17 +319,17 @@ parameters and prior probability distributions on model outcomes for the Area 5A
 
 For both stocks, we tested sensitivity of the model outputs to the following data and assumptions:
 
-* Inclusion of a locality-year interaction as a random effect in the commercial CPUE data (historical period: pre-1996 and modern period: post-1995)
-* Inclusion of commercial CPUE indices for the historical and modern periods.
-* Inclusion of the NMFS Triennial Survey index for Area 3CD
-* The prior probability distribution for $\ln(q)$
-* The prior probability distribution for $\ln(M)$
-* The prior probability distribution for steepness
-* The assumption of knife-edged selectivity and maturity at age 2
-* The updated growth parameters
-* The assumed fixed value of observation error $\sigma_O$
-* The assumed fixed value of $\sigma_R$
-* The assumed fixed value of $\sigma_W$
+1. Inclusion of a locality-year interaction as a random effect in the commercial CPUE data (historical period: pre-1996 and modern period: post-1995)
+1. Inclusion of commercial CPUE indices for the historical and modern periods.
+1. Inclusion of the NMFS Triennial Survey index for Area 3CD
+1. The prior probability distribution for $\ln(q)$
+1. The prior probability distribution for $\ln(M)$
+1. The prior probability distribution for steepness
+1. The assumption of knife-edged selectivity and maturity at age 2
+1. The updated growth parameters
+1. The assumed fixed value of observation error $\sigma_O$
+1. The assumed fixed value of $\sigma_R$
+1. The assumed fixed value of $\sigma_W$
 
 Results are presented under these headings below. In all sensitivity runs, as for the Reference Case models, posterior samples were drawn systematically every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples. The first 1,000 samples were dropped to allow for sufficient burn-in.
 
