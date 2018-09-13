@@ -479,7 +479,7 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 As expected, decreasing the value of $\sigma_O$ resulted in closer fits to indices of abundance in both areas (Figures \@ref(fig:fig-sens6-index-cpue-post1995-5abcd) and \@ref(fig:fig-sens13-index-triennial-3cd)). In Area 5ABCD, reducing $\sigma_O$ also caused a reduction in estimated historical biomass, especially Sc 6a, although recent estimates of biomass were similar among scenarios (Figure \@ref(fig:fig-sens6-biomass-5abcd)). In Area 3CD, results were less pronounced (Figure \@ref(fig:fig-sens13-biomass-3cd)), with more similar index fits among scenarios (Figure \@ref(fig:fig-sens13-index-triennial-3cd)).
 
-Productivity parameters *M* and *h* were sensitive to changes in $\sigma_O$, as were scale parameters $\R_{0}$ and catchability parameters $\q_{k}$ (Tables \@ref(tab:tab-param-table-sens6a-5abcd) to \@ref(tab:tab-param-table-sens6c-5abcd) for Area 5ABCD, and Tables \@ref(tab:tab-param-table-sens6a-3cd) to \@ref(tab:tab-param-table-sens6c-3cd) for Area 3CD).
+Productivity parameters *M* and *h* were sensitive to changes in $\sigma_O$, as were scale parameters $R_{0}$ and catchability parameters \textit{q} (Tables \@ref(tab:tab-param-table-sens6a-5abcd) to \@ref(tab:tab-param-table-sens6c-5abcd) for Area 5ABCD, and Tables \@ref(tab:tab-param-table-sens6a-3cd) to \@ref(tab:tab-param-table-sens6c-3cd) for Area 3CD).
 
 ## SC 6C. ASSUMED FIXED VALUE OF PROCESS ERROR $\sigma_R$
 
@@ -505,17 +505,9 @@ Increasing $\sigma_w$ in Sc 7a resulted in a large reduction in estimated biomas
 
 # DECISION TABLES
 
-*TO DO: Update. This is 2014 text. Fix equations and dynamic references*
+Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019. Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
 
-Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019.
-
-Projected recruitment anomalies for the projection year were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
-
-Reference points and performance measures are listed in Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-ref-points-table-3cd).
-
-Decision tables are designed to present probabilities of "undesirable" states under alternative 2018 projected catch levels.
-
-For example, an undesirable biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
+Decision tables are designed to present probabilities of "undesirable" states under alternative 2018 projected catch levels.For example, an undesirable biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
 
 Probabilities of such states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
 
@@ -525,24 +517,32 @@ In the following sections we present the Reference Case decision tables for each
 
 We did not attempt to assign different weights to the alternative models in the construction of the model-averaged results.
 
-## REFERENCE CASE MODELS
+## REFERENCE CASE DECISION TABLES
 
-*TO DO. Update with results*
+### Area 5ABCD
+<!-- TO DO: make these dynamic-->
 
-The decision table for the Area 5ABCD Reference Case model is provided in Table XX.
-The probability of the 2015 biomass being below the 2014 biomass ranged from 12.4\% under no 2014 catch to 64.1\% under 2400 t, double the current TAC.
+The decision table for the Area 5ABCD Reference Case model is provided in Table \@ref(tab: tab-decision-5abcd). Projections were done for a range of 2018 catch levels from 0 metric tonnes (mt) to 3,000 mt, approximately three times the current combined Area 5ABCDE TAC of 950 mt (Table \@ref(tab:tab-tac)).
 
-The probability of being below the LRP ranged from 12.3\% to 24.9\% over the range of catch levels considered.
+The probability of the 2019 biomass being below the 2018 biomass ranged from 22.1\% under no 2018 catch to 87.5\% under a catch of 3,000 mt.
 
-The probability of being below the USR was higher and ranged from 51.2\% under no 2014 catch to 66.0\% over the range of catch levels considered.
+The probability of 2019 biomass being below the LRP $B_{1971}$ ranged from 85.5\% to 94.7\% over the range of catch levels considered.The probability of 2019 biomass being below the USR $B_{Avg}$ was higher and ranged from 99.5\% to 99.8\% over the range of catch levels considered.
 
-The probability of the 2014 fishing mortality being greater than the 2013 fishing mortality ranged from 0.0\% to 100\%.
+The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0.0\% to 100\%. The probability of the 2018 fishing mortality being greater than the LRR $F_{Avg}$ ranged from 0.0\% to 99.3\%.
 
-The probability of the 2014 fishing mortality being greater than the LRR ranged from 0.0\% to 33.9\%.
-Estimated probabilities at the current TAC 1200 t are shown in bold (Table 26).
+Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated 89.4\% probability that the 2019 biomass will be below $B_{1971}$ and a 99.5\% probability that the 2019 biomass will be below $B_{Avg}$.
 
-Under a 2014 catch level of 1200 t, there is an estimated 60\% probability that the 2015 biomass will be below the USR and an 18.2\% probability that the 2015 biomass will be below the LRP.
+### Area 3CD
 
+The decision table for the Area 3CD Reference Case model is provided in Table \@ref(tab: tab-decision-3cd). Projections were done for a range of 2018 catch levels from 0 mt to 1,500 mt, approximately three times the current TAC of 500 mt (Table \@ref(tab:tab-tac)).
+
+The probability of the 2019 biomass being below the 2018 biomass ranged from 80.7\% under no 2018 catch to 92.3\% under a catch of 1,500 mt.
+
+The probability of 2019 biomass being below the proposed LRP $B_{1986}$ ranged from 0.00\% to 0.003\% over the range of catch levels considered. However, the probability of 2019 biomass being below the USR $B_{Avg}$ ranged from 95.6\% to 97.1\% over the range of catch levels considered.
+
+The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0.0\% to 100\%. The probability of the 2018 fishing mortality being greater than the LRR $F_{Avg}$ ranged from 0.0\% to 97.7\%.
+
+Under a 2018 catch level of 500 mt, the 2017 TAC, there is an estimated 0.001\% probability that the 2019 biomass will be below $B_{1986}$ and a 96.2\% probability that the 2019 biomass will be below $B_{Avg}$.
 
 ## MODEL AVERAGING
 

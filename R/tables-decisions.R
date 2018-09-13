@@ -19,15 +19,15 @@ decision.table <- function(models,
   #                    "$P(B_{2019} LESS THAN B_{min}}$)",
   #                    "$P(B_{2019} LESS THAN B_{AVG})$",
   #                    "$P(F_{2018} MORE THAN F_{AVG})$")
-  colnames(dat) <- c("TAC",
+  colnames(dat) <- c("2018 Catch (mt)",
                      "P(B2019<B2018)",
                      "P(F2018>F2017)",
                      #"P(B2019<0.8BMSY)",
                      #"P(B2019<0.4BMSY)",
                      #"P(F2018>FMSY)",
-                     "P(B2019<Bmin)",
-                     "P(B2019<BAvg)",
-                     "P(F2018>FAvg)")
+                     "P(B2019<LRP)",
+                     "P(B2019<USR)",
+                     "P(F2018>LRR)")
 
   proj.dat <- data.frame()
   for(t in seq_along(tac)){
