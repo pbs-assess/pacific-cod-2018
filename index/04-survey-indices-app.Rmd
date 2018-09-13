@@ -12,18 +12,17 @@
 
 A series of multi-species groundfish bottom trawl surveys was conducted in
 Hecate Strait in May-June of 1984, 1987, 1989, 1991, 1993, 1995, 1996, 1998,
-2000, 2002, and 2003 @westrheim1984, @fargo1984, @fargo1988,
-@wilson1991, @hand1994, @workman1996, @workman1997, @choromanski2002).
-The results up to 2000 were reported in the 2001 assessment
-[@sinclair2001] and results from 2002 and 2003 were presented in the
+2000, 2002, and 2003 @westrheim1984, @fargo1984, @fargo1988, @wilson1991,
+@hand1994, @workman1996, @workman1997, @choromanski2002)  (Figure
+\@ref(fig:survey-maps-hs-msa). The results up to 2000 were reported in the 2001
+assessment [@sinclair2001] and results from 2002 and 2003 were presented in the
 2005 assessment [@sinclair2005].
 
 The original design of this survey assigned fishing locations by 10 fm depth
-intervals within a 10 nm grid of Hecate Strait. The survey was
-post-stratified for the purpose of calculating an abundance index for Pacific
-Cod [@sinclair2000]. The post stratification used 10 fm depth intervals for
-the entire survey area, thereby treating each depth interval as a single
-stratum.
+intervals within a 10 nm grid of Hecate Strait. The survey was post-stratified
+for the purpose of calculating an abundance index for Pacific Cod
+[@sinclair2000]. The post stratification used 10 fm depth intervals for the
+entire survey area, thereby treating each depth interval as a single stratum.
 
 The Hecate Strait Assemblage survey was designed as a systematic
 fixed-station survey. Despite attempts to apply post-sampling stratification,
@@ -33,46 +32,62 @@ Synoptic survey (described below).
 
 ### HECATE STRAIT SYNOPTIC SURVEY
 
-The Hecate Strait synoptic groundfish bottom trawl survey is part of a
-coordinated set of long-term surveys that together cover the continental shelf
-and upper slope of most of the BC coast. The Hecate Strait synoptic survey has
-been conducted during May-June, in odd years since 2005. All the synoptic
-surveys follow a random depth stratified design. The survey area is divided
-into 2 km by 2 km blocks and each block is assigned to one of four depth
-strata based on the average bottom depth in the block. The four depth strata
-for the Hecate Strait survey are 10--70m, 70--130m, 130--220m, and
-220--500m. Each year blocks are randomly selected within each depth strata.
-For this survey and the other synoptic surveys discussed below, the relative
-allocation of blocks amongst depth strata was determined by modeling the
-expected catches of groundfish and determining the target number of tows per
-stratum that would provide the most precise catch rate data for as many species
-as possible.
-
-*TODO: presumably there is some trade off here with time and cost otherwise we
-would sample infinite blocks*
+The Hecate Strait synoptic groundfish bottom trawl survey is part of
+a coordinated set of long-term surveys that together cover the continental
+shelf and upper slope of most of the BC coast (Figure
+\@ref(fig:survey-maps-syn-hs). The Hecate Strait synoptic survey has been
+conducted during May-June, in odd years since 2005. All the synoptic surveys
+follow a random depth stratified design. The survey area is divided into 2 km
+by 2 km blocks and each block is assigned to one of four depth strata based on
+the average bottom depth in the block. The four depth strata for the Hecate
+Strait survey are 10--70m, 70--130m, 130--220m, and 220--500m. Each year blocks
+are randomly selected within each depth strata. For this survey and the other
+synoptic surveys discussed below, the relative allocation of blocks amongst
+depth strata was determined by modeling the expected catches of groundfish and
+determining the target number of tows per stratum that would provide sufficiently
+precise catch rate data for as many species as possible.
 
 ### QUEEN CHARLOTTE SOUND SYNOPTIC SURVEY
 
-The Queen Charlotte Sound (QCS) synoptic groundfish bottom trawl survey has been
-conducted in July--August in 2003, 2004, and in odd years since 2005. The four
-depth strata for the QCS survey are 50--125m, 125--200m, 200--330m, and
-330--500 m. Each year blocks are randomly selected within each depth strata. In
-addition, for the purposes of allocating blocks, the QCS survey is divided into
-northern and southern spatial strata.
+The Queen Charlotte Sound (QCS) synoptic groundfish bottom trawl survey has
+been conducted in July--August in 2003, 2004, and in odd years since 2005
+(Figure \@ref(fig:survey-maps-syn-qcs). The four depth strata for the QCS
+survey are 50--125m, 125--200m, 200--330m, and 330--500 m. Each year blocks are
+randomly selected within each depth strata. In addition, for the purposes of
+allocating blocks, the QCS survey is divided into northern and southern spatial
+strata.
 
 ### WEST COAST VANCOUVER ISLAND SYNOPTIC SURVEY
 
 The West Coast Vancouver Island synoptic bottom trawl survey was first
 conducted in 2004 and is conducted in alternating (even-numbered) years on
-a chartered commercial trawler. The survey area is off the west coast of
-Vancouver Island from approximately 49 $^\circ$  12$^\prime$ to 50 $^\circ$
-36$^\prime$ North latitude and approximately 124 $^\circ$  48$^\prime$ to
-128 $^\circ$  30$^\prime$ West longitude. The southern boundary is contiguous
-with the Canada/U.S. boundary. The survey has a single aerial stratum in
-Pacific Fishery Management Area regions 3C and 3D separated into four depth
-strata: 50--125m; 125--200m; 200--330m; and 330--500m. Approximately 150 to 180
-4 km^2^ blocks are selected randomly among the four depth strata when
-conducting each survey.
+a chartered commercial trawler (Figure \@ref(fig:survey-maps-syn-wcvi). The
+survey area is off the west coast of Vancouver Island from approximately 49
+$^\circ$  12$^\prime$ to 50 $^\circ$ 36$^\prime$ North latitude and
+approximately 124 $^\circ$  48$^\prime$ to 128 $^\circ$  30$^\prime$ West
+longitude. The southern boundary is contiguous with the Canada/U.S. boundary.
+The survey has a single aerial stratum in Pacific Fishery Management Area
+regions 3C and 3D separated into four depth strata: 50--125m; 125--200m;
+200--330m; and 330--500m. Approximately 150 to 180 4 km^2^ blocks are selected
+randomly among the four depth strata when conducting each survey.
+
+```{r survey-maps-syn-hs-msa, fig.asp=1, fig.cap="Individual survey tows for the Hecate Strait multi-species groundfish bottom trawl survey. Light gray crosses indicate survey sets that did not catch Pacific Cod. Circles have their area and color proportional to the density of Pacific Cod for that survey set. Eastings and Northings are for UTM zone 9."}
+plot_multiyear_survey_sets(dat$survey_sets, "HS MSA")
+```
+
+```{r survey-maps-syn-hs, fig.asp=1, fig.cap="Individual survey tows for the Hecate Strait (SYN HS) synoptic groundfish bottom trawl survey. Light gray crosses indicate survey sets that did not catch Pacific Cod. Circles have their area and color proportional to the density of Pacific Cod for that survey set. Eastings and Northings are for UTM zone 9."}
+plot_multiyear_survey_sets(dat$survey_sets, "SYN HS")
+```
+
+```{r survey-maps-syn-qcs, fig.asp=1, fig.cap="Individual survey tows for the Queen Charlotte Sound (SYN QCS) synoptic groundfish bottom trawl survey. Light gray crosses indicate survey sets that did not catch Pacific Cod. Circles have their area and color proportional to the density of Pacific Cod for that survey set. Eastings and Northings are for UTM zone 9."}
+plot_multiyear_survey_sets(dat$survey_sets, "SYN QCS")
+```
+
+```{r survey-maps-syn-wcvi, fig.asp=1, fig.cap="Individual survey tows for the West Coast Vancouver Island (SYN WCVI) synoptic groundfish bottom trawl survey survey. Light gray crosses indicate survey sets that did not catch Pacific Cod. Circles have their area and color proportional to the density of Pacific Cod for that survey set. Eastings and Northings are for UTM zone 9."}
+plot_multiyear_survey_sets(dat$survey_sets, "SYN WCVI")
+```
+
+\clearpage
 
 ### SWEPT AREA ANALYSIS
 
@@ -144,7 +159,6 @@ dplyr::filter(surv_syn, survey_abbrev %in%
 ```
 
 \clearpage
-
 
 ## NMFS TRIENNIAL SURVEY (IN CANADIAN WATERS)
 

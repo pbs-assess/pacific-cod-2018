@@ -5,7 +5,7 @@
 # COMMERCIAL CPUE STANDARDIZATION
 
 We sought to generate an index of Pacific Cod abundance from commercial trawl
-catch per unit effort data that was standardized for depth, fishing locality,
+catch per unit effort data that was standardized for depth, fishing locality (defined spatial regions; Figures \@ref(fig:cpue-locality-map-5), \@ref(fig:cpue-locality-map-3)),
 month, vessel, and latitude, when available. Before fitting a standardization
 model, we had to filter and manipulate the available catch and effort data to
 generate a dataset appropriate for model fitting. In the following sections we
@@ -17,7 +17,7 @@ of including or ignoring space-time interactions.
 ## DEFINING THE 1956--1995 FLEET
 
 Commercial groundfish bottom trawl data prior to 1991 was recorded via dockside
-interviews and aggregated to fishing locality (defined spatial regions) and
+interviews and aggregated to fishing locality and
 trip combinations. Data from 1991 to 1995 was recorded via logbooks at the
 fishing-event (trawl) level. We therefore aggregated the 1991--1995 data to the
 locality-trip level (hereafter referred to as 'trips' in this appendix) to
@@ -252,32 +252,6 @@ coverage if the interactions are not present (Figure
 
 \clearpage
 
-```{r cpue-tweedie-ex, fig.asp=0.7, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
-plot_tweedie_ex <- function(df, max = 15) {
-  xx <- seq(0, max, length.out = 1000)
-  out <- plyr::mdply(df, function(mu, power, phi) {
-    data.frame(x = xx,
-      y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
-  }) %>%
-    mutate(phi = paste("ϕ =", phi)) %>%
-    mutate(power = paste("p =", power)) %>%
-    mutate(mu = paste("μ =", mu))
-
-  ggplot(out, aes(x, y, colour = mu)) +
-    geom_line() +
-    facet_grid(power~phi, scales = "free") +
-    gfplot::theme_pbs() +
-    labs(colour = "μ") +
-    xlab("Value") + ylab("Density") +
-    coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x))) +
-    scale_colour_brewer(palette = "Dark2") +
-    scale_fill_brewer(palette = "Dark2")
-}
-
-df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
-plot_tweedie_ex(df)
-```
-
 ```{r cpue-params}
 params <- list()
 params$species_proper <- "Pacific Cod"
@@ -305,6 +279,40 @@ gg_cpue_modern <- gg_cpue
 cpue_pred_modern <- predictions
 arith_cpue_modern <- arith_cpue
 m_modern <- readRDS(here::here("data/generated/cpue-models-pcod-modern.rds"))
+```
+
+```{r cpue-locality-map-5, fig.cap="DFO localities used in the 5ABCD modern CPUE standardization model.", fig.asp=0.9}
+gfplot:::plot_dfo_localities(unique(dfleet_modern[[1]]$locality_code))
+```
+
+```{r cpue-locality-map-3, fig.cap="DFO localities used in the 3CD modern CPUE standardization model.", fig.asp=0.9}
+gfplot:::plot_dfo_localities(unique(dfleet_modern[[2]]$locality_code))
+```
+
+```{r cpue-tweedie-ex, fig.asp=0.7, fig.cap="Example density functions for the Tweedie distribution. The symbol $\\phi$ represents the dispersion parameter, $p$ represents the power parameter, and $\\mu$ represents the mean. Note that the spike in density that is seen towards the left of the panels is at a value of 0 on the x axis."}
+plot_tweedie_ex <- function(df, max = 15) {
+  xx <- seq(0, max, length.out = 1000)
+  out <- plyr::mdply(df, function(mu, power, phi) {
+    data.frame(x = xx,
+      y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
+  }) %>%
+    mutate(phi = paste("ϕ =", phi)) %>%
+    mutate(power = paste("p =", power)) %>%
+    mutate(mu = paste("μ =", mu))
+
+  ggplot(out, aes(x, y, colour = mu)) +
+    geom_line() +
+    facet_grid(power~phi, scales = "free") +
+    gfplot::theme_pbs() +
+    labs(colour = "μ") +
+    xlab("Value") + ylab("Density") +
+    coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x))) +
+    scale_colour_brewer(palette = "Dark2") +
+    scale_fill_brewer(palette = "Dark2")
+}
+
+df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
+plot_tweedie_ex(df)
 ```
 
 ```{r cpue-catch-effort-ts, fig.cap="Raw time series of Pacific Cod catch and total hours trawled (regardless of species caught). Data prior to 1996 is shown separately from data after 1996.", fig.asp=1.1}
