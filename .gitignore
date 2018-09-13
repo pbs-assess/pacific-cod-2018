@@ -51,6 +51,9 @@ index/resdoc.Rmd
 cpue-comp-*
 index/resdoc.tex
 /models
+*.pfc
+*.dat
+*.ctl
 
 index/resdoc.knit.md
 index/resdoc.utf8.md
