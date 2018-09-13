@@ -7,7 +7,11 @@ r.plot <- function(models,
 
   rt <- lapply(models,
                function(x){
-                   x$mcmccalcs$recr.quants})
+                 j <- x$mcmccalcs$recr.quants
+                 rownames(j)[1] <- "lowercv"
+                 rownames(j)[2] <- "median"
+                 rownames(j)[3] <- "uppercv"
+                 j})
 
   yrs <- lapply(rt,
                 function(x){
@@ -20,7 +24,7 @@ r.plot <- function(models,
                  tmp %>% mutate(Year = rownames(tmp))})
   rt <- bind_rows(rt, .id = "Sensitivity") %>%
     as.tibble() %>%
-    rename(`Recruits (thousands)` = `50%`) %>%
+    rename(`Recruits (thousands)` = median) %>%
     mutate(Year = as.numeric(Year)) %>%
     mutate(Sensitivity = forcats::fct_relevel(Sensitivity,
                                               models.names[1],
@@ -33,8 +37,8 @@ r.plot <- function(models,
   horiz.offset <- 2
   p <- ggplot(rt, aes(x = Year,
                       y = `Recruits (thousands)`,
-                      ymin = `5%`,
-                      ymax = `95%`)) +
+                      ymin = lowercv,
+                      ymax = uppercv)) +
     geom_pointrange(data = rt,
                     size = 0.25,
                     position = position_dodge(width = horiz.offset),
@@ -71,7 +75,11 @@ r.devs.plot <- function(models,
 
   rt <- lapply(models,
                function(x){
-                   x$mcmccalcs$recr.devs.quants})
+                 j <- x$mcmccalcs$recr.devs.quants
+                 rownames(j)[1] <- "lowercv"
+                 rownames(j)[2] <- "median"
+                 rownames(j)[3] <- "uppercv"
+                 j})
 
   yrs <- lapply(rt,
                 function(x){
@@ -84,7 +92,7 @@ r.devs.plot <- function(models,
                  tmp %>% mutate(Year = rownames(tmp))})
   rt <- bind_rows(rt, .id = "Sensitivity") %>%
     as.tibble() %>%
-    rename(`Log recruitment deviations` = `50%`) %>%
+    rename(`Log recruitment deviations` = median) %>%
     mutate(Year = as.numeric(Year)) %>%
     mutate(Sensitivity = forcats::fct_relevel(Sensitivity,
                                               models.names[1],
@@ -96,8 +104,8 @@ r.devs.plot <- function(models,
   horiz.offset <- 2
   p <- ggplot(rt, aes(x = Year,
                       y = `Log recruitment deviations`,
-                      ymin = `5%`,
-                      ymax = `95%`)) +
+                      ymin = lowercv,
+                      ymax = uppercv)) +
     geom_pointrange(data = rt,
                     size = 0.25,
                     position = position_dodge(width = horiz.offset),

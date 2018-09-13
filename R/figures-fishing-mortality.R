@@ -11,7 +11,11 @@ f.plot <- function(models,
   f.quants <- lapply(models,
                      function(x){
                        ## Assume only first gear has F's
-                       x$mcmccalcs$f.mort.quants[[1]]})
+                       j <- x$mcmccalcs$f.mort.quants[[1]]
+                       rownames(j)[1] <- "lowercv"
+                       rownames(j)[2] <- "median"
+                       rownames(j)[3] <- "uppercv"
+                       j})
 
   names(f.quants) <- models.names
   f.quants <- lapply(f.quants,
@@ -20,7 +24,7 @@ f.plot <- function(models,
                         tmp %>% mutate(Year = rownames(tmp))})
   f <- bind_rows(f.quants, .id = "Sensitivity") %>%
     as.tibble() %>%
-    rename(`Fishing mortality` = `50%`) %>%
+    rename(`Fishing mortality` = median) %>%
     mutate(Year = as.numeric(Year)) %>%
     mutate(Sensitivity = forcats::fct_relevel(Sensitivity,
                                               models.names[1],
@@ -29,8 +33,8 @@ f.plot <- function(models,
 
   p <- ggplot(f, aes(x = Year,
                       y = `Fishing mortality`,
-                      ymin = `5%`,
-                      ymax = `95%`,
+                      ymin = lowercv,
+                      ymax = uppercv,
                       fill = Sensitivity)) +
     geom_ribbon(alpha = 0.2) +
     geom_line(aes(color = Sensitivity),
