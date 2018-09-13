@@ -22,9 +22,9 @@ decision.table <- function(models,
   colnames(dat) <- c("$2018$ Catch (mt)",
                      "$P(B_{2019} < B_{2018})$",
                      "$P(F_{2018} > F_{2017})$",
-                     "$P(B_{2019} < LRP)$",
-                     "$P(B_{2019} < USR)$",
-                     "$P(F_{2018} > LRR)$")
+                     "$P(B_{2019} < \\mathrm{LRP})$",
+                     "$P(B_{2019} < \\mathrm{USR})$",
+                     "$P(F_{2018} > \\mathrm{LRR})$")
 
   proj.dat <- data.frame()
   for(t in seq_along(tac)){
