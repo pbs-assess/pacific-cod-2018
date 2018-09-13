@@ -4,7 +4,7 @@
 
 Pacific Cod (*Gadus macrocephalus*) is a relatively short-lived, fast-growing member of the family Gadidae. A common name in British Columbia (BC) is grey cod (or gray cod). Populations of Pacific Cod are distributed from California, throughout the waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China [@hart1973]. Maximum observed age in British Columbia is around 10-11 years [@westrheim1996, this document], while a maximum age of approximately 13 years has been reported for Alaskan stocks [@roberson2001]. Maximum length recorded in British Columbia is 100 cm [@hart1973], although some larger specimens have been observed in Alaska and Russia [@westrheim1996]. In recent Synoptic trawl surveys in BC, the maximum recorded length was 93 cm (Appendix A, Table \@ref(tab:length-biosamples-surv)). Pacific Cod are demersal spawners, with several studies reporting that spawning most likely occurs during February to March. A comprehensive review of the biology, life history and distribution of Pacific Cod in BC is provided by @westrheim1996.
 
-Four stocks of Pacific Cod are defined for management purposes on the BC coast: Strait of Georgia (4B); West Coast Vancouver Island (3CD); Queen Charlotte Sound (5AB); and Hecate Strait (5CD). This study focuses on the populations in Queen Charlotte Sound combined with Hecate Strait (5ABCD), and the West Coast Vancouver Island (3CD) (Figure XX).
+Four stocks of Pacific Cod are defined for management purposes on the BC coast: Strait of Georgia (4B); West Coast Vancouver Island (3CD); Queen Charlotte Sound (5AB); and Hecate Strait (5CD). This study focuses on the populations in Queen Charlotte Sound combined with Hecate Strait (5ABCD), and the West Coast Vancouver Island (3CD) (Figure \@ref(fig:fig-map)).
 
 Recent genetic analyses have identified a distinction between North American and Asian Pacific Cod populations, and have shown some evidence for distinction between Alaskan populations and those south of Dixon Entrance in British Columbia (reviewed in @forrest2013). There is also evidence that fish taken off the coast of Washington and the west coast of Vancouver Island may be distinct from fish sampled within the Strait of Georgia or Puget Sound. However, linkages, if any, among stocks in BC and those in Alaska remain poorly understood. To date it is uncertain whether genetic population structure exists within BC waters [@forrest2013]. Genetic samples have been collected from spawning grounds in Hecate Strait and Queen Charlotte Sound since the 2013 assessment but these have not yet been analysed.
 
@@ -87,9 +87,7 @@ Canadian trawl landings, April 1, 2007 to 2017. View of the Fisheries and Oceans
 
 ## CATCH DATA
 Groundfish fisheries were managed by calendar year until 1996. Beginning in 1997-98 the fishing year changed to April 1--March 31. In 2010--2011 the fishing year was changed again to February 21 to February 20. Throughout this document, fishing years are defined as beginning on April 1 for all years, and are referenced by starting year, e.g., fishing year 1957 runs from April 1, 1957 to March 31, 1958. These definitions were used consistently in all calculations involving commercial catch data, including calculation of annual average mean weight in the catch (Appendix \@ref(analysis-of-biological-data)), and commercial CPUE (Appendix \@ref(commercial-cpue-standardization)). Landings data are presented
-separately for Canada and the USA (Tables XX and XX). Combined USA-Canada landings data were obtained from the Pacific Marine Fisheries Commission reports for 1956-1981 and the USA landed portion was determined by subtracting the Canadian landed amount from the combined total for each year. In cases where
-the difference was negative, the USA landed amount was set to zero (Tables XX and XX). Canadian data were obtained: from the GFCatch database for the period 1954-1995 [@rutherford1999]; from the PacHarvest database for the period 1996-March 31, 2007; and from the Fisheries and Oceans Canada (DFO) FOS
-database for the period April 1, 2007 until the present. The annual size composition of commercial catches and landings were estimated from port samples and at-sea samples collected by observers archived in the GFBio database.
+separately for Canada and the USA (Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd)). Combined USA-Canada landings data were obtained from the Pacific Marine Fisheries Commission reports for 1956-1981 and the USA landed portion was determined by subtracting the Canadian landed amount from the combined total for each year. In cases where the difference was negative, the USA landed amount was set to zero. Canadian data were obtained: from the GFCatch database for the period 1954-1995 [@rutherford1999]; from the PacHarvest database for the period 1996-March 31, 2007; and from the Fisheries and Oceans Canada (DFO) FOS database for the period April 1, 2007 until the present. The annual size composition of commercial catches and landings were estimated from port samples and at-sea samples collected by observers archived in the GFBio database.
 
 ## INDICES OF ABUNDANCE
 Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
@@ -123,7 +121,7 @@ The DFO Fishery Decision-making Framework Incorporating the Precautionary Approa
 - A Limit Reference Point (LRP);
 - An Upper Stock Reference point (USR).
 
-In the current assessment, these reference points are incorporated into the decision tables (Section XX), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
+In the current assessment, these reference points are incorporated into the decision tables (Section \@ref(decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
 
 Provisional values of $USR = 0.8B_{MSY}$ and $LRP = 0.4B_{MSY}$ are suggested in the absence of stock-specific reference points [@dfo2009]. The framework specifies a limit reference removal rate of $F_{MSY}$. We refer to the reference removal rate as the limit removal rate (LRR) throughout this
 document. The PA policy also endorses “history-based” proxies based on estimated average spawning biomass and fishing mortality over a productive historical period [@dfo2009].
@@ -244,10 +242,10 @@ As for Area 5ABCD, we used an informative prior probability distribution for the
 
 The errors in variables approach used to partition process and observation error is described in detail in Appendix \@ref(delay-difference-model). Briefly, The key variance parameter is the inverse of the total
 variance, i.e., total precision $\phi^{-2}$ (@martell2011). This parameter can be fixed or estimated, and was fixed here. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation
-error [@punt1993, @deriso2007]. These parameters are used to derive the observation error component of the total variance ($\sigma_O$, Eq. XX) the process error term ($\sigma_R$, Eq. XX), which enters the objective function in the log likelihood function for the recruitment residuals (Eq. XX).
+error [@punt1993, @deriso2007]. These parameters are used to derive the observation error component of the total variance ($\sigma_O$, Eq. \@ref(eq:ddsigo)) the process error term ($\sigma_R$, Eq. \@ref(eq:ddsigr)), which enters the objective function in the log likelihood function for the recruitment residuals (Eq. \@ref(eq:ddrlt)).
 
 @forrest2013 found it was not possible to obtain plausible estimates of the variance term
-$\phi^{-2}$ for their Base Case model. Any attempt to estimate $\phi^{-2}$ resulted in estimates of $\sigma_R$ close to 2.0 and estimates of $\sigma_O$ close to 1.5, with extremely poor fits to the indices of abundance, particularly the commercial CPUE data. It was therefore necessary to fix $\phi^{-2}$ and $\rho$ to give fixed values of $\sigma_O$ and $\sigma_R$. @sinclair2005 also used fixed variance parameters in their assessment of Area 5CD Pacific Cod. @forrest2013 used values of $\phi^{-2}$ and $\rho$ that resulted in $\sigma_O$ = 0.25 and $\sigma_R$ = 0.8 (Equations XX and XX). Preliminary model runs with the current dataset found that $\sigma_O$ = 0.25 resulted in poor fits to the synoptic survey indices of abundance, especially in Area 5ABCD. Therefore in the current assessment $\sigma_O$ was reduced to 0.2 in both Reference Case models. Sensitivity tests are provided in Section \@ref(sensitivity-analyses).
+$\phi^{-2}$ for their Base Case model. Any attempt to estimate $\phi^{-2}$ resulted in estimates of $\sigma_R$ close to 2.0 and estimates of $\sigma_O$ close to 1.5, with extremely poor fits to the indices of abundance, particularly the commercial CPUE data. It was therefore necessary to fix $\phi^{-2}$ and $\rho$ to give fixed values of $\sigma_O$ and $\sigma_R$. @sinclair2005 also used fixed variance parameters in their assessment of Area 5CD Pacific Cod. @forrest2013 used values of $\phi^{-2}$ and $\rho$ that resulted in $\sigma_O$ = 0.25 and $\sigma_R$ = 0.8. Preliminary model runs with the current dataset found that $\sigma_O$ = 0.25 resulted in poor fits to the synoptic survey indices of abundance, especially in Area 5ABCD. Therefore in the current assessment $\sigma_O$ was reduced to 0.2 in both Reference Case models. Sensitivity tests are provided in Section \@ref(sensitivity-analyses).
 
 In addition to the overall observation error term $\sigma_O$, annual index points for each index of abundance series were weighted by annual CVs, using a multiplicative weighting approach fully described in Appendix \@ref(delay-difference-model).
 
@@ -338,6 +336,8 @@ Results are presented under these headings below. In all sensitivity runs, as fo
 
 ## SC 1B AND SC 1C. EXCLUSION OF A LOCALITY-YEAR INTERACTION AS RANDOM EFFECT IN COMMERCIAL CPUE INDICES
 
+*TO DO: Talk about these scenarios. Briefly*
+
 The reference case models were fit to historical and modern commercial CPUE indices that included a locality-year interaction as random effect (see Appendix \@ref(commercial-cpue-standardization), Equations \@ref(eq:cpue-tweedie) to \@ref(eq:cpue-vessel)). Two sensitivity analyses are shown to illustrate the effect of omitting the locality-year interaction term (Equation \@ref(eq:cpue-locality-year)) from both historical and modern indices:
 
 > **Sc 1b.** Use equations without the interaction term to create CPUE indices
@@ -415,14 +415,13 @@ Three sensitivity analyses are shown to illustrate the effect of the parameters 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens3-biomass-5abcd) to \@ref(fig:fig-sens3-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens10-biomass-3cd) to \@ref(fig:fig-sens10-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens3a-5abcd) to \@ref(tab:tab-param-table-sens3c-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens3a-3cd) to \@ref(tab:tab-param-table-sens3c-3cd) for Area 3CD.
 
 <!-- TODO: longterm, should be dynamic values. RF: yes for sure!: -->
-For Area 5ABCD, respective median posterior estimates of *M* for Sc 3a, 3b and 3c were 0.324 y^-1^, 0.287 y^-1^ and 0.298 y^-1^. For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.392 y^-1^, 0.391 y^-1^ and 0.398 y^-1^.
+For Area 5ABCD, respective median posterior estimates of *M* for Sc 3a, 3b and 3c were 0.324 y^-1^, 0.287 y^-1^ and 0.298 y^-1^. These values are compared to the median posterior Reference Case estimate of *M* = 0.346 y^-1^.
 
-These values are compared to the median posterior Reference Case estimate of M = 0.346 y^-1^ for Area 5ABCD and 0.413 y^-1^ for Area 3CD. 
+For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.392 y^-1^, 0.391 y^-1^ and 0.398 y^-1^. These values are compared to the median posterior Reference Case estimate of *M* = 0.413 y^-1^.
 
 For Area 5ABCD, all sensitivity runs resulted in lower estimates of biomass than the Reference Case model (Figure \@ref(fig:fig-sens3-biomass-5abcd)).This was not surprising, given that all had lower posterior median estimates of *M*. Differences in estimated biomass among scenarios were smaller for Area 3CD, although all were slightly lower than for the Reference Case model (Figure \@ref(fig:fig-sens3-biomass-3cd)).
 
 We suggest inclusion of Sc 3b (both areas) in the ensemble of models for model-averaged decision tables (Section \@ref(decision-tables)), as this scenario resulted in the biggest difference in estimated biomass in both areas. 
-
 
 ## SC 4A AND SC 4B. PRIOR PROBABILITY DISTRIBUTION FOR STEEPNESS
 
@@ -442,12 +441,15 @@ Despite the very large range in median posterior estimates of *h* among scenario
 
 Differences in model sensitivity to the prior for *h* in the current assessment *vs* the previous assessment for Area 5CD can be explained by changes in the treatment of average recruitment. The model used in @forrest2013, estimated $R_{0}$ as a separate parameter to average annual recruitment ($R_{Avg}$). As a result when @forrest2013 tested a uniform prior for *h*, while biomass estimates were unaffected, their posterior estimates of $B_{0}$ became very large [@forrest2013, their Figures 33 and 34]. They described poor model convergence for most parameters and noted the model's tendency to sample very low estimates of steepness coincident with the very large estimates of $\ln(R_0)$. This suggests there was very little information in the data for estimation of a separate $\ln(R_0)$ in the absence of age-composition data, suggesting that it may be preferable to combine average and unfished recruitment, as has been done in the current assessment.
 
-
 ## SC 5A AND 5B. THE ASSUMPTION OF KNIFE-EDGED SELECTIVITY AND MATURITY AT AGE 2, AND EFFECTS OF UPDATING THE GROWTH PARAMETERS
 
 The Reference Case delay-difference models assumed knife-edged selectivity and maturity at age 2 *y* (i.e., age at recruitment $k$ = 2, Table \@ref(tab:tab-param-list)). New analysis of age and maturity data  suggest median recruitment age could be closer to 3 *y* for BC Pacific Cod (Appendix \@ref(analysis-of-biological-data)). A sensitivity analysis (Sc 5a) was done to illustrate the effect of assuming that fish recruit to the fishery and mature at age 3 *y*:
 
-Another sensitivity analysis (Sc 5b) was done to illustrate the effects of reverting back to the von Bertalanffy growth parameters used in the previous Area 5CD assessment [@forrest2013]. The previous stock assessment used the von Bertalanffy parameters that @westrheim1996 reported for Area 3CD, i.e., $L_{inf}$ = 89.48 cm; $K_{VB}$ = 0.307 *y*^1^; and $t_0$ = -0.116 *y*. @forrest2013 also used length-weight parameters $a_{LW}$ = 7.38*e*-6 and $b_{LW}$ = 3.0963. The delay-difference model in scenario 5b used Ford-Walford parameters $W_{k}$, $\alpha_g$ and $\rho_g$ derived from these previous growth parameters. In summary, the two new scenarios are:
+Another sensitivity analysis (Sc 5b) was done to illustrate the effects of reverting back to the von Bertalanffy growth parameters used in the previous Area 5CD assessments [@forrest2013; @sinclair2005], which were also used by @sinclair2001 in the last assessment for Area 3CD. These previous stock assessments used the von Bertalanffy parameters that @westrheim1996 reported for Area 3CD, ($L_{inf}$ = 89.48 cm; $K_{VB}$ = 0.307 *y*^1^; and $a_0$ = -0.116 *y*). The delay-difference model in scenario 5b used Ford-Walford parameters $W_{k}$, $\alpha_g$ and $\rho_g$ derived from these previous growth parameters.  
+
+The current Area 5ABCD assessment used values of female growth parameters estimated in Appendix \@ref(analysis-of-biological-data) using survey age and length data from the Hecate Strait and Queen Charlotte Sound Synoptic Surveys ($L_{inf}$ = 99.07 cm; $K_{VB}$ = 0.185 *y*^1^; and $a_0$ = -0.832 *y*). The current Area 3CD assessment used values of female growth parameters estimated in Appendix \@ref(analysis-of-biological-data) using survey age and length data from the West Coast Vancouver Island Synoptic Survey ($L_{inf}$ = 83.29 cm; $K_{VB}$ = 0.266 *y*^1^; and $a_0$ = -0.572 *y*). For both areas, the new values of the growth rate $K_{VB}$ were much lower than used in the previous assessments.
+
+In summary, the two new scenarios are:
 
 > **Sc 5a.** Set $k = 3 y$ and update weight at recruitment $W_k$ and Ford-Walford parameters accordingly.
 
@@ -455,6 +457,12 @@ Another sensitivity analysis (Sc 5b) was done to illustrate the effects of rever
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens5-biomass-5abcd) to \@ref(fig:fig-sens5-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens12-biomass-3cd) to \@ref(fig:fig-sens12-f-3cd) for Area 3CD.
 Fits to the average annual mean weight in the commercial fishery for Scenarios 5a and 5b are shown in Figures \@ref(fig:fig-sens5-meanweightfit-5abcd) and \@ref(fig:fig-sens12-meanweightfit-3cd).
+
+Not surprisingly, the Area 5ABCD model was sensitive to both the age at knife-edged selectivity and the growth parameters (Figure \@ref(fig:fig-sens5-biomass-5abcd)). For Sc 5a, the model estimated much lower biomass, especially for the historical period. This is expected since this scenario does not include age-2 fish. The fit to the average annual mean weight for Sc 5a (Figure \@ref(fig:fig-sens5-meanweightfit-5abcd) a) was better for the historical portion of the time series than for the Reference Case model, which tended to greatly underfit in some years (Figure \@ref(fig:fig-base-mean-weight-5abcd)). However, it should be remembered that prior to 1996, observations of small fish were missing from the commercial length data, as only landed fish were measured (Appendix \@ref(analysis-of-biological-data and @forrest2013, their Appendix C)). Therefore, the current Reference Case model is estimating mean weights that were probably present in the catch but not recorded.
+
+For Sc 5b in Area 5ABCD, estimates of biomass were lower than for the Reference Case, especially for the historical period (Figure \@ref(fig:fig-sens5-biomass-5abcd)), with smaller peaks in biomass in the 1970s and 1990s. The von Bertalanffy growth rate used by @forrest2013 and @sinclair2005 was larger than that in the Reference Case model, indicating a more productive stock. Therefore large peaks in catches could be explained by lower biomass in Sc 5b, due to greater stock productivity. Recent estimates of biomass were, however, more similar to the Reference Case (Figure \@ref(fig:fig-sens5-biomass-5abcd)). Fits to the annual average mean weight for Sc 5b ((Figure \@ref(fig:fig-sens5-meanweightfit-5abcd) b) were similar to fits in the Reference Case model (Figure \@ref(fig:fig-base-mean-weight-5abcd)).
+
+For Area 3CD, results were broadly similar to those in Area 5ABCD, although differences in biomass between the Reference Case and the two scenarios were more distinct (Figure \@ref(fig:fig-sens12-biomass-3cd)). The fit to the average annual mean weight data was very poor for Sc 5a, and fairly similar to the Reference Case model for Sc 5b (Figure \@ref(fig:fig-sens12-meanweightfit-3cd)). As for Area 5ABCD, the growth rate used in the Reference Case model was lower than that used in Sc 5b. Therefore the model needed to explain catches of a less productive population with a larger historical biomass.
 
 ## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\sigma_O$
 The observation error parameter was $\sigma_O$ was fixed at 0.2 in the Reference Case models (Section \@ref(fixed-variance-parameters)). Three sensitivity analyses were done to explore the impacts of changing this value:
@@ -465,7 +473,11 @@ The observation error parameter was $\sigma_O$ was fixed at 0.2 in the Reference
 
 > **Sc 6c.** Fix $\sigma_O$ = 0.25.
 
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD. Fits to the indices of abundance are shown in Figures \@ref(fig:fig-sens6-index-cpue-post1995-5abcd) and \@ref(fig:fig-sens13-index-triennial-3cd). Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens6a-5abcd) to \@ref(tab:tab-param-table-sens6c-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens13a-3cd) to \@ref(tab:tab-param-table-sens13c-3cd) for Area 3CD.
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD.
+
+As expected, decreasing the value of $\sigma_O$ resulted in closer fits to indices of abundance in both areas (Figures \@ref(fig:fig-sens6-index-cpue-post1995-5abcd) and \@ref(fig:fig-sens13-index-triennial-3cd)). In Area 5ABCD, reducing $\sigma_O$ also caused a reduction in estimated historical biomass, especially Sc 6a, although recent estimates of biomass were similar among scenarios (Figure \@ref(fig:fig-sens6-biomass-5abcd)). In Area 3CD, results were less pronounced (Figure \@ref(fig:fig-sens13-biomass-3cd)), with more similar index fits among scenarios (Figure \@ref(fig:fig-sens13-index-triennial-3cd)).
+
+Productivity parameters *M* and *h* were sensitive to changes in $\sigma_O$, as were scale parameters $R_{0}$ and catchability parameters \textit{q} (Tables \@ref(tab:tab-param-table-sens6a-5abcd) to \@ref(tab:tab-param-table-sens6c-5abcd) for Area 5ABCD, and Tables \@ref(tab:tab-param-table-sens6a-3cd) to \@ref(tab:tab-param-table-sens6c-3cd) for Area 3CD).
 
 ## SC 6C. ASSUMED FIXED VALUE OF PROCESS ERROR $\sigma_R$
 
@@ -475,17 +487,7 @@ analysis was done to test the effect of increasing the assumed value of $\sigma_
 
 > **Sc 6d.** Fix $\sigma_R$ = 1.0.
 
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD.
-
-<!--
- As for the
-steepness sensitivity test, there was very little discernible difference in
-the estimated historical time series between the Reference Case model and the two
-sensitivity cases. The largest effects were seen in the estimates of $B_0$
-(Figure XX), which showed much lower posterior estimates obtained with
-$\sigma_R$ = 0.4; and much higher and uncertain posterior estimates with
-$\sigma_R$ = 1.0 as a function of the increased recruitment variation.
--->
+There was very little discernible difference in the estimated biomass, recruitment and fishing mortality between the Reference Case model and Sc 6d (Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD; red series *vs* black series).
 
 ## SC 7A. ASSUMED FIXED VALUE OF $\sigma_W$
 
@@ -495,21 +497,15 @@ Given the uncertainties in interpreting the mean weight time series (see Section
 
 > **Sc 7b.** Fix $\sigma_w$ = 0.15.
 
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens7-biomass-5abcd) to \@ref(fig:fig-sens7-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens14-biomass-3cd) to \@ref(fig:fig-sens14-f-3cd) for Area 3CD. Fits to the average annual mean weight in the commercial fishery for Scenarios 7a and 7b are shown in Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) and \@ref(fig:fig-sens14-meanweightfit-3cd).
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens7-biomass-5abcd) to \@ref(fig:fig-sens7-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens14-biomass-3cd) to \@ref(fig:fig-sens14-f-3cd) for Area 3CD.
+
+Increasing $\sigma_w$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and Figures \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) a and \@ref(fig:fig-sens14-meanweightfit-3cd) a). Decreasing $\sigma_w$ in Sc 7b did not have a noticable effect on predicted biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) b and \@ref(fig:fig-sens14-meanweightfit-3cd) b).
 
 # DECISION TABLES
 
-*TO DO: Update. This is 2014 text. Fix equations and dynamic references*
+Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019. Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
 
-Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019.
-
-Projected recruitment anomalies for the projection year were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
-
-Reference points and performance measures are listed in Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-ref-points-table-3cd).
-
-Decision tables are designed to present probabilities of "undesirable" states under alternative 2018 projected catch levels.
-
-For example, an undesirable biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
+Decision tables are designed to present probabilities of "undesirable" states under alternative 2018 projected catch levels.For example, an undesirable biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
 
 Probabilities of such states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
 
@@ -519,30 +515,39 @@ In the following sections we present the Reference Case decision tables for each
 
 We did not attempt to assign different weights to the alternative models in the construction of the model-averaged results.
 
-## REFERENCE CASE MODELS
+## REFERENCE CASE DECISION TABLES
 
-*TO DO. Update with results*
+### Area 5ABCD
+<!-- TO DO: make these dynamic-->
 
-The decision table for the Area 5ABCD Reference Case model is provided in Table XX.
-The probability of the 2015 biomass being below the 2014 biomass ranged from 12.4\% under no 2014 catch to 64.1\% under 2400 t, double the current TAC.
+The decision table for the Area 5ABCD Reference Case model is provided in Table \@ref(tab: tab-decision-5abcd). Projections were done for a range of 2018 catch levels from 0 metric tonnes (mt) to 3,000 mt, approximately three times the current combined Area 5ABCDE TAC of 950 mt (Table \@ref(tab:tab-tac)).
 
-The probability of being below the LRP ranged from 12.3\% to 24.9\% over the range of catch levels considered.
+The probability of the 2019 biomass being below the 2018 biomass ranged from 22.1\% under no 2018 catch to 87.5\% under a catch of 3,000 mt.
 
-The probability of being below the USR was higher and ranged from 51.2\% under no 2014 catch to 66.0\% over the range of catch levels considered.
+The probability of 2019 biomass being below the LRP $B_{1971}$ ranged from 85.5\% to 94.7\% over the range of catch levels considered.The probability of 2019 biomass being below the USR $B_{Avg}$ was higher and ranged from 99.5\% to 99.8\% over the range of catch levels considered.
 
-The probability of the 2014 fishing mortality being greater than the 2013 fishing mortality ranged from 0.0\% to 100\%.
+The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0.0\% to 100\%. The probability of the 2018 fishing mortality being greater than the LRR $F_{Avg}$ ranged from 0.0\% to 99.3\%.
 
-The probability of the 2014 fishing mortality being greater than the LRR ranged from 0.0\% to 33.9\%.
-Estimated probabilities at the current TAC 1200 t are shown in bold (Table 26).
+Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated 89.4\% probability that the 2019 biomass will be below $B_{1971}$ and a 99.5\% probability that the 2019 biomass will be below $B_{Avg}$.
 
-Under a 2014 catch level of 1200 t, there is an estimated 60\% probability that the 2015 biomass will be below the USR and an 18.2\% probability that the 2015 biomass will be below the LRP.
+### Area 3CD
 
+The decision table for the Area 3CD Reference Case model is provided in Table \@ref(tab: tab-decision-3cd). Projections were done for a range of 2018 catch levels from 0 mt to 1,500 mt, approximately three times the current TAC of 500 mt (Table \@ref(tab:tab-tac)).
 
-## MODEL AVERAGING
+The probability of the 2019 biomass being below the 2018 biomass ranged from 80.7\% under no 2018 catch to 92.3\% under a catch of 1,500 mt.
 
-### Area 5CD: Hecate Strait
+The probability of 2019 biomass being below the proposed LRP $B_{1986}$ ranged from 0.00\% to 0.003\% over the range of catch levels considered. However, the probability of 2019 biomass being below the USR $B_{Avg}$ ranged from 95.6\% to 97.1\% over the range of catch levels considered.
 
-For Area 5CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
+The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0.0\% to 100\%. The probability of the 2018 fishing mortality being greater than the LRR $F_{Avg}$ ranged from 0.0\% to 97.7\%.
+
+Under a 2018 catch level of 500 mt, the 2017 TAC, there is an estimated 0.001\% probability that the 2019 biomass will be below $B_{1986}$ and a 96.2\% probability that the 2019 biomass will be below $B_{Avg}$.
+
+## MODEL AVERAGED DECISION TABLES
+*TO DO: THIS IS 2014 TEXT. decide on which scenarios and make decision tables*
+
+### Area 5ABCD
+
+For Area 5ABCD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
 \begin{resdoclist}
 \item Reference Case;
 \item the sensitivity case with prior probability distribution for ln($M$): $\mathcal{N}\sim(0.4,0.2)$;
@@ -567,7 +572,7 @@ The probability of B2015 < LRP under a 2014 catch level of 1200 t  was 18.8\% fo
 The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8\% for the averaged models, compared with 60.0\% for the Reference Case model.
 
 
-### Area 3CD: WEST COAST VANCOUVER ISLAND
+### Area 3CD
 
 ## SUMMARY
 
@@ -582,3 +587,7 @@ However, we emphasize that there are major structural uncertainties that we have
 \item The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
 \end{resdoclist}
 Uncertainty is therefore under-represented in this assessment.
+
+# ACKNOWLEDGEMENTS
+
+Show some love to your people

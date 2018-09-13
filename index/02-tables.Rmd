@@ -16,7 +16,6 @@ catch.table(catch.5,
               "observations and are considered to be more representative of true discarding."))
 ```
 
-
 ```{r tab-catch-3cd}
 catch.table(catch.3,
             catch.3.discards,
@@ -161,10 +160,6 @@ make.value.table(base.model.5abcd,
                                   "for the Reference Case, Area 5ABCD."))
 ```
 
-```{r tab-decision-5abcd, results='asis', cache=FALSE}
-decision.table(base.model.5abcd,
-               caption = "Decision table for Area 5ABCD.")
-```
 
 \clearpage
 
@@ -231,11 +226,6 @@ make.value.table(base.model.3cd,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
                                   "percentile) and MPD estimates of fishing mortality, F, ",
                                   "for the Reference Case, Area 3CD."))
-```
-
-```{r tab-decision-3cd, results='asis', cache=FALSE}
-decision.table(base.model.3cd,
-               caption = "Decision table for Area 3CD.")
 ```
 
 \clearpage
@@ -400,7 +390,6 @@ make.parameters.est.table(sens.models.11[[2]],
   omit_pars = pars_est_omit)
 ```
 
-
 ```{r tab-param-table-sens6a-3cd, results='asis'}
 make.parameters.est.table(sens.models.13[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -427,3 +416,18 @@ make.parameters.est.table(sens.models.13[[3]],
                   "for Sc 6c ($\\sigma_{O}$ = 0.25), Area 3CD."),
   omit_pars = pars_est_omit)
 ```
+
+## REFERENCE CASE DECISION TABLES
+
+```{r tab-decision-5abcd, results='asis', cache=FALSE}
+decision.table(base.model.5abcd,
+               caption = "Decision table for Area 5ABCD.")
+```
+
+```{r tab-decision-3cd, results='asis', cache=FALSE}
+decision.table(base.model.3cd,
+               caption = "Decision table for Area 3CD.")
+```
+
+## MODEL-AVERAGED DECISION TABLES
+

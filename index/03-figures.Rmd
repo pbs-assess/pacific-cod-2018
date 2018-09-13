@@ -178,7 +178,12 @@ make.pairs.plot(base.model.3cd)
 ```
 
 ```{r fig-base-biomass-3cd, fig.cap="Biomass for the Reference Model, Area 3CD."}
-b.plot(base.model.3cd, base.model.3cd.name)
+b.plot(base.model.3cd, 
+       base.model.3cd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(1986, 1986),
+       usr = c(1956, 2004))
 ```
 
 ```{r fig-base-depl-3cd, fig.cap="Relative biomass for the Reference Model, Area 3CD."}
