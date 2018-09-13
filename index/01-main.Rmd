@@ -545,18 +545,19 @@ The probability of the 2018 fishing mortality being greater than the 2017 fishin
 Under a 2018 catch level of 500 mt, the 2017 TAC, there is estimated 0.0\% probability that the 2019 biomass will be below $B_{1986}$ and a 100\% probability that the 2019 biomass will be below $B_{Avg}$.
 
 ## MODEL AVERAGED DECISION TABLES
+
 *TO DO: THIS IS 2014 TEXT. decide on which scenarios and make decision tables*
 
 ### Area 5ABCD
 
 For Area 5ABCD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
-\begin{resdoclist}
-\item Reference Case;
-\item the sensitivity case with prior probability distribution for ln($M$): $\mathcal{N}\sim(0.4,0.2)$;
-\item the sensitivity case with $\sigma_W = 0.4$;
-\item the sensitivity case with $\sigma_0 = 0.15$; and
-\item the sensitivity case without commercial CPUE data.
-\end{resdoclist}
+
+1. Reference Case;
+1. the sensitivity case with prior probability distribution for ln($M$): $\mathcal{N}\sim(0.4,0.2)$;
+1. the sensitivity case with $\sigma_W = 0.4$;
+1. the sensitivity case with $\sigma_0 = 0.15$; and
+1. the sensitivity case without commercial CPUE data.
+
 We selected the sensitivity case for the prior on ln($M$) that had biomass estimates most divergent from the Reference Case model to better bracket the uncertainty due to this parameter.
 Posterior estimates of biomass relative to the LRP and USR from each scenario are summarized in Figure 53.
 
@@ -567,12 +568,11 @@ Another approach, based on Maximum Posterior Density model results, was used by 
 A similar approach is being used for the 2013 assessment of Pacific Halibut, where three alternative, structurally different models, are being used to develop catch advice (Stewart and Martell. 2014).
 The latter example draws from the ensemble modeling approach commonly used in weather forecasting (e.g., Hamill et al. 2012).
 
-The ``Model-Averaged'' decision table probabilities for Area 5CD are presented in Table 28.
+The "Model-Averaged" decision table probabilities for Area 5CD are presented in Table 28.
 For most performance measures, probabilities were similar to those in the Reference Case model.
-For example, the probability of B2015 < B2014 under a 2014 TAC of 1200 t was 39.6\% for the Reference Case model (Table 26), and 42.1\% from the averaged models (Table 28).
-The probability of B2015 < LRP under a 2014 catch level of 1200 t  was 18.8\% for the averaged models, compared with 18.2\% for the Reference Case model.
-The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8\% for the averaged models, compared with 60.0\% for the Reference Case model.
-
+For example, the probability of B2015 < B2014 under a 2014 TAC of 1200 t was 39.6% for the Reference Case model (Table 26), and 42.1% from the averaged models (Table 28).
+The probability of B2015 < LRP under a 2014 catch level of 1200 t  was 18.8% for the averaged models, compared with 18.2\% for the Reference Case model.
+The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8% for the averaged models, compared with 60.0% for the Reference Case model.
 
 ### Area 3CD
 
@@ -581,13 +581,13 @@ The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8\% for
 We presented the alternative, model averaged decision tables for Areas 3CD (Table XX) and 5AB (Table XX) in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
 
 However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
-\begin{resdoclist}
-\item The effects of the assumption of constant selectivity in the trawl fishery;
-\item The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;
-\item The impact of uncertainty in stock structure in understanding patterns in abundance;
-\item The impact of uncertainty in the magnitude of historical discarding and foreign catches;
-\item The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
-\end{resdoclist}
+
+1. The effects of the assumption of constant selectivity in the trawl fishery;
+1. The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;
+1. The impact of uncertainty in stock structure in understanding patterns in abundance;
+1. The impact of uncertainty in the magnitude of historical discarding and foreign catches;
+1. The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
+
 Uncertainty is therefore under-represented in this assessment.
 
 # ACKNOWLEDGEMENTS
