@@ -352,7 +352,8 @@ The reference case models were fit to historical and modern commercial CPUE indi
 
 Sc 1c was done because the annual CVs of the CPUE indices with omitted locality-year interactions were very small (less than 0.1 in some years). Annual CVs were doubled to address concerns that the objective function of the delay-difference model may have been giving the CPUE indices too much weight with the CVs in Sc 1b.
 
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens1-biomass-5abcd) to \@ref(fig:fig-sens1-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd) for Area 3CD.
+Resulting posterior estimates of biomass, recruitment, and fishing mortality
+compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens1-biomass-5abcd) to \@ref(fig:fig-sens1-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd) for Area 3CD. Removing the locality-year random effect interaction did not have a major effect on the biomass, recruitment, or fishing mortality posteriors. Of these sensitivity tests, removing the locality-year random effect interaction without artificially doubling the CV had the largest effect --- this sensitivity analysis lowered the absolute estimate of biomass slightly and somewhat narrowed the credible intervals.
 
 ## SC 1D to 1F. EXCLUSION OF COMMERCIAL CPUE INDICES
 
@@ -366,7 +367,7 @@ index includes locality-year interaction term as a random effect.
 
 > **Sc 1f.** Remove both CPUE indices from the model.
 
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens1-biomass-5abcd) to \@ref(fig:fig-sens1-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd) for Area 3CD.
+Resulting posterior estimates of biomass, recruitment, and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens1-biomass-5abcd) to \@ref(fig:fig-sens1-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd) for Area 3CD. Removing the modern CPUE index from the model had little effect on the biomass, recruitment, or fishing mortality posteriors. However, removing the historical CPUE index had a large effect on the posterior estimates --- especially the biomass estimates --- substantially increasing the estimates of biomass prior to approximately 1970 (Figures \@ref(fig:fig-sens1-biomass-5abcd) and \@ref(fig:fig-sens8-biomass-3cd)). A similar strong influence of historical CPUE was noted by @forrest2013 who included a no-CPUE model run in their final model average.
 
 ## SC 1G. EXCLUSION OF THE NMFS TRIENNIAL SURVEY INDEX FOR AREA 3CD
 
