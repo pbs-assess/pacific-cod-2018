@@ -400,7 +400,7 @@ For both areas, increased estimates of biomass led to decreased estimates of $F_
 
 Given model sensitivity to priors assumed for survey $ln(q)$, and the tendency of the estimates to run to very low values without prior constraint, it seems justified to use a prior probability distribution informed by age-structured assessments for groundfish species caught in the same area with the same gear, even though those estimates are conditional on the assumptions inherent in those models. Synoptic survey *q* should be considered a major source of uncertainty in this assessment and we suggest inclusion of Sc 2a (both areas) in the ensemble of models for model-averaged decision tables (Section (\@ref(decision-tables))).
 
-## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR $\ln(M)$
+## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR M
 
 Three sensitivity analyses are shown to illustrate the effect of the parameters of the normal prior distribution assumed for $\ln(M)$:
 
@@ -466,6 +466,7 @@ For Sc 5b in Area 5ABCD, estimates of biomass were lower than for the Reference 
 For Area 3CD, results were broadly similar to those in Area 5ABCD, although differences in biomass between the Reference Case and the two scenarios were more distinct (Figure \@ref(fig:fig-sens12-biomass-3cd)). The fit to the average annual mean weight data was very poor for Sc 5a, and fairly similar to the Reference Case model for Sc 5b (Figure \@ref(fig:fig-sens12-meanweightfit-3cd)). As for Area 5ABCD, the growth rate used in the Reference Case model was lower than that used in Sc 5b. Therefore the model needed to explain catches of a less productive population with a larger historical biomass.
 
 ## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\sigma_O$
+
 The observation error parameter was $\sigma_O$ was fixed at 0.2 in the Reference Case models (Section (\@ref(fixed-variance-parameters))). Three sensitivity analyses were done to explore the impacts of changing this value:
 
 > **Sc 6a.** Fix $\sigma_O$ = 0.1.
@@ -492,19 +493,19 @@ There was very little discernible difference in the estimated biomass, recruitme
 
 ## SC 7A. ASSUMED FIXED VALUE OF $\sigma_W$
 
-Given the uncertainties in interpreting the mean weight time series (see Section (\@ref(reference-case-models))) and its potential to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_w$:
+Given the uncertainties in interpreting the mean weight time series (see Section (\@ref(reference-case-models))) and its potential to provide direct information for scaling the population size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_W$:
 
-> **Sc 7a.** Fix $\sigma_w$ = 0.4.
+> **Sc 7a.** Fix $\sigma_W$ = 0.4.
 
-> **Sc 7b.** Fix $\sigma_w$ = 0.15.
+> **Sc 7b.** Fix $\sigma_W$ = 0.15.
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens7-biomass-5abcd) to \@ref(fig:fig-sens7-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens14-biomass-3cd) to \@ref(fig:fig-sens14-f-3cd) for Area 3CD.
 
-Increasing $\sigma_w$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and Figures \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) a and \@ref(fig:fig-sens14-meanweightfit-3cd) a). Decreasing $\sigma_w$ in Sc 7b did not have a noticable effect on predicted biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) b and \@ref(fig:fig-sens14-meanweightfit-3cd) b).
+Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and Figures \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) a and \@ref(fig:fig-sens14-meanweightfit-3cd) a). Decreasing $\sigma_w$ in Sc 7b did not have a noticable effect on predicted biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) b and \@ref(fig:fig-sens14-meanweightfit-3cd) b).
 
 # DECISION TABLES
 
-Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019. Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}\sim(0,\sigma_R)$.
+Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019. Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$.
 
 Decision tables are designed to present probabilities of "undesirable" states under alternative 2018 projected catch levels.For example, an undesirable biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
 
@@ -512,7 +513,7 @@ Probabilities of such states are measured as the proportion of burned-in posteri
 
 @forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from multiple sensitivity cases. They did this to address some of the key irresolvable uncertainties associated with the stock assessment.
 
-In the following sections we present the Reference Case decision tables for each area, then present alternative "model-averaged" decision tables that incorporate the uncertainty from the Reference Case models \@ref(reference-case models) and a subset of the above sensitivity cases (Section (\@ref(sensitivity-analyses))). Details of the model averaging approach for Area 5ABCD and Area 3CD are provided below.
+In the following sections we present the Reference Case decision tables for each area, then present alternative "model-averaged" decision tables that incorporate the uncertainty from the Reference Case models \@ref(reference-case-models) and a subset of the above sensitivity cases (Section (\@ref(sensitivity-analyses))). Details of the model averaging approach for Area 5ABCD and Area 3CD are provided below.
 
 We did not attempt to assign different weights to the alternative models in the construction of the model-averaged results.
 
