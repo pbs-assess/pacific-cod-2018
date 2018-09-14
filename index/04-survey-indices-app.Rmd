@@ -394,15 +394,15 @@ where \({\delta _{yi}}\)  = mean CPUE density (kg/km2) for stratum \(i\), year \
   \({B_{yi}}\)  = biomass (kg) for stratum\(i\), year\(y\); and
   \(m\) = number of strata.
 
-The variance of the survey biomass estimate \({V_y}\) (kg2) follows:
+The variance of the survey biomass estimate \({V_y}\) (kg^2^) follows:
 
 \begin{equation}
 {V_y} = \sum\limits_{i = 1}^m {\frac{{\sigma _{yi}^2A_i^2}}{{{n_{yi}}}}\,}  = \,\,\,\sum\limits_{i = 1}^m {{V_{yi}}},
 \end{equation}
 
-where   \(\sigma _{yi}^2\)  = variance of CPUE density (kg2/km4) for
+where \(\sigma _{yi}^2\)  = variance of CPUE density (kg^2^/km^4^) for
 stratum \(i\), year \(y\) and
-\({V_{yi}}\)  = variance of the biomass estimate (kg2) for
+\({V_{yi}}\)  = variance of the biomass estimate (kg^2^) for
 stratum\(i\), year \(y\).
 
 The coefficient of variation (CV) of the annual biomass estimate for year \(y\) is
