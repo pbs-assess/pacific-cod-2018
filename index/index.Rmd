@@ -21,8 +21,8 @@ report_number: "nnn"
 abstract: ""
 always_allow_html: yes
 output:
-  csasdown::resdoc_pdf
-  #csasdown::resdoc_word
+  #csasdown::resdoc_pdf
+  csasdown::resdoc_word
 
 # ---------------------
 # End of options to set

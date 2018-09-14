@@ -249,7 +249,7 @@ As for the previous stock assessment for Pacific Cod (@forrest2013), fixed varia
 
 ## AREA 5ABCD: QUEEN CHARLOTTE SOUND AND HECATE STRAIT
 
-The model appeared to have converged (Figure \@ref(fig:fig-base-mcmc-trace-5abcd)) and posterior autocorrelation was minor for most parameters (Figure \@ref(fig:fig-base-mcmc-autocor-5abcd)). The value of $\hat{R}$ was 1.00 for all parameters (Table \@ref(tab:tab-param-est-table-5abcd)).  
+The model appeared to have converged (Figure \@ref(fig:fig-base-mcmc-trace-5abcd)) and posterior autocorrelation was minor for most parameters (Figure \@ref(fig:fig-base-mcmc-autocor-5abcd)). The value of $\hat{R}$ was 1.00 for all parameters (Table \@ref(tab:tab-param-est-table-5abcd)).
 
 Maximum posterior density (MPD) model fits to the five indices of abundance are shown in Figure \@ref(fig:fig-base-index-fits-5abcd). The model followed the general trends of the three fishery-independent indices, but could not fit some of the larger peaks (for example 2004 and 2005 peaks in the Queen Charlotte Sound Synoptic Survey, and the 2013 peak in the Hecate Strait Synoptic Survey, Figure \@ref(fig:fig-base-index-fits-5abcd). Similarly, the model followed the major patterns in the two CPUE indices but did not capture all the peaks (Figure \@ref(fig:fig-base-index-fits-5abcd)).
 
@@ -291,7 +291,7 @@ Survey scaling parameters ($q_{k}$) were strongly positively correlated with eac
 
 Median posterior estimated biomass $B_{t}$ (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-biomass-3cd), with values in Table \@ref(tab:tab-post-biomass-3cd). Biomass is estimated to have been on a declining trajectory since 2015. This followed an increasing trend from a historical low level of biomass between 1998 and 2014.The stock is estimated to have increased in abundance since 2008, consistent with an increasing trend in observed abundance in the West Coast Vancouver Island Synoptic Survey since 2010, as well as a general increase in the modern CPUE index since 2008 (Figure \@ref(fig:fig-base-index-fits-3cd)). The downturn in estimated biomass in 2017 is consistent with a slight drop in the West Coast Vancouver Island Synoptic Survey index and a large decrease in the modern CPUE index in 2017.
 
-Median posterior estimated relative biomass ($B_{t}/B_0$) (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-depl-3cd) and Table \@ref(tab:tab-post-depl-3cd). Median posterior estimated age-2 recruits and recruitment deviations (with 95% credibility interval) are shown in Figure \@ref(fig:fig-base-recr-3cd) and Table \@ref(tab:tab-post-recr-3cd).Recruitment is estimated to have been below average for most years in the past two decades, with above average peaks in 2009, 2013 and 2014. 
+Median posterior estimated relative biomass ($B_{t}/B_0$) (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-depl-3cd) and Table \@ref(tab:tab-post-depl-3cd). Median posterior estimated age-2 recruits and recruitment deviations (with 95% credibility interval) are shown in Figure \@ref(fig:fig-base-recr-3cd) and Table \@ref(tab:tab-post-recr-3cd).Recruitment is estimated to have been below average for most years in the past two decades, with above average peaks in 2009, 2013 and 2014.
 
 Median posterior estimated fishing mortality ($F_{t}$) is shown in Figure \@ref(fig:fig-base-f-3cd). Fishing mortality in 2017 is estimated to be very low, with the posterior median estimated to be 0.01 y^-1^ (Tables \@ref(tab:tab-ref-points-table-3cd) and \@ref(tab:tab-post-f-3cd)), reflecting low catches during the past decade (Figure \@ref(fig:fig-base-catch-fit-5abcd)) and an apparent growth in biomass (Figure \@ref(fig:fig-base-biomass-3cd)).
 
@@ -586,17 +586,15 @@ Under a 2018 catch level of 500 mt, close to the 2017 TAC, there is an estimated
 
 ## SUMMARY
 
-*TO DO. Or maybe delete*
-
-We presented the alternative, model averaged decision tables for Areas 3CD (Table XX) and 5AB (Table XX) in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
+We presented the alternative, model averaged decision tables for Areas 5ABCD and 3CD in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
 
 However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
 
-1. The effects of the assumption of constant selectivity in the trawl fishery;
-1. The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;
-1. The impact of uncertainty in stock structure in understanding patterns in abundance;
-1. The impact of uncertainty in the magnitude of historical discarding and foreign catches;
-1. The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
+- The effects of the assumption of constant selectivity in the trawl fishery;
+- The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;
+- The impact of uncertainty in stock structure in understanding patterns in abundance;
+- The impact of uncertainty in the magnitude of historical discarding and foreign catches;
+- The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
 
 Uncertainty is therefore under-represented in this assessment.
 
