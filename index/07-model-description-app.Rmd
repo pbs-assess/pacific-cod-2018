@@ -92,7 +92,7 @@ incorporating a parameter relating the stock-recruit function to an updated time
 ## VARIANCE COMPONENTS AND WEIGHTING OF INDEX DATA
 
 Variance components of the delay-difference model implemented within the iScam modelling framework [@martell2011] were partitioned using an errors in variables approach. The key variance parameter is the inverse of the total variance $\phi^{-2}$ (i.e., total precision). This parameter can be fixed or
-estimated, and was fixed here. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation error [@punt1993, @deriso2007].
+estimated, and was fixed here. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation error [@punt1993; @deriso2007].
 
 The equation for the observation error component of the total variance ($\sigma_O$) is given in Eq. \@ref(eq:ddsigo), while the process error term, $\sigma_R$ is given in Eq. \@ref(eq:ddsigo). The process error term ($\sigma_R$) enters the objective function in the log likelihood function for the recruitment residuals (Eq. \@ref(eq:ddrlt)). In cases when the index of abundance data are informative about absolute abundance (e.g.,an acoustic survey), one or both of these parameters, $\phi^{-2}$ and $\rho$, may be estimable. In practice, however, one or both of these parameters usually must be fixed.
 

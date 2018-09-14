@@ -5,14 +5,16 @@
 # COMMERCIAL CPUE STANDARDIZATION
 
 We sought to generate an index of Pacific Cod abundance from commercial trawl
-catch per unit effort data that was standardized for depth, fishing locality (defined spatial regions; Figures \@ref(fig:cpue-locality-map-5), \@ref(fig:cpue-locality-map-3)),
-month, vessel, and latitude, when available. Before fitting a standardization
-model, we had to filter and manipulate the available catch and effort data to
-generate a dataset appropriate for model fitting. In the following sections we
-describe those decisions for the 'historical' (1956--1995) and 'modern' data
-(1996--2017). We then describe our index standardization model, explore the
-contribution of the various standardization components, and identify the effect
-of including or ignoring space-time interactions.
+catch per unit effort data that was standardized for depth, fishing locality
+(defined spatial regions; Figures \@ref(fig:cpue-locality-map-5),
+\@ref(fig:cpue-locality-map-3)), month, vessel, and latitude, when available.
+Before fitting a standardization model, we had to filter and manipulate the
+available catch and effort data to generate a dataset appropriate for model
+fitting. In the following sections we describe those decisions for the
+'historical' (1956--1995) and 'modern' data (1996--2017). We then describe our
+index standardization model, explore the contribution of the various
+standardization components, and identify the effect of including or ignoring
+space-time interactions.
 
 ## DEFINING THE 1956--1995 FLEET
 
@@ -249,6 +251,13 @@ space (Figure \@ref(fig:cpue-sim-test-tweedie-glmm-plot)). Furthermore,
 allowing for the interactions has no qualitative effect on model performance or
 coverage if the interactions are not present (Figure
 \@ref(fig:cpue-sim-test-tweedie-glmm-plot)).
+
+Fitting a proper geostatistical spatiotemporal standardization model would be
+an alternative to these locality-year random effects [e.g. @thorson2015b;
+@monnahan2018]. For this assessment, we chose to model spatial variation
+through the DFO localities to maintain consistency with previous assessments in
+this region. However, in the future we may explore a spatiotemporal
+standardization model.
 
 \clearpage
 
@@ -795,20 +804,20 @@ if (!file.exists(here::here("data/generated/cpue-re-preds.rda"))) {
   g1 <- plot_cpue_int_res(m_modern[[8]], fleet = dfleet_modern[[1]],
     index_data = cpue_pred_modern,
     era = "modern") + ggtitle("1996+ 5ABCD")
-  
+
   g2 <- plot_cpue_int_res(m_modern[[16]], fleet = dfleet_modern[[2]],
     index_data = cpue_pred_modern,
     era = "modern") + ggtitle("1996+ 3CD")
-  
+
   stopifnot(length(m_historic) == 12L)
   g3 <- plot_cpue_int_res(m_historic[[6]], fleet = dfleet_hist[[1]],
     index_data = cpue_pred_hist,
     era = "historical")+ ggtitle("1956-1995 5ABCD")
-  
+
   g4 <- plot_cpue_int_res(m_historic[[12]], fleet = dfleet_hist[[2]],
     index_data = cpue_pred_hist,
     era = "historical")+ ggtitle("1956-1995 3CD")
-  
+
   save(g1, g2, g3, g4, file = here::here("data/generated/cpue-re-preds.rda"))
 } else {
   load(here::here("data/generated/cpue-re-preds.rda"))
@@ -823,17 +832,17 @@ if (!file.exists(here::here("data/generated/cpue-re-preds-noint.rda"))) {
     index_data = cpue_pred_modern,
     the_formula_version = "Full standardization minus interactions",
     era = "modern") + ggtitle("1996+ 5ABCD")
-  
+
   g2 <- plot_cpue_int_res(m_modern[[15]], fleet = dfleet_modern[[2]],
     index_data = cpue_pred_modern,
     the_formula_version = "Full standardization minus interactions",
     era = "modern") + ggtitle("1996+ 3CD")
-  
+
   g3 <- plot_cpue_int_res(m_historic[[5]], fleet = dfleet_hist[[1]],
     index_data = cpue_pred_hist,
     the_formula_version = "Full standardization minus interactions",
     era = "historical")+ ggtitle("1956-1995 5ABCD")
-  
+
   g4 <- plot_cpue_int_res(m_historic[[11]], fleet = dfleet_hist[[2]],
     index_data = cpue_pred_hist,
     the_formula_version = "Full standardization minus interactions",

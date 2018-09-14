@@ -43,7 +43,7 @@ total_survey_lengths <- gfplot::tidy_lengths_raw(x,
 
 In this appendix we analyse length, maturity, and available ageing data to update growth and maturity parameters. We also plot age-frequency data derived from an age-length key to visualise the probable age composition in survey and commercial catch data.
 
-### SYNOPTIC SURVEY DATA
+## SYNOPTIC SURVEY DATA
 
 We extracted length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound, and West Coast Vancouver Island synoptic surveys from the GFBio database using the following criteria:
 
@@ -146,7 +146,7 @@ x %>%
 
 \clearpage
 
-### COMMERCIAL FISHERY DATA
+## COMMERCIAL FISHERY DATA
 
 We extracted length and weight data from commercial bottom trawl vessels from the GFBio database using the following criteria:
 
