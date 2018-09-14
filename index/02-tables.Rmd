@@ -16,6 +16,8 @@ catch.table(catch.5,
               "observations and are considered to be more representative of true discarding."))
 ```
 
+\clearpage
+
 ```{r tab-catch-3cd}
 catch.table(catch.3,
             catch.3.discards,
@@ -133,6 +135,8 @@ make.value.table(base.model.5abcd,
                                   "Area 5ABCD."))
 ```
 
+\clearpage
+
 ```{r tab-post-depl-5abcd}
 make.value.table(base.model.5abcd,
                  5,
@@ -141,6 +145,8 @@ make.value.table(base.model.5abcd,
                                   "percentile) and MPD estimates of relative biomass ",
                                   "for the Reference Case, Area 5ABCD."))
 ```
+
+\clearpage
 
 ```{r tab-post-recr-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
@@ -151,6 +157,8 @@ make.value.table(base.model.5abcd,
                                   "Area 5ABCD."))
 ```
 
+\clearpage
+
 ```{r tab-post-f-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
                  3,
@@ -159,7 +167,6 @@ make.value.table(base.model.5abcd,
                                   "percentile) and MPD estimates of fishing mortality, F, ",
                                   "for the Reference Case, Area 5ABCD."))
 ```
-
 
 \clearpage
 
@@ -201,6 +208,8 @@ make.value.table(base.model.3cd,
                                   "the Reference Case, Area 3CD."))
 ```
 
+\clearpage
+
 ```{r tab-post-depl-3cd}
 make.value.table(base.model.3cd,
                  5,
@@ -210,6 +219,8 @@ make.value.table(base.model.3cd,
                                   "for the Reference Case, Area 3CD."))
 ```
 
+\clearpage
+
 ```{r tab-post-recr-3cd, results='asis'}
 make.value.table(base.model.3cd,
                  2,
@@ -218,6 +229,8 @@ make.value.table(base.model.3cd,
                                   "percentile) and MPD estimates of recruitment (thousands) for the Reference Case,",
                                   "Area 3CD."))
 ```
+
+\clearpage
 
 ```{r tab-post-f-3cd, results='asis'}
 make.value.table(base.model.3cd,
