@@ -143,11 +143,11 @@ where $(CV)_y$ is the CV for year $y$.
 
 One thousand bootstrap replicates with replacement were constructed from the
 survey data to estimate bias corrected 95% confidence intervals for each survey
-year [@efron1982].
+year [@efron1982]. The resulting values are shown in Table
+\@ref(tab:surv-canadian-table) and Figure \@ref(fig:surv-canadian).
 
-```{r surv-canadian-table, results='asis'}
-surv_syn <- readRDS(here::here("data/pcod-cache/pacific-cod.rds"))$survey_index
-dplyr::filter(surv_syn, survey_abbrev %in%
+```{r surv-canadian}
+dplyr::filter(dat$survey_index, survey_abbrev %in%
   c("SYN QCS", "SYN WCVI", "SYN HS", "SYN WCHG", "OTHER HS MSA")) %>%
   dplyr::select(survey_abbrev, year, biomass, re, lowerci, upperci, num_sets, num_pos_sets) %>%
   dplyr::mutate(lowerci = round(lowerci/1000, 1), upperci = round(upperci/1000, 1),
@@ -156,6 +156,12 @@ dplyr::filter(surv_syn, survey_abbrev %in%
     CV = re, `Lower CI` = lowerci, `Upper CI` = upperci, Sets = num_sets, `Positive sets` = num_pos_sets) %>%
   dplyr::arrange(`Survey abbrev.`, Year) %>%
   knitr::kable(caption = "Pacific Cod survey data for Canadian trawl surveys. Relative biomass and associated lower and upper confidence intervals (CI) are shown in metric tons (without accounting for survey catchability). Positive sets refers to the number of trawl sets that caught Pacific Cod.", booktabs = TRUE, linesep = "")
+```
+
+```{r surv-canadian-table, fig.cap="Pacific Cod survey data for Canadian trawl surveys. Shown is relative biomass and associated lower and upper confidence intervals. Positive sets refers to the number of trawl sets that caught Pacific Cod."}
+gfplot::tidy_survey_index(dat$survey_index,
+  survey = c("SYN QCS", "SYN WCVI", "SYN HS", "SYN WCHG", "OTHER HS MSA")) %>%
+  plot_survey_index()
 ```
 
 \clearpage
