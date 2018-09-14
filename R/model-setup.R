@@ -286,7 +286,7 @@ sens.models.name.8 <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.9.sub <- c(file.path(model.dir,
                                           "1_2a_3CD_rsoleq_0228sd0448"))
-sens.models.name.9.sub <- c("2a) WCVISS q SD = 0.3")
+sens.models.name.9.sub <- c("2a) WCVISS q SD = 0.448")
 
 
 ## -----------------------------------------------------------------------------
