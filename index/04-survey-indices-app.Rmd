@@ -207,7 +207,7 @@ for (i in seq_along(names(tri_str))) {
 }
 tri_str$`Stratum No.`[tri_to_shade] <- paste0(tri_str$`Stratum No.`[tri_to_shade], "*")
 knitr::kable(tri_str,
-    caption = "Number of tows by stratum and by survey year for the NFMS triennial survey. Strata denoted with an \\* have been excluded from the analysis due to incomplete coverage across the seven survey years or were from locations outside the Vancouver INPFC area.",
+    caption = "Number of tows by stratum and by survey year for the NFMS triennial survey. Strata denoted with an asterisk have been excluded from the analysis due to incomplete coverage across the seven survey years or were from locations outside the Vancouver INPFC area.",
     booktabs = TRUE, linesep = "") %>%
   kableExtra::kable_styling(font_size = 8)
 ```
