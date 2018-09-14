@@ -26,8 +26,8 @@ csasdown version 0.0.1. The specific versions used to generate this report
 can be installed with:
 
 ```{r, eval=FALSE, echo=TRUE}
-devtools::install_github("pbs-asses/gfplot", ref = "f55710d")
-devtools::install_github("pbs-asses/csasdown", ref = "baf78d8")
+devtools::install_github("pbs-assess/gfplot", ref = "f55710d")
+devtools::install_github("pbs-assess/csasdown", ref = "baf78d8")
 ```
 
 
