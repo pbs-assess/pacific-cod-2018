@@ -117,9 +117,9 @@ The reference models for the Area 5ABCD and 3CD assessments are discussed in mor
 
 The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy [@dfo2009] requires stock status to be characterized using three reference points:
 
-- A Reference Removal Rate;
-- A Limit Reference Point (LRP);
-- An Upper Stock Reference point (USR).
+1. A Reference Removal Rate;
+1. A Limit Reference Point (LRP);
+1. An Upper Stock Reference point (USR).
 
 In the current assessment, these reference points are incorporated into the decision tables (Section (\@ref(projections-and-decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
 
@@ -143,10 +143,11 @@ Suggested reference points and benchmarks for both areas are provided in Table \
 The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics in terms of data choices, prior probability distributions and fixed parameter settings. For brevity both reference case models are described in this section, with differences explained as necessary. The Bayesian delay-difference model is fully described in Appendix \@ref(delay-difference-model).
 
 The joint posterior distribution for each model was numerically approximated using the
-Markov Chain Monte Carlo routines built into AD Model Builder (Metropolis-Hastings algorithm) [@fournier2012]. Posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). We assessed consistency with chain convergence by visual inspection of trace plots and autocorrelation plots and through the potential scale reduction statistic $\hat{R}$.
+Markov Chain Monte Carlo routines built into AD Model Builder (Metropolis-Hastings algorithm) [@fournier2012]. Posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). We assessed consistency with chain convergence by visual inspection of trace plots and autocorrelation plots and through calculating the potential scale reduction statistic $\hat{R}$ and the effective number of simulation draws $n_\mathrm{eff}$ via the R package Stan [@rstan2018].
 
 <!-- https://github.com/stan-dev/stan/blob/238faf42b556c007197c9faca20214ad9b37f0b2/src/docs/reference-manual/analysis.Rmd -->
-The potential scale reduction statistic [@gelman1992] is a common metric used in Bayesian statistics to assess chain convergence [@gelman2014; @hobbs2015]. The statistic measures the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. As $\hat{R}$ approaches 1.0, the chains are consistent with convergence. In our case, we only had a single chain for each model run, but in following the advice of @gelman2014, we first divided the chain in two, effectively treating the first and second half as separate chains. Following the notation of @hobbs2015, we can calculate $\hat{R}$ for a given parameter $\theta$ as follows. For $j = 1, ..., m$ chains (two half chains here), we calculate the mean of the variances $w$ as:
+
+The potential scale reduction statistic [@gelman1992] is a common metric used in Bayesian statistics to assess chain convergence [@gelman2014; @hobbs2015; @stan-manual2017]. The statistic measures the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. As $\hat{R}$ approaches 1.0, the chains are consistent with convergence. In our case, we only had a single chain for each model run, but in following the advice of @gelman2014, we first divided the chain in two, effectively treating the first and second half as separate chains. Following the notation of @hobbs2015, we can calculate $\hat{R}$ for a given parameter $\theta$ as follows. For $j = 1, ..., m$ chains (two half chains here), we calculate the mean of the variances $w$ as:
 
 $$
 w=\frac{1}{m}\sum_{j=1}^{m}\operatorname{var}\left(\theta_{j}\right)
@@ -165,6 +166,8 @@ $\overline{\overline{\theta}}=\frac{1}{m}\sum_{j=1}^{m}\overline{\theta}_{j}$.
 The variance of a stationary distribution of $\theta$ is then calculated as a weighted mean
 $\sigma_{\theta}^{2}=\left(1-\frac{1}{K}\right)w+\frac{1}{K}b$,
 and we can define the potential scale reduction factor as $\hat { R } = \sqrt{\frac{\sigma_{ \theta}^{2}}{w}}$.
+
+The statistic $n_\mathrm{eff}$ measures the effective number of MCMC independent samples after accounting for autocorrelation. For brevity we do not define the full calculation here, but it is available in [@gelman2014 p.286--287] or [@stan-manual2017 p. 373--376.]
 
 ## DATA CHOICES
 
@@ -223,8 +226,10 @@ The choice of prior probability distribution for survey scaling parameters has t
 
 We used informative prior probability distributions for the two synoptic surveys based on median posterior estimates of *q* from the most recent stock assessment for Rock Sole [@holt2016]. This was done to constrain the tendency in the model towards estimating implausibly high stock sizes. Rock sole is a flatfish species occupying a similar (although slightly shallower) depth range to Pacific Cod. @holt2016 obtained median posterior estimates of *q* = 0.6280 for Area 5AB and *q* = 0.1869 for Area 5CD. They did not use an informative prior probability distribution for *q*. The CV of their estimates was around 0.3. For our combined Area 5ABCD assessment we pro-rated these values according to the relative areas of habitat in Areas 5AB and 5CD. Adding up the areas of all the surveyed depth strata in each area gave a ratio of approximately 0.65:0.35 (5AB:5CD). Therefore the following values were used as means for the normal prior probability distributions for $\ln(q_{k})$, for
 
-- *k* = Queen Charlotte Sound Synoptic Survey: Mean $\ln(q_{k})$ = $\ln(0.6280 * 0.65)$ = -0.895998; and
-- *k* = Hecate Strait Synoptic Survey: Mean $\ln(q_{k})$ = $\ln(0.1869 * 0.35)$ = -2.727539;
+1. *k* = Queen Charlotte Sound Synoptic Survey: Mean $\ln(q_{k})$ = $\ln(0.6280
+   \cdot 0.65)$ = -0.895998; and
+1. *k* = Hecate Strait Synoptic Survey: Mean $\ln(q_{k})$ = $\ln(0.1869 \cdot
+   0.35)$ = -2.727539;
 
 For both synoptic surveys, the standard deviation of the normal prior probability distribution for $\ln(q_{k})$ was set to 0.3 in log space.
 
@@ -380,7 +385,7 @@ Notably, removing the informative prior resulted in very low estimates of $q$ fo
 
 For both areas, increased estimates of biomass led to decreased estimates of $F_{t}$ (Figures \@ref(fig:fig-sens2-f-5abcd) and \@ref(fig:fig-sens9-f-3cd)).
 
-Given model sensitivity to priors assumed for survey $ln(q)$, and the tendency of the estimates to run to very low values without prior constraint, it seems justified to use a prior probability distribution informed by age-structured assessments for groundfish species caught in the same area with the same gear, even though those estimates are conditional on the assumptions inherent in those models. Synoptic survey *q* should be considered a major source of uncertainty in this assessment and we suggest inclusion of Sc 2a (both areas) in the ensemble of models for model-averaged decision tables (Section (\@ref(decision-tables))).
+Given model sensitivity to priors assumed for survey $ln(q)$, and the tendency of the estimates to run to very low values without prior constraint, it seems justified to use a prior probability distribution informed by age-structured assessments for groundfish species caught in the same area with the same gear, even though those estimates are conditional on the assumptions inherent in those models. Synoptic survey *q* should be considered a major source of uncertainty in this assessment and we suggest inclusion of Sc 2a (both areas) in the ensemble of models for model-averaged decision tables (Section (\@ref(projections-and-decision-tables))).
 
 ## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR M
 
@@ -404,7 +409,7 @@ For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b 
 
 For Area 5ABCD, all sensitivity runs resulted in lower estimates of biomass than the Reference Case model (Figure \@ref(fig:fig-sens3-biomass-5abcd)).This was not surprising, given that all had lower posterior median estimates of *M*. Differences in estimated biomass among scenarios were smaller for Area 3CD, although all were slightly lower than for the Reference Case model (Figure \@ref(fig:fig-sens10-biomass-3cd)).
 
-We suggest inclusion of Sc 3b (both areas) in the ensemble of models for model-averaged decision tables (Section (\@ref(decision-tables))), as this scenario resulted in the biggest difference in estimated biomass in both areas.
+We suggest inclusion of Sc 3b (both areas) in the ensemble of models for model-averaged decision tables (Section (\@ref(projections-and-decision-tables))), as this scenario resulted in the biggest difference in estimated biomass in both areas.
 
 ## SC 4A AND SC 4B. PRIOR PROBABILITY DISTRIBUTION FOR STEEPNESS
 
@@ -489,18 +494,18 @@ Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomas
 
 Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019 (Figures \@ref(fig:fig-base-biomass-5abcd-proj) and \@ref(fig:fig-base-biomass-3cd-proj)). Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
-- $P(B_{2019} < B_{2018})$
-- $P(F_{2018} > F_{2017})$
-- $P(B_{2019} < LRP)$
-- $P(B_{2019} < USR)$
-- $P(F_{2018} > LRR)$
+1. $P(B_{2019} < B_{2018})$
+1. $P(F_{2018} > F_{2017})$
+1. $P(B_{2019} < LRP)$
+1. $P(B_{2019} < USR)$
+1. $P(F_{2018} > LRR)$
 
 where
 
-- $USR$ (Upper Stock Reference) is the historical mean of the biomass estimates from 1956--2004 (both areas).
-- $LRP$ (Limit Reference Point) is the lowest biomass from which the stock recovered above the USR. For Area 5ABCD this is
+1. $USR$ (Upper Stock Reference) is the historical mean of the biomass estimates from 1956--2004 (both areas).
+1. $LRP$ (Limit Reference Point) is the lowest biomass from which the stock recovered above the USR. For Area 5ABCD this is
   the biomass estimate for 1971. For Area 3CD it is the biomass estimate for 1986.
-- $LRR$ (Limit Reference Rate) is the Fishing mortality rate for the same years as the LRP.
+1. $LRR$ (Limit Reference Rate) is the Fishing mortality rate for the same years as the LRP.
 
 For more information, see Section \@ref(reference-points)
 
@@ -597,11 +602,11 @@ We presented the alternative, model averaged decision tables for Areas 5ABCD and
 
 However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
 
-- The effects of the assumption of constant selectivity in the trawl fishery;
-- The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;
-- The impact of uncertainty in stock structure in understanding patterns in abundance;
-- The impact of uncertainty in the magnitude of historical discarding and foreign catches;
-- The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
+1. The effects of the assumption of constant selectivity in the trawl fishery;
+1. The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;
+1. The impact of uncertainty in stock structure in understanding patterns in abundance;
+1. The impact of uncertainty in the magnitude of historical discarding and foreign catches;
+1. The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
 
 Uncertainty is therefore under-represented in this assessment.
 

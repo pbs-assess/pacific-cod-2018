@@ -3,7 +3,7 @@
 # COMPUTATIONAL ENVIRONMENT {-}
 
 This version of the document was generated on `r Sys.time()` using the
-following R package versions:
+following `r session_info()$platform$version` [@r2018] package versions:
 
 ```{r env, echo = FALSE, results='asis', message=FALSE, warning=FALSE, eval=TRUE, cache=FALSE}
 library(TMB)
