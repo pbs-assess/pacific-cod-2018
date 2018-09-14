@@ -884,3 +884,18 @@ c.model.list <- function(..., recursive = FALSE){
   class(ret.lst) <- model.lst.class
   ret.lst
 }
+
+and.string <- function(vec){
+  ## Make a string out of the strings in vec, by glueing together with commas
+  ## and placing 'and' before the last one
+
+  if(length(vec) == 1){
+    return(vec)
+  }
+  if(length(vec) == 2){
+    return(paste0(vec[1], " and ", vec[2]))
+  }
+
+  j <- paste(vec[-length(vec)], collapse = ", ")
+  paste(j, "and", vec[length(vec)])
+}
