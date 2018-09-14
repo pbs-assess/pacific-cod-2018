@@ -375,7 +375,7 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections (\@ref(survey-scaling-parameters-for-area-5abcd)) and (\@ref(survey-scaling-parameters-for-area-3cd)) for Reference Case details:
 
-> **Sc 2a.** The mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey, and was then pro-rated according to relative areas, i.e., mean $\ln(q)$ = $\ln(0.1869 * 0.65)$.
+> **Sc 2a.** The mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey, and was then pro-rated according to relative areas, i.e., mean $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$.
 
 > **Sc 2b.** A uniform prior was used for \textit{q} for both the QCS and HS Synoptic Surveys.
 
@@ -566,8 +566,8 @@ For Area 5ABCD, we present an alternative decision table with probabilities calc
 
 1. Reference Case;
 2. the sensitivity case without commercial CPUE data (Sc 1f);
-3. the sensitivity case with prior for QCS $q$: $\ln(q)$ = $\ln(0.1869 * 0.65)$ (Sc 2a);
-4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2)$ (Sc 3b);
+3. the sensitivity case with prior for QCS $q$: $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$ (Sc 2a);
+4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2^2)$ (Sc 3b);
 5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
 
 The "Model-Averaged" decision table probabilities for Area 5ABCD are presented in Table \@ref(tab:tab-decision-avg-5abcd).
@@ -587,7 +587,7 @@ For Area 3CD, we present an alternative decision table with probabilities calcul
 1. Reference Case;
 2. the sensitivity case without commercial CPUE data (Sc 1f);
 3. the sensitivity case with the SD of the prior for the WCVI Synoptic Survey = 0.448 (Sc 2a);
-4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2)$ (Sc 3b);
+4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2^2)$ (Sc 3b);
 5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
 
 The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd).
