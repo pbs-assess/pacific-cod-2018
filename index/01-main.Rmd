@@ -568,7 +568,7 @@ For Area 5ABCD, we present an alternative decision table with probabilities calc
 1. Reference Case;
 2. the sensitivity case without commercial CPUE data (Sc 1f);
 3. the sensitivity case with prior for QCS $q$: mean $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$ (Sc 2a);
-4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2^2)$ (Sc 3b);
+4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.1^2)$ (Sc 3b);
 5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
 
 The "Model-Averaged" decision table probabilities for Area 5ABCD are presented in Table \@ref(tab:tab-decision-avg-5abcd).
