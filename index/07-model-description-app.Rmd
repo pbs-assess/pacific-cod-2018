@@ -40,9 +40,9 @@ A list of model parameters is given in Table \@ref(tab:tab-param-list). Equilibr
 parameters are shown in bold type in Table \@ref(tab:tab-param-list). Fixed parameter values
 and prior probability distributions are given in the description of the Reference Case models (Section \@ref(reference-case-models)).
 
-To avoid the assumption that the stocks were at equilibrium in 1956, @forrest2013 used the same approach as an age-structured model for initializing numbers in the first year. The same approach was used here (Eq. \@ref(eq:ddn1)). 
+To avoid the assumption that the stocks were at equilibrium in 1956, @forrest2013 used the same approach as an age-structured model for initializing numbers in the first year. The same approach was used here (Eq. \@ref(eq:ddn1)).
 
-From 1956-2017, bias-corrected annual recruitments were estimated as the product of an estimated average unfished recruitment ($R_{0}$, estimated in log space) and bias-corrected annual log recruitment deviations ($\omega_t$), which were weakly constrained to a normal distribution with $\omega_t \sim N(0,2)$.  $ln(R_{0})$ and an estimated vector of eight years of log deviates (age 3--age 10; $\omega_{t\_init}$),  was used to fill the first year of the numbers-at-age matrix, with natural mortality used to calculate survival Eq. \@ref(eq:ddn1). The number of fish in the first year was then calculated as the sum of numbers at age in the first year Eq. \@ref(eq:ddnt). For the years 1957-2013, annual numbers of fish ($N_t$) were calculated using (Eq. \@ref(eq:ddnt)). Biomass in the first year was calculated as the sum over ages of the product of numbers-at-age and the weight-at-age (Eq. \@ref(eq:ddbt)), with the latter derived from the von Bertlanffy growth parameters (Table \@ref(tab:tab-param-list)). Delay-difference equations were used to calculate annual biomass ($B_t$) for the years 1957-2014 (Eq. \@ref(eq:ddbt)), with recruitment given by Eq. \@ref(eq:ddrt). Log recruitment anomalies in the 2018 projection year were drawn from a normal distribution, $\omega_t \sim N(0,\sigma R)$.
+From 1956-2017, bias-corrected annual recruitments were estimated as the product of an estimated average unfished recruitment ($R_{0}$, estimated in log space) and bias-corrected annual log recruitment deviations ($\omega_t$), which were weakly constrained to a normal distribution with $\omega_t \sim \mathcal{N}(0,2^2)$.  $\ln(R_{0})$ and an estimated vector of eight years of log deviates (age 3--age 10; $\omega_{t\_init}$),  was used to fill the first year of the numbers-at-age matrix, with natural mortality used to calculate survival Eq. \@ref(eq:ddn1). The number of fish in the first year was then calculated as the sum of numbers at age in the first year Eq. \@ref(eq:ddnt). For the years 1957-2013, annual numbers of fish ($N_t$) were calculated using (Eq. \@ref(eq:ddnt)). Biomass in the first year was calculated as the sum over ages of the product of numbers-at-age and the weight-at-age (Eq. \@ref(eq:ddbt)), with the latter derived from the von Bertlanffy growth parameters (Table \@ref(tab:tab-param-list)). Delay-difference equations were used to calculate annual biomass ($B_t$) for the years 1957-2014 (Eq. \@ref(eq:ddbt)), with recruitment given by Eq. \@ref(eq:ddrt). Log recruitment anomalies in the 2018 projection year were drawn from a normal distribution, $\omega_t \sim \mathcal{N}(0,\sigma_R^2)$.
 
 ## CONDITIONING THE MODEL
 Models were fit to observed catch data, observed mean weight data and fishery-independent and -dependent indices of abundance.
@@ -57,21 +57,22 @@ The objective function in the delay-difference model contained five major compon
 - the prior distributions for model parameters;
 - three penalty functions that:
 
->  i. constrain the estimates of annual recruitment to conform to a
-    Beverton-Holt stock-recruit function (Eq. \@ref(eq:ddrt));
-    
->  ii. weakly constrain the log recruitment deviations to a normal distribution ($\sim N(0,2)$);
+>  i. constrain the estimates of annual recruitment to conform to
+>  a Beverton-Holt stock-recruit function (Eq. \@ref(eq:ddrt));
+
+>  ii. weakly constrain the log recruitment deviations to a normal distribution
+>  ($\sim \mathcal{N}(0,2^2)$);
 
 >  iii. very weakly constrain estimates of log fishing mortality to a normal
-    distribution ($\sim N(ln(0.2), 4.0)$), to prevent estimates of catch
-    from exceeding estimated biomass.
+>  distribution ($\sim \mathcal{N}(\ln(0.2), 4.0^2)$), to prevent estimates of
+>  catch from exceeding estimated biomass.
 
 Tests showed the model was insensitive to changes in the penalty function parameters, indicating that the other likelihood components and prior probability distributions were the most important contributors to the
 objective function.
 
 ## INDICES OF ABUNDANCE
 
-The fishery-independent and -dependent abundance indices (Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization)) were treated as relative abundance indices, assumed to be directly proportional to the biomass with lognormal errors. The survey scaling (catchability) parameter $q_j$ for each survey $j$ was treated as an uncertain parameter, with the conditional maximum posterior density (MPD) estimate of $q_j$ used in the objective function (Eq. \@ref(eq:ddljt), where the parameter $j_z$ represents the maximum likelihood estimate of $ln(j_q)$, conditional on other model parameters, with $n_j$ the number of observations in index $j$ [@walters1994; Eqs. \@ref(eq:ddzjt)--\@ref(eq:dddjt)].
+The fishery-independent and -dependent abundance indices (Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization)) were treated as relative abundance indices, assumed to be directly proportional to the biomass with lognormal errors. The survey scaling (catchability) parameter $q_j$ for each survey $j$ was treated as an uncertain parameter, with the conditional maximum posterior density (MPD) estimate of $q_j$ used in the objective function (Eq. \@ref(eq:ddljt), where the parameter $j_z$ represents the maximum likelihood estimate of $\ln(j_q)$, conditional on other model parameters, with $n_j$ the number of observations in index $j$ [@walters1994; Eqs. \@ref(eq:ddzjt)--\@ref(eq:dddjt)].
 
 ## CATCH DATA
 
