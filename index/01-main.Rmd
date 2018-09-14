@@ -214,9 +214,9 @@ A normal distribution was used for $\ln(M)$ with mean = $\ln(0.5)$ and SD = 0.1,
 
 Broad uniform prior probability distributions were used for the scaling parameter $q_{k}$ for indices *k*:
 
-* Hecate Strait Multispecies Assemblage Survey;
-* NMFS Triennial Survey; and
-* Commercial CPUE indices.
+1. Hecate Strait Multispecies Assemblage Survey;
+1. NMFS Triennial Survey; and
+1. Commercial CPUE indices.
 
 These priors reflected ignorance of the scale of the survey index relative to the population. The Hecate Strait Multispecies Assemblage (HSMA) Survey was never designed as a stratified random trawl survey. Instead, it was a grid survey with one fixed location station per grid.  @sinclair1999 assigned each station to a depth stratum and analysed the data as if the survey used a stratified random design. Because of this post-hoc stratification approach, the relationship between the survey index and the Pacific cod population is unknown.  The National Marine Fisheries Service (NMFS) Triennial Survey ventured into Canadian waters seven times in the period 1980 to 2001. The survey was a random transect design, using a random start and then progressing up the west coast of the United States and Canada at 50 nm intervals.  Each transect was stratified by depth and stations along the transect were selected randomly.  The extent that the Triennial survey extended into Canada varied by survey, but the data were analysed as if the survey had the same areal coverage in every year (see Appendix \@ref(fishery-independent-indices-of-abundance)).  This survey was included in the current 3CD stock assessment to provide fishery independent biomass information in the 1980s and 1990s. However, as for the HSMA survey, the relationship between the survey index and the 3CD Pacific Cod population is not known. The commercial CPUE indices are standardized catch rates (Appendix \@ref(commercial-cpue-standardization)) with an unknown relationship to population abundance.
 
