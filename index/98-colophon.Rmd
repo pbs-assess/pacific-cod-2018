@@ -7,12 +7,10 @@ This version of the document was generated on `r Sys.time()`.
 The computational environment that was used to generate this version is as follows:
 
 ```{r env, echo = FALSE, results='asis', message=FALSE, warning=FALSE, eval=TRUE}
-library(FSA)
-# panderOptions('table.alignment.default',
-#   function(df) ifelse(sapply(df, is.numeric), 'right', 'left'))
-pkgs <- c("broom", "gfplot", "ggplot2", "dplyr", "rstan", "knitr", "glmmTMB", "TMB")
+pkgs <- sort(c("broom", "gfplot", "ggplot2", "dplyr", "rstan", "knitr", "glmmTMB",
+  "TMB", "broom.mixed", "scales", "purrr", "xtable", "kableExtra", "cowplot"))
 info <- devtools::session_info()$packages
 info %>% dplyr::filter(package %in% pkgs) %>%
-  dplyr::select(package, version, date) %>% 
+  dplyr::select(package, version, date, source) %>%
   knitr::kable(booktabs = TRUE, linesep = "")
 ```
