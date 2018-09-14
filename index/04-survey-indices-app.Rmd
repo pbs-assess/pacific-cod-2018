@@ -313,34 +313,36 @@ Canada/USA border. The total biomass within a stratum that straddled the border
 was split between the two countries by the ratio of the relative area within
 each country:
 
-TODO - MORE MATHTYPE EQUATIONS!!!!
+\begin{equation}
+B_{y_{i,c}}=B_{y_{i}}\frac{A_{y_{i,c}}}{A_{y_{i}}}
+(\#eq:tri1)
+\end{equation}
 
-Eq. B.7 ,
+where $A_{y_{i,c}} =$ area (km^2^) within country *c* in year *y* and stratum
+*i* and *B* represents biomass.
 
-where = area (km^2^) within country *c* in year *y* and stratum *i*.
-
-The variance for that part of stratum *i* within country *c* was
+The variance *V* for that part of stratum *i* within country *c* was
 calculated as being in proportion to the ratio of the square of the area
 within each country *c* relative to the total area of stratum *i*. This
 assumption resulted in the CVs within each country stratum being the
 same as the CV in the entire stratum:
 
-Eq. B.8 .
+\begin{equation}
+V_{y_{i,c}}=V_{y_{i}}\frac{A_{y_{i,c}}^{2}}{A_{y_{i}}^{2}}.
+(\#eq:tri2)
+\end{equation}
 
-The partial variance for country *c* was used in Eq. B.5 instead of the
-total variance in the stratum when calculating the variance for the
-total biomass in Canadian or American waters. CVs were calculated as in
+The partial variance for country *c* was used in instead of the total
+variance in the stratum when calculating the variance for the total biomass in
+Canadian or American waters.
 
-Eq. B.6.
-
-The biomass estimates Eq. B.4 and the associated standard errors were
-adjusted to a constant area covered using the ratios of area surveyed
-provided in Table B.3. This was required to adjust the Canadian biomass
-estimates for 1980 and 1983 to account for the smaller area surveyed in
-those years compared to the succeeding surveys. he 1980 and 1983 biomass
-estimates from Canadian waters were consequently multiplied by the ratio
-1.24 (= 9166 km^2^ / 7399 km^2^) to make them equivalent to the coverage
-of the surveys from 1989 onwards.
+The biomass estimates and the associated standard errors were adjusted to
+a constant area covered using the ratios of area surveyed. This was required to
+adjust the Canadian biomass estimates for 1980 and 1983 to account for the
+smaller area surveyed in those years compared to the succeeding surveys. he 1980
+and 1983 biomass estimates from Canadian waters were consequently multiplied by
+the ratio 1.24 (= 9166 km^2^ / 7399 km^2^) to make them equivalent to the
+coverage of the surveys from 1989 onwards.
 
 Biomass estimates were bootstrapped for 1000 random draws with
 replacement to obtain bias-corrected [@efron1982] 95% confidence
