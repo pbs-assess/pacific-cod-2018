@@ -445,7 +445,9 @@ decision.table(c(base.model.5abcd,
                  sens.models.6.sub),
                c(base.model.5abcd.name,
                  sens.models.name.6.sub),
-               caption = "Decision table with model averaging for Area 5ABCD.")
+               caption = paste0("Decision table with model averaging for Area 5ABCD. Models averaged are: ",
+                                and.string(c(base.model.5abcd.name, sens.models.name.6.sub)),
+                                "."))
 ```
 
 ```{r tab-decision-avg-3cd, results='asis', cache=FALSE}
@@ -453,7 +455,9 @@ decision.table(c(base.model.3cd,
                  sens.models.13.sub),
                c(base.model.5abcd.name,
                  sens.models.name.13.sub),
-               caption = "Decision table with model averaging for Area 3CD.")
+               caption = paste0("Decision table with model averaging for Area 3CD. Models averaged are: ",
+                                and.string(c(base.model.3cd.name, sens.models.name.13.sub)),
+                                "."))
 ```
 
 \clearpage
