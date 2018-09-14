@@ -1,4 +1,5 @@
-plot_multiyear_survey_sets <- function(dat, survey_abbrev, density_column = "density_kgpm2",
+plot_multiyear_survey_sets <- function(dat, survey_abbrev,
+  density_column = "density_kgpm2",
   density_lab = expression(Density~(kg/km^2)), density_multiplier = 1e6) {
   dd <- gfplot::tidy_survey_sets(dat, survey_abbrev, years = seq(0, 1e6),
     density_column = density_column)
@@ -21,5 +22,8 @@ plot_multiyear_survey_sets <- function(dat, survey_abbrev, density_column = "den
     scale_fill_viridis_c(trans = "sqrt") +
     labs(fill = density_lab,
       size = density_lab, x = "Easting",
-      y = "Northing")
+      y = "Northing") +
+    guides(
+      size = guide_legend(order = 1),
+      fill = guide_colorbar(order = 0))
 }
