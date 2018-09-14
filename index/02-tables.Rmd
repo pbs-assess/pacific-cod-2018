@@ -435,7 +435,7 @@ make.parameters.est.table(sens.models.13[[3]],
 
 ## REFERENCE CASE DECISION TABLES
 
-```{r tab-decision-5abcd, results='asis', cache=FALSE}
+```{r tab-decision-5abcd, results='asis'}
 decision.table(base.model.5abcd,
                base.model.5abcd.name,
                caption = "Decision table for Area 5ABCD.")
@@ -443,7 +443,7 @@ decision.table(base.model.5abcd,
 
 \clearpage
 
-```{r tab-decision-3cd, results='asis', cache=FALSE}
+```{r tab-decision-3cd, results='asis'}
 decision.table(base.model.3cd,
                base.model.3cd.name,
                caption = "Decision table for Area 3CD.")
@@ -453,7 +453,7 @@ decision.table(base.model.3cd,
 
 ## MODEL-AVERAGED DECISION TABLES
 
-```{r tab-decision-avg-5abcd, results='asis', cache=FALSE}
+```{r tab-decision-avg-5abcd, results='asis'}
 decision.table(c(base.model.5abcd,
                  sens.models.6.sub),
                c(base.model.5abcd.name,
@@ -465,7 +465,7 @@ decision.table(c(base.model.5abcd,
 
 \clearpage
 
-```{r tab-decision-avg-3cd, results='asis', cache=FALSE}
+```{r tab-decision-avg-3cd, results='asis'}
 decision.table(c(base.model.3cd,
                  sens.models.13.sub),
                c(base.model.5abcd.name,
