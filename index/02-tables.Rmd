@@ -405,7 +405,7 @@ make.parameters.est.table(sens.models.13[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 6b ($\\sigma_{O}$ = 0.15), Area 3CD."),
+                   "for Sc 6b ($\\sigma_{O}$ = 0.15), Area 3CD."),
   omit_pars = pars_est_omit)
 ```
 
@@ -424,6 +424,7 @@ make.parameters.est.table(sens.models.13[[3]],
 
 ```{r tab-decision-5abcd, results='asis', cache=FALSE}
 decision.table(base.model.5abcd,
+               base.model.5abcd.name,
                caption = "Decision table for Area 5ABCD.")
 ```
 
@@ -431,11 +432,28 @@ decision.table(base.model.5abcd,
 
 ```{r tab-decision-3cd, results='asis', cache=FALSE}
 decision.table(base.model.3cd,
+               base.model.3cd.name,
                caption = "Decision table for Area 3CD.")
 ```
 
 \clearpage
 
 ## MODEL-AVERAGED DECISION TABLES
+
+```{r tab-decision-avg-5abcd, results='asis', cache=FALSE}
+decision.table(c(base.model.5abcd,
+                 sens.models.6.sub),
+               c(base.model.5abcd.name,
+                 sens.models.name.6.sub),
+               caption = "Decision table with model averaging for Area 5ABCD.")
+```
+
+```{r tab-decision-avg-3cd, results='asis', cache=FALSE}
+decision.table(c(base.model.3cd,
+                 sens.models.13.sub),
+               c(base.model.5abcd.name,
+                 sens.models.name.13.sub),
+               caption = "Decision table with model averaging for Area 3CD.")
+```
 
 \clearpage

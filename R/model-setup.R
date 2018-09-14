@@ -188,6 +188,23 @@ sens.models.name.5 <- c("5a) kage = 3y and update FW parameters",
                         "5b) Use previous vonB")
 
 ## -----------------------------------------------------------------------------
+## Sensitivity models group 6 sub (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.6.sub <- c(file.path(model.dir,
+                                          "0_1f_5ABCD_BASE_loc-yr-interact_no_CPUE"),
+                                file.path(model.dir,
+                                          "0_2a_5ABCD_rsoleq_019_019"),
+                                file.path(model.dir,
+                                          "0_3c_5ABCD_Mprior_mean05_sd025"),
+                                file.path(model.dir,
+                                          "0_6b_5ABCD_sig015"))
+
+sens.models.name.6.sub <- c("1f) Remove all CPUE",
+                            "2a) HSSS mean q = QCSSS mean q, $ln(q) = 0.186$",
+                            "3c) M mean = 0.4, SD = 0.2",
+                            "6b) Fix sigma O = 0.15")
+
+## -----------------------------------------------------------------------------
 ## Sensitivity models group 6 (5ABCD)
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.6 <- c(file.path(model.dir,
@@ -232,11 +249,14 @@ sens.models.dir.name.8.sub2 <- c(file.path(model.dir,
                                  file.path(model.dir,
                                            "1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV"),
                                  file.path(model.dir,
-                                           "1_1d_3CD_no_recent_CPUE"))
+                                           "1_1d_3CD_no_recent_CPUE"),
+                                 file.path(model.dir,
+                                           "1_1g_3CD_no_triennial"))
 
 sens.models.name.8.sub2 <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
                              "1c) No locality/yr q mean = 0.228 sd = 0.3, double CV",
-                             "1d) Remove post-1995 CPUE")
+                             "1d) Remove post-1995 CPUE",
+                             "1g) Remove Triennial survey")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 8 (3CD)
@@ -260,6 +280,14 @@ sens.models.name.8 <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
                         "1e) Remove pre-1996 CPUE",
                         "1f) Remove all CPUE",
                         "1g) Remove Triennial survey")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 9 sub (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.9.sub <- c(file.path(model.dir,
+                                          "1_2a_3CD_rsoleq_0228sd0448"))
+sens.models.name.9.sub <- c("2a) WCVISS q SD = 0.3")
+
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 9 (3CD)
@@ -303,6 +331,23 @@ sens.models.dir.name.12 <- c(file.path(model.dir,
                                       "1_5b_3CD_old_growth_pars"))
 sens.models.name.12 <- c("5a) kage = 3y and update FW parameters",
                          "5b) Use previous vonB")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 13 sub (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.13.sub <- c(file.path(model.dir,
+                                           "1_1f_3CD_BASE_loc-yr-interact_no_CPUE"),
+                                 file.path(model.dir,
+                                           "1_2a_3CD_rsoleq_0228sd0448"),
+                                 file.path(model.dir,
+                                           "1_3c_3CD_Mprior_mean05_sd-25"),
+                                 file.path(model.dir,
+                                           "1_6b_3CD_sig015"))
+
+sens.models.name.13.sub <- c("1f) Remove all CPUE",
+                             "2a) WCVISS q SD = 0.448",
+                             "3c) M mean = 0.4, SD = 0.2",
+                             "6b) Fix sigma O = 0.15")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 13 (3CD)
@@ -371,6 +416,7 @@ load.models.into.parent.env <- function(){
   sens.models.4 <<- load.models(sens.models.dir.name.4)
   sens.models.5 <<- load.models(sens.models.dir.name.5)
   sens.models.6 <<- load.models(sens.models.dir.name.6)
+  sens.models.6.sub <<- load.models(sens.models.dir.name.6.sub)
   sens.models.7 <<- load.models(sens.models.dir.name.7)
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
@@ -378,10 +424,12 @@ load.models.into.parent.env <- function(){
   sens.models.8.sub2 <<- load.models(sens.models.dir.name.8.sub2)
   sens.models.8 <<- load.models(sens.models.dir.name.8)
   sens.models.9 <<- load.models(sens.models.dir.name.9)
+  sens.models.9.sub <<- load.models(sens.models.dir.name.9.sub)
   sens.models.10 <<- load.models(sens.models.dir.name.10)
   sens.models.11 <<- load.models(sens.models.dir.name.11)
   sens.models.12 <<- load.models(sens.models.dir.name.12)
   sens.models.13 <<- load.models(sens.models.dir.name.13)
+  sens.models.13.sub <<- load.models(sens.models.dir.name.13.sub)
   sens.models.14 <<- load.models(sens.models.dir.name.14)
 
   base.retro.models.5abcd <<- load.models(retro.dir.names.5abcd)

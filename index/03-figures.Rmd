@@ -179,7 +179,7 @@ make.pairs.plot(base.model.3cd)
 ```
 
 ```{r fig-base-biomass-3cd, fig.cap="Biomass for the Reference Model, Area 3CD."}
-b.plot(base.model.3cd, 
+b.plot(base.model.3cd,
        base.model.3cd.name,
        depl = FALSE,
        add.hist.ref = TRUE,
@@ -371,6 +371,10 @@ f.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name
 b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
 ```
 
+```{r fig-sens9-biomass-3cd-sub, fig.cap="Biomass for the sensitivity to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, Area 3CD."}
+b.plot(c(base.model.3cd, sens.models.9.sub), c(base.model.3cd.name, sens.models.name.9.sub))
+```
+
 ```{r fig-sens9-recr-3cd, fig.cap="Recruitment for the sensitivity to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
 r.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
 ```
@@ -505,5 +509,3 @@ b.plot(base.model.3cd,
        year_range = c(2010, 2019)
 ) + ylim(0, 45000) + scale_x_continuous(breaks = c(seq(2010, 2018, 2), 2019))
 ```
-
-
