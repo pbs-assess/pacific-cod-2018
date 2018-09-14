@@ -109,7 +109,7 @@ pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(base.model.5abcd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
     "97.5\\textsuperscript{th} percentile) and MPD ",
-    "estimates of key parameters from the Reference Case, Area 5ABCD.$\\R_0$ is in thousands of fish. $\\B_0$ is in tonnes . ",
+    "estimates of key parameters from the Reference Case, Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. ",
     q.5abcd.desc),
   omit_pars = pars_est_omit)
 ```
@@ -142,7 +142,7 @@ make.value.table(base.model.5abcd,
                  5,
                  digits = 2,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass relative to $\\B_0$ ",
+                                  "percentile) and MPD estimates of biomass relative to $B_0$ ",
                                   "for the Reference Case, Area 5ABCD."))
 ```
 
@@ -185,7 +185,7 @@ make.parameters.table(base.model.3cd,
 make.parameters.est.table(base.model.3cd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
     "97.5\\textsuperscript{th} percentile) and MPD ",
-    "estimates of key parameters from the reference Case, Area 3CD.",
+    "estimates of key parameters from the reference Case, Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes.  ",
     q.5abcd.desc),
   omit_pars = pars_est_omit)
 ```
@@ -218,7 +218,7 @@ make.value.table(base.model.3cd,
                  5,
                  digits = 2,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass relative to $\\B_0$ ",
+                                  "percentile) and MPD estimates of biomass relative to $B_0$ ",
                                   "for the Reference Case, Area 3CD."))
 ```
 
@@ -253,7 +253,7 @@ make.parameters.est.table(sens.models.2[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 2a (mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey), Area 5ABCD."),
+                  "for Sc 2a (mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -262,7 +262,7 @@ make.parameters.est.table(sens.models.2[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 2b (uniform priors for synoptic survey catchability), Area 5ABCD."),
+                  "for Sc 2b (uniform priors for synoptic survey catchability), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -272,7 +272,7 @@ make.parameters.est.table(sens.models.3[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 5ABCD."),
+                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -281,7 +281,7 @@ make.parameters.est.table(sens.models.3[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 5ABCD."),
+                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -290,7 +290,7 @@ make.parameters.est.table(sens.models.3[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 5ABCD."),
+                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -299,7 +299,7 @@ make.parameters.est.table(sens.models.4[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 4a (Uniform prior for steepness), Area 5ABCD."),
+                  "for Sc 4a (Uniform prior for steepness), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -308,7 +308,7 @@ make.parameters.est.table(sens.models.4[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 5ABCD."),
+                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -317,7 +317,7 @@ make.parameters.est.table(sens.models.6[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 6a ($\\sigma_{O}$ = 0.1), Area 5ABCD."),
+                  "for Sc 6a ($\\sigma_{O}$ = 0.1), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -326,7 +326,7 @@ make.parameters.est.table(sens.models.6[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 6b ($\\sigma_{O}$ = 0.15), Area 5ABCD."),
+                  "for Sc 6b ($\\sigma_{O}$ = 0.15), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -335,7 +335,7 @@ make.parameters.est.table(sens.models.6[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 6c ($\\sigma_{O}$ = 0.25), Area 5ABCD."),
+                  "for Sc 6c ($\\sigma_{O}$ = 0.25), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -349,7 +349,7 @@ make.parameters.est.table(sens.models.9[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 2a (sd of the WCVI Synoptic Survey was set to the same sd as for the QCS and HS Synoptic Surveys), Area 3CD."),
+                  "for Sc 2a (sd of the WCVI Synoptic Survey was set to the same sd as for the QCS and HS Synoptic Surveys), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -358,7 +358,7 @@ make.parameters.est.table(sens.models.9[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 2b (uniform priors for synoptic survey catchability), Area 3CD."),
+                  "for Sc 2b (uniform priors for synoptic survey catchability), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -367,7 +367,7 @@ make.parameters.est.table(sens.models.10[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 3CD."),
+                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -376,7 +376,7 @@ make.parameters.est.table(sens.models.10[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 3CD."),
+                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -385,7 +385,7 @@ make.parameters.est.table(sens.models.10[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 3CD."),
+                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -394,7 +394,7 @@ make.parameters.est.table(sens.models.11[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 4a (Uniform prior for steepness), Area 3CD."),
+                  "for Sc 4a (Uniform prior for steepness), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -403,7 +403,7 @@ make.parameters.est.table(sens.models.11[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 3CD."),
+                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -412,7 +412,7 @@ make.parameters.est.table(sens.models.13[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 6a ($\\sigma_{O}$ = 0.1), Area 3CD."),
+                  "for Sc 6a ($\\sigma_{O}$ = 0.1), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -421,7 +421,7 @@ make.parameters.est.table(sens.models.13[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                   "for Sc 6b ($\\sigma_{O}$ = 0.15), Area 3CD."),
+                   "for Sc 6b ($\\sigma_{O}$ = 0.15), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -430,7 +430,7 @@ make.parameters.est.table(sens.models.13[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                    "97.5\\textsuperscript{th} percentile) and MPD ",
                    "estimates of key parameters ",
-                  "for Sc 6c ($\\sigma_{O}$ = 0.25), Area 3CD."),
+                  "for Sc 6c ($\\sigma_{O}$ = 0.25), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
