@@ -104,19 +104,19 @@ Updates to estimated growth, maturity and annual mean weights in commercial catc
 
 # STOCK ASSESSMENT MODEL
 
-All models presented in this document are Bayesian models implemented in AD Model Builder [@fournier2012]. The models are based on the Integrated Statistical Catch Age Model (iSCAM), first reported in @martell2011. A number of modifications have been made to the code from its original version by the authors of this assessment to include delay-difference calculations. The model in its present formulation is fully described in Appendix \@ref(delay-difference-model). Two major differences between the current model and the previous assessment [@forrest2013] are:
+All models presented in this document are Bayesian models implemented in AD Model Builder [@fournier2012]. The models are based on the Integrated Statistical Catch Age Model (iSCAM), first reported in @martell2011. A major modification by the authors of @forrest2013 and this assessment is inclusion of delay-difference calculations. The model in its present formulation is fully described in Appendix \@ref(delay-difference-model). Two major differences between the current model and the previous assessment [@forrest2013] are:
 
 1. The current model estimates only one average recruitment parameter ($R_{0}$). The models in @forrest2013 and @martell2011 estimated three average recruitment parameters:
 
-  a. $R_{0}$, average unfished recruitment used in derivation of stock-recruit parameters
-  b. $R_{Init}$, initial average recruitment used to initialize the age structure in the first year
-  c. $R_{Avg}$, average recruitment for the time series)
+  - $R_{0}$, average unfished recruitment used in derivation of stock-recruit parameters;
+  - $R_{Init}$, initial average recruitment used to initialize the age structure in the first year; and
+  - $R_{Avg}$, average recruitment for the time series.
 
   The decision to use just one average recruitment parameter was made because there is little to no information for estimating three parameters in the delay-difference model, which contains no explicit age composition information.
 
-2. The von Bertalanffy growth parameters have been updated in the current assessment for both stocks, to reflect more recent age and length data. Details are provided in Appendix \@ref(analysis-of-biological-data).
+Also, the von Bertalanffy growth parameters have been updated in the current assessment for both stocks, to reflect more recent age and length data. Details are provided in Appendix \@ref(analysis-of-biological-data).
 
-The reference models for the Area 5ABCD and 3CD assessments are discussed in more detail in Section (\@ref(reference-case-models))
+The reference models for the Area 5ABCD and 3CD assessments are discussed in more detail in Section \@ref(reference-case-models).
 
 # REFERENCE POINTS
 
@@ -126,7 +126,7 @@ The DFO Fishery Decision-making Framework Incorporating the Precautionary Approa
 2. A Limit Reference Point (LRP);
 3. An Upper Stock Reference point (USR).
 
-In the current assessment, these reference points are incorporated into the decision tables (Section (\@ref(projections-and-decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
+In the current assessment, these reference points are incorporated into the decision tables (Section \@ref(projections-and-decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., reference points are not incorporated into a formal harvest control rule.
 
 Provisional values of $USR = 0.8B_{MSY}$ and $LRP = 0.4B_{MSY}$ are suggested in the absence of stock-specific reference points [@dfo2009]. The framework specifies a limit reference removal rate of $F_{MSY}$. We refer to the reference removal rate as the limit removal rate (LRR) throughout this document. The PA policy also endorses “history-based” proxies based on estimated average spawning biomass and fishing mortality over a productive historical period [@dfo2009].
 
@@ -139,7 +139,7 @@ While there was no precedent for reference points in Queen Charlotte Sound, the 
 
 @forrest2018 simulation-tested a set of alternative reference points for Hecate Strait Pacific Cod and Rock Sole (*Lepidopsetta* spp.). They found that the "history-based" reference points (or operational control points, OCPs) that had been used for Pacific Cod in 2013 [@forrest2013] were robust to stock assessment biases because they scaled in the same direction as bias in estimates of biomass and fishing mortality. However, they were not necessarily good proxies for MSY-based reference points and tended to produce more precautionary catch recommendations than reference points based on $B_{MSY}$, $B_{0}$ and the spawning potential ratio (SPR; @clark1991). While the "history-based" reference points outperformed others in terms of long-term conservation outcomes, there were sometimes large trade-offs in terms of catch and catch stability [@forrest2018]. Reference points based on estimated $B_{0}$ performed similarly to the "history-based" reference points but tended to have better trade-off properties [@forrest2018].
 
-Some of the reference point concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest implementing the same approach. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2017}$ and (ii) $B_{2018}$. Projected biomass and fishing mortality relative to these benchmarks will be used in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative projected 2018 catch levels; and whether biomass is projected to increase or decrease under alternative projected 2018 catch levels.
+Some of the reference point concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same reference points for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. In the absence of accepted reference points for Area 3CD, we suggest implementing the same approach. In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2017}$ and (ii) $B_{2018}$. Projected biomass and fishing mortality relative to these benchmarks are included in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative projected 2018 catch levels; and whether biomass is projected to increase or decrease under alternative projected 2018 catch levels.
 
 Suggested reference points and benchmarks for both areas are provided in Table \@ref(tab:suggested-ref-points).
 
@@ -178,7 +178,7 @@ The statistic $n_\mathrm{eff}$ measures the effective number of MCMC independent
 
 Both models were fit to observed catch data, observed average annual mean weight in the commercial catch, and fishery-independent and -dependent indices of abundance. Details on objective function components of the model are provided in Appendix \@ref(delay-difference-model).
 
-Data sources for observed catch data were described in Section (\@ref(data-sources)), with values in Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd) and Figures \@ref(fig:fig-catch-5abcd) to \@ref(fig:fig-discards-5cd) for Area 5ABCD, and Figures \@ref(fig:fig-catch-3cd) to \@ref(fig:fig-discards-3cd) for Area 3CD.
+Data sources for observed catch data were described in Section \@ref(data-sources), with values in Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd) and Figures \@ref(fig:fig-catch-5abcd) to \@ref(fig:fig-discards-5cd) for Area 5ABCD, and Figures \@ref(fig:fig-catch-3cd) to \@ref(fig:fig-discards-3cd) for Area 3CD.
 
 Fishery independent swept area abundance indices are documented in Appendix \@ref(fishery-independent-indices-of-abundance), including biomass estimates, CVs and years covered.
 
@@ -199,7 +199,7 @@ Details on the calculation of average annual mean weight in the commercial fishe
 
 ## PRIOR PROBABILITY DISTRIBUTIONS AND FIXED VARIANCE PARAMETERS
 
-The prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:tab-priors-5abcd) and \@ref(tab:tab-priors-3cd). Graphic presentation of prior probability distributions is provided in Figures \@ref(fig:fig-base-mcmc-priors-5abcd) and \@ref(fig:fig-base-mcmc-priors-3cd). Model sensitivities to prior assumptions are tested in Section (\@ref(sensitivity-analyses)).
+The prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:tab-priors-5abcd) and \@ref(tab:tab-priors-3cd). Graphic presentation of prior probability distributions is provided in Figures \@ref(fig:fig-base-mcmc-priors-5abcd) and \@ref(fig:fig-base-mcmc-priors-3cd). Model sensitivities to prior assumptions are tested in Section \@ref(sensitivity-analyses).
 
 ## LEADING PARAMETERS
 
@@ -217,7 +217,7 @@ Broad uniform prior probability distributions were used for the scaling paramete
 1. NMFS Triennial Survey; and
 1. Commercial CPUE indices.
 
-These priors reflected ignorance of the scale of the survey index relative to the population. The Hecate Strait Multispecies Assemblage (HSMA) Survey was never designed as a stratified random trawl survey. Instead, it was a grid survey with one fixed location station per grid.  @sinclair1999 assigned each station to a depth stratum and analysed the data as if the survey used a stratified random design. Because of this post-hoc stratification approach, the relationship between the survey index and the Pacific cod population is unknown.  The National Marine Fisheries Service (NMFS) Triennial Survey ventured into Canadian waters seven times in the period 1980 to 2001. The survey was a random transect design, using a random start and then progressing up the west coast of the United States and Canada at 50 nm intervals.  Each transect was stratified by depth and stations along the transect were selected randomly.  The extent that the Triennial survey extended into Canada varied by survey, but the data were analysed as if the survey had the same areal coverage in every year (see Appendix \@ref(fishery-independent-indices-of-abundance)).  This survey was included in the current 3CD stock assessment to provide fishery independent biomass information in the 1980s and 1990s. However, as for the HSMA survey, the relationship between the survey index and the 3CD Pacific Cod population is not known. The commercial CPUE indices are standardized catch rates (Appendix \@ref(commercial-cpue-standardization)) with an unknown relationship to population abundance.
+These priors reflected ignorance of the scale of the survey index relative to the population. The Hecate Strait Multispecies Assemblage (HSMA) Survey was never designed as a stratified random trawl survey. Instead, it was a grid survey with one fixed location station per grid.  @sinclair1999 assigned each station to a depth stratum and analysed the data as if the survey used a stratified random design. Because of this post-hoc stratification approach, the relationship between the survey index and the Pacific Cod population is unknown.  The National Marine Fisheries Service (NMFS) Triennial Survey ventured into Canadian waters seven times in the period 1980 to 2001. The survey was a random transect design, using a random start and then progressing up the west coast of the United States and Canada at 50 nm intervals.  Each transect was stratified by depth and stations along the transect were selected randomly.  The extent that the Triennial survey extended into Canada varied by survey, but the data were analysed as if the survey had the same areal coverage in every year (see Appendix \@ref(fishery-independent-indices-of-abundance)).  This survey was included in the current 3CD stock assessment to provide fishery independent biomass information in the 1980s and 1990s. However, as for the HSMA survey, the relationship between the survey index and the 3CD Pacific Cod population is not known. The commercial CPUE indices are standardized catch rates (Appendix \@ref(commercial-cpue-standardization)) with an unknown relationship to population abundance.
 
 Normal distributions were used for $\ln(q_{k})$ for indices *k* =:
 
@@ -225,7 +225,7 @@ Normal distributions were used for $\ln(q_{k})$ for indices *k* =:
 2. Hecate Strait Synoptic Survey; and
 3. West Coast Vancouver Island Synoptic Survey.
 
-The choice of prior probability distribution for survey scaling parameters has the potential for large impacts on stock assessment outcomes. We therefore present a number of alternative prior formulations as sensitivity analyses for the following informative prior probability distributions in Section (\@ref(sensitivity-analyses)).
+The choice of prior probability distribution for survey scaling parameters has the potential for large impacts on stock assessment outcomes. We therefore present a number of alternative prior formulations as sensitivity analyses for the following informative prior probability distributions in Section \@ref(sensitivity-analyses).
 
 ### Survey scaling parameters for Area 5ABCD
 
