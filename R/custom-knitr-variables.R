@@ -90,3 +90,44 @@ t03 <- b3$dat$to
 alpha.g3 <- b3$dat$dd.alpha.g
 rho.g3 <- b3$dat$dd.rho.g
 wk3 <- b3$dat$dd.wk
+
+## Decision table variables
+dt.5abcd <- decision.table(base.model.5abcd,
+                           base.model.5abcd.name,
+                           make.table = FALSE)
+dt.5abcd[,-1] <- apply(dt.5abcd[,-1], 2, as.numeric)
+dt.5abcd.min.catch <- min(dt.5abcd[,1])
+dt.5abcd.max.catch <- min(dt.5abcd[,1])
+dt.5abcd.b.2019.2018.c0 <- dt.5abcd[1, 2] * 100
+dt.5abcd.b.2019.2018.c900 <- dt.5abcd[dt.5abcd[, 1] == 900, 2] * 100
+dt.5abcd.b.2019.2018.cmax <- dt.5abcd[nrow(dt.5abcd), 2] * 100
+dt.5abcd.b.2019.lrp.c0 <- dt.5abcd[1, 4] * 100
+dt.5abcd.b.2019.lrp.c900 <- dt.5abcd[dt.5abcd[, 1] == 900, 4] * 100
+dt.5abcd.b.2019.lrp.cmax <- dt.5abcd[nrow(dt.5abcd), 4] * 100
+dt.5abcd.b.2019.usr.c0 <- dt.5abcd[1, 5] * 100
+dt.5abcd.b.2019.usr.c900 <- dt.5abcd[dt.5abcd[, 1] == 900, 5] * 100
+dt.5abcd.b.2019.usr.cmax <- dt.5abcd[nrow(dt.5abcd), 5] * 100
+dt.5abcd.f.2018.2017.c0 <- dt.5abcd[1, 3] * 100
+dt.5abcd.f.2018.2017.cmax <- dt.5abcd[nrow(dt.5abcd), 3] * 100
+dt.5abcd.f.2018.lrr.c0 <- dt.5abcd[1, 4] * 100
+dt.5abcd.f.2018.lrr.cmax <- dt.5abcd[nrow(dt.5abcd), 4] * 100
+
+dt.3cd <- decision.table(base.model.3cd,
+                         base.model.3cd.name,
+                         make.table = FALSE)
+dt.3cd[,-1] <- apply(dt.3cd[,-1], 2, as.numeric)
+dt.3cd.min.catch <- min(dt.3cd[,1])
+dt.3cd.max.catch <- min(dt.3cd[,1])
+dt.3cd.b.2019.2018.c0 <- dt.3cd[1, 2] * 100
+dt.3cd.b.2019.2018.c500 <- dt.3cd[dt.3cd[, 1] == 500, 2] * 100
+dt.3cd.b.2019.2018.cmax <- dt.3cd[nrow(dt.3cd), 2] * 100
+dt.3cd.b.2019.lrp.c0 <- dt.3cd[1, 4] * 100
+dt.3cd.b.2019.lrp.c500 <- dt.3cd[dt.3cd[, 1] == 500, 4] * 100
+dt.3cd.b.2019.lrp.cmax <- dt.3cd[nrow(dt.3cd), 4] * 100
+dt.3cd.b.2019.usr.c0 <- dt.3cd[1, 5] * 100
+dt.3cd.b.2019.usr.c500 <- dt.3cd[dt.3cd[, 1] == 500, 5] * 100
+dt.3cd.b.2019.usr.cmax <- dt.3cd[nrow(dt.3cd), 5] * 100
+dt.3cd.f.2018.2017.c0 <- dt.3cd[1, 3] * 100
+dt.3cd.f.2018.2017.cmax <- dt.3cd[nrow(dt.3cd), 3] * 100
+dt.3cd.f.2018.lrr.c0 <- dt.3cd[1, 4] * 100
+dt.3cd.f.2018.lrr.cmax <- dt.3cd[nrow(dt.3cd), 4] * 100

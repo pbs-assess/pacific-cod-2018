@@ -2,7 +2,8 @@ decision.table <- function(models,
                            models.names,
                            burnin = 1000,
                            thin = 1,
-                           caption = ""){
+                           caption = "",
+                           make.table = TRUE){
 
   dat <- as.data.frame(matrix(NA,
                               ncol = 6,
@@ -35,13 +36,17 @@ decision.table <- function(models,
     dat[t, 6] <- f(mean(d$F2018FAvgS > 1), 2)  #P(F2018>FAvg) #Avg 1956-2004
   }
 
-  kable(dat,
-        caption = caption,
-        booktabs = TRUE,
-        longtable = TRUE,
-        linesep = "",
-        escape = FALSE) %>%
-  kable_styling(latex_options = c("hold_position", "repeat_header")) %>%
-  kableExtra::column_spec(1, width = "2.7cm") %>%
-  kableExtra::column_spec(2:6, width = "2.0cm")
+  if(make.table){
+    kable(dat,
+          caption = caption,
+          booktabs = TRUE,
+          longtable = TRUE,
+          linesep = "",
+          escape = FALSE) %>%
+      kable_styling(latex_options = c("hold_position", "repeat_header")) %>%
+      kableExtra::column_spec(1, width = "2.7cm") %>%
+      kableExtra::column_spec(2:6, width = "2.0cm")
+  }else{
+    dat
+  }
 }
