@@ -139,6 +139,19 @@ b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
            depl = FALSE)
 ```
 
+```{r fig-base-biomass-5abcd-proj, fig.cap="Biomass for the Reference Model, Area 5ABCD with projections.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest biomass from which the stock has recovered, in this case it is the biomass estimate for 1971. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."}
+b.plot(base.model.5abcd,
+       base.model.5abcd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(1971, 1971),
+       usr = c(1956, 2004),
+       proj_columns = c("B2018", "B2019"),
+       tac_vector = c(0, 900, 2000, 3000),
+       year_range = c(2010, 2019)
+) + ylim(0, 40000) + scale_x_continuous(breaks = c(seq(2010, 2018, 2), 2019))
+```
+
 \clearpage
 
 ## MODEL RESULTS: AREA 3CD
@@ -211,6 +224,19 @@ f.plot(base.model.3cd,
 b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
            c(base.model.3cd.name, retro.names),
            depl = FALSE)
+```
+
+```{r fig-base-biomass-3cd-proj, fig.cap="Biomass for the Reference Model, Area 3CD with projections.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest biomass from which the stock has recovered, in this case it is the biomass estimate for 1986. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."}
+b.plot(base.model.3cd,
+       base.model.3cd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(1986, 1986),
+       usr = c(1956, 2004),
+       proj_columns = c("B2018", "B2019"),
+       tac_vector = c(0, 500, 1000, 1500),
+       year_range = c(2010, 2019)
+) + ylim(0, 45000) + scale_x_continuous(breaks = c(seq(2010, 2018, 2), 2019))
 ```
 
 \clearpage
