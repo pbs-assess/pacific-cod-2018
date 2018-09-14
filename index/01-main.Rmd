@@ -121,7 +121,7 @@ The DFO Fishery Decision-making Framework Incorporating the Precautionary Approa
 - A Limit Reference Point (LRP);
 - An Upper Stock Reference point (USR).
 
-In the current assessment, these reference points are incorporated into the decision tables (Section (\@ref(decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
+In the current assessment, these reference points are incorporated into the decision tables (Section (\@ref(projections-and-decision-tables)), where projected probabilities of breaching the reference points are reported, i.e., they are not incorporated into a formal harvest control rule.
 
 Provisional values of $USR = 0.8B_{MSY}$ and $LRP = 0.4B_{MSY}$ are suggested in the absence of stock-specific reference points [@dfo2009]. The framework specifies a limit reference removal rate of $F_{MSY}$. We refer to the reference removal rate as the limit removal rate (LRR) throughout this document. The PA policy also endorses “history-based” proxies based on estimated average spawning biomass and fishing mortality over a productive historical period [@dfo2009].
 
@@ -495,9 +495,9 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and Figures \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) a and \@ref(fig:fig-sens14-meanweightfit-3cd) a). Decreasing $\sigma_w$ in Sc 7b did not have a noticable effect on predicted biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) b and \@ref(fig:fig-sens14-meanweightfit-3cd) b).
 
-# DECISION TABLES
+# PROJECTIONS AND DECISION TABLES
 
-Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019. Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$.
+Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019 (Figures \@ref(fig:fig-base-biomass-5abcd-proj) and \@ref(fig:fig-base-biomass-3cd-proj)). Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$.
 
 Decision tables are designed to present probabilities of "undesirable" states under alternative 2018 projected catch levels.For example, an undesirable biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
 
