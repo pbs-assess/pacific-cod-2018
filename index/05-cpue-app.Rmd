@@ -32,7 +32,7 @@ depth, date, and locality are available as model covariates.
 
 Commercial groundfish bottom trawl data from 1996 to present have been recorded
 to the fishing-event level in the presence of on-board observers or video
-monitoring. We have treated this modern dataset separately from the historic
+monitoring. We have treated this modern dataset separately from the historical
 dataset to (1) take advantage of the higher data resolution, (2) include
 information on latitude and vessel ID in our standardization model, and (3) to
 avoid assuming a constant catchability and relationship between CPUE and the
@@ -176,7 +176,7 @@ observation model that does not allow for zeros.
 ## COMMERCIAL CPUE STANDARDIZATION RESULTS
 
 The raw Pacific Cod catch and total fleet effort show variable trends through
-time in both the historic and modern datasets (Figure
+time in both the historical and modern datasets (Figure
 \@ref(fig:cpue-catch-effort-ts)). The majority of positive fishing events for
 Pacific Cod occurred at depths ranging from approximately 50m to 200m (Figure
 \@ref(fig:cpue-depth-hists)). We can see an increase in the total number of
@@ -215,7 +215,7 @@ for the modern dataset in 5ABCD (Figure \@ref(fig:cpue-int-test-plot)). The
 main effect of including the locality-year random effect interactions was to
 increase the width of the confidence intervals in all areas and time periods.
 We can examine the contribution of all the fixed and random effect parameters
-via coefficient plots (historic: Figures \@ref(fig:cpue-coef-plot1),
+via coefficient plots (historical: Figures \@ref(fig:cpue-coef-plot1),
 \@ref(fig:cpue-coef-plot2), \@ref(fig:cpue-coef-plot3); modern: Figures
 \@ref(fig:cpue-coef-plot1-modern), \@ref(fig:cpue-coef-plot2-modern),
 \@ref(fig:cpue-coef-plot3-modern)).
@@ -442,9 +442,9 @@ dfleet_modern %>% make_bubble_dat() %>%
 stopifnot(length(m_historic) == 12L)
 stopifnot(length(m_modern) == 16L)
 qr1 <- qres_tweedie(m_historic[[6]], "cpue")
-gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("Historic", params$area_name[1]))
+gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("Historical", params$area_name[1]))
 qr2 <- qres_tweedie(m_historic[[12]], "cpue")
-gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("Historic", params$area_name[2]))
+gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("Historical", params$area_name[2]))
 qr3 <- qres_tweedie(m_modern[[8]], "cpue")
 gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("Modern", params$area_name[1]))
 qr4 <- qres_tweedie(m_modern[[16]], "cpue")
