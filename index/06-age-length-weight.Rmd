@@ -41,8 +41,6 @@ total_survey_lengths <- gfplot::tidy_lengths_raw(x,
 
 <!-- We extracted, manipulated, and plotted biological data using the R package gfplot (TODO-REF). -->
 
-*TO DO: Add info on length-stratification in surveys?*
-
 In this appendix we analyse length, maturity, and available ageing data to update growth and maturity parameters. We also plot age-frequency data derived from an age-length key to visualise the probable age composition in survey and commercial catch data.
 
 ### SYNOPTIC SURVEY DATA
@@ -401,8 +399,6 @@ Estimates of the von Bertalanffy growth rate $k$ were higher in the WCVI survey 
 
 The current results for Hecate Strait (Table \@ref(tab:age-coeff-table)), are consistent with the parameters reported by @westrheim1996. This suggests that the growth rate use in the delay difference models in @forrest2013 and @sinclair2005 may have been too high for the Hecate Strait stock. The current Base Case models therefore uses the growth parameters reported for females in Table \@ref(tab:age-coeff-table), i.e., "SYN HS, SYN QCS" for Area 5ABCD; and "SYN WCVI" for the 3CD stocks.
 
-*TO DO IF TIME: Comment on sample sizes and imprecision --- insufficient secondary reads to account for ageing error in calculation of growth parameters [e.g., as in @cope2007].*
-
 \clearpage
 
 Length-weight parameters (Equation \@ref(eq:weight-length)) were estimated using paired length and weight data from the synoptic surveys.
@@ -502,8 +498,6 @@ mature. We can then calculate of the age at 50% maturity as: $-(\log(1 / 0.5 - 1
 
 Estimated parameters are provided in Tables \@ref(tab:mat-fifty-tab) and \@ref(tab:age-mat-coefs-table), and Figure \@ref(fig:age-mat-coefs). Estimated maturity ogives are shown in Figure \@ref(fig:age-mat-figs).
 
-*TO DO: update mat-fifty-tab with coefficients directly from fit_mat_ogive. See Slack conversation #pcod Sept 5*
-
 Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2 y.
 
 ```{r age-fit-maturity}
@@ -560,7 +554,6 @@ inner_join(est, se) %>%
      booktabs = TRUE, linesep = "", digits=2, escape=FALSE)
 ```
 
-
 ```{r mat-fifty-tab, results = 'asis'}
 plyr::ldply(mat_fits, function(.x)
   data.frame(Female = .x$mat_perc$f.p0.5, Male = .x$mat_perc$m.p0.5)) %>%
@@ -598,9 +591,11 @@ inner_join(est, se) %>%
   scale_color_brewer(palette = "Dark2")
 ```
 
+\clearpage
+
 ## AVERAGE ANNUAL MEAN WEIGHT IN COMMERCIAL CATCH
 
-The calculation of annual mean weight was done in the following steps. The same steps were used in both areas 3CD and 5ABCD. The same length-weight relationship was use for all quarters, but differ by area. The values of the length-weight parameters used are for 3CD: `r paste0("$\\alpha = ", .ALPHA3, "$")` and `r paste0("$\\beta = ", .BETA3, "$")`; for 5ABCD: `r paste0("$\\alpha = ", .ALPHA, "$")` and `r paste0("$\\beta = ", .BETA, "$")`.
+The calculation of annual mean weight was done in the following steps. The same steps were used in both Areas 3CD and 5ABCD. The same length-weight relationship was use for all quarters, but differ by area. The values of the length-weight parameters used are for Area 3CD: `r paste0("$\\alpha = ", .ALPHA3, "$")` and `r paste0("$\\beta = ", .BETA3, "$")`; for Area 5ABCD: `r paste0("$\\alpha = ", .ALPHA, "$")` and `r paste0("$\\beta = ", .BETA, "$")`.
 
 *Step 1.* Convert individual length ($l_i$) in each Sample ID ($j$) to weight ($w_i$):
 
