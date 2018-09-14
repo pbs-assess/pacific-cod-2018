@@ -487,8 +487,6 @@ Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomas
 
 # PROJECTIONS AND DECISION TABLES
 
-*TO DO: check these numbers*
-
 Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019 (Figures \@ref(fig:fig-base-biomass-5abcd-proj) and \@ref(fig:fig-base-biomass-3cd-proj)). Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
 - $P(B_{2019} < B_{2018})$;
