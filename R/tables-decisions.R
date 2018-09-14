@@ -1,24 +1,13 @@
 decision.table <- function(models,
+                           models.names,
                            burnin = 1000,
                            thin = 1,
                            caption = ""){
 
-  ## Assume all models have the same TACs
-  tac <- models[[1]]$proj$tac.vec
-  proj <- models[[1]]$mcmc$proj
-
   dat <- as.data.frame(matrix(NA,
                               ncol = 6,
                               nrow = length(tac)))
-  # colnames(dat) <- c("$TAC$",
-  #                    "$P(B_{2019} LESS THAN B_{2018})$",
-  #                    "$P(F_{2018} LESS THAN  F_{2017})$",
-  #                    #"$P(B_{2019}<B_{0.8B_{MSY}})$",
-  #                    #"$P(B_{2019}<B_{0.4B_{MSY}})$",
-  #                    #"$P(F_{2018}>F_{MSY})$",
-  #                    "$P(B_{2019} LESS THAN B_{min}}$)",
-  #                    "$P(B_{2019} LESS THAN B_{AVG})$",
-  #                    "$P(F_{2018} MORE THAN F_{AVG})$")
+
   colnames(dat) <- c("$2018$ Catch (mt)",
                      "$P(B_{2019} < B_{2018})$",
                      "$P(F_{2018} > F_{2017})$",
@@ -26,20 +15,17 @@ decision.table <- function(models,
                      "$P(B_{2019} < \\mathrm{USR})$",
                      "$P(F_{2018} > \\mathrm{LRR})$")
 
-  proj.dat <- data.frame()
+  ## Assume all models have the same TACs
+  tac <- models[[1]]$proj$tac.vec
   for(t in seq_along(tac)){
-    results <- list()
-
-    for(m in 1:length(models)){
-      results[[m]] <- proj[proj$TAC == tac[t],]
-      results[[m]] <- mcmc.thin(results[[m]], burnin, thin)
-    }
-
-    if(length(models) > 1){
-      d <- plyr::rbind.fill(results)
-    }else{
-      d <- results[[1]]
-    }
+    proj <- lapply(models,
+                   function(x){
+                     j <- as.data.frame(x$mcmc$proj)
+                     j <- j[j$TAC == tac[t],]
+                     j <- mcmc.thin(j, burnin, thin)
+                   })
+    names(proj) <- models.names
+    d <- bind_rows(proj)
 
     dat[t, 1] <- f(tac[t], 0)
     dat[t, 2] <- f(mean(d$B2019B2018 < 1), 2)   #P(B2019<B2018)
@@ -55,9 +41,6 @@ decision.table <- function(models,
         longtable = TRUE,
         linesep = "",
         escape = FALSE) %>%
-#        align = c("l", "r", "r", "r", "r", "r")) %>%
-#    column_spec(c(2, 4, 5, 6), width = "2cm") %>%
-#    column_spec(3, width = "4cm") %>%
   kable_styling(latex_options = c("hold_position", "repeat_header")) %>%
   kableExtra::column_spec(1, width = "2.7cm") %>%
   kableExtra::column_spec(2:6, width = "2.0cm")
