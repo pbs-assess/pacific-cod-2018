@@ -603,13 +603,12 @@ Uncertainty is therefore under-represented in this assessment.
 # ACKNOWLEDGEMENTS
 
 We are grateful to Elise Keppel (Pacific Biological Station) for reconstructing
-the historical commercial catch per unit effort data in consultation with Norm
-Olsen (Pacific Biological Station). Her work on this important data set for this
+the historical commercial catch per unit effort data. Her work on this important data set for this
 assessment made it possible to have a fully reproducible analysis and will be
-helpful in future assessments for countless other stocks. More generally, her
+helpful in future assessments for other stocks. More generally, her
 help with the gfplot R package, and its carefully constructed SQL queries, made
-the data extraction for this assessment seamless. We also thank Greg Workman and
+the data extraction for this assessment seamless. We thank Norm Olsen for his advice on the historical commercial catch per unit effort reconstruction. We also thank Greg Workman and
 Maria Surry (Pacific Biological Station) for their support and advice with the
-preparation for this assessment.
+preparation for this assessment.We thank Bruce Turris and Brian Mose (Canadian Groundfish Research and Conservation Society) for their advice to the authors.
 
 \clearpage
