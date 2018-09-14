@@ -387,7 +387,7 @@ For 3CD, two sensitivity analyses are shown to illustrate the effect of the norm
 
 > **Sc 2b.** A uniform prior was used for \textit{q} for the WCVI Synoptic Surveys.
 
-Models were moderately sensitive to choice of the parameters used for the normal prior for $\ln(q)$ (Sc 2a; Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)). For clarity, estimated biomass biomass trajectories without Sc 2b is provided for Area 3Cd in Figure \@ref(fig:fig-sens9-biomass-3cd-sub).Essentially, lowering the value of the mean (Area 5ABCD), or increasing the variance (Area 3CD) resulted in lower estimates of $q$ (Tables \@ref(tab:tab-param-table-sens2a-5abcd) and \@ref(tab:tab-param-table-sens2a-3cd)), leading to larger estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd-sub)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)). 
+Models were moderately sensitive to choice of the parameters used for the normal prior for $\ln(q)$ (Sc 2a; Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)). For clarity, estimated biomass biomass trajectories without Sc 2b is provided for Area 3Cd in Figure \@ref(fig:fig-sens9-biomass-3cd-sub).Essentially, lowering the value of the mean (Area 5ABCD), or increasing the variance (Area 3CD) resulted in lower estimates of $q$ (Tables \@ref(tab:tab-param-table-sens2a-5abcd) and \@ref(tab:tab-param-table-sens2a-3cd)), leading to larger estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd-sub)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)).
 
 Notably, removing the informative prior resulted in very low estimates of $q$ for these surveys (Tables \@ref(tab:tab-param-table-sens2b-5abcd) and \@ref(tab:tab-param-table-sens2b-3cd)),leading to very large and uncertain estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)). This was extremely pronounced for Area 3CD (Table \@ref(tab:tab-param-table-sens2b-3cd) and Figure \@ref(fig:fig-sens9-biomass-3cd)).
 
@@ -605,9 +605,7 @@ Under a 2018 catch level of 500 mt, close to the 2017 TAC, there is an estimated
 
 ## SUMMARY
 
-We presented the alternative, model averaged decision tables for Areas 5ABCD and 3CD in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
-
-However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
+We presented the alternative, model averaged decision tables for Areas 5ABCD and 3CD in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders. However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
 
 1. The effects of the assumption of constant selectivity in the trawl fishery;
 1. The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;
