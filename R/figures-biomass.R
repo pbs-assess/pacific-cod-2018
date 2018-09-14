@@ -141,8 +141,7 @@ b.plot <- function(models,
                    aes(yintercept = Intercept),
                    color = j$Color,
                    linetype = "dashed",
-                   size = 1,
-                   show.guide = TRUE)
+                   size = 1)
     }
   }
 
@@ -163,14 +162,13 @@ b.plot <- function(models,
         inherit.aes = FALSE, lwd = 1, alpha = 1, lty = 1.2) +
       scale_fill_viridis_d(end = 0.9) +
       scale_colour_viridis_d(end = 0.9) +
-      theme(legend.position = c(0.90, 1), legend.title = element_text(size = 9, hjust = 0)) +
+      theme(legend.position = c(1, 1), legend.title = element_text(size = 9, hjust = 0)) +
       labs(fill = "TAC (mt)", colour = "TAC (mt)") +
       geom_vline(xintercept = min(proj_dat$year), lty = 2, col = "grey80")
   }
 
   if (!is.null(year_range)) {
-    p <- p + scale_x_continuous(breaks = seq(year_range[[1]], year_range[[2]], 2))
-    p <- p + xlim(year_range)
+    p <- p + coord_cartesian(xlim = year_range)
   }
 
   p
