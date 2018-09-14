@@ -550,8 +550,6 @@ A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011
 
 ### Area 5ABCD
 
-*TO DO: placeholder text*
-
 For Area 5ABCD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
 
 1. Reference Case;
@@ -560,7 +558,7 @@ For Area 5ABCD, we present an alternative decision table with probabilities calc
 4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2)$ (Sc 3b);
 5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
 
-The "Model-Averaged" decision table probabilities for Area 5ABCD are presented in Table XX.
+The "Model-Averaged" decision table probabilities for Area 5ABCD are presented in Table \@ref(tab:tab-decision-avg-5abcd).
 
 For most performance measures, probabilities were similar to those in the Reference Case model.
 
@@ -575,8 +573,6 @@ Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated
 
 ### Area 3CD
 
-*TO DO: placeholder text*
-
 For Area 3CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
 
 1. Reference Case;
@@ -585,7 +581,7 @@ For Area 3CD, we present an alternative decision table with probabilities calcul
 4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2)$ (Sc 3b);
 5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
 
-The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table XX.
+The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd).
 
 For most performance measures, probabilities were similar to those in the Reference Case model.
 
@@ -615,14 +611,9 @@ Uncertainty is therefore under-represented in this assessment.
 
 # ACKNOWLEDGEMENTS
 
-TODO Show some love to your people
-
-We are particularly grateful to Elise Keppel for reconstructing the historical
-commercial catch per unit effort data in consultation with Norm Olsen. Her work
-on this important data set for this assessment made it possible to have a fully
-reproducible analysis and will be helpful in future assessments for countless
-other stocks. More generally, her help with the gfplot package, and its
-carefully constructed SQL queries, made the data extraction for this assessment
-seamless.
+We are particularly grateful to Elise Keppel (Pacific Biological Station) for reconstructing the historical
+commercial catch per unit effort data in consultation with Norm Olsen (Pacific Biological Station. Her work
+on this important data set for this assessment made it possible to have a fully reproducible analysis and will be helpful in future assessments for countless other stocks. More generally, her help with the gfplot package, and its carefully constructed SQL queries, made the data extraction for this assessment
+seamless. We also thank Greg Workman and Maria Surry (Pacific Biological Station) for their support and advice with the preparation for this assessment.
 
 \clearpage
