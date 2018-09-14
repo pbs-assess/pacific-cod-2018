@@ -268,7 +268,7 @@ sens.models.dir.name.9 <- c(file.path(model.dir,
                                       "1_2a_3CD_rsoleq_0228sd0448"),
                             file.path(model.dir,
                                       "1_2b_3CD_q_all_unif"))
-sens.models.name.9 <- c("2a) WCVISS q SD = 0.3",
+sens.models.name.9 <- c("2a) WCVISS q SD = 0.448",
                         "2b) WCVISS q has uniform prior")
 
 ## -----------------------------------------------------------------------------
