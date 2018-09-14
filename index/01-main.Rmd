@@ -107,11 +107,17 @@ Updates to estimated growth, maturity and annual mean weights in commercial catc
 
 All models presented in this document are Bayesian models implemented in AD Model Builder [@fournier2012]. The models are based on the Integrated Statistical Catch Age Model (iSCAM), first reported in @martell2011. A number of modifications have been made to the code from its original version by the authors of this assessment to include delay-difference calculations. The model in its present formulation is fully described in Appendix \@ref(delay-difference-model). Two major differences between the current model and the previous assessment [@forrest2013] are:
 
-1. The current model estimates only one average recruitment parameter ($R_{0}$). The models in @forrest2013 and @martell2011 estimated three average recruitment parameters (1. $R_{0}$, average unfished recruitment used in derivation of stock-recruit parameters; 2. $R_{Init}$ initial average recruitment used to initialize the age structure in the first year; and 3. $R_{Avg}$ average recruitment for the time series). The decision to use just one average recruitment parameter was made because there is little to no information for estimating three parameters in the delay-difference model, which contains no explicit age composition information.
+- The current model estimates only one average recruitment parameter ($R_{0}$). The models in @forrest2013 and @martell2011 estimated three average recruitment parameters:
 
-2. The von Bertalanffy growth parameters have been updated in the current assessment for both stocks, to reflect more recent age and length data. Details are provided in Appendix \@ref(analysis-of-biological-data).
+  - $R_{0}$, average unfished recruitment used in derivation of stock-recruit parameters
+  - $R_{Init}$, initial average recruitment used to initialize the age structure in the first year
+  - $R_{Avg}$, average recruitment for the time series)
 
-The reference models for the Area 5ABCD and 3CD assessments are discussed in more detail in Section (\@ref(reference-case-models)).
+  The decision to use just one average recruitment parameter was made because there is little to no information for estimating three parameters in the delay-difference model, which contains no explicit age composition information.
+
+- The von Bertalanffy growth parameters have been updated in the current assessment for both stocks, to reflect more recent age and length data. Details are provided in Appendix \@ref(analysis-of-biological-data).
+
+The reference models for the Area 5ABCD and 3CD assessments are discussed in more detail in Section (\@ref(reference-case-models))
 
 # REFERENCE POINTS
 
