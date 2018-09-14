@@ -350,8 +350,9 @@ get_par_df(vb_fits, 1) %>%
   rename(Term = term, Estimate = estimate, Conf.low = conf.low, Conf.high = conf.high) %>%
   dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
   knitr::kable(
-    caption = "von Bertalanffy growth coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.",
-    booktabs = TRUE, linesep = "", digits=3, escape=FALSE)
+    caption = "von Bertalanffy growth coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Rows in bold represent values used in the models.",
+    booktabs = TRUE, linesep = "", digits=3, escape=FALSE) %>%
+  row_spec(seq(13, 18), bold = TRUE)
 ```
 
 ```{r vb-figs, fig.cap = "Length-age model fits. The length-age growth curve is a von Bertalanffy model. Female model fits are indicated as solid red lines and male model fits are indicated as dashed grey lines. Text on the panels shows the parameter estimates and light dots represent individual fish that the models are fit to.", fig.asp=0.3, fig.width=9, out.width="6.5in"}
