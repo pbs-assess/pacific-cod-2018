@@ -304,7 +304,7 @@ L_{s} = L_{\infty,s}\left( 1 - e^{- k_{s}\left( a_{s} - {a_{0}}_{s} \right)} \ri
 
 where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $a_{s}$ are paired length ($L$) and age ($a$) observations from synoptic surveys (Tables \@ref(tab:length-biosamples-surv) and \@ref(tab:age-biosamples)). We allowed for lognormal observation error.
 
-The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars); Table \@ref(tab:age-coeff-table)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)). We sampled from the joint posterior distributions of each model with Stan [@carpenter2017; @rstan2018] using three chains and 1000 iterations per chain, discarding the first half of each as warmup. We placed uniform priors bounded at zero on $k$, $L_{\infty}$, and $\sigma$ (lognormal observation standard deviation), and a uniform prior on $a_0$.
+The model was fit separately for males and females to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars); Table \@ref(tab:age-coeff-table)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)). We sampled from the joint posterior distributions of each model with Stan [@carpenter2017; @rstan2018] using four chains and 2000 iterations per chain, discarding the first half of each as warmup. We placed uniform priors bounded at zero on $k$, $L_{\infty}$, and $\sigma$ (lognormal observation standard deviation), and a uniform prior on $a_0$.
 
 \clearpage
 
@@ -314,13 +314,16 @@ surveys_list <- list(
   `SYN HS, SYN QCS` = c("SYN HS", "SYN QCS"),
   `SYN WCVI` = "SYN WCVI"
 )
+
 sexes <- c("male", "female")
 vb_fits <-
   map(surveys_list, function(.survey) {
     map(sexes, function(.sex) {
       .dat <- filter(x, is.element(survey_abbrev, .survey))
-      fit_vb(.dat, .sex, method = "mcmc", chains = 2L, uniform_priors = TRUE,
-        cores = 1L, control = list(adapt_delta = 0.8))
+      fit_vb(.dat, .sex, method = "mcmc", chains = 4L, iter = 2000L,
+        uniform_priors = TRUE, seed = 1,
+        cores = parallel::detectCores(),
+        control = list(adapt_delta = 0.99, max_treedepth = 20L))
     })
   })
 ```
@@ -330,7 +333,7 @@ vb_fits <-
 ```{r age-coeff-table, results='asis'}
 get_par_df <- function(.d, element = 1) {
   map_df(vb_fits, function(.x) {
-    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.9) %>%
+    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
     select(-std.error) %>%
     mutate(Surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
@@ -347,10 +350,14 @@ get_par_df(vb_fits, 1) %>%
   mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list))))     %>%
   rename(Term = term, Estimate = estimate, Conf.low = conf.low, Conf.high = conf.high) %>%
   dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
+  mutate(Estimate = f(Estimate, 2),
+    Conf.low = f(Conf.low, 2), Conf.high = f(Conf.high, 2)) %>%
   knitr::kable(
     caption = "von Bertalanffy growth coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Rows in bold represent values used in the models.",
-    booktabs = TRUE, linesep = "", digits=3, escape=FALSE) %>%
-  row_spec(seq(13, 18), bold = TRUE)
+    booktabs = TRUE, linesep = "", escape=FALSE,
+    align = c("l", "l", "l", "r", "r", "r")) %>%
+  row_spec(seq(13, 18), bold = TRUE) %>%
+  footnote(alphabet = c("Note that these values differ slightly from those used in the models and described in the model appendix. The values in this table were run with extra chains and for more iterations with a higher Stan 'adapt delta' argument to more precisely explore the joint posterior. The models will be updated with these values."))
 ```
 
 ```{r vb-figs, fig.cap = "Length-age model fits. The length-age growth curve is a von Bertalanffy model. Female model fits are indicated as solid red lines and male model fits are indicated as dashed grey lines. Text on the panels shows the parameter estimates and light dots represent individual fish that the models are fit to.", fig.asp=0.3, fig.width=9, out.width="6.5in"}
@@ -365,7 +372,7 @@ cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
 ```{r age-vb-pars, fig.asp=0.4, fig.cap = "Coefficient estimates from the von Bertalanffy model."}
 get_par_df <- function(.d, element = 1) {
   map_df(vb_fits, function(.x) {
-    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.9) %>%
+    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
     select(-std.error) %>%
     mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
