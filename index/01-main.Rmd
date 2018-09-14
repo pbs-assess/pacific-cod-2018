@@ -584,6 +584,14 @@ Uncertainty is therefore under-represented in this assessment.
 
 # ACKNOWLEDGEMENTS
 
-Show some love to your people
+TODO Show some love to your people
+
+We are particularly grateful to Elise Keppel for reconstructing the historical
+commercial catch per unit effort data in consultation with Norm Olsen. Her work
+on this important data set for this assessment made it possible to have a fully
+reproducible analysis and will be helpful in future assessments for countless
+other stocks. More generally, her help with the gfplot package, and its
+carefully constructed SQL queries, made the data extraction for this assessment
+seamless.
 
 \clearpage
