@@ -87,7 +87,7 @@ issues:
    links and so the coefficients cannot be combined.
 1. The delta-GLM approach assumes independence among the two components [e.g.
    @thorson2017].
-1. The delta-GLM approach has shown to be insufficiently robust to variable
+1. The delta-GLM approach has been shown to be insufficiently robust to variable
    sampling intensity (e.g. in time or space) [@lecomte2013].
 1. Perhaps most importantly for our purpose, a delta-GLM in which the two
    models use different links renders a final index in which the shape is
@@ -296,7 +296,7 @@ plot_tweedie_ex <- function(df, max = 15) {
     data.frame(x = xx,
       y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
   }) %>%
-    mutate(phi = paste("ϕ =", phi)) %>%
+    mutate(phi = paste("phi =", phi)) %>%
     mutate(power = paste("p =", power)) %>%
     mutate(mu = paste("μ =", mu))
 

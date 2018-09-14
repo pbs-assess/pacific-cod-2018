@@ -146,7 +146,7 @@ survey data to estimate bias corrected 95% confidence intervals for each survey
 year [@efron1982]. The resulting values are shown in Table
 \@ref(tab:surv-canadian-table) and Figure \@ref(fig:surv-canadian).
 
-```{r surv-canadian}
+```{r surv-canadian-table}
 dplyr::filter(dat$survey_index, survey_abbrev %in%
   c("SYN QCS", "SYN WCVI", "SYN HS", "SYN WCHG", "OTHER HS MSA")) %>%
   dplyr::select(survey_abbrev, year, biomass, re, lowerci, upperci, num_sets, num_pos_sets) %>%
@@ -158,7 +158,7 @@ dplyr::filter(dat$survey_index, survey_abbrev %in%
   knitr::kable(caption = "Pacific Cod survey data for Canadian trawl surveys. Relative biomass and associated lower and upper confidence intervals (CI) are shown in metric tons (without accounting for survey catchability). Positive sets refers to the number of trawl sets that caught Pacific Cod.", booktabs = TRUE, linesep = "")
 ```
 
-```{r surv-canadian-table, fig.cap="Pacific Cod survey data for Canadian trawl surveys. Shown is relative biomass and associated lower and upper confidence intervals. Positive sets refers to the number of trawl sets that caught Pacific Cod."}
+```{r surv-canadian, fig.cap="Pacific Cod survey data for Canadian trawl surveys. Shown is relative biomass and associated lower and upper confidence intervals. Positive sets refers to the number of trawl sets that caught Pacific Cod."}
 gfplot::tidy_survey_index(dat$survey_index,
   survey = c("SYN QCS", "SYN WCVI", "SYN HS", "SYN WCHG", "OTHER HS MSA")) %>%
   plot_survey_index()
