@@ -151,8 +151,8 @@ sens.models.dir.name.2 <- c(file.path(model.dir,
                                       "0_2a_5ABCD_rsoleq_019_019"),
                             file.path(model.dir,
                                       "0_2b_5ABCD_q_all_unif"))
-sens.models.name.2 <- c("2a) HSSS mean q = QCSSS mean q, $ln(q) = 0.186$",
-                        "2b) HSSS and QSSSS have Uniform prior")
+sens.models.name.2 <- c("2a) HSSS mean q = QCSSS mean q, ln(q) = ln(0.1869 * 0.65)",
+                        "2b) HSSS and QSSSS have uniform prior")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 3 (5ABCD)

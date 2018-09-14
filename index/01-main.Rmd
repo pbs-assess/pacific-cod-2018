@@ -328,8 +328,6 @@ Results are presented under these headings below. In all sensitivity runs, as fo
 
 ## SC 1B AND SC 1C. EXCLUSION OF A LOCALITY-YEAR INTERACTION AS RANDOM EFFECT IN COMMERCIAL CPUE INDICES
 
-*TO DO: Talk about these scenarios. Briefly*
-
 The reference case models were fit to historical and modern commercial CPUE indices that included a locality-year interaction as random effect (see Appendix \@ref(commercial-cpue-standardization), Equations \@ref(eq:cpue-tweedie) to \@ref(eq:cpue-vessel)). Two sensitivity analyses are shown to illustrate the effect of omitting the locality-year interaction term (Equation \@ref(eq:cpue-locality-year)) from both historical and modern indices:
 
 > **Sc 1b.** Use equations without the interaction term to create CPUE indices
@@ -360,7 +358,7 @@ index includes locality-year interaction term as a random effect.
 
 > **Sc 1f.** Remove both CPUE indices from the model.
 
-Resulting posterior estimates of biomass, recruitment, and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens1-biomass-5abcd) to \@ref(fig:fig-sens1-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd) for Area 3CD. Removing the modern CPUE index from the model had little effect on the biomass, recruitment, or fishing mortality posteriors. However, removing the historical CPUE index had a large effect on the posterior estimates --- especially the biomass estimates --- substantially increasing the estimates of biomass prior to approximately 1970 (Figures \@ref(fig:fig-sens1-biomass-5abcd) and \@ref(fig:fig-sens8-biomass-3cd)). A similar strong influence of historical CPUE was noted by @forrest2013 who included a no-CPUE model run in their final model average.
+Resulting posterior estimates of biomass, recruitment, and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens1-biomass-5abcd) to \@ref(fig:fig-sens1-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd) for Area 3CD. Removing the modern CPUE index from the model had little effect on the biomass, recruitment, or fishing mortality posteriors. However, removing the historical CPUE index had a large effect on the posterior estimates --- especially the biomass estimates --- substantially increasing the estimates of biomass prior to approximately 1970 (Figures \@ref(fig:fig-sens1-biomass-5abcd) and \@ref(fig:fig-sens8-biomass-3cd)). A similar strong influence of historical CPUE was noted by @forrest2013 who included a no-CPUE model run in their final model averaged decision tables.
 
 ## SC 1G. EXCLUSION OF THE NMFS TRIENNIAL SURVEY INDEX FOR AREA 3CD
 
@@ -374,7 +372,7 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections (\@ref(survey-scaling-parameters-for-area-5abcd)) and (\@ref(survey-scaling-parameters-for-area-3cd)) for Reference Case details:
 
-> **Sc 2a.** The mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey, i.e., mean $\ln(q)$ = $\ln(0.186)$.
+> **Sc 2a.** The mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey, and was then pro-rated according to relative areas, i.e., mean $\ln(q)$ = $\ln(0.1869 * 0.65)$.
 
 > **Sc 2b.** A uniform prior was used for \textit{q} for both the QCS and HS Synoptic Surveys.
 
@@ -497,9 +495,15 @@ Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomas
 
 # PROJECTIONS AND DECISION TABLES
 
-Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019 (Figures \@ref(fig:fig-base-biomass-5abcd-proj) and \@ref(fig:fig-base-biomass-3cd-proj)). Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$.
+Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019 (Figures \@ref(fig:fig-base-biomass-5abcd-proj) and \@ref(fig:fig-base-biomass-3cd-proj)). Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
-Decision tables are designed to present probabilities of "undesirable" states under alternative 2018 projected catch levels.For example, an undesirable biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An undesirable fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
+- $P(B_{2019} < B_{2018})$
+- $P(F_{2018} > F_{2017})$
+- $P(B_{2019} < \\mathrm{LRP})$
+- $P(B_{2019} < \\mathrm{USR})$
+- $P(F_{2018} > \\mathrm{LRR})$
+
+The above performance measures are intended to present probabilities of "undesirable" states under alternative 2018 projected catch levels.For example, an "undesirable" biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An "undesirable" fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
 
 Probabilities of such states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
 
@@ -536,39 +540,66 @@ The probability of the 2018 fishing mortality being greater than the 2017 fishin
 
 Under a 2018 catch level of 500 mt, the 2017 TAC, there is estimated 0.0\% probability that the 2019 biomass will be below $B_{1986}$ and a 100\% probability that the 2019 biomass will be below $B_{Avg}$.
 
-## MODEL AVERAGED DECISION TABLES
+## MODEL-AVERAGED DECISION TABLES
 
-*TO DO: THIS IS 2014 TEXT. decide on which scenarios and make decision tables*
+We selected four sensitivity scenarios (plus the Reference Case) for each area to include in a model-averaged decision table. The sensitivity scenarios below were chosen because they produced plausible results that diverged from the Reference Case models. Inclusion of these posterior samples in the decision table may therefore better bracket the uncertainty due to the different assumptions captured in the sensitivity scenarios.
+
+The vectors of 1,000 burned-in posterior samples from each of the five models, for each performance measure, under each alternative 2018 catch level, were combined into a single vector of 5,000 samples and probabilities of performance measures were calculated from the combined samples.
+
+A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011], where two alternative stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible. A similar "ensemble" aproach is used in the annual assessments of Pacific Halibut, where four structurally distinct models are used [@stewart2016].
 
 ### Area 5ABCD
+
+*TO DO: placeholder text*
 
 For Area 5ABCD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
 
 1. Reference Case;
-1. the sensitivity case with prior probability distribution for ln($M$): $\mathcal{N}\sim(0.4,0.2)$;
-1. the sensitivity case with $\sigma_W = 0.4$;
-1. the sensitivity case with $\sigma_0 = 0.15$; and
-1. the sensitivity case without commercial CPUE data.
+2. the sensitivity case without commercial CPUE data (Sc 1f);
+3. the sensitivity case with prior for QCS $q$: $\ln(q)$ = $\ln(0.1869 * 0.65)$ (Sc 2a);
+4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2)$ (Sc 3b);
+5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
 
-We selected the sensitivity case for the prior on ln($M$) that had biomass estimates most divergent from the Reference Case model to better bracket the uncertainty due to this parameter.
-Posterior estimates of biomass relative to the LRP and USR from each scenario are summarized in Figure 53.
+The "Model-Averaged" decision table probabilities for Area 5ABCD are presented in Table XX.
 
-The vectors of 1,000 burned-in posterior samples from each of the five models, for each performance measure, under each alternative 2014 catch level, were combined into a single vector of 5,000 samples and probabilities of undesirable states (see above) were calculated from the combined samples.
-
-A similar approach was used in the 2011 assessment of Pacific Hake (Stewart et al. 2011), where two alternative stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible.
-Another approach, based on Maximum Posterior Density model results, was used by Stewart et al. (2013) for the 2012 assessment of Pacific Halibut, where the magnitude of natural mortality was considered to be the primary axis of uncertainty.
-A similar approach is being used for the 2013 assessment of Pacific Halibut, where three alternative, structurally different models, are being used to develop catch advice (Stewart and Martell. 2014).
-The latter example draws from the ensemble modeling approach commonly used in weather forecasting (e.g., Hamill et al. 2012).
-
-The "Model-Averaged" decision table probabilities for Area 5CD are presented in Table 28.
 For most performance measures, probabilities were similar to those in the Reference Case model.
-For example, the probability of B2015 < B2014 under a 2014 TAC of 1200 t was 39.6% for the Reference Case model (Table 26), and 42.1% from the averaged models (Table 28).
-The probability of B2015 < LRP under a 2014 catch level of 1200 t  was 18.8% for the averaged models, compared with 18.2\% for the Reference Case model.
-The probability of B2015 < USR under a 2014 catch level of 1200 t was 59.8% for the averaged models, compared with 60.0% for the Reference Case model.
+
+The probability of the 2019 biomass being below the 2018 biomass ranged from 0.89\% under no 2018 catch to 89.1\% under a catch of 3,000 mt.
+
+The probability of 2019 biomass being below the LRP $B_{1971}$ ranged from 87.5\% to 97.6\% over the range of catch levels considered.There was a 100% probability of the 2019 biomass being below the USR $B_{Avg}$ over the entire range of catch levels considered.
+
+The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0.0\% to 100\%. The probability of the 2018 fishing mortality being greater than the LRR $F_{Avg}$ also ranged from 0.0\% to 100\%.
+
+Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated 92.3\% probability that the 2019 biomass will be below $B_{1971}$ and a 100\% probability that the 2019 biomass will be below $B_{Avg}$.
+
 
 ### Area 3CD
 
+*TO DO: placeholder text*
+
+For Area 3CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
+
+1. Reference Case;
+2. the sensitivity case without commercial CPUE data (Sc 1f);
+3. the sensitivity case with the SD of the prior for the WCVI Synoptic Survey = 0.448 (Sc 2a);
+4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2)$ (Sc 3b);
+5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
+
+The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table XX.
+
+For most performance measures, probabilities were similar to those in the Reference Case model.
+
+The probability of the 2019 biomass being below the 2018 biomass ranged from 0.89\% under no 2018 catch to 89.1\% under a catch of 3,000 mt.
+
+The probability of 2019 biomass being below the LRP $B_{1971}$ ranged from 87.5\% to 97.6\% over the range of catch levels considered.There was a 100% probability of the 2019 biomass being below the USR $B_{Avg}$ over the entire range of catch levels considered.
+
+The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0.0\% to 100\%. The probability of the 2018 fishing mortality being greater than the LRR $F_{Avg}$ also ranged from 0.0\% to 100\%.
+
+Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated 92.3\% probability that the 2019 biomass will be below $B_{1971}$ and a 100\% probability that the 2019 biomass will be below $B_{Avg}$.
+
 ## SUMMARY
+
+*TO DO. Or maybe delete*
 
 We presented the alternative, model averaged decision tables for Areas 3CD (Table XX) and 5AB (Table XX) in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders.
 
