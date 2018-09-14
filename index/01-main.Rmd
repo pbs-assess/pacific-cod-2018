@@ -554,7 +554,7 @@ Under a 2018 catch level of 500 mt, close to the 2017 TAC, there is an estimated
 
 ## MODEL-AVERAGED DECISION TABLES
 
-We selected four sensitivity scenarios (plus the Reference Case) for each area to include in a model-averaged decision table. The sensitivity scenarios below were chosen because they produced plausible results that diverged from the Reference Case models. Inclusion of these posterior samples in the decision table may therefore better bracket the uncertainty due to the different assumptions captured in the sensitivity scenarios.However, please note that the choices of sensitivity cases included in the model-averaged tables should be considered placeholders for discussion and agreement at the upcoming regional peer review meeting.
+We selected four sensitivity scenarios (plus the Reference Case) for each area to include in a model-averaged decision table. The sensitivity scenarios below were chosen because they produced plausible results that diverged from the Reference Case models. Inclusion of these posterior samples in the decision table may therefore better bracket the uncertainty due to the different assumptions captured in the sensitivity scenarios. However, please note that the choices of sensitivity cases included in the model-averaged tables should be considered placeholders for discussion and agreement at the upcoming regional peer review meeting.
 
 The vectors of 1,000 burned-in posterior samples from each of the five models, for each performance measure, under each alternative 2018 catch level, were combined into a single vector of 5,000 samples and probabilities of performance measures were calculated from the combined samples.
 
@@ -567,7 +567,7 @@ For Area 5ABCD, we present an alternative decision table with probabilities calc
 1. Reference Case;
 2. the sensitivity case without commercial CPUE data (Sc 1f);
 3. the sensitivity case with prior for QCS $q$: mean $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$ (Sc 2a);
-4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.2^2)$ (Sc 3b);
+4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.1^2)$ (Sc 3b);
 5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
 
 The "Model-Averaged" decision table probabilities for Area 5ABCD are presented in Table \@ref(tab:tab-decision-avg-5abcd).

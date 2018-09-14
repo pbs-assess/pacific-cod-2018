@@ -61,7 +61,7 @@ strata.
 
 The West Coast Vancouver Island synoptic bottom trawl survey was first
 conducted in 2004 and is conducted in alternating (even-numbered) years on
-a chartered commercial trawler (Figure \@ref(fig:survey-maps-syn-wcvi). The
+a chartered commercial trawler (Figure \@ref(fig:survey-maps-syn-wcvi)). The
 survey area is off the west coast of Vancouver Island from approximately 49
 $^\circ$  12$^\prime$ to 50 $^\circ$ 36$^\prime$ North latitude and
 approximately 124 $^\circ$  48$^\prime$ to 128 $^\circ$  30$^\prime$ West
