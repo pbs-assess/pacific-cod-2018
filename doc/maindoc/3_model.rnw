@@ -1,6 +1,0 @@
-\section{STOCK ASSESSMENT MODEL}
-
-All models presented in this document are Bayesian models implemented in AD Model Builder (Fournier et al. 2012).
-The models are based on the Integrated Statistical Catch Age Model (iSCAM), developed by Steven J.D. Martell (Martell et al. 2011).
-A number of modifications have been made to the code by the first author of this assessment to include delay difference calculations and adapt the code for the purpose of assessing Pacific Cod in BC, as described in Appendix \ref{chap:model}.
-The model in its present formulation is fully described in the present document.

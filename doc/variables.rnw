@@ -1,4 +1,0 @@
-% Variables
-\newcommand{\fishName}{Pacific Cod}
-\newcommand{\scienceName}{\emph{Gadus macrocephalus}}
-\newcommand{\assessYr}{2018}
