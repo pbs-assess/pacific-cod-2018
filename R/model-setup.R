@@ -232,11 +232,14 @@ sens.models.dir.name.8.sub2 <- c(file.path(model.dir,
                                  file.path(model.dir,
                                            "1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV"),
                                  file.path(model.dir,
-                                           "1_1d_3CD_no_recent_CPUE"))
+                                           "1_1d_3CD_no_recent_CPUE"),
+                                 file.path(model.dir,
+                                           "1_1g_3CD_no_triennial"))
 
 sens.models.name.8.sub2 <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
                              "1c) No locality/yr q mean = 0.228 sd = 0.3, double CV",
-                             "1d) Remove post-1995 CPUE")
+                             "1d) Remove post-1995 CPUE",
+                             "1g) Remove Triennial survey")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 8 (3CD)
