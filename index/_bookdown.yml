@@ -9,7 +9,7 @@ rmd_files: ["index.Rmd",
             "05-cpue-app.Rmd",
             "06-age-length-weight.Rmd",
             "07-model-description-app.Rmd",
-          # "98-colophon.Rmd",
+            "98-colophon.Rmd",
             "99-references.Rmd"
             ]
 download: [["resdoc.pdf", "PDF"], ["resdoc.docx", "Word"]]  #
