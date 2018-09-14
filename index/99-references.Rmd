@@ -1,3 +1,5 @@
+\clearpage
+
 # REFERENCES {-}
 <!--
 This manually sets the header for this unnumbered chapter.

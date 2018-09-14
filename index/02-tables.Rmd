@@ -109,7 +109,7 @@ pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(base.model.5abcd,
   caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
     "97.5\\textsuperscript{th} percentile) and MPD ",
-    "estimates of key parameters from the Reference Case, Area 5ABCD.",
+    "estimates of key parameters from the Reference Case, Area 5ABCD.$\\R_0$ is in thousands of fish. $\\B_0$ is in tonnes . ",
     q.5abcd.desc),
   omit_pars = pars_est_omit)
 ```
@@ -123,7 +123,7 @@ make.ref.points.table(base.model.5abcd,
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                                        "97.5\\textsuperscript{th} percentile) of proposed reference points for Area 5ABCD. ",
-                                       "Biomass numbers are in tonnes."))
+                                       "Biomass is in tonnes."))
 ```
 
 ```{r tab-post-biomass-5abcd, results='asis'}
@@ -142,7 +142,7 @@ make.value.table(base.model.5abcd,
                  5,
                  digits = 2,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of relative biomass ",
+                                  "percentile) and MPD estimates of biomass relative to $\\B_0$ ",
                                   "for the Reference Case, Area 5ABCD."))
 ```
 
@@ -193,10 +193,13 @@ make.parameters.est.table(base.model.3cd,
 ```{r tab-ref-points-table-3cd, results='asis'}
 make.ref.points.table(base.model.3cd,
                       omit_msy = TRUE,
+                      add.hist.ref = TRUE,
+                      lrp = c(1986, 1986),
+                      usr = c(1956, 2004),
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
                                        "97.5\\textsuperscript{th} percentile) of proposed reference points for Area 3CD. ",
-                                       "Biomass numbers are in tonnes."))
+                                       "Biomass is in tonnes."))
 ```
 
 ```{r tab-post-biomass-3cd, results='asis'}
@@ -215,7 +218,7 @@ make.value.table(base.model.3cd,
                  5,
                  digits = 2,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of relative biomass ",
+                                  "percentile) and MPD estimates of biomass relative to $\\B_0$ ",
                                   "for the Reference Case, Area 3CD."))
 ```
 
