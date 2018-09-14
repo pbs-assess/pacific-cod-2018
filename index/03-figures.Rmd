@@ -466,7 +466,7 @@ r.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.nam
 f.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
-```{r fig-sens14-meanweightfit-5abcd, fig.cap="Fits to the average annual mean weights for the sensitivity to the assumed value of $\\sigma_{W}$ for (a) $\\sigma_{W}$ = 0.4 and (b) $\\sigma_{W}$ = 0.15, Area 3CD."}
+```{r fig-sens14-meanweightfit-3cd, fig.cap="Fits to the average annual mean weights for the sensitivity to the assumed value of $\\sigma_{W}$ for (a) $\\sigma_{W}$ = 0.4 and (b) $\\sigma_{W}$ = 0.15, Area 3CD."}
 plot_grid(
   mw.plot(sens.models.14[[1]], cv = 0.2, every = 5, last.yr = 2015),
   mw.plot(sens.models.14[[2]], cv = 0.2, every = 5, last.yr = 2015),
