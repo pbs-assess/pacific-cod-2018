@@ -2,7 +2,6 @@ book_filename: "resdoc"
 chapter_name: "Chapter "
 rmd_files: ["index.Rmd",
             "00-load.Rmd",
-            "01-abstract.Rmd",
             "01-main.Rmd",
             "02-tables.Rmd",
             "03-figures.Rmd",
