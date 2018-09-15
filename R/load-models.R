@@ -1067,7 +1067,7 @@ calc.mcmc <- function(model,
                        2,
                        quantile,
                        prob = probs)
-  depl.quants <- rbind(depl.quants, mpd$bt / mpd$bo)
+  depl.quants <- rbind(depl.quants, mpd$sbt / mpd$bo)
   rownames(depl.quants)[4] <- "MPD"
 
   ## Recruitment
