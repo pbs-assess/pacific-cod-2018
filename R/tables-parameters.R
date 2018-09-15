@@ -314,7 +314,21 @@ make.parameters.est.table <- function(model,
   row.n <- rownames(tab)
   row.n[length(row.n)] <- "MPD"
   rownames(tab) <- row.n
-  tab <- f(t(tab), digits)
+
+  tab <- t(tab)
+  tab[row.names(tab) == "ro", ] <-       f(as.numeric(tab[row.names(tab) == "ro", ]), 0)
+  tab[row.names(tab) == "h", ] <-        f(as.numeric(tab[row.names(tab) == "h", ]), digits)
+  tab[row.names(tab) == "m", ] <-        f(as.numeric(tab[row.names(tab) == "m", ]), digits)
+  tab[row.names(tab) == "rbar", ] <-     f(as.numeric(tab[row.names(tab) == "rbar", ]), 0)
+  tab[row.names(tab) == "rinit", ] <-    f(as.numeric(tab[row.names(tab) == "rinit", ]), 0)
+  tab[row.names(tab) == "vartheta", ] <- f(as.numeric(tab[row.names(tab) == "vartheta", ]), digits)
+  tab[row.names(tab) == "sbo", ] <-      f(as.numeric(tab[row.names(tab) == "sbo", ]), 0)
+  tab[row.names(tab) == "q1", ] <-       f(as.numeric(tab[row.names(tab) == "q1", ]), digits)
+  tab[row.names(tab) == "q2", ] <-       f(as.numeric(tab[row.names(tab) == "q2", ]), digits)
+  tab[row.names(tab) == "q3", ] <-       f(as.numeric(tab[row.names(tab) == "q3", ]), digits)
+  tab[row.names(tab) == "q4", ] <-       f(as.numeric(tab[row.names(tab) == "q4", ]), digits)
+  tab[row.names(tab) == "q5", ] <-       f(as.numeric(tab[row.names(tab) == "q5", ]), digits)
+  tab[row.names(tab) == "q5", ] <-       f(as.numeric(tab[row.names(tab) == "q5", ]), digits)
 
   ## The next set of names only pertains to the ARF assessment, the q's
   ##  and sel's are modified to line up with each other.
