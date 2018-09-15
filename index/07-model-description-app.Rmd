@@ -72,7 +72,7 @@ objective function.
 
 ## INDICES OF ABUNDANCE
 
-The fishery-independent and -dependent abundance indices (Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization)) were treated as relative abundance indices, assumed to be directly proportional to the biomass with lognormal errors. The survey scaling (catchability) parameter $q_j$ for each survey $j$ was treated as an uncertain parameter, with the conditional maximum posterior density (MPD) estimate of $q_j$ used in the objective function (Eq. \@ref(eq:ddljt), where the parameter $j_z$ represents the maximum likelihood estimate of $\ln(j_q)$, conditional on other model parameters, with $n_j$ the number of observations in index $j$ [@walters1994; Eqs. \@ref(eq:ddzjt)--\@ref(eq:dddjt)].
+The fishery-independent and -dependent abundance indices (Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization)) were treated as relative abundance indices, assumed to be directly proportional to the biomass with lognormal errors. The survey scaling (catchability) parameter $q_j$ for each survey $j$ was treated as an uncertain parameter, with the conditional maximum posterior density (MPD) estimate of $q_j$ used in the objective function (Eq. \@ref(eq:ddljt), where the parameter $j_z$ represents the maximum likelihood estimate of $\ln(j_q)$, conditional on other model parameters, with $n_j$ the number of observations in index $j$ [@walters1994] (Eqs. \@ref(eq:ddzjt)--\@ref(eq:dddjt)).
 
 ## CATCH DATA
 
