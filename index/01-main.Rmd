@@ -22,6 +22,7 @@ Pacific Cod are omnivores, eating a diet of mainly marine invertebrates, includi
 
 ### ENVIRONMENT
 
+
 Several studies have investigated linkages between recruitment and environmental indices for Pacific Cod in Hecate Strait (see @westrheim1996 for review). The dominant hypothesis is an inverse relationship between recruitment and northward  advection of larvae [@tyler1986; @tyler1991]. Northward advection has been shown to be positively correlated with mean annual sea level at Prince Rupert during the spawning season, which in turn has been used as an explanatory variable for recruitment by a number of authors [@fournier1983; @sinclair2000; @sinclair2005-2; @sinclair2005]. However, recent updates of the analyses by @tyler1991 failed to find a continuing correlation between Prince Rupert Sea level and recruitment of Pacific Cod in Hecate Strait (R. Forrest, Pacific Biological Station, unpublished data).This could in part be due to low quotas (and therefore lower catches) since 2001, contributing to low stock assessment estimates of recruitment in recent years [@forrest2013].
 
 ### OTHER SPECIES
