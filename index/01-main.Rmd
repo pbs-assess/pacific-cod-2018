@@ -300,7 +300,7 @@ Posterior probability distributions of estimated parameters are provided in Figu
 
 As for Area 5ABCD, posterior probability estimates of $\ln(M)$ tended to be lower than the prior values (Figure \@ref(fig:fig-base-mcmc-priors-posts-3cd)), with a posterior median estimate of 0.413 *y*^-1^. This is higher than the median posterior estimate of 0.346 *y*^-1^ obtained for the Area 5ABCD stock (Table \@ref(tab:tab-param-est-table-3cd)), and very similar to the value of 0.42 *y*^-1^ obtained by @sinclair2001 for the Area 3CD stock.
 
-Survey scaling parameters ($q_{k}$) were strongly positively correlated with each other (Figure \@ref(fig:fig-base-mcmc-pairs-3cd)). As for Area 5ABCD, the survey scaling parameters were negatively correlated with $M$, implying that there is limited information in the data to distinguish between a small productive population or a larger, less productive population (Figure \@ref(fig:fig-base-mcmc-pairs-3cd)). Interestingly, $R_0$ was positively correlated with $M$. As for the QC Sound synoptic survey, the estimated posterior distribution for the WCVI synoptic survey scaling parameter was outside of the prior (Figure \@ref(fig:fig-base-mcmc-priors-posts-3cd)). 
+Survey scaling parameters ($q_{k}$) were strongly positively correlated with each other (Figure \@ref(fig:fig-base-mcmc-pairs-3cd)). As for Area 5ABCD, the survey scaling parameters were negatively correlated with $M$, implying that there is limited information in the data to distinguish between a small productive population or a larger, less productive population (Figure \@ref(fig:fig-base-mcmc-pairs-3cd)). Interestingly, $R_0$ was positively correlated with $M$. As for the QC Sound synoptic survey, the estimated posterior distribution for the WCVI synoptic survey scaling parameter was outside of the prior (Figure \@ref(fig:fig-base-mcmc-priors-posts-3cd)).
 
 Estimates of reference points and benchmarks are provided in Table \@ref(tab:tab-ref-points-table-3cd).
 
@@ -581,7 +581,7 @@ The probability of 2019 biomass being below the LRP ranged from 82% to 96% over 
 
 The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0.0% to 100%. The probability of the 2018 fishing mortality being greater than the LRR also ranged from 0.0% to 100%.
 
-Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated 89% probability that the 2019 biomass will be below the LRR and a 100% probability that the 2019 biomass will be below the USR.
+Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated 89% probability that the 2019 biomass will be below the LRP and a 100% probability that the 2019 biomass will be below the USR.
 
 ### Area 3CD
 
