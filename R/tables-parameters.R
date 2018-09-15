@@ -364,7 +364,7 @@ make.parameters.est.table <- function(model,
   }
   knitr::kable(tab,
     caption = caption,
-    align = get.align(ncol(tab))[-1],
+    align = get.align(ncol(tab))[-1], longtable = TRUE,
     booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
     kableExtra::kable_styling(latex_options = "hold_position")
 }
