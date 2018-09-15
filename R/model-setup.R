@@ -195,13 +195,13 @@ sens.models.dir.name.6.sub <- c(file.path(model.dir,
                                 file.path(model.dir,
                                           "0_2a_5ABCD_rsoleq_019_019"),
                                 file.path(model.dir,
-                                          "0_3c_5ABCD_Mprior_mean05_sd025"),
+                                          "0_3b_5ABCD_Mprior_mean04_sd025"),
                                 file.path(model.dir,
                                           "0_6b_5ABCD_sig015"))
 
 sens.models.name.6.sub <- c("1f) Remove all CPUE",
                             "2a) HSSS mean q = QCSSS mean q, $ln(q) = 0.186$",
-                            "3c) M mean = 0.4, SD = 0.2",
+                            "3b) M mean = 0.4, SD = 0.1",
                             "6b) Fix sigma O = 0.15")
 
 ## -----------------------------------------------------------------------------
@@ -340,13 +340,13 @@ sens.models.dir.name.13.sub <- c(file.path(model.dir,
                                  file.path(model.dir,
                                            "1_2a_3CD_rsoleq_0228sd0448"),
                                  file.path(model.dir,
-                                           "1_3c_3CD_Mprior_mean05_sd-25"),
+                                           "1_3b_3CD_Mprior_mean04_sd025"),
                                  file.path(model.dir,
                                            "1_6b_3CD_sig015"))
 
 sens.models.name.13.sub <- c("1f) Remove all CPUE",
                              "2a) WCVISS q SD = 0.448",
-                             "3c) M mean = 0.4, SD = 0.2",
+                             "3b) M mean = 0.4, SD = 0.1",
                              "6b) Fix sigma O = 0.15")
 
 ## -----------------------------------------------------------------------------
