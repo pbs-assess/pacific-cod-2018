@@ -200,7 +200,7 @@ sens.models.dir.name.6.sub <- c(file.path(model.dir,
                                           "0_6b_5ABCD_sig015"))
 
 sens.models.name.6.sub <- c("1f) Remove all CPUE",
-                            "2a) HSSS mean q = QCSSS mean q, $ln(q) = 0.186$",
+                            "2a) HSSS mean q = QCSSS mean q, ln(q) = 0.186",
                             "3b) M mean = 0.4, SD = 0.1",
                             "6b) Fix sigma O = 0.15")
 
