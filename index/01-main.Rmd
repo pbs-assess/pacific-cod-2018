@@ -550,7 +550,7 @@ The decision table for the Area 3CD Reference Case model is provided in Table \@
 
 The probability of the 2019 biomass being below the 2018 biomass ranged from `r dt.3cd.b.2019.2018.c0`% under no 2018 catch to `r dt.3cd.b.2019.2018.cmax`% under a catch of `r dt.3cd.max.catch` mt.
 
-The probability of 2019 biomass being below the LRP was 0% over the range of catch levels considered. There was a 98 - 99% probability of the 2019 biomass being below the USR over the entire range of catch levels considered.
+The probability of 2019 biomass being below the LRP was 0% over the range of catch levels considered. There was a 98% to 99%  probability of the 2019 biomass being below the USR over the range of catch levels considered.
 
 The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from `r dt.3cd.f.2018.2017.c0`% to 100%. The probability of the 2018 fishing mortality being greater than the LRR also ranged from `r dt.3cd.f.2018.lrr.c0`% to 100%.
 
@@ -576,7 +576,7 @@ The "Model-Averaged" decision table probabilities for Area 5ABCD are presented i
 
 The probability of the 2019 biomass being below the 2018 biomass ranged from 10% under no 2018 catch to 89% under a catch of 3,000 mt.
 
-The probability of 2019 biomass being below the LRP ranged from 82% to 97% over the range of catch levels considered. There was a 100% probability of the 2019 biomass being below the USR over the entire range of catch levels considered.
+The probability of 2019 biomass being below the LRP ranged from 82% to 96% over the range of catch levels considered. There was a 100% probability of the 2019 biomass being below the USR over the entire range of catch levels considered.
 
 The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0.0% to 100%. The probability of the 2018 fishing mortality being greater than the LRR also ranged from 0.0% to 100%.
 
@@ -600,7 +600,7 @@ The probability of the 2019 biomass being below the 2018 biomass ranged from 75%
 
 The probability of 2019 biomass being below the LRP was 18% over the range of catch levels considered. The probability of 2019 biomass being below the USR ranged from 98% to 99% over the range of catch levels considered.
 
-The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality was 100% across the range of catch levels considered. The probability of the 2018 fishing mortality being greater than the LRR ranged from 0.0% to 98%.
+The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0% to 100% across the range of catch levels considered. The probability of the 2018 fishing mortality being greater than the LRR ranged from 0.0% to 98%.
 
 Under a 2018 catch level of 500 mt, close to the 2017 TAC, there is an estimated 18% probability that the 2019 biomass will be below the LRP and a 99% probability that the 2019 biomass will be below the USR.
 
