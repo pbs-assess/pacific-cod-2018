@@ -78,7 +78,7 @@ priors.table <- function(model, cap = ""){
                                   })
 
   kable(prior.specs,
-        caption = cap,
+        caption = cap, format = "pandoc",
         booktabs = TRUE,
         longtable = TRUE,
         linesep = "",

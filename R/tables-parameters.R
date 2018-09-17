@@ -207,7 +207,8 @@ make.parameters.table <- function(model,
     "Initial log recruitment deviations ($\\omega_{init,t}$)")
 
   tab <- cbind(param.text, param.vals)
-  colnames(tab) <- c(latex.bold("Parameter"),
+  # colnames(tab) <- c(latex.bold("Parameter"),
+  colnames(tab) <- c(("Parameter"),
     latex.mlc(c("Number",
       "estimated")),
     latex.mlc(c("Bounds",
@@ -217,15 +218,17 @@ make.parameters.table <- function(model,
 
   tab <- as.data.frame(tab)
   if (!is.null(omit_pars)) {
-    tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
+    tab <- dplyr::filter(tab, !`Parameter` %in% omit_pars)
+    # tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
   }
   if (omit_selectivity_pars) {
-    tab <- dplyr::filter(tab, !grepl("selectivity", `\\textbf{Parameter}`))
+    # tab <- dplyr::filter(tab, !grepl("selectivity", `\\textbf{Parameter}`))
+    tab <- dplyr::filter(tab, !grepl("selectivity", `Parameter`))
   }
 
 
   knitr::kable(tab,
-    caption = caption,
+    caption = caption, format = "pandoc",
     align = get.align(ncol(tab))[-1],
     booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
     kableExtra::kable_styling(latex_options = "hold_position")
@@ -344,8 +347,9 @@ make.parameters.est.table <- function(model,
   new.col <- gsub("^q([0-9]+)$", "$q_\\1$", new.col)
 
   col.names <- colnames(tab)
-  col.names <- latex.bold(latex.perc(col.names))
-  col.names <- c(latex.bold("Parameter"), col.names)
+  # col.names <- latex.bold(latex.perc(col.names))
+  # col.names <- c(latex.bold("Parameter"), col.names)
+  col.names <- c("Parameter", col.names)
 
   tab <- cbind(new.col, tab)
   colnames(tab) <- col.names
@@ -360,10 +364,11 @@ make.parameters.est.table <- function(model,
   names(tab) <- gsub("Rhat", "$\\\\hat{R}$", names(tab))
 
   if (!is.null(omit_pars)) {
-    tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
+    # tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
+    tab <- dplyr::filter(tab, !`Parameter` %in% omit_pars)
   }
   knitr::kable(tab,
-    caption = caption,
+    caption = caption, format = "pandoc",
     align = get.align(ncol(tab))[-1], longtable = TRUE,
     booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
     kableExtra::kable_styling(latex_options = "hold_position")
@@ -397,6 +402,7 @@ make.ref.points.table <- function(model,
 
   if (omit_msy) {
     tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`))
+    # tab <- dplyr::filter(tab, !grepl("MSY", `Reference Point`))
   }
 
   if(add.hist.ref){
@@ -449,7 +455,7 @@ make.ref.points.table <- function(model,
   }
 
   knitr::kable(tab,
-    caption = caption,
+    caption = caption, format = "pandoc",
     align = get.align(ncol(tab))[-1],
     booktabs = TRUE, linesep = "", row.names = FALSE, escape = FALSE) %>%
     kableExtra::kable_styling(latex_options = "hold_position")
@@ -496,12 +502,13 @@ make.value.table <- function(model,
   tab <- cbind(rownames(tab), tab)
   col.names <- colnames(tab)
   col.names[1] <- "Year"
-  col.names <- latex.bold(latex.perc(col.names))
+  # col.names <- latex.bold(latex.perc(col.names))
+  col.names <- latex.perc(col.names)
   colnames(tab) <- col.names
 
   knitr::kable(tab,
     caption = caption,
-    longtable = TRUE,
+    longtable = TRUE, format = "pandoc",
     align = get.align(ncol(tab))[-1],
     booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
     kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"))

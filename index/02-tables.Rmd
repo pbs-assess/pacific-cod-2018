@@ -85,7 +85,7 @@ df <- data.frame(referencepoint = c("Bmin",
                          "5ABCD and 3CD models."),
                          booktabs = TRUE,
                          linesep = "",
-                         escape = FALSE) %>%
+                         escape = FALSE, format = "pandoc") %>%
         column_spec(2, width = "10cm") %>%
     kableExtra::kable_styling(latex_options = "hold_position")
 

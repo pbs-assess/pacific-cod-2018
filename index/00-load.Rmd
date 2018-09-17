@@ -29,3 +29,7 @@ load.models.into.parent.env()
 source(file.path(rootd.R, "custom-knitr-variables.R"))
 ```
 
+```{r setup-tables, cache=FALSE, echo=FALSE}
+if(!knitr:::is_latex_output())
+  options(knitr.table.format = "pandoc")
+```

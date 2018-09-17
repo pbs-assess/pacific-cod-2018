@@ -146,7 +146,7 @@ survey data to estimate bias corrected 95% confidence intervals for each survey
 year [@efron1982]. The resulting values are shown in Table
 \@ref(tab:surv-canadian-table) and Figure \@ref(fig:surv-canadian).
 
-```{r surv-canadian-table}
+```{r surv-canadian-table, results='asis'}
 dplyr::filter(dat$survey_index, survey_abbrev %in%
   c("SYN QCS", "SYN WCVI", "SYN HS", "SYN WCHG", "OTHER HS MSA")) %>%
   dplyr::select(survey_abbrev, year, biomass, re, lowerci, upperci, num_sets, num_pos_sets) %>%
@@ -155,7 +155,8 @@ dplyr::filter(dat$survey_index, survey_abbrev %in%
   dplyr::rename(`Survey abbrev.` = survey_abbrev, Year = year, Biomass = biomass,
     CV = re, `Lower CI` = lowerci, `Upper CI` = upperci, Sets = num_sets, `Positive sets` = num_pos_sets) %>%
   dplyr::arrange(`Survey abbrev.`, Year) %>%
-  knitr::kable(caption = "Pacific Cod survey data for Canadian trawl surveys. Relative biomass and associated lower and upper confidence intervals (CI) are shown in metric tons (without accounting for survey catchability). Positive sets refers to the number of trawl sets that caught Pacific Cod.", booktabs = TRUE, linesep = "")
+  knitr::kable(caption = "Pacific Cod survey data for Canadian trawl surveys. Relative biomass and associated lower and upper confidence intervals (CI) are shown in metric tons (without accounting for survey catchability). Positive sets refers to the number of trawl sets that caught Pacific Cod.", booktabs = TRUE, linesep = "", 
+    format = "pandoc")
 ```
 
 ```{r surv-canadian, fig.cap="Pacific Cod survey data for Canadian trawl surveys. Shown is relative biomass and associated lower and upper confidence intervals. Positive sets refers to the number of trawl sets that caught Pacific Cod."}
@@ -208,7 +209,7 @@ for (i in seq_along(names(tri_str))) {
 tri_str$`Stratum No.`[tri_to_shade] <- paste0(tri_str$`Stratum No.`[tri_to_shade], "*")
 knitr::kable(tri_str,
     caption = "Number of tows by stratum and by survey year for the NFMS triennial survey. Strata denoted with an asterisk have been excluded from the analysis due to incomplete coverage across the seven survey years or were from locations outside the Vancouver INPFC area.",
-    booktabs = TRUE, linesep = "") %>%
+    booktabs = TRUE, linesep = "", format = "pandoc") %>%
   kableExtra::kable_styling(font_size = 8)
 ```
 
@@ -430,7 +431,7 @@ strata which were not used in the biomass estimation are included in Figure
 surv_tri <- readr::read_csv(here::here("data/NMFSTriennial_Canada-Vancouver.csv"))
 knitr::kable(surv_tri, caption = "Biomass estimates and confidence intervals for
   the Triennial NMFS survey relevant to Canadian waters.", booktabs = TRUE, linesep = "",
-  longtable = TRUE) %>%
+  longtable = TRUE, format = "pandoc") %>%
   kableExtra::column_spec(1:7, width = "1.8cm")
 ```
 

@@ -16,7 +16,7 @@ info <- devtools::session_info()$packages
 info %>% dplyr::filter(package %in% pkgs) %>%
   dplyr::select(package, version, date, source) %>%
   dplyr::rename(Package = package, Version = version, Date = date, Source = source) %>%
-  knitr::kable(booktabs = TRUE, linesep = "", longtable = TRUE) %>%
+  knitr::kable(booktabs = TRUE, linesep = "", longtable = TRUE, format = "pandoc") %>%
   kable_styling(latex_options = c("hold_position"))
 ```
 

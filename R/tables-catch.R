@@ -43,7 +43,7 @@ catch.table <- function(dat,
         booktabs = TRUE,
         longtable = TRUE,
         linesep = "",
-        escape = FALSE,
+        escape = FALSE, format = "pandoc",
         align = c("l", "r", "r", "r", "r", "r")) %>%
     column_spec(c(2, 4, 5, 6), width = "2cm") %>%
     column_spec(3, width = "4cm") %>%
@@ -70,7 +70,7 @@ tac.table <- function(tac,
         booktabs = TRUE,
         longtable = TRUE,
         linesep = "",
-        escape = FALSE,
+        escape = FALSE, format = "pandoc",
         align = c("l", "r", "r", "r", "r", "l")) %>%
     kable_styling(latex_options = c("hold_position", "repeat_header"))
 

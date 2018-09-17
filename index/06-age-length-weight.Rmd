@@ -93,7 +93,7 @@ x %>%
   rename(
      Survey = survey_abbrev, Year = year, `N male` = nlength_m,
      `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "")%>%
+  knitr::kable(caption = "Number (N) of length measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(latex_options = c("hold_position"), font_size = 9)
 ```
 
@@ -111,7 +111,7 @@ x %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nweight_m,
     `N female` = nweight_f, `N unsexed` = nweight_u) %>%
-  knitr::kable(caption = "Number (N) of weight measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, linesep = "")%>%
+  knitr::kable(caption = "Number (N) of weight measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(font_size = 9)
 ```
 
@@ -129,7 +129,7 @@ x %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nmat_m,
     `N female` = nmat_f) %>%
-  knitr::kable(caption = "Number (N) of maturities recorded in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, linesep = "")%>%
+  knitr::kable(caption = "Number (N) of maturities recorded in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(font_size = 9)
 ```
 
@@ -187,7 +187,7 @@ xx %>%
   rename(
     Area = area, Year = year, `N male` = nlength_m,
     `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 5ABCD.", booktabs = TRUE, linesep = "", longtable=TRUE)%>%
+  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 5ABCD.", booktabs = TRUE, format = "pandoc", linesep = "", longtable=TRUE)%>%
   kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 10)
 ```
 
@@ -208,7 +208,7 @@ xx %>%
   rename(
     Area = area, Year = year, `N male` = nlength_m,
     `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 3CD.", booktabs = TRUE, linesep = "", longtable=TRUE)%>%
+  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 3CD.", booktabs = TRUE, format = "pandoc", linesep = "", longtable=TRUE)%>%
   kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 10)
 ```
 
@@ -264,7 +264,7 @@ x %>%
     #`P male` = proportion_male,
     #`P female` = proportion_female
   ) %>%
-  knitr::kable(caption = "Numbers (N) of otoliths aged in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, linesep = "")
+  knitr::kable(caption = "Numbers (N) of otoliths aged in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, format = "pandoc", linesep = "")
 ```
 
 ```{r age-plotages, fig.cap="Proportions at age of fish aged in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Grey circles = males. Red circles = females."}
@@ -354,7 +354,7 @@ get_par_df(vb_fits, 1) %>%
     Conf.low = f(Conf.low, 2), Conf.high = f(Conf.high, 2)) %>%
   knitr::kable(
     caption = "von Bertalanffy growth coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Rows in bold represent values used in the models. Note that these values differ very slightly from those used in the models and described in the model appendix. The values in this table were run with extra chains and for more iterations with a higher Stan 'adapt delta' argument to more precisely explore the joint posterior. We plan to update the models with these values but, based on past model runs, expect it to make no qualitative difference.",
-    booktabs = TRUE, linesep = "", escape=FALSE,
+    booktabs = TRUE, linesep = "", escape=FALSE, format = "pandoc",
     align = c("l", "l", "l", "r", "r", "r")) %>%
   row_spec(seq(13, 18), bold = TRUE)
 ```
@@ -445,7 +445,7 @@ get_par_df(lw_fits, 1) %>%
   mutate(Sex = gsub("^female$", "Female", Sex)) %>%
   rename(Term = term, Estimate = estimate) %>%
   dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
-  knitr::kable(caption = "Length-weight coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, linesep = "", digits=2, escape=FALSE)
+  knitr::kable(caption = "Length-weight coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, format = "pandoc", linesep = "", digits=2, escape=FALSE)
 ```
 
 ```{r age-lw-figs, fig.cap = "Length-weight model fits. Female model fits are indicated as solid red lines and male model fits are indicated as dashed grey lines. Text on the panels shows the parameter estimates and light dots represent individual fish that the models are fit to.", fig.asp=0.28, fig.width=9, out.width="6.5in"}
@@ -557,7 +557,7 @@ inner_join(est, se) %>%
   rename(Survey = .id, Term = term, Estimate = estimate) %>%
   dplyr::select(Survey,Term, Estimate, Conf.low, Conf.high) %>%
    knitr::kable(caption = "Coefficients from the logistic regression maturity ogives.",
-     booktabs = TRUE, linesep = "", digits=2, escape=FALSE)
+     booktabs = TRUE, linesep = "", digits=2, format = "pandoc", escape=FALSE)
 ```
 
 ```{r mat-fifty-tab, results = 'asis'}
@@ -568,7 +568,7 @@ plyr::ldply(mat_fits, function(.x)
   rename(Survey = .id, Sex = variable, `Estimated age-at-50% maturity` = value) %>%
   arrange(Survey, Sex) %>%
   knitr::kable(
-    caption = "Estimates of age at 50\\% maturity from the logistic regression maturity ogives.", booktabs = TRUE, linesep = "", digits=1)
+    caption = "Estimates of age at 50\\% maturity from the logistic regression maturity ogives.", booktabs = TRUE, format = "pandoc", linesep = "", digits=1)
 ```
 
 \clearpage

@@ -41,7 +41,7 @@ decision.table <- function(models,
           caption = caption,
           booktabs = TRUE,
           longtable = TRUE,
-          linesep = "",
+          linesep = "", format = "pandoc",
           escape = FALSE) %>%
       kable_styling(latex_options = c("hold_position", "repeat_header")) %>%
       kableExtra::column_spec(1, width = "2.7cm") %>%

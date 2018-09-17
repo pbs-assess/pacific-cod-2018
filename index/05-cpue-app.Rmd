@@ -469,7 +469,7 @@ pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historical 5ABCD")
 pars[[3]] <- get_cpue_pars(m_modern[[16]], "Modern 3CD")
 pars[[4]] <- get_cpue_pars(m_modern[[8]], "Modern 5ABCD")
 bind_rows(pars) %>%
-  knitr::kable(caption = "Random effect standard deviation (SD) and Tweedie observation model power ($p$) and dispersion ($\\phi$) parameter estimates.", booktabs = TRUE, linesep = "", escape = FALSE)
+  knitr::kable(caption = "Random effect standard deviation (SD) and Tweedie observation model power ($p$) and dispersion ($\\phi$) parameter estimates.", booktabs = TRUE, linesep = "", escape = FALSE, format = "pandoc")
 ```
 
 ```{r cpue-index-ts-funcs}
