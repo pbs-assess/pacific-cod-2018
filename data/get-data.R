@@ -510,10 +510,12 @@ plot.spec <- function(area = "5[CD]+"){
 extrap.catch <- function(dat = load.data(cache.dir = file.path(rootd.data, "pcod-cache")),
                          areas = NULL,
                          nyr,
-                         qtrs = c(3,4)){
+                         mnth){
   ## Extrapolate catch data for missing quarters based on the
   ## mean of the catch in the quarters in the previous nyr years.
-  ## qtrs is a vector of the quarters to extrapolate for for the last year
+  ## mnth is the last full month of catch data where 1=Apr..12=March
+  ## Call like this:
+  ## tmp = extrap.catch(areas="5[ABCD]+", nyr=5, mnth=6)
 
   if(is.null(areas)){
     stop("You must supply at least one area.")
@@ -523,29 +525,58 @@ extrap.catch <- function(dat = load.data(cache.dir = file.path(rootd.data, "pcod
                                     area_regex = areas)) %>%
     filter(!is.na(area))
 
-
-  dat <- mutate(dat,
-                month = month(best_date),
-                quarter = case_when(
-                  month %in% c(1, 2, 3) ~ 4,
-                  month %in% c(4, 5, 6) ~ 1,
-                  month %in% c(7, 8, 9) ~ 2,
-                  month %in% c(10, 11, 12) ~ 3
-                )) %>%
-    select(-month) %>%
-    mutate(year = if_else(quarter == 4, year - 1, as.numeric(year))) %>%
-    group_by(year, quarter) %>%
-    summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0)
-
   last.yr <- max(unique(dat$year))
-  dat <- dat %>% filter(year >= (last.yr - nyr) &
-                        year < last.yr)
+  dat.prev <- mutate(dat,
+                month = month(best_date),
+                day = day(best_date)) %>%
+    mutate(year = if_else(month <= 3, year - 1, as.numeric(year))) %>%
+    mutate(month = if_else(month >= 4, month - 3, month + 9)) %>%
+    filter(year >= (last.yr - nyr) &
+           year < last.yr) %>%
+    group_by(year, month) %>%
+    summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0) %>%
+    mutate(ccatch = cumsum(catch_weight)) %>%
+    mutate(pcatch = ccatch / sum(catch_weight))
 
-  sapply(lapply(qtrs,
-                function(x){
-                  qcat <- dat %>%
-                    filter(quarter == x)
-                  mean(qcat$catch_weight)
-                }),
-         "[")
+  pmeans <- sapply(lapply(1:12,
+                          function(x){
+                            tmp <- dat.prev %>% filter(month == x)
+                            mean(tmp$pcatch)
+                          }),
+                   "[")
+
+  ## Tabulate dat.prev
+  dat.orig <- dat.prev
+  dat.prev <- dat.prev %>%
+    select(-c(catch_weight, ccatch))
+
+  dat.props <- spread(dat.prev, month, pcatch)
+  names(dat.props) <- c("Year",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec",
+                        "Jan",
+                        "Feb",
+                        "Mar")
+  dat.props$Year <- paste0(dat.props$Year - 2000, "/", dat.props$Year - 1999)
+
+  d.last <- mutate(dat,
+                   month = month(best_date),
+                   day = day(best_date)) %>%
+    mutate(year = if_else(month <= 3, year - 1, as.numeric(year))) %>%
+    mutate(month = if_else(month >= 4, month - 3, month + 9)) %>%
+    filter(year == last.yr) %>%
+    group_by(year, month) %>%
+    summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0) %>%
+    mutate(ccatch = cumsum(catch_weight))
+
+  list(dat.orig,
+       dat.props,
+       d.last[d.last$month == mnth,]$ccatch / pmeans[mnth])
 }
