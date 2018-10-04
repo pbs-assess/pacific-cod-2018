@@ -565,6 +565,8 @@ extrap.catch <- function(dat = load.data(cache.dir = file.path(rootd.data, "pcod
     summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0) %>%
     mutate(ccatch = cumsum(catch_weight))
 
+  ## The last value in the list is the amount of catch that should be addedd to the final
+  ## year's catch to allow for extrapolation for the remainder of the year after mnths months.
   list(dat.orig,
        dat.last,
        dat.props,
