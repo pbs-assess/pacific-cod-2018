@@ -319,8 +319,8 @@ autocorr.plot <- function(x,
                   lag.max = lag.max,
                   plot = FALSE)
     for(j in 1:nvar(x)){
-      plot(xacf$lag[, j, j],
-           xacf$acf[, j, j],
+      plot(xacf$lag[-1, j, j],
+           xacf$acf[-1, j, j],
            type = "h",
            ylab = "",
            xlab = "Lag",
