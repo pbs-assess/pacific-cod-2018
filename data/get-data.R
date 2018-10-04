@@ -551,6 +551,7 @@ extrap.catch <- function(dat = load.data(cache.dir = file.path(rootd.data, "pcod
     select(-c(catch_weight, ccatch))
 
   dat.props <- spread(dat.prev, month, pcatch)
+  ##substring(month.name, 1, 3)
   names(dat.props) <- c("Year",
                         "Apr",
                         "May",
@@ -566,7 +567,7 @@ extrap.catch <- function(dat = load.data(cache.dir = file.path(rootd.data, "pcod
                         "Mar")
   dat.props$Year <- paste0(dat.props$Year - 2000, "/", dat.props$Year - 1999)
 
-  d.last <- mutate(dat,
+  dat.last <- mutate(dat,
                    month = month(best_date),
                    day = day(best_date)) %>%
     mutate(year = if_else(month <= 3, year - 1, as.numeric(year))) %>%
@@ -577,6 +578,7 @@ extrap.catch <- function(dat = load.data(cache.dir = file.path(rootd.data, "pcod
     mutate(ccatch = cumsum(catch_weight))
 
   list(dat.orig,
+       dat.last,
        dat.props,
-       d.last[d.last$month == mnth,]$ccatch / pmeans[mnth])
+       dat.last[dat.last$month == mnth,]$ccatch / pmeans[mnth])
 }
