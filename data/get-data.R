@@ -36,7 +36,7 @@ prevMeanWeight <- read.csv(file.path(rootd.data, "MeanWeights_previous.csv"))
 #' @param cache.dir Reletive name of the directory to hold the RDS files
 #'
 #' @return The data object as returned from gfplot package
-load.data <- function(cache.dir = "data/cache"){
+load.data <- function(cache.dir = file.path(rootd.data, "cache")){
   readRDS(file.path(cache.dir, "pacific-cod.rds"))
 }
 
@@ -281,7 +281,7 @@ proc.old <- function(area = "3[CD]+"){
 
 proc.old.catch <- function(area = "3[CD]+",
                            include.usa = TRUE){
-  dat <- load.data(cache.dir = "data/pcod-cache")
+  dat <- load.data(cache.dir = file.path(rootd.data, "pcod-cache"))
   d <- dat$commercial_samples
 
   catch <- read.csv(file.path(rootd.data, "Pcod_Catch_all_by_major_area_FY_Q.csv"))
@@ -352,7 +352,7 @@ proc.old.catch <- function(area = "3[CD]+",
          y = "Annual Mean Weight (Kg)",
          title = paste0("Area ", area))
 
-  ggsave(paste0("data/results/AnnualMeanWeight_", area, "_old_catch.png"),
+  ggsave(file.path(rootd.data, "results", paste0("AnnualMeanWeight_", area, "_old_catch.png")),
          width = 8,
          height = 6,
          units = "in")
@@ -372,7 +372,7 @@ compare.catch <- function(area = "3[CD]+",
     mutate(year = FYear) %>%
     select(-FYear)
 
-  dat <- load.data(cache.dir = "data/pcod-cache")
+  dat <- load.data(cache.dir = file.path(rootd.data, "pcod-cache"))
   dat.catch <- mutate(dat$catch,
                       area = assign_areas(major_stat_area_name,
                                           area_regex = area)) %>%
@@ -415,7 +415,7 @@ compare.catch <- function(area = "3[CD]+",
     labs(x = "Fishing Year", y = "Catch (t)",
          title = paste0("Area ", area))
 
-  ggsave(paste0("data/results/Catch-", area, ".png"),
+  ggsave(file.path(rootd.data, "results", paste0("Catch-", area, ".png")),
          width = 8,
          height = 6,
          units = "in")
@@ -447,7 +447,7 @@ plot.spec <- function(area = "5[CD]+"){
 
   colnames(d2014) <- c("year", "quarter", "num.specimens")
 
-  d <- load.data(cache.dir = "data/pcod-cache")
+  d <- load.data(cache.dir = file.path(rootd.data, "pcod-cache"))
   d2018 <- mutate(d$commercial_samples,
                       area = assign_areas(major_stat_area_name,
                                           area_regex = area)) %>%
@@ -497,9 +497,52 @@ plot.spec <- function(area = "5[CD]+"){
     labs(x = "Year and quarter", y = "Number of length specimens",
          title = paste0("Area ", area))
 
-  ggsave(paste0("data/results/Num-length-specimens-", area, ".png"),
+  ggsave(file.path(rootd.data, "results", paste0("Num-length-specimens-", area, ".png")),
          width = 12,
          height = 6,
          units = "in")
 
+}
+
+extrap.catch <- function(dat = load.data(cache.dir = file.path(rootd.data, "pcod-cache")),
+                         areas = NULL,
+                         nyr,
+                         qtrs = c(3,4)){
+  ## Extrapolate catch data for missing quarters based on the
+  ## mean of the catch in the quarters in the previous nyr years.
+  ## qtrs is a vector of the quarters to extrapolate for for the last year
+
+  if(is.null(areas)){
+    stop("You must supply at least one area.")
+  }
+  dat <- mutate(dat$catch,
+                area = assign_areas(major_stat_area_name,
+                                    area_regex = areas)) %>%
+    filter(!is.na(area))
+
+
+  dat <- mutate(dat,
+                month = month(best_date),
+                quarter = case_when(
+                  month %in% c(1, 2, 3) ~ 4,
+                  month %in% c(4, 5, 6) ~ 1,
+                  month %in% c(7, 8, 9) ~ 2,
+                  month %in% c(10, 11, 12) ~ 3
+                )) %>%
+    select(-month) %>%
+    mutate(year = if_else(quarter == 4, year - 1, as.numeric(year))) %>%
+    group_by(year, quarter) %>%
+    summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0)
+
+  last.yr <- max(unique(dat$year))
+  dat <- dat %>% filter(year >= (last.yr - nyr) &
+                        year < last.yr)
+
+  sapply(lapply(qtrs,
+                function(x){
+                  qcat <- dat %>%
+                    filter(quarter == x)
+                  mean(qcat$catch_weight)
+                }),
+         "[")
 }

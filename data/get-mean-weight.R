@@ -1,8 +1,5 @@
-#Code by Chris Grandin, Sean Anderson and Robyn Forrest.
-
-#Modified by Robyn Forrest July 16 2018
 graphics.off()
-rm(list=ls(all=TRUE))
+rm(list = ls(all.names = TRUE))
 library(gfplot)
 library(tidyverse)
 library(readr)
@@ -10,15 +7,17 @@ library(lubridate)
 library(psych)
 library(reshape2)
 
-source("data/get-data.R")
+rootd <- here::here()
+rootd.data <- file.path(rootd, "data")
+source(file.path(rootd.data, "get-data.R"))
 
 if(FALSE){
   cache_pbs_data(species = "pacific cod",
-                 path = "data/pcod-cache",
+                 path = file.path(rootd.data, "pcod-cache"),
                  unsorted_only = FALSE)
 }
 
-dat <- load.data(cache.dir = "data/pcod-cache")
+dat <- load.data(cache.dir = file.path(rootd.data, "pcod-cache"))
 d <- dat$commercial_samples
 
 ################################################################
