@@ -551,20 +551,8 @@ extrap.catch <- function(dat = load.data(cache.dir = file.path(rootd.data, "pcod
     select(-c(catch_weight, ccatch))
 
   dat.props <- spread(dat.prev, month, pcatch)
-  ##substring(month.name, 1, 3)
-  names(dat.props) <- c("Year",
-                        "Apr",
-                        "May",
-                        "Jun",
-                        "Jul",
-                        "Aug",
-                        "Sep",
-                        "Oct",
-                        "Nov",
-                        "Dec",
-                        "Jan",
-                        "Feb",
-                        "Mar")
+  mn <- substring(month.name, 1, 3)
+  names(dat.props) <- c("Year", mn[4:12], mn[1:3])
   dat.props$Year <- paste0(dat.props$Year - 2000, "/", dat.props$Year - 1999)
 
   dat.last <- mutate(dat,
