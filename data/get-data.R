@@ -10,6 +10,9 @@ library(ggplot2)
 library(reshape2)
 library(dplyr)
 
+rootd <- here::here()
+rootd.data <- file.path(rootd, "data")
+
 #Length-weight parameters
 #coastwide
 .ALPHA <- 6.79e-06
