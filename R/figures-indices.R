@@ -24,8 +24,8 @@ i.plot <- function(models,
   names(i) <- models.names
   i <- bind_rows(i, .id = "Sensitivity") %>%
     as.tibble() %>%
-    mutate(lowercv = it - it * (1 / wt),
-           uppercv = it + it * (1 / wt)) %>%
+    mutate(lowercv = exp(log(it) + qnorm(0.025) * (1 / wt)),
+           uppercv = exp(log(it) + qnorm(0.975) * (1 / wt))) %>%
     rename("Year" = iyr,
            "Survey biomass index (t)" = it) %>%
     select(-c(gear, area, group, sex, wt, timing)) %>%
