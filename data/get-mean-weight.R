@@ -182,6 +182,7 @@ df5abcd.both <- get.mean.weight(d,
                            include.usa = include.usa,
                            a = .ALPHA5,
                            b = .BETA5)
+write_csv(df5abcd.both, file.path(resultsd,"AnnualMeanWeightGrowthBothSexes_5ABCD.csv"))
 
 df5abcd.fem <- get.mean.weight(d,
                           dat$catch,
@@ -219,6 +220,7 @@ df3cd.both <- get.mean.weight(d,
                            include.usa = include.usa,
                            a = .ALPHA5,
                            b = .BETA5)
+write_csv(df3cd.both, file.path(resultsd,"AnnualMeanWeightGrowthBothSexes_3CD.csv"))
 
 df3cd.fem <- get.mean.weight(d,
                           dat$catch,
