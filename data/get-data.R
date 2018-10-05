@@ -19,18 +19,20 @@ rootd.data <- file.path(rootd, "data")
 .BETA <- 3.11
 
 #3CD
-.ALPHA3 <- 7.43e-06
-.BETA3 <- 3.09
+.ALPHA3FEM <- 7.43e-06
+.ALPHA3 <- 7.65616e-06
+.BETA3FEM <- 3.09
+.BETA3 <- 3.08
 
 #5ABCD
-.ALPHA5 <- 6.52e-06
-.BETA5 <- 3.12
+.ALPHA5FEM <- 6.52e-06
+.ALPHA5 <- 6.722839e-06
+.BETA5FEM <- 3.12
+.BETA5 <- 3.11
 
 #old (2013 assessment)
 .ALPHA2013 <- 7.377e-06
 .BETA2013 <- 3.0963
-
-outDir <- file.path(rootd.data, "results")
 
 prevMeanWeight <- read.csv(file.path(rootd.data, "MeanWeights_previous.csv"))
 
