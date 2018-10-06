@@ -74,8 +74,10 @@ make.autocor.plot(base.model.5abcd)
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5),
           i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5),
           i.plot(base.model.5abcd, base.model.5abcd.name, 3, every = 5),
-          i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10),
-          i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5),
+          i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10) 
+            + ylab("Commercial CPUE (kg/hour)"),
+          i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5) 
+            + ylab("Commercial CPUE (kg/hour)"),
           nrow = 2,
           ncol = 3,
           labels = c("(a)", "(b)", "(c)", "(d)", "(e)"),
@@ -153,8 +155,10 @@ make.autocor.plot(base.model.3cd)
 
 ```{r fig-base-index-fits-3cd, fig.cap="MPD fits to observed indices of abundance (points) for the Area 3CD base reference model from: (a) the West Coast Vancouver Island Synoptic Survey, (b) the Commercial CPUE pre-1996, (c) the Commercial CPUE post-1995, and (d) the NMFS Triennial Survey (Canadian portion)."}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
-          i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5),
-          i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5),
+          i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
+          i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5),
           nrow = 2,
           ncol = 2,
@@ -317,11 +321,12 @@ i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.
 ```
 
 ```{r fig-sens6-index-cpue-pre1996-5abcd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, commercial CPUE pre-1996, Area 5ABCD."}
-i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 4, every = 5)
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 4, every = 5) +
+  ylab("Commercial CPUE (kg/hour)")
 ```
 
 ```{r fig-sens6-index-cpue-post1995-5abcd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 5ABCD."}
-i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft")
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
 ```
 
 ```{r fig-sens7-biomass-5abcd, fig.cap="Biomass for the sensitivity to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
@@ -447,11 +452,12 @@ i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.nam
 ```
 
 ```{r fig-sens13-index-cpue-pre1996-3cd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errows, commercial CPUE pre-1996, Area 3CD."}
-i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 2, every = 5)
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 2, every = 5) +
+  ylab("Commercial CPUE (kg/hour)")
 ```
 
 ```{r fig-sens13-index-cpue-post1995-3cd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 3CD."}
-i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 3, leg.loc = "topleft")
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 3, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
 ```
 
 ```{r fig-sens13-index-triennial-3cd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, NMFS Triennial survey, Area 3CD."}
