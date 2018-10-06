@@ -1,5 +1,5 @@
 mcmc_monitor <- function(model) {
-  x <- model[[1L]]$mcmccalcs$p.dat
+  x <- model$mcmccalcs$p.dat
   a <- array(NA, dim = c(nrow(x), 1L, ncol(x)))
   for (i in seq_len(ncol(x))) {
     a[,,i] <- x[,i]
@@ -356,7 +356,7 @@ make.parameters.est.table <- function(model,
 
   tab <- as.data.frame(tab)
   tab$par <- row.names(tab)
-  mon <- mcmc_monitor(base.model.5abcd)
+  mon <- mcmc_monitor(model)
   tab <- left_join(tab, mon, by = "par")
   tab$par <- NULL
   tab$Rhat[tab$Rhat == " NaN"] <- "--"
