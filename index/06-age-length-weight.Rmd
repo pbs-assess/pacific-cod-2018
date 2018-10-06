@@ -315,7 +315,7 @@ surveys_list <- list(
   `SYN WCVI` = "SYN WCVI"
 )
 
-sexes <- c("male", "female")
+sexes <- c("all")
 vb_fits <-
   map(surveys_list, function(.survey) {
     map(sexes, function(.sex) {
@@ -341,15 +341,17 @@ get_par_df <- function(.d, element = 1) {
     filter(term != "sigma")
 })}
 get_par_df(vb_fits, 1) %>%
-  bind_rows(get_par_df(vb_fits, 2)) %>%
+  # bind_rows(get_par_df(vb_fits, 2)) %>%
+  # bind_rows(get_par_df(vb_fits, 3)) %>%
   mutate(term = gsub("^k$", "$k$", term)) %>%
   mutate(term = gsub("^linf$", "$L_{\\\\infty}$", term)) %>%
   mutate(term = gsub("^t0$", "$a_0$", term)) %>%
   mutate(Sex = gsub("^male$", "Male", Sex)) %>%
   mutate(Sex = gsub("^female$", "Female", Sex)) %>%
+  mutate(Sex = gsub("^all$", "Male and Female", Sex)) %>%
   mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list))))     %>%
   rename(Term = term, Estimate = estimate, Conf.low = conf.low, Conf.high = conf.high) %>%
-  dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
+  dplyr::select(Surveys,Term, Estimate, Conf.low, Conf.high) %>%
   mutate(Estimate = f(Estimate, 2),
     Conf.low = f(Conf.low, 2), Conf.high = f(Conf.high, 2)) %>%
   knitr::kable(
@@ -361,9 +363,11 @@ get_par_df(vb_fits, 1) %>%
 
 ```{r vb-figs, fig.cap = "Length-age model fits. The length-age growth curve is a von Bertalanffy model. Female model fits are indicated as solid red lines and male model fits are indicated as dashed grey lines. Text on the panels shows the parameter estimates and light dots represent individual fish that the models are fit to.", fig.asp=0.3, fig.width=9, out.width="6.5in"}
 vb_figs <- map(vb_fits, ~ plot_vb(
-  object_male = .x[[1]], object_female = .x[[2]],
-      col = c(Female = "red", Male = "grey40"), lab_x = 0.38) +
-    ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")))
+  object_all = .x[[1]],
+  col = c(All = "grey30"), lab_x = 0.38) +
+    ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
+    guides(colour = FALSE)
+)
 cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
 ```
 
@@ -379,7 +383,8 @@ get_par_df <- function(.d, element = 1) {
     filter(term != "sigma")
 })}
 get_par_df(vb_fits, 1) %>%
-  bind_rows(get_par_df(vb_fits, 2)) %>%
+  # bind_rows(get_par_df(vb_fits, 2)) %>%
+  # bind_rows(get_par_df(vb_fits, 3)) %>%
   mutate(surveys = factor(surveys, levels = rev(names(surveys_list))))  %>%
   mutate(term = gsub("^t0$", "a_0", term)) %>%
   ggplot(aes(surveys, estimate, colour = Sex, ymin = conf.low, ymax = conf.high)) +
@@ -389,19 +394,24 @@ get_par_df(vb_fits, 1) %>%
   ylab("Parameter value") +
   xlab("") +
   theme_pbs() +
-  scale_color_manual(values = c("female" = "red", "male" = "grey40"))
+  scale_color_manual(values = c("all" = "grey30")) +
+  guides(colour = FALSE)
 
-vbp <- get_par_df(vb_fits, 1) %>%
-  bind_rows(get_par_df(vb_fits, 2))
-vbp_wci_m <- filter(vbp, term == "k", surveys == "SYN WCVI", Sex == "male") %>% pull(estimate) %>% round(3)
-vbp_wci_f <- filter(vbp, term == "k", surveys == "SYN WCVI", Sex == "female") %>% pull(estimate) %>% round(3)
-vbp_hsqcs_m <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS", Sex == "male") %>% pull(estimate) %>% round(3)
-vbp_hsqcs_f <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS", Sex == "female") %>% pull(estimate) %>% round(3)
-vbp_all_m <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI", Sex == "male") %>% pull(estimate) %>% round(3)
-vbp_all_f <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI", Sex == "female") %>% pull(estimate) %>% round(3)
+vbp <- get_par_df(vb_fits, 1)
+  # bind_rows(get_par_df(vb_fits, 2))
+# vbp_wci_m <- filter(vbp, term == "k", surveys == "SYN WCVI", Sex == "male") %>% pull(estimate) %>% round(3)
+# vbp_wci_f <- filter(vbp, term == "k", surveys == "SYN WCVI", Sex == "female") %>% pull(estimate) %>% round(3)
+# vbp_hsqcs_m <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS", Sex == "male") %>% pull(estimate) %>% round(3)
+# vbp_hsqcs_f <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS", Sex == "female") %>% pull(estimate) %>% round(3)
+# vbp_all_m <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI", Sex == "male") %>% pull(estimate) %>% round(3)
+# vbp_all_f <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI", Sex == "female") %>% pull(estimate) %>% round(3)
+
+vbp_wci <- filter(vbp, term == "k", surveys == "SYN WCVI") %>% pull(estimate) %>% round(3)
+vbp_hsqcs <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS") %>% pull(estimate) %>% round(3)
+vbp_all <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI") %>% pull(estimate) %>% round(3)
 ```
 
-Estimates of the von Bertalanffy growth rate $k$ were higher in the WCVI survey (male $k$ = `r vbp_wci_m` y^-1^; female $k$ = `r vbp_wci_f` y^-1^) compared to estimates of $k$ from the HS-QCS  surveys combined (male $k$ = `r vbp_hsqcs_m` y^-1^; female $k$ = `r vbp_hsqcs_f` y^-1^), and all surveys combined (male $k$ = `r vbp_all_m` y^-1^; female $k$ = `r vbp_all_f` y^-1^) (Table \@ref(tab:age-coeff-table)). The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound [@forrest2013] used the same growth parameters that had been used in the 2004 assessment for Hecate Strait ($L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y [@sinclair2005]). These values had been reported by @westrheim1996 for the WCVI stock, based on analyses of length-frequency data [@foucher1982]. @westrheim1996 had actually reported a lower growth rate for the Hecate Strait stock, i.e., $k$ = 0.203 y^-1^.
+Estimates of the von Bertalanffy growth rate $k$ were higher in the WCVI survey ($k$ = `r vbp_wci` y^-1^) compared to estimates of $k$ from the HS-QCS  surveys combined ($k$ = `r vbp_hsqcs` y^-1^), and all surveys combined ($k$ = `r vbp_all` y^-1^) (Table \@ref(tab:age-coeff-table)). The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound [@forrest2013] used the same growth parameters that had been used in the 2004 assessment for Hecate Strait ($L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y [@sinclair2005]). These values had been reported by @westrheim1996 for the WCVI stock, based on analyses of length-frequency data [@foucher1982]. @westrheim1996 had actually reported a lower growth rate for the Hecate Strait stock, i.e., $k$ = 0.203 y^-1^.
 
 The current results for Hecate Strait (Table \@ref(tab:age-coeff-table)), are consistent with the parameters reported by @westrheim1996. This suggests that the growth rate use in the delay difference models in @forrest2013 and @sinclair2005 may have been too high for the Hecate Strait stock. The current Base Case models therefore uses the growth parameters reported for females in Table \@ref(tab:age-coeff-table), i.e., "SYN HS, SYN QCS" for Area 5ABCD; and "SYN WCVI" for the 3CD stocks.
 
@@ -436,13 +446,15 @@ get_par_df <- function(.d, element = 1) {
     filter(term != "statistic")
 })}
 get_par_df(lw_fits, 1) %>%
-  bind_rows(get_par_df(lw_fits, 2)) %>%
+  # bind_rows(get_par_df(lw_fits, 2)) %>%
+  # bind_rows(get_par_df(lw_fits, 3)) %>%
   mutate(Conf.low = estimate - 1.96 * std.error, Conf.high = estimate + 1.96 * std.error) %>%
   mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list)))) %>%
   mutate(term = gsub("\\(Intercept\\)", "$ln(\\\\alpha_s)$", term)) %>%
   mutate(term = gsub("log\\(length\\)", "$\\\\beta_s$", term)) %>%
   mutate(Sex = gsub("^male$", "Male", Sex)) %>%
   mutate(Sex = gsub("^female$", "Female", Sex)) %>%
+  mutate(Sex = gsub("^all$", "Male and Female", Sex)) %>%
   rename(Term = term, Estimate = estimate) %>%
   dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
   knitr::kable(caption = "Length-weight coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, format = "pandoc", linesep = "", digits=2, escape=FALSE)
@@ -450,9 +462,11 @@ get_par_df(lw_fits, 1) %>%
 
 ```{r age-lw-figs, fig.cap = "Length-weight model fits. Female model fits are indicated as solid red lines and male model fits are indicated as dashed grey lines. Text on the panels shows the parameter estimates and light dots represent individual fish that the models are fit to.", fig.asp=0.28, fig.width=9, out.width="6.5in"}
 lw_figs <- map(lw_fits, ~ plot_length_weight(
-  object_male = .x[[1]], object_female = .x[[2]],
-      col = c(Female = "red", Male = "grey40"), lab_x_gap = 0.45) +
-    ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")))
+  object_all = .x[[1]],
+      col = c(All = "grey30"), lab_x_gap = 0.45) +
+    ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
+    guides(colour = FALSE)
+  )
 cowplot::plot_grid(plotlist = lw_figs, nrow = 1)
 ```
 
@@ -466,7 +480,8 @@ get_par_df <- function(.d, element = 1) {
     filter(term != "statistic")
 })}
 get_par_df(lw_fits, 1) %>%
-  bind_rows(get_par_df(lw_fits, 2)) %>%
+  # bind_rows(get_par_df(lw_fits, 2)) %>%
+  # bind_rows(get_par_df(lw_fits, 3)) %>%
   mutate(conf.low = estimate - 1.96 * std.error, conf.high = estimate + 1.96 * std.error) %>%
   mutate(surveys = factor(surveys, levels = rev(names(surveys_list)))) %>%
   mutate(term = gsub("\\(Intercept\\)", "ln(a_s)", term)) %>%
@@ -478,7 +493,8 @@ get_par_df(lw_fits, 1) %>%
   ylab("Parameter value") +
   xlab("") +
   theme_pbs() +
-  scale_color_manual(values = c("female" = "red", "male" = "grey40"))
+  scale_color_manual(values = c("all" = "grey30")) +
+  guides(colour = FALSE)
 ```
 
 \clearpage
