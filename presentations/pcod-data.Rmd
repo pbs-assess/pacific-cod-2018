@@ -185,3 +185,32 @@ Criteria for length data extraction for use in estimating size composition of bo
 - By fishing year, April 1 to March 31, based on fishing event haul date/time
 
 - Eliminated 7 samples that may have been tomcod
+
+---
+# Commercial Length Data
+```{r lengths-comm, dev='svg', fig.height=5.5, fig.width=12}
+xx <- dat$commercial_samples %>%
+  dplyr::filter(!is.na(length))
+
+xx <- xx[!duplicated(xx$specimen_id), , drop = FALSE]
+xx$area <- gfplot::assign_areas(xx$major_stat_area_name,
+ area_regex = c("3[CD]+", "5[ABCD]+"))
+
+xx %>%
+ filter(!is.na(area)) %>%
+ filter(year >= 1996) %>%
+  filter(year < 2018) %>%
+ filter(species_category_code %in% 1) %>%
+ do(gfplot:::bin_lengths(., value = length, bin_size = 2)) %>%
+ rename(length_bin = length) %>%
+ group_by(year, length_bin, area) %>%
+ summarise(n = n()) %>%
+ group_by(year, area) %>%
+ mutate(proportion = n / sum(n), total = sum(n)) %>%
+ ungroup() %>%
+ mutate(sex = "M", survey_abbrev = area) %>% # sex = "M" is a trick to plot them all
+ plot_lengths() + xlab("Length (cm)") +
+ guides(colour = FALSE, fill = FALSE)
+
+
+```
