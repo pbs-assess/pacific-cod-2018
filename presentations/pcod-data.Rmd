@@ -211,6 +211,20 @@ xx %>%
  plot_lengths() + xlab("Length (cm)") +
  guides(colour = FALSE, fill = FALSE)
 
+```
+
+---
+# Survey Length Data
+
+```{r lengths-surv, dev='svg', fig.height=5.5, fig.width=12}
+  x <- filter(dat$survey_samples,
+              is.element(survey_abbrev, c("SYN HS", "SYN QCS","SYN WCVI")))
+
+ x %>%
+  tidy_lengths_raw(survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
+  bin_size = 2,
+  year_range = c(2002, Inf)) %>%
+  plot_lengths()
 
 ```
 
