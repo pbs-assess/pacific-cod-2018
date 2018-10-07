@@ -1,6 +1,7 @@
 ---
 title: |
   2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Cost Vancouver Island (3CD)
+subtitle:  CPUE Standardization
 author: |
   Robyn E. Forrest, Sean Anderson, Chris Grandin, Paul Starr
 date: "`r Sys.Date()`"
@@ -12,20 +13,140 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"
 css: pcod.css
 ---
-
 
 ```{r setup, include=FALSE, cache=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
-                      cache = TRUE,
-                      autodep = TRUE,
+                      cache = FALSE,
+                      autodep = FALSE,
                       cache.comments = FALSE,
                       fig.align = "center",
-                      fig.asp = 9,
+                      fig.width = 9,
                       dev = 'svg',
                       fig.asp = 0.618)
 options(htmltools.dir.version = FALSE)
+library(knitr)
 ```
 
+<!--
+## Depth distributions
+
+<img src="../index/knitr-figs/cpue-depth-hists-1.png" height="500" class='center-img'>
+-->
+
+## 3CD Historical CPUE Variables
+
+<img src="../index/knitr-figs/cpue-bubble-plots-hist-3CD-1.png" height="500" class='center-img'>
+
+---
+
+## 3CD localities
+
+<img src="../index/knitr-figs/cpue-locality-map-3-1.png" height="500" class='center-img'>
+
+---
+
+## 5ABCD localities
+
+<img src="../index/knitr-figs/cpue-locality-map-5-1.png" height="500" class='center-img'>
+
+---
+
+class: inverse, middle, center
+
+# A Tweedie GLMM standardization model
+
+---
+
+## A Tweedie GLMM standardization model
+
+$$
+\begin{align}
+  y_i &\sim \mathrm{Tweedie}(\mu_i, p, \phi), \quad 1 < p < 2,\\
+  \mu_i &= \exp \left(
+  \mathbf{X}_i \mathbf{\beta} + \alpha^\mathrm{locality}_{j[i]} + \alpha^\mathrm{locality-year}_{k[i]} + \alpha^\mathrm{vessel}_{l[i]} \right)
+  \\
+\end{align}
+$$
+
+
+---
+
+## Fixed effect coefficients (historical)
+
+<img src="../index/knitr-figs/cpue-coef-plot1-1.png" height="500" class='center-img'>
+
+---
+
+## Fixed effect coefficients (modern)
+
+<img src="../index/knitr-figs/cpue-coef-plot1-modern-1.png" height="500" class='center-img'>
+
+---
+
+## Locality random effects (historical)
+
+<img src="../index/knitr-figs/cpue-coef-plot2-1.png" height="500" class='center-img'>
+
+---
+
+## Locality random effects (modern)
+
+<img src="../index/knitr-figs/cpue-coef-plot2-modern-1.png" height="500" class='center-img'>
+
+---
+
+## Locality-year random effects (historical)
+
+<img src="../index/knitr-figs/cpue-coef-plot3-1.png" height="500" class='center-img'>
+
+---
+
+## Locality-year random effects (modern)
+
+<img src="../index/knitr-figs/cpue-coef-plot3-modern-1.png" height="500" class='center-img'>
+
+---
+
+## Historical CPUE standardizations
+
+<img src="../index/knitr-figs/cpue-index-ts-hist-1.png" height="500" class='center-img'>
+
+---
+
+## Modern CPUE standardizations
+
+<img src="../index/knitr-figs/cpue-index-ts-modern-1.png" height="500" class='center-img'>
+
+---
+
+## Predictions
+
+<img src="../index/knitr-figs/cpue-int-test-plot-1.png" height="500" class='center-img'>
+
+---
+
+## Randomized quantile residuals
+
+<img src="../index/knitr-figs/cpue-quantile-residuals-1.png" height="500" class='center-img'>
+
+---
+
+## Locality-specific CPUE trends (**with** space-time interactions)
+
+<img src="../index/knitr-figs/cpue-re-int-ts-1.png" height="500" class='center-img'>
+
+---
+
+## Locality-specific CPUE trends (**without** space-time interactions)
+
+<img src="../index/knitr-figs/cpue-re-no-int-ts-1.png" height="500" class='center-img'>
+
+---
+
+## Simulation testing the space-time assumption
+
+<img src="../index/knitr-figs/cpue-sim-test-tweedie-glmm-plot-1.png" height="500" class='center-img'>
