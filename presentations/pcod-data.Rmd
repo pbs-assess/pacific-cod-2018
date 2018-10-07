@@ -17,7 +17,12 @@ css: pcod.css
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
-                      warning = FALSE)
+                      warning = FALSE,
+                      cache = FALSE,
+                      autodep = FALSE,
+                      cache.comments = FALSE,
+                      fig.align = "center",
+                      fig.asp = 0.618)
 options(htmltools.dir.version = FALSE)
 source(file.path(here::here(), "R", "all.R"))
 build(ovwrt.base = FALSE,
@@ -28,8 +33,10 @@ build(ovwrt.base = FALSE,
 load.models.into.parent.env()
 source(file.path(rootd.R, "custom-knitr-variables.R"))
 ```
+
 .pull-left[
 # Assessment Areas
+
 - Hecate Strait and Queen Charlotte Sound, Areas **5ABCD**
 
 - West Coast Vancouver Island, Areas **3CD**
@@ -44,6 +51,7 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 ---
 
 # Species overview
+
 - Pacific Cod are distributed from California, through waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China.
 
 - May be genetically distinct from other areas.
@@ -53,6 +61,7 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 - Pacific Cod are demersal spawners; spawning most likely occurs during February to March.
 
 ---
+
 # Commercial Fishery
 
 - Pacific Cod are caught almost entirely by bottom trawl.
@@ -62,47 +71,67 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 - Annual reported catches have shown considerable variability since the beginning of the time series in 1956.
 
 ---
+
 # Commercial Fishery Data
 
 ### Summarized by fishing year, April 1 to March 31
 
-###Canadian catches:
+### Canadian catches:
+
 - Earliest data from summaries of trawl fishing, 1945. Landings only, recorded by PMFC area (e.g., 5A, 5C) and month.
+
 - GFCatch contains landed catches and some limited discards for 1954-1995.
+
 - PacharvTrawl contains catches and discards for 1996-March 2007. Reliable statistics, largely from at-sea observer logbooks.
+
 - FOS contains catches  and discards for April 2007-present. Reliable statistics, largely from at-sea observer logbooks.
 
-###USA catches:
-- Obtained from PMFC Data Series -- combined Canadian and USA landings by PMFC area and month. USA landings obtained by subtracting the Canadian portion recorded in GFCatch. Some discrepancies as combined landings were sometimes less than the Canadian amount. In these cases the USA catch was set to zero.
+---
+
+# Commercial Fishery Data
+
+### Summarized by fishing year, April 1 to March 31
+
+### USA catches:
+
+- Obtained from PMFC Data Series — combined Canadian and USA landings by PMFC area and month
+
+- USA landings obtained by subtracting the Canadian portion recorded in GFCatch
+
+- Some discrepancies as combined landings were sometimes less than the Canadian amount
+
+- USA catch was then set to zero
 
 ---
-.left-column[
-# Fishery Catch for Area 5ABCD
-Total catches of Pacific Cod during the period 1956-2017 in Hecate Strait and Queen Charlotte Sound. Catches represent the sum of landings from US and Canadian vessels and estimated at-sea releases from Canadian vessels.
-]
 
-.right-column[
-```{r catch.5abcd, dev='svg', fig.height=6, fig.width=10}
+# Fishery Catch for Area 5ABCD
+
+```{r catch.5abcd, dev='svg', fig.height=5, fig.width=9}
 make.catches.plot(catch.5)
 ```
-]
+
+???
+
+Total catches of Pacific Cod during the period 1956-2017 in Hecate Strait and Queen Charlotte Sound. Catches represent the sum of landings from US and Canadian vessels and estimated at-sea releases from Canadian vessels.
 
 ---
-.left-column[
-# Fishery Catch for Area 3CD
-Total catches of Pacific Cod during the period 1956-2017 off the West Coast of Vancouver Island. Catches represent the sum of landings from US and Canadian vessels and estimated at-sea releases from Canadian vessels.
-]
 
-.right-column[
-```{r catch.3cd, dev='svg', fig.height=6, fig.width=10}
+# Fishery Catch for Area 3CD
+
+```{r catch.3cd, dev='svg', fig.height=5, fig.width=9}
 make.catches.plot(catch.3)
 ```
-]
+
+???
+
+Total catches of Pacific Cod during the period 1956-2017 off the West Coast of Vancouver Island. Catches represent the sum of landings from US and Canadian vessels and estimated at-sea releases from Canadian vessels.
 
 ---
+
 # Research Surveys
 
 ### Area 5ABCD
+
 - Queen Charlotte Sound Synoptic Survey 2003-2017
 
 - Hecate Strait Assemblage Survey 1984-2003
@@ -112,11 +141,13 @@ make.catches.plot(catch.3)
 - Hecate Strait Synoptic Survey 2005-2017
 
 ### Area 3CD
+
 - WCVI Synoptic Survey 2004-2016 (even years, **2018 not included**)
 
 - NMFS Triennial Survey 1989-2001 (1989, 1992, 1995, 1998, 2001)
 
 ---
+
 # Survey indices of abundance
 
 - For all surveys, a swept area estimate of biomass in any year y was obtained by summing the product of the CPUE and the area surveyed across the surveyed strata *i*.
@@ -126,10 +157,12 @@ make.catches.plot(catch.3)
 - One thousand bootstrap replicates with replacement constructed to estimate bias corrected 95% confidence levels for each survey year.
 
 ---
+
 # Survey indices of abundance for Area 5ABCD - 1
+
 **(a)** - HS Assemblage, **(b)** - QCS Synoptic, **(c)** - HS Synoptic
 
-```{r fig-base-index-fits-5abcd-1, dev='svg', fig.height=5, fig.width=12}
+```{r fig-base-index-fits-5abcd-1, dev='svg', fig.height=4, fig.width=12}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5)
@@ -143,7 +176,9 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
 ```
 
 ---
+
 # Survey indices of abundance for Area 5ABCD - 2
+
 **(d)** - Commercial CPUE pre-1996, **(e)** - Commercial CPUE post-1995
 
 ```{r fig-base-index-fits-5abcd-2, dev='svg', fig.height=5, fig.width=12}
@@ -158,7 +193,9 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
 ```
 
 ---
+
 # Survey indices of abundance for Area 3CD
+
 **(a)** - WCVI Synoptic, **(b)** - Commercial CPUE pre-1996, **(c)** - Commercial CPUE post-1995,  **(d)** - NMFS Triennial (Canada)
 
 ```{r fig-base-index-fits-3cd, dev='svg', fig.height=5, fig.width=12}
@@ -175,6 +212,7 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
 ```
 
 ---
+
 # Commercial Length Data
 
 Criteria for length data extraction for use in estimating size composition of bottom trawl catches:
@@ -186,7 +224,9 @@ Criteria for length data extraction for use in estimating size composition of bo
 - Eliminated 7 samples that may have been tomcod
 
 ---
+
 # Commercial Length Data
+
 ```{r lengths-comm, dev='svg', fig.height=5.5, fig.width=12}
 xx <- dat$commercial_samples %>%
   dplyr::filter(!is.na(length))
@@ -229,6 +269,7 @@ xx %>%
 ```
 
 ---
+
 # Commercial CPUE Standardization
 
 - Historical and modern
