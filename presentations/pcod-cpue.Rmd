@@ -1,0 +1,31 @@
+---
+title: |
+  2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Cost Vancouver Island (3CD)
+author: |
+  Robyn E. Forrest, Sean Anderson, Chris Grandin, Paul Starr
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+css: pcod.css
+---
+
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      cache = TRUE,
+                      autodep = TRUE,
+                      cache.comments = FALSE,
+                      fig.align = "center",
+                      fig.asp = 9,
+                      dev = 'svg',
+                      fig.asp = 0.618)
+options(htmltools.dir.version = FALSE)
+```
+
