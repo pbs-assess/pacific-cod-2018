@@ -2,3 +2,6 @@
 .large { font-size: 130%; }
 .xlarge { font-size: 300%; }
 .small { font-size: 70%; }
+.remark-slide-content {
+  font-size: 27px;
+}

@@ -8,12 +8,11 @@ output:
   xaringan::moon_reader:
     lib_dir: libs
     nature:
-      css: ["default", "pcod.css"]
       ratio: "16:9"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-
+css: pcod.css
 ---
 
 ```{r setup, include=FALSE}
@@ -31,9 +30,9 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 ```
 .pull-left[
 # Assessment Areas
-- .xlarge[Hecate Strait and Queen Charlotte Sound, Areas **5ABCD**]
+- Hecate Strait and Queen Charlotte Sound, Areas **5ABCD**
 
-- .xlarge[West Coast Vancouver Island, Areas **3CD**]
+- West Coast Vancouver Island, Areas **3CD**
 
 ![](Pcod_Profile_Picture.jpg)
 ]
@@ -45,7 +44,7 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 ---
 
 # Species overview
-- .xlarge[Pacific Cod are distributed from California, through waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China.]
+- Pacific Cod are distributed from California, through waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China.
 
 - May be genetically distinct from other areas.
 
@@ -214,3 +213,10 @@ xx %>%
 
 
 ```
+
+---
+# Commercial CPUE Standardization
+
+- Historical and modern
+- Testing
+
