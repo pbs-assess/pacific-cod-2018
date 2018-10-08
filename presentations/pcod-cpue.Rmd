@@ -276,7 +276,7 @@ class: inverse, middle, center
 
 ## A Tweedie GLMM standardization model
 
-A Tweedie distribution observation model:
+A Tweedie observation model:
 
 $$
   y_i \sim \mathrm{Tweedie}(\mu_i, p, \phi), \quad 1 < p < 2,
@@ -284,18 +284,46 @@ $$
 
 --
 
-and a log link (i.e. an exponentiated inverse link):
+and a log link:
 
 $$
 \begin{align}
  \mu_i &= \exp \left(
-  \mathbf{X}_i \mathbf{\beta} + \alpha^\mathrm{locality}_{j[i]} + \alpha^\mathrm{locality-year}_{k[i]} + \alpha^\mathrm{vessel}_{l[i]} \right)
+  \mathbf{X}_i \mathbf{\beta} + \alpha^\mathrm{locality}_{j[i]} + \alpha^\mathrm{locality-year}_{k[i]} + \alpha^\mathrm{vessel}_{l[i]} \right),
 \end{align}
 $$
 
 with a vector of predictors $X$, fixed effects $\mathbf{\beta}$, and random intercepts $\alpha$.
 
 Fit with TMB.
+
+---
+
+# Data aggregation
+
+### 'Historical' 
+
+- 1956–1990 (dockside interviews): trip-locality-level data
+
+--
+
+- 1991–1995 (logbooks): fishing-event-level rolled up to trip-locality-level data
+
+--
+
+### 'Modern'
+
+- 1996–2017 (on-board observers/video monitoring): fishing-event-level data
+
+---
+
+# Defining the 'modern' fleet
+
+- ≥ 100 positive Pacific Cod tows across all years
+
+--
+
+- ≥ 5 positive Pacific Cod trips for ≥ 5 years
 
 ---
 
