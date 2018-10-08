@@ -522,9 +522,9 @@ The annnual mean weight data are known to be biased prior to 1996 due to lack of
 ## SC 8A and 8B.EFFECT OF ASSUMPTION OF PERFECTLY-KNOWN CATCH
 For each stock, two sensitivity analyses were done, where pre-1996 commercial catch data were inflated by a fixed amount. These were done mainly to bracket the uncertainty in the model due to uncertain historical discarding and, to a lesser extent, foreign catches in the early part of the time series. These scenarios are not intended to represent real estimates of historical discarding, which is recommended as an important area of future research.
 
-> **Sc 8a.** Infate pre-1996 catches by 25%.
+> **Sc 8a.** Inflate pre-1996 catches by 25%.
 
-> **Sc 8b.** Infate pre-1996 catches by 50%.
+> **Sc 8b.** Inflate pre-1996 catches by 50%.
 
 
 \clearpage
