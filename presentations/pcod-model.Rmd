@@ -109,3 +109,97 @@ Average estimated fishing mortality 1956-2004
 .pull-right[
 ![](Pcod_3CD5ABCDE_Pic.png)
 ]
+
+---
+# Reference points for Area 5ABCD
+
+
+---
+# Base reference models
+
+---
+# Priors
+
+```{r fig-base-mcmc-priors-5abcd, fig.height = 5, fig.width=8}
+make.priors.posts.plot(base.model.5abcd)
+```
+
+---
+# Fixed parameters for Area 5ABCD
+
+- $\sigma_R$ = 0.8		Standard deviation in log rec. devs
+
+- $\sigma_O$ = 0.25	Overall standard dev in obs. errors
+
+- $\sigma_C$ = 0.05	Standard deviation in log catch devs
+
+- $\sigma_W$ = 0.2		Standard deviation in log mean wt devs
+
+
+---
+# Area 5ABCD - MCMC diagnostics - traces
+
+```{r fig-base-mcmc-trace-5abcd, fig.height = 5, fig.width=8}
+make.traces.plot(base.model.5abcd)
+```
+
+---
+# Area 5ABCD - MCMC diagnostics - autocorrelation
+
+```{r fig-base-mcmc-autocor-5abcd, fig.height = 5, fig.width=8}
+make.autocor.plot(base.model.5abcd)
+```
+
+---
+# Area 5ABCD - MPD index fits - 1
+
+**(a)** - HS Assemblage, **(b)** - QCS Synoptic, **(c)** - HS Synoptic
+
+```{r fig-base-index-fits-5abcd-1, dev='svg', fig.width=8, fig.height=5}
+plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
+          i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
+          i.plot(base.model.5abcd, base.model.5abcd.name, 3, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
+          nrow = 1,
+          ncol = 3,
+          labels = c("(a)", "(b)", "(c)"),
+          label_x = 0.15)
+```
+
+---
+# Area 5ABCD - MPD index fits - 2
+
+**(d)** - Commercial CPUE pre-1996, **(e)** - Commercial CPUE post-1995
+
+```{r fig-base-index-fits-5abcd-2, fig.width=8, fig.height=5}
+plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
+            + ylab("Commercial CPUE (kg/hour)"),
+          i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
+          nrow = 1,
+          ncol = 2,
+          labels = c("(d)", "(e)"),
+          label_x = 0.08)
+```
+
+---
+# Area 5ABCD - Mean weight fits
+
+```{r fig-base-mean-weight-5abcd, fig.cap="MPD fit to the mean weight data for Area 5ABCD base reference model."}
+mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
+```
+
+---
+# Area 5ABCD - Catch fits
+
+```{r fig-base-catch-fit-5abcd, fig.cap="MPD fit to the catch data for Area 5ABCD base reference model."}
+catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
+```
+
+
+
+
+---
+# Area 5ABCD Biomass

@@ -64,7 +64,8 @@ i.plot <- function(models,
                        limits = c(min(i$Year - 1),
                                   max(i$Year + 1))) #+
   if(show.fit){
-    p <- p + geom_line(aes(color = Sensitivity),
+    p <- p + geom_line(data = i,
+                       aes(color = Sensitivity),
                        y = i$fit,
                        size = 1)
   }

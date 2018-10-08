@@ -169,7 +169,7 @@ Total catches of Pacific Cod during the period 1956-2017 off the West Coast of V
 
 **(a)** HS Assemblage, **(b)** QCS Synoptic, **(c)** HS Synoptic
 
-```{r fig-base-index-fits-5abcd-1, fig.width=8, fig.asp=0.4}
+```{r fig-base-index-5abcd-1, fig.width=8, fig.height=5}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, show.fit = FALSE)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5, show.fit = FALSE)
@@ -188,7 +188,7 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, show.fit
 
 **(d)** Commercial CPUE pre-1996, **(e)** Commercial CPUE post-1995
 
-```{r fig-base-index-fits-5abcd-2, fig.height=4, fig.asp=0.5}
+```{r fig-base-index-5abcd-2, fig.height=8, fig.height=5}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10, show.fit = FALSE)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5, show.fit = FALSE)
@@ -205,7 +205,7 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10, show.fi
 
 **(a)** WCVI Synoptic, **(b)** Commercial CPUE pre-1996, **(c)** Commercial CPUE post-1995,  **(d)** NMFS Triennial (Canada)
 
-```{r fig-base-index-fits-3cd, fig.asp=0.25}
+```{r fig-base-index-3cd, fig.height=8, fig.height=5}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, show.fit = FALSE),
           i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5, show.fit = FALSE)
             + ylab("Commercial CPUE (kg/hour)"),
