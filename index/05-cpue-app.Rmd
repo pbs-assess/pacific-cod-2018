@@ -92,7 +92,7 @@ issues:
 1. The delta-GLM approach has been shown to be insufficiently robust to variable
    sampling intensity (e.g. in time or space) [@lecomte2013].
 1. Perhaps most importantly for our purpose, a delta-GLM in which the two
-   models use different links renders a final index in which the shape is
+   models use different links renders a final index in which the index trend is
    dependent on the specific reference levels that the predictors are set to
    [e.g. @maunder2004a].
 

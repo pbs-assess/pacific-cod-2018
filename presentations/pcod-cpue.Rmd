@@ -8,12 +8,12 @@ date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
+    chakra: libs/remark-latest.min.js
     nature:
       ratio: "16:9"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"
 css: pcod.css
 ---
 
@@ -61,8 +61,63 @@ class: inverse, middle, center
 
 ---
 
+## Advantages of GLMMs over GLMs for index standardization
+
+GLMMs with random effects for things like vessels, localities, etc.
+
+--
+
+1. allow prediction for an average level
+
+--
+
+1. create more realistic estimates of uncertainty
+
+--
+
+1. make better use of the data
+
+--
+
+1. allow for explicit comparison of variance components
+
+---
+
+## Challenges with delta-GLM indexed standardization models
+
+The delta-GLM approach:
+
+--
+
+1. adds complexity (2 models)
+
+--
+
+1. uses 2 GLM links (coefficients cannot be combined)
+
+--
+
+1. assumes independence among the 2 models
+
+--
+
+1. may be insufficiently robust to variable sampling intensity
+
+--
+
+1. **creates an index that is dependent on the standardization reference levels**
+
+---
+
+## The Tweedie distribution
+
+<img src="../index/knitr-figs/cpue-tweedie-ex-1.png" height="500" class='center-img'>
+
+---
+
 ## A Tweedie GLMM standardization model
 
+<!--
 $$
 \begin{align}
   y_i &\sim \mathrm{Tweedie}(\mu_i, p, \phi), \quad 1 < p < 2,\\
@@ -71,7 +126,9 @@ $$
   \\
 \end{align}
 $$
+-->
 
+<img src="eqns/tw1.png" width="1221" height="234", class='center-img'>
 
 ---
 
