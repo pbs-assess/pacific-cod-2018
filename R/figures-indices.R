@@ -2,7 +2,8 @@ i.plot <- function(models,
                    models.names,
                    ind,
                    every = 1,
-                   leg.loc = "topright"){
+                   leg.loc = "topright",
+                   show.fit = TRUE){
   ## ind is the index number
   ## every is show every nth year on the x-axis
   ## leg.loc: topright, topleft, bottomright, bottomleft
@@ -53,9 +54,6 @@ i.plot <- function(models,
     geom_pointrange(aes(ymin = lowercv,
                         ymax = uppercv),
                     size = 0.25) +
-    geom_line(aes(color = Sensitivity),
-              y = i$fit,
-              size = 1) +
     theme(legend.position = leg.pos,
           legend.justification = leg.just,
           legend.title = element_blank()) +
@@ -65,6 +63,11 @@ i.plot <- function(models,
     scale_x_continuous(breaks = seq(0, 3000, every),
                        limits = c(min(i$Year - 1),
                                   max(i$Year + 1))) #+
+  if(show.fit){
+    p <- p + geom_line(aes(color = Sensitivity),
+                       y = i$fit,
+                       size = 1)
+  }
 
   if(length(models) == 1){
     p <- p + theme(legend.position = "none")
