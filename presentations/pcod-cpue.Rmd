@@ -33,20 +33,6 @@ options(htmltools.dir.version = FALSE)
 library(knitr)
 ```
 
-<!--
-## Depth distributions
-
-<img src="figures/cpue-depth-hists-1.png" height="500" class='center-img'>
-
-
-## 3CD Historical CPUE Variables
-
-<img src="figures/cpue-bubble-plots-hist-3CD-1.png" height="500" class='center-img'>
-
----
-
--->
-
 ## 3CD localities
 
 <img src="figures/cpue-locality-map-3-1.png" height="500" class='center-img'>
