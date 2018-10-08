@@ -1,6 +1,6 @@
 ---
 title: |
-  2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Cost Vancouver Island (3CD)
+  2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Coast Vancouver Island (3CD)
 subtitle:  CPUE Standardization
 author: |
   Robyn E. Forrest, Sean Anderson, Chris Grandin, Paul Starr
