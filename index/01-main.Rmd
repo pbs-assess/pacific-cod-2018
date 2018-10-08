@@ -330,6 +330,8 @@ For both stocks, we tested sensitivity of the model outputs to the following dat
 1. The assumed fixed value of observation error $\sigma_O$
 1. The assumed fixed value of $\sigma_R$
 1. The assumed fixed value of $\sigma_W$
+1. The influence of the pre-1996 annual mean weight data
+1. The assumption of perfectly-known pre-1996 catch data
 
 Results are presented under these headings below. In all sensitivity runs, as for the Reference Case models, posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples. The first 1,000 samples were dropped to allow for sufficient burn-in.
 
@@ -381,15 +383,27 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(survey-scaling-parameters-for-area-5abcd) and \@ref(survey-scaling-parameters-for-area-3cd) for Reference Case details:
 
-> **Sc 2a.** The mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey, and was then pro-rated according to relative areas, i.e., mean $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$.
+> **Sc 2a.** The mean of the QCS Synoptic Survey prior was set to the same mean as for the HS Synoptic Survey, and was then pro-rated according to relative areas, i.e., mean $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$.
 
-> **Sc 2b.** A uniform prior was used for \textit{q} for both the QCS and HS Synoptic Surveys.
+> **Sc 2b.** No prior was used for \textit{q} for either the QCS and HS Synoptic Surveys.
+
+Two additional analyses were done to bracket the considerable uncertainty in the scale of the stock.
+
+> **Sc 2c.** The means of the QCS and HS Synoptic Survey priors were set to ln(0.5), and were then pro-rated according to relative areas, i.e.,for Queen Charlotte Sound mean $\ln(q)$ = $\ln(0.5 \cdot 0.65)$ ; and for Hecate Strait mean $\ln(q)$ = $\ln(0.5 \cdot 0.35)$.
+
+> **Sc 2d.** The means of the QCS and HS Synoptic Survey priors were set to ln(1), and were then pro-rated according to relative areas, i.e.,for Queen Charlotte Sound mean $\ln(q)$ = $\ln(0.65)$ ; and for Hecate Strait mean $\ln(q)$ = $\ln(0.35)$.
 
 For 3CD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $\ln(q)$ for the WCVI Synoptic Survey:
 
 > **Sc 2a.** The SD of the WCVI Synoptic Survey was set to the same SD as the value estimated by @edwards2013-2 for Pacific Ocean Perch, i.e., SD = 0.448.
 
-> **Sc 2b.** A uniform prior was used for \textit{q} for the WCVI Synoptic Surveys.
+> **Sc 2b.** No prior was used for \textit{q} for the WCVI Synoptic Survey.
+
+As for Area 5ABCD, two additional analyses were done to bracket the considerable uncertainty in the scale of the stock.
+
+> **Sc 2c.** The mean of the WCVI Synoptic Survey prior was set to ln(0.5).
+
+> **Sc 2d.** The mean of the WCVI Synoptic Survey prior was set to ln(1).
 
 Models were moderately sensitive to choice of the parameters used for the normal prior for $\ln(q)$ (Sc 2a; Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)). For clarity, estimated biomass biomass trajectories without Sc 2b is provided for Area 3Cd in Figure \@ref(fig:fig-sens9-biomass-3cd-sub). Essentially, lowering the value of the mean (Area 5ABCD), or increasing the variance (Area 3CD) resulted in lower estimates of $q$ (Tables \@ref(tab:tab-param-table-sens2a-5abcd) and \@ref(tab:tab-param-table-sens2a-3cd)), leading to larger estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd-sub)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)).
 
@@ -499,6 +513,19 @@ Given the uncertainties in interpreting the mean weight time series (see Section
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens7-biomass-5abcd) to \@ref(fig:fig-sens7-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens14-biomass-3cd) to \@ref(fig:fig-sens14-f-3cd) for Area 3CD.
 
 Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and Figures \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) a and \@ref(fig:fig-sens14-meanweightfit-3cd) a). Decreasing $\sigma_w$ in Sc 7b did not have a noticeable effect on predicted biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) b and \@ref(fig:fig-sens14-meanweightfit-3cd) b).
+
+## SC 7C.INFLUENCE OF HISTORICAL ANNUAL MEAN WEIGHT IN THE COMMERCIAL CATCH
+The annnual mean weight data are known to be biased prior to 1996 due to lack of samples of fish released at sea. For both stocks, a sensitivity analysis was done with pre-1996 annual mean weight data removed, to illustrate the influence of these data on the model.
+
+> **Sc 7c.** Remove observed annual mean weight data prior to 1996.
+
+## SC 8A and 8B.EFFECT OF ASSUMPTION OF PERFECTLY-KNOWN CATCH
+For each stock, two sensitivity analyses were done, where pre-1996 commercial catch data were inflated by a fixed amount. These were done mainly to bracket the uncertainty in the model due to uncertain historical discarding and, to a lesser extent, foreign catches in the early part of the time series. These scenarios are not intended to represent real estimates of historical discarding, which is recommended as an important area of future research.
+
+> **Sc 8a.** Infate pre-1996 catches by 25%.
+
+> **Sc 8b.** Infate pre-1996 catches by 50%.
+
 
 \clearpage
 
