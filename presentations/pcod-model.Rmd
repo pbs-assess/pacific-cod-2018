@@ -19,20 +19,24 @@ css: pcod.css
 
 ---
 
-```{r setup, include=FALSE, cache=FALSE}
+```{r setup, echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE,
+                      error = FALSE,
                       warning = FALSE,
+                      message = FALSE,
+                      results = FALSE,
                       cache = TRUE,
                       autodep = TRUE,
                       cache.comments = FALSE,
                       fig.align = "center",
-                      fig.width = 9,
+                      fig.width = 8,
+                      fig.height = 5,
                       dev = 'svg',
                       fig.asp = 0.618)
 options(htmltools.dir.version = FALSE)
 ```
 
-```{r read-data, echo=FALSE, warnings=FALSE, messages=FALSE, results=FALSE}
+```{r read-data, include = FALSE}
 source(file.path(here::here(), "R", "all.R"))
 build(ovwrt.base = FALSE,
       ovwrt.sens = FALSE,
@@ -101,7 +105,7 @@ class: middle, center, inverse
 ---
 # Area 5ABCD - Priors
 
-```{r fig-base-mcmc-priors-5abcd, fig.width=8, fig.height=5}
+```{r fig-base-mcmc-priors-5abcd}
 make.priors.posts.plot(base.model.5abcd)
 ```
 
@@ -120,15 +124,27 @@ make.priors.posts.plot(base.model.5abcd)
 ---
 # Area 5ABCD - MCMC diagnostics - traces
 
-```{r fig-base-mcmc-trace-5abcd, fig.width=8, fig.height=5}
+```{r fig-base-mcmc-trace-5abcd}
 make.traces.plot(base.model.5abcd)
 ```
 
 ---
 # Area 5ABCD - MCMC diagnostics - autocorrelation
 
-```{r fig-base-mcmc-autocor-5abcd, fig.width=8, fig.height=5}
+```{r fig-base-mcmc-autocor-5abcd}
 make.autocor.plot(base.model.5abcd)
+```
+
+---
+# Area 5ABCD - MCMC diagnostics - priors/posteriors
+```{r fig-base-mcmc-priors-posts-5abcd, fig.width=8, fig.height=5}
+make.priors.posts.plot(base.model.5abcd, priors.only = FALSE)
+```
+
+---
+# Area 5ABCD - MCMC diagnostics - pairs
+```{r fig-base-mcmc-pairs-5abcd}
+make.pairs.plot(base.model.5abcd)
 ```
 
 ---
@@ -136,7 +152,7 @@ make.autocor.plot(base.model.5abcd)
 
 **(a)** - HS Assemblage, **(b)** - QCS Synoptic, **(c)** - HS Synoptic
 
-```{r fig-base-index-fits-5abcd-1, fig.width=8, fig.height=5}
+```{r fig-base-index-fits-5abcd-1}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5)
@@ -154,7 +170,7 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
 
 **(d)** - Commercial CPUE pre-1996, **(e)** - Commercial CPUE post-1995
 
-```{r fig-base-index-fits-5abcd-2, fig.width=8, fig.height=5}
+```{r fig-base-index-fits-5abcd-2}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5)
@@ -168,23 +184,58 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
 ---
 # Area 5ABCD - Mean weight fits
 
-```{r fig-base-mean-weight-5abcd, fig.width=8, fig.height=5}
+```{r fig-base-mean-weight-5abcd}
 mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
 ```
 
 ---
 # Area 5ABCD - Catch fits
 
-```{r fig-base-catch-fit-5abcd, fig.width=8, fig.height=5}
+```{r fig-base-catch-fit-5abcd}
 catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
 ```
 
-
-
-
 ---
 # Area 5ABCD - Biomass
+```{r fig-base-biomass-5abcd}
+b.plot(base.model.5abcd,
+       base.model.5abcd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(1971, 1971),
+       usr = c(1956, 2004))
+```
 
+---
+# Area 5ABCD - Recruitment and deviations
+```{r fig-base-recr-5abcd}
+plot_grid(r.plot(base.model.5abcd,
+                 base.model.5abcd.name,
+                 add.meds = TRUE,
+                 x.axis.angle = 90),
+          r.devs.plot(base.model.5abcd,
+                      base.model.5abcd.name,
+                      x.axis.angle = 90),
+          nrow = 1,
+          ncol = 2,
+          labels = c("(a)", "(b)"),
+          label_x = c(0.15, 0.1))
+```
+
+---
+# Area 5ABCD - Fishing mortality
+```{r fig-base-f-5abcd}
+f.plot(base.model.5abcd,
+       base.model.5abcd.name)
+```
+
+---
+# Area 5ABCD - Retrospective biomass
+```{r fig-base-retro-biomass-5abcd}
+b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
+           c(base.model.5abcd.name, retro.names),
+           depl = FALSE)
+```
 
 ---
 # Area 5ABCD - Reference points
@@ -207,7 +258,7 @@ class: middle, center, inverse
 ---
 # Area 3CD - Priors
 
-```{r fig-base-mcmc-priors-3cd, fig.width=8, fig.height=5}
+```{r fig-base-mcmc-priors-3cd}
 make.priors.posts.plot(base.model.3cd)
 ```
 
@@ -226,15 +277,27 @@ make.priors.posts.plot(base.model.3cd)
 ---
 # Area 3CD - MCMC diagnostics - traces
 
-```{r fig-base-mcmc-trace-3cd, fig.width=8, fig.height=5}
+```{r fig-base-mcmc-trace-3cd}
 make.traces.plot(base.model.3cd)
 ```
 
 ---
 # Area 3CD - MCMC diagnostics - autocorrelation
 
-```{r fig-base-mcmc-autocor-3cd, fig.width=8, fig.height=5}
+```{r fig-base-mcmc-autocor-3cd}
 make.autocor.plot(base.model.3cd)
+```
+
+---
+# Area 3CD - MCMC diagnostics - priors/posteriors
+```{r fig-base-mcmc-priors-posts-3cd}
+make.priors.posts.plot(base.model.3cd, priors.only = FALSE)
+```
+
+---
+# Area 3CD - MCMC diagnostics - pairs
+```{r fig-base-mcmc-pairs-3cd}
+make.pairs.plot(base.model.3cd)
 ```
 
 ---
@@ -242,7 +305,7 @@ make.autocor.plot(base.model.3cd)
 
 **(a)** - WCVI Synoptic, **(b)** - Commercial CPUE pre-1996
 
-```{r fig-base-index-3cd-1, fig.width=8, fig.height=5}
+```{r fig-base-index-3cd-1}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5)
@@ -258,7 +321,7 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
 
 **(c)** - Commercial CPUE post-1995,  **(d)** - NMFS Triennial (Canada)
 
-```{r fig-base-index-3cd-2, fig.width=8, fig.height=5}
+```{r fig-base-index-3cd-2}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5)
@@ -272,19 +335,55 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
 ---
 # Area 3CD - Mean weight fits
 
-```{r fig-base-mean-weight-3cd, fig.width=8, fig.height=5}
+```{r fig-base-mean-weight-3cd}
 mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
 ```
 
 ---
 # Area 3CD - Catch fits
 
-```{r fig-base-catch-fit-3cd, fig.width=8, fig.height=5}
+```{r fig-base-catch-fit-3cd}
 catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
 ```
 
-
-
-
 ---
 # Area 3CD Biomass
+```{r fig-base-biomass-3cd}
+b.plot(base.model.3cd,
+       base.model.3cd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(1971, 1971),
+       usr = c(1956, 2004))
+```
+
+---
+# Area 3CD - Recruitment and deviations
+```{r fig-base-recr-3cd}
+plot_grid(r.plot(base.model.3cd,
+                 base.model.3cd.name,
+                 add.meds = TRUE,
+                 x.axis.angle = 90),
+          r.devs.plot(base.model.3cd,
+                      base.model.3cd.name,
+                      x.axis.angle = 90),
+          nrow = 1,
+          ncol = 2,
+          labels = c("(a)", "(b)"),
+          label_x = c(0.15, 0.1))
+```
+
+---
+# Area 3CD - Fishing mortality
+```{r fig-base-f-3cd}
+f.plot(base.model.3cd,
+       base.model.3cd.name)
+```
+
+---
+# Area 3CD - Retrospective biomass
+```{r fig-base-retro-biomass-3cd}
+b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
+           c(base.model.3cd.name, retro.names),
+           depl = FALSE)
+```

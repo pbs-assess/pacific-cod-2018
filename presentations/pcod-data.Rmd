@@ -17,20 +17,24 @@ output:
 css: pcod.css
 ---
 
-```{r setup, include=FALSE, cache=FALSE}
+```{r setup, echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE,
+                      error = FALSE,
                       warning = FALSE,
+                      message = FALSE,
+                      results = FALSE,
                       cache = TRUE,
                       autodep = TRUE,
                       cache.comments = FALSE,
                       fig.align = "center",
-                      fig.width = 9,
+                      fig.width = 8,
+                      fig.height = 5,
                       dev = 'svg',
                       fig.asp = 0.618)
 options(htmltools.dir.version = FALSE)
 ```
 
-```{r read-data, echo=FALSE, warnings=FALSE, messages=FALSE, results=FALSE}
+```{r read-data, include = FALSE}
 source(file.path(here::here(), "R", "all.R"))
 build(ovwrt.base = FALSE,
       ovwrt.sens = FALSE,
