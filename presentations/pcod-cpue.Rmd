@@ -43,13 +43,20 @@ class: inverse, middle, center
 
 ---
 
-# Goal
+class: middle
 
-Create an index of Pacific Cod abundance from commercial trawl CPUE that spans from the 1950s to present.
+<h2 style="color:black">Create an index of Pacific Cod abundance from commercial trawl CPUE that spans from the 1950s to present....</h2>
 
---
+<h2 style="color:white">while accounting for the effect of variables that we know have changed through time where possible (e.g. where and when fishing occurs).</h2>
 
-Account for the effect of variables that we know have changed through time where possible (e.g. where and when fishing occurs).
+---
+
+class: middle
+
+<h2 style="color:grey">Create an index of Pacific Cod abundance from commercial trawl CPUE that spans from the 1950s to present....</h2>
+
+<h2 style="color:black">while accounting, where possible, for the effects of variables that we know have changed through time (e.g. where and when fishing occurs).</h2>
+
 
 ---
 
@@ -82,45 +89,11 @@ arith_cpue_modern <- arith_cpue
 m_modern <- readRDS(here::here("data/generated/cpue-models-pcod-modern.rds"))
 ```
 
-```{r cpue-bubble-functions, include=FALSE}
-make_bubble_dat <- function(dat,
-  measure.vars = c("month", "locality_code", "vessel", "latitude", "depth")) {
-  bubble_pos <- bind_rows(dat) %>%
-    filter(spp_catch > 0) %>%
-    reshape2::melt(id.vars = c("year", "area"),
-      measure.vars = measure.vars) %>%
-    group_by(area, year, variable, value) %>%
-    summarize(n_pos = n())
-
-  bubble_all <- bind_rows(dat) %>%
-    reshape2::melt(id.vars = c("year", "area"),
-      measure.vars = measure.vars) %>%
-    group_by(area, year, variable, value) %>%
-    summarize(n = n())
-
-  left_join(bubble_all, bubble_pos, by = c("area", "year", "variable", "value")) %>%
-    ungroup() %>%
-    mutate(variable = gfplot:::firstup(gsub("_", " ", variable)))
-}
-
-make_facet_bubble_plot <- function(dat, group = "fishing events") {
-  ggplot(dat, aes_string("as.factor(year)", y = "value")) +
-    geom_point(aes_string(size = "n_pos", fill = "n"), alpha = 0.4, pch = 21) +
-    geom_point(aes_string(size = "n"), alpha = 0.4, pch = 21) +
-    facet_wrap(~variable, scales = "free", ncol = 2) +
-    ggplot2::scale_x_discrete(breaks = seq(1950, 2020, 5)) +
-    xlab("") + ylab("") +
-    labs(size = paste0("Number of\n", group)) +
-    labs(fill = paste0("Number of\n", group)) +
-    ggplot2::scale_size_continuous(range = c(0, 7)) +
-    ggplot2::scale_fill_viridis_c(trans = "log", breaks = c(1, 10, 100, 500)) +
-    theme_pbs() +
-    theme(legend.position = c(0.95, 0.05), legend.justification = c(1, 0),
-      legend.direction = "horizontal")
-}
+```{r cpue-functions}
+source(here::here('R/cpue-functions.R'))
 ```
 
-## E.g. depth distribution changes through time
+## Depth distribution changes through time
 
 ```{r cpue-historical-bubbles-depth}
 dfleet_hist %>%
@@ -133,27 +106,17 @@ dfleet_hist %>%
 
 ---
 
-## E.g. where fishing occurred changes through time
+## Where fishing occurred changes through time
 
---
-
-.pull-left[
-```{r cpue-locality1, fig.width=7}
-gfplot:::plot_dfo_localities(unique(dfleet_modern[[1]]$locality_code))
+```{r cpue-locality1, fig.width=9}
+g1 <- gfplot:::plot_dfo_localities(unique(dfleet_modern[[1]]$locality_code))
+g2 <- gfplot:::plot_dfo_localities(unique(dfleet_modern[[2]]$locality_code))
+gridExtra::grid.arrange(g1, g2, ncol = 2)
 ```
-]
-
---
-
-.pull-right[
-```{r cpue-locality2, fig.width=7}
-gfplot:::plot_dfo_localities(unique(dfleet_modern[[2]]$locality_code))
-```
-]
 
 ---
 
-## E.g. where fishing occurred changes through time
+## Where fishing occurred changes through time
 
 ```{r cpue-historical-bubbles-locality}
 dfleet_hist %>%
@@ -190,7 +153,7 @@ dfleet_hist %>%
 
 ---
 
-class: inverse, middle, center
+class: middle, center
 
 # Common approach (at PBS):
 
@@ -200,71 +163,82 @@ class: inverse, middle, center
 
 # We extend the delta-lognormal approach in 3 ways:
 
+<br>
+
 --
 
 1. Integrate random effects.
 
 --
 
-2. Use an error distribution that avoids the need for the 'delta' approach.
+2. Use an error distribution that avoids the need for the 2-part 'delta' approach.
 
 --
 
-3. Allow for localities to have slightly different trends or time.
+3. Allow for localities to have different trends through time (space-time interactions).
 
 ---
 
-# Advantages of GLMMs over GLMs for index standardization
+# 1. Extending CPUE standardization: integrate random effects
 
 GLMMs with random effects for factors like vessels, localities, etc.
 
 --
 
-1. allow prediction for an average level
+* allow prediction for an average level
 
 --
 
-1. create more realistic estimates of uncertainty
+* create more realistic estimates of uncertainty
 
 --
 
-1. make better use of the data
+* make better use of the data
 
 --
 
-1. allow for explicit comparison of variance components
+* allow for explicit comparison of variance components
 
 ---
 
-# Challenges with *delta* index standardization models
+# 2. Extending CPUE standardization: avoiding a 'delta' approach
 
 Delta-gamma or delta-lognormal index standardization models:
 
 --
 
-1. add complexity (2 models)
+* add complexity (2 models)
 
 --
 
-1. use 2 GLM links; coefficients cannot be combined
+* use 2 GLM links; coefficients cannot be combined
 
 --
 
-1. assume independence among the 2 models
+* assume independence among the 2 models
 
 --
 
-1. may be insufficiently robust to variable sampling intensity
+* may be insufficiently robust to variable sampling intensity
 
 --
 
-1. **create an index that is dependent on the reference levels**
+* **create an index that is dependent on the reference levels**
+
+---
+
+# 3. Extending CPUE standardization: allowing for space-time interactions
+
+<br>
+
+## If we don't allow for these then we are implicitly assuming that all localities have had the same trend.
 
 ---
 
 class: inverse, middle, center
 
-# A Tweedie GLMM standardization model
+# A Tweedie GLMM standardization model 
+# with space-time interactions
 
 ---
 
@@ -319,6 +293,9 @@ Fit with TMB.
 
 # Defining the 'modern' fleet
 
+<br>
+<br>
+
 - ≥ 100 positive Pacific Cod tows across all years
 
 --
@@ -342,13 +319,29 @@ class: inverse, middle, center
 
 ## Fixed effect coefficients (historical)
 
-<img src="figures/cpue-coef-plot1-1.png" height="500" class='center-img'>
+```{r cpue-fixed-effects-historical, fig.asp=0.55}
+toplot <- c(6, 12)
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_fe_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+# cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
+print(p[[1]])
+```
 
 ---
 
 ## Fixed effect coefficients (modern)
 
-<img src="figures/cpue-coef-plot1-modern-1.png" height="500" class='center-img'>
+```{r cpue-fixed-effects-modern, fig.asp=0.55}
+toplot <- c(8, 16)
+p <- list()
+for (i in seq_along(params$area_name)) {
+  p[[i]] <- make_fe_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
+}
+# cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
+print(p[[1]])
+```
 
 ---
 

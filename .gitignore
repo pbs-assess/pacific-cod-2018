@@ -61,3 +61,5 @@ index/resdoc.utf8.md
 *.pxm
 archive/post-1995-cpue-comparison.Rmd
 presentations/libs/
+data/generated/cpue-predictions-historical.csv
+data/generated/cpue-predictions-modern.csv
