@@ -1,4 +1,5 @@
 ---
+class: inverse
 title: |
   2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Coast Vancouver Island (3CD)
 subtitle: Stock assessment model
@@ -15,6 +16,7 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 css: pcod.css
+
 ---
 
 ```{r setup, include=FALSE, cache=FALSE}
@@ -93,39 +95,18 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
   - Weightage / Weightage-1 is linear (Ford-Walford growth)
 
 ---
-# Reference points for Area 5ABCD
-
-.pull-left[
-**Limit reference point:**
-Lowest estimated biomass from which stock recovered to above average ($B_{1971}$)
-
-**Upper Stock Reference**
-Average estimated biomass 1956-2004
-
-**Limit Removal Rate**
-Average estimated fishing mortality 1956-2004
-]
-
-.pull-right[
-![](Pcod_3CD5ABCDE_Pic.png)
-]
+class: middle, center, inverse
+# Area 5ABCD - Base reference model
 
 ---
-# Reference points for Area 5ABCD
+# Area 5ABCD - Priors
 
-
----
-# Base reference models
-
----
-# Priors
-
-```{r fig-base-mcmc-priors-5abcd, fig.height = 5, fig.width=8}
+```{r fig-base-mcmc-priors-5abcd, fig.width=8, fig.height=5}
 make.priors.posts.plot(base.model.5abcd)
 ```
 
 ---
-# Fixed parameters for Area 5ABCD
+# Area 5ABCD - Fixed parameters
 
 - $\sigma_R$ = 0.8		Standard deviation in log rec. devs
 
@@ -139,14 +120,14 @@ make.priors.posts.plot(base.model.5abcd)
 ---
 # Area 5ABCD - MCMC diagnostics - traces
 
-```{r fig-base-mcmc-trace-5abcd, fig.height = 5, fig.width=8}
+```{r fig-base-mcmc-trace-5abcd, fig.width=8, fig.height=5}
 make.traces.plot(base.model.5abcd)
 ```
 
 ---
 # Area 5ABCD - MCMC diagnostics - autocorrelation
 
-```{r fig-base-mcmc-autocor-5abcd, fig.height = 5, fig.width=8}
+```{r fig-base-mcmc-autocor-5abcd, fig.width=8, fig.height=5}
 make.autocor.plot(base.model.5abcd)
 ```
 
@@ -155,7 +136,7 @@ make.autocor.plot(base.model.5abcd)
 
 **(a)** - HS Assemblage, **(b)** - QCS Synoptic, **(c)** - HS Synoptic
 
-```{r fig-base-index-fits-5abcd-1, dev='svg', fig.width=8, fig.height=5}
+```{r fig-base-index-fits-5abcd-1, fig.width=8, fig.height=5}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5)
@@ -187,14 +168,14 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
 ---
 # Area 5ABCD - Mean weight fits
 
-```{r fig-base-mean-weight-5abcd, fig.cap="MPD fit to the mean weight data for Area 5ABCD base reference model."}
+```{r fig-base-mean-weight-5abcd, fig.width=8, fig.height=5}
 mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
 ```
 
 ---
 # Area 5ABCD - Catch fits
 
-```{r fig-base-catch-fit-5abcd, fig.cap="MPD fit to the catch data for Area 5ABCD base reference model."}
+```{r fig-base-catch-fit-5abcd, fig.width=8, fig.height=5}
 catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
 ```
 
@@ -202,4 +183,108 @@ catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
 
 
 ---
-# Area 5ABCD Biomass
+# Area 5ABCD - Biomass
+
+
+---
+# Area 5ABCD - Reference points
+
+**Limit reference point:**
+Lowest estimated biomass from which stock recovered to above average ($B_{1971}$)
+
+**Upper Stock Reference**
+Average estimated biomass 1956-2004
+
+**Limit Removal Rate**
+Average estimated fishing mortality 1956-2004
+
+
+
+---
+class: middle, center, inverse
+# Area 3CD - Base reference model
+
+---
+# Area 3CD - Priors
+
+```{r fig-base-mcmc-priors-3cd, fig.width=8, fig.height=5}
+make.priors.posts.plot(base.model.3cd)
+```
+
+---
+# Area 3CD - Fixed parameters
+
+- $\sigma_R$ = 0.8		Standard deviation in log rec. devs
+
+- $\sigma_O$ = 0.25	Overall standard dev in obs. errors
+
+- $\sigma_C$ = 0.05	Standard deviation in log catch devs
+
+- $\sigma_W$ = 0.2		Standard deviation in log mean wt devs
+
+
+---
+# Area 3CD - MCMC diagnostics - traces
+
+```{r fig-base-mcmc-trace-3cd, fig.width=8, fig.height=5}
+make.traces.plot(base.model.3cd)
+```
+
+---
+# Area 3CD - MCMC diagnostics - autocorrelation
+
+```{r fig-base-mcmc-autocor-3cd, fig.width=8, fig.height=5}
+make.autocor.plot(base.model.3cd)
+```
+
+---
+# Area 3CD - MPD index fits - 1
+
+**(a)** - WCVI Synoptic, **(b)** - Commercial CPUE pre-1996
+
+```{r fig-base-index-3cd-1, fig.width=8, fig.height=5}
+plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
+          i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
+          nrow = 1,
+          ncol = 2,
+          labels = c("(a)", "(b)"),
+          label_x = c(0.17, 0.15, 0.13, 0.23))
+```
+
+---
+# Area 3CD - MPD index fits - 2
+
+**(c)** - Commercial CPUE post-1995,  **(d)** - NMFS Triennial (Canada)
+
+```{r fig-base-index-3cd-2, fig.width=8, fig.height=5}
+plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
+          i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5)
+            + ylab("Commercial CPUE (kg/hour)"),
+          nrow = 1,
+          ncol = 2,
+          labels = c("(c)", "(d)"),
+          label_x = c(0.17, 0.15, 0.13, 0.23))
+```
+
+---
+# Area 3CD - Mean weight fits
+
+```{r fig-base-mean-weight-3cd, fig.width=8, fig.height=5}
+mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
+```
+
+---
+# Area 3CD - Catch fits
+
+```{r fig-base-catch-fit-3cd, fig.width=8, fig.height=5}
+catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
+```
+
+
+
+
+---
+# Area 3CD Biomass
