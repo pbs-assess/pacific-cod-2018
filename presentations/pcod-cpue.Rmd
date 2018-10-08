@@ -10,6 +10,7 @@ output:
     lib_dir: libs
     chakra: libs/remark-latest.min.js
     nature:
+      titleSlideClass: [center, middle]
       ratio: "16:9"
       highlightStyle: github
       highlightLines: true
@@ -83,21 +84,21 @@ GLMMs with random effects for things like vessels, localities, etc.
 
 ---
 
-## Challenges with delta-GLM indexed standardization models
+## Challenges with *delta* index standardization models
 
-The delta-GLM approach:
-
---
-
-1. adds complexity (2 models)
+Delta-gamma or delta-lognormal index standardization models:
 
 --
 
-1. uses 2 GLM links (coefficients cannot be combined)
+1. add complexity (2 models)
 
 --
 
-1. assumes independence among the 2 models
+1. use 2 GLM links; coefficients cannot be combined
+
+--
+
+1. assume independence among the 2 models
 
 --
 
@@ -105,7 +106,7 @@ The delta-GLM approach:
 
 --
 
-1. **creates an index that is dependent on the standardization reference levels**
+1. **create an index that is dependent on the reference levels**
 
 ---
 
@@ -117,18 +118,22 @@ The delta-GLM approach:
 
 ## A Tweedie GLMM standardization model
 
-<!--
+A Tweedie distribution observation model:
+
+$$
+  y_i \sim \mathrm{Tweedie}(\mu_i, p, \phi), \quad 1 < p < 2,
+$$
+
+and a log link (i.e. an exponentiated inverse link):
+
 $$
 \begin{align}
-  y_i &\sim \mathrm{Tweedie}(\mu_i, p, \phi), \quad 1 < p < 2,\\
-  \mu_i &= \exp \left(
+ \mu_i &= \exp \left(
   \mathbf{X}_i \mathbf{\beta} + \alpha^\mathrm{locality}_{j[i]} + \alpha^\mathrm{locality-year}_{k[i]} + \alpha^\mathrm{vessel}_{l[i]} \right)
-  \\
 \end{align}
 $$
--->
 
-<img src="eqns/tw1.png" width="1221" height="234", class='center-img'>
+with a vector of fixed effects ($\mathbf{\beta}$)
 
 ---
 
@@ -168,19 +173,19 @@ $$
 
 ---
 
-## Historical CPUE standardizations
+## CPUE standardizations (historical)
 
 <img src="../index/knitr-figs/cpue-index-ts-hist-1.png" height="500" class='center-img'>
 
 ---
 
-## Modern CPUE standardizations
+## CPUE standardizations (modern)
 
 <img src="../index/knitr-figs/cpue-index-ts-modern-1.png" height="500" class='center-img'>
 
 ---
 
-## Predictions
+## CPUE standardizations — with and without space-time interactions
 
 <img src="../index/knitr-figs/cpue-int-test-plot-1.png" height="500" class='center-img'>
 

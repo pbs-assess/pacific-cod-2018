@@ -9,6 +9,7 @@ output:
     lib_dir: libs
     nature:
       ratio: "16:9"
+      titleSlideClass: [center, middle]
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
