@@ -295,8 +295,8 @@ m_modern <- readRDS(here::here("data/generated/cpue-models-pcod-modern.rds"))
 ```
 
 ```{r cpue-save}
-readr::write_csv(cpue_pred_modern, "data/generated/cpue-predictions-modern.csv")
-readr::write_csv(cpue_pred_hist, "data/generated/cpue-predictions-historical.csv")
+readr::write_csv(cpue_pred_modern, here::here("data/generated/cpue-predictions-modern.csv"))
+readr::write_csv(cpue_pred_hist, here::here("data/generated/cpue-predictions-historical.csv"))
 ```
 
 ```{r cpue-locality-map-5, fig.cap="DFO localities used in the 5ABCD modern CPUE standardization model.", fig.asp=0.9}
