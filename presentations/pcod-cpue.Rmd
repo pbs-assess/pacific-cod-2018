@@ -271,7 +271,7 @@ class: inverse, middle, center
 
 ## The Tweedie distribution
 
-<img src="figures/cpue-tweedie-ex-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-tweedie-ex-1.png" height="500" class='center-img'>
 
 ---
 
@@ -308,77 +308,77 @@ class: inverse, middle, center
 
 ## Randomized quantile residuals
 
-<img src="figures/cpue-quantile-residuals-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-quantile-residuals-1.png" height="500" class='center-img'>
 
 ---
 
 
 ## Fixed effect coefficients (historical)
 
-<img src="figures/cpue-coef-plot1-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-coef-plot1-1.png" height="500" class='center-img'>
 
 ---
 
 ## Fixed effect coefficients (modern)
 
-<img src="figures/cpue-coef-plot1-modern-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-coef-plot1-modern-1.png" height="500" class='center-img'>
 
 ---
 
 ## Locality random effects (historical)
 
-<img src="figures/cpue-coef-plot2-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-coef-plot2-1.png" height="500" class='center-img'>
 
 ---
 
 ## Locality random effects (modern)
 
-<img src="figures/cpue-coef-plot2-modern-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-coef-plot2-modern-1.png" height="500" class='center-img'>
 
 ---
 
 ## Locality-year random effects (historical)
 
-<img src="figures/cpue-coef-plot3-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-coef-plot3-1.png" height="500" class='center-img'>
 
 ---
 
 ## Locality-year random effects (modern)
 
-<img src="figures/cpue-coef-plot3-modern-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-coef-plot3-modern-1.png" height="500" class='center-img'>
 
 ---
 
 ## CPUE standardizations (historical)
 
-<img src="figures/cpue-index-ts-hist-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-index-ts-hist-1.png" height="500" class='center-img'>
 
 ---
 
 ## CPUE standardizations (modern)
 
-<img src="figures/cpue-index-ts-modern-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-index-ts-modern-1.png" height="500" class='center-img'>
 
 ---
 
 ## CPUE standardizations — with and without space-time interactions
 
-<img src="figures/cpue-int-test-plot-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-int-test-plot-1.png" height="500" class='center-img'>
 
 ---
 
 ## Locality-specific CPUE trends (**with** space-time interactions)
 
-<img src="figures/cpue-re-int-ts-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-re-int-ts-1.png" height="500" class='center-img'>
 
 ---
 
 ## Locality-specific CPUE trends (**without** space-time interactions)
 
-<img src="figures/cpue-re-no-int-ts-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-re-no-int-ts-1.png" height="500" class='center-img'>
 
 ---
 
 ## Simulation testing the space-time assumption
 
-<img src="figures/cpue-sim-test-tweedie-glmm-plot-1.png" height="500" class='center-img'>
+<img src="../index/knitr-figs/cpue-sim-test-tweedie-glmm-plot-1.png" height="500" class='center-img'>
