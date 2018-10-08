@@ -60,11 +60,19 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 - Bayesian delay difference model conditioned on catch
 
+--
+
 - Separate assessments for Area 5ABCD and 3CD
+
+--
 
 - Fit to survey indices, commercial CPUE and mean weight data
 
+--
+
 - Stock-recruitment curve constrained to Beverton-Holt function
+
+--
 
 - Fixed variances for observation and process error
 
@@ -73,7 +81,11 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 - Collapsed age structured model
 
+--
+
 - Tracks the effects of recruitment, survival and growth on biomass
+
+--
 
 - Performs well, as long as its major assumptions are met:
   - Constant mortality at age
