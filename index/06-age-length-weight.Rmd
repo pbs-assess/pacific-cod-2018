@@ -368,9 +368,15 @@ vb_figs <- map(vb_fits, ~ plot_vb(
     ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
     guides(colour = FALSE)
 )
-cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
+g_vb <- cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
+print(g_vb)
 ```
 
+```{r vb-figs-svg}
+g_vb2 <- cowplot::plot_grid(plotlist = list(vb_figs[[2]], vb_figs[[3]]), nrow = 1)
+cowplot::save_plot(here::here('presentations/figures/growth-vb.svg'), plot = g_vb2, base_width = 4, base_height = 3, ncol = 2)
+
+```
 
 ```{r age-vb-pars, fig.asp=0.4, fig.cap = "Coefficient estimates from the von Bertalanffy model."}
 get_par_df <- function(.d, element = 1) {
