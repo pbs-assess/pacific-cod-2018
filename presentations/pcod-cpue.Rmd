@@ -3,7 +3,7 @@ title: |
   2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Coast Vancouver Island (3CD)
 subtitle:  CPUE Standardization
 author: |
-  Robyn E. Forrest, Sean Anderson, Chris Grandin, Paul Starr
+  Robyn Forrest, Sean Anderson, Chris Grandin, Paul Starr
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -26,7 +26,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       autodep = TRUE,
                       cache.comments = FALSE,
                       fig.align = "center",
-                      fig.width = 9,
+                      fig.width = 8,
                       dev = 'svg',
                       fig.asp = 0.618)
 options(htmltools.dir.version = FALSE)
@@ -34,8 +34,8 @@ library(knitr)
 library(ggplot2)
 library(dplyr)
 library(gfplot)
+theme_set(theme_pbs())
 ```
-
 
 class: inverse, middle, center
 
@@ -89,7 +89,7 @@ arith_cpue_modern <- arith_cpue
 m_modern <- readRDS(here::here("data/generated/cpue-models-pcod-modern.rds"))
 ```
 
-```{r cpue-functions}
+```{r cpue-functions, cache=FALSE}
 source(here::here('R/cpue-functions.R'))
 ```
 
@@ -129,7 +129,7 @@ dfleet_hist %>%
 
 ---
 
-# Standardization variables 
+# Standardization variables
 
 .pull-left[
 ### Historical:
@@ -237,14 +237,38 @@ Delta-gamma or delta-lognormal index standardization models:
 
 class: inverse, middle, center
 
-# A Tweedie GLMM standardization model 
+# A Tweedie GLMM standardization model
 # with space-time interactions
 
 ---
 
 ## The Tweedie distribution
 
-<img src="figures/cpue-tweedie-ex-1.png" height="500" class='center-img'>
+```{r cpue-tweedie-ex, fig.asp=0.61}
+plot_tweedie_ex <- function(df, max = 15) {
+  xx <- seq(0, max, length.out = 1000)
+  out <- plyr::mdply(df, function(mu, power, phi) {
+    data.frame(x = xx,
+      y = tweedie::dtweedie(y = xx, mu = mu, power = power, phi = phi))
+  }) %>%
+    mutate(phi = paste("phi =", phi)) %>%
+    mutate(power = paste("p =", power)) %>%
+    mutate(mu = paste("μ =", mu))
+
+  ggplot(out, aes(x, y, colour = mu)) +
+    geom_line() +
+    facet_grid(power~phi, scales = "free") +
+    gfplot::theme_pbs() +
+    labs(colour = "μ") +
+    xlab("Value") + ylab("Density") +
+    coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x))) +
+    scale_colour_brewer(palette = "Dark2") +
+    scale_fill_brewer(palette = "Dark2")
+}
+
+df <- expand.grid(power = c(1.2, 1.6, 1.8), mu = c(1, 3, 6), phi = c(0.5, 1, 2))
+plot_tweedie_ex(df)
+```
 
 ---
 
@@ -275,7 +299,7 @@ Fit with TMB.
 
 # Data aggregation
 
-### 'Historical' 
+### 'Historical'
 
 - 1956–1990 (dockside interviews): trip-locality-level data
 
@@ -312,78 +336,90 @@ class: inverse, middle, center
 
 ## Randomized quantile residuals
 
-<img src="figures/cpue-quantile-residuals-1.png" height="500" class='center-img'>
+```{r cpue-quantile-residuals, fig.asp=0.61}
+qr1 <- qres_tweedie(m_historic[[6]], "cpue")
+gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("Historical", params$area_name[1]))
+qr2 <- qres_tweedie(m_historic[[12]], "cpue")
+gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("Historical", params$area_name[2]))
+qr3 <- qres_tweedie(m_modern[[8]], "cpue")
+gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("Modern", params$area_name[1]))
+qr4 <- qres_tweedie(m_modern[[16]], "cpue")
+gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("Modern", params$area_name[2]))
+cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
+```
 
 ---
 
 
-## Fixed effect coefficients (historical)
+## Example fixed effect coefficients (historical)
 
-```{r cpue-fixed-effects-historical, fig.asp=0.55}
+```{r cpue-fixed-effects-historical, fig.asp=0.61}
 toplot <- c(6, 12)
-p <- list()
-for (i in seq_along(params$area_name)) {
-  p[[i]] <- make_fe_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
-}
-# cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
-print(p[[1]])
+make_fe_plots(m_historic[[toplot[1]]]) + ggtitle(params$area_name[i])
 ```
 
 ---
 
-## Fixed effect coefficients (modern)
+## Example fixed effect coefficients (modern)
 
-```{r cpue-fixed-effects-modern, fig.asp=0.55}
+```{r cpue-fixed-effects-modern, fig.asp=0.61}
 toplot <- c(8, 16)
-p <- list()
-for (i in seq_along(params$area_name)) {
-  p[[i]] <- make_fe_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
-}
-# cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
-print(p[[1]])
+make_fe_plots(m_modern[[toplot[1]]]) + ggtitle(params$area_name[i]) +
+  facet_wrap(~par_group, scales = "free", nrow = 1)
 ```
 
 ---
 
-## Locality random effects (historical)
+## Example locality random effects (historical)
 
-<img src="figures/cpue-coef-plot2-1.png" height="500" class='center-img'>
-
----
-
-## Locality random effects (modern)
-
-<img src="figures/cpue-coef-plot2-modern-1.png" height="500" class='center-img'>
+```{r}
+toplot <- c(6, 12)
+make_re_plots(m_historic[[toplot[1]]], re_names = "locality") +
+  ggtitle(params$area_name[i]) + xlab("Random intercept value\n(log space)")
+```
 
 ---
 
-## Locality-year random effects (historical)
+## Example locality-year random effects (modern)
 
-<img src="figures/cpue-coef-plot3-1.png" height="500" class='center-img'>
-
----
-
-## Locality-year random effects (modern)
-
-<img src="figures/cpue-coef-plot3-modern-1.png" height="500" class='center-img'>
+```{r cpue-re-int-ts, fig.asp=0.61}
+toplot <- c(8, 16)
+make_year_locality_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
+```
 
 ---
 
 ## CPUE standardizations (historical)
 
-<img src="figures/cpue-index-ts-hist-1.png" height="500" class='center-img'>
+```{r cpue-index-ts-hist, fig.asp=1.15, fig.width=4.8}
+make_cpue_ts_dat(cpue_pred_hist) %>% make_cpue_ts_plot() +
+  ggtitle("1956-1995 CPUE") +
+  scale_colour_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2")
+```
 
 ---
 
 ## CPUE standardizations (modern)
 
-<img src="figures/cpue-index-ts-modern-1.png" height="500" class='center-img'>
+```{r cpue-index-ts-modern, fig.asp=1.15, fig.width=4.5}
+make_cpue_ts_dat(cpue_pred_modern) %>% make_cpue_ts_plot() +
+  ggtitle("1996+ CPUE") +
+  scale_colour_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2")
+```
 
 ---
 
 ## CPUE standardizations — with and without space-time interactions
 
-<img src="figures/cpue-int-test-plot-1.png" height="500" class='center-img'>
+```{r cpue-int-test-plot, fig.asp=0.65, fig.width = 8}
+g1 <- make_cpue_ts_dat_noint(cpue_pred_hist) %>% make_cpue_ts_plot_noint() +
+  ggtitle("1956-1995 CPUE")
+g2 <- make_cpue_ts_dat_noint(cpue_pred_modern) %>% make_cpue_ts_plot_noint() +
+  ggtitle("1996+ CPUE")
+cowplot::plot_grid(g1, g2, ncol = 1)
+```
 
 ---
 

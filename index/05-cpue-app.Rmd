@@ -647,6 +647,10 @@ pp %>% group_by(model, variable) %>%
   scale_fill_brewer(palette = "Dark2")
 ```
 
+```{r cpue-sim-save}
+ggsave(here::here("presentations/figures/cpue-sim.svg"), width = 7, height = 4)
+```
+
 ```{r cpue-sim-test-tweedie-glmm-table, results='asis'}
 # group_by(pp, variable, model) %>%
 #   rename(data = variable) %>%
