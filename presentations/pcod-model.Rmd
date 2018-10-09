@@ -148,38 +148,26 @@ make.pairs.plot(base.model.5abcd)
 
 ---
 # Area 5ABCD - MPD index fits - 1
-
-**A** - HS Assemblage, **B** - QCS Synoptic, **C** - HS Synoptic
-
 ```{r fig-base-index-fits-5abcd-1}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("HS Assemblage Survey (kg)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("QCS Synoptic Survey (kg)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 3, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("HS Synoptic Survey (kg)"),
           nrow = 1,
-          ncol = 3,
-          labels = c("A", "B", "C"),
-          label_x = 0.4,
-          hjust = 0)
+          ncol = 3)
 ```
 
 ---
 # Area 5ABCD - MPD index fits - 2
-
-**D** - Commercial CPUE pre-1996, **E** - Commercial CPUE post-1995
-
 ```{r fig-base-index-fits-5abcd-2}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("Pre-1996 Commercial CPUE (kg/hour)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("Post-1995 Commercial CPUE (kg/hour)"),
           nrow = 1,
-          ncol = 2,
-          labels = c("D", "E"),
-          label_x = 0.25,
-          hjust = 0)
+          ncol = 2)
 ```
 
 ---
@@ -264,13 +252,13 @@ make.priors.posts.plot(base.model.3cd)
 ---
 # Area 3CD - Fixed parameters
 
-- $\sigma_R$ = 0.8		Standard deviation in log rec. devs
+- $\sigma_R$ = 0.8  Standard deviation in log rec. devs
 
 - $\sigma_O$ = 0.25	Overall standard dev in obs. errors
 
 - $\sigma_C$ = 0.05	Standard deviation in log catch devs
 
-- $\sigma_W$ = 0.2		Standard deviation in log mean wt devs
+- $\sigma_W$ = 0.2  Standard deviation in log mean wt devs
 
 
 ---
@@ -301,36 +289,24 @@ make.pairs.plot(base.model.3cd)
 
 ---
 # Area 3CD - MPD index fits - 1
-
-**A** - WCVI Synoptic, **B** - Commercial CPUE pre-1996
-
 ```{r fig-base-index-3cd-1}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("WCVI Synoptic Survey (kg)"),
           i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("Pre-1996 Commercial CPUE (kg/hour)"),
           nrow = 1,
-          ncol = 2,
-          labels = c("A", "B"),
-          label_x = c(0.3, 0.25),
-          hjust = 0)
+          ncol = 2)
 ```
 
 ---
 # Area 3CD - MPD index fits - 2
-
-**C** - Commercial CPUE post-1995,  **D** - NMFS Triennial (Canada)
-
 ```{r fig-base-index-3cd-2}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("Post-1995 Commercial CPUE (kg/hour)"),
           i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("NMFS Triennial Survey Canada (kg)"),
           nrow = 1,
-          ncol = 2,
-          labels = c("C", "D"),
-          label_x = c(0.25, 0.3),
-          hjust = 0)
+          ncol = 2)
 ```
 
 ---
