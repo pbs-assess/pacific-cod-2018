@@ -39,13 +39,13 @@ theme_set(theme_pbs())
 
 class: inverse, middle, center
 
-# The goal of commercial CPUE index standardization
+# The goal of commercial CPUE index standardization...
 
 ---
 
 class: middle
 
-<h2 style="color:black">Create an index of Pacific Cod abundance from commercial trawl CPUE that spans from the 1950s to present....</h2>
+<h2 style="color:black">Create an index of Pacific Cod abundance from commercial trawl CPUE that spans from the 1950s to present...</h2>
 
 <h2 style="color:white">while accounting for the effect of variables that we know have changed through time where possible (e.g. where and when fishing occurs).</h2>
 
@@ -55,7 +55,7 @@ class: middle
 
 <h2 style="color:grey">Create an index of Pacific Cod abundance from commercial trawl CPUE that spans from the 1950s to present....</h2>
 
-<h2 style="color:black">while accounting, where possible, for the effects of variables that we know have changed through time (e.g. where and when fishing occurs).</h2>
+<h2 style="color:black">while accounting, where possible, for the effects of variables that have changed through time (e.g. where and when fishing occurs).</h2>
 
 
 ---
