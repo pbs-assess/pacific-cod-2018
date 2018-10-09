@@ -3,7 +3,7 @@ title: |
   2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Coast Vancouver Island (3CD)
 subtitle: Stock assessment model
 author: |
-  Robyn E. Forrest, Sean Anderson, Chris Grandin, Paul Starr
+  Robyn Forrest, Sean Anderson, Chris Grandin, Paul Starr
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
