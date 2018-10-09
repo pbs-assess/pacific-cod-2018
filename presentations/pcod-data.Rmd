@@ -82,6 +82,20 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 - Annual reported catches have shown considerable variability since the beginning of the time series in 1956.
 
 ---
+class: inverse, middle, center
+
+# Data
+
+---
+class: middle
+
+# Data extraction, biological model fitting, and some plotting done with **gfplot**.
+
+<br>
+
+# Groundfish Data Synopsis Report: November 22 and 23.
+
+---
 
 # Commercial Fishery Data
 
