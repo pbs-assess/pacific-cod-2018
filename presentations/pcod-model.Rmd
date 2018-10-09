@@ -99,17 +99,17 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 ---
 class: middle, center, inverse
-# Area 5ABCD - Base reference model
+# Area 5ABCD — Base reference model
 
 ---
-## Area 5ABCD - Priors
+## Area 5ABCD — Priors
 
 ```{r fig-base-mcmc-priors-5abcd}
 make.priors.posts.plot(base.model.5abcd)
 ```
 
 ---
-# Area 5ABCD - Fixed parameters
+# Area 5ABCD — Fixed parameters
 
 - $\sigma_R$ = 0.8		Standard deviation in log rec. devs
 
@@ -121,33 +121,33 @@ make.priors.posts.plot(base.model.5abcd)
 
 
 ---
-## Area 5ABCD - MCMC diagnostics - traces
+## Area 5ABCD — MCMC diagnostics — traces
 
 ```{r fig-base-mcmc-trace-5abcd}
 make.traces.plot(base.model.5abcd)
 ```
 
 ---
-## Area 5ABCD - MCMC diagnostics - autocorrelation
+## Area 5ABCD — MCMC diagnostics — autocorrelation
 
 ```{r fig-base-mcmc-autocor-5abcd}
 make.autocor.plot(base.model.5abcd)
 ```
 
 ---
-## Area 5ABCD - MCMC diagnostics - priors/posteriors
+## Area 5ABCD — MCMC diagnostics — priors/posteriors
 ```{r fig-base-mcmc-priors-posts-5abcd, fig.width=8, fig.height=5}
 make.priors.posts.plot(base.model.5abcd, priors.only = FALSE)
 ```
 
 ---
-## Area 5ABCD - MCMC diagnostics - pairs
+## Area 5ABCD — MCMC diagnostics — pairs
 ```{r fig-base-mcmc-pairs-5abcd}
 make.pairs.plot(base.model.5abcd)
 ```
 
 ---
-## Area 5ABCD - MPD index fits - 1
+## Area 5ABCD — MPD index fits — 1
 ```{r fig-base-index-fits-5abcd-1}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
             + ylab("HS Assemblage Survey (kg)"),
@@ -160,7 +160,7 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
 ```
 
 ---
-## Area 5ABCD - MPD index fits - 2
+## Area 5ABCD — MPD index fits — 2
 ```{r fig-base-index-fits-5abcd-2}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
             + ylab("Pre-1996 Commercial CPUE (kg/hour)"),
@@ -171,21 +171,21 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
 ```
 
 ---
-## Area 5ABCD - Mean weight fits
+## Area 5ABCD — Mean weight fits
 
 ```{r fig-base-mean-weight-5abcd}
 mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
 ```
 
 ---
-## Area 5ABCD - Catch fits
+## Area 5ABCD — Catch fits
 
 ```{r fig-base-catch-fit-5abcd}
 catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
 ```
 
 ---
-## Area 5ABCD - Biomass
+## Area 5ABCD — Biomass
 ```{r fig-base-biomass-5abcd}
 b.plot(base.model.5abcd,
        base.model.5abcd.name,
@@ -196,7 +196,7 @@ b.plot(base.model.5abcd,
 ```
 
 ---
-## Area 5ABCD - Recruitment and deviations
+## Area 5ABCD — Recruitment and deviations
 ```{r fig-base-recr-5abcd}
 plot_grid(r.plot(base.model.5abcd,
                  base.model.5abcd.name,
@@ -210,14 +210,14 @@ plot_grid(r.plot(base.model.5abcd,
 ```
 
 ---
-## Area 5ABCD - Fishing mortality
+## Area 5ABCD — Fishing mortality
 ```{r fig-base-f-5abcd}
 f.plot(base.model.5abcd,
        base.model.5abcd.name)
 ```
 
 ---
-## Area 5ABCD - Retrospective biomass
+## Area 5ABCD — Retrospective biomass
 ```{r fig-base-retro-biomass-5abcd}
 b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
            c(base.model.5abcd.name, retro.names),
@@ -225,7 +225,7 @@ b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
 ```
 
 ---
-## Area 5ABCD - Reference points
+## Area 5ABCD — Reference points
 
 **Limit reference point:**<br />
 Lowest estimated biomass from which stock recovered to above average: $B_{1971}$
@@ -240,17 +240,17 @@ Average estimated fishing mortality from 1956-2004
 
 ---
 class: middle, center, inverse
-# Area 3CD - Base reference model
+# Area 3CD — Base reference model
 
 ---
-## Area 3CD - Priors
+## Area 3CD — Priors
 
 ```{r fig-base-mcmc-priors-3cd}
 make.priors.posts.plot(base.model.3cd)
 ```
 
 ---
-# Area 3CD - Fixed parameters
+# Area 3CD — Fixed parameters
 
 - $\sigma_R$ = 0.8  Standard deviation in log rec. devs
 
@@ -262,33 +262,33 @@ make.priors.posts.plot(base.model.3cd)
 
 
 ---
-## Area 3CD - MCMC diagnostics - traces
+## Area 3CD — MCMC diagnostics — traces
 
 ```{r fig-base-mcmc-trace-3cd}
 make.traces.plot(base.model.3cd)
 ```
 
 ---
-## Area 3CD - MCMC diagnostics - autocorrelation
+## Area 3CD — MCMC diagnostics — autocorrelation
 
 ```{r fig-base-mcmc-autocor-3cd}
 make.autocor.plot(base.model.3cd)
 ```
 
 ---
-## Area 3CD - MCMC diagnostics - priors/posteriors
+## Area 3CD — MCMC diagnostics — priors/posteriors
 ```{r fig-base-mcmc-priors-posts-3cd}
 make.priors.posts.plot(base.model.3cd, priors.only = FALSE)
 ```
 
 ---
-## Area 3CD - MCMC diagnostics - pairs
+## Area 3CD — MCMC diagnostics — pairs
 ```{r fig-base-mcmc-pairs-3cd}
 make.pairs.plot(base.model.3cd)
 ```
 
 ---
-## Area 3CD - MPD index fits - 1
+## Area 3CD — MPD index fits — 1
 ```{r fig-base-index-3cd-1}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
             + ylab("WCVI Synoptic Survey (kg)"),
@@ -299,7 +299,7 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
 ```
 
 ---
-## Area 3CD - MPD index fits - 2
+## Area 3CD — MPD index fits — 2
 ```{r fig-base-index-3cd-2}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
             + ylab("Post-1995 Commercial CPUE (kg/hour)"),
@@ -310,14 +310,14 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
 ```
 
 ---
-## Area 3CD - Mean weight fits
+## Area 3CD — Mean weight fits
 
 ```{r fig-base-mean-weight-3cd}
 mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
 ```
 
 ---
-## Area 3CD - Catch fits
+## Area 3CD — Catch fits
 
 ```{r fig-base-catch-fit-3cd}
 catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
@@ -335,7 +335,7 @@ b.plot(base.model.3cd,
 ```
 
 ---
-## Area 3CD - Recruitment and deviations
+## Area 3CD — Recruitment and deviations
 ```{r fig-base-recr-3cd}
 plot_grid(r.plot(base.model.3cd,
                  base.model.3cd.name,
@@ -349,14 +349,14 @@ plot_grid(r.plot(base.model.3cd,
 ```
 
 ---
-## Area 3CD - Fishing mortality
+## Area 3CD — Fishing mortality
 ```{r fig-base-f-3cd}
 f.plot(base.model.3cd,
        base.model.3cd.name)
 ```
 
 ---
-## Area 3CD - Retrospective biomass
+## Area 3CD — Retrospective biomass
 ```{r fig-base-retro-biomass-3cd}
 b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
            c(base.model.3cd.name, retro.names),
@@ -365,107 +365,107 @@ b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
 
 ---
 class: middle, center, inverse
-# Area 5ABCD - Sensitivity analyses
+# Area 5ABCD — Sensitivity analyses
 
 ---
-## Area 5ABCD - Biomass for sensitivity to CPUE changes/removals
+## Area 5ABCD — Biomass for sensitivity to CPUE changes/removals
 ```{r fig-sens1-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
 ```
 
 ---
-## Area 5ABCD - Biomass for sensitivity to CPUE changes/removals
+## Area 5ABCD — Biomass for sensitivity to CPUE changes/removals
 ```{r fig-sens1-sub2-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.1.sub2), c(base.model.5abcd.name, sens.models.name.1.sub2))
 ```
 
 ---
-## Area 5ABCD - Recruitment for sensitivity to CPUE changes/removals
+## Area 5ABCD — Recruitment for sensitivity to CPUE changes/removals
 ```{r fig-sens1-recr-5abcd}
 r.plot(c(base.model.5abcd, sens.models.1.sub),
        c(base.model.5abcd.name, sens.models.name.1.sub))
 ```
 
 ---
-## Area 5ABCD - Fishing mortality for sensitivity to CPUE changes/removals
+## Area 5ABCD — Fishing mortality for sensitivity to CPUE changes/removals
 ```{r fig-sens1-f-5abcd}
 f.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
 ```
 
 ---
-## Area 5ABCD - Biomass for sensitivity to catchability changes
+## Area 5ABCD — Biomass for sensitivity to catchability changes
 ```{r fig-sens2-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
 
 ---
-## Area 5ABCD - Recruitment for sensitivity to catchability changes
+## Area 5ABCD — Recruitment for sensitivity to catchability changes
 ```{r fig-sens2-recr-5abcd}
 r.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
 
 ---
-## Area 5ABCD - Fishing mortality for sensitivity to catchability changes
+## Area 5ABCD — Fishing mortality for sensitivity to catchability changes
 ```{r fig-sens2-f-5abcd}
 f.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
 
 ---
-## Area 5ABCD - Biomass for sensitivity to natural mortality changes
+## Area 5ABCD — Biomass for sensitivity to natural mortality changes
 ```{r fig-sens3-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
 ```
 
 ---
-## Area 5ABCD - Recruitment for sensitivity to natural mortality changes
+## Area 5ABCD — Recruitment for sensitivity to natural mortality changes
 ```{r fig-sens3-recr-5abcd}
 r.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
 ```
 
 ---
-## Area 5ABCD - Fishing mortality for sensitivity to natural mortality changes
+## Area 5ABCD — Fishing mortality for sensitivity to natural mortality changes
 ```{r fig-sens3-f-5abcd}
 f.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
 ```
 
 ---
-## Area 5ABCD - Biomass for sensitivity to the steepness prior
+## Area 5ABCD — Biomass for sensitivity to the steepness prior
 ```{r fig-sens4-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
 ```
 
 ---
-## Area 5ABCD - Recruitment for sensitivity to the steepness prior
+## Area 5ABCD — Recruitment for sensitivity to the steepness prior
 ```{r fig-sens4-recr-5abcd}
 r.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
 ```
 
 ---
-## Area 5ABCD - Fishing mortality for sensitivity to the steepness prior
+## Area 5ABCD — Fishing mortality for sensitivity to the steepness prior
 ```{r fig-sens4-f-5abcd}
 f.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
 ```
 
 ---
-## Area 5ABCD - Biomass for sensitivity to changes in the growth parameters
+## Area 5ABCD — Biomass for sensitivity to changes in the growth parameters
 ```{r fig-sens5-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
 ---
-## Area 5ABCD - Recruitment for sensitivity to changes in the growth parameters
+## Area 5ABCD — Recruitment for sensitivity to changes in the growth parameters
 ```{r fig-sens5-recr-5abcd}
 r.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
 ---
-## Area 5ABCD - Fishing mortality for sensitivity to changes in the growth parameters
+## Area 5ABCD — Fishing mortality for sensitivity to changes in the growth parameters
 ```{r fig-sens5-f-5abcd}
 f.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
 ---
-## Area 5ABCD - Fits to mean weights for sensitivity to changes in the growth parameters
+## Area 5ABCD — Fits to mean weights for sensitivity to changes in the growth parameters
 ```{r fig-sens5-meanweightfit-5abcd}
 plot_grid(
   mw.plot(sens.models.5[[1]], cv = 0.2, every = 5, last.yr = 2015),
@@ -477,74 +477,74 @@ plot_grid(
 ```
 
 ---
-## Area 5ABCD - Biomass for sensitivity to errors
+## Area 5ABCD — Biomass for sensitivity to errors
 ```{r fig-sens6-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
 
 ---
-## Area 5ABCD - Recruitment for sensitivity to errors
+## Area 5ABCD — Recruitment for sensitivity to errors
 ```{r fig-sens6-recr-5abcd}
 r.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
 
 ---
-## Area 5ABCD - Fishing mortality for sensitivity to errors
+## Area 5ABCD — Fishing mortality for sensitivity to errors
 ```{r fig-sens6-f-5abcd}
 f.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
 
 ---
-## Area 5ABCD - HSMAS index fit for sensitivity to errors
+## Area 5ABCD — HSMAS index fit for sensitivity to errors
 ```{r fig-sens6-index-hsmas-5abcd}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 1)
 ```
 
 ---
-## Area 5ABCD - QCSSS index fit for sensitivity to errors
+## Area 5ABCD — QCSSS index fit for sensitivity to errors
 ```{r fig-sens6-index-qcss-5abcd}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 2)
 ```
 
 ---
-## Area 5ABCD - HSSS index fit for sensitivity to errors
+## Area 5ABCD — HSSS index fit for sensitivity to errors
 ```{r fig-sens6-index-hsss-5abcd}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 3)
 ```
 
 ---
-## Area 5ABCD - Pre-1996 CPUE index fit for sensitivity to errors
+## Area 5ABCD — Pre-1996 CPUE index fit for sensitivity to errors
 ```{r fig-sens6-index-cpue-pre1996-5abcd}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 4, every = 5) +
   ylab("Commercial CPUE (kg/hour)")
 ```
 
 ---
-## Area 5ABCD - Post-1995 CPUE index fit for sensitivity to errors
+## Area 5ABCD — Post-1995 CPUE index fit for sensitivity to errors
 ```{r fig-sens6-index-cpue-post1995-5abcd}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
 ```
 
 ---
-## Area 5ABCD - Biomass for sensitivity to assumed value of $\sigma_W$
+## Area 5ABCD — Biomass for sensitivity to assumed value of $\sigma_W$
 ```{r fig-sens7-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
 ---
-## Area 5ABCD - Recruitment for sensitivity to assumed value of $\sigma_W$
+## Area 5ABCD — Recruitment for sensitivity to assumed value of $\sigma_W$
 ```{r fig-sens7-recr-5abcd}
 r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
 ---
-## Area 5ABCD - Fishing mortality for sensitivity to assumed value of $\sigma_W$
+## Area 5ABCD — Fishing mortality for sensitivity to assumed value of $\sigma_W$
 ```{r fig-sens7-f-5abcd}
 f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
 ---
-## Area 5ABCD - Fits to mean weights for sensitivity to assumed value of $\sigma_W$
+## Area 5ABCD — Fits to mean weights for sensitivity to assumed value of $\sigma_W$
 ```{r fig-sens7-meanweightfit-5abcd}
 plot_grid(
   mw.plot(sens.models.7[[1]], cv = 0.2, every = 5, last.yr = 2015),
@@ -560,113 +560,113 @@ plot_grid(
 
 ---
 class: middle, center, inverse
-# Area 3CD - Sensitivity analyses
+# Area 3CD — Sensitivity analyses
 
 ---
-## Area 3CD - Biomass for sensitivity to CPUE changes/removals
+## Area 3CD — Biomass for sensitivity to CPUE changes/removals
 ```{r fig-sens8-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
 ```
 
 ---
-## Area 3CD - Biomass for sensitivity to CPUE changes/removals
+## Area 3CD — Biomass for sensitivity to CPUE changes/removals
 ```{r fig-sens8-sub2-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.8.sub2), c(base.model.3cd.name, sens.models.name.8.sub2))
 ```
 
 ---
-## Area 3CD - Recruitment for sensitivity to CPUE changes/removals
+## Area 3CD — Recruitment for sensitivity to CPUE changes/removals
 ```{r fig-sens8-recr-3cd}
 r.plot(c(base.model.3cd, sens.models.8.sub),
        c(base.model.3cd.name, sens.models.name.8.sub))
 ```
 
 ---
-## Area 3CD - Fishing mortality for sensitivity to CPUE changes/removals
+## Area 3CD — Fishing mortality for sensitivity to CPUE changes/removals
 ```{r fig-sens8-f-3cd}
 f.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
 ```
 
 ---
-## Area 3CD - Biomass for sensitivity to changes in survey priors
+## Area 3CD — Biomass for sensitivity to changes in survey priors
 ```{r fig-sens9-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
 ```
 
 ---
-## Area 3CD - Biomass for sensitivity to changes in survey priors
+## Area 3CD — Biomass for sensitivity to changes in survey priors
 ```{r fig-sens9-biomass-3cd-sub}
 b.plot(c(base.model.3cd, sens.models.9.sub), c(base.model.3cd.name, sens.models.name.9.sub))
 ```
 
 ---
-## Area 3CD - Recruitment for sensitivity to changes in survey priors
+## Area 3CD — Recruitment for sensitivity to changes in survey priors
 ```{r fig-sens9-recr-3cd}
 r.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
 ```
 
 ---
-## Area 3CD - Fishing mortality for sensitivity to changes in survey priors
+## Area 3CD — Fishing mortality for sensitivity to changes in survey priors
 ```{r fig-sens9-f-3cd, fig.cap="Fishing mortality for the sensitivity to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
 f.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
 ```
 
 ---
-## Area 3CD - Biomass for sensitivity to changes in natural mortality prior
+## Area 3CD — Biomass for sensitivity to changes in natural mortality prior
 ```{r fig-sens10-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
 ```
 
 ---
-## Area 3CD - Recruitment for sensitivity to changes in natural mortality prior
+## Area 3CD — Recruitment for sensitivity to changes in natural mortality prior
 ```{r fig-sens10-recr-3cd}
 r.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
 ```
 
 ---
-## Area 3CD - Fishing mortality for sensitivity to changes in natural mortality prior
+## Area 3CD — Fishing mortality for sensitivity to changes in natural mortality prior
 ```{r fig-sens10-f-3cd}
 f.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
 ```
 
 ---
-## Area 3CD - Biomass for sensitivity to changes in steepness prior
+## Area 3CD — Biomass for sensitivity to changes in steepness prior
 ```{r fig-sens11-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
 ```
 
 ---
-## Area 3CD - Recruitment for sensitivity to changes in steepness prior
+## Area 3CD — Recruitment for sensitivity to changes in steepness prior
 ```{r fig-sens11-recr-3cd}
 r.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
 ```
 
 ---
-## Area 3CD - Fishing mortality for sensitivity to changes in steepness prior
+## Area 3CD — Fishing mortality for sensitivity to changes in steepness prior
 ```{r fig-sens11-f-3cd}
 f.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
 ```
 
 ---
-## Area 3CD - Biomass for sensitivity to changes in growth parameters
+## Area 3CD — Biomass for sensitivity to changes in growth parameters
 ```{r fig-sens12-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
 
 ---
-## Area 3CD - Recruitment for sensitivity to changes in growth parameters
+## Area 3CD — Recruitment for sensitivity to changes in growth parameters
 ```{r fig-sens12-recr-3cd}
 r.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
 
 ---
-## Area 3CD - Fishing mortality for sensitivity to changes in growth parameters
+## Area 3CD — Fishing mortality for sensitivity to changes in growth parameters
 ```{r fig-sens12-f-3cd}
 f.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
 
 ---
-## Area 3CD - Fits to mean weights for sensitivity to changes in growth parameters
+## Area 3CD — Fits to mean weights for sensitivity to changes in growth parameters
 ```{r fig-sens12-meanweightfit-3cd}
 plot_grid(
   mw.plot(sens.models.12[[1]], cv = 0.2, every = 5, last.yr = 2015),
@@ -678,68 +678,68 @@ plot_grid(
 ```
 
 ---
-## Area 3CD - Biomass for sensitivity to changes in errors
+## Area 3CD — Biomass for sensitivity to changes in errors
 ```{r fig-sens13-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
 ```
 
 ---
-## Area 3CD - Recruitment for sensitivity to changes in errors
+## Area 3CD — Recruitment for sensitivity to changes in errors
 ```{r fig-sens13-recr-3cd}
 r.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
 ```
 
 ---
-## Area 3CD - Fishing mortality for sensitivity to changes in errors
+## Area 3CD — Fishing mortality for sensitivity to changes in errors
 ```{r fig-sens13-f-3cd}
 f.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
 ```
 
 ---
-## Area 3CD - WCVISS index fits for sensitivity to changes in errors
+## Area 3CD — WCVISS index fits for sensitivity to changes in errors
 ```{r fig-sens13-index-wcviss-3cd}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 1, leg.loc = "topleft")
 ```
 
 ---
-## Area 3CD - Pre-1996 CPUE index fits for sensitivity to changes in errors
+## Area 3CD — Pre-1996 CPUE index fits for sensitivity to changes in errors
 ```{r fig-sens13-index-cpue-pre1996-3cd}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 2, every = 5) +
   ylab("Commercial CPUE (kg/hour)")
 ```
 
 ---
-## Area 3CD - Post-1995 CPUE index fits for sensitivity to changes in errors
+## Area 3CD — Post-1995 CPUE index fits for sensitivity to changes in errors
 ```{r fig-sens13-index-cpue-post1995-3cd}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 3, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
 ```
 
 ---
-## Area 3CD - NMFS Triennial survey index fits for sensitivity to changes in errors
+## Area 3CD — NMFS Triennial survey index fits for sensitivity to changes in errors
 ```{r fig-sens13-index-triennial-3cd}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 4)
 ```
 
 ---
-## Area 3CD - Biomass for sensitivity to changes in $\sigma_W$
+## Area 3CD — Biomass for sensitivity to changes in $\sigma_W$
 ```{r fig-sens14-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
 ---
-## Area 3CD - Recruitment for sensitivity to changes in $\sigma_W$
+## Area 3CD — Recruitment for sensitivity to changes in $\sigma_W$
 ```{r fig-sens14-recr-3cd}
 r.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
 ---
-## Area 3CD - Fishing mortality for sensitivity to changes in $\sigma_W$
+## Area 3CD — Fishing mortality for sensitivity to changes in $\sigma_W$
 ```{r fig-sens14-f-3cd}
 f.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
 ---
-## Area 3CD - Fit to mean weights for sensitivity to changes in $\sigma_W$
+## Area 3CD — Fit to mean weights for sensitivity to changes in $\sigma_W$
 ```{r fig-sens14-meanweightfit-3cd}
 plot_grid(
   mw.plot(sens.models.14[[1]], cv = 0.2, every = 5, last.yr = 2015),
