@@ -36,6 +36,8 @@ decision.table <- function(models,
     dat[t, 6] <- f(mean(d$F2018FAvgS > 1), 2)  #P(F2018>FAvg) #Avg 1956-2004
   }
 
+  dat <- mutate_at(dat, -1, function(x) gsub('0.00', '<0.01', x))
+  dat <- mutate_at(dat, -1, function(x) gsub('1.00', '>0.99', x))
   if(make.table){
     kable(dat,
           caption = caption,
