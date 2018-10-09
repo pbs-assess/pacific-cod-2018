@@ -218,7 +218,7 @@ make.autocor.plot(base.model.5abcd)
 ```
 
 ---
-# Area 5ABCD - MPD index fits - 1
+## Area 5ABCD - MPD index fits - 1
 ```{r fig-base-index-fits-5abcd-1}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
             + ylab("HS Assemblage Survey (kg)"),
@@ -249,7 +249,7 @@ mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
 ```
 
 ---
-# Area 5ABCD - Reference points
+## Area 5ABCD - Reference points
 
 **Limit reference point:**<br />
 Lowest estimated biomass from which stock recovered to above average: $B_{1971}$
@@ -344,7 +344,7 @@ make.autocor.plot(base.model.3cd)
 ```
 
 ---
-# Area 3CD - MPD index fits - 1
+## Area 3CD - MPD index fits - 1
 ```{r fig-base-index-3cd-1}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
             + ylab("WCVI Synoptic Survey (kg)"),
@@ -441,30 +441,31 @@ b.plot(c(base.model.5abcd, sens.models.1.sub2), c(base.model.5abcd.name, sens.mo
 ```
 
 ---
-# Area 5ABCD - Biomass for sensitivity to catchability changes
+## Area 5ABCD - Biomass for sensitivity to catchability changes
 ```{r fig-sens2-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
 
 ---
-# Area 5ABCD - Biomass for sensitivity to natural mortality changes
+## Area 5ABCD - Biomass for sensitivity to natural mortality changes
 ```{r fig-sens3-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
 ```
 
 ---
-# Area 5ABCD - Biomass for sensitivity to the steepness prior
+## Area 5ABCD - Biomass for sensitivity to the steepness prior
 ```{r fig-sens4-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
 ```
+
 ---
-# Area 5ABCD - Biomass for sensitivity to changes in growth and age at recruitment
+## Area 5ABCD - Biomass for sensitivity to changes in growth and age at recruitment
 ```{r fig-sens5-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
 ---
-# Area 5ABCD - Fits to mean weights for sensitivity to changes in age at recruitment
+## Area 5ABCD - Fits to mean weights for sensitivity to changes in age at recruitment
 ```{r fig-sens5-meanweightfit-5abcd}
 plot_grid(
   mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015),
@@ -474,19 +475,19 @@ plot_grid(
 ```
 
 ---
-# Area 5ABCD - Biomass for sensitivity to fixed variances
+## Area 5ABCD - Biomass for sensitivity to fixed variances
 ```{r fig-sens6-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
 
 ---
-# Area 5ABCD - Biomass for sensitivity to fixed value of $\sigma_W$
+## Area 5ABCD - Biomass for sensitivity to fixed value of $\sigma_W$
 ```{r fig-sens7-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
 ---
-# Area 5ABCD - Fits to mean weights for sensitivity to fixed value of $\sigma_W$
+## Area 5ABCD - Fits to mean weights for sensitivity to fixed value of $\sigma_W$
 ```{r fig-sens7-meanweightfit-5abcd}
 plot_grid(
   mw.plot(sens.models.7[[1]], cv = 0.2, every = 5, last.yr = 2015),
@@ -512,7 +513,7 @@ b.plot(c(base.model.3cd, sens.models.8.sub2), c(base.model.3cd.name, sens.models
 ```
 
 ---
-# Area 3CD - Biomass for sensitivity to changes in survey priors
+## Area 3CD - Biomass for sensitivity to changes in survey priors
 ```{r fig-sens9-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
 ```
@@ -524,25 +525,25 @@ b.plot(c(base.model.3cd, sens.models.9.sub), c(base.model.3cd.name, sens.models.
 ```
 
 ---
-# Area 3CD - Biomass for sensitivity to changes in natural mortality prior
+## Area 3CD - Biomass for sensitivity to changes in natural mortality prior
 ```{r fig-sens10-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
 ```
 
 ---
-# Area 3CD - Biomass for sensitivity to changes in steepness prior
+## Area 3CD - Biomass for sensitivity to changes in steepness prior
 ```{r fig-sens11-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
 ```
 
 ---
-# Area 3CD - Biomass for sensitivity to changes in growth parameters
+## Area 3CD - Biomass for sensitivity to changes in growth parameters
 ```{r fig-sens12-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
 
 ---
-# Area 3CD - Fits to mean weights for sensitivity to changes in growth and age at recruitment
+## Area 3CD - Fits to mean weights for sensitivity to changes in growth and age at recruitment
 ```{r fig-sens12-meanweightfit-3cd}
 plot_grid(
   mw.plot(base.model.3cd[[1]], cv = 0.2, every = 5, last.yr = 2015),
@@ -552,19 +553,19 @@ plot_grid(
 ```
 
 ---
-# Area 3CD - Biomass for sensitivity to changes in fixed variances
+## Area 3CD - Biomass for sensitivity to changes in fixed variances
 ```{r fig-sens13-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
 ```
 
 ---
-# Area 3CD - Biomass for sensitivity to fixed value of $\sigma_W$
+## Area 3CD - Biomass for sensitivity to fixed value of $\sigma_W$
 ```{r fig-sens14-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
 ---
-# Area 3CD - Fit to mean weights for sensitivity to fixed value of $\sigma_W$
+## Area 3CD - Fit to mean weights for sensitivity to fixed value of $\sigma_W$
 ```{r fig-sens14-meanweightfit-3cd}
 plot_grid(
   mw.plot(sens.models.14[[1]], cv = 0.2, every = 5, last.yr = 2015),
