@@ -3,7 +3,7 @@ title: |
   2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Coast Vancouver Island (3CD)
 subtitle: Data
 author: |
-  Robyn E. Forrest, Sean Anderson, Chris Grandin, Paul Starr
+  Robyn Forrest, Sean Anderson, Chris Grandin, Paul Starr
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -67,9 +67,9 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 - May be genetically distinct from other areas.
 
-- In BC the maximum age is 10-11 yr and maximum size is 100 cm.
+- In BC the maximum age is 10–11 yr and maximum size is 100 cm.
 
-- Pacific Cod are demersal spawners; spawning most likely occurs during February to March.
+- Pacific Cod are demersal spawners; spawning most likely occurs from February to March.
 
 ---
 
@@ -77,9 +77,23 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 - Pacific Cod are caught almost entirely by bottom trawl.
 
-- Mainly captured at depths less than 150 m.
+- Mainly captured at depths less than 300 m.
 
 - Annual reported catches have shown considerable variability since the beginning of the time series in 1956.
+
+---
+class: inverse, middle, center
+
+# Data
+
+---
+class: middle
+
+# Data extraction, biological model fitting, and some plotting done with **gfplot**.
+
+<br>
+
+# Groundfish Data Synopsis Report: November 22 and 23.
 
 ---
 
@@ -229,9 +243,9 @@ Criteria for length data extraction for use in estimating size composition of bo
 
 ---
 
-# Commercial Length Data
+## Commercial Length Data
 
-```{r lengths-comm}
+```{r lengths-comm, fig.asp=1.1, fig.width=5.0}
 xx <- dat$commercial_samples %>%
   dplyr::filter(!is.na(length))
 
@@ -254,7 +268,8 @@ xx %>%
  mutate(sex = "M", survey_abbrev = area) %>% # sex = "M" is a trick to plot them all
  plot_lengths() + xlab("Length (cm)") +
  guides(colour = FALSE, fill = FALSE) +
- ggtitle('')
+ ggtitle('') +
+ theme(strip.text.y = element_text(angle = 0, size = rel(1.0), hjust = 0))
 ```
 
 ---
@@ -270,5 +285,67 @@ xx %>%
   bin_size = 2,
   year_range = c(2002, Inf)) %>%
   plot_lengths()
+```
 
+---
+
+# Age data
+
+```{r age-plotages}
+tidy_ages_raw(x,
+  survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
+  ageing_method_codes = 6
+) %>%
+  plot_ages(
+    count_label_size = 3, diagonal_lines = seq(-2100, -1850, 2),
+    max_size = 12
+  ) +
+  scale_x_continuous(breaks = 2006:2011) +
+  scale_y_continuous(breaks = seq(1, 10)) +
+  ggtitle("") +
+  ylim(0, NA)
+```
+
+---
+
+# Ageing precision
+
+```{r age-precision}
+tidy_age_precision(dat$age_precision, ageing_method_codes = 6) %>%
+  plot_age_precision(n = 1e6) +
+  scale_x_continuous(breaks = seq(0, 10, 1)) +
+  scale_y_continuous(breaks = seq(0, 10, 1)) +
+  ggtitle("")
+```
+
+---
+
+# von Bertalanffy growth fits
+
+<img src="figures/growth-vb.svg" height="500" class='center-img'>
+
+---
+
+# Length-weight fits
+
+```{r age-fit-lw, results='hide', fig.asp=0.4, fig.width=8}
+sexes <- c("all")
+surveys_list <- list(
+  `SYN HS, SYN QCS` = c("SYN HS", "SYN QCS"),
+  `SYN WCVI` = "SYN WCVI"
+)
+lw_fits <-
+  map(surveys_list, function(.survey) {
+    map(sexes, function(.sex) {
+      .dat <- filter(x, is.element(survey_abbrev, .survey))
+      fit_length_weight(.dat, .sex, method = "rlm")
+    })
+  })
+lw_figs <- map(lw_fits, ~ plot_length_weight(
+  object_all = .x[[1]],
+      col = c(All = "grey30"), lab_x_gap = 0.45) +
+    ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
+    guides(colour = FALSE)
+  )
+cowplot::plot_grid(plotlist = lw_figs, nrow = 1)
 ```

@@ -3,7 +3,7 @@ title: |
   2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Coast Vancouver Island (3CD)
 subtitle: Stock assessment model
 author: |
-  Robyn E. Forrest, Sean Anderson, Chris Grandin, Paul Starr
+  Robyn Forrest, Sean Anderson, Chris Grandin, Paul Starr
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -82,7 +82,7 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 - Fixed variances for observation and process error
 
 ---
-# The delay difference model
+## The delay difference model
 
 - Collapsed age structured model
 
@@ -180,7 +180,7 @@ class: middle, center, inverse
 # Area 5ABCD - Base reference model
 
 ---
-# Area 5ABCD - Priors
+## Area 5ABCD — Priors
 
 ```{r fig-base-mcmc-priors-5abcd}
 make.priors.posts.plot(base.model.5abcd)
@@ -204,14 +204,14 @@ make.priors.posts.plot(base.model.5abcd, priors.only = FALSE)
 - $\sigma_W$ = 0.2  Standard deviation in log mean wt devs
 
 ---
-# Area 5ABCD - MCMC diagnostics - traces
+## Area 5ABCD — MCMC diagnostics — traces
 
 ```{r fig-base-mcmc-trace-5abcd}
 make.traces.plot(base.model.5abcd)
 ```
 
 ---
-# Area 5ABCD - MCMC diagnostics - autocorrelation
+## Area 5ABCD — MCMC diagnostics — autocorrelation
 
 ```{r fig-base-mcmc-autocor-5abcd}
 make.autocor.plot(base.model.5abcd)
@@ -231,7 +231,7 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
 ```
 
 ---
-# Area 5ABCD - MPD index fits - 2
+## Area 5ABCD — MPD index fits — 2
 ```{r fig-base-index-fits-5abcd-2}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
             + ylab("Pre-1996 Commercial CPUE (kg/hour)"),
@@ -242,7 +242,7 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
 ```
 
 ---
-# Area 5ABCD - Mean weight fits
+## Area 5ABCD — Mean weight fits
 
 ```{r fig-base-mean-weight-5abcd}
 mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
@@ -261,7 +261,7 @@ Average estimated biomass from 1956-2004
 Average estimated fishing mortality from 1956-2004
 
 ---
-# Area 5ABCD - Biomass
+## Area 5ABCD — Biomass
 ```{r fig-base-biomass-5abcd}
 b.plot(base.model.5abcd,
        base.model.5abcd.name,
@@ -272,7 +272,7 @@ b.plot(base.model.5abcd,
 ```
 
 ---
-# Area 5ABCD - Recruitment and deviations
+## Area 5ABCD — Recruitment and deviations
 ```{r fig-base-recr-5abcd}
 plot_grid(r.plot(base.model.5abcd,
                  base.model.5abcd.name,
@@ -286,14 +286,14 @@ plot_grid(r.plot(base.model.5abcd,
 ```
 
 ---
-# Area 5ABCD - Fishing mortality
+## Area 5ABCD — Fishing mortality
 ```{r fig-base-f-5abcd}
 f.plot(base.model.5abcd,
        base.model.5abcd.name)
 ```
 
 ---
-# Area 5ABCD - Retrospective biomass
+## Area 5ABCD — Retrospective biomass
 ```{r fig-base-retro-biomass-5abcd}
 b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
            c(base.model.5abcd.name, retro.names),
@@ -302,10 +302,10 @@ b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
 
 ---
 class: middle, center, inverse
-# Area 3CD - Base reference model
+# Area 3CD — Base reference model
 
 ---
-# Area 3CD - Priors
+## Area 3CD — Priors
 
 ```{r fig-base-mcmc-priors-3cd}
 make.priors.posts.plot(base.model.3cd)
@@ -330,14 +330,14 @@ make.priors.posts.plot(base.model.3cd, priors.only = FALSE)
 
 
 ---
-# Area 3CD - MCMC diagnostics - traces
+## Area 3CD — MCMC diagnostics — traces
 
 ```{r fig-base-mcmc-trace-3cd}
 make.traces.plot(base.model.3cd)
 ```
 
 ---
-# Area 3CD - MCMC diagnostics - autocorrelation
+## Area 3CD — MCMC diagnostics — autocorrelation
 
 ```{r fig-base-mcmc-autocor-3cd}
 make.autocor.plot(base.model.3cd)
@@ -355,7 +355,7 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
 ```
 
 ---
-# Area 3CD - MPD index fits - 2
+## Area 3CD — MPD index fits — 2
 ```{r fig-base-index-3cd-2}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
             + ylab("Post-1995 Commercial CPUE (kg/hour)"),
@@ -366,7 +366,7 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
 ```
 
 ---
-# Area 3CD - Mean weight fits
+## Area 3CD — Mean weight fits
 
 ```{r fig-base-mean-weight-3cd}
 mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015)
@@ -385,7 +385,7 @@ Average estimated biomass from 1956-2004
 Average estimated fishing mortality from 1956-2004
 
 ---
-# Area 3CD Biomass
+## Area 3CD Biomass
 ```{r fig-base-biomass-3cd}
 b.plot(base.model.3cd,
        base.model.3cd.name,
@@ -396,7 +396,7 @@ b.plot(base.model.3cd,
 ```
 
 ---
-# Area 3CD - Recruitment and deviations
+## Area 3CD — Recruitment and deviations
 ```{r fig-base-recr-3cd}
 plot_grid(r.plot(base.model.3cd,
                  base.model.3cd.name,
@@ -410,14 +410,14 @@ plot_grid(r.plot(base.model.3cd,
 ```
 
 ---
-# Area 3CD - Fishing mortality
+## Area 3CD — Fishing mortality
 ```{r fig-base-f-3cd}
 f.plot(base.model.3cd,
        base.model.3cd.name)
 ```
 
 ---
-# Area 3CD - Retrospective biomass
+## Area 3CD — Retrospective biomass
 ```{r fig-base-retro-biomass-3cd}
 b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
            c(base.model.3cd.name, retro.names),
@@ -426,16 +426,16 @@ b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
 
 ---
 class: middle, center, inverse
-# Area 5ABCD - Sensitivity analyses
+# Area 5ABCD — Sensitivity analyses
 
 ---
-# Area 5ABCD - Biomass for sensitivity to CPUE changes/removals
+## Area 5ABCD — Biomass for sensitivity to CPUE changes/removals
 ```{r fig-sens1-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
 ```
 
 ---
-# Area 5ABCD - Biomass for sensitivity to CPUE changes/removals
+## Area 5ABCD — Biomass for sensitivity to CPUE changes/removals
 ```{r fig-sens1-sub2-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.1.sub2), c(base.model.5abcd.name, sens.models.name.1.sub2))
 ```
@@ -497,16 +497,16 @@ plot_grid(
 
 ---
 class: middle, center, inverse
-# Area 3CD - Sensitivity analyses
+# Area 3CD — Sensitivity analyses
 
 ---
-# Area 3CD - Biomass for sensitivity to CPUE changes/removals
+## Area 3CD — Biomass for sensitivity to CPUE changes/removals
 ```{r fig-sens8-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
 ```
 
 ---
-# Area 3CD - Biomass for sensitivity to CPUE changes/removals
+## Area 3CD — Biomass for sensitivity to CPUE changes/removals
 ```{r fig-sens8-sub2-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.8.sub2), c(base.model.3cd.name, sens.models.name.8.sub2))
 ```
@@ -518,7 +518,7 @@ b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name
 ```
 
 ---
-# Area 3CD - Biomass for sensitivity to changes in survey priors
+## Area 3CD — Biomass for sensitivity to changes in survey priors
 ```{r fig-sens9-biomass-3cd-sub}
 b.plot(c(base.model.3cd, sens.models.9.sub), c(base.model.3cd.name, sens.models.name.9.sub))
 ```
