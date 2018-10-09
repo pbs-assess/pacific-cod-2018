@@ -87,9 +87,9 @@ base.model.3cd.name <- "Reference model 3CD"
 base.model.3cd.dir.name <- file.path(model.dir,
                                      "1_1a_3CD_BASE_fix-localities")
 
-base.model.5abcd.name <- "1a) Reference model 5ABCD"
+base.model.5abcd.name <- "1a) Reference model 5ABCD: 2-sex growth + 2018 catch"
 base.model.5abcd.dir.name <- file.path(model.dir,
-                                       "0_1a_5ABCD_BASE_fix-localities")
+                                       "0_0a_5ABCD_BASE-preReview")
 
 if(verbose){
   cat0("Base model directory name for reference model 5abcd:\n", base.model.5abcd.dir.name)
@@ -97,6 +97,17 @@ if(verbose){
   cat0("Base model directory name for reference model 3cd:\n", base.model.3cd.dir.name)
   cat0("Base model pretty name for reference model 3cd:\n", base.model.3cd.name)
 }
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 0 (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.0 <- c(file.path(model.dir,
+                                      "0_0a_5ABCD_BASE-preReview"),
+                            file.path(model.dir,
+                                      "0_0b_5ABCD_BASE-UpdateGrowth"))
+
+sens.models.name.0.sub <- c("Female growth parameters, no 2018 Catch",
+                            "2-sex growth parameters, no 2018 Catch")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 1 subset (5ABCD)
@@ -408,6 +419,7 @@ retro.names <- c("- 1 year",
 ## and sensitivity models change in the model.dir.names above..
 load.models.into.parent.env <- function(){
   base.model.5abcd <<- load.models(base.model.5abcd.dir.name)
+  sens.models.0 <<- load.models(sens.models.dir.name.0)
   sens.models.1.sub <<- load.models(sens.models.dir.name.1.sub)
   sens.models.1.sub2 <<- load.models(sens.models.dir.name.1.sub2)
   sens.models.1 <<- load.models(sens.models.dir.name.1)
@@ -470,7 +482,8 @@ build <- function(ovwrt.base = FALSE,
 
   ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the for loop below to work right
-  sens.models.names.list <- c(unlist(sens.models.dir.name.1),
+  sens.models.names.list <- c(unlist(sens.models.dir.name.0),
+                              unlist(sens.models.dir.name.1),
                               unlist(sens.models.dir.name.2),
                               unlist(sens.models.dir.name.3),
                               unlist(sens.models.dir.name.4),
