@@ -372,10 +372,11 @@ make_fe_plots(m_modern[[toplot[1]]]) + ggtitle(params$area_name[i]) +
 
 ## Example locality random effects (historical)
 
-```{r}
+```{r cpue-locality-random-effects, fig.width=4.0, fig.asp=1.3}
 toplot <- c(6, 12)
 make_re_plots(m_historic[[toplot[1]]], re_names = "locality") +
-  ggtitle(params$area_name[i]) + xlab("Random intercept value\n(log space)")
+  ggtitle(params$area_name[i]) + xlab("Random intercept value\n(log space)") +
+  theme_pbs(base_size = 9)
 ```
 
 ---
@@ -389,24 +390,28 @@ make_year_locality_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
 
 ---
 
-## CPUE standardizations (historical)
+### CPUE standardizations (historical)
 
-```{r cpue-index-ts-hist, fig.asp=1.15, fig.width=4.8}
+```{r cpue-index-ts-hist, fig.width=5.5, fig.asp=1.0}
 make_cpue_ts_dat(cpue_pred_hist) %>% make_cpue_ts_plot() +
   ggtitle("1956-1995 CPUE") +
   scale_colour_brewer(palette = "Dark2") +
-  scale_fill_brewer(palette = "Dark2")
+  scale_fill_brewer(palette = "Dark2") +
+  theme(strip.text.y = element_text(angle = 0, size = rel(1.5), hjust = 0)) +
+  theme(strip.text.x = element_text(angle = 0, size = rel(1.5)))
 ```
 
 ---
 
-## CPUE standardizations (modern)
+### CPUE standardizations (modern)
 
-```{r cpue-index-ts-modern, fig.asp=1.15, fig.width=4.5}
+```{r cpue-index-ts-modern, fig.asp=1.05, fig.width=5.2}
 make_cpue_ts_dat(cpue_pred_modern) %>% make_cpue_ts_plot() +
   ggtitle("1996+ CPUE") +
   scale_colour_brewer(palette = "Dark2") +
-  scale_fill_brewer(palette = "Dark2")
+  scale_fill_brewer(palette = "Dark2") +
+  theme(strip.text.y = element_text(angle = 0, size = rel(1.5), hjust = 0)) +
+  theme(strip.text.x = element_text(angle = 0, size = rel(1.5)))
 ```
 
 ---
@@ -437,4 +442,4 @@ cowplot::plot_grid(g1, g2, ncol = 1)
 
 ## Simulation testing the space-time assumption
 
-<img src="figures/cpue-sim-test-tweedie-glmm-plot-1.png" height="500" class='center-img'>
+<img src="figures/cpue-sim.svg" height="500" class='center-img'>
