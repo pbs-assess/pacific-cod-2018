@@ -150,7 +150,7 @@ make.pairs.plot(base.model.5abcd)
 ---
 # Area 5ABCD - MPD index fits - 1
 
-**(a)** - HS Assemblage, **(b)** - QCS Synoptic, **(c)** - HS Synoptic
+**A** - HS Assemblage, **B** - QCS Synoptic, **C** - HS Synoptic
 
 ```{r fig-base-index-fits-5abcd-1}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
@@ -161,14 +161,15 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5)
             + ylab("Commercial CPUE (kg/hour)"),
           nrow = 1,
           ncol = 3,
-          labels = c("(a)", "(b)", "(c)"),
-          label_x = 0.15)
+          labels = c("A", "B", "C"),
+          label_x = 0.4,
+          hjust = 0)
 ```
 
 ---
 # Area 5ABCD - MPD index fits - 2
 
-**(d)** - Commercial CPUE pre-1996, **(e)** - Commercial CPUE post-1995
+**D** - Commercial CPUE pre-1996, **E** - Commercial CPUE post-1995
 
 ```{r fig-base-index-fits-5abcd-2}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
@@ -177,8 +178,9 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
             + ylab("Commercial CPUE (kg/hour)"),
           nrow = 1,
           ncol = 2,
-          labels = c("(d)", "(e)"),
-          label_x = 0.08)
+          labels = c("D", "E"),
+          label_x = 0.25,
+          hjust = 0)
 ```
 
 ---
@@ -217,9 +219,7 @@ plot_grid(r.plot(base.model.5abcd,
                       base.model.5abcd.name,
                       x.axis.angle = 90),
           nrow = 1,
-          ncol = 2,
-          labels = c("(a)", "(b)"),
-          label_x = c(0.15, 0.1))
+          ncol = 2)
 ```
 
 ---
@@ -303,7 +303,7 @@ make.pairs.plot(base.model.3cd)
 ---
 # Area 3CD - MPD index fits - 1
 
-**(a)** - WCVI Synoptic, **(b)** - Commercial CPUE pre-1996
+**A** - WCVI Synoptic, **B** - Commercial CPUE pre-1996
 
 ```{r fig-base-index-3cd-1}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
@@ -312,14 +312,15 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5)
             + ylab("Commercial CPUE (kg/hour)"),
           nrow = 1,
           ncol = 2,
-          labels = c("(a)", "(b)"),
-          label_x = c(0.17, 0.15, 0.13, 0.23))
+          labels = c("A", "B"),
+          label_x = c(0.3, 0.25),
+          hjust = 0)
 ```
 
 ---
 # Area 3CD - MPD index fits - 2
 
-**(c)** - Commercial CPUE post-1995,  **(d)** - NMFS Triennial (Canada)
+**C** - Commercial CPUE post-1995,  **D** - NMFS Triennial (Canada)
 
 ```{r fig-base-index-3cd-2}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
@@ -328,8 +329,9 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
             + ylab("Commercial CPUE (kg/hour)"),
           nrow = 1,
           ncol = 2,
-          labels = c("(c)", "(d)"),
-          label_x = c(0.17, 0.15, 0.13, 0.23))
+          labels = c("C", "D"),
+          label_x = c(0.25, 0.3),
+          hjust = 0)
 ```
 
 ---
@@ -368,9 +370,7 @@ plot_grid(r.plot(base.model.3cd,
                       base.model.3cd.name,
                       x.axis.angle = 90),
           nrow = 1,
-          ncol = 2,
-          labels = c("(a)", "(b)"),
-          label_x = c(0.15, 0.1))
+          ncol = 2)
 ```
 
 ---
@@ -551,25 +551,25 @@ i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.
 ```
 
 ---
-# Area 5ABCD - Biomass for sensitivity to assumed value of $\\sigma_{W}$
+# Area 5ABCD - Biomass for sensitivity to assumed value of $\sigma_W$
 ```{r fig-sens7-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
 ---
-# Area 5ABCD - Recruitment for sensitivity to assumed value of $\\sigma_{W}$
+# Area 5ABCD - Recruitment for sensitivity to assumed value of $\sigma_W$
 ```{r fig-sens7-recr-5abcd}
 r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
 ---
-# Area 5ABCD - Fishing mortality for sensitivity to assumed value of $\\sigma_{W}$
+# Area 5ABCD - Fishing mortality for sensitivity to assumed value of $\sigma_W$
 ```{r fig-sens7-f-5abcd}
 f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
 ---
-# Area 5ABCD - Fits to mean weights for sensitivity to assumed value of $\\sigma_{W}$
+# Area 5ABCD - Fits to mean weights for sensitivity to assumed value of $\sigma_W$
 ```{r fig-sens7-meanweightfit-5abcd}
 plot_grid(
   mw.plot(sens.models.7[[1]], cv = 0.2, every = 5, last.yr = 2015),
@@ -746,25 +746,25 @@ i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.nam
 ```
 
 ---
-# Area 3CD - Biomass for sensitivity to changes in $\\sigma_W$
+# Area 3CD - Biomass for sensitivity to changes in $\sigma_W$
 ```{r fig-sens14-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
 ---
-# Area 3CD - Recruitment for sensitivity to changes in $\\sigma_W$
+# Area 3CD - Recruitment for sensitivity to changes in $\sigma_W$
 ```{r fig-sens14-recr-3cd}
 r.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
 ---
-# Area 3CD - Fishing mortality for sensitivity to changes in $\\sigma_W$
+# Area 3CD - Fishing mortality for sensitivity to changes in $\sigma_W$
 ```{r fig-sens14-f-3cd}
 f.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
 ---
-# Area 3CD - Fit to mean weights for sensitivity to changes in $\\sigma_W$
+# Area 3CD - Fit to mean weights for sensitivity to changes in $\sigma_W$
 ```{r fig-sens14-meanweightfit-3cd}
 plot_grid(
   mw.plot(sens.models.14[[1]], cv = 0.2, every = 5, last.yr = 2015),

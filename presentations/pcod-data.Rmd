@@ -117,7 +117,7 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 # Fishery Catch for Area 5ABCD
 
-```{r catch.5abcd, fig.width=8, fig.height=5}
+```{r catch.5abcd}
 make.catches.plot(catch.5)
 ```
 
@@ -129,7 +129,7 @@ Total catches of Pacific Cod during the period 1956-2017 in Hecate Strait and Qu
 
 # Fishery Catch for Area 3CD
 
-```{r catch.3cd, fig.width=8, fig.height=5}
+```{r catch.3cd}
 make.catches.plot(catch.3)
 ```
 
@@ -171,9 +171,9 @@ Total catches of Pacific Cod during the period 1956-2017 off the West Coast of V
 
 # Survey indices of abundance for Area 5ABCD - 1
 
-**(a)** HS Assemblage, **(b)** QCS Synoptic, **(c)** HS Synoptic
+**A** - HS Assemblage, **B** - QCS Synoptic, **C** - HS Synoptic
 
-```{r fig-base-index-5abcd-1, fig.width=8, fig.height=5}
+```{r fig-base-index-5abcd-1}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, show.fit = FALSE)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5, show.fit = FALSE)
@@ -182,44 +182,61 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, show.fit
             + ylab("Commercial CPUE (kg/hour)"),
           nrow = 1,
           ncol = 3,
-          labels = c("(a)", "(b)", "(c)"),
-          label_x = 0.15)
+          labels = c("A", "B", "C"),
+          label_x = 0.4,
+          hjust = 0)
 ```
 
 ---
 
 # Survey indices of abundance for Area 5ABCD - 2
 
-**(d)** Commercial CPUE pre-1996, **(e)** Commercial CPUE post-1995
+**D** - Commercial CPUE pre-1996, **E** - Commercial CPUE post-1995
 
-```{r fig-base-index-5abcd-2, fig.width=8, fig.height=5}
+```{r fig-base-index-5abcd-2}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10, show.fit = FALSE)
             + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5, show.fit = FALSE)
             + ylab("Commercial CPUE (kg/hour)"),
           nrow = 1,
           ncol = 2,
-          labels = c("(d)", "(e)"),
-          label_x = 0.08)
+          labels = c("D", "E"),
+          label_x = 0.25,
+          hjust = 0)
 ```
 
 ---
+# Survey indices of abundance for Area 3CD - 1
 
-# Survey indices of abundance for Area 3CD
+**A** - WCVI Synoptic, **B** - Commercial CPUE pre-1996
 
-**(a)** WCVI Synoptic, **(b)** Commercial CPUE pre-1996, **(c)** Commercial CPUE post-1995,  **(d)** NMFS Triennial (Canada)
-
-```{r fig-base-index-3cd, fig.width=8, fig.height=5}
-plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, show.fit = FALSE),
+```{r fig-base-index-3cd-1}
+plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, show.fit = FALSE)
+            + ylab("Commercial CPUE (kg/hour)"),
           i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5, show.fit = FALSE)
             + ylab("Commercial CPUE (kg/hour)"),
-          i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5, show.fit = FALSE)
-            + ylab("Commercial CPUE (kg/hour)"),
-          i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5, show.fit = FALSE),
           nrow = 1,
-          ncol = 4,
-          labels = c("(a)", "(b)", "(c)", "(d)"),
-          label_x = c(0.17, 0.15, 0.13, 0.23))
+          ncol = 2,
+          labels = c("A", "B"),
+          label_x = c(0.3, 0.25),
+          hjust = 0)
+```
+
+---
+# Survey indices of abundance for Area 3CD - 2
+
+**C** - Commercial CPUE post-1995,  **D** - NMFS Triennial (Canada)
+
+```{r fig-base-index-3cd-2}
+plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5, show.fit = FALSE)
+            + ylab("Commercial CPUE (kg/hour)"),
+          i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5, show.fit = FALSE)
+            + ylab("Commercial CPUE (kg/hour)"),
+          nrow = 1,
+          ncol = 2,
+          labels = c("C", "D"),
+          label_x = c(0.25, 0.3),
+          hjust = 0)
 ```
 
 ---
@@ -238,7 +255,7 @@ Criteria for length data extraction for use in estimating size composition of bo
 
 # Commercial Length Data
 
-```{r lengths-comm, fig.width=8, fig.height=5}
+```{r lengths-comm}
 xx <- dat$commercial_samples %>%
   dplyr::filter(!is.na(length))
 
@@ -268,7 +285,7 @@ xx %>%
 
 # Survey Length Data
 
-```{r lengths-surv, fig.width=8, fig.height=5}
+```{r lengths-surv}
   x <- filter(dat$survey_samples,
               is.element(survey_abbrev, c("SYN HS", "SYN QCS","SYN WCVI")))
 
