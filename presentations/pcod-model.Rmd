@@ -1,5 +1,4 @@
 ---
-class: inverse
 title: |
   2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Coast Vancouver Island (3CD)
 subtitle: Stock assessment model
@@ -240,14 +239,14 @@ b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
 ---
 # Area 5ABCD - Reference points
 
-**Limit reference point:**
-Lowest estimated biomass from which stock recovered to above average ($B_{1971}$)
+**Limit reference point:**<br />
+Lowest estimated biomass from which stock recovered to above average: $B_{1971}$
 
-**Upper Stock Reference**
-Average estimated biomass 1956-2004
+**Upper Stock Reference:**<br />
+Average estimated biomass from 1956-2004
 
-**Limit Removal Rate**
-Average estimated fishing mortality 1956-2004
+**Limit Removal Rate:**<br />
+Average estimated fishing mortality from 1956-2004
 
 
 
