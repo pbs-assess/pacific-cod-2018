@@ -23,6 +23,7 @@ library(RColorBrewer)
 library(kableExtra)
 library(png)
 library(leaflet)
+library(svglite)
 
 rootd <- here::here()
 rootd.R <- file.path(rootd, "R")

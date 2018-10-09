@@ -632,7 +632,7 @@ pp <- left_join(pp, orig_dat, by = "year") %>%
   mutate(variable = gsub("^y_w_int$", "Data have space-time interactions", variable)) %>%
   mutate(model = forcats::fct_rev(model))
 
-pp %>% group_by(model, variable) %>%
+gg <- pp %>% group_by(model, variable) %>%
   ungroup() %>%
   ggplot() +
   geom_ribbon(aes(x = year, ymin = exp(est_link - 1.96 * se_link),
@@ -645,10 +645,12 @@ pp %>% group_by(model, variable) %>%
   theme(legend.position = c(0.02, 0.97), legend.justification = c(0, 1))  +
   scale_colour_brewer(palette = "Dark2") +
   scale_fill_brewer(palette = "Dark2")
+print(gg)
 ```
 
 ```{r cpue-sim-save}
-ggsave(here::here("presentations/figures/cpue-sim.svg"), width = 7, height = 4)
+ggplot2::ggsave(here::here("presentations/figures/cpue-sim.svg"), plot = gg, 
+  width = 8, height = 4)
 ```
 
 ```{r cpue-sim-test-tweedie-glmm-table, results='asis'}
