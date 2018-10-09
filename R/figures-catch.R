@@ -1,25 +1,24 @@
 make.catches.plot <- function(dat,
-                              by.quarter = FALSE){
-  if(!by.quarter){
-    dat <- dat %>%
-      select(-total_catch) %>%
-      group_by(year) %>%
-      summarize(usa_catch = sum(usa_catch),
-                canada_catch = sum(canada_catch))
-    dat <- melt(dat, id.vars = "year")
-    ggplot(dat) +
-      aes(x = year, y = value, fill = variable) +
-      geom_col() +
-      coord_cartesian(expand = FALSE) +
-      labs(x = "Year",
-           y = "Catch (t)",
-           fill = "") +
-      scale_fill_brewer(labels = c("USA", "Canada"), palette = "Dark2") +
-      scale_y_continuous(labels = comma,
-                         limits = c(min(dat$value),
-                                    1.1 * max(dat$value))) +
-      theme_pbs()
-  }
+                              every = 5,
+                              last.yr = 2015){
+  dat <- dat %>%
+    select(-total_catch) %>%
+    group_by(year) %>%
+    summarize(usa_catch = sum(usa_catch),
+              canada_catch = sum(canada_catch))
+  dat <- melt(dat, id.vars = "year")
+  ggplot(dat) +
+    aes(x = year, y = value, fill = variable) +
+    geom_col() +
+    coord_cartesian(expand = FALSE) +
+    labs(x = "Year",
+         y = "Catch (t)",
+         fill = "") +
+    scale_fill_brewer(labels = c("USA", "Canada"), palette = "Dark2") +
+    scale_y_continuous(labels = comma,
+                       limits = c(0, NA)) +
+    scale_x_continuous(breaks = seq(0, last.yr, every))
+    theme_pbs()
 }
 
 discards.plot <- function(dat){

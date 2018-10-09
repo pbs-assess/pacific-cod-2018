@@ -85,7 +85,7 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 base.model.3cd.name <- "Reference model 3CD"
 base.model.3cd.dir.name <- file.path(model.dir,
-                                     "1_1a_5ABCD_BASE_fix-localities")
+                                     "1_1a_3CD_BASE_fix-localities")
 
 base.model.5abcd.name <- "1a) Reference model 5ABCD: 2-sex growth + 2018 catch"
 base.model.5abcd.dir.name <- file.path(model.dir,
@@ -106,8 +106,8 @@ sens.models.dir.name.0 <- c(file.path(model.dir,
                             file.path(model.dir,
                                       "0_0b_5ABCD_BASE-UpdateGrowth"))
 
-sens.models.name.0.sub <- c("Female growth parameters, no 2018 Catch",
-                            "2-sex growth parameters, no 2018 Catch")
+sens.models.name.0 <- c("Female growth parameters, no 2018 Catch",
+                        "2-sex growth parameters, no 2018 Catch")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 1 subset (5ABCD)
@@ -240,6 +240,17 @@ sens.models.dir.name.7 <- c(file.path(model.dir,
                                       "0_7b_5ABCD_sigW_015"))
 sens.models.name.7 <- c("7a) Fix sigma W = 0.4",
                         "7b) Fix sigma W = 0.15")
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 00 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.00 <- c(file.path(model.dir,
+                                      "1_0a_3CD_BASE-preReview"),
+                            file.path(model.dir,
+                                      "1_0b_3CD_BASE-UpdateGrowth"))
+
+sens.models.name.00 <- c("Female growth parameters, no 2018 Catch",
+                         "2-sex growth parameters, no 2018 Catch")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 8 subset (3CD)
@@ -432,6 +443,7 @@ load.models.into.parent.env <- function(){
   sens.models.7 <<- load.models(sens.models.dir.name.7)
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
+  sens.models.00 <<- load.models(sens.models.dir.name.00)
   sens.models.8.sub <<- load.models(sens.models.dir.name.8.sub)
   sens.models.8.sub2 <<- load.models(sens.models.dir.name.8.sub2)
   sens.models.8 <<- load.models(sens.models.dir.name.8)
@@ -490,6 +502,7 @@ build <- function(ovwrt.base = FALSE,
                               unlist(sens.models.dir.name.5),
                               unlist(sens.models.dir.name.6),
                               unlist(sens.models.dir.name.7),
+                              unlist(sens.models.dir.name.00),
                               unlist(sens.models.dir.name.8),
                               unlist(sens.models.dir.name.9),
                               unlist(sens.models.dir.name.10),

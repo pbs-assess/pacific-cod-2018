@@ -118,7 +118,7 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 # Fishery Catch for Area 5ABCD
 
 ```{r catch.5abcd}
-make.catches.plot(catch.5)
+make.catches.plot(catch.5, every = 5, last.yr = 2018)
 ```
 
 ???
@@ -129,7 +129,7 @@ Total catches of Pacific Cod during the period 1956-2017 in Hecate Strait and Qu
 
 # Fishery Catch for Area 3CD
 
-```{r catch.3cd}
+```{r catch.3cd, every = 5, last.yr = 2018}
 make.catches.plot(catch.3)
 ```
 
