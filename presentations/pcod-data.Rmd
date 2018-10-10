@@ -364,19 +364,19 @@ cowplot::plot_grid(plotlist = lw_figs, nrow = 1)
 
 # Area 5CD
 
-![](ALK_5CD.png)
+<img src="ALK_5CD.png" height="500" class='center-img'>
 
 
 ---
 
 # Area 5AB
 
-![](ALK_5AB.png)
+<img src="ALK_5AB.png" height="500" class='center-img'>
 
 ---
 
 # Area 3CD
 
-![](ALK_3CD.png)
+<img src="ALK_3CD.png" height="500" class='center-img'>
 
 
