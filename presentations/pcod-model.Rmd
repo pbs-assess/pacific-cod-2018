@@ -604,6 +604,19 @@ decision.table(base.model.5abcd,
 
 ---
 ## Area 5ABCD — Model averaged decision table
+ - Scenarios included (expanded from those in working paper):
+  - 1a Reference model
+  - 1f No commercial CPUE
+  - 2a Prior mean survey ln(q) = ln(0.19) for both synoptic surveys (pro-rated by area)
+  - 2b No priors on q
+  - 2d Prior mean survey ln(q) = ln(1.0), SD = 0.3 for both synoptic surveys (pro-rated by area)
+  - 5a Knife-edged age at recruitment = 3 y
+  - 6b $\sigma_O$ = 0.15
+  - 7a $\sigma_W$ = 0.4
+  - 8b Pre-1996 catch inflated by 50%
+
+---
+## Area 5ABCD — Model averaged decision table
 <SPAN STYLE="font-size: 6pt">
 ```{r tab-decision-5abcd-avg, results='asis'}
 decision.table(desc.models.5abcd,
@@ -622,6 +635,19 @@ decision.table(base.model.3cd,
                format = "html")
 ```
 </SPAN>
+
+---
+## Area 3CD — Model averaged decision table
+ - Scenarios included (expanded from those in working paper):
+  - 1a Reference model
+  - 1f No commercial CPUE
+  - 2a Prior mean synoptic survey ln(q) = ln(0.228), SD = 0.448
+  - 2d Prior mean synoptic survey ln(q) = ln(1.0), SD = 0.3
+  - 5a Knife-edged age at recruitment = 3 y
+  - 6b $\sigma_O$ = 0.15
+  - 7a $\sigma_W$ = 0.4
+  - 8b Pre-1996 catch inflated by 50%
+  
 
 ---
 ## Area 3CD — Model averaged decision table
