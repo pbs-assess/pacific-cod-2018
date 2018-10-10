@@ -210,10 +210,10 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10, show.fi
 ---
 # Survey indices of abundance for Area 3CD
 ```{r fig-base-index-3cd-1}
-plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, show.fit = FALSE)
-            + ylab("WCVI Synoptic Survey (t)"),
-          i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5, show.fit = FALSE)
+plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5, show.fit = FALSE)
             + ylab("NMFS Triennial Canada (t)"),
+          i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, show.fit = FALSE)
+            + ylab("WCVI Synoptic Survey (t)"),
           nrow = 1,
           ncol = 2)
 ```
