@@ -616,6 +616,14 @@ decision.table(base.model.5abcd,
   - 8b Pre-1996 catch inflated by 50%
 
 ---
+## Area 5ABCD — Scenarios used in decision table
+```{r fig-dt-biomass-5abcd}
+b.plot(c(base.model.5abcd, sens.models.6.sub), c(base.model.5abcd.name, sens.models.name.6.sub))
+#b.plot(c(sens.models.6.sub), c(sens.models.name.6.sub))
+```
+
+
+---
 ## Area 5ABCD — Model averaged decision table
 <SPAN STYLE="font-size: 6pt">
 ```{r tab-decision-5abcd-avg, results='asis'}
@@ -647,6 +655,13 @@ decision.table(base.model.3cd,
   - 6b $\sigma_O$ = 0.15
   - 7a $\sigma_W$ = 0.4
   - 8b Pre-1996 catch inflated by 50%
+
+
+---
+## Area 3CD — Scenarios used in decision table
+```{r fig-dt-biomass-3cd}
+b.plot(c(base.model.3cd, sens.models.13.sub), c(base.model.3cd.name, sens.models.name.13.sub))
+```
 
 
 ---
