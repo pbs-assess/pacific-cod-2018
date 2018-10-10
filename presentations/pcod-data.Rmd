@@ -183,7 +183,7 @@ Total catches of Pacific Cod during the period 1956-2017 off the West Coast of V
 
 ---
 
-# Survey indices of abundance for Area 5ABCD - 1
+# Survey indices of abundance for Area 5ABCD
 ```{r fig-base-index-5abcd-1}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, show.fit = FALSE)
             + ylab("HS Assemblage Survey (kg)"),
@@ -197,7 +197,7 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, show.fit
 
 ---
 
-# Survey indices of abundance for Area 5ABCD - 2
+# Commercial CPUE indices of abundance for Area 5ABCD
 ```{r fig-base-index-5abcd-2}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10, show.fit = FALSE)
             + ylab("Pre-1996 Commercial CPUE (kg/hour)"),
@@ -208,23 +208,23 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10, show.fi
 ```
 
 ---
-# Survey indices of abundance for Area 3CD - 1
+# Survey indices of abundance for Area 3CD
 ```{r fig-base-index-3cd-1}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, show.fit = FALSE)
             + ylab("WCVI Synoptic Survey (kg)"),
-          i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5, show.fit = FALSE)
-            + ylab("Pre-1996 Commercial CPUE (kg/hour)"),
+          i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5, show.fit = FALSE)
+            + ylab("NMFS Triennial Canada (kg)"),
           nrow = 1,
           ncol = 2)
 ```
 
 ---
-# Survey indices of abundance for Area 3CD - 2
+# Commercial CPUE indices of abundance for Area 3CD - 2
 ```{r fig-base-index-3cd-2}
-plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5, show.fit = FALSE)
+plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5, show.fit = FALSE)
+            + ylab("Pre-1996 Commercial CPUE (kg/hour)"),
+          i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5, show.fit = FALSE)
             + ylab("Post-1995 Commercial CPUE (kg/hour)"),
-          i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5, show.fit = FALSE)
-            + ylab("NMFS Triennial Canada (kg)"),
           nrow = 1,
           ncol = 2)
 ```
@@ -378,5 +378,3 @@ cowplot::plot_grid(plotlist = lw_figs, nrow = 1)
 # Area 3CD
 
 <img src="ALK_3CD.png" height="500" class='center-img'>
-
-
