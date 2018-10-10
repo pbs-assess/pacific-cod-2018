@@ -371,8 +371,16 @@ sens.models.name.8 <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
 ## Sensitivity models group 9 sub (3CD)
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.9.sub <- c(file.path(model.dir,
-                                          "1_2a_3CD_rsoleq_0228sd0448"))
-sens.models.name.9.sub <- c("2a) WCVISS q SD = 0.448")
+                                          "1_2a_3CD_rsoleq_0228sd0448"),
+                                file.path(model.dir,
+                                          "1_2c_3CD_q_05"),
+                                file.path(model.dir,
+                                          "1_2d_3CD_q_1"))
+
+sens.models.name.9.sub <- c("2a) WCVISS q SD = 0.448",
+                            "2c) WCVISS mean q = ln(0.5*0.65)",
+                            "2d) WCVISS mean q = ln(0.65)")
+
 
 
 ## -----------------------------------------------------------------------------
