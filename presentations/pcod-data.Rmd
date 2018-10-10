@@ -349,3 +349,34 @@ lw_figs <- map(lw_fits, ~ plot_length_weight(
   )
 cowplot::plot_grid(plotlist = lw_figs, nrow = 1)
 ```
+
+---
+
+# Probable age-frequency in commercial catch (draft only)
+
+- A simple age-length key was developed, based on age samples from synoptic surveys, 2007 - 2011
+
+- Observed lengths in the commercial fishery were assigned ages, based on probabilities in the age-length key
+
+- This work is draft only, and based on small sample sizes, but does indicate a high proportion of age-2 fish in the commercial fishery
+
+---
+
+# Area 5CD
+
+![](ALK_5CD.png)
+
+
+---
+
+# Area 5AB
+
+![](ALK_5AB.png)
+
+---
+
+# Area 3CD
+
+![](ALK_3CD.png)
+
+
