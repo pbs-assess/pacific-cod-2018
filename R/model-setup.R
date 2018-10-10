@@ -266,9 +266,12 @@ sens.models.name.6 <- c("6a) Fix sigma O = 0.1",
 sens.models.dir.name.7 <- c(file.path(model.dir,
                                       "0_7a_5ABCD_sigW_04"),
                             file.path(model.dir,
-                                      "0_7b_5ABCD_sigW_015"))
+                                      "0_7b_5ABCD_sigW_015"),
+                            file.path(model.dir,
+                                      "0_7c_5ABCD_noHistMeanWt"))
 sens.models.name.7 <- c("7a) Fix sigma W = 0.4",
-                        "7b) Fix sigma W = 0.15")
+                        "7b) Fix sigma W = 0.15",
+                        "7c) Remove historical mean weight data")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 108 (5ABCD)
@@ -461,9 +464,12 @@ sens.models.name.13 <- c("6a) Fix sigma O = 0.1",
 sens.models.dir.name.14 <- c(file.path(model.dir,
                                       "1_7a_3CD_sigW04"),
                              file.path(model.dir,
-                                       "1_7b_3CD_sigW015"))
+                                       "1_7b_3CD_sigW015"),
+                             file.path(model.dir,
+                                       "1_7c_3CD_noHistMeanWeight"))
 sens.models.name.14 <- c("7a) Fix sigma W = 0.4",
-                         "7b) Fix sigma W = 0.15")
+                         "7b) Fix sigma W = 0.15",
+                         "7c) Remove historical mean weight data")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 15 (3CD)
