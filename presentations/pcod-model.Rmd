@@ -609,3 +609,13 @@ decision.table(base.model.3cd,
                format = "html")
 ```
 </SPAN>
+
+---
+## Area 3CD - Model averaged decision table
+<SPAN STYLE="font-size: 10pt">
+```{r tab-decision-3cd-avg, results='asis'}
+decision.table(desc.models.3cd,
+               desc.models.3cd.name,
+               format = "html")
+```
+</SPAN>

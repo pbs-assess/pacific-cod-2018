@@ -264,6 +264,28 @@ sens.models.dir.name.7 <- c(file.path(model.dir,
 sens.models.name.7 <- c("7a) Fix sigma W = 0.4",
                         "7b) Fix sigma W = 0.15")
 
+
+## -----------------------------------------------------------------------------
+## Decision table models to average (3CD)
+## -----------------------------------------------------------------------------
+desc.models.3cd.dir.name <- c(file.path(model.dir,
+                                          "1_1a_3CD_BASE_fix-localities"),
+                                file.path(model.dir,
+                                          "1_1f_3CD_BASE_loc-yr-interact_no_CPUE"),
+                                file.path(model.dir,
+                                          "1_2a_3CD_rsoleq_0228sd0448"),
+                                file.path(model.dir,
+                                          "1_2d_3CD_q_1"),
+                                file.path(model.dir,
+                                          "1_5a_3CD_kage3"),
+                                file.path(model.dir,
+                                          "1_6b_3CD_sig015"),
+                                file.path(model.dir,
+                                          "1_7a_3CD_sigW04"),
+                                file.path(model.dir,
+                                          "1_8b_3CD_InflateHistCatch_05"))
+desc.models.3cd.name <- c("1a", "1f", "2a", "2d", "5a", "6b", "7a", "8b")
+
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 00 (3CD)
 ## -----------------------------------------------------------------------------
@@ -467,6 +489,7 @@ load.models.into.parent.env <- function(){
   sens.models.7 <<- load.models(sens.models.dir.name.7)
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
+  desc.models.3cd <<- load.models(desc.models.3cd.dir.name)
   sens.models.00 <<- load.models(sens.models.dir.name.00)
   sens.models.8.sub <<- load.models(sens.models.dir.name.8.sub)
   sens.models.8.sub2 <<- load.models(sens.models.dir.name.8.sub2)
@@ -519,6 +542,7 @@ build <- function(ovwrt.base = FALSE,
   ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the for loop below to work right
   sens.models.names.list <- c(unlist(desc.models.5abcd.dir.name),
+                              unlist(desc.models.3cd.dir.name),
                               unlist(sens.models.dir.name.0),
                               unlist(sens.models.dir.name.1),
                               unlist(sens.models.dir.name.2),
