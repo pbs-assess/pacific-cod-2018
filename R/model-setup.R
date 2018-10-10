@@ -172,8 +172,8 @@ sens.models.dir.name.1 <- c(file.path(model.dir,
                                       "0_1f_5ABCD_BASE_loc-yr-interact_no_CPUE"))
 
 
-sens.models.name.1 <- c("1b) No locality/yr q mean = 06 sd = 0.19",
-                        "1c) No locality/yr q mean = 06 sd = 0.19, double CV",
+sens.models.name.1 <- c("1b) No locality/yr",
+                        "1c) No locality/yr double CV",
                         "1d) Remove post-1995 CPUE",
                         "1e) Remove pre-1996 CPUE",
                         "1f) Remove all CPUE")
@@ -189,10 +189,10 @@ sens.models.dir.name.2 <- c(file.path(model.dir,
                                       "0_2c_5ABCD_rsoleq_05_05"),
                             file.path(model.dir,
                                       "0_2d_5ABCD_rsoleq_1_1"))
-sens.models.name.2 <- c("2a) HSSS mean q = QCSSS mean q, ln(q) = ln(0.1869 * 0.65)",
-                        "2b) HSSS and QSSSS have uniform prior",
-                        "2c) HSSS mean q = ln(0.5*0.65), QCSSS mean q = ln(0.5 * 0.35)",
-                        "2d) HSSS mean q = ln(0.65), QCSSS mean q = ln(0.35)")
+sens.models.name.2 <- c("2a) HSSS and QCSS mean ln(q) = ln(0.1869 * 0.65)",
+                        "2b) No priors on ln(q)",
+                        "2c) HSSS mean ln(q) = ln(0.5 * 0.35), QCSSS mean q = ln(0.5 * 0.65)",
+                        "2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 3 (5ABCD)
@@ -214,7 +214,7 @@ sens.models.dir.name.4 <- c(file.path(model.dir,
                                       "0_4a_5ABCD_hprior_unif"),
                             file.path(model.dir,
                                       "0_4b_5ABCD_hprior_085"))
-sens.models.name.4 <- c("4a) Steepness uniform prior 0.12-0.999",
+sens.models.name.4 <- c("4a) Steepness uniform prior",
                         "4b) Steepness beta prior mean=0.85, SD=0.75")
 
 ## -----------------------------------------------------------------------------
@@ -240,7 +240,7 @@ sens.models.dir.name.6.sub <- c(file.path(model.dir,
                                           "0_6b_5ABCD_sig015"))
 
 sens.models.name.6.sub <- c("1f) Remove all CPUE",
-                            "2a) HSSS mean q = QCSSS mean q, ln(q) = 0.186",
+                            "2a) HSSS and QCSS mean ln(q) = ln(0.1869 * 0.65)",
                             "3b) M mean = 0.4, SD = 0.1",
                             "6b) Fix sigma O = 0.15")
 
@@ -343,8 +343,8 @@ sens.models.dir.name.8.sub <- c(file.path(model.dir,
                                 file.path(model.dir,
                                           "1_1c_3CD_NO_loc-yr-interact_rsoleq_0228sd03_doubleCV"))
 
-sens.models.name.8.sub <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
-                            "1c) No locality/yr q mean = 0.228 sd = 0.3, double CV")
+sens.models.name.8.sub <- c("1b) No locality/yr",
+                            "1c) No locality/yr, double CV")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 8 subset 2 (3CD)
@@ -358,8 +358,8 @@ sens.models.dir.name.8.sub2 <- c(file.path(model.dir,
                                  file.path(model.dir,
                                            "1_1g_3CD_no_triennial"))
 
-sens.models.name.8.sub2 <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
-                             "1c) No locality/yr q mean = 0.228 sd = 0.3, double CV",
+sens.models.name.8.sub2 <- c("1b) No locality/yr",
+                             "1c) No locality/yr, double CV",
                              "1d) Remove post-1995 CPUE",
                              "1g) Remove Triennial survey")
 
@@ -379,8 +379,8 @@ sens.models.dir.name.8 <- c(file.path(model.dir,
                             file.path(model.dir,
                                       "1_1g_3CD_no_triennial"))
 
-sens.models.name.8 <- c("1b) No locality/yr q mean = 0.228 sd = 0.3",
-                        "1c) No locality/yr q mean = 0.228 sd = 0.3, double CV",
+sens.models.name.8 <- c("1b) No locality/yr ",
+                        "1c) No locality/yr , double CV",
                         "1d) Remove post-1995 CPUE",
                         "1e) Remove pre-1996 CPUE",
                         "1f) Remove all CPUE",
@@ -396,9 +396,9 @@ sens.models.dir.name.9.sub <- c(file.path(model.dir,
                                 file.path(model.dir,
                                           "1_2d_3CD_q_1"))
 
-sens.models.name.9.sub <- c("2a) WCVISS q SD = 0.448",
-                            "2c) WCVISS mean q = ln(0.5)",
-                            "2d) WCVISS mean q = ln(1.0)")
+sens.models.name.9.sub <- c("2a) WCVISS ln(q) SD = 0.448",
+                            "2c) WCVISS mean ln(q) = ln(0.5)",
+                            "2d) WCVISS mean ln(q) = ln(1.0)")
 
 
 
@@ -413,10 +413,10 @@ sens.models.dir.name.9 <- c(file.path(model.dir,
                                       "1_2c_3CD_q_05"),
                             file.path(model.dir,
                                       "1_2d_3CD_q_1"))
-sens.models.name.9 <- c("2a) WCVISS q SD = 0.448",
-                        "2b) WCVISS q has uniform prior",
-                        "2c) WCVISS mean q = ln(0.5*0.65)",
-                        "2d) WCVISS mean q = ln(0.65)")
+sens.models.name.9 <- c("2a) WCVISS ln(q) SD = 0.448",
+                        "2b) No priors on ln(q)",
+                        "2c) WCVISS mean ln(q) = ln(0.5)",
+                        "2d) WCVISS mean ln(q) = ln(1.0)")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 10 (3CD)
@@ -438,7 +438,7 @@ sens.models.dir.name.11 <- c(file.path(model.dir,
                                       "1_4a_3CD_hprior_unif"),
                             file.path(model.dir,
                                       "1_4b_3CD_hprior_085"))
-sens.models.name.11 <- c("4a) Steepness uniform prior 0.12-0.999",
+sens.models.name.11 <- c("4a) Steepness uniform prior",
                          "4b) Steepness beta prior mean=0.85, SD=0.75")
 
 ## -----------------------------------------------------------------------------
