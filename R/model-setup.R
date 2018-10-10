@@ -304,6 +304,25 @@ desc.models.3cd.dir.name <- c(file.path(model.dir,
                               file.path(model.dir,
                                         "1_8b_3CD_InflateHistCatch_05"))
 desc.models.3cd.name <- c("1a", "1f", "2a", "2d", "5a", "6b", "7a", "8b")
+desc.models.3cd.extrap.dir.name <-
+  c(file.path(model.dir,
+              "1_9_1a_3CD_BASE-add2018_2018Ctextrap"),
+    file.path(model.dir,
+              "1_9_1f_3CD_BASE_loc-yr-interact_no_CPUE_2018Ctextrap"),
+    file.path(model.dir,
+              "1_9_2a_3CD_rsoleq_0228sd0448_2018Ctextrap"),
+    file.path(model.dir,
+              "1_9_2d_3CD_q_1_2018Ctextrap"),
+    file.path(model.dir,
+              "1_9_5a_3CD_kage3_2018Ctextrap"),
+    file.path(model.dir,
+              "1_9_6b_3CD_sig015_2018Ctextrap"),
+    file.path(model.dir,
+              "1_9_7a_3CD_sigW04_2018Ctextrap"),
+    file.path(model.dir,
+              "1_9_8b_3CD_InflateHistCatch_05_2018Ctextrap"))
+desc.models.3cd.extrap.name <- c("1a", "1f", "2a", "2d", "5a", "6b", "7a", "8b")
+
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 00 (3CD)
@@ -537,6 +556,7 @@ load.models.into.parent.env <- function(){
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
   desc.models.3cd <<- load.models(desc.models.3cd.dir.name)
+  desc.models.3cd.extrap <<- load.models(desc.models.3cd.extrap.dir.name)
   sens.models.00 <<- load.models(sens.models.dir.name.00)
   sens.models.8.sub <<- load.models(sens.models.dir.name.8.sub)
   sens.models.8.sub2 <<- load.models(sens.models.dir.name.8.sub2)
@@ -550,6 +570,7 @@ load.models.into.parent.env <- function(){
   sens.models.13.sub <<- load.models(sens.models.dir.name.13.sub)
   sens.models.14 <<- load.models(sens.models.dir.name.14)
   sens.models.15 <<- load.models(sens.models.dir.name.15)
+
 
   base.retro.models.5abcd <<- load.models(retro.dir.names.5abcd)
   base.retro.models.3cd <<- load.models(retro.dir.names.3cd)
@@ -591,6 +612,7 @@ build <- function(ovwrt.base = FALSE,
   ##  and placed into a single list for the for loop below to work right
   sens.models.names.list <- c(unlist(desc.models.5abcd.dir.name),
                               unlist(desc.models.3cd.dir.name),
+                              unlist(desc.models.3cd.extrap.dir.name),
                               unlist(sens.models.dir.name.0),
                               unlist(sens.models.dir.name.1),
                               unlist(sens.models.dir.name.2),

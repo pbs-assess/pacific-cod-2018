@@ -153,24 +153,24 @@ class: middle, center, inverse
 - Calculate 3-year average proportion of annual catch taken by Sept. 30
 
     - Apply this proportion to the 2018 catch taken so far to extrapolate to the end of the fishing year
-      
+
       - Proportion is 0.692
       - 2018 catch as of Sept. 30, 2018 was 10.58 t
       - Extrapolated catch for 2018 season is 15.29 t
 
 - Use the same catch for 2018 as 2017, i.e. 164.469 t
-    
-      - This option was used in reference and sensitivity cases 
+
+      - This option was used in reference and sensitivity cases
       - An alternative model-averaged decision table using the extrapolated catch will also be presented
 
 
 ---
-## Area 5ABCD — Updated Biomass 
+## Area 5ABCD — Updated Biomass
 ```{r fig-sens0-biomass-5abcd}
 b.plot(c(base.model.5abcd, sens.models.0), c(base.model.5abcd.name, sens.models.name.0))
 ```
 ---
-## Area 3CD — Updated Biomass 
+## Area 3CD — Updated Biomass
 ```{r fig-sens0-biomass-3cd}
 b.plot(c(base.model.3cd, sens.models.00), c(base.model.3cd.name, sens.models.name.00))
 ```
@@ -655,6 +655,16 @@ decision.table(base.model.3cd,
 ```{r tab-decision-3cd-avg, results='asis'}
 decision.table(desc.models.3cd,
                desc.models.3cd.name,
+               format = "html")
+```
+</SPAN>
+
+---
+## Area 3CD —  Model averaged decision table with extrapolated 2018 catch
+<SPAN STYLE="font-size: 10pt">
+```{r tab-decision-3cd-avg-extrap, results='asis'}
+decision.table(desc.models.3cd.extrap,
+               desc.models.3cd.extrap.name,
                format = "html")
 ```
 </SPAN>
