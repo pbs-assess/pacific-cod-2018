@@ -8,7 +8,7 @@ catch.table <- function(dat,
   dat <- dat %>%
     group_by(year) %>%
     summarize(Year = year[1],
-              USA = sum(usa_catch)) %>%
+              USA = sum(usa_catch) * 1000) %>%
     select(-year)
 
   dat.disc <- dat.disc %>%
@@ -26,9 +26,9 @@ catch.table <- function(dat,
                                         `Total catch` = `Canada total` +`USA`)
   j <- j[!is.na(j$`Total catch`),]
 
-  j <- j[c("Year", "Canada landed", "Canada released at sea", "Canada total", "USA", "Total catch")]
+  j <- j[,c("Year", "Canada landed", "Canada released at sea", "Canada total", "USA", "Total catch")]
 
-  j[,-c(1,5)] = j[,-c(1,5)] / 1000
+  j[,-1] <- j[,-1] / 1000
   j[,-1] <- round(j[,-1], 0)
 
   j[,c(2,3,4,5,6)] <- apply(j[,c(2,3,4,5,6)],
