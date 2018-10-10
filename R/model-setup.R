@@ -397,8 +397,8 @@ sens.models.dir.name.9.sub <- c(file.path(model.dir,
                                           "1_2d_3CD_q_1"))
 
 sens.models.name.9.sub <- c("2a) WCVISS q SD = 0.448",
-                            "2c) WCVISS mean q = ln(0.5*0.65)",
-                            "2d) WCVISS mean q = ln(0.65)")
+                            "2c) WCVISS mean q = ln(0.5)",
+                            "2d) WCVISS mean q = ln(1.0)")
 
 
 
