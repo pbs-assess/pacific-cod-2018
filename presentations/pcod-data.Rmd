@@ -186,11 +186,11 @@ Total catches of Pacific Cod during the period 1956-2017 off the West Coast of V
 # Survey indices of abundance for Area 5ABCD
 ```{r fig-base-index-5abcd-1}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, show.fit = FALSE)
-            + ylab("HS Assemblage Survey (kg)"),
+            + ylab("HS Assemblage Survey (t)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5, show.fit = FALSE)
-            + ylab("QCS Synoptic Survey (kg)"),
+            + ylab("QCS Synoptic Survey (t)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 3, every = 5, show.fit = FALSE)
-            + ylab("HS Synoptic Survey (kg)"),
+            + ylab("HS Synoptic Survey (t)"),
           nrow = 1,
           ncol = 3)
 ```
@@ -211,9 +211,9 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10, show.fi
 # Survey indices of abundance for Area 3CD
 ```{r fig-base-index-3cd-1}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, show.fit = FALSE)
-            + ylab("WCVI Synoptic Survey (kg)"),
+            + ylab("WCVI Synoptic Survey (t)"),
           i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5, show.fit = FALSE)
-            + ylab("NMFS Triennial Canada (kg)"),
+            + ylab("NMFS Triennial Canada (t)"),
           nrow = 1,
           ncol = 2)
 ```
