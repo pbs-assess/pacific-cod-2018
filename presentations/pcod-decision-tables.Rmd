@@ -1,0 +1,160 @@
+---
+title: |
+  2018 Pacific cod decision tables for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Coast Vancouver Island (3CD)
+author: |
+  Robyn Forrest, Sean Anderson, Chris Grandin, Paul Starr
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      ratio: "16:9"
+      titleSlideClass: [center, middle]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+css: pcod.css
+
+---
+
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      error = FALSE,
+                      warning = FALSE,
+                      message = FALSE,
+                      results = FALSE,
+                      cache = TRUE,
+                      autodep = TRUE,
+                      cache.comments = FALSE,
+                      fig.align = "center",
+                      fig.width = 8,
+                      fig.height = 5,
+                      dev = 'svg',
+                      fig.asp = 0.618)
+options(htmltools.dir.version = FALSE)
+```
+
+```{r read-data, include = FALSE, cache=FALSE}
+source(file.path(here::here(), "R", "all.R"))
+build(ovwrt.base = FALSE,
+      ovwrt.sens = FALSE,
+      ovwrt.retro = FALSE,
+      burnin = 1000,
+      thin = 1)
+load.models.into.parent.env()
+source(file.path(rootd.R, "custom-knitr-variables.R"))
+```
+
+## Area 5ABCD - Reference case decision table - 1
+<SPAN STYLE="font-size: 12pt">
+```{r tab-decision-5abcd-1, results='asis'}
+decision.table(base.model.5abcd,
+               base.model.5abcd.name,
+               format = "html",
+               tac.vec = seq(0, 1000, 100))
+```
+</SPAN>
+
+---
+## Area 5ABCD - Reference case decision table - 2
+<SPAN STYLE="font-size: 12pt">
+```{r tab-decision-5abcd-2, results='asis'}
+decision.table(base.model.5abcd,
+               base.model.5abcd.name,
+               format = "html",
+               tac.vec = c(seq(1100, 2000, 100), 3000))
+```
+</SPAN>
+
+---
+## Area 5ABCD - Model averaged decision table
+ - Scenarios included (expanded from those in working paper):
+  - 1a Reference model
+  - 1f No commercial CPUE
+  - 2a Prior mean survey ln(q) = ln(0.19) for both synoptic surveys (pro-rated by area)
+  - 2b No priors on q
+  - 2d Prior mean survey ln(q) = ln(1.0), SD = 0.3 for both synoptic surveys (pro-rated by area)
+  - 5a Knife-edged age at recruitment = 3 y
+  - 6b $\sigma_O$ = 0.15
+  - 7a $\sigma_W$ = 0.4
+  - 8b Pre-1996 catch inflated by 50%
+
+---
+## Area 5ABCD - Scenarios used in decision table
+```{r fig-dt-biomass-5abcd}
+b.plot(c(base.model.5abcd, sens.models.6.sub), c(base.model.5abcd.name, sens.models.name.6.sub))
+#b.plot(c(sens.models.6.sub), c(sens.models.name.6.sub))
+```
+
+
+---
+## Area 5ABCD - Model averaged decision table - 1
+<SPAN STYLE="font-size: 12pt">
+```{r tab-decision-5abcd-avg-1, results='asis'}
+decision.table(desc.models.5abcd,
+               desc.models.5abcd.name,
+               format = "html",
+               tac.vec = seq(0, 1000, 100))
+```
+</SPAN>
+
+---
+## Area 5ABCD - Model averaged decision table - 2
+<SPAN STYLE="font-size: 12pt">
+```{r tab-decision-5abcd-avg-2, results='asis'}
+decision.table(desc.models.5abcd,
+               desc.models.5abcd.name,
+               format = "html",
+               tac.vec = c(seq(1100, 2000, 100), 3000))
+```
+</SPAN>
+
+---
+## Area 3CD - Reference case decision table
+<SPAN STYLE="font-size: 10pt">
+```{r tab-decision-3cd, results='asis'}
+decision.table(base.model.3cd,
+               base.model.3cd.name,
+               format = "html")
+```
+</SPAN>
+
+---
+## Area 3CD - Model averaged decision tables (options 1 and 2)
+ - Scenarios included (expanded from those in working paper):
+  - 1a Reference model
+  - 1f No commercial CPUE
+  - 2a Prior mean synoptic survey ln(q) = ln(0.228), SD = 0.448
+  - 2d Prior mean synoptic survey ln(q) = ln(1.0), SD = 0.3
+  - 5a Knife-edged age at recruitment = 3 y
+  - 6b $\sigma_O$ = 0.15
+  - 7a $\sigma_W$ = 0.4
+  - 8b Pre-1996 catch inflated by 50%
+
+
+---
+## Area 3CD - Scenarios used in decision table
+```{r fig-dt-biomass-3cd}
+b.plot(c(base.model.3cd, sens.models.13.sub), c(base.model.3cd.name, sens.models.name.13.sub))
+```
+
+
+---
+## Area 3CD - Model averaged decision table. 2018 Ct = 164.47 t
+<SPAN STYLE="font-size: 10pt">
+```{r tab-decision-3cd-avg, results='asis'}
+decision.table(desc.models.3cd,
+               desc.models.3cd.name,
+               format = "html")
+```
+</SPAN>
+
+---
+## Area 3CD - Model averaged decision table. 2018 Ct = 15.29 t
+<SPAN STYLE="font-size: 10pt">
+```{r tab-decision-3cd-avg-extrap, results='asis'}
+decision.table(desc.models.3cd.extrap,
+               desc.models.3cd.extrap.name,
+               format = "html")
+```
+</SPAN>

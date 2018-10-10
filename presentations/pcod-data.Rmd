@@ -230,7 +230,6 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5, show.fit = F
 ```
 
 ---
-
 # Commercial Length Data
 
 Criteria for length data extraction for use in estimating size composition of bottom trawl catches:
@@ -240,6 +239,17 @@ Criteria for length data extraction for use in estimating size composition of bo
 - By fishing year, April 1 to March 31, based on fishing event haul date/time
 
 - Eliminated 7 samples that may have been tomcod
+
+---
+## Annual mean weight
+<img src="amw.eq5.png" height="50" class='center-img'>
+
+<img src="amw.eq6.png" height="100" class='center-img'>
+
+<img src="amw.eq7.png" height="100" class='center-img'>
+
+<img src="amw.eq8.png" height="100" class='center-img'>
+
 
 ---
 

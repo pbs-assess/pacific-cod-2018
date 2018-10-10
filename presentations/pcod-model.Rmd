@@ -624,13 +624,24 @@ b.plot(c(base.model.5abcd, sens.models.6.sub), c(base.model.5abcd.name, sens.mod
 
 
 ---
-## Area 5ABCD — Model averaged decision table
-<SPAN STYLE="font-size: 6pt">
+## Area 5ABCD — Model averaged decision table - 1
+<SPAN STYLE="font-size: 10pt">
 ```{r tab-decision-5abcd-avg, results='asis'}
 decision.table(desc.models.5abcd,
                desc.models.5abcd.name,
                format = "html",
-               tac.vec = c(seq(0, 2000, 100), 3000))
+               tac.vec = seq(0, 1000, 100))
+```
+</SPAN>
+
+---
+## Area 5ABCD — Model averaged decision table - 2
+<SPAN STYLE="font-size: 10pt">
+```{r tab-decision-5abcd-avg, results='asis'}
+decision.table(desc.models.5abcd,
+               desc.models.5abcd.name,
+               format = "html",
+               tac.vec = c(seq(1100, 2000, 100), 3000))
 ```
 </SPAN>
 
