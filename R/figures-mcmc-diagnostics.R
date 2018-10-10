@@ -253,7 +253,8 @@ make.traces.plot <- function(model,
   }
 }
 
-make.autocor.plot <- function(model){
+make.autocor.plot <- function(model,
+                              ylim = c(-1,1)){
   ## Plot the autocorrelation of estimated parameters
 
   if(class(model) == model.lst.class){
@@ -284,7 +285,8 @@ make.autocor.plot <- function(model){
     autocorr.plot(mcmc.autocor,
                   lag.max = 100,
                   main = name,
-                  auto.layout = FALSE)
+                  auto.layout = FALSE,
+                  ylim = ylim)
   }
 }
 
@@ -292,6 +294,7 @@ autocorr.plot <- function(x,
                           lag.max,
                           auto.layout = TRUE,
                           ask,
+                          ylim = c(-1,1),
                           ...){
   ## autocorr.plot from coda package, but the package source had the
   ##  ylab = "Autocorrelation" for all plots and no way to override it.
@@ -324,7 +327,7 @@ autocorr.plot <- function(x,
            type = "h",
            ylab = "",
            xlab = "Lag",
-           ylim = c(-1, 1), ...)
+           ylim = ylim, ...)
       title(paste0(varnames(x)[j],
                   ifelse(is.null(chanames(x)),
                          "",
