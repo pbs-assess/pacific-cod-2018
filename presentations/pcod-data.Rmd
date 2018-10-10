@@ -219,7 +219,7 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, show.fit = F
 ```
 
 ---
-# Commercial CPUE indices of abundance for Area 3CD - 2
+# Commercial CPUE indices of abundance for Area 3CD
 ```{r fig-base-index-3cd-2}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5, show.fit = FALSE)
             + ylab("Pre-1996 Commercial CPUE (kg/hour)"),
