@@ -184,9 +184,15 @@ sens.models.name.1 <- c("1b) No locality/yr q mean = 06 sd = 0.19",
 sens.models.dir.name.2 <- c(file.path(model.dir,
                                       "0_2a_5ABCD_rsoleq_019_019"),
                             file.path(model.dir,
-                                      "0_2b_5ABCD_q_all_unif"))
+                                      "0_2b_5ABCD_q_all_unif"),
+                            file.path(model.dir,
+                                      "0_2c_5ABCD_rsoleq_05_05"),
+                            file.path(model.dir,
+                                      "0_2d_5ABCD_rsoleq_1_1"))
 sens.models.name.2 <- c("2a) HSSS mean q = QCSSS mean q, ln(q) = ln(0.1869 * 0.65)",
-                        "2b) HSSS and QSSSS have uniform prior")
+                        "2b) HSSS and QSSSS have uniform prior",
+                        "2c) HSSS mean q = ln(0.5*0.65), QCSSS mean q = ln(0.5 * 0.35)",
+                        "2d) HSSS mean q = ln(0.65), QCSSS mean q = ln(0.35)")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 3 (5ABCD)
@@ -264,26 +270,36 @@ sens.models.dir.name.7 <- c(file.path(model.dir,
 sens.models.name.7 <- c("7a) Fix sigma W = 0.4",
                         "7b) Fix sigma W = 0.15")
 
+## -----------------------------------------------------------------------------
+## Sensitivity models group 108 (5ABCD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.108 <- c(file.path(model.dir,
+                                      "0_8a_5ABCD_InflateHistCatch_025"),
+                            file.path(model.dir,
+                                      "0_8b_5ABCD_InflateHistCatch_05"))
+sens.models.name.108 <- c("8a) Inflate pre-1996 catch by 25%",
+                        "8b) Inflate pre-1996 catch by 50%")
+
 
 ## -----------------------------------------------------------------------------
 ## Decision table models to average (3CD)
 ## -----------------------------------------------------------------------------
 desc.models.3cd.dir.name <- c(file.path(model.dir,
-                                          "1_1a_3CD_BASE_fix-localities"),
-                                file.path(model.dir,
-                                          "1_1f_3CD_BASE_loc-yr-interact_no_CPUE"),
-                                file.path(model.dir,
-                                          "1_2a_3CD_rsoleq_0228sd0448"),
-                                file.path(model.dir,
-                                          "1_2d_3CD_q_1"),
-                                file.path(model.dir,
-                                          "1_5a_3CD_kage3"),
-                                file.path(model.dir,
-                                          "1_6b_3CD_sig015"),
-                                file.path(model.dir,
-                                          "1_7a_3CD_sigW04"),
-                                file.path(model.dir,
-                                          "1_8b_3CD_InflateHistCatch_05"))
+                                        "1_1a_3CD_BASE_fix-localities"),
+                              file.path(model.dir,
+                                        "1_1f_3CD_BASE_loc-yr-interact_no_CPUE"),
+                              file.path(model.dir,
+                                        "1_2a_3CD_rsoleq_0228sd0448"),
+                              file.path(model.dir,
+                                        "1_2d_3CD_q_1"),
+                              file.path(model.dir,
+                                        "1_5a_3CD_kage3"),
+                              file.path(model.dir,
+                                        "1_6b_3CD_sig015"),
+                              file.path(model.dir,
+                                        "1_7a_3CD_sigW04"),
+                              file.path(model.dir,
+                                        "1_8b_3CD_InflateHistCatch_05"))
 desc.models.3cd.name <- c("1a", "1f", "2a", "2d", "5a", "6b", "7a", "8b")
 
 ## -----------------------------------------------------------------------------
@@ -362,9 +378,15 @@ sens.models.name.9.sub <- c("2a) WCVISS q SD = 0.448")
 sens.models.dir.name.9 <- c(file.path(model.dir,
                                       "1_2a_3CD_rsoleq_0228sd0448"),
                             file.path(model.dir,
-                                      "1_2b_3CD_q_all_unif"))
+                                      "1_2b_3CD_q_all_unif"),
+                            file.path(model.dir,
+                                      "1_2c_3CD_q_05"),
+                            file.path(model.dir,
+                                      "1_2d_3CD_q_1"))
 sens.models.name.9 <- c("2a) WCVISS q SD = 0.448",
-                        "2b) WCVISS q has uniform prior")
+                        "2b) WCVISS q has uniform prior",
+                        "2c) WCVISS mean q = ln(0.5*0.65)",
+                        "2d) WCVISS mean q = ln(0.65)")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 10 (3CD)
@@ -444,6 +466,16 @@ sens.models.name.14 <- c("7a) Fix sigma W = 0.4",
                          "7b) Fix sigma W = 0.15")
 
 ## -----------------------------------------------------------------------------
+## Sensitivity models group 15 (3CD)
+## -----------------------------------------------------------------------------
+sens.models.dir.name.15 <- c(file.path(model.dir,
+                                      "1_8a_3CD_InflateHistCatch_025"),
+                            file.path(model.dir,
+                                      "1_8b_3CD_InflateHistCatch_05"))
+sens.models.name.15 <- c("8a) Inflate pre-1996 catch by 25%",
+                        "8b) Inflate pre-1996 catch by 50%")
+
+## -----------------------------------------------------------------------------
 ## Retrospectives
 ## -----------------------------------------------------------------------------
 retro.dir.names.3cd <- c(file.path(base.model.3cd.dir.name,
@@ -487,6 +519,7 @@ load.models.into.parent.env <- function(){
   sens.models.6 <<- load.models(sens.models.dir.name.6)
   sens.models.6.sub <<- load.models(sens.models.dir.name.6.sub)
   sens.models.7 <<- load.models(sens.models.dir.name.7)
+  sens.models.108 <<- load.models(sens.models.dir.name.108)
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
   desc.models.3cd <<- load.models(desc.models.3cd.dir.name)
@@ -502,6 +535,7 @@ load.models.into.parent.env <- function(){
   sens.models.13 <<- load.models(sens.models.dir.name.13)
   sens.models.13.sub <<- load.models(sens.models.dir.name.13.sub)
   sens.models.14 <<- load.models(sens.models.dir.name.14)
+  sens.models.15 <<- load.models(sens.models.dir.name.15)
 
   base.retro.models.5abcd <<- load.models(retro.dir.names.5abcd)
   base.retro.models.3cd <<- load.models(retro.dir.names.3cd)
@@ -551,6 +585,7 @@ build <- function(ovwrt.base = FALSE,
                               unlist(sens.models.dir.name.5),
                               unlist(sens.models.dir.name.6),
                               unlist(sens.models.dir.name.7),
+                              unlist(sens.models.dir.name.108),
                               unlist(sens.models.dir.name.00),
                               unlist(sens.models.dir.name.8),
                               unlist(sens.models.dir.name.9),
@@ -558,7 +593,8 @@ build <- function(ovwrt.base = FALSE,
                               unlist(sens.models.dir.name.11),
                               unlist(sens.models.dir.name.12),
                               unlist(sens.models.dir.name.13),
-                              unlist(sens.models.dir.name.14))
+                              unlist(sens.models.dir.name.14),
+                              unlist(sens.models.dir.name.15))
   ## Sensitivity models
   for(model.nm in sens.models.names.list){
     create.rdata.file(model.nm,
