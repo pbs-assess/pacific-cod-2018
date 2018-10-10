@@ -637,7 +637,7 @@ decision.table(base.model.3cd,
 </SPAN>
 
 ---
-## Area 3CD — Model averaged decision table
+## Area 3CD — Model averaged decision tables (options 1 and 2)
  - Scenarios included (expanded from those in working paper):
   - 1a Reference model
   - 1f No commercial CPUE
@@ -650,7 +650,7 @@ decision.table(base.model.3cd,
 
 
 ---
-## Area 3CD — Model averaged decision table
+## Area 3CD — Model averaged decision table. 2018 Ct = 164.47 t
 <SPAN STYLE="font-size: 10pt">
 ```{r tab-decision-3cd-avg, results='asis'}
 decision.table(desc.models.3cd,
@@ -660,7 +660,7 @@ decision.table(desc.models.3cd,
 </SPAN>
 
 ---
-## Area 3CD —  Model averaged decision table with extrapolated 2018 catch
+## Area 3CD —  Model averaged decision table. 2018 Ct = 15.29 t
 <SPAN STYLE="font-size: 10pt">
 ```{r tab-decision-3cd-avg-extrap, results='asis'}
 decision.table(desc.models.3cd.extrap,
