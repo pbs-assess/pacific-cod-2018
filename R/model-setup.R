@@ -99,6 +99,29 @@ if(verbose){
 }
 
 ## -----------------------------------------------------------------------------
+## Decision table models to average (5ABCD)
+## -----------------------------------------------------------------------------
+desc.models.5abcd.dir.name <- c(file.path(model.dir,
+                                          "0_1a_5ABCD_BASE_fix-localities"),
+                                file.path(model.dir,
+                                          "0_1f_5ABCD_BASE_loc-yr-interact_no_CPUE"),
+                                file.path(model.dir,
+                                          "0_2a_5ABCD_rsoleq_019_019"),
+                                file.path(model.dir,
+                                          "0_2b_5ABCD_q_all_unif"),
+                                file.path(model.dir,
+                                          "0_2d_5ABCD_rsoleq_1_1"),
+                                file.path(model.dir,
+                                          "0_5a_5ABCD_kage_3"),
+                                file.path(model.dir,
+                                          "0_6b_5ABCD_sig015"),
+                                file.path(model.dir,
+                                          "0_7a_5ABCD_sigW_04"),
+                                file.path(model.dir,
+                                          "0_8b_5ABCD_InflateHistCatch_05"))
+desc.models.5abcd.name <- c("1a", "1f", "2a", "2b", "2d", "5a", "6b", "7a", "8b")
+
+## -----------------------------------------------------------------------------
 ## Sensitivity models group 0 (5ABCD)
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.0 <- c(file.path(model.dir,
@@ -430,6 +453,7 @@ retro.names <- c("- 1 year",
 ## and sensitivity models change in the model.dir.names above..
 load.models.into.parent.env <- function(){
   base.model.5abcd <<- load.models(base.model.5abcd.dir.name)
+  desc.models.5abcd <<- load.models(desc.models.5abcd.dir.name)
   sens.models.0 <<- load.models(sens.models.dir.name.0)
   sens.models.1.sub <<- load.models(sens.models.dir.name.1.sub)
   sens.models.1.sub2 <<- load.models(sens.models.dir.name.1.sub2)
@@ -494,7 +518,8 @@ build <- function(ovwrt.base = FALSE,
 
   ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the for loop below to work right
-  sens.models.names.list <- c(unlist(sens.models.dir.name.0),
+  sens.models.names.list <- c(unlist(desc.models.5abcd.dir.name),
+                              unlist(sens.models.dir.name.0),
                               unlist(sens.models.dir.name.1),
                               unlist(sens.models.dir.name.2),
                               unlist(sens.models.dir.name.3),

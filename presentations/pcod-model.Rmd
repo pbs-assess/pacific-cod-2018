@@ -590,6 +590,17 @@ decision.table(base.model.5abcd,
 </SPAN>
 
 ---
+## Area 5ABCD - Model averaged decision table
+<SPAN STYLE="font-size: 6pt">
+```{r tab-decision-5abcd-avg, results='asis'}
+decision.table(desc.models.5abcd,
+               desc.models.5abcd.name,
+               format = "html",
+               tac.vec = c(seq(0, 2000, 100), 3000))
+```
+</SPAN>
+
+---
 ## Area 3CD - Reference case decision table
 <SPAN STYLE="font-size: 10pt">
 ```{r tab-decision-3cd, results='asis'}
