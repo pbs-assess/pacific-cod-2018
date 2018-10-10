@@ -215,7 +215,7 @@ make.traces.plot(base.model.5abcd)
 ## Area 5ABCD — MCMC diagnostics — autocorrelation
 
 ```{r fig-base-mcmc-autocor-5abcd}
-make.autocor.plot(base.model.5abcd)
+make.autocor.plot(base.model.5abcd, ylim = c(-.2, .2))
 ```
 
 ---
@@ -341,7 +341,7 @@ make.traces.plot(base.model.3cd)
 ## Area 3CD — MCMC diagnostics — autocorrelation
 
 ```{r fig-base-mcmc-autocor-3cd}
-make.autocor.plot(base.model.3cd)
+make.autocor.plot(base.model.3cd, ylim = c(-.2, .2))
 ```
 
 ---
@@ -647,7 +647,7 @@ decision.table(base.model.3cd,
   - 6b $\sigma_O$ = 0.15
   - 7a $\sigma_W$ = 0.4
   - 8b Pre-1996 catch inflated by 50%
-  
+
 
 ---
 ## Area 3CD — Model averaged decision table
