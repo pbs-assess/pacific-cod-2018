@@ -7,7 +7,7 @@ make.catches.plot <- function(dat,
     summarize(usa_catch = sum(usa_catch),
               canada_catch = sum(canada_catch))
   dat <- melt(dat, id.vars = "year")
-  ggplot(dat) +
+  p <- ggplot(dat) +
     aes(x = year, y = value, fill = variable) +
     geom_col() +
     coord_cartesian(expand = FALSE) +
@@ -17,8 +17,11 @@ make.catches.plot <- function(dat,
     scale_fill_brewer(labels = c("USA", "Canada"), palette = "Dark2") +
     scale_y_continuous(labels = comma,
                        limits = c(0, NA)) +
-    scale_x_continuous(breaks = seq(0, last.yr, every))
-    theme_pbs()
+    scale_x_continuous(breaks = seq(0, last.yr, every)) +
+    theme(legend.position = c(1, 1),
+          legend.justification = c(1, 1),
+          legend.title = element_blank())
+  p
 }
 
 discards.plot <- function(dat){
