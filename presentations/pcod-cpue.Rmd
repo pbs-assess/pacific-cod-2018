@@ -227,6 +227,12 @@ Delta-gamma or delta-lognormal index standardization models:
 
 ---
 
+## Delta-lognormal/Gamma models create an index that is dependent on the reference levels
+
+<img src="figures/cpue-delta-demo.png" height="440" class='center-img'>
+
+---
+
 # 3. Extending CPUE standardization: allowing for space-time interactions
 
 <br>
@@ -438,8 +444,9 @@ cowplot::plot_grid(g1, g2, ncol = 1)
 
 <img src="figures/cpue-re-no-int-ts-1.png" height="500" class='center-img'>
 
----
+<!--
 
 ## Simulation testing the space-time assumption
 
 <img src="figures/cpue-sim.svg" height="500" class='center-img'>
+-->
