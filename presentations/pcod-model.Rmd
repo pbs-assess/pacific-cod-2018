@@ -137,23 +137,12 @@ class: middle, center, inverse
 ]
 
 ---
-## Area 5ABCD — Biomass plot for difference between the 3 models
-```{r fig-sens0-biomass-5abcd}
-b.plot(c(base.model.5abcd, sens.models.0), c(base.model.5abcd.name, sens.models.name.0))
-```
----
-## Area 3CD — Biomass plot for difference between the 3 models
-```{r fig-sens0-biomass-3cd}
-b.plot(c(base.model.3cd, sens.models.00), c(base.model.3cd.name, sens.models.name.00))
-```
-
----
 # Add 2018 catch for Area 5ABCD
 - Calculate 3-year average proportion of annual catch taken by Sept. 30
 
 - Apply this proportion to the 2018 catch taken so far to extrapolate to the end of the fishing year
 
-  - Proportion is 0.885
+  - Proportion is 0.884
 
   - 2018 catch as of Sept. 30, 2018 was 203.61 t
 
@@ -161,18 +150,30 @@ b.plot(c(base.model.3cd, sens.models.00), c(base.model.3cd.name, sens.models.nam
 
 ---
 # Add 2018 catch for Area 3CD
-- Two options:
-  1. Calculate 3-year average proportion of annual catch taken by Sept. 30
+- Calculate 3-year average proportion of annual catch taken by Sept. 30
 
     - Apply this proportion to the 2018 catch taken so far to extrapolate to the end of the fishing year
-
-      - Proportion is 0.563
-
+      
+      - Proportion is 0.692
       - 2018 catch as of Sept. 30, 2018 was 10.58 t
-
       - Extrapolated catch for 2018 season is 15.29 t
 
-  1. Use the same catch for 2018 as 2017, 164.469 t
+- Use the same catch for 2018 as 2017, i.e. 164.469 t
+    
+      - This option was used in reference and sensitivity cases 
+      - An alternative model-averaged decision table using the extrapolated catch will also be presented
+
+
+---
+## Area 5ABCD — Updated Biomass 
+```{r fig-sens0-biomass-5abcd}
+b.plot(c(base.model.5abcd, sens.models.0), c(base.model.5abcd.name, sens.models.name.0))
+```
+---
+## Area 3CD — Updated Biomass 
+```{r fig-sens0-biomass-3cd}
+b.plot(c(base.model.3cd, sens.models.00), c(base.model.3cd.name, sens.models.name.00))
+```
 
 
 ---
