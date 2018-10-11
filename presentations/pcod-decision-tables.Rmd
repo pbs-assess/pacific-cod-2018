@@ -47,7 +47,44 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 ## Informative prior for ln(q) in synoptic surveys
 ### New scenarios
+ - 2e Increase prior SD for synoptic surveys to 0.6
+ - 2f Increase prior SD for synoptic surveys to 1.0
 
+---
+# Area 5ABCD. Biomass
+
+```{r fig-qsens-5ABCD}
+b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
+
+```
+
+
+---
+# Area 5ABCD. Biomass
+
+```{r fig-qsens-5ABCD-sub}
+b.plot(c(base.model.5abcd, sens.models.2.sub), c(base.model.5abcd.name, sens.models.name.2.sub))
+
+```
+
+
+
+---
+# Area 3CD. Biomass
+
+```{r fig-qsens-3CD}
+b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
+
+```
+
+---
+# Area 3CD. Biomass
+
+```{r fig-qsens-3CD-sub}
+
+b.plot(c(base.model.3cd, sens.models.9.sub), c(base.model.3cd.name, sens.models.name.9.sub))
+
+```
 
 ---
 ## Historical Biomass-based Reference points
@@ -68,6 +105,8 @@ Average estimated biomass from 1956-2004
 
 **Upper Stock Reference:**<br />
 0.4*B0
+
+- Warning: B0 in this assessment is calculated differently from that in Forrest et al. 2018. It is *much* less precautionary.
 
 ---
 
@@ -115,8 +154,8 @@ decision.table(base.model.5abcd,
  - Scenarios included (expanded from those in working paper):
   - 1a Reference model
   - 2d Prior mean synoptic survey ln(q) = ln(1.0) (pro-rated by area)
-  - 2e Increase prior SD for synoptic surveys to 1.0
-  - 2f Increase prior SD for synoptic surveys to 0.6
+  - 2e Increase prior SD for synoptic surveys to 0.6
+  - 2f Increase prior SD for synoptic surveys to 1.0
   - 5a Knife-edged age at recruitment = 3 y
   - 6b $\sigma_O$ = 0.15
   - 8a Pre-1996 catch inflated by 25%
@@ -165,8 +204,8 @@ decision.table(base.model.3cd,
  - Scenarios included (expanded from those in working paper):
   - 1a Reference model
   - 2d Prior mean synoptic survey ln(q) = ln(1.0)
-  - 2e Increase prior SD for synoptic surveys to 1.0
-  - 2f Increase prior SD for synoptic surveys to 0.6
+  - 2e Increase prior SD for synoptic surveys to 0.6
+  - 2f Increase prior SD for synoptic surveys to 1.0
   - 5a Knife-edged age at recruitment = 3 y
   - 6b $\sigma_O$ = 0.15
   - 8a Pre-1996 catch inflated by 25%

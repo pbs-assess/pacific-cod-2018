@@ -193,6 +193,26 @@ sens.models.name.2 <- c("2a) HSSS and QCSS mean ln(q) = ln(0.1869 * 0.65)",
                         "2f) HSSS and QCSS SD ln(q) = 1.0")
 
 ## -----------------------------------------------------------------------------
+## Sensitivity models group 2 (5ABCD) - sub
+## -----------------------------------------------------------------------------
+sens.models.dir.name.2.sub <- c(file.path(model.dir,
+                                      "0_2a_5ABCD_rsoleq_019_019"),
+                            file.path(model.dir,
+                                      "0_2c_5ABCD_rsoleq_05_05"),
+                            file.path(model.dir,
+                                      "0_2d_5ABCD_rsoleq_1_1"),
+                            file.path(model.dir,
+                                      "0_2e_5ABCD_q_cv06"),
+                            file.path(model.dir,
+                                      "0_2f_5ABCD_q_cv1"))
+sens.models.name.2.sub <- c("2a) HSSS and QCSS mean ln(q) = ln(0.1869 * 0.65)",
+                        "2c) HSSS mean ln(q) = ln(0.5 * 0.35), QCSSS mean q = ln(0.5 * 0.65)",
+                        "2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
+                        "2e) HSSS and QCSS SD ln(q) = 0.6",
+                        "2f) HSSS and QCSS SD ln(q) = 1.0")
+
+
+## -----------------------------------------------------------------------------
 ## Sensitivity models group 3 (5ABCD)
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.3 <- c(file.path(model.dir,
@@ -552,6 +572,7 @@ load.models.into.parent.env <- function(){
   sens.models.1.sub2 <<- load.models(sens.models.dir.name.1.sub2)
   sens.models.1 <<- load.models(sens.models.dir.name.1)
   sens.models.2 <<- load.models(sens.models.dir.name.2)
+  sens.models.2 <<- load.models(sens.models.dir.name.2.sub)
   sens.models.3 <<- load.models(sens.models.dir.name.3)
   sens.models.4 <<- load.models(sens.models.dir.name.4)
   sens.models.5 <<- load.models(sens.models.dir.name.5)
