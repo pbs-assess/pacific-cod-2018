@@ -104,22 +104,14 @@ if(verbose){
 desc.models.5abcd.dir.name <- c(file.path(model.dir,
                                           "0_1a_5ABCD_BASE_fix-localities"),
                                 file.path(model.dir,
-                                          "0_1f_5ABCD_BASE_loc-yr-interact_no_CPUE"),
-                                file.path(model.dir,
-                                          "0_2a_5ABCD_rsoleq_019_019"),
-                                file.path(model.dir,
-                                          "0_2b_5ABCD_q_all_unif"),
-                                file.path(model.dir,
                                           "0_2d_5ABCD_rsoleq_1_1"),
                                 file.path(model.dir,
                                           "0_5a_5ABCD_kage_3"),
                                 file.path(model.dir,
                                           "0_6b_5ABCD_sig015"),
                                 file.path(model.dir,
-                                          "0_7a_5ABCD_sigW_04"),
-                                file.path(model.dir,
-                                          "0_8b_5ABCD_InflateHistCatch_05"))
-desc.models.5abcd.name <- c("1a", "1f", "2a", "2b", "2d", "5a", "6b", "7a", "8b")
+                                          "0_8a_5ABCD_InflateHistCatch_025"))
+desc.models.5abcd.name <- c("1a", "2d", "5a", "6b", "8a")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 0 (5ABCD)
@@ -231,33 +223,21 @@ sens.models.name.5 <- c("5a) kage = 3y and update FW parameters",
 ## Sensitivity models group 6 sub (5ABCD) #For decision table graph
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.6.sub <- c(file.path(model.dir,
-                                          "0_1f_5ABCD_BASE_loc-yr-interact_no_CPUE"),
-                                #file.path(model.dir,
-                                #          "0_2a_5ABCD_rsoleq_019_019"),
-                                file.path(model.dir,
-                                          "0_2b_5ABCD_q_all_unif"),
-                                file.path(model.dir,
                                           "0_2d_5ABCD_rsoleq_1_1"),
                                 file.path(model.dir,
-                                          "0_3b_5ABCD_Mprior_mean04_sd025"),
+                                          "0_3a_5ABCD_Mprior_mean04_sd01"),
                                 file.path(model.dir,
                                           "0_5a_5ABCD_kage_3"),
                                 file.path(model.dir,
                                           "0_6b_5ABCD_sig015"),
                                 file.path(model.dir,
-                                          "0_7a_5ABCD_sigW_04"),
-                                file.path(model.dir,
-                                          "0_8b_5ABCD_InflateHistCatch_05"))
+                                          "0_8a_5ABCD_InflateHistCatch_025"))
 
-sens.models.name.6.sub <- c("1f) Remove all CPUE",
-                            #"2a) HSSS and QCSS mean ln(q) = ln(0.1869 * 0.65)",
-                            "2b) No priors on ln(q)",
-                            "2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
-                            "3b) M mean = 0.4, SD = 0.1",
+sens.models.name.6.sub <- c("2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
+                            "3a) M mean = 0.4, SD = 0.1",
                             "5a) kage = 3y and update FW parameters",
                             "6b) Fix sigma O = 0.15",
-                            "7a) Fix sigma W = 0.4",
-                            "8b) Inflate pre-1996 catch by 50%"
+                            "8a) Inflate pre-1996 catch by 25%"
                             )
 
 ## -----------------------------------------------------------------------------
@@ -306,21 +286,16 @@ sens.models.name.108 <- c("8a) Inflate pre-1996 catch by 25%",
 desc.models.3cd.dir.name <- c(file.path(model.dir,
                                         "1_1a_3CD_BASE_fix-localities"),
                               file.path(model.dir,
-                                        "1_1f_3CD_BASE_loc-yr-interact_no_CPUE"),
-                              file.path(model.dir,
-                                        "1_2a_3CD_rsoleq_0228sd0448"),
-                              file.path(model.dir,
                                         "1_2d_3CD_q_1"),
                               file.path(model.dir,
                                         "1_5a_3CD_kage3"),
                               file.path(model.dir,
                                         "1_6b_3CD_sig015"),
                               file.path(model.dir,
-                                        "1_7a_3CD_sigW04"),
-                              file.path(model.dir,
-                                        "1_8b_3CD_InflateHistCatch_05"))
+                                        "1_8a_3CD_InflateHistCatch_025"))
 
-desc.models.3cd.name <- c("1a", "1f", "2a", "2d", "5a", "6b", "7a", "8b")
+desc.models.3cd.name <- c("1a", "2d", "5a", "6b", "8a")
+
 desc.models.3cd.extrap.dir.name <-
   c(file.path(model.dir,
               "1_9_1a_3CD_BASE-add2018_2018Ctextrap"),
@@ -468,31 +443,22 @@ sens.models.name.12 <- c("5a) kage = 3y and update FW parameters",
 ## Sensitivity models group 13 sub (3CD) Decision table figure
 ## -----------------------------------------------------------------------------
 sens.models.dir.name.13.sub <- c(file.path(model.dir,
-                                           "1_1f_3CD_BASE_loc-yr-interact_no_CPUE"),
-                                 file.path(model.dir,
-                                           "1_2a_3CD_rsoleq_0228sd0448"),
-                                 file.path(model.dir,
                                            "1_2d_3CD_q_1"),
                                  file.path(model.dir,
-                                           "1_3b_3CD_Mprior_mean04_sd025"),
+                                           "1_3a_3CD_Mprior_mean04_sd01"),
                                  file.path(model.dir,
                                            "1_5a_3CD_kage3"),
                                  file.path(model.dir,
                                            "1_6b_3CD_sig015"),
                                  file.path(model.dir,
-                                           "1_7a_3CD_sigW04"),
-                                 file.path(model.dir,
-                                           "1_8b_3CD_InflateHistCatch_05")
+                                           "1_8a_3CD_InflateHistCatch_025")
                                  )
 
-sens.models.name.13.sub <- c("1f) Remove all CPUE",
-                             "2a) WCVISS q SD = 0.448",
-                             "2b) No priors on ln(q)",
-                             "3b) M mean = 0.4, SD = 0.1",
+sens.models.name.13.sub <- c("2b) No priors on ln(q)",
+                             "3a) M mean = 0.4, SD = 0.1",
                              "5a) kage = 3y and update FW parameters",
                              "6b) Fix sigma O = 0.15",
-                             "7a) Fix sigma W = 0.4",
-                             "8b) Inflate pre-1996 catch by 50%")
+                             "8a) Inflate pre-1996 catch by 25%")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 13 (3CD)

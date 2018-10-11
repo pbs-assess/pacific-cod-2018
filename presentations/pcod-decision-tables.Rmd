@@ -45,6 +45,46 @@ load.models.into.parent.env()
 source(file.path(rootd.R, "custom-knitr-variables.R"))
 ```
 
+---
+## Historical Biomass-based Reference points
+
+**Limit reference point:**<br />
+Lowest estimated biomass from which stock recovered to above average:
+  - 5ABCD: B1971
+  - 3CD:   B1986
+
+**Upper Stock Reference:**<br />
+Average estimated biomass from 1956-2004
+
+---
+## B0 Biomass-based Reference points
+
+**Limit reference point:**<br />
+0.2*B0
+
+**Upper Stock Reference:**<br />
+0.4*B0
+
+---
+
+## Area 5ABCD
+```{r fig-base-biomass-refpts-5ABCD}
+
+b.plot(base.model.5abcd, base.model.5abcd.name, add.bo.ref=T, add.hist.ref=T, lrp=c(1971,1971), usr =c(1956,2004))
+```
+
+---
+
+## Area 3CD
+```{r fig-base-biomass-refpts-3CD}
+
+b.plot(base.model.3cd, base.model.3cd.name, add.bo.ref=T, add.hist.ref=T, lrp=c(1986,1986), usr =c(1956,2004))
+```
+
+
+
+---
+
 ## Area 5ABCD - Reference case decision table - 1
 <SPAN STYLE="font-size: 12pt">
 ```{r tab-decision-5abcd-1, results='asis'}
@@ -70,14 +110,12 @@ decision.table(base.model.5abcd,
 ## Area 5ABCD - Model averaged decision table
  - Scenarios included (expanded from those in working paper):
   - 1a Reference model
-  - 1f No commercial CPUE
-  - 2a Prior mean survey ln(q) = ln(0.19) for both synoptic surveys (pro-rated by area)
-  - 2b No priors on q
-  - 2d Prior mean survey ln(q) = ln(1.0), SD = 0.3 for both synoptic surveys (pro-rated by area)
+  - 2d Prior mean synoptic survey ln(q) = ln(1.0) (pro-rated by area)
+  - 2e Increase prior SD for synoptic surveys to 1.0
+  - 2f Increase prior SD for synoptic surveys to 0.6
   - 5a Knife-edged age at recruitment = 3 y
   - 6b $\sigma_O$ = 0.15
-  - 7a $\sigma_W$ = 0.4
-  - 8b Pre-1996 catch inflated by 50%
+  - 8a Pre-1996 catch inflated by 25%
 
 ---
 ## Area 5ABCD - Scenarios used in decision table
@@ -85,7 +123,6 @@ decision.table(base.model.5abcd,
 b.plot(c(base.model.5abcd, sens.models.6.sub), c(base.model.5abcd.name, sens.models.name.6.sub))
 #b.plot(c(sens.models.6.sub), c(sens.models.name.6.sub))
 ```
-
 
 ---
 ## Area 5ABCD - Model averaged decision table - 1
@@ -120,16 +157,15 @@ decision.table(base.model.3cd,
 </SPAN>
 
 ---
-## Area 3CD - Model averaged decision tables (options 1 and 2)
+## Area 3CD - Model averaged decision tables
  - Scenarios included (expanded from those in working paper):
   - 1a Reference model
-  - 1f No commercial CPUE
-  - 2a Prior mean synoptic survey ln(q) = ln(0.228), SD = 0.448
-  - 2d Prior mean synoptic survey ln(q) = ln(1.0), SD = 0.3
+  - 2d Prior mean synoptic survey ln(q) = ln(1.0)
+  - 2e Increase prior SD for synoptic surveys to 1.0
+  - 2f Increase prior SD for synoptic surveys to 0.6
   - 5a Knife-edged age at recruitment = 3 y
   - 6b $\sigma_O$ = 0.15
-  - 7a $\sigma_W$ = 0.4
-  - 8b Pre-1996 catch inflated by 50%
+  - 8a Pre-1996 catch inflated by 25%
 
 
 ---
@@ -145,16 +181,6 @@ b.plot(c(base.model.3cd, sens.models.13.sub), c(base.model.3cd.name, sens.models
 ```{r tab-decision-3cd-avg, results='asis'}
 decision.table(desc.models.3cd,
                desc.models.3cd.name,
-               format = "html")
-```
-</SPAN>
-
----
-## Area 3CD - Model averaged decision table. 2018 Ct = 15.29 t
-<SPAN STYLE="font-size: 10pt">
-```{r tab-decision-3cd-avg-extrap, results='asis'}
-decision.table(desc.models.3cd.extrap,
-               desc.models.3cd.extrap.name,
                format = "html")
 ```
 </SPAN>
