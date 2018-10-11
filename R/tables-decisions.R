@@ -10,8 +10,9 @@ decision.table <- function(models,
   dat <- as.data.frame(matrix(NA,
                               ncol = 6,
                               nrow = length(tac)))
-
   col.names <- c("$2019$ Catch (mt)",
+                 "$P(B_{2020} < 0.2B_0)$",
+                 "$P(B_{2020} < 0.4B_0)$",
                  "$P(B_{2020} < B_{2019})$",
                  "$P(F_{2019} > F_{2018})$",
                  "$P(B_{2020} < \\mathrm{LRP})$",
@@ -20,6 +21,8 @@ decision.table <- function(models,
 
   if(format == "html"){
     col.names <- c("2019 Catch (mt)",
+                   "P(B2020 < 0.2B0)",
+                   "P(B2020 < 0.4B0)",
                    "P(B2020 < B2019)",
                    "P(F2019 > F2018)",
                    "P(B2020 < LRP)",
@@ -42,11 +45,13 @@ decision.table <- function(models,
     d <- bind_rows(proj)
 
     dat[t, 1] <- f(tac[t], 0)
-    dat[t, 2] <- f(mean(d$B2020B2019 < 1), 2)   #P(B2019<B2018)
-    dat[t, 3] <- f(mean(d$F2019F2018 > 1), 2)   #P(F2018>F2017)
-    dat[t, 4] <- f(mean(d$B2020Bmin < 1), 2)   #P(B2019<Bmin)
-    dat[t, 5] <- f(mean(d$B2020BAvgS < 1), 2)  #P(B2019<BAvg) #Avg 1956-2004
-    dat[t, 6] <- f(mean(d$F2019FAvgS > 1), 2)  #P(F2018>FAvg) #Avg 1956-2004
+    dat[t, 2] <- f(mean(d$B20200.2B0 < 1), 2)
+    dat[t, 3] <- f(mean(d$B20200.4B0 < 1), 2)
+    dat[t, 4] <- f(mean(d$B2020B2019 < 1), 2)
+    dat[t, 5] <- f(mean(d$F2019F2018 > 1), 2)
+    dat[t, 6] <- f(mean(d$B2020Bmin < 1), 2)
+    dat[t, 7] <- f(mean(d$B2020BAvgS < 1), 2)
+    dat[t, 8] <- f(mean(d$F2019FAvgS > 1), 2)
   }
 
   dat <- mutate_at(dat, -1, function(x) gsub('0.00', '<0.01', x))
