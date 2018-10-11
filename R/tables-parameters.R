@@ -15,7 +15,8 @@ mcmc_monitor <- function(model) {
 
 make.parameters.table <- function(model,
                                   caption = "default", omit_pars = NULL,
-                                  omit_selectivity_pars = FALSE){
+                                  omit_selectivity_pars = FALSE,
+                                  format = "pandoc"){
 
   get.bounds <- function(ind){
     ## Return the bounds string for row ind of the parameters
@@ -228,7 +229,7 @@ make.parameters.table <- function(model,
 
 
   knitr::kable(tab,
-    caption = caption, format = "pandoc",
+    caption = caption, format = format,
     align = get.align(ncol(tab))[-1],
     booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
     kableExtra::kable_styling(latex_options = "hold_position")
@@ -236,8 +237,9 @@ make.parameters.table <- function(model,
 
 make.parameters.est.table <- function(model,
                                       digits = 3,
-                                      caption = "default",
-                                      omit_pars = NULL){
+                                      caption = "",
+                                      omit_pars = NULL,
+                                      format = "pandoc"){
   ## Returns an xtable in the proper format for parameter estimates and priors
   ##
   ## digits - number of decimal points on % columns
@@ -368,7 +370,7 @@ make.parameters.est.table <- function(model,
     tab <- dplyr::filter(tab, !`Parameter` %in% omit_pars)
   }
   knitr::kable(tab,
-    caption = caption, format = "pandoc",
+    caption = caption, format = format,
     align = get.align(ncol(tab))[-1], longtable = TRUE,
     booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
     kableExtra::kable_styling(latex_options = "hold_position")

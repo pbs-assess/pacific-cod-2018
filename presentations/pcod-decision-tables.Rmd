@@ -56,7 +56,8 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 ```{r tab-param-est-5abcd-base, results='asis'}
 pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(base.model.5abcd,
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+  format = "html")
 
 ```
 </SPAN>
@@ -67,7 +68,8 @@ make.parameters.est.table(base.model.5abcd,
 ```{r tab-param-est-5abcd-2e, results='asis'}
 pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(sens.models.2[[5]],
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+  format = "html")
 
 ```
 </SPAN>
@@ -78,7 +80,8 @@ make.parameters.est.table(sens.models.2[[5]],
 ```{r tab-param-est-5abcd-2f, results='asis'}
 pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(sens.models.2[[6]],
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+  format = "html")
 
 ```
 </SPAN>
@@ -106,7 +109,8 @@ b.plot(c(base.model.5abcd, sens.models.2.sub), c(base.model.5abcd.name, sens.mod
 ```{r tab-param-est-3cd-base, results='asis'}
 pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(base.model.3cd,
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+  format = "html")
 
 ```
 </SPAN>
@@ -117,7 +121,8 @@ make.parameters.est.table(base.model.3cd,
 ```{r tab-param-est-3cd-2e, results='asis'}
 pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(sens.models.9[[5]],
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+  format = "html")
 
 ```
 </SPAN>
@@ -128,7 +133,8 @@ make.parameters.est.table(sens.models.9[[5]],
 ```{r tab-param-est-3cd-2f, results='asis'}
 pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(sens.models.9[[6]],
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+  format = "html")
 
 ```
 </SPAN>
