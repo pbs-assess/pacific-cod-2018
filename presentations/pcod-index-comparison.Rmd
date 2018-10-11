@@ -34,7 +34,7 @@ library(knitr)
 library(ggplot2)
 library(dplyr)
 library(gfplot)
-theme_set(theme_pbs())
+theme_set(theme_light())
 ```
 
 

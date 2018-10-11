@@ -82,7 +82,9 @@ compare_indices <- function(.survey, cpue_area, geo = FALSE) {
       label = paste0("p = ", round(p, 3)), hjust = 0) +
     xlab("") + ylab("Relative estimate") +
     labs(colour = "Type", fill = "Type") +
-    theme(legend.position = c(0.9, 0.9))
+    theme(legend.position = c(0.9, 0.9)) +
+    theme(panel.grid.minor = element_blank()) +
+    scale_x_continuous(breaks = seq(min(d$year), max(d$year)))
   g
 
 
