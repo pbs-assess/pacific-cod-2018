@@ -2,6 +2,7 @@ b.plot <- function(models,
                    models.names,
                    depl = FALSE,
                    add.hist.ref = FALSE,
+                   add.bo.ref = FALSE,
                    lrp = NA,
                    usr = NA,
                    proj_columns = NULL,
@@ -136,13 +137,26 @@ b.plot <- function(models,
       usr.val <- mean(cau$`Biomass (t)`)
       j <- data.frame("Intercept" = c(lrp.val, usr.val),
                       "Color" = c("red", "green"))
+
       p <- p +
+        geom_hline(data = j,
+                   aes(yintercept = Intercept),
+                   color = j$Color,
+                   linetype = "solid",
+                   size = 1)
+    }
+  }
+
+  if(add.bo.ref){
+    bo.med <- as.numeric(bo[2])
+    j <- data.frame("Intercept" = c(0.2*bo.med, 0.4*bo.med),
+                    "Color" = c("red", "green"))
+    p <- p +
         geom_hline(data = j,
                    aes(yintercept = Intercept),
                    color = j$Color,
                    linetype = "dashed",
                    size = 1)
-    }
   }
 
   if(depl){
