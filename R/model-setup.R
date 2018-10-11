@@ -572,7 +572,7 @@ load.models.into.parent.env <- function(){
   sens.models.1.sub2 <<- load.models(sens.models.dir.name.1.sub2)
   sens.models.1 <<- load.models(sens.models.dir.name.1)
   sens.models.2 <<- load.models(sens.models.dir.name.2)
-  sens.models.2 <<- load.models(sens.models.dir.name.2.sub)
+  sens.models.2.sub <<- load.models(sens.models.dir.name.2.sub)
   sens.models.3 <<- load.models(sens.models.dir.name.3)
   sens.models.4 <<- load.models(sens.models.dir.name.4)
   sens.models.5 <<- load.models(sens.models.dir.name.5)
