@@ -180,11 +180,17 @@ sens.models.dir.name.2 <- c(file.path(model.dir,
                             file.path(model.dir,
                                       "0_2c_5ABCD_rsoleq_05_05"),
                             file.path(model.dir,
-                                      "0_2d_5ABCD_rsoleq_1_1"))
+                                      "0_2d_5ABCD_rsoleq_1_1"),
+                            file.path(model.dir,
+                                      "0_2e_5ABCD_q_cv06"),
+                            file.path(model.dir,
+                                      "0_2f_5ABCD_q_cv1"))
 sens.models.name.2 <- c("2a) HSSS and QCSS mean ln(q) = ln(0.1869 * 0.65)",
                         "2b) No priors on ln(q)",
                         "2c) HSSS mean ln(q) = ln(0.5 * 0.35), QCSSS mean q = ln(0.5 * 0.65)",
-                        "2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)")
+                        "2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
+                        "2e) HSSS and QCSS SD ln(q) = 0.6",
+                        "2f) HSSS and QCSS SD ln(q) = 1.0")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 3 (5ABCD)
@@ -225,6 +231,10 @@ sens.models.name.5 <- c("5a) kage = 3y and update FW parameters",
 sens.models.dir.name.6.sub <- c(file.path(model.dir,
                                           "0_2d_5ABCD_rsoleq_1_1"),
                                 file.path(model.dir,
+                                          "0_2e_5ABCD_q_cv06"),
+                                file.path(model.dir,
+                                          "0_2f_5ABCD_q_cv1"),
+                                file.path(model.dir,
                                           "0_3a_5ABCD_Mprior_mean04_sd01"),
                                 file.path(model.dir,
                                           "0_5a_5ABCD_kage_3"),
@@ -234,6 +244,8 @@ sens.models.dir.name.6.sub <- c(file.path(model.dir,
                                           "0_8a_5ABCD_InflateHistCatch_025"))
 
 sens.models.name.6.sub <- c("2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
+                            "2e) HSSS and QCSS SD ln(q) = 0.6",
+                            "2f) HSSS and QCSS SD ln(q) = 1.0",
                             "3a) M mean = 0.4, SD = 0.1",
                             "5a) kage = 3y and update FW parameters",
                             "6b) Fix sigma O = 0.15",
@@ -366,11 +378,17 @@ sens.models.dir.name.9.sub <- c(file.path(model.dir,
                                 file.path(model.dir,
                                           "1_2c_3CD_q_05"),
                                 file.path(model.dir,
-                                          "1_2d_3CD_q_1"))
+                                          "1_2d_3CD_q_1"),
+                                file.path(model.dir,
+                                          "1_2e_3CD_q_cv06"),
+                                file.path(model.dir,
+                                          "1_2f_3CD_q_cv1"))
 
 sens.models.name.9.sub <- c("2a) WCVISS ln(q) SD = 0.448",
                             "2c) WCVISS mean ln(q) = ln(0.5)",
-                            "2d) WCVISS mean ln(q) = ln(1.0)")
+                            "2d) WCVISS mean ln(q) = ln(1.0)",
+                            "2e) WCVISS SD ln(q) = 0.6",
+                            "2f) WCVISS SD ln(q) = 1.0")
 
 
 
@@ -384,11 +402,17 @@ sens.models.dir.name.9 <- c(file.path(model.dir,
                             file.path(model.dir,
                                       "1_2c_3CD_q_05"),
                             file.path(model.dir,
-                                      "1_2d_3CD_q_1"))
+                                      "1_2d_3CD_q_1"),
+                            file.path(model.dir,
+                                      "1_2e_3CD_q_cv06"),
+                            file.path(model.dir,
+                                      "1_2f_3CD_q_cv1"))
 sens.models.name.9 <- c("2a) WCVISS ln(q) SD = 0.448",
                         "2b) No priors on ln(q)",
                         "2c) WCVISS mean ln(q) = ln(0.5)",
-                        "2d) WCVISS mean ln(q) = ln(1.0)")
+                        "2d) WCVISS mean ln(q) = ln(1.0)",
+                        "2e) WCVISS SD ln(q) = 0.6",
+                        "2f) WCVISS SD ln(q) = 1.0")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 10 (3CD)
@@ -429,6 +453,10 @@ sens.models.name.12 <- c("5a) kage = 3y and update FW parameters",
 sens.models.dir.name.13.sub <- c(file.path(model.dir,
                                            "1_2d_3CD_q_1"),
                                  file.path(model.dir,
+                                           "1_2e_3CD_q_cv06"),
+                                 file.path(model.dir,
+                                           "1_2f_3CD_q_cv1"),
+                                 file.path(model.dir,
                                            "1_3a_3CD_Mprior_mean04_sd01"),
                                  file.path(model.dir,
                                            "1_5a_3CD_kage3"),
@@ -439,6 +467,8 @@ sens.models.dir.name.13.sub <- c(file.path(model.dir,
                                  )
 
 sens.models.name.13.sub <- c("2b) No priors on ln(q)",
+                             "2e) WCVISS SD ln(q) = 0.6",
+                             "2f) WCVISS SD ln(q) = 1.0",
                              "3a) M mean = 0.4, SD = 0.1",
                              "5a) kage = 3y and update FW parameters",
                              "6b) Fix sigma O = 0.15",

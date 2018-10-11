@@ -45,6 +45,10 @@ load.models.into.parent.env()
 source(file.path(rootd.R, "custom-knitr-variables.R"))
 ```
 
+## Informative prior for ln(q) in synoptic surveys
+### New scenarios
+
+
 ---
 ## Historical Biomass-based Reference points
 
