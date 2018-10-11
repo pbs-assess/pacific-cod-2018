@@ -296,22 +296,6 @@ desc.models.3cd.dir.name <- c(file.path(model.dir,
 
 desc.models.3cd.name <- c("1a", "2d", "5a", "6b", "8a")
 
-desc.models.3cd.extrap.dir.name <-
-  c(file.path(model.dir,
-              "1_9_1a_3CD_BASE-add2018_2018Ctextrap"),
-       file.path(model.dir,
-              "1_9_2a_3CD_rsoleq_0228sd0448_2018Ctextrap"),
-    file.path(model.dir,
-              "1_9_2d_3CD_q_1_2018Ctextrap"),
-    file.path(model.dir,
-              "1_9_5a_3CD_kage3_2018Ctextrap"),
-    file.path(model.dir,
-              "1_9_6b_3CD_sig015_2018Ctextrap"),
-   file.path(model.dir,
-              "1_9_8a_3CD_InflateHistCatch_025_2018Ctextrap"))
-desc.models.3cd.extrap.name <- c("1a", "2a", "2d", "5a", "6b", "8a")
-
-
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 00 (3CD)
 ## -----------------------------------------------------------------------------
@@ -548,7 +532,6 @@ load.models.into.parent.env <- function(){
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
   desc.models.3cd <<- load.models(desc.models.3cd.dir.name)
-  desc.models.3cd.extrap <<- load.models(desc.models.3cd.extrap.dir.name)
   sens.models.00 <<- load.models(sens.models.dir.name.00)
   sens.models.8.sub <<- load.models(sens.models.dir.name.8.sub)
   sens.models.8.sub2 <<- load.models(sens.models.dir.name.8.sub2)
@@ -604,7 +587,6 @@ build <- function(ovwrt.base = FALSE,
   ##  and placed into a single list for the for loop below to work right
   sens.models.names.list <- c(unlist(desc.models.5abcd.dir.name),
                               unlist(desc.models.3cd.dir.name),
-                              unlist(desc.models.3cd.extrap.dir.name),
                               unlist(sens.models.dir.name.0),
                               unlist(sens.models.dir.name.1),
                               unlist(sens.models.dir.name.2),
