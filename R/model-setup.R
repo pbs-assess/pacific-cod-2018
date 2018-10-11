@@ -324,9 +324,7 @@ desc.models.3cd.name <- c("1a", "1f", "2a", "2d", "5a", "6b", "7a", "8b")
 desc.models.3cd.extrap.dir.name <-
   c(file.path(model.dir,
               "1_9_1a_3CD_BASE-add2018_2018Ctextrap"),
-    file.path(model.dir,
-              "1_9_1f_3CD_BASE_loc-yr-interact_no_CPUE_2018Ctextrap"),
-    file.path(model.dir,
+       file.path(model.dir,
               "1_9_2a_3CD_rsoleq_0228sd0448_2018Ctextrap"),
     file.path(model.dir,
               "1_9_2d_3CD_q_1_2018Ctextrap"),
@@ -334,11 +332,9 @@ desc.models.3cd.extrap.dir.name <-
               "1_9_5a_3CD_kage3_2018Ctextrap"),
     file.path(model.dir,
               "1_9_6b_3CD_sig015_2018Ctextrap"),
-    file.path(model.dir,
-              "1_9_7a_3CD_sigW04_2018Ctextrap"),
-    file.path(model.dir,
-              "1_9_8b_3CD_InflateHistCatch_05_2018Ctextrap"))
-desc.models.3cd.extrap.name <- c("1a", "1f", "2a", "2d", "5a", "6b", "7a", "8b")
+   file.path(model.dir,
+              "1_9_8a_3CD_InflateHistCatch_025_2018Ctextrap"))
+desc.models.3cd.extrap.name <- c("1a", "2a", "2d", "5a", "6b", "8a")
 
 
 ## -----------------------------------------------------------------------------
