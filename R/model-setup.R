@@ -486,7 +486,7 @@ sens.models.dir.name.13.sub <- c(file.path(model.dir,
                                            "1_8a_3CD_InflateHistCatch_025")
                                  )
 
-sens.models.name.13.sub <- c("2b) No priors on ln(q)",
+sens.models.name.13.sub <- c("2d) WCVISS mean ln(q) = ln(1.0)",
                              "2e) WCVISS SD ln(q) = 0.6",
                              "2f) WCVISS SD ln(q) = 1.0",
                              "3a) M mean = 0.4, SD = 0.1",
