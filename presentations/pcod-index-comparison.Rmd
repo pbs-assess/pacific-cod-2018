@@ -1,0 +1,96 @@
+---
+title: |
+  2018 Pacific cod stock assessment for Hecate Strait, Queen Charlotte Sound (5ABCD) and West Coast Vancouver Island (3CD)
+subtitle:  Comparison of CPUE and survey indices
+author: |
+  Robyn Forrest, Sean Anderson, Chris Grandin, Paul Starr
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"
+    nature:
+      titleSlideClass: [center, middle]
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+css: pcod.css
+---
+
+```{r setup, include=FALSE, cache=FALSE, warnings=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE,
+                      cache = FALSE,
+                      autodep = FALSE,
+                      cache.comments = FALSE,
+                      fig.align = "center",
+                      fig.width = 7,
+                      fig.height = 5,
+                      dev = 'svg')
+options(htmltools.dir.version = FALSE)
+library(knitr)
+library(ggplot2)
+library(dplyr)
+library(gfplot)
+theme_set(theme_pbs())
+```
+
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+source(here::here("R/survey-cpue.R"))
+```
+
+
+# QCS Synoptic survey & 5ABCD CPUE
+
+```{r}
+compare_indices("SYN QCS", "5ABCD")
+```
+
+---
+
+# HS Synoptic survey & 5ABCD CPUE
+
+```{r}
+compare_indices("SYN HS", "5ABCD")
+```
+
+---
+
+# WCVI survey & 3CD CPUE
+
+```{r}
+compare_indices("SYN WCVI", "3CD")
+```
+
+---
+
+# Geostatistical survey indices
+
+<img src="figures/pcod-syn-maps.png" height="500" class='center-img'>
+
+---
+
+# Geostatistical QCS Synoptic survey & 5ABCD CPUE
+
+```{r}
+compare_indices("SYN QCS", "5ABCD", TRUE)
+```
+
+---
+
+# Geostatistical HS Synoptic survey & 5ABCD CPUE
+
+```{r}
+compare_indices("SYN HS", "5ABCD", TRUE)
+```
+
+---
+
+# Geostatistical WCVI survey & 3CD CPUE
+
+```{r}
+compare_indices("SYN WCVI", "3CD", TRUE)
+```
