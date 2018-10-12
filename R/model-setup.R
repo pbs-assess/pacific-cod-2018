@@ -102,16 +102,18 @@ if(verbose){
 ## Decision table models to average (5ABCD)
 ## -----------------------------------------------------------------------------
 desc.models.5abcd.dir.name <- c(file.path(model.dir,
-                                          "0_1a_5ABCD_BASE_fix-localities"),
-                                file.path(model.dir,
                                           "0_2d_5ABCD_rsoleq_1_1"),
+                                file.path(model.dir,
+                                          "0_2e_5ABCD_q_cv06"),
+                                file.path(model.dir,
+                                          "0_3a_5ABCD_Mprior_mean04_sd01"),
                                 file.path(model.dir,
                                           "0_5a_5ABCD_kage_3"),
                                 file.path(model.dir,
                                           "0_6b_5ABCD_sig015"),
                                 file.path(model.dir,
-                                          "0_8a_5ABCD_InflateHistCatch_025"))
-desc.models.5abcd.name <- c("1a", "2d", "5a", "6b", "8a")
+                                          "0_7b_5ABCD_sigW_015"))
+desc.models.5abcd.name <- c("2d","2e", "3a","5a", "6b", "7b")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 0 (5ABCD)
@@ -253,23 +255,20 @@ sens.models.dir.name.6.sub <- c(file.path(model.dir,
                                 file.path(model.dir,
                                           "0_2e_5ABCD_q_cv06"),
                                 file.path(model.dir,
-                                          "0_2f_5ABCD_q_cv1"),
-                                file.path(model.dir,
                                           "0_3a_5ABCD_Mprior_mean04_sd01"),
                                 file.path(model.dir,
                                           "0_5a_5ABCD_kage_3"),
                                 file.path(model.dir,
                                           "0_6b_5ABCD_sig015"),
                                 file.path(model.dir,
-                                          "0_8a_5ABCD_InflateHistCatch_025"))
+                                          "0_7b_5ABCD_sigW_015"))
 
 sens.models.name.6.sub <- c("2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
                             "2e) HSSS and QCSS SD ln(q) = 0.6",
-                            "2f) HSSS and QCSS SD ln(q) = 1.0",
                             "3a) M mean = 0.4, SD = 0.1",
                             "5a) kage = 3y and update FW parameters",
                             "6b) Fix sigma O = 0.15",
-                            "8a) Inflate pre-1996 catch by 25%"
+                            "7b) Fix sigma W = 0.15"
                             )
 
 ## -----------------------------------------------------------------------------
@@ -316,17 +315,19 @@ sens.models.name.108 <- c("8a) Inflate pre-1996 catch by 25%",
 ## Decision table models to average (3CD)
 ## -----------------------------------------------------------------------------
 desc.models.3cd.dir.name <- c(file.path(model.dir,
-                                        "1_1a_3CD_BASE_fix-localities"),
-                              file.path(model.dir,
                                         "1_2d_3CD_q_1"),
+                              file.path(model.dir,
+                                        "1_2e_3CD_q_cv06"),
+                              file.path(model.dir,
+                                        "1_3a_3CD_Mprior_mean04_sd01"),
                               file.path(model.dir,
                                         "1_5a_3CD_kage3"),
                               file.path(model.dir,
                                         "1_6b_3CD_sig015"),
                               file.path(model.dir,
-                                        "1_8a_3CD_InflateHistCatch_025"))
+                                        "1_7b_3CD_sigW015"))
 
-desc.models.3cd.name <- c("1a", "2d", "5a", "6b", "8a")
+desc.models.3cd.name <- c( "2d", "2e", "3a","5a", "6b", "7b")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 00 (3CD)
@@ -475,24 +476,21 @@ sens.models.dir.name.13.sub <- c(file.path(model.dir,
                                  file.path(model.dir,
                                            "1_2e_3CD_q_cv06"),
                                  file.path(model.dir,
-                                           "1_2f_3CD_q_cv1"),
-                                 file.path(model.dir,
                                            "1_3a_3CD_Mprior_mean04_sd01"),
                                  file.path(model.dir,
                                            "1_5a_3CD_kage3"),
                                  file.path(model.dir,
                                            "1_6b_3CD_sig015"),
                                  file.path(model.dir,
-                                           "1_8a_3CD_InflateHistCatch_025")
+                                           "1_7b_3CD_sigW015")
                                  )
 
 sens.models.name.13.sub <- c("2d) WCVISS mean ln(q) = ln(1.0)",
                              "2e) WCVISS SD ln(q) = 0.6",
-                             "2f) WCVISS SD ln(q) = 1.0",
                              "3a) M mean = 0.4, SD = 0.1",
                              "5a) kage = 3y and update FW parameters",
                              "6b) Fix sigma O = 0.15",
-                             "8a) Inflate pre-1996 catch by 25%")
+                             "7b) Fix sigma W = 0.15")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 13 (3CD)

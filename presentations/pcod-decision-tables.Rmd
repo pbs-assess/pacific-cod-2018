@@ -225,10 +225,9 @@ decision.table(base.model.5abcd,
   - 1a Reference model
   - 2d Prior mean synoptic survey ln(q) = ln(1.0) (pro-rated by area)
   - 2e Increase prior SD for synoptic surveys to 0.6
-  - 2f Increase prior SD for synoptic surveys to 1.0
   - 5a Knife-edged age at recruitment = 3 y
   - 6b $\sigma_O$ = 0.15
-  - 8a Pre-1996 catch inflated by 25%
+  - 7b $\sigma_W$ = 0.15
 
 ---
 ## Area 5ABCD - Scenarios used in decision table
@@ -275,11 +274,9 @@ decision.table(base.model.3cd,
   - 1a Reference model
   - 2d Prior mean synoptic survey ln(q) = ln(1.0)
   - 2e Increase prior SD for synoptic surveys to 0.6
-  - 2f Increase prior SD for synoptic surveys to 1.0
   - 5a Knife-edged age at recruitment = 3 y
   - 6b $\sigma_O$ = 0.15
-  - 8a Pre-1996 catch inflated by 25%
-
+  - 7b $\sigma_W$ = 0.15
 
 ---
 ## Area 3CD - Scenarios used in decision table

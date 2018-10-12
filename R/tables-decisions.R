@@ -17,7 +17,7 @@ decision.table <- function(models,
                  "$P(B_{2020} < \\mathrm{USR})$",
                  "$P(F_{2019} > \\mathrm{LRR})$",
                  "$P(B_{2020} < 0.2B_0)$",
-                 "$P(B_{2020} < 0.4B_0)$")
+                 "$P(B_{2020} < 0.4B_0)$"  )
 
 
   if(format == "html"){
@@ -28,7 +28,7 @@ decision.table <- function(models,
                    "P(B2020 < USR)",
                    "P(F2019 > LRR)",
                    "P(B2020 < 0.2B0)",
-                   "P(B2020 < 0.4B0)")
+                   "P(B2020 < 0.4B0)" )
 
   }
   ## Assume all models have the same TACs
@@ -42,7 +42,7 @@ decision.table <- function(models,
                      j <- as.data.frame(x$mcmc$proj)
                      j <- j[j$TAC == tac[t],]
                      j <- mcmc.thin(j, burnin, thin)
-                   })
+                     })
     names(proj) <- models.names
     d <- bind_rows(proj)
 
@@ -54,6 +54,8 @@ decision.table <- function(models,
     dat[t, 6] <- f(mean(d$F2019FAvgS > 1), 2)
     dat[t, 7] <- f(mean(d$B20200.2B0 < 1), 2)
     dat[t, 8] <- f(mean(d$B20200.4B0 < 1), 2)
+
+
   }
 
   dat <- mutate_at(dat, -1, function(x) gsub('0.00', '<0.01', x))
