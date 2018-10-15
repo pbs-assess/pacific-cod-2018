@@ -223,9 +223,9 @@ sens.models.dir.name.3 <- c(file.path(model.dir,
                                       "0_3b_5ABCD_Mprior_mean04_sd025"),
                             file.path(model.dir,
                                       "0_3c_5ABCD_Mprior_mean05_sd025"))
-sens.models.name.3 <- c("3a) M mean = 0.5, SD = 0.2",
-                        "3b) M mean = 0.4, SD = 0.1",
-                        "3c) M mean = 0.4, SD = 0.2")
+sens.models.name.3 <- c("3a) M mean = 0.4, SD = 0.1",
+                        "3b) M mean = 0.4, SD = 0.25",
+                        "3c) M mean = 0.5, SD = 0.25")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 4 (5ABCD)
@@ -245,7 +245,7 @@ sens.models.dir.name.5 <- c(file.path(model.dir,
                             file.path(model.dir,
                                       "0_5b_5ABCD_old_growth_pars"))
 sens.models.name.5 <- c("5a) kage = 3y and update FW parameters",
-                        "5b) Use previous vonB")
+                        "5b) Use previous vonB pars")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 6 sub (5ABCD) #For decision table graph
