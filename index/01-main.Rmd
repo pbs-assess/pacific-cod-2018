@@ -381,29 +381,37 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 ## SC 2A AND 2B. PRIOR PROBABILITY DISTRIBUTION FOR SURVEY SCALING PARAMETERS (CATCHABILITY)
 
-For 5ABCD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(survey-scaling-parameters-for-area-5abcd) and \@ref(survey-scaling-parameters-for-area-3cd) for Reference Case details:
+For 5ABCD, six sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(survey-scaling-parameters-for-area-5abcd) and \@ref(survey-scaling-parameters-for-area-3cd) for Reference Case details:
 
 > **Sc 2a.** The mean of the QCS Synoptic Survey prior was set to the same mean as for the HS Synoptic Survey, and was then pro-rated according to relative areas, i.e., mean $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$.
 
 > **Sc 2b.** No prior was used for \textit{q} for either the QCS and HS Synoptic Surveys.
 
-Two additional analyses were done to bracket the considerable uncertainty in the scale of the stock.
+Four additional analyses were done to bracket the considerable uncertainty in the scale of the stock.
 
 > **Sc 2c.** The means of the QCS and HS Synoptic Survey priors were set to ln(0.5), and were then pro-rated according to relative areas, i.e.,for Queen Charlotte Sound mean $\ln(q)$ = $\ln(0.5 \cdot 0.65)$ ; and for Hecate Strait mean $\ln(q)$ = $\ln(0.5 \cdot 0.35)$.
 
 > **Sc 2d.** The means of the QCS and HS Synoptic Survey priors were set to ln(1), and were then pro-rated according to relative areas, i.e.,for Queen Charlotte Sound mean $\ln(q)$ = $\ln(0.65)$ ; and for Hecate Strait mean $\ln(q)$ = $\ln(0.35)$.
 
-For 3CD, two sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $\ln(q)$ for the WCVI Synoptic Survey:
+> **Sc 2e.** The SDs of the QCS and HS Synoptic Survey priors were set to 0.6.
+
+> **Sc 2f.** The SDs of the QCS and HS Synoptic Survey priors were set to 1.0.
+
+For 3CD, six sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $\ln(q)$ for the WCVI Synoptic Survey:
 
 > **Sc 2a.** The SD of the WCVI Synoptic Survey was set to the same SD as the value estimated by @edwards2013-2 for Pacific Ocean Perch, i.e., SD = 0.448.
 
 > **Sc 2b.** No prior was used for \textit{q} for the WCVI Synoptic Survey.
 
-As for Area 5ABCD, two additional analyses were done to bracket the considerable uncertainty in the scale of the stock.
+As for Area 5ABCD, four additional analyses were done to bracket the considerable uncertainty in the scale of the stock.
 
 > **Sc 2c.** The mean of the WCVI Synoptic Survey prior was set to ln(0.5).
 
 > **Sc 2d.** The mean of the WCVI Synoptic Survey prior was set to ln(1).
+
+> **Sc 2e.** The SD of the WCVI Synoptic Survey prior was set to 0.6.
+
+> **Sc 2f.** The SD of the WCVI Synoptic Survey prior was set to 1.0.
 
 Models were moderately sensitive to choice of the parameters used for the normal prior for $\ln(q)$ (Sc 2a; Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)). For clarity, estimated biomass biomass trajectories without Sc 2b is provided for Area 3Cd in Figure \@ref(fig:fig-sens9-biomass-3cd-sub). Essentially, lowering the value of the mean (Area 5ABCD), or increasing the variance (Area 3CD) resulted in lower estimates of $q$ (Tables \@ref(tab:tab-param-table-sens2a-5abcd) and \@ref(tab:tab-param-table-sens2a-3cd)), leading to larger estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd-sub)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)).
 

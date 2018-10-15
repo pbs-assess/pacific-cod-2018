@@ -134,8 +134,8 @@ sens.models.dir.name.1.sub <- c(file.path(model.dir,
                                 file.path(model.dir,
                                           "0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV"))
 
-sens.models.name.1.sub <- c("1b) No locality/yr q mean = 06 sd = 0.19",
-                            "1c) No locality/yr q mean = 06 sd = 0.19, double CV")
+sens.models.name.1.sub <- c("1b) No locality/yr interaction",
+                            "1c) No locality/yr interaction, double CV")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 1 subset 2 (5ABCD)
@@ -147,8 +147,8 @@ sens.models.dir.name.1.sub2 <- c(file.path(model.dir,
                                  file.path(model.dir,
                                            "0_1d_5ABCD_loc-yr-interact_no_recentCPUE"))
 
-sens.models.name.1.sub2 <- c("1b) No locality/yr q mean = 06 sd = 0.19",
-                             "1c) No locality/yr q mean = 06 sd = 0.19, double CV",
+sens.models.name.1.sub2 <- c("1b) No locality/yr interaction",
+                             "1c) No locality/yr interaction, double CV",
                              "1d) Remove post-1995 CPUE")
 
 ## -----------------------------------------------------------------------------
@@ -187,10 +187,10 @@ sens.models.dir.name.2 <- c(file.path(model.dir,
                                       "0_2e_5ABCD_q_cv06"),
                             file.path(model.dir,
                                       "0_2f_5ABCD_q_cv1"))
-sens.models.name.2 <- c("2a) HSSS and QCSS mean ln(q) = ln(0.1869 * 0.65)",
+sens.models.name.2 <- c("2a) HSSS and QCSS ln(q) prior mean = ln(0.1869 * 0.65)",
                         "2b) No priors on ln(q)",
-                        "2c) HSSS mean ln(q) = ln(0.5 * 0.35), QCSSS mean q = ln(0.5 * 0.65)",
-                        "2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
+                        "2c) ln(q) prior mean HSSS  = ln(0.5 * 0.35), QCSSS = ln(0.5 * 0.65)",
+                        "2d) ln(q) prior mean HSSS = ln(1.0 * 0.35), QCSSS = ln(1.0 * 0.65)",
                         "2e) HSSS and QCSS ln(q) prior SD = 0.6",
                         "2f) HSSS and QCSS ln(q) prior SD = 1.0")
 
@@ -207,9 +207,9 @@ sens.models.dir.name.2.sub <- c(file.path(model.dir,
                                       "0_2e_5ABCD_q_cv06"),
                             file.path(model.dir,
                                       "0_2f_5ABCD_q_cv1"))
-sens.models.name.2.sub <- c("2a) HSSS and QCSS mean ln(q) = ln(0.1869 * 0.65)",
-                        "2c) HSSS mean ln(q) = ln(0.5 * 0.35), QCSSS mean q = ln(0.5 * 0.65)",
-                        "2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
+sens.models.name.2.sub <- c("2a) HSSS and QCSS ln(q) prior mean = ln(0.1869 * 0.65)",
+                            "2c) ln(q) prior mean HSSS  = ln(0.5 * 0.35), QCSSS = ln(0.5 * 0.65)",
+                            "2d) ln(q) prior mean HSSS = ln(1.0 * 0.35), QCSSS = ln(1.0 * 0.65)",
                         "2e) HSSS and QCSS ln(q) prior SD = 0.6",
                         "2f) HSSS and QCSS ln(q) prior SD = 1.0")
 
@@ -223,9 +223,9 @@ sens.models.dir.name.3 <- c(file.path(model.dir,
                                       "0_3b_5ABCD_Mprior_mean04_sd025"),
                             file.path(model.dir,
                                       "0_3c_5ABCD_Mprior_mean05_sd025"))
-sens.models.name.3 <- c("3a) M mean = 0.4, SD = 0.1",
-                        "3b) M mean = 0.4, SD = 0.25",
-                        "3c) M mean = 0.5, SD = 0.25")
+sens.models.name.3 <- c("3a) M prior mean = 0.4, SD = 0.1",
+                        "3b) M prior mean = 0.4, SD = 0.25",
+                        "3c) M prior mean = 0.5, SD = 0.25")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 4 (5ABCD)
@@ -263,9 +263,9 @@ sens.models.dir.name.6.sub <- c(file.path(model.dir,
                                 file.path(model.dir,
                                           "0_7b_5ABCD_sigW_015"))
 
-sens.models.name.6.sub <- c("2d) HSSS mean ln(q) = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
+sens.models.name.6.sub <- c("2d) HSSS ln(q) prior mean = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
                             "2e) HSSS and QCSS ln(q) prior SD = 0.6",
-                            "3a) M mean = 0.4, SD = 0.1",
+                            "3a) M prior mean = 0.4, SD = 0.1",
                             "5a) kage = 3y and update FW parameters",
                             "6b) Fix sigma O = 0.15",
                             "7b) Fix sigma W = 0.15"
@@ -406,8 +406,8 @@ sens.models.dir.name.9.sub <- c(file.path(model.dir,
                                           "1_2f_3CD_q_cv1"))
 
 sens.models.name.9.sub <- c("2a) WCVISS ln(q) prior SD = 0.448",
-                            "2c) WCVISS mean ln(q) = ln(0.5)",
-                            "2d) WCVISS mean ln(q) = ln(1.0)",
+                            "2c) WCVISS ln(q) prior mean = ln(0.5)",
+                            "2d) WCVISS ln(q) prior mean = ln(1.0)",
                             "2e) WCVISS ln(q) prior SD = 0.6",
                             "2f) WCVISS ln(q) prior SD = 1.0")
 
@@ -430,8 +430,8 @@ sens.models.dir.name.9 <- c(file.path(model.dir,
                                       "1_2f_3CD_q_cv1"))
 sens.models.name.9 <- c("2a) WCVISS ln(q) SD = 0.448",
                         "2b) No priors on ln(q)",
-                        "2c) WCVISS mean ln(q) = ln(0.5)",
-                        "2d) WCVISS mean ln(q) = ln(1.0)",
+                        "2c) WCVISS ln(q) prior mean = ln(0.5)",
+                        "2d) WCVISS ln(q) prior mean = ln(1.0)",
                         "2e) WCVISS ln(q) prior SD = 0.6",
                         "2f) WCVISS ln(q) prior SD = 1.0")
 
@@ -444,9 +444,9 @@ sens.models.dir.name.10 <- c(file.path(model.dir,
                                        "1_3b_3CD_Mprior_mean04_sd025"),
                              file.path(model.dir,
                                        "1_3c_3CD_Mprior_mean05_sd-25"))
-sens.models.name.10 <- c("3a) M mean = 0.4, SD = 0.1",
-                         "3b) M mean = 0.4, SD = 0.25",
-                         "3c) M mean = 0.5, SD = 0.25")
+sens.models.name.10 <- c("3a) M prior mean = 0.4, SD = 0.1",
+                         "3b) M prior mean = 0.4, SD = 0.25",
+                         "3c) M prior mean = 0.5, SD = 0.25")
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 11 (3CD)
@@ -485,9 +485,9 @@ sens.models.dir.name.13.sub <- c(file.path(model.dir,
                                            "1_7b_3CD_sigW015")
                                  )
 
-sens.models.name.13.sub <- c("2d) WCVISS mean ln(q) = ln(1.0)",
+sens.models.name.13.sub <- c("2d) WCVISS ln(q) prior mean = ln(1.0)",
                              "2e) WCVISS ln(q) prior SD = 0.6",
-                             "3a) M mean = 0.4, SD = 0.1",
+                             "3a) M prior mean = 0.4, SD = 0.1",
                              "5a) kage = 3y and update FW parameters",
                              "6b) Fix sigma O = 0.15",
                              "7b) Fix sigma W = 0.15")
