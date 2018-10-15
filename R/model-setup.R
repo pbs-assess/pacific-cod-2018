@@ -263,7 +263,7 @@ sens.models.dir.name.6.sub <- c(file.path(model.dir,
                                 file.path(model.dir,
                                           "0_7b_5ABCD_sigW_015"))
 
-sens.models.name.6.sub <- c("2d) HSSS ln(q) prior mean = ln(1.0 * 0.35), QCSSS mean q = ln(1.0 * 0.65)",
+sens.models.name.6.sub <- c("2d) HSSS ln(q) prior mean = ln(1.0 * 0.35), QCSSS = ln(1.0 * 0.65)",
                             "2e) HSSS and QCSS ln(q) prior SD = 0.6",
                             "3a) M prior mean = 0.4, SD = 0.1",
                             "5a) kage = 3y and update FW parameters",

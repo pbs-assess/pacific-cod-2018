@@ -50,8 +50,8 @@ source(file.path(rootd.R, "custom-knitr-variables.R"))
 
 **Limit reference point:**<br />
 Lowest estimated biomass agreed to be an undesirable state to avoid:
-  - 5ABCD: $B_2000$
-  - 3CD:   $B_1986$
+  - 5ABCD: $B_{2000}$
+  - 3CD:   $B_{1986}$
 
 **Upper Stock Reference:**<br />
 Average estimated biomass from 1956-2004
@@ -99,10 +99,11 @@ decision.table(base.model.5abcd,
 
 ---
 ## Area 5ABCD - Model averaged decision table
- - Scenarios included (expanded from those in working paper):
+ - Scenarios included (agreed upon at Oct 11 2018 RPR meeting, PBS):
   - 1a Reference model
   - 2d Prior mean synoptic survey ln(q) = ln(1.0) (pro-rated by area)
   - 2e Increase prior SD for synoptic surveys to 0.6
+  - 3a M prior mean = 0.4, SD = 0.1
   - 5a Knife-edged age at recruitment = 3 y
   - 6b $\sigma_O$ = 0.15
   - 7b $\sigma_W$ = 0.15
@@ -152,6 +153,7 @@ decision.table(base.model.3cd,
   - 1a Reference model
   - 2d Prior mean synoptic survey ln(q) = ln(1.0)
   - 2e Increase prior SD for synoptic surveys to 0.6
+  - 3a M prior mean = 0.4, SD = 0.1
   - 5a Knife-edged age at recruitment = 3 y
   - 6b $\sigma_O$ = 0.15
   - 7b $\sigma_W$ = 0.15
