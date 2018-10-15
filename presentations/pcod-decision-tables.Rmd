@@ -45,145 +45,23 @@ load.models.into.parent.env()
 source(file.path(rootd.R, "custom-knitr-variables.R"))
 ```
 
-## Informative prior for ln(q) in synoptic surveys
-### New scenarios
- - 2e Increase prior SD for synoptic surveys to 0.6
- - 2f Increase prior SD for synoptic surveys to 1.0
 
----
-# Area 5ABCD parameters - reference case
-<SPAN STYLE="font-size: 14pt">
-```{r tab-param-est-5abcd-base, results='asis'}
-pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
-make.parameters.est.table(base.model.5abcd,
-  omit_pars = pars_est_omit,
-  format = "html")
-
-```
-</SPAN>
-
----
-# Area 5ABCD parameters - 2e prior SD = 0.6
-<SPAN STYLE="font-size: 14pt">
-```{r tab-param-est-5abcd-2e, results='asis'}
-pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
-make.parameters.est.table(sens.models.2[[5]],
-  omit_pars = pars_est_omit,
-  format = "html")
-
-```
-</SPAN>
-
----
-# Area 5ABCD parameters - 2f prior SD = 1.0
-<SPAN STYLE="font-size: 14pt">
-```{r tab-param-est-5abcd-2f, results='asis'}
-pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
-make.parameters.est.table(sens.models.2[[6]],
-  omit_pars = pars_est_omit,
-  format = "html")
-
-```
-</SPAN>
-
----
-# Area 5ABCD. Biomass
-
-```{r fig-qsens-5ABCD}
-b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
-
-```
-
-
----
-# Area 5ABCD. Biomass
-
-```{r fig-qsens-5ABCD-sub}
-b.plot(c(base.model.5abcd, sens.models.2.sub), c(base.model.5abcd.name, sens.models.name.2.sub))
-
-```
-
----
-# Area 3CD parameters - reference case
-<SPAN STYLE="font-size: 14pt">
-```{r tab-param-est-3cd-base, results='asis'}
-pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
-make.parameters.est.table(base.model.3cd,
-  omit_pars = pars_est_omit,
-  format = "html")
-
-```
-</SPAN>
-
----
-# Area 3CD parameters - 2e prior SD = 0.6
-<SPAN STYLE="font-size: 14pt">
-```{r tab-param-est-3cd-2e, results='asis'}
-pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
-make.parameters.est.table(sens.models.9[[5]],
-  omit_pars = pars_est_omit,
-  format = "html")
-
-```
-</SPAN>
-
----
-# Area 3CD parameters - 2f prior SD = 1.0
-<SPAN STYLE="font-size: 14pt">
-```{r tab-param-est-3cd-2f, results='asis'}
-pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
-make.parameters.est.table(sens.models.9[[6]],
-  omit_pars = pars_est_omit,
-  format = "html")
-
-```
-</SPAN>
-
----
-# Area 3CD. Biomass
-
-```{r fig-qsens-3CD}
-b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
-
-```
-
----
-# Area 3CD. Biomass
-
-```{r fig-qsens-3CD-sub}
-
-b.plot(c(base.model.3cd, sens.models.9.sub), c(base.model.3cd.name, sens.models.name.9.sub))
-
-```
-
----
 ## Historical Biomass-based Reference points
 
 **Limit reference point:**<br />
-Lowest estimated biomass from which stock recovered to above average:
-  - 5ABCD: B1971
-  - 3CD:   B1986
+Lowest estimated biomass agreed to be an undesirable state to avoid:
+  - 5ABCD: $B_2000$
+  - 3CD:   $B_1986$
 
 **Upper Stock Reference:**<br />
 Average estimated biomass from 1956-2004
-
----
-## B0 Biomass-based Reference points
-
-**Limit reference point:**<br />
-0.2*B0
-
-**Upper Stock Reference:**<br />
-0.4*B0
-
-- Warning: B0 in this assessment is calculated differently from that in Forrest et al. 2018. It is *much* less precautionary.
 
 ---
 
 ## Area 5ABCD
 ```{r fig-base-biomass-refpts-5ABCD}
 
-b.plot(base.model.5abcd, base.model.5abcd.name, add.bo.ref=T, add.hist.ref=T, lrp=c(1971,1971), usr =c(1956,2004))
+b.plot(base.model.5abcd, base.model.5abcd.name, add.bo.ref=F, add.hist.ref=T, lrp=c(2000,2000), usr =c(1956,2004))
 ```
 
 ---
@@ -191,7 +69,7 @@ b.plot(base.model.5abcd, base.model.5abcd.name, add.bo.ref=T, add.hist.ref=T, lr
 ## Area 3CD
 ```{r fig-base-biomass-refpts-3CD}
 
-b.plot(base.model.3cd, base.model.3cd.name, add.bo.ref=T, add.hist.ref=T, lrp=c(1986,1986), usr =c(1956,2004))
+b.plot(base.model.3cd, base.model.3cd.name, add.bo.ref=F, add.hist.ref=T, lrp=c(1986,1986), usr =c(1956,2004))
 ```
 
 

@@ -15,9 +15,7 @@ decision.table <- function(models,
                  "$P(F_{2019} > F_{2018})$",
                  "$P(B_{2020} < \\mathrm{LRP})$",
                  "$P(B_{2020} < \\mathrm{USR})$",
-                 "$P(F_{2019} > \\mathrm{LRR})$",
-                 "$P(B_{2020} < 0.2B_0)$",
-                 "$P(B_{2020} < 0.4B_0)$"  )
+                 "$P(F_{2019} > \\mathrm{LRR})$")
 
 
   if(format == "html"){
@@ -26,9 +24,7 @@ decision.table <- function(models,
                    "P(F2019 > F2018)",
                    "P(B2020 < LRP)",
                    "P(B2020 < USR)",
-                   "P(F2019 > LRR)",
-                   "P(B2020 < 0.2B0)",
-                   "P(B2020 < 0.4B0)" )
+                   "P(F2019 > LRR)")
 
   }
   ## Assume all models have the same TACs
@@ -52,9 +48,6 @@ decision.table <- function(models,
     dat[t, 4] <- f(mean(d$B2020Bmin < 1), 2)
     dat[t, 5] <- f(mean(d$B2020BAvgS < 1), 2)
     dat[t, 6] <- f(mean(d$F2019FAvgS > 1), 2)
-    dat[t, 7] <- f(mean(d$B20200.2B0 < 1), 2)
-    dat[t, 8] <- f(mean(d$B20200.4B0 < 1), 2)
-
 
   }
 
