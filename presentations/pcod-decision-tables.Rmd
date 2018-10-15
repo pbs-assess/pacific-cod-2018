@@ -149,7 +149,7 @@ decision.table(base.model.3cd,
 
 ---
 ## Area 3CD - Model averaged decision tables
- - Scenarios included (expanded from those in working paper):
+ - Scenarios included (agreed upon at Oct 11 2018 RPR meeting, PBS):
   - 1a Reference model
   - 2d Prior mean synoptic survey ln(q) = ln(1.0)
   - 2e Increase prior SD for synoptic surveys to 0.6
