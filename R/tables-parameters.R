@@ -383,14 +383,6 @@ make.ref.points.table <- function(model,
                                   omit_msy = FALSE,
                                   lrp = NA,
                                   usr = NA){
-  ## Returns an xtable in the proper format for reference points
-  ##
-  ## digits - number of decimal places for the values
-  ## xcaption - caption to appear in the calling document
-  ## xlabel - the label used to reference the table in latex
-  ## font.size - size of the font for the table
-  ## space.size - size of the vertical spaces for the table
-  ## placement - latex code for placement of the table in document
 
   if(class(model) == model.lst.class){
     model <- model[[1]]
@@ -406,7 +398,6 @@ make.ref.points.table <- function(model,
     tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`))
     # tab <- dplyr::filter(tab, !grepl("MSY", `Reference Point`))
   }
-
   if(add.hist.ref){
     if(is.na(lrp) || is.na(usr)){
       cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
