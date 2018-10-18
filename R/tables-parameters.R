@@ -384,7 +384,8 @@ make.ref.points.table <- function(models,
                                   lrp = NA,
                                   usr = NA,
                                   lower = 0.025,
-                                  upper = 0.975){
+                                  upper = 0.975,
+                                  format = "pandoc"){
 
   probs <- c(lower, 0.5, upper)
 
@@ -497,7 +498,7 @@ make.ref.points.table <- function(models,
   }
 
   knitr::kable(tab,
-    caption = caption, format = "pandoc",
+    caption = caption, format = format,
     align = get.align(ncol(tab))[-1],
     booktabs = TRUE, linesep = "", row.names = FALSE, escape = FALSE) %>%
     kableExtra::kable_styling(latex_options = "hold_position")

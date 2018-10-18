@@ -106,7 +106,7 @@ b.plot(base.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
        add.hist.ref = TRUE,
-       lrp = c(1971, 1971),
+       lrp = c(2000, 2000),
        usr = c(1956, 2004))
 ```
 
@@ -495,7 +495,7 @@ b.plot(base.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
        add.hist.ref = TRUE,
-       lrp = c(1971, 1971),
+       lrp = c(2000, 2000),
        usr = c(1956, 2004),
        proj_columns = c("B2019", "B2020"),
        tac_vector = c(0, 900, 2000, 3000),
