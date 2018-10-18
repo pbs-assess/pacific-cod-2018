@@ -376,23 +376,64 @@ make.parameters.est.table <- function(model,
     kableExtra::kable_styling(latex_options = "hold_position")
 }
 
-make.ref.points.table <- function(model,
+make.ref.points.table <- function(models,
                                   add.hist.ref = TRUE,
                                   digits = 3,
                                   caption = "default",
                                   omit_msy = FALSE,
                                   lrp = NA,
-                                  usr = NA){
+                                  usr = NA,
+                                  lower = 0.025,
+                                  upper = 0.975){
 
-  if(class(model) == model.lst.class){
-    model <- model[[1]]
-    if(class(model) != model.class){
-      stop("The structure of the model list is incorrect.")
+  probs <- c(lower, 0.5, upper)
+
+  model <- models[[1]]
+  if(length(models) == 1){
+    if(class(models) == model.lst.class){
+      model <- models[[1]]
+      if(class(model) != model.class){
+        stop("The structure of the model list is incorrect.")
+      }
     }
+    tab <- model$mcmccalcs$r.quants
+    tab[,-1] <- f(tab[,-1], digits)
+  }else{
+    tab <- lapply(models,
+                  function(x){
+                    x$mcmccalcs$r.dat
+                  })
+    tab <- bind_rows(tab)
+    tab <- t(apply(tab, 2, quantile, prob = probs))
+    tab <- f(tab, digits)
+    k <- names(tab[,1])
+    yr.sbt.init <- sub("b", "", k[6])
+    yr.sbt.end <- sub("b", "", k[7])
+    yr.f.end <- sub("f", "", k[10])
+    desc.col <- c(latex.subscr.ital("B", "0"),
+                  latex.subscr.ital("B", "MSY"),
+                  "MSY",
+                  latex.subscr.ital("F", "MSY"),
+                  latex.subscr.ital("U", "MSY"),
+                  latex.subscr.ital("B", yr.sbt.init),
+                  latex.subscr.ital("B", yr.sbt.end),
+                  paste0(latex.subscr.ital("B", yr.sbt.end),
+                         "/",
+                         latex.subscr.ital("B", 0)),
+                  paste0(latex.subscr.ital("B", yr.sbt.end),
+                         "/",
+                         latex.subscr.ital("B", yr.sbt.init)),
+                  latex.subscr.ital("F", yr.f.end),
+                  paste0("0.4",
+                         latex.subscr.ital("B", "MSY")),
+                  paste0("0.8",
+                         latex.subscr.ital("B", "MSY")))
+    tab <- cbind.data.frame(desc.col, tab)
+    col.names <- colnames(tab)
+    col.names <- latex.bold(latex.perc(col.names))
+    col.names[1] <- latex.bold("Reference Point")
+    colnames(tab) <- col.names
   }
-
-  tab <- model$mcmccalcs$r.quants
-  tab[,-1] <- f(tab[,-1], digits)
 
   if (omit_msy) {
     tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`))
@@ -402,9 +443,15 @@ make.ref.points.table <- function(model,
     if(is.na(lrp) || is.na(usr)){
       cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
     }else{
-      bt <- model$mcmccalcs$sbt.quants
+      ## bt <- model$mcmccalcs$sbt.quants
+      bt <- lapply(models,
+                   function(x){
+                     x$mcmccalcs$sbt.dat
+                   })
+      bt <- bind_rows(bt)
       yrs <- colnames(bt)
-      bt <- t(bt)
+      bt <- t(apply(bt, 2, quantile, prob = probs))
+      bt <- cbind(yrs, bt)
 
       bt <- bt %>%
         as.tibble() %>%
@@ -412,16 +459,16 @@ make.ref.points.table <- function(model,
 
       cal <- bt %>%
         filter(Year >= lrp[1] & Year <= lrp[2])
-      lrp.5 <- mean(cal$`2.5%`)
-      lrp.50 <- mean(cal$`50%`)
-      lrp.95 <- mean(cal$`97.5%`)
+      lrp.5 <- mean(as.numeric(cal$`2.5%`))
+      lrp.50 <- mean(as.numeric(cal$`50%`))
+      lrp.95 <- mean(as.numeric(cal$`97.5%`))
 
       cau <- bt %>%
         filter(Year >= usr[1] & Year <= usr[2])
 
-      usr.5 <- mean(cau$`2.5%`)
-      usr.50 <- mean(cau$`50%`)
-      usr.95 <- mean(cau$`97.5%`)
+      usr.5 <- mean(as.numeric(cau$`2.5%`))
+      usr.50 <- mean(as.numeric(cau$`50%`))
+      usr.95 <- mean(as.numeric(cau$`97.5%`))
       lrp.desc <- paste0("LRP (",
                          ifelse(lrp[1] == lrp[2],
                                 lrp[1],
@@ -432,7 +479,8 @@ make.ref.points.table <- function(model,
                                 usr[1],
                                 paste0(usr[1], "--", usr[2])),
                          ")")
-      tab[,1] <- as.character(tab[,1])
+      col.names <- colnames(tab)
+      tab <- data.frame(lapply(tab, as.character), stringsAsFactors = FALSE)
       tab <- rbind(tab,
                    c(lrp.desc,
                      f(lrp.5),
@@ -444,6 +492,7 @@ make.ref.points.table <- function(model,
                      f(usr.5),
                      f(usr.50),
                      f(usr.95)))
+      colnames(tab) <- col.names
     }
   }
 
