@@ -89,12 +89,13 @@ b.plot <- function(models,
 
   horiz.offset <- 1.7
   p <- ggplot(bt, aes(x = Year,
-                       y = `Biomass (t)`,
-                       ymin = lowercv,
-                       ymax = uppercv))
+                      y = `Biomass (t)`,
+                      ymin = lowercv,
+                      ymax = uppercv))
 
   if (is.null(proj_columns)) {
-    p <- p + geom_ribbon(alpha = 0.2, aes(fill = Sensitivity)) +
+    p <- p + geom_ribbon(alpha = 0.2,
+                         aes(fill = Sensitivity)) +
       geom_line(aes(color = Sensitivity), size = 1)
     if(!depl){
       p <- p + geom_pointrange(data = bo,
@@ -122,16 +123,40 @@ b.plot <- function(models,
     xlim(c(min(bt$Year - 1), NA)) +
     scale_x_continuous(breaks = seq(0, 3000, 5))
 
-
-
   if(!depl & add.hist.ref){
     if(is.na(lrp) || is.na(usr)){
       cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
     }else{
+      yrs <- bt$Year
+
+      cal <- bt %>%
+        filter(Year >= lrp[1] & Year <= lrp[2]) %>%
+        mutate(lowercv = mean(lowercv),
+               `Biomass (t)` = mean(`Biomass (t)`),
+               uppercv = mean(uppercv))
+      cal <- cal[1,]
+      cal <- cal[rep(1, each = length(yrs)),]
+      cal$Year <- yrs
+      cal$Color <- 2
+      p <- p + geom_ribbon(data = cal,
+                           alpha = 0.2,
+                           fill = cal$Color)
+      cau <- bt %>%
+        filter(Year >= usr[1] & Year <= usr[2]) %>%
+        mutate(lowercv = mean(lowercv),
+               `Biomass (t)` = mean(`Biomass (t)`),
+               uppercv = mean(uppercv))
+      cau <- cau[1,]
+
+      cau <- cau[rep(1, each = length(yrs)),]
+      cau$Year <- yrs
+      cau$Color <- 3
+      p <- p + geom_ribbon(data = cau,
+                           alpha = 0.2,
+                           fill = cau$Color)
       cal <- bt %>%
         filter(Year >= lrp[1] & Year <= lrp[2])
       lrp.val <- mean(cal$`Biomass (t)`)
-
       cau <- bt %>%
         filter(Year >= usr[1] & Year <= usr[2])
       usr.val <- mean(cau$`Biomass (t)`)
@@ -142,7 +167,7 @@ b.plot <- function(models,
         geom_hline(data = j,
                    aes(yintercept = Intercept),
                    color = j$Color,
-                   linetype = "solid",
+                   linetype = "dashed",
                    size = 1)
     }
   }
