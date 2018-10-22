@@ -97,8 +97,8 @@ dt.5abcd <- decision.table(base.model.5abcd,
                            make.table = FALSE,
                            make.lt.gt = FALSE)
 dt.5abcd[,-1] <- apply(dt.5abcd[,-1], 2, as.numeric)
-dt.5abcd.min.catch <- min(dt.5abcd[,1])
-dt.5abcd.max.catch <- min(dt.5abcd[,1])
+dt.5abcd.min.catch <- dt.5abcd[1, 1]
+dt.5abcd.max.catch <- dt.5abcd[nrow(dt.5abcd), 1]
 dt.5abcd.b.2019.2018.c0 <- dt.5abcd[1, 2] * 100
 dt.5abcd.b.2019.2018.c900 <- dt.5abcd[dt.5abcd[, 1] == 900, 2] * 100
 dt.5abcd.b.2019.2018.cmax <- dt.5abcd[nrow(dt.5abcd), 2] * 100
@@ -118,8 +118,8 @@ dt.3cd <- decision.table(base.model.3cd,
                          make.table = FALSE,
                          make.lt.gt = FALSE)
 dt.3cd[,-1] <- apply(dt.3cd[,-1], 2, as.numeric)
-dt.3cd.min.catch <- min(dt.3cd[,1])
-dt.3cd.max.catch <- min(dt.3cd[,1])
+dt.3cd.min.catch <- dt.3cd[1, 1]
+dt.3cd.max.catch <- dt.3cd[nrow(dt.3cd), 1]
 dt.3cd.b.2019.2018.c0 <- dt.3cd[1, 2] * 100
 dt.3cd.b.2019.2018.c500 <- dt.3cd[dt.3cd[, 1] == 500, 2] * 100
 dt.3cd.b.2019.2018.cmax <- dt.3cd[nrow(dt.3cd), 2] * 100
