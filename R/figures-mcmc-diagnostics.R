@@ -12,7 +12,7 @@ make.priors.posts.plot <- function(model,
   ## 3. ub    = upper bound
   ## 4. phz   = ADMB phase
   ## 5. prior = prior distribution funnction
-  ##             0 = Uniform
+  ##             0 = None
   ##             1 = normal    (p1=mu,p2=sig)
   ##             2 = lognormal (p1=log(mu),p2=sig)
   ##             3 = beta      (p1=alpha,p2=beta)
@@ -132,13 +132,13 @@ make.priors.posts.plot <- function(model,
       func <- function(x){xx$fn(x, xx$p1, xx$p2)}
       if(specs[2] == 0){
         ## Uniform, plot from p1-1 to p2+1
-        curve(func,
-              from = xx$p1 - 1,
-              to = xx$p2 + 1,
-              xlab = "",
-              ylab = "",
-              col = "black",
-              lwd = 2)
+        ## curve(func,
+        ##       from = xx$p1 - 1,
+        ##       to = xx$p2 + 1,
+        ##       xlab = "",
+        ##       ylab = "",
+        ##       col = "black",
+        ##       lwd = 2)
       }else if(specs[2] == 1){
         ## Normal, plot from -(p1-p2*4) to (p1+p2*4)
         curve(func,
@@ -148,14 +148,15 @@ make.priors.posts.plot <- function(model,
               ylab = "",
               col = "black",
               lwd = 2)
+        title(xx$nm)
       }else{
         curve(func,
               xlab = "",
               ylab = "",
               col = "black",
               lwd = 2)
+        title(xx$nm)
       }
-    title(xx$nm)
     }else{
       plot.marg(xx,
                 breaks = "sturges",
