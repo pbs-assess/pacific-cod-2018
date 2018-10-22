@@ -60,7 +60,7 @@ df <- data.frame(referencepoint = c("Bmin",
                      "B2018",
                      "F2017"),
                  Definition = c(
-                   "Minimum biomass from which the stock recovered to above average (1971 in  5ABCD; 1986 in 3CD)",
+                   "Lowest estimated biomass agreed to be an undesirable state to avoid (2000 in  5ABCD; 1986 in 3CD)",
                    "Average biomass for the period 1956-2004",
                    "Average fishing mortality for the period 1956-2004",
                    "Biomass in 2018",

@@ -5,7 +5,10 @@ decision.table <- function(models,
                            caption = "",
                            make.table = TRUE,
                            format = "pandoc",
-                           tac.vec = NA){
+                           tac.vec = NA,
+                           make.lt.gt = TRUE){
+  ## make.lt.gt = add less than and greater than
+  ## sybols in table. Changes those columns to character
 
   dat <- as.data.frame(matrix(NA,
                               ncol = 6,
@@ -51,8 +54,10 @@ decision.table <- function(models,
 
   }
 
-  dat <- mutate_at(dat, -1, function(x) gsub('0.00', '<0.01', x))
-  dat <- mutate_at(dat, -1, function(x) gsub('1.00', '>0.99', x))
+  if(make.lt.gt){
+    dat <- mutate_at(dat, -1, function(x) gsub('0.00', '<0.01', x))
+    dat <- mutate_at(dat, -1, function(x) gsub('1.00', '>0.99', x))
+  }
   if(make.table){
     kable(dat,
           caption = caption,
