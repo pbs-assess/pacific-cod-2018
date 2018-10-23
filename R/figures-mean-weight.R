@@ -28,3 +28,26 @@ mw.plot <- function(model,
     scale_x_continuous(breaks = seq(0, last.yr, every))
   p
 }
+
+mw.compare.plot <- function(model){
+
+  mpd <- model$mpd
+  yrs <- model$dat$meanwtdata[,1]
+  obs <- mpd$obs_annual_mean_weight
+  fit <- mpd$annual_mean_weight
+
+  dat <- as.tibble(data.frame(fit, obs))
+
+  p <- ggplot(dat, aes(x = obs, y = fit)) +
+    geom_point() +
+    scale_x_continuous(limits = c(0, NA)) +
+    scale_y_continuous(limits = c(0, NA)) +
+    geom_abline(slope = 1,
+                intercept = 0,
+                color = "red",
+                linetype = "dashed") +
+    labs(x = "Observed annual mean weight (kg)",
+         y = "Estimated annual mean weight (kg)")
+
+  p
+}
