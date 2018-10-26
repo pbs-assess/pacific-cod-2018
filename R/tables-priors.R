@@ -1,81 +1,173 @@
-priors.table <- function(model, cap = ""){
-  ## Make a table of the priors used in the model given
+priors.table <- function(model,
+                         cap = "",
+                         basis.vec = NA,
+                         digits = 2){
+
+  ## basis.vec is the reasons for each prior being used.
+  ##  if there is a dash - in them, that will signify a new
+  ##  line in the cell
 
   model <- model[[1]]
 
-  p.names <- data.frame(name = c("Uniform",
-                                 "Normal",
-                                 "Log-Normal",
-                                 "Beta",
-                                 "Gamma"),
-                        prior = c(0, 1, 2, 3, 4))
-  p.names$name = as.character(p.names$name)
-  p.names <- as.tibble(p.names)
+  p.names <- as.tibble(data.frame(name = c("Uniform",
+                                           "Normal",
+                                           "Log-Normal",
+                                           "Beta",
+                                           "Gamma"),
+                                  prior = c(0, 1, 2, 3, 4)))
 
-  prior.specs <- as.data.frame(model$ctl$params)
-  ## Remove fixed parameters
-  prior.specs <- prior.specs[prior.specs$phz > 0,]
-  ## Remove upper and lower bound, and phase information, but keep initial
-  ##  value
-  prior.specs <- prior.specs[, -c(2:4)]
-  ## Remove kappa
-  prior.specs <- prior.specs[rownames(prior.specs) != "kappa",]
-  prior.names <- rownames(prior.specs)
+  prior.names <- rownames(model$ctl$params)
+  prior.specs <- as.tibble(model$ctl$params) %>%
+    transmute(name = prior.names,
+              ival = as.character(ival),
+              lb = as.character(lb),
+              ub = as.character(ub),
+              prior = prior,
+              p1 = p1,
+              p2 = p2,
+              Estimated = if_else(phz > 0, "Yes", "No"))
 
   ## Add the q parameters to the prior specs table
-  q.params <- model$ctl$surv.q
-  num.q.params <- ncol(q.params)
+  q.names <- paste0("q", 1:ncol(model$ctl$surv.q))
+  q.specs <- as.tibble(t(model$ctl$surv.q)) %>%
+    transmute(name = q.names,
+              ival = NA,
+              lb = NA,
+              ub = NA,
+              prior = priortype,
+              p1 = priormeanlog,
+              p2 = priorsd,
+              Estimated = "Yes")
 
-  q.specs <- lapply(1:num.q.params,
-                    function(x){
-                      c(q.params[2, x],
-                        q.params[1, x],
-                        q.params[2, x],
-                        q.params[3, x])
-                    })
-  q.specs <- as.data.frame(do.call(rbind, q.specs))
-  rownames(q.specs) <- paste0("log_q", 1:num.q.params)
-  colnames(q.specs) <- colnames(prior.specs)
-  prior.specs <- rbind(prior.specs, q.specs)
+  prior.specs <- bind_rows(prior.specs, q.specs)
 
   ## Remove log part for q's with uniform priors
-  j <- prior.specs
-  non.q <- j[-grep("q", rownames(j)),]
-  non.q <- non.q %>%
-    rownames_to_column() %>%
-    as.tibble()
+  non.q <- prior.specs[-grep("q", prior.specs$name),]
+  q <- prior.specs[grep("q", prior.specs$name),] %>%
+    mutate(name = if_else(prior > 0,
+                          paste0("log_", name),
+                          name))
+  prior.specs <- bind_rows(non.q, q)
+  kk <- prior.specs$name[prior.specs$name == "steepness"]
 
-  q <- j[grep("q", rownames(j)),]
-
-  q <- q %>%
-    rownames_to_column() %>%
-    mutate(rowname = if_else(!prior,
-                             gsub("log_", "", rowname),
-                             rowname))
-
-  prior.specs <- as.data.frame(rbind(non.q, q))
-  rownames(prior.specs) <- prior.specs$rowname
-  prior.specs <- prior.specs %>% select(-rowname)
-  rownames(prior.specs)[rownames(prior.specs) == "steepness"] = "h"
+  if(!is.na(basis.vec[1])){
+    if(length(basis.vec) != nrow(prior.specs)){
+      stop("The basis column vector you supplied is not the same ",
+           "length as the number of rows in the priors table. ",
+           "The prior names in the table are:\n\n",
+           paste(prior.specs$name, collapse = "\n"),
+           "\n\nThe basis vector you supplied is:\n\n",
+           paste(basis.vec, collapse = "\n"))
+    }
+  }
+  ## Make prior and prior parameters nil for fixed parameters
+  prior.specs$ival <- as.numeric(prior.specs$ival)
+  prior.specs$lb <- as.numeric(prior.specs$lb)
+  prior.specs$ub <- as.numeric(prior.specs$ub)
 
   prior.specs <- prior.specs %>%
-    mutate(Parameter = rownames(prior.specs)) %>%
-    left_join(p.names, by = "prior") %>%
-    select(-prior) %>%
-    rename(`Initial value` = ival, Distribution = name)
+    mutate(prior = if_else(Estimated == "No",
+                           NA_real_,
+                           prior),
+           lb = if_else(Estimated == "No",
+                        NA_real_,
+                        lb),
+           ub = if_else(Estimated == "No",
+                        NA_real_,
+                        ub),
+           p1 = if_else(Estimated == "No",
+                        NA_real_,
+                        p1),
+           p2 = if_else(Estimated == "No",
+                        NA_real_,
+                        p2))
 
-  prior.specs <- prior.specs[,c("Parameter",
-                                "Distribution",
-                                "Initial value",
-                                "p1",
-                                "p2")]
-  prior.specs$`Initial value` <- round(prior.specs$`Initial value`, 2)
-  prior.specs$p1 <- round(prior.specs$p1, 2)
+  prior.specs[prior.specs$name == "steepness", 1] <- "h"
+
+
+  prior.specs <- prior.specs %>%
+    rename(Parameter = name) %>%
+    left_join(p.names, by = "prior") %>%
+    select(-prior)
+
+  prior.specs <- prior.specs %>%
+    transmute(Parameter = Parameter,
+              `Initial value` = ival,
+              `Lower bound` = lb,
+              `Upper bound` = ub,
+              Distribution = name,
+              P1 = p1,
+              P2 = p2,
+              Estimated = Estimated)
+
+  if(!is.na(basis.vec[1])){
+    ## Replace - with latex multi-line cells
+
+    basis.vec <- sapply(basis.vec,
+                        function(x){
+                          latex.mlc(unlist(strsplit(x, "-")), FALSE)
+                        })
+
+    prior.specs <- prior.specs %>%
+      mutate(Basis = basis.vec)
+  }
+
+  ## Remove prior information for q's which have Uniform as prior
+  prior.specs <- prior.specs %>%
+    mutate(pos = 1:nrow(prior.specs))
+
+  q.non.unif <- prior.specs %>%
+    filter(grepl("q", Parameter) & Distribution == "Uniform") %>%
+    mutate(Distribution = NA,
+           P1 = NA,
+           P2 = NA)
+  the.rest <- prior.specs %>%
+    filter(!(grepl("q", Parameter) & Distribution == "Uniform"))
+
+  prior.specs <- bind_rows(the.rest, q.non.unif) %>%
+    arrange(pos) %>%
+    select(-pos)
 
   prior.specs$Parameter <- sapply(prior.specs$Parameter,
                                   function(x){
                                     get.rmd.name(x)
                                   })
+
+  ## Round the values off
+  prior.specs$`Initial value` <- f(prior.specs$`Initial value`, digits)
+  prior.specs$`Upper bound` <- f(prior.specs$`Upper bound`, digits)
+  prior.specs$`Lower bound` <- f(prior.specs$`Lower bound`, digits)
+  prior.specs$P1 <- f(prior.specs$P1, digits)
+  prior.specs$P2 <- f(prior.specs$P2, digits)
+
+  ## Change all NAs to --
+  prior.specs <- apply(prior.specs,
+             c(1,2),
+             function(x){
+               if(is.na(x)){
+                 "--"
+               }else if(length(grep("NA", x))){
+                 "--"
+               }else{
+                 x
+               }
+             })
+
+  col.names <-  c(latex.bold("Parameter"),
+    latex.mlc(c("Initial",
+                "value")),
+    latex.mlc(c("Lower",
+                "bound")),
+    latex.mlc(c("Upper",
+                "bound")),
+    latex.bold("Distribution"),
+    latex.bold("P1"),
+    latex.bold("P2"),
+    latex.bold("Estimated"))
+  if(!is.na(basis.vec[1])){
+    col.names <- c(col.names, latex.bold("Basis"))
+  }
+  colnames(prior.specs) <- col.names
 
   kable(prior.specs,
         caption = cap, format = "pandoc",
@@ -83,6 +175,6 @@ priors.table <- function(model, cap = ""){
         longtable = TRUE,
         linesep = "",
         escape = FALSE,
-        align = c("l", "r", "r", "r", "r")) %>%
+        align = c("l", "r", "r", "r", "r", "r", "r", "r", "c")) %>%
     kable_styling(latex_options = c("hold_position", "repeat_header"))
 }
