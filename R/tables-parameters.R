@@ -208,26 +208,25 @@ make.parameters.table <- function(model,
     "Initial log recruitment deviations ($\\omega_{init,t}$)")
 
   tab <- cbind(param.text, param.vals)
-  # colnames(tab) <- c(latex.bold("Parameter"),
-  colnames(tab) <- c(("Parameter"),
-    latex.mlc(c("Number",
-      "estimated")),
-    latex.mlc(c("Bounds",
-      "[low, high")),
-    latex.mlc(c("Prior (mean, SD)",
-      "(single value = fixed)")))
 
   tab <- as.data.frame(tab)
   if (!is.null(omit_pars)) {
-    tab <- dplyr::filter(tab, !`Parameter` %in% omit_pars)
+    tab <- dplyr::filter(tab, !`param.text` %in% omit_pars)
     # tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
   }
   if (omit_selectivity_pars) {
     # tab <- dplyr::filter(tab, !grepl("selectivity", `\\textbf{Parameter}`))
-    tab <- dplyr::filter(tab, !grepl("selectivity", `Parameter`))
+    tab <- dplyr::filter(tab, !grepl("selectivity", `param.text`))
   }
 
 
+  colnames(tab) <- c(latex.bold("Parameter"),
+                     latex.mlc(c("Number",
+                                 "estimated")),
+                     latex.mlc(c("Bounds",
+                                 "[low, high")),
+                     latex.mlc(c("Prior (mean, SD)",
+                                 "(single value = fixed)")))
   knitr::kable(tab,
     caption = caption, format = format,
     align = get.align(ncol(tab))[-1],
@@ -369,6 +368,8 @@ make.parameters.est.table <- function(model,
     # tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
     tab <- dplyr::filter(tab, !`Parameter` %in% omit_pars)
   }
+  colnames(tab) <- latex.bold(latex.perc(colnames(tab)))
+
   knitr::kable(tab,
     caption = caption, format = format,
     align = get.align(ncol(tab))[-1], longtable = TRUE,
@@ -509,16 +510,6 @@ make.value.table <- function(model,
   digits = 3,
   caption = "default"
   ){
-  ## Returns an xtable in the proper format for values (biomasas, recr, etc)
-  ##
-  ## out.dat - one of the quants objects as output by the calc.mcmc function
-  ## type - 1=biomass, 2=recruitment, 3=F, 4=U, 5=depletion
-  ## digits - number of decimal places for the values
-  ## xcaption - caption to appear in the calling document
-  ## xlabel - the label used to reference the table in latex
-  ## font.size - size of the font for the table
-  ## space.size - size of the vertical spaces for the table
-  ## placement - latex code for placement of the table in document
 
   if(class(model) == model.lst.class){
     model <- model[[1]]
@@ -543,11 +534,8 @@ make.value.table <- function(model,
 
   tab <- f(t(out.dat), digits)
   tab <- cbind(rownames(tab), tab)
-  col.names <- colnames(tab)
-  col.names[1] <- "Year"
-  # col.names <- latex.bold(latex.perc(col.names))
-  col.names <- latex.perc(col.names)
-  colnames(tab) <- col.names
+  colnames(tab)[1] <- "Year"
+  colnames(tab) <- latex.bold(latex.perc(colnames(tab)))
 
   knitr::kable(tab,
     caption = caption,

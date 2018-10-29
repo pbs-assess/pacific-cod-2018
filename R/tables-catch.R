@@ -38,6 +38,7 @@ catch.table <- function(dat,
                               f(tmp)
                             })
 
+  colnames(j) <- latex.bold(colnames(j))
   kable(j,
         caption = cap,
         booktabs = TRUE,
@@ -65,6 +66,8 @@ tac.table <- function(tac,
   tac[grep(" *NA", tac[,2]), 2] = "bycatch only"
   tac[grep(" *NA", tac[,3]), 3] = "bycatch only"
   tac[grep(" *NA", tac[,4]), 4] = "bycatch only"
+
+  colnames(tac) <- latex.bold(colnames(tac))
 
   kable(tac, caption = cap,
         booktabs = TRUE,

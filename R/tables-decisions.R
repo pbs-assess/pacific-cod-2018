@@ -74,3 +74,39 @@ decision.table <- function(models,
     dat
   }
 }
+
+suggested.ref.points <- function(){
+  df <- data.frame(
+    referencepoint = c("$B_{\t{Min}}$",
+                       "$B_{\t{Avg}}$",
+                       "$F_{\t{Avg}}$",
+                       "$B_{\t{2018}}$",
+                       "$F_{\t{2017}}$"),
+    Definition = c(
+      latex.mlc(c("Lowest estimated biomass agreed to be an",
+                  "undesirable state to avoid ($B_{\t{2000}}$",
+                  "in  5ABCD; $B_{\t{1986}}$ in 3CD)"),
+                make.bold = FALSE),
+      "Average biomass for the period 1956-2004",
+      "Average fishing mortality for the period 1956-2004",
+      "Biomass in 2018",
+      "Fishing mortality in 2017"),
+    Role = c("LRP",
+             "USR",
+             "LRR",
+             "Benchmark",
+             "Benchmark")) %>%
+    rename("Reference point" = referencepoint)
+
+  colnames(df) <- latex.bold(colnames(df))
+  kable(df,
+        caption = paste0("Suggested reference points for the Reference Case ",
+                         "5ABCD and 3CD models."),
+        booktabs = TRUE,
+        linesep = "",
+        escape = FALSE,
+        format = "pandoc",
+        align = c("l", "l", "l")) %>%
+    column_spec(2, width = "10cm") %>%
+    kableExtra::kable_styling(latex_options = "hold_position")
+}

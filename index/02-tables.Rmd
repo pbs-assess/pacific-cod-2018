@@ -76,42 +76,8 @@ basis.vec = c("Noninformative",
                           "Area 3CD Reference Case model. ", q.3cd.desc))
 ```
 
-```{r suggested-ref-points}
-df <- data.frame(referencepoint = c("Bmin",
-                     "Bavg",
-                     "Favg",
-                     "B2018",
-                     "F2017"),
-                 Definition = c(
-                   "Lowest estimated biomass agreed to be an undesirable state to avoid (2000 in  5ABCD; 1986 in 3CD)",
-                   "Average biomass for the period 1956-2004",
-                   "Average fishing mortality for the period 1956-2004",
-                   "Biomass in 2018",
-                   "Fishing mortality in 2017"),
-                 Role = c("LRP",
-                        "USR",
-                        "LRR",
-                        "Benchmark",
-                        "Benchmark")) %>%
-
-  mutate(referencepoint = gsub("Bmin", "$B_{\t{Min}}$", referencepoint)) %>%
-  mutate(referencepoint = gsub("Bavg", "$B_{\t{Avg}}$", referencepoint)) %>%
-  mutate(referencepoint = gsub("Favg", "$F_{\t{Avg}}$", referencepoint)) %>%
-  mutate(referencepoint = gsub("B2018", "$B_{\t{2018}}$", referencepoint)) %>%
-  mutate(referencepoint = gsub("F2017", "$F_{\t{2017}}$", referencepoint)) %>%
-  mutate(Definition = gsub("1971", "$B_{\t{1971}}$", Definition)) %>%
-  mutate(Definition = gsub("1986", "$B_{\t{1986}}$", Definition)) %>%
-  rename("Reference point" = referencepoint)
-
-  kable(df,
-        caption = paste0("Suggested reference points for the Reference Case ",
-                         "5ABCD and 3CD models."),
-                         booktabs = TRUE,
-                         linesep = "",
-                         escape = FALSE, format = "pandoc") %>%
-        column_spec(2, width = "10cm") %>%
-    kableExtra::kable_styling(latex_options = "hold_position")
-
+```{r tab-suggested-ref-points}
+suggested.ref.points()
 ```
 
 \clearpage
@@ -154,7 +120,7 @@ make.value.table(base.model.5abcd,
                  1,
                  digits = 0,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass (t) forthe Reference Case, ",
+                                  "percentile) and MPD estimates of biomass (t) for the Reference Case, ",
                                   "Area 5ABCD."))
 ```
 
