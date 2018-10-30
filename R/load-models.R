@@ -77,6 +77,14 @@ delete.rdata.files <- function(models.dir = model.dir){
   rdata.files <- file.path(dirs, "*.RData")
   ans <- readline("This operation cannot be undone, are you sure (y/n)? ")
   if(ans == "Y" | ans == "y"){
+    ## Delete Retrospectives if they exist
+    for(i in seq_along(dirs)){
+      subdirs <- dir(dirs[i])
+      subdir.names <- subdirs[grep("Retrospective", subdirs)]
+      subdirs <- file.path(dirs[i], subdir.names)
+      file.names <- file.path(subdirs, paste0(subdir.names, ".Rdata"))
+      unlink(file.names, force = TRUE)
+    }
     unlink(rdata.files, force = TRUE)
     cat(paste0("Deleted ", rdata.files, "\n"))
     cat("All rdata files were deleted.\n")
