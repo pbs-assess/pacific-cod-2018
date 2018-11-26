@@ -101,7 +101,8 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 ## Decision table models to average (5ABCD)
 ## -----------------------------------------------------------------------------
-desc.models.5abcd.dir.name <- c(file.path(model.dir,
+desc.models.5abcd.dir.name <- c(base.model.5abcd.dir.name,
+                                file.path(model.dir,
                                           "0_2d_5ABCD_rsoleq_1_1"),
                                 file.path(model.dir,
                                           "0_2e_5ABCD_q_cv06"),
@@ -113,7 +114,8 @@ desc.models.5abcd.dir.name <- c(file.path(model.dir,
                                           "0_6b_5ABCD_sig015"),
                                 file.path(model.dir,
                                           "0_7b_5ABCD_sigW_015"))
-desc.models.5abcd.name <- c("2d) HSSS ln(q) prior mean = ln(1.0 * 0.35), QCSSS = ln(1.0 * 0.65)",
+desc.models.5abcd.name <- c(base.model.5abcd.name,
+                            "2d) HSSS ln(q) prior mean = ln(1.0 * 0.35), QCSSS = ln(1.0 * 0.65)",
                             "2e) HSSS and QCSS ln(q) prior SD = 0.6",
                             "3a) M prior mean = 0.4, SD = 0.1",
                             "5a) kage = 3y and update FW parameters",
@@ -319,7 +321,8 @@ sens.models.name.108 <- c("8a) Inflate pre-1996 catch by 25%",
 ## -----------------------------------------------------------------------------
 ## Decision table models to average (3CD)
 ## -----------------------------------------------------------------------------
-desc.models.3cd.dir.name <- c(file.path(model.dir,
+desc.models.3cd.dir.name <- c(base.model.3cd.dir.name,
+                              file.path(model.dir,
                                         "1_2d_3CD_q_1"),
                               file.path(model.dir,
                                         "1_2e_3CD_q_cv06"),
@@ -332,7 +335,8 @@ desc.models.3cd.dir.name <- c(file.path(model.dir,
                               file.path(model.dir,
                                         "1_7b_3CD_sigW015"))
 
-desc.models.3cd.name <- c("2d) WCVISS ln(q) prior mean = ln(1.0)",
+desc.models.3cd.name <- c(base.model.3cd.name,
+                          "2d) WCVISS ln(q) prior mean = ln(1.0)",
                           "2e) WCVISS ln(q) prior SD = 0.6",
                           "3a) M prior mean = 0.4, SD = 0.1",
                           "5a) kage = 3y and update FW parameters",
