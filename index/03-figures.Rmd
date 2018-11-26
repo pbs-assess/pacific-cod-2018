@@ -505,8 +505,37 @@ b.plot(base.model.5abcd,
        usr = c(1956, 2004),
        proj_columns = c("B2019", "B2020"),
        tac_vector = c(0, 900, 2000, 3000),
-       year_range = c(2010, 2019)
-) + ylim(0, 40000) + scale_x_continuous(breaks = c(seq(2010, 2018, 2), 2019))
+       year_range = c(2010, 2019),
+       ylim = c(0, 50000),
+       x.every = 2)
+```
+
+```{r fig-model-averaged-biomass-5abcd, fig.cap="Biomass for the Reference Model, Area 5ABCD with projections.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."}
+b.plot(avg.model.5abcd,
+       base.model.5abcd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(2000, 2000),
+       usr = c(1956, 2004),
+       proj_columns = c("B2019", "B2020"),
+       tac_vector = c(0, 900, 2000, 3000),
+       year_range = c(2010, 2019),
+       ylim = c(0, 50000),
+       x.every = 2)
+```
+
+```{r fig-model-average-biomass-3cd-proj, fig.cap="Biomass for the averaged models, Area 5ABCD with projections.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."}
+b.plot(avg.model.3cd,
+       base.model.3cd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(1986, 1986),
+       usr = c(1956, 2004),
+       proj_columns = c("B2019", "B2020"),
+       tac_vector = c(0, 500, 1000, 1500),
+       year_range = c(2010, 2019),
+       ylim = c(0, 50000),
+       x.every = 2)
 ```
 
 ```{r fig-base-biomass-3cd-proj, fig.cap="Biomass for the Reference Model, Area 3CD with projections.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest biomass from which the stock has recovered, in this case it is the biomass estimate for 1986. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."}
@@ -518,6 +547,78 @@ b.plot(base.model.3cd,
        usr = c(1956, 2004),
        proj_columns = c("B2019", "B2020"),
        tac_vector = c(0, 500, 1000, 1500),
-       year_range = c(2010, 2019)
-) + ylim(0, 45000) + scale_x_continuous(breaks = c(seq(2010, 2018, 2), 2019))
+       year_range = c(2010, 2019),
+       ylim = c(0, 45000),
+       x.every = 2)
+```
+```{r fig-model-average-biomass-5abcd-proj, fig.cap="Biomass for the averaged models, Area 5ABCD with projections.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."}
+b.plot(avg.model.5abcd,
+       base.model.5abcd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(2000, 2000),
+       usr = c(1956, 2004),
+       proj_columns = c("B2019", "B2020"),
+       tac_vector = c(0, 900, 2000, 3000),
+       year_range = c(2010, 2019),
+       ylim = c(0, 50000),
+       x.every = 2)
+```
+
+
+```{r fig-model-average-biomass-comp-5abcd, fig.cap="Biomass for the models used in model-averaging, Area 5ABCD. The green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000."}
+b.plot(desc.models.5abcd,
+       desc.models.5abcd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(2000, 2000),
+       usr = c(1956, 2004))
+```
+
+```{r fig-model-average-biomass-5abcd, fig.cap="Biomass for the averaged models, Area 5ABCD. The green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000."}
+b.plot(avg.model.5abcd,
+       base.model.5abcd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(2000, 2000),
+       usr = c(1956, 2004))
+```
+
+```{r fig-model-average-biomass-comp-3cd, fig.cap="Biomass for the models used in model-averaging, Area 3CD. The green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 1986."}
+b.plot(desc.models.3cd,
+       desc.models.3cd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(1986, 1986),
+       usr = c(1956, 2004))
+```
+
+```{r fig-model-average-biomass-5abcd, fig.cap="Biomass for the averaged models, Area 5ABCD.  The green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 1986."}
+b.plot(avg.model.5abcd,
+       base.model.5abcd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(2000, 2000),
+       usr = c(1956, 2004))
+```
+
+```{r fig-model-average-biomass-3cd, fig.cap="Biomass for the averaged models, Area 3CD.  The green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 1986."}
+b.plot(avg.model.3cd,
+       base.model.3cd.name,
+       depl = FALSE,
+       add.hist.ref = TRUE,
+       lrp = c(1986, 1986),
+       usr = c(1956, 2004))
+```
+
+```{r fig-model-averaged-recr-5abcd, fig.cap="Recruitment for the averaged models, Area 5ABCD.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."}
+r.plot(avg.model.5abcd,
+       base.model.5abcd.name,
+       add.meds = TRUE)
+```
+
+```{r fig-model-averaged-recr-3cd, fig.cap="Recruitment for the averaged models, Area 3CD.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."}
+r.plot(avg.model.3cd,
+       base.model.3cd.name,
+       add.meds = TRUE)
 ```

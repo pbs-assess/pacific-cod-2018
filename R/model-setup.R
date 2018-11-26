@@ -565,6 +565,7 @@ retro.names <- c("- 1 year",
 load.models.into.parent.env <- function(){
   base.model.5abcd <<- load.models(base.model.5abcd.dir.name)
   desc.models.5abcd <<- load.models(desc.models.5abcd.dir.name)
+  avg.model.5abcd <<- avg.models(desc.models.5abcd)
   sens.models.0 <<- load.models(sens.models.dir.name.0)
   sens.models.1.sub <<- load.models(sens.models.dir.name.1.sub)
   sens.models.1.sub2 <<- load.models(sens.models.dir.name.1.sub2)
@@ -581,6 +582,7 @@ load.models.into.parent.env <- function(){
 
   base.model.3cd <<- load.models(base.model.3cd.dir.name)
   desc.models.3cd <<- load.models(desc.models.3cd.dir.name)
+  avg.model.3cd <<- avg.models(desc.models.3cd)
   sens.models.00 <<- load.models(sens.models.dir.name.00)
   sens.models.8.sub <<- load.models(sens.models.dir.name.8.sub)
   sens.models.8.sub2 <<- load.models(sens.models.dir.name.8.sub2)

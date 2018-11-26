@@ -902,3 +902,98 @@ and.string <- function(vec){
   j <- paste(vec[-length(vec)], collapse = ", ")
   paste(j, "and", vec[length(vec)])
 }
+
+avg.models <- function(models,
+                       probs = c(0.025, 0.5, 0.975)){
+  # Average the models by merging their posteriors
+  # Return a model object
+
+  avg.model <- models[[1]]
+
+  ## Biomass
+  bt <- lapply(models,
+               function(x){
+                 x$mcmccalcs$sbt.dat
+               })
+  bt <- bind_rows(bt)
+  mpd.bt <- lapply(models,
+               function(x){
+                 as.data.frame(x$mpd$sbt)
+               })
+  names(mpd.bt) <- seq(1, length(mpd.bt))
+  mpd.bt <- apply(t(bind_cols(mpd.bt)), 2, mean)
+
+  avg.model$mcmccalcs$sbt.dat <- bt
+  avg.model$mcmccalcs$sbt.quants <- rbind(apply(bt,
+                                                2,
+                                                quantile,
+                                                probs = probs),
+                                          mpd.bt)
+  rownames(avg.model$mcmccalcs$sbt.quants)[4] <- "MPD"
+
+  ## B0
+  r.quants <- lapply(models,
+                     function(x){
+                       x$mcmccalcs$r.quants
+                     })
+  bo.raw <- lapply(r.quants,
+                   function(x){
+                     x[rownames(x) == "bo", ]})
+  bo <- lapply(bo.raw,
+               function(x){
+                 as.numeric(x[,2:4])})
+  bo <- as.data.frame(do.call(rbind, bo))
+  avg.model$mcmccalcs$r.quants[1, 2:4] <- apply(bo, 2, mean)
+
+  ## Recuitment
+  recr <- lapply(models,
+                 function(x){
+                   x$mcmccalcs$recr.dat
+                 })
+  recr <- bind_rows(recr)
+
+  len.of.recr.mpd <-  sapply(models,
+                             function(x){
+                               length(x$mpd$rt)
+                             })
+
+  mpd.recr <- lapply(seq_along(models),
+                     function(x){
+                       j <- models[[x]]$mpd$rt
+                       if(len.of.recr.mpd[x] < max(len.of.recr.mpd)){
+                         j <- c(rep(NA,
+                                    max(len.of.recr.mpd) - len.of.recr.mpd[x]),
+                                j)
+                       }
+                       as.data.frame(j)
+                     })
+  names(mpd.recr) <- seq(1, length(mpd.recr))
+  mpd.recr <- apply(t(bind_cols(mpd.recr)), 2, mean)
+
+  avg.model$mcmccalcs$recr.dat <- recr
+  avg.model$mcmccalcs$recr.quants <- rbind(apply(recr,
+                                                 2,
+                                                 quantile,
+                                                 probs = probs,
+                                                 na.rm = TRUE),
+                                           mpd.recr)
+  rownames(avg.model$mcmccalcs$recr.quants)[4] <- "MPD"
+
+  ## Projections
+  ## Assume all models have the same TACs
+  tac <- models[[1]]$proj$tac.vec
+  proj.all <- NULL
+  for(t in seq_along(tac)){
+    proj <- lapply(models,
+                   function(x){
+                         filter(x$mcmccalcs$proj.dat,
+                                TAC == tac[t])
+                   })
+    proj.all <- rbind(proj.all, bind_rows(proj))
+  }
+  avg.model$mcmccalcs$proj.dat <- proj.all
+  avg.model <- list(avg.model)
+  class(avg.model) <- model.lst.class
+
+  avg.model
+}

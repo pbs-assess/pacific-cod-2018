@@ -1,7 +1,4 @@
-decision.table <- function(models,
-                           models.names,
-                           burnin = 1000,
-                           thin = 1,
+decision.table <- function(model,
                            caption = "",
                            make.table = TRUE,
                            format = "pandoc",
@@ -10,17 +7,11 @@ decision.table <- function(models,
   ## make.lt.gt = add less than and greater than
   ## sybols in table. Changes those columns to character
 
+  model <- model[[1]]
+
   dat <- as.data.frame(matrix(NA,
                               ncol = 6,
                               nrow = length(tac)))
-  col.names <- c("$2019$ Catch (mt)",
-                 "$P(B_{2020} < B_{2019})$",
-                 "$P(F_{2019} > F_{2018})$",
-                 "$P(B_{2020} < \\mathrm{LRP})$",
-                 "$P(B_{2020} < \\mathrm{USR})$",
-                 "$P(F_{2019} > \\mathrm{LRR})$")
-
-
   if(format == "html"){
     col.names <- c("2019 Catch (mt)",
                    "P(B2020 < B2019)",
@@ -29,35 +20,36 @@ decision.table <- function(models,
                    "P(B2020 < USR)",
                    "P(F2019 > LRR)")
 
+  }else{
+    col.names <- c("$2019$ Catch (mt)",
+                   "$P(B_{2020} < B_{2019})$",
+                   "$P(F_{2019} > F_{2018})$",
+                   "$P(B_{2020} < \\mathrm{LRP})$",
+                   "$P(B_{2020} < \\mathrm{USR})$",
+                   "$P(F_{2019} > \\mathrm{LRR})$")
   }
-  ## Assume all models have the same TACs
-  tac <- models[[1]]$proj$tac.vec
+  tac <- model$proj$tac.vec
   if(!is.na(tac.vec[1])){
     tac <- tac.vec[tac.vec %in% tac]
   }
   for(t in seq_along(tac)){
-    proj <- lapply(models,
-                   function(x){
-                     j <- as.data.frame(x$mcmc$proj)
-                     j <- j[j$TAC == tac[t],]
-                     j <- mcmc.thin(j, burnin, thin)
-                     })
-    names(proj) <- models.names
-    d <- bind_rows(proj)
-
+    d <- as.data.frame(model$mcmccalcs$proj.dat)
+    d <- d[d$TAC == tac[t],]
     dat[t, 1] <- f(tac[t], 0)
     dat[t, 2] <- f(mean(d$B2020B2019 < 1), 2)
     dat[t, 3] <- f(mean(d$F2019F2018 > 1), 2)
     dat[t, 4] <- f(mean(d$B2020Bmin < 1), 2)
     dat[t, 5] <- f(mean(d$B2020BAvgS < 1), 2)
     dat[t, 6] <- f(mean(d$F2019FAvgS > 1), 2)
-
   }
 
   if(make.lt.gt){
-    dat <- mutate_at(dat, -1, function(x) gsub('0.00', '<0.01', x))
-    dat <- mutate_at(dat, -1, function(x) gsub('1.00', '>0.99', x))
+    dat <- mutate_at(dat, -1,
+                     function(x) gsub('0.00', '<0.01', x))
+    dat <- mutate_at(dat, -1,
+                     function(x) gsub('1.00', '>0.99', x))
   }
+
   if(make.table){
     kable(dat,
           caption = caption,

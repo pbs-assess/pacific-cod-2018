@@ -429,7 +429,6 @@ make.parameters.est.table(sens.models.13[[3]],
 
 ```{r tab-decision-5abcd, results='asis'}
 decision.table(base.model.5abcd,
-               base.model.5abcd.name,
                caption = "Decision table for Area 5ABCD.")
 ```
 
@@ -437,7 +436,6 @@ decision.table(base.model.5abcd,
 
 ```{r tab-decision-3cd, results='asis'}
 decision.table(base.model.3cd,
-               base.model.3cd.name,
                caption = "Decision table for Area 3CD.")
 ```
 
@@ -460,10 +458,7 @@ make.ref.points.table(c(base.model.5abcd,
 ```
 
 ```{r tab-decision-avg-5abcd, results='asis'}
-decision.table(c(base.model.5abcd,
-                 sens.models.6.sub),
-               c(base.model.5abcd.name,
-                 sens.models.name.6.sub),
+decision.table(avg.model.5abcd,
                caption = paste0("Decision table with model averaging for Area 5ABCD. Models averaged are: ",
                                 and.string(c(base.model.5abcd.name, sens.models.name.6.sub)),
                                 "."))
@@ -486,10 +481,7 @@ make.ref.points.table(c(base.model.3cd,
 ```
 
 ```{r tab-decision-avg-3cd, results='asis'}
-decision.table(c(base.model.3cd,
-                 sens.models.13.sub),
-               c(base.model.5abcd.name,
-                 sens.models.name.13.sub),
+decision.table(avg.model.3cd,
                caption = paste0("Decision table with model averaging for Area 3CD. Models averaged are: ",
                                 and.string(c(base.model.3cd.name, sens.models.name.13.sub)),
                                 "."))

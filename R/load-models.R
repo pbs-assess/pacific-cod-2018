@@ -1210,7 +1210,14 @@ calc.mcmc <- function(model,
 
   proj.dat <- NULL
   if(load.proj){
-    proj.dat <- calc.probabilities(model, burnin, thin)
+    tac <- model$proj$tac.vec
+    for(t in seq_along(tac)){
+      proj.dat <- rbind(proj.dat,
+                        mcmc.thin(filter(model$mcmc$proj,
+                                         TAC == tac[t]),
+                                  burnin = burnin,
+                                  thin = thin))
+    }
   }
 
   sapply(c("p.dat",
@@ -1237,122 +1244,6 @@ calc.mcmc <- function(model,
            "u.mort.quants",
            "proj.dat"),
            function(x){get(x)})
-}
-
-calc.probabilities <- function(model,
-                               burnin,
-                               thin){
-  # Extract and calculate probabilities from the projection model
-  # Used for decision tables in the document (see make.decision.table())
-  #  in tables-decisions.r
-  # Returns a data frame which has its names formatted for latex
-  # There are possibly hard-coded values in the function and it should be
-  #  re-written for each assessment.
-
-  mc <- model$mcmc
-  proj <- mc$proj
-  tac <- sort(unique(proj$TAC))
-  p <- model$proj$ctl.options
-  s.yr <- p[rownames(p) == "syrmeanm", 1]
-  e.yr <- p[rownames(p) == "nyrmeanm", 1] + 2
-  e.yr.1 <- e.yr - 1
-  e.yr.2 <- e.yr - 2
-
-  ## nm <- c(paste0("B", e.yr, "B", e.yr.1),    ## Bt/Bt-1
-  ##         paste0("B", e.yr, "04B0"),         ## Bt/0.4B0
-  ##         paste0("B", e.yr, "02B0"),         ## Bt/0.2B0
-  ##         paste0("B", e.yr, "B", s.yr),      ## Bt/Binit
-  ##         ## paste0("B", e.yr, "BMSY"),         ## Bt/Bmsy
-  ##         paste0("B", e.yr, "08BMSY"),       ## Bt/0.8Bmsy
-  ##         paste0("B", e.yr, "04BMSY"),       ## Bt/0.4Bmsy
-  ##         ## paste0("F", e.yr.1, "F", e.yr.2),  ## Ft-1/Ft-2
-  ##         ## paste0("F", e.yr.1, "FMSY"),       ## Ft-1/Fmsy
-  ##         paste0("U", e.yr.1, "U", e.yr.2),  ## Ut-1/Ut-2
-  ##         paste0("U", e.yr.1, "UMSY"))       ## Ut-1/Umsy
-  ## ## This vector matches the nm vector, and signifies if the value
-  ## ##  is to be less than or greater than one. Set to FALSE for F and U values
-  ## less.than <- c(TRUE,
-  ##                TRUE,
-  ##                TRUE,
-  ##                TRUE,
-  ##                ## TRUE,
-  ##                TRUE,
-  ##                TRUE,
-  ##                ## FALSE,
-  ##                ## FALSE,
-  ##                FALSE,
-  ##                FALSE)
-
-  ## proj.dat <- data.frame()
-  ## for(t in 1:length(tac)){
-
-  # TODO Temporary hack, the decision table must be built up here
-
-  d <- proj[proj$TAC == tac[1],]
-  d
-  ##   d <- proj[proj$TAC == tac[d],]
-  ##   d <- mcmc.thin(d, burnin, thin)
-  ##   n.row <- nrow(d)
-  ##   proj.dat <- rbind(proj.dat,
-  ##                     c(tac[t],
-  ##                       sapply(1:length(nm), function(x){
-  ##                         ifelse(less.than[x],
-  ##                                length(which(d[, nm[x]] < 1)) / n.row,
-  ##                                length(which(d[, nm[x]] > 1)) / n.row)})))
-  ## }
-  ## ## Column names for decision tables. Make sure the length of this is the same
-  ## ##  as the number of columns set up above (nm and less.than)
-  ## colnames(proj.dat) <- c(latex.mlc(c(e.yr.1,
-  ##                                     "Female",
-  ##                                     "Catch",
-  ##                                     "(1000 t)")),
-  ##                         latex.mlc(c(paste0("P(B_{",
-  ##                                            e.yr,
-  ##                                            "}<"),
-  ##                                     paste0("B_{",
-  ##                                            e.yr.1,
-  ##                                            "})")),
-  ##                                   math.bold = TRUE),
-  ##                         latex.mlc(c(paste0("P(B_{",
-  ##                                            e.yr,
-  ##                                            "}<"),
-  ##                                     "0.4B_0)"),
-  ##                                   math.bold = TRUE),
-  ##                         latex.mlc(c(paste0("P(B_{",
-  ##                                            e.yr,
-  ##                                            "}<"),
-  ##                                     "0.2B_0)"),
-  ##                                   math.bold = TRUE),
-  ##                         latex.mlc(c(paste0("P(B_{",
-  ##                                            e.yr,
-  ##                                            "}<"),
-  ##                                     paste0("B_{",
-  ##                                            s.yr,
-  ##                                            "})")),
-  ##                                   math.bold = TRUE),
-  ##                         latex.mlc(c(paste0("P(B_{",
-  ##                                            e.yr,
-  ##                                            "}<"),
-  ##                                     "0.8B_{MSY})"),
-  ##                                   math.bold = TRUE),
-  ##                         latex.mlc(c(paste0("P(B_{",
-  ##                                            e.yr,
-  ##                                            "}<"),
-  ##                                     "0.4B_{MSY})"),
-  ##                                   math.bold = TRUE),
-  ##                         latex.mlc(c(paste0("P(U_{",
-  ##                                            e.yr.1,
-  ##                                            "}>"),
-  ##                                     paste0("U_{",
-  ##                                            e.yr.2,
-  ##                                            "})")),
-  ##                                   math.bold = TRUE),
-  ##                         latex.mlc(c(paste0("P(U_{",
-  ##                                            e.yr.1,
-  ##                                            "}>"),
-  ##                                     "U_{MSY}"),
-  ##                                   math.bold = TRUE))
-  ## proj.dat
 }
 
 get.estimated.params <- function(mc){

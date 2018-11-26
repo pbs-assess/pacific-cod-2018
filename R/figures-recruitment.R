@@ -50,7 +50,8 @@ r.plot <- function(models,
     scale_y_continuous(labels = comma,
                        limits = c(0, NA)) +
     coord_cartesian(expand = FALSE) +
-    scale_x_continuous(breaks = seq(0, 3000, 5))
+    scale_x_continuous(breaks = seq(0, 3000, 5)) +
+    ylab("Recruitment (thousands)")
 
   if(add.meds){
     j <- data.frame("Intercept" = c(rt.median, rt.mean),

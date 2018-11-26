@@ -93,7 +93,6 @@ wk3 <- b3$dat$dd.wk
 
 ## Decision table variables
 dt.5abcd <- decision.table(base.model.5abcd,
-                           base.model.5abcd.name,
                            make.table = FALSE,
                            make.lt.gt = FALSE)
 dt.5abcd[,-1] <- apply(dt.5abcd[,-1], 2, as.numeric)
@@ -114,7 +113,6 @@ dt.5abcd.f.2018.lrr.c0 <- dt.5abcd[1, 4] * 100
 dt.5abcd.f.2018.lrr.cmax <- dt.5abcd[nrow(dt.5abcd), 4] * 100
 
 dt.3cd <- decision.table(base.model.3cd,
-                         base.model.3cd.name,
                          make.table = FALSE,
                          make.lt.gt = FALSE)
 dt.3cd[,-1] <- apply(dt.3cd[,-1], 2, as.numeric)

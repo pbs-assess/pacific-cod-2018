@@ -10,7 +10,9 @@ b.plot <- function(models,
                    burnin = 1000,
                    thin = 1,
                    year_range = NULL,
-                   probs = c(0.025, 0.975)
+                   probs = c(0.025, 0.975),
+                   ylim = c(0, NA),
+                   x.every = 5 # Show x-axis label every n years
   ){
   ## lrp usr are year ranges (2-element vectors) to take the mean of
   ## the biomass for the reference points
@@ -37,10 +39,8 @@ b.plot <- function(models,
   if (!is.null(proj_columns)) {
     m <- models[[1]]
     stopifnot(all(tac_vector %in% unique(m$mcmc$proj$TAC)))
-    proj_dat <- filter(m$mcmc$proj, TAC %in% tac_vector)
+    proj_dat <- filter(m$mcmccalcs$proj.dat, TAC %in% tac_vector)
     proj_dat <- proj_dat[,c("TAC", proj_columns),drop=FALSE]
-    proj_dat <- group_by(proj_dat, TAC) %>%
-      do(mcmc.thin(., burnin = burnin, thin = thin))
     names(proj_dat) <- gsub("^B", "", names(proj_dat))
     proj_dat <- reshape2::melt(proj_dat, id.vars = "TAC") %>%
       mutate(year = as.numeric(as.character(variable))) %>%
@@ -62,7 +62,6 @@ b.plot <- function(models,
                         tmp %>% mutate(Year = rownames(tmp))})
   bt <- bind_rows(bt.quants, .id = "Sensitivity") %>%
     as.tibble() %>%
-    rename(`Biomass (t)` = median) %>%
     mutate(Year = as.numeric(Year)) %>%
     mutate(Sensitivity = forcats::fct_relevel(Sensitivity,
                                               models.names[1],
@@ -84,15 +83,13 @@ b.plot <- function(models,
 
   names(bo) <- c("Sensitivity", "lowercv", "median", "uppercv")
   bo <- as.tibble(bo) %>%
-    mutate(Year = min(bt$Year)) %>%
-    rename("Biomass (t)" = median)
+    mutate(Year = min(bt$Year))
 
   horiz.offset <- 1.7
   p <- ggplot(bt, aes(x = Year,
-                      y = `Biomass (t)`,
+                      y = median,
                       ymin = lowercv,
                       ymax = uppercv))
-
   if (is.null(proj_columns)) {
     p <- p + geom_ribbon(alpha = 0.2,
                          aes(fill = Sensitivity)) +
@@ -114,14 +111,16 @@ b.plot <- function(models,
         show.legend = FALSE)
     }
   }
+
   p <- p + theme(legend.position = c(1, 1),
           legend.justification = c(1, 1),
           legend.title = element_blank()) +
     scale_y_continuous(labels = comma,
-                       limits = c(0, NA)) +
+                       limits = ylim) +
     coord_cartesian(expand = FALSE) +
     xlim(c(min(bt$Year - 1), NA)) +
-    scale_x_continuous(breaks = seq(0, 3000, 5))
+    scale_x_continuous(breaks = seq(0, 3000, x.every)) +
+    ylab("Biomass (t)")
 
   if(!depl & add.hist.ref){
     if(is.na(lrp) || is.na(usr)){
@@ -132,7 +131,7 @@ b.plot <- function(models,
       cal <- bt %>%
         filter(Year >= lrp[1] & Year <= lrp[2]) %>%
         mutate(lowercv = mean(lowercv),
-               `Biomass (t)` = mean(`Biomass (t)`),
+               median = mean(median),
                uppercv = mean(uppercv))
       cal <- cal[1,]
       cal <- cal[rep(1, each = length(yrs)),]
@@ -144,25 +143,32 @@ b.plot <- function(models,
       cau <- bt %>%
         filter(Year >= usr[1] & Year <= usr[2]) %>%
         mutate(lowercv = mean(lowercv),
-               `Biomass (t)` = mean(`Biomass (t)`),
+               median = mean(median),
                uppercv = mean(uppercv))
       cau <- cau[1,]
-
       cau <- cau[rep(1, each = length(yrs)),]
       cau$Year <- yrs
       cau$Color <- 3
       p <- p + geom_ribbon(data = cau,
                            alpha = 0.2,
                            fill = cau$Color)
+      bt.slice <- bt
+      if(!is.null(year_range)){
+        bt.slice <- bt %>%
+          filter(Year >= year_range[1] & Year <= year_range[2])
+      }
+      ylim <- c(ylim[1], max(cau$uppercv,
+                             bt.slice$uppercv,
+                             ylim[2]))
+
       cal <- bt %>%
         filter(Year >= lrp[1] & Year <= lrp[2])
-      lrp.val <- mean(cal$`Biomass (t)`)
+      lrp.val <- mean(cal$median)
       cau <- bt %>%
         filter(Year >= usr[1] & Year <= usr[2])
-      usr.val <- mean(cau$`Biomass (t)`)
+      usr.val <- mean(cau$median)
       j <- data.frame("Intercept" = c(lrp.val, usr.val),
                       "Color" = c("red", "green"))
-
       p <- p +
         geom_hline(data = j,
                    aes(yintercept = Intercept),
@@ -209,6 +215,9 @@ b.plot <- function(models,
   if (!is.null(year_range)) {
     p <- p + coord_cartesian(xlim = year_range)
   }
+
+  p <- p + scale_y_continuous(labels = comma,
+                              limits = ylim)
 
   p
 }
