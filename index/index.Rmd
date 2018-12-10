@@ -18,6 +18,8 @@ address: |
 
 year: "2018"
 report_number: "nnn"
+region: Pacific Region
+type: res-doc
 abstract: |
   The status of two stocks of Pacific Cod (*Gadus macrocephalus*) in Hecate Strait/Queen Charlotte Sound (Area 5ABCD) and West Coast Vancouver Island (Area 3CD) was assessed using Bayesian delay-difference models. The models were fit to fishery-independent indices of abundance and new standardized commercial catch-per-unit-effort (CPUE) indices that were developed using Tweedie generalized linear mixed effect models (GLMMs). New analyses of growth and maturity were also done and incorporated into the models.
 
