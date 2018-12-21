@@ -12,6 +12,7 @@ b.plot <- function(models,
                    year_range = NULL,
                    probs = c(0.025, 0.975),
                    ylim = c(0, NA),
+                   col = c("red", "green"),
                    x.every = 5 # Show x-axis label every n years
   ){
   ## lrp usr are year ranges (2-element vectors) to take the mean of
@@ -136,7 +137,7 @@ b.plot <- function(models,
       cal <- cal[1,]
       cal <- cal[rep(1, each = length(yrs)),]
       cal$Year <- yrs
-      cal$Color <- 2
+      cal$Color <- col[[1]]
       p <- p + geom_ribbon(data = cal,
                            alpha = 0.2,
                            fill = cal$Color)
@@ -148,7 +149,7 @@ b.plot <- function(models,
       cau <- cau[1,]
       cau <- cau[rep(1, each = length(yrs)),]
       cau$Year <- yrs
-      cau$Color <- 3
+      cau$Color <- col[[2]]
       p <- p + geom_ribbon(data = cau,
                            alpha = 0.2,
                            fill = cau$Color)
@@ -168,7 +169,7 @@ b.plot <- function(models,
         filter(Year >= usr[1] & Year <= usr[2])
       usr.val <- mean(cau$median)
       j <- data.frame("Intercept" = c(lrp.val, usr.val),
-                      "Color" = c("red", "green"))
+                      "Color" =  col)
       p <- p +
         geom_hline(data = j,
                    aes(yintercept = Intercept),
@@ -181,7 +182,7 @@ b.plot <- function(models,
   if(add.bo.ref){
     bo.med <- as.numeric(bo[2])
     j <- data.frame("Intercept" = c(0.2*bo.med, 0.4*bo.med),
-                    "Color" = c("red", "green"))
+                    "Color" = col)
     p <- p +
         geom_hline(data = j,
                    aes(yintercept = Intercept),
