@@ -342,12 +342,12 @@ Results are presented under these headings below. In all sensitivity runs, as fo
 The reference case models were fit to historical and modern commercial CPUE indices that included a locality-year interaction as random effect (see Appendix \@ref(commercial-cpue-standardization), Equations \@ref(eq:cpue-tweedie) to \@ref(eq:cpue-vessel)). Two sensitivity analyses are shown to illustrate the effect of omitting the locality-year interaction term (Equation \@ref(eq:cpue-locality-year)) from both historical and modern indices:
 
 > **Sc 1b.** Use equations without the interaction term to create CPUE indices
-> for historical and modern periods. Use the annual CVs resulting from the
+> for the historical and modern periods. Use the annual CVs resulting from the
 > analysis as annual weighting terms in objective function of delay difference
 > model (Equations \@ref(eq:ddsigjt), \@ref(eq:ddcjt)).
 
 > **Sc 1c.** Use equations without the interaction term to create CPUE indices
-> for historical and modern periods **and** double the annual CVs resulting
+> for the historical and modern periods **and** double the annual CVs resulting
 > from the analysis. Input the doubled CVs as weighting terms in objective
 > function of delay difference model (Equations \@ref(eq:ddsigjt),
 > \@ref(eq:ddcjt)).
@@ -561,14 +561,16 @@ The above performance measures are intended to present probabilities of "undesir
 
 Probabilities of such states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
 
-@forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from multiple sensitivity cases. They did this to address some of the key irresolvable uncertainties associated with the stock assessment.A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011], where two alternative stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible. A similar "ensemble" approach is used in the annual assessments of Pacific Halibut, where four structurally distinct models are used [@stewart2016].
+## MODEL-AVERAGED DECISION TABLES
 
-In the following sections we present the Reference Case decision tables for each area, then present alternative "model-averaged" decision tables that incorporate the uncertainty from the Reference Case models (Section (\@ref(reference-case-models))) and a subset of the above sensitivity cases (Section (\@ref(sensitivity-analyses))). Details of the model averaging approach for Area 5ABCD and Area 3CD are provided below.
+@forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from multiple sensitivity cases. They did this to address some of the key irresolvable uncertainties associated with the stock assessment.A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011], where two alternative stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible. A similar "ensemble" approach is used in the annual assessments of Pacific Halibut, where four structurally distinct models are used in construction of the decision table [@stewart2016].
 
-We did not attempt to assign different weights to the alternative models in the construction of the model-averaged results.
+<!--In the following sections we present the Reference Case decision tables for each area, then present alternative "model-averaged" decision tables that incorporate the uncertainty from the Reference Case models (Section (\@ref(reference-case-models))) and a subset of the above sensitivity cases (Section (\@ref(sensitivity-analyses))). Details of the model averaging approach for Area 5ABCD and Area 3CD are provided below.-->
 
-## REFERENCE CASE DECISION TABLES
 
+<!--## REFERENCE CASE DECISION TABLES-->
+
+<!--
 ### Area 5ABCD
 
 The decision table for the Area 5ABCD Reference Case model is provided in Table \@ref(tab:tab-decision-5abcd). Projections were done for a range of 2018 catch levels from `r dt.5abcd.min.catch`  metric tonnes (mt) to 3000 mt, approximately three times the current combined Area 5ABCDE TAC of 950 mt (Table \@ref(tab:tab-tac)).
@@ -593,23 +595,29 @@ The probability of the 2018 fishing mortality being greater than the 2017 fishin
 
 Under a 2018 catch level of 500 mt, close to the 2017 TAC, there is an estimated `r dt.3cd.b.2019.lrp.c500`% probability that the 2019 biomass will be below the LRP and a `r dt.3cd.b.2019.usr.c500`% probability that the 2019 biomass will be below the USR.
 
-## MODEL-AVERAGED DECISION TABLES
 
-We selected four sensitivity scenarios (plus the Reference Case) to include in a model-averaged decision table for each area. The sensitivity scenarios below were chosen because they produced plausible results that diverged from the Reference Case models. Inclusion of these posterior samples in the decision table may therefore better bracket the uncertainty due to the different assumptions captured in the sensitivity scenarios.  However, please note that the choices of sensitivity cases included in the model-averaged tables should be considered placeholders for discussion and agreement at the upcoming regional peer review meeting.
+## MODEL-AVERAGED DECISION TABLES -->
 
-The vectors of 1,000 burned-in posterior samples from each of the five models, for each performance measure, under each alternative 2018 catch level, were combined into a single vector of 5,000 samples and probabilities of performance measures were calculated from the combined samples.
+Decision tables summarizing the probability of breaching reference points over a range of fixed catches for a one-year projection were constructed for each area using the unweighted combined posterior samples from a set of six sensitivity cases, plus the reference case (the "model-averaged" set). The sensitivity cases include in the model-averaged set were refined and agreed upon by Regional Peer Review participants (Pacific Biological Station, October 10-11, 2018). For each performance measure, under each alternative 2018 catch level, Vectors of 1,000 burned-in posterior samples from each of the seven models were combined into a single vector of 7,000 samples. Probabilities of performance measures were then calculated from the combined samples. No attempt was made to assign different weights to the alternative sensitivity cases.
+
+Inclusion of posterior samples from multiple model configurations in production of the decision tables is intended to better bracket the uncertainty  that arises from key assumptions in the models.
+
 
 ### Area 5ABCD
 
-For Area 5ABCD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
+For Area 5ABCD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following seven models:
 
-1. Reference Case;
-2. the sensitivity case without commercial CPUE data (Sc 1f);
-3. the sensitivity case with prior for QCS $q$: mean $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$ (Sc 2a);
-4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.1)$ (Sc 3b);
-5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
+1.	Sc 1a Reference model
+2.	Sc 2d Set the mean of the prior probability distribution for synoptic survey $\ln(q)$ = $\ln(1.0)$ (pro-rated by depth-stratum areas of Area 5AB and 5CD)
+3.	Sc 2e Increase the standard deviation (SD) for synoptic survey $\ln(q)$ to 0.6.
+4.	Sc 3a Set the parameters of the prior probability distribution for $\ln(M)$ to $\mathcal{N}\sim(0.4,0.1)$;
+5.	Sc 5a Set knife-edged age at recruitment = 3 years
+6.	Sc 6b Reduce the overall observation error term $\sigma_O = 0.15$
+7.	Sc 7b Reduce the SD in the likelihood for the fit to average annual mean weight $\sigma_W = 0.15$
 
 The "Model-Averaged" decision table probabilities for Area 5ABCD are presented in Table \@ref(tab:tab-decision-avg-5abcd).
+
+*TODO: rewrite*
 
 The probability of the 2019 biomass being below the 2018 biomass ranged from 10% under no 2018 catch to 89% under a catch of 3,000 mt.
 
@@ -621,15 +629,28 @@ Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated
 
 ### Area 3CD
 
-For Area 3CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following five models:
+For Area 3CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following seven models:
 
+1.	Sc 1a Reference model
+2.	Sc 2d Set the mean of the prior probability distribution for synoptic survey $\ln(q)$ = $\ln(1.0)$ 
+3.	Sc 2e Increase the standard deviation (SD) for synoptic survey $\ln(q)$ to 0.6.
+4.	Sc 3a Set the parameters of the prior probability distribution for $\ln(M)$ to $\mathcal{N}\sim(0.4,0.1)$;
+5.	Sc 5a Set knife-edged age at recruitment = 3 years
+6.	Sc 6b Reduce the overall observation error term $\sigma_O = 0.15$
+7.	Sc 7b Reduce the SD in the likelihood for the fit to average annual mean weight $\sigma_W = 0.15$
+
+
+<!--
 1. Reference Case;
 2. the sensitivity case without commercial CPUE data (Sc 1f);
 3. the sensitivity case with the SD of the prior for the WCVI Synoptic Survey = 0.448 (Sc 2a);
 4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.1)$ (Sc 3b);
 5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
+-->
 
 The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd).
+
+*TODO: rewrite*
 
 For most performance measures, probabilities were similar to those in the Reference Case model.
 

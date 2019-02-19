@@ -16,9 +16,8 @@ address: |
       1406 Rose Ann Drive\
       Nanaimo, British Columbia, V9T 4K8, Canada\
 
-year: "2018"
+year: "2019"
 report_number: "nnn"
-region: Pacific Region
 type: res-doc
 abstract: |
   The status of two stocks of Pacific Cod (*Gadus macrocephalus*) in Hecate Strait/Queen Charlotte Sound (Area 5ABCD) and West Coast Vancouver Island (Area 3CD) was assessed using Bayesian delay-difference models. The models were fit to fishery-independent indices of abundance and new standardized commercial catch-per-unit-effort (CPUE) indices that were developed using Tweedie generalized linear mixed effect models (GLMMs). New analyses of growth and maturity were also done and incorporated into the models.
@@ -29,20 +28,22 @@ abstract: |
 
   Biomass in Area 3CD is estimated to have been on a declining trajectory since 2015 after following an increasing trend from a historical low level of biomass between 1998 and 2014. These trends are consistent with the available biomass indices, including a recent downturn in the WCVI synoptic survey and the CPUE series. Median posterior estimates of biomass are estimated to be above the median LRP but below the USR for Area 3CD. Recruitment is estimated to have been below average for most years in the past two decades, with above average peaks in 2009, 2013 and 2014.
 
-  Model estimates of biomass and stock status in both management areas were very sensitive to prior assumptions about natural mortality and survey scaling parameters, variance in the mean weight data, and the goodness of fit to the indices of abundance, particularly the commercial CPUE data. Harvest advice was produced in the form of decision tables that summarized the probability of breaching  reference points in 2019 over a range of fixed 2018 catch levels. Due to model sensitivity to a number of assumptions, decision tables for both stocks were provided using: (i) only projections from the Reference Model; and (ii) a model-averaging approach using projections over five alternative model configurations.
+  Model estimates of biomass and stock status in both management areas were very sensitive to prior assumptions about natural mortality and survey scaling parameters, variance in the mean weight data, and the goodness of fit to the indices of abundance, particularly the commercial CPUE data. Harvest advice was produced in the form of decision tables that summarized the probability of breaching  reference points in 2019 over a range of fixed 2018 catch levels. Due to model sensitivity to a number of assumptions, decision tables for both stocks were provided using: (i) only projections from the Reference Model; and (ii) a model-averaging approach using projections over seven alternative model configurations.
 
 always_allow_html: yes
 link-citations: true
 output:
   csasdown::resdoc_pdf
   #csasdown::resdoc_word
-
+header: ""
+bibliography: bib/refs.bib
+region: Pacific Region
 # ---------------------
 # End of options to set
 # ---------------------
 knit: bookdown::render_book
 site: bookdown::bookdown_site
-bibliography: bib/refs.bib
+
 csl: csl/csas.csl
 lot: true
 lof: true
