@@ -539,7 +539,7 @@ For each stock, two sensitivity analyses were done, where pre-1996 commercial ca
 
 \clearpage
 
-# PROJECTIONS AND DECISION TABLES
+# DECISION TABLES
 
 Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019 (Figures \@ref(fig:fig-base-biomass-5abcd-proj) and \@ref(fig:fig-base-biomass-3cd-proj)). Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
@@ -564,39 +564,6 @@ Probabilities of such states are measured as the proportion of burned-in posteri
 ## MODEL-AVERAGED DECISION TABLES
 
 @forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from multiple sensitivity cases. They did this to address some of the key irresolvable uncertainties associated with the stock assessment.A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011], where two alternative stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible. A similar "ensemble" approach is used in the annual assessments of Pacific Halibut, where four structurally distinct models are used in construction of the decision table [@stewart2016].
-
-<!--In the following sections we present the Reference Case decision tables for each area, then present alternative "model-averaged" decision tables that incorporate the uncertainty from the Reference Case models (Section (\@ref(reference-case-models))) and a subset of the above sensitivity cases (Section (\@ref(sensitivity-analyses))). Details of the model averaging approach for Area 5ABCD and Area 3CD are provided below.-->
-
-
-<!--## REFERENCE CASE DECISION TABLES-->
-
-<!--
-### Area 5ABCD
-
-The decision table for the Area 5ABCD Reference Case model is provided in Table \@ref(tab:tab-decision-5abcd). Projections were done for a range of 2018 catch levels from `r dt.5abcd.min.catch`  metric tonnes (mt) to 3000 mt, approximately three times the current combined Area 5ABCDE TAC of 950 mt (Table \@ref(tab:tab-tac)).
-
-The probability of the 2019 biomass being below the 2018 biomass ranged from `r dt.5abcd.b.2019.2018.c0`% under no 2018 catch to `r dt.5abcd.b.2019.2018.cmax`% under a catch of `r dt.5abcd.max.catch` mt.
-
-The probability of 2019 biomass being below the LRP ranged from `r dt.5abcd.b.2019.lrp.c0`% to `r dt.5abcd.b.2019.lrp.cmax`% over the range of catch levels considered. There was a `r dt.5abcd.b.2019.usr.cmax`% probability of the 2019 biomass being below the USR over the entire range of catch levels considered.
-
-The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from `r dt.5abcd.f.2018.2017.c0`% to `r dt.5abcd.f.2018.2017.cmax`%. The probability of the 2018 fishing mortality being greater than the LRR also ranged from 0% to 100%.
-
-Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated `r dt.5abcd.b.2019.lrp.c900`% probability that the 2019 biomass will be below the LRP and a `r dt.5abcd.b.2019.usr.c900`% probability that the 2019 biomass will be below the USR.
-
-### Area 3CD
-
-The decision table for the Area 3CD Reference Case model is provided in Table \@ref(tab:tab-decision-3cd). Projections were done for a range of 2018 catch levels from `r dt.3cd.min.catch` mt to 1,500 mt, approximately three times the current TAC of 500 mt (Table \@ref(tab:tab-tac)).
-
-The probability of the 2019 biomass being below the 2018 biomass ranged from `r dt.3cd.b.2019.2018.c0`% under no 2018 catch to `r dt.3cd.b.2019.2018.cmax`% under a catch of `r dt.3cd.max.catch` mt.
-
-The probability of 2019 biomass being below the LRP was 0% over the range of catch levels considered. There was a 98% to 99%  probability of the 2019 biomass being below the USR over the range of catch levels considered.
-
-The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from `r dt.3cd.f.2018.2017.c0`% to 100%. The probability of the 2018 fishing mortality being greater than the LRR also ranged from `r dt.3cd.f.2018.lrr.c0`% to 100%.
-
-Under a 2018 catch level of 500 mt, close to the 2017 TAC, there is an estimated `r dt.3cd.b.2019.lrp.c500`% probability that the 2019 biomass will be below the LRP and a `r dt.3cd.b.2019.usr.c500`% probability that the 2019 biomass will be below the USR.
-
-
-## MODEL-AVERAGED DECISION TABLES -->
 
 Decision tables summarizing the probability of breaching reference points over a range of fixed catches for a one-year projection were constructed for each area using the unweighted combined posterior samples from a set of six sensitivity cases, plus the reference case (the "model-averaged" set). The sensitivity cases include in the model-averaged set were refined and agreed upon by Regional Peer Review participants (Pacific Biological Station, October 10-11, 2018). For each performance measure, under each alternative 2018 catch level, Vectors of 1,000 burned-in posterior samples from each of the seven models were combined into a single vector of 7,000 samples. Probabilities of performance measures were then calculated from the combined samples. No attempt was made to assign different weights to the alternative sensitivity cases.
 
