@@ -15,7 +15,7 @@ make.catches.plot(catch.5)
 ```
 
 ```{r fig-discards-5abcd, fig.cap="Estimated at-sea releases of Pacific Cod by bottom trawlers for Area 5ABCD."}
-discards.plot(catch.5.discards)
+discards.plot(catch.5)
 ```
 
 ```{r fig-catch-5ab, fig.cap="Catch for Area 5AB. Canadian catch includes at-sea releases."}
@@ -23,7 +23,7 @@ make.catches.plot(catch.5ab)
 ```
 
 ```{r fig-discards-5ab, fig.cap="Estimated at-sea releases of Pacific Cod by bottom trawlers for Area 5AB."}
-discards.plot(catch.5ab.discards)
+discards.plot(catch.5ab)
 ```
 
 ```{r fig-catch-5cd, fig.cap="Catch for Area 5CD. Canadian catch includes at-sea releases."}
@@ -31,7 +31,7 @@ make.catches.plot(catch.5cd)
 ```
 
 ```{r fig-discards-5cd, fig.cap="Estimated at-sea releases of Pacific Cod by bottom trawlers for Area 5CD."}
-discards.plot(catch.5cd.discards)
+discards.plot(catch.5cd)
 ```
 
 \clearpage
@@ -43,7 +43,7 @@ make.catches.plot(catch.3)
 ```
 
 ```{r fig-discards-3cd, fig.cap="Estimated at-sea releases of Pacific Cod by bottom trawlers for Area 3CD."}
-discards.plot(catch.3.discards)
+discards.plot(catch.3)
 ```
 
 \clearpage

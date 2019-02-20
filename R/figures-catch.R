@@ -27,8 +27,8 @@ make.catches.plot <- function(dat,
 discards.plot <- function(dat){
   dat <- dat %>%
     group_by(year) %>%
-    summarize(`Released at sea` = sum(discarded_kg) / 1000,
-              `Prop. released` = sum(discarded_kg) / sum(landed_kg + discarded_kg)) %>%
+    summarize(`Released at sea` = sum(discarded_canada) ,
+              `Prop. released` = sum(discarded_canada) / sum(landed_canada + discarded_canada)) %>%
     rename(Year = year)
 
   g.bottom <- ggplot(dat) +
