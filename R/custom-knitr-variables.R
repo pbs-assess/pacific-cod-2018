@@ -35,6 +35,7 @@ catch.3.discards <- total.catch.discards(dat$catch, areas="3[CD]+")
 catch.5 <- total.catch.yr.qtr(dat$catch,
                               areas = "5[ABCD]+",
                               include.usa = TRUE)
+
 catch.5.discards <- total.catch.discards(dat$catch, areas="5[ABCD]+")
 
 catch.5ab <- total.catch.yr.qtr(dat$catch,
