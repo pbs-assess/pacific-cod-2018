@@ -180,7 +180,10 @@ total.catch.yr.qtr <- function(dat,
     select(-month) %>%
     mutate(year = if_else(quarter == 4, year - 1, as.numeric(year))) %>%
     group_by(year, quarter) %>%
-    summarize(catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0) %>%
+    summarize(
+      discarded_canada = sum(discarded_kg) / 1000,
+      landed_canada = sum(landed_kg) / 1000,
+      catch_weight = (sum(landed_kg) + sum(discarded_kg)) / 1000.0) %>%
     left_join(usa, by = "year") %>%
     rowwise() %>%
     ## Spread the USA catch out over 4 quarters as it is year-based
