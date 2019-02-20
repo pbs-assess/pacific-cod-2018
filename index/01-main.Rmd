@@ -89,6 +89,8 @@ Canadian trawl landings, April 1, 2007 to 2017. View of the Fisheries and Oceans
 
 Groundfish fisheries were managed by calendar year until 1996. Beginning in 1997--98 the fishing year changed to April 1--March 31. In 2010--2011 the fishing year was changed again to February 21 to February 20. Throughout this document,as in @forrest2013, fishing years are defined as beginning on April 1 for all years, and are referenced by starting year, e.g., fishing year 1957 runs from April 1, 1957 to March 31, 1958. These definitions were used consistently in all calculations involving commercial catch data, including development of the commercial CPUE index (Appendix \@ref(commercial-cpue-standardization)) and calculation of annual average mean weight in the catch (Appendix \@ref(analysis-of-biological-data)). Landings data are presented separately for Canada and the USA (Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd)). Combined USA-Canada landings data were obtained from the Pacific Marine Fisheries Commission reports for 1956--1981 and the USA landed portion was determined by subtracting the Canadian landed amount from the combined total for each year. In cases where the difference was negative, the USA landed amount was set to zero. Canadian data were obtained from the GFCatch database for the period 1954--1995 [@rutherford1999]; from the PacHarvest database for the period 1996-March 31, 2007; and from the Fisheries and Oceans Canada (DFO) FOS database for the period April 1, 2007 until the present. The annual size compositions of commercial catches and landings were estimated from port samples and at-sea samples collected by observers archived in the GFBio database (Appendix \@ref(analysis-of-biological-data).
 
+At the time of the assessment, the 2018 fishing year was incomplete. In order to provide projections for the 2019 fishing season, the 2018 catch was extrapolated in each area. For Area 5ABCD, the average proportion of catch taken by September 30 from 2015-2017 (88.4%) was used to extrapolate from the catch at September 30, 2018 to the total estimated catch for the 2018 fishing year (Table \@ref(tab:tab-catch-5abcd)). For Area 3CD, the 2018 catch to September 30 was anomolously low for reasons that were unclear but that could have been related to the fishing industry delaying opportunities to catch Pacific Cod. Therefore, the total catch for the 2018 fishing year was extrapolated to be the same as the catch for 2017.
+
 ## INDICES OF ABUNDANCE
 
 Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
@@ -539,40 +541,36 @@ For each stock, two sensitivity analyses were done, where pre-1996 commercial ca
 
 \clearpage
 
-# DECISION TABLES
-
+# MODEL-AVERAGED DECISION TABLES
 Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019 (Figures \@ref(fig:fig-base-biomass-5abcd-proj) and \@ref(fig:fig-base-biomass-3cd-proj)). Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
-1. $P(B_{2019} < B_{2018})$
-1. $P(F_{2018} > F_{2017})$
-1. $P(B_{2019} < LRP)$
-1. $P(B_{2019} < USR)$
-1. $P(F_{2018} > LRR)$
+1. $P(B_{2020} < B_{2019})$
+1. $P(F_{2019} > F_{2018})$
+1. $P(B_{2020} < LRP)$
+1. $P(B_{2020} < USR)$
+1. $P(F_{2019} > LRR)$
 
 where
 
-1. $USR$ (Upper Stock Reference) is the historical mean of the biomass estimates from 1956--2004 (both areas).
-1. $LRP$ (Limit Reference Point) is the lowest estimated biomass agreed to be an undesirable state to avoid. For Area 5ABCD this is the biomass estimate for 2000. For Area 3CD it is the biomass estimate for 1986.
-1. $LRR$ (Limit Reference Rate) is the average fishing mortality rate from 1956--2004 (both areas).
+1. $USR$ (Upper Stock Reference) is the historical mean of the biomass estimates from 1956--2004.
+1. $LRP$ (Limit Reference Point) is the lowest estimated biomass agreed upon as an undesirable state to be avoided. For Area 5ABCD this is the estimated biomass in 2000. For Area 3CD it is the estimated biomass in 1986.
+1. $LRR$ (Limit Removal Rate) is the average fishing mortality rate from 1956--2004.
 
 For more information on reference points, see Section (\@ref(reference-points)).
 
-The above performance measures are intended to present probabilities of "undesirable" states under alternative 2018 projected catch levels. For example, an "undesirable" biomass-based performance measure occurs when 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An "undesirable" fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
+The above performance measures are intended to present probabilities of "undesirable" states under alternative 2018 projected catch levels. For example, an "undesirable" biomass-based performance measure occurs when the 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An "undesirable" fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
 
-Probabilities of such states are measured as the proportion of burned-in posterior samples that meet criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
+Probabilities of such states are measured as the proportion of burned-in posterior samples that meet the criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
 
-## MODEL-AVERAGED DECISION TABLES
+@forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from several different sensitivity cases. This was to address some of the key irresolvable uncertainties associated with the stock assessment. A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011], where two structurally different stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible. A similar "ensemble" approach is used in the annual assessments of Pacific Halibut, where four structurally distinct models are used in construction of the decision table [@stewart2016].
 
-@forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from multiple sensitivity cases. They did this to address some of the key irresolvable uncertainties associated with the stock assessment.A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011], where two alternative stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible. A similar "ensemble" approach is used in the annual assessments of Pacific Halibut, where four structurally distinct models are used in construction of the decision table [@stewart2016].
-
-Decision tables summarizing the probability of breaching reference points over a range of fixed catches for a one-year projection were constructed for each area using the unweighted combined posterior samples from a set of six sensitivity cases, plus the reference case (the "model-averaged" set). The sensitivity cases include in the model-averaged set were refined and agreed upon by Regional Peer Review participants (Pacific Biological Station, October 10-11, 2018). For each performance measure, under each alternative 2018 catch level, Vectors of 1,000 burned-in posterior samples from each of the seven models were combined into a single vector of 7,000 samples. Probabilities of performance measures were then calculated from the combined samples. No attempt was made to assign different weights to the alternative sensitivity cases.
+Decision tables summarizing the probability of breaching reference points over a range of fixed catches for a one-year projection were constructed for each area using the unweighted combined posterior samples from a set of six sensitivity cases, plus the reference case (the "model-averaged" set). The choice of sensitivity cases included in the model-averaged set was agreed upon by Regional Peer Review participants (Pacific Biological Station, October 10-11, 2018). For each performance measure, under each alternative 2018 catch level, Vectors of 1,000 burned-in posterior samples from each of the seven models were combined into a single vector of 7,000 samples. Probabilities of performance measures were then calculated from the combined samples. No attempt was made to assign different weights to the alternative sensitivity cases.
 
 Inclusion of posterior samples from multiple model configurations in production of the decision tables is intended to better bracket the uncertainty  that arises from key assumptions in the models.
 
-
 ### Area 5ABCD
 
-For Area 5ABCD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following seven models:
+For Area 5ABCD, probabilities in the model-averaged decision table were calculated from combined posterior projections of performance measures from the following seven models:
 
 1.	Sc 1a Reference model
 2.	Sc 2d Set the mean of the prior probability distribution for synoptic survey $\ln(q)$ = $\ln(1.0)$ (pro-rated by depth-stratum areas of Area 5AB and 5CD)
@@ -582,17 +580,13 @@ For Area 5ABCD, we present an alternative decision table with probabilities calc
 6.	Sc 6b Reduce the overall observation error term $\sigma_O = 0.15$
 7.	Sc 7b Reduce the SD in the likelihood for the fit to average annual mean weight $\sigma_W = 0.15$
 
-The "Model-Averaged" decision table probabilities for Area 5ABCD are presented in Table \@ref(tab:tab-decision-avg-5abcd).
+The "Model-Averaged" decision table probabilities are presented in Table \@ref(tab:tab-decision-avg-5abcd).In summary:
 
-*TODO: rewrite*
-
-The probability of the 2019 biomass being below the 2018 biomass ranged from 10% under no 2018 catch to 89% under a catch of 3,000 mt.
-
-The probability of 2019 biomass being below the LRP ranged from 82% to 96% over the range of catch levels considered. There was a 100% probability of the 2019 biomass being below the USR over the entire range of catch levels considered.
-
-The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0.0% to 100%. The probability of the 2018 fishing mortality being greater than the LRR also ranged from 0.0% to 100%.
-
-Under a 2018 catch level of 900 mt, close to the 2017 TAC, there is an estimated 89% probability that the 2019 biomass will be below the LRP and a 100% probability that the 2019 biomass will be below the USR.
+•	$P(B_{2020} < B_{2019})$ ranged from 12% to 89% over the range of 2019 catch levels. 
+•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 200 mt, hence the probability increase between 200 mt and 300 mt
+•	$P(B_{2020} < LRP)$ ranged from <1% to 11%. 
+•	$P(B_{2020} < USR)$ ranged from 98% to 99%. 
+•	$P(F_{2019} > LRR)$  ranged from <1% to 95%. 
 
 ### Area 3CD
 
@@ -606,28 +600,13 @@ For Area 3CD, we present an alternative decision table with probabilities calcul
 6.	Sc 6b Reduce the overall observation error term $\sigma_O = 0.15$
 7.	Sc 7b Reduce the SD in the likelihood for the fit to average annual mean weight $\sigma_W = 0.15$
 
+The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd).In summary:
 
-<!--
-1. Reference Case;
-2. the sensitivity case without commercial CPUE data (Sc 1f);
-3. the sensitivity case with the SD of the prior for the WCVI Synoptic Survey = 0.448 (Sc 2a);
-4. the sensitivity case with prior for ln($M$): $\mathcal{N}\sim(0.4,0.1)$ (Sc 3b);
-5. the sensitivity case with $\sigma_0 = 0.15$ (Sc 6b).
--->
-
-The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd).
-
-*TODO: rewrite*
-
-For most performance measures, probabilities were similar to those in the Reference Case model.
-
-The probability of the 2019 biomass being below the 2018 biomass ranged from 75% under no 2018 catch to 91% under a catch of 1,500 mt.
-
-The probability of 2019 biomass being below the LRP was 18% over the range of catch levels considered. The probability of 2019 biomass being below the USR ranged from 98% to 99% over the range of catch levels considered.
-
-The probability of the 2018 fishing mortality being greater than the 2017 fishing mortality ranged from 0% to 100% across the range of catch levels considered. The probability of the 2018 fishing mortality being greater than the LRR ranged from 0.0% to 98%.
-
-Under a 2018 catch level of 500 mt, close to the 2017 TAC, there is an estimated 18% probability that the 2019 biomass will be below the LRP and a 99% probability that the 2019 biomass will be below the USR.
+•	$P(B_{2020} < B_{2019})$ ranged from 76% to 89% over the range of 2019 catch levels. 
+•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 164 mt, hence the probability increase between 100 mt and 200 mt
+•	$P(B_{2020} < LRP)$ ranged from <1% to 1%. 
+•	$P(B_{2020} < USR)$ ranged from 95% to 97%. 
+•	$P(F_{2019} > LRR)$  ranged from <1% to 96%
 
 ## SUMMARY
 

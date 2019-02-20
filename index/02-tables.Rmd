@@ -425,23 +425,8 @@ make.parameters.est.table(sens.models.13[[3]],
 
 \clearpage
 
-## REFERENCE CASE DECISION TABLES
+## MODEL-AVERAGED REFERENCE POINTS AND DECISION TABLES
 
-```{r tab-decision-5abcd, results='asis'}
-decision.table(base.model.5abcd,
-               caption = "Decision table for Area 5ABCD.")
-```
-
-\clearpage
-
-```{r tab-decision-3cd, results='asis'}
-decision.table(base.model.3cd,
-               caption = "Decision table for Area 3CD.")
-```
-
-\clearpage
-
-## MODEL-AVERAGED DECISION TABLES
 
 ```{r tab-ref-points-table-avg-5abcd, results='asis'}
 make.ref.points.table(c(base.model.5abcd,
@@ -457,14 +442,6 @@ make.ref.points.table(c(base.model.5abcd,
                                        "Biomass is in tonnes."))
 ```
 
-```{r tab-decision-avg-5abcd, results='asis'}
-decision.table(avg.model.5abcd,
-               caption = paste0("Decision table with model averaging for Area 5ABCD. Models averaged are: ",
-                                and.string(c(base.model.5abcd.name, sens.models.name.6.sub)),
-                                "."))
-```
-
-\clearpage
 
 ```{r tab-ref-points-table-avg-3cd, results='asis'}
 make.ref.points.table(c(base.model.3cd,
@@ -479,6 +456,17 @@ make.ref.points.table(c(base.model.3cd,
                                        "model-averaged Area 3CD. ",
                                        "Biomass is in tonnes."))
 ```
+
+\clearpage
+
+```{r tab-decision-avg-5abcd, results='asis'}
+decision.table(avg.model.5abcd,
+               caption = paste0("Decision table with model averaging for Area 5ABCD. Models averaged are: ",
+                                and.string(c(base.model.5abcd.name, sens.models.name.6.sub)),
+                                "."))
+```
+
+\clearpage
 
 ```{r tab-decision-avg-3cd, results='asis'}
 decision.table(avg.model.3cd,
