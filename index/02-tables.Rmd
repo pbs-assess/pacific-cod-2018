@@ -60,6 +60,8 @@ basis.vec = c("Noninformative",
                           "Area 5ABCD Reference Case model. ", q.5abcd.desc))
 ```
 
+\clearpage
+
 ```{r tab-priors-3cd}
 priors.table(base.model.3cd,
 basis.vec = c("Noninformative",
