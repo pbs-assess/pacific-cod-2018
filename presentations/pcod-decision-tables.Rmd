@@ -119,8 +119,7 @@ b.plot(c(base.model.5abcd, sens.models.6.sub), c(base.model.5abcd.name, sens.mod
 ## Area 5ABCD - Model averaged decision table - 1
 <SPAN STYLE="font-size: 12pt">
 ```{r tab-decision-5abcd-avg-1, results='asis'}
-decision.table(desc.models.5abcd,
-               desc.models.5abcd.name,
+decision.table(avg.model.5abcd,
                format = "html",
                tac.vec = seq(0, 1000, 100))
 ```
@@ -130,8 +129,7 @@ decision.table(desc.models.5abcd,
 ## Area 5ABCD - Model averaged decision table - 2
 <SPAN STYLE="font-size: 12pt">
 ```{r tab-decision-5abcd-avg-2, results='asis'}
-decision.table(desc.models.5abcd,
-               desc.models.5abcd.name,
+decision.table(avg.model.5abcd,
                format = "html",
                tac.vec = c(seq(1100, 2000, 100), 3000))
 ```
@@ -169,8 +167,7 @@ b.plot(c(base.model.3cd, sens.models.13.sub), c(base.model.3cd.name, sens.models
 ## Area 3CD - Model averaged decision table. 2018 Ct = 164.47 t
 <SPAN STYLE="font-size: 10pt">
 ```{r tab-decision-3cd-avg, results='asis'}
-decision.table(desc.models.3cd,
-               desc.models.3cd.name,
+decision.table(avg.model.3cd,
                format = "html")
 ```
 </SPAN>

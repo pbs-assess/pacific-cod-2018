@@ -542,7 +542,7 @@ For each stock, two sensitivity analyses were done, where pre-1996 commercial ca
 \clearpage
 
 # MODEL-AVERAGED DECISION TABLES
-Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on a one-year projection to 2019 (Figures \@ref(fig:fig-base-biomass-5abcd-proj) and \@ref(fig:fig-base-biomass-3cd-proj)). Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
+Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on posterior samples for a one-year projection to the end of 2019 (Figures \@ref(fig:fig-base-biomass-5abcd-proj) and \@ref(fig:fig-base-biomass-3cd-proj)). Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
 1. $P(B_{2020} < B_{2019})$
 1. $P(F_{2019} > F_{2018})$
@@ -560,7 +560,7 @@ For more information on reference points, see Section (\@ref(reference-points)).
 
 The above performance measures are intended to present probabilities of "undesirable" states under alternative 2018 projected catch levels. For example, an "undesirable" biomass-based performance measure occurs when the 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An "undesirable" fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
 
-Probabilities of such states are measured as the proportion of burned-in posterior samples that meet the criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures).
+Probabilities of such states are measured as the proportion of burned-in posterior samples that meet the criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures). Note that MPD results are not used in development of advice.
 
 @forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from several different sensitivity cases. This was to address some of the key irresolvable uncertainties associated with the stock assessment. A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011], where two structurally different stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible. A similar "ensemble" approach is used in the annual assessments of Pacific Halibut, where four structurally distinct models are used in construction of the decision table [@stewart2016].
 
@@ -583,10 +583,15 @@ For Area 5ABCD, probabilities in the model-averaged decision table were calculat
 The "Model-Averaged" decision table probabilities are presented in Table \@ref(tab:tab-decision-avg-5abcd).In summary:
 
 •	$P(B_{2020} < B_{2019})$ ranged from 12% to 89% over the range of 2019 catch levels. 
-•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 200 mt, hence the probability increase between 200 mt and 300 mt
-•	$P(B_{2020} < LRP)$ ranged from <1% to 11%. 
-•	$P(B_{2020} < USR)$ ranged from 98% to 99%. 
+
+•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 200 mt, hence the probability increase between 200 mt and 300 mt.
+
+•	$P(B_{2020} < LRP)$ ranged from <1% to 11%.
+
+•	$P(B_{2020} < USR)$ ranged from 98% to 99%.
+
 •	$P(F_{2019} > LRR)$  ranged from <1% to 95%. 
+
 
 ### Area 3CD
 
@@ -603,10 +608,15 @@ For Area 3CD, we present an alternative decision table with probabilities calcul
 The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd).In summary:
 
 •	$P(B_{2020} < B_{2019})$ ranged from 76% to 89% over the range of 2019 catch levels. 
-•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 164 mt, hence the probability increase between 100 mt and 200 mt
+
+•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 164 mt, hence the probability increase between 100 mt and 200 mt.
+
 •	$P(B_{2020} < LRP)$ ranged from <1% to 1%. 
+
 •	$P(B_{2020} < USR)$ ranged from 95% to 97%. 
-•	$P(F_{2019} > LRR)$  ranged from <1% to 96%
+
+•	$P(F_{2019} > LRR)$  ranged from <1% to 96%.
+
 
 ## SUMMARY
 
