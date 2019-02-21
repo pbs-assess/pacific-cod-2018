@@ -93,11 +93,11 @@ At the time of the assessment, the 2018 fishing year was incomplete. In order to
 
 ## INDICES OF ABUNDANCE
 
-Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
+Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995). 
 
 Stock assessment models in Area 3CD were fit to two fishery-independent survey indices (West Coast Vancouver Island Synoptic Survey and NMFS Triennial Survey in Canada) and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
 
-The fishery-independent indices of abundance were developed using swept area analyses. Details are provided in Appendix \@ref(fishery-independent-indices-of-abundance).
+The fishery-independent indices of abundance were developed using swept area analyses. Descriptions of the surveys and details of the analyses are provided in Appendix \@ref(fishery-independent-indices-of-abundance).
 
 The commercial CPUE indices were standardized for depth, fishing locality, month, vessel, and latitude, when available, using generalized linear mixed models (GLMMs), based on a Tweedie distribution. Details are provided in Appendix \@ref(commercial-cpue-standardization).
 
@@ -115,7 +115,7 @@ All models presented in this document are Bayesian models implemented in AD Mode
   - $R_{Init}$, initial average recruitment used to initialize the age structure in the first year; and
   - $R_{Avg}$, average recruitment for the time series.
 
-  The decision to use just one average recruitment parameter was made because there is little to no information for estimating three parameters in the delay-difference model, which contains no explicit age composition information.
+The decision to use just one average recruitment parameter was made because there is little to no information for estimating three parameters in the delay-difference model, which contains no explicit age composition information.
 
 Also, the von Bertalanffy growth parameters have been updated in the current assessment for both stocks, to reflect more recent age and length data. Details are provided in Appendix \@ref(analysis-of-biological-data).
 
@@ -471,7 +471,7 @@ The Reference Case delay-difference models assumed knife-edged selectivity and m
 
 Another sensitivity analysis (Sc 5b) was done to illustrate the effects of reverting back to the von Bertalanffy growth parameters used in the previous Area 5CD assessments [@forrest2013; @sinclair2005], which were also used by @sinclair2001 in the last assessment for Area 3CD. These previous stock assessments used the von Bertalanffy parameters that @westrheim1996 reported for Area 3CD, ($L_{inf}$ = 89.48 cm; $K_{VB}$ = 0.307 *y*^1^; and $a_0$ = -0.116 *y*).
 
-The current Area 5ABCD assessment used values of female growth parameters estimated in Appendix \@ref(analysis-of-biological-data) using survey age and length data from the Hecate Strait and Queen Charlotte Sound Synoptic Surveys ($L_{inf}$ = 99.07 cm; $K_{VB}$ = 0.185 *y*^1^; and $a_0$ = -0.832 *y*). The current Area 3CD assessment used values of female growth parameters estimated in Appendix \@ref(analysis-of-biological-data) using survey age and length data from the West Coast Vancouver Island Synoptic Survey ($L_{inf}$ = 83.29 cm; $K_{VB}$ = 0.266 *y*^1^; and $a_0$ = -0.572 *y*). For both areas, the new values of the growth rate $K_{VB}$ were much lower than used in the previous assessments.The delay-difference model in Sc 5b used Ford-Walford parameters $W_{k}$, $\alpha_g$ and $\rho_g$ derived from previous growth parameters used in [@forrest2013; @sinclair2005; @sinclair2001].
+The current Area 5ABCD assessment used values of growth parameters estimated in Appendix \@ref(analysis-of-biological-data) using survey age and length data from the Hecate Strait and Queen Charlotte Sound Synoptic Surveys ($L_{inf}$ = 95.51 cm; $K_{VB}$ = 0.19 *y*^1^; and $a_0$ = -0.81 *y*). The current Area 3CD assessment used values of growth parameters estimated in Appendix \@ref(analysis-of-biological-data) using survey age and length data from the West Coast Vancouver Island Synoptic Survey ($L_{inf}$ = 82.59 cm; $K_{VB}$ = 0.26 *y*^1^; and $a_0$ = -0.67 *y*). For both areas, the new values of the growth rate $K_{VB}$ were much lower than used in the previous assessments.The delay-difference model in Sc 5b used Ford-Walford parameters $W_{k}$, $\alpha_g$ and $\rho_g$ (Appendix \@ref(delay-difference-model)) derived from previous growth parameters used in [@forrest2013; @sinclair2005; @sinclair2001].
 
 In summary, the two new scenarios are:
 
