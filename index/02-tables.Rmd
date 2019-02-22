@@ -114,7 +114,7 @@ make.ref.points.table(base.model.5abcd,
                       usr = c(1956, 2004),
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                                       "97.5\\textsuperscript{th} percentile) of proposed reference points for Area 5ABCD. ",
+                                       "97.5\\textsuperscript{th} percentile) of reference points for Area 5ABCD. ",
                                        "Biomass is in tonnes."))
 ```
 
@@ -190,7 +190,7 @@ make.ref.points.table(base.model.3cd,
                       usr = c(1956, 2004),
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                                       "97.5\\textsuperscript{th} percentile) of proposed reference points for Area 3CD. ",
+                                       "97.5\\textsuperscript{th} percentile) of reference points for Area 3CD. ",
                                        "Biomass is in tonnes."))
 ```
 
@@ -268,6 +268,9 @@ make.parameters.est.table(sens.models.3[[1]],
   omit_pars = pars_est_omit)
 ```
 
+\clearpage
+
+
 ```{r tab-param-table-sens3b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -295,6 +298,8 @@ make.parameters.est.table(sens.models.4[[1]],
   omit_pars = pars_est_omit)
 ```
 
+\clearpage
+
 ```{r tab-param-table-sens4b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.4[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -321,6 +326,8 @@ make.parameters.est.table(sens.models.6[[2]],
                   "for Sc 6b ($\\sigma_{O}$ = 0.15), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
+
+\clearpage
 
 ```{r tab-param-table-sens6c-5abcd, results='asis'}
 make.parameters.est.table(sens.models.6[[3]],
@@ -363,6 +370,9 @@ make.parameters.est.table(sens.models.10[[1]],
   omit_pars = pars_est_omit)
 ```
 
+\clearpage
+
+
 ```{r tab-param-table-sens3b-3cd, results='asis'}
 make.parameters.est.table(sens.models.10[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -389,6 +399,9 @@ make.parameters.est.table(sens.models.11[[1]],
                   "for Sc 4a (Uniform prior for steepness), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
+
+\clearpage
+
 
 ```{r tab-param-table-sens4b-3cd, results='asis'}
 make.parameters.est.table(sens.models.11[[2]],
@@ -417,6 +430,9 @@ make.parameters.est.table(sens.models.13[[2]],
   omit_pars = pars_est_omit)
 ```
 
+\clearpage
+
+
 ```{r tab-param-table-sens6c-3cd, results='asis'}
 make.parameters.est.table(sens.models.13[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -440,7 +456,7 @@ make.ref.points.table(c(base.model.5abcd,
                       usr = c(1956, 2004),
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                                       "97.5\\textsuperscript{th} percentile) of proposed reference points for ",
+                                       "97.5\\textsuperscript{th} percentile) of reference points for ",
                                        "model-averaged Area 5ABCD. ",
                                        "Biomass is in tonnes."))
 ```
@@ -455,7 +471,7 @@ make.ref.points.table(c(base.model.3cd,
                       usr = c(1956, 2004),
                       digits = 2,
                       caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                                       "97.5\\textsuperscript{th} percentile) of proposed reference points for ",
+                                       "97.5\\textsuperscript{th} percentile) of reference points for ",
                                        "model-averaged Area 3CD. ",
                                        "Biomass is in tonnes."))
 ```
