@@ -293,7 +293,7 @@ r.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.
 f.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
-```{r fig-sens5-meanweightfit-5abcd, fig.cap="Fits to the average annual mean weights for (a) the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and (b) to using the growth parameters used in the previous Area 5CD stock assessment. Area 5ABCD."}
+```{r fig-sens5-meanweightfit-5abcd, fig.cap="MPD fits to the average annual mean weights for (a) the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and (b) to using the growth parameters used in the previous Area 5CD stock assessment. Area 5ABCD."}
 plot_grid(
   mw.plot(sens.models.5[[1]], cv = 0.2, every = 5, last.yr = 2015),
   mw.plot(sens.models.5[[2]], cv = 0.2, every = 5, last.yr = 2015),
@@ -315,24 +315,24 @@ r.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.
 f.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
 
-```{r fig-sens6-index-hsmas-5abcd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, HSMAS, Area 5ABCD."}
+```{r fig-sens6-index-hsmas-5abcd, fig.cap="MPD index fits for the sensitivity to the assumed value of observation and process errors, HSMAS, Area 5ABCD."}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 1)
 ```
 
-```{r fig-sens6-index-qcss-5abcd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, QCSS, Area 5ABCD."}
+```{r fig-sens6-index-qcss-5abcd, fig.cap="MPD index fits for the sensitivity to the assumed value of observation and process errors, QCSS, Area 5ABCD."}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 2)
 ```
 
-```{r fig-sens6-index-hsss-5abcd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, HSSS, Area 5ABCD."}
+```{r fig-sens6-index-hsss-5abcd, fig.cap="MPD index fits for the sensitivity to the assumed value of observation and process errors, HSSS, Area 5ABCD."}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 3)
 ```
 
-```{r fig-sens6-index-cpue-pre1996-5abcd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, commercial CPUE pre-1996, Area 5ABCD."}
+```{r fig-sens6-index-cpue-pre1996-5abcd, fig.cap="MPD index fits for the sensitivity to the assumed value of observation and process errors, commercial CPUE pre-1996, Area 5ABCD."}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 4, every = 5) +
   ylab("Commercial CPUE (kg/hour)")
 ```
 
-```{r fig-sens6-index-cpue-post1995-5abcd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 5ABCD."}
+```{r fig-sens6-index-cpue-post1995-5abcd, fig.cap="MPD index fits for the sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 5ABCD."}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
 ```
 
@@ -348,7 +348,7 @@ r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.
 f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
-```{r fig-sens7-meanweightfit-5abcd, fig.cap="Fits to the average annual mean weights for the sensitivity to the assumed value of $\\sigma_{W}$ for (a) $\\sigma_{W}$ = 0.4 and (b) $\\sigma_{W}$ = 0.15, Area 5ABCD."}
+```{r fig-sens7-meanweightfit-5abcd, fig.cap="MPD fits to the average annual mean weights for the sensitivity to the assumed value of $\\sigma_{W}$ for (a) $\\sigma_{W}$ = 0.4 and (b) $\\sigma_{W}$ = 0.15, Area 5ABCD."}
 plot_grid(
   mw.plot(sens.models.7[[1]], cv = 0.2, every = 5, last.yr = 2015),
   mw.plot(sens.models.7[[2]], cv = 0.2, every = 5, last.yr = 2015),
@@ -431,7 +431,7 @@ r.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.nam
 f.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
 
-```{r fig-sens12-meanweightfit-3cd, fig.cap="Fits to the average annual mean weights for (a) the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and (b) to using the growth parameters used in the previous Area 5CD stock assessment. Area 3CD."}
+```{r fig-sens12-meanweightfit-3cd, fig.cap="MPD fits to the average annual mean weights for (a) the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and (b) to using the growth parameters used in the previous Area 5CD stock assessment. Area 3CD."}
 plot_grid(
   mw.plot(sens.models.12[[1]], cv = 0.2, every = 5, last.yr = 2015),
   mw.plot(sens.models.12[[2]], cv = 0.2, every = 5, last.yr = 2015),
@@ -454,20 +454,20 @@ r.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.nam
 f.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
 ```
 
-```{r fig-sens13-index-wcviss-3cd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, WCVISS, Area 3CD."}
+```{r fig-sens13-index-wcviss-3cd, fig.cap="MPD index fits for the sensitivity to the assumed value of observation and process errors, WCVISS, Area 3CD."}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 1, leg.loc = "topleft")
 ```
 
-```{r fig-sens13-index-cpue-pre1996-3cd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errows, commercial CPUE pre-1996, Area 3CD."}
+```{r fig-sens13-index-cpue-pre1996-3cd, fig.cap="MPD index fits for the sensitivity to the assumed value of observation and process errows, commercial CPUE pre-1996, Area 3CD."}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 2, every = 5) +
   ylab("Commercial CPUE (kg/hour)")
 ```
 
-```{r fig-sens13-index-cpue-post1995-3cd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 3CD."}
+```{r fig-sens13-index-cpue-post1995-3cd, fig.cap="MPD index fits for the sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 3CD."}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 3, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
 ```
 
-```{r fig-sens13-index-triennial-3cd, fig.cap="Index fit for the sensitivity to the assumed value of observation and process errors, NMFS Triennial survey, Area 3CD."}
+```{r fig-sens13-index-triennial-3cd, fig.cap="MPD index fits for the sensitivity to the assumed value of observation and process errors, NMFS Triennial survey, Area 3CD."}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 4)
 ```
 
@@ -483,7 +483,7 @@ r.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.nam
 f.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
-```{r fig-sens14-meanweightfit-3cd, fig.cap="Fits to the average annual mean weights for the sensitivity to the assumed value of $\\sigma_{W}$ for (a) $\\sigma_{W}$ = 0.4 and (b) $\\sigma_{W}$ = 0.15, Area 3CD."}
+```{r fig-sens14-meanweightfit-3cd, fig.cap="MPD fits to the average annual mean weights for the sensitivity to the assumed value of $\\sigma_{W}$ for (a) $\\sigma_{W}$ = 0.4 and (b) $\\sigma_{W}$ = 0.15, Area 3CD."}
 plot_grid(
   mw.plot(sens.models.14[[1]], cv = 0.2, every = 5, last.yr = 2015),
   mw.plot(sens.models.14[[2]], cv = 0.2, every = 5, last.yr = 2015),

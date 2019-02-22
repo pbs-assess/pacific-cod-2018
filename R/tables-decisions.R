@@ -92,7 +92,7 @@ suggested.ref.points <- function(){
 
   colnames(df) <- latex.bold(colnames(df))
   kable(df,
-        caption = paste0("Suggested reference points for the Reference Case ",
+        caption = paste0("Reference points for the Reference Case ",
                          "5ABCD and 3CD models."),
         booktabs = TRUE,
         linesep = "",

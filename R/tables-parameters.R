@@ -197,10 +197,10 @@ make.parameters.table <- function(model,
       "[-30, 3]"),
     c(num.rec.params,
       "None",
-      "Normal($0, \\tau$)"),
+      "Normal($0, 2$)"),
     c(num.init.rec.params,
       "None",
-      "Normal($0, \\tau$)"))
+      "Normal($0, 2$)"))
 
   param.text <- c(param.text,
     "Log fishing mortality values ($\\Gamma_{k,t}$)",

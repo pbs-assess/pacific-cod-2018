@@ -83,11 +83,11 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 ## Base model names and directories
 ## -----------------------------------------------------------------------------
-base.model.3cd.name <- "1a) Reference model 3CD: 2-sex growth + 2018 catch"
+base.model.3cd.name <- "1a) Reference model 3CD"
 base.model.3cd.dir.name <- file.path(model.dir,
                                      "1_1a_3CD_BASE_fix-localities")
 
-base.model.5abcd.name <- "1a) Reference model 5ABCD: 2-sex growth + 2018 catch"
+base.model.5abcd.name <- "1a) Reference model 5ABCD"
 base.model.5abcd.dir.name <- file.path(model.dir,
                                        "0_1a_5ABCD_BASE_fix-localities")
 

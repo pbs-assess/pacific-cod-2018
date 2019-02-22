@@ -524,7 +524,7 @@ Given the uncertainties in interpreting the mean weight time series (see Section
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens7-biomass-5abcd) to \@ref(fig:fig-sens7-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens14-biomass-3cd) to \@ref(fig:fig-sens14-f-3cd) for Area 3CD.
 
-Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and Figures \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) a and \@ref(fig:fig-sens14-meanweightfit-3cd) a). Decreasing $\sigma_w$ in Sc 7b did not have a noticeable effect on predicted biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) b and \@ref(fig:fig-sens14-meanweightfit-3cd) b).
+Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and Figures \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) a and \@ref(fig:fig-sens14-meanweightfit-3cd) a). Decreasing $\sigma_w$ in Sc 7b did not have a noticeable effect on estimated biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) b and \@ref(fig:fig-sens14-meanweightfit-3cd) b).
 
 ## SC 7C.INFLUENCE OF HISTORICAL ANNUAL MEAN WEIGHT IN THE COMMERCIAL CATCH
 The annnual mean weight data are known to be biased prior to 1996 due to lack of samples of fish released at sea. For both stocks, a sensitivity analysis was done with pre-1996 annual mean weight data removed, to illustrate the influence of these data on the model.
@@ -542,7 +542,7 @@ For each stock, two sensitivity analyses were done, where pre-1996 commercial ca
 \clearpage
 
 # MODEL-AVERAGED DECISION TABLES
-Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on posterior samples for a one-year projection to the end of 2019. Uncertainty enters the projections through recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
+Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on posterior samples for a one-year projection to the end of 2019. Uncertainty enters the projections through parameter uncertainty propagated from the modeled time series, and recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
 1. $P(B_{2020} < B_{2019})$
 1. $P(F_{2019} > F_{2018})$
@@ -560,7 +560,7 @@ For more information on reference points, see Section (\@ref(reference-points)).
 
 The above performance measures are intended to present probabilities of "undesirable" states under alternative 2018 projected catch levels. For example, an "undesirable" biomass-based performance measure occurs when the 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An "undesirable" fishing mortality-based performance measure occurs when projected 2014 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
 
-Probabilities of such states are measured as the proportion of burned-in posterior samples that meet the criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures). Note that MPD results are not used in development of advice.
+Probabilities of such states are measured as the proportion of thinned, burned-in posterior samples that meet the criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures). Note that MPD results are not used in development of advice.
 
 @forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from several different sensitivity cases. This was to address some of the key irresolvable uncertainties associated with the stock assessment. A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011], where two structurally different stock assessment models were judged by the Pacific Fishery Management Council's Scientific and Statistical Committee to be equally plausible. A similar "ensemble" approach is used in the annual assessments of Pacific Halibut, where four structurally distinct models are used in construction of the decision table [@stewart2016].
 
@@ -580,9 +580,9 @@ For Area 5ABCD, probabilities in the model-averaged decision table were calculat
 6.	Sc 6b Reduce the overall observation error term $\sigma_O = 0.15$
 7.	Sc 7b Reduce the SD in the likelihood for the fit to average annual mean weight $\sigma_W = 0.15$
 
-Posterior estimates of biomass from the six sensitivity cases are shown together in Figure \@ref(fig:fig-model-average-biomass-comp-5abcd). The combined posterior estimates of biomass are shown in Figure \@ref(fig:fig-model-average-biomass-5abcd).Projected biomass from the model-averaged set is shown in Figure \@ref(fig:fig-model-averaged-biomass-5abcd).
+Posterior estimates of biomass from the six sensitivity cases are shown together in Figure \@ref(fig:fig-model-average-biomass-comp-5abcd). The combined posterior estimates of biomass are shown in Figure \@ref(fig:fig-model-average-biomass-5abcd). Projected biomass from the model-averaged set is shown in Figure \@ref(fig:fig-model-average-biomass-5abcd-proj).
 
-The "Model-Averaged" decision table probabilities are presented in Table \@ref(tab:tab-decision-avg-5abcd).In summary:
+The "Model-Averaged" decision table probabilities are presented in Table \@ref(tab:tab-decision-avg-5abcd). In summary:
 
 •	$P(B_{2020} < B_{2019})$ ranged from 12% to 89% over the range of 2019 catch levels. 
 
@@ -594,6 +594,9 @@ The "Model-Averaged" decision table probabilities are presented in Table \@ref(t
 
 •	$P(F_{2019} > LRR)$  ranged from <1% to 95%. 
 
+Under a 2019 catch level of 900 mt, close to the 2017 TAC, there is an estimated 1% probability
+that the 2020 biomass will be below the LRP and a 99% probability that the 2019 biomass will
+be below the USR.
 
 ### Area 3CD
 
@@ -607,9 +610,9 @@ For Area 3CD, we present an alternative decision table with probabilities calcul
 6.	Sc 6b Reduce the overall observation error term $\sigma_O = 0.15$
 7.	Sc 7b Reduce the SD in the likelihood for the fit to average annual mean weight $\sigma_W = 0.15$
 
-Posterior estimates of biomass from the model-averaged set are shown together in Figure \@ref(fig:fig-model-average-biomass-comp-3cd). The combined posterior estimates of biomass are shown in Figure \@ref(fig:fig-model-average-biomass-3cd). Projected biomass from the model-averaged set is shown in Figure \@ref(fig:fig-model-averaged-biomass-3cd).
+Posterior estimates of biomass from the model-averaged set are shown together in Figure \@ref(fig:fig-model-average-biomass-comp-3cd). The combined posterior estimates of biomass are shown in Figure \@ref(fig:fig-model-average-biomass-3cd). Projected biomass from the model-averaged set is shown in Figure \@ref(fig:fig-model-average-biomass-3cd-proj).
 
-The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd).In summary:
+The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd). In summary:
 
 •	$P(B_{2020} < B_{2019})$ ranged from 76% to 89% over the range of 2019 catch levels. 
 
@@ -621,6 +624,9 @@ The "Model-Averaged" decision table probabilities for Area 3CD are presented in 
 
 •	$P(F_{2019} > LRR)$  ranged from <1% to 96%.
 
+Under a 2019 catch level of 500 mt, close to the 2017 TAC, there is an estimated 18% probability
+that the 2020 biomass will be below the LRP and a 99% probability that the 2020 biomass will be
+below the USR.
 
 ## SUMMARY
 
