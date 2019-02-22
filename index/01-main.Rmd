@@ -498,9 +498,15 @@ The observation error parameter was $\sigma_O$ was fixed at 0.2 in the Reference
 
 > **Sc 6c.** Fix $\sigma_O$ = 0.25.
 
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD.
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD. 
 
-As expected, decreasing the value of $\sigma_O$ resulted in closer fits to indices of abundance in both areas (Figures \@ref(fig:fig-sens6-index-cpue-post1995-5abcd) and \@ref(fig:fig-sens13-index-triennial-3cd)). In Area 5ABCD, reducing $\sigma_O$ also caused a reduction in estimated historical biomass, especially Sc 6a, although recent estimates of biomass were similar among scenarios (Figure \@ref(fig:fig-sens6-biomass-5abcd)). In Area 3CD, results were less pronounced (Figure \@ref(fig:fig-sens13-biomass-3cd)), with more similar index fits among scenarios (Figure \@ref(fig:fig-sens13-index-triennial-3cd)).
+MPD index fits for the HSMAS, HSSS and QCSS surveys are shown in Figures \@ref(fig:fig-sens6-index-hsmas-5abcd) to \@ref(fig:fig-sens6-index-hsss-5abcd). MPD index fits for the Area 5ABCD commercial CPUE indices are shown in Figures \@ref(fig:fig-sens6-index-cpue-pre1996-5abcd) and \@ref(fig:fig-sens6-index-cpue-post1995-5abcd).
+
+MPD index fits for the WCVISS and Triennial Survey are shown in Figures \@ref(fig:fig-sens13-index-wcviss-3cd) and \@ref(fig:fig-sens13-index-triennial-3cd). MPD index fits for the Area 3CD commercial CPUE indices are shown in Figures \@ref(fig:fig-sens13-index-cpue-pre1996-3cd) and \@ref(fig:fig-sens13-index-cpue-post1995-3cd).
+
+Confidence intervals shown on the plots are bootstrapped intervals from the observed data (see Appendix \@ref(fishery-independent-indices-of-abundance)) and are unaffected by the value of $\sigma_O$.
+
+As expected, decreasing the value of $\sigma_O$ resulted in closer fits to indices of abundance in both areas. In Area 5ABCD, reducing $\sigma_O$ also caused a reduction in estimated historical biomass, especially Sc 6a, although recent estimates of biomass were similar among scenarios (Figure \@ref(fig:fig-sens6-biomass-5abcd)). In Area 3CD, results were less pronounced (Figure \@ref(fig:fig-sens13-biomass-3cd)), with more similar index fits among scenarios (Figure \@ref(fig:fig-sens13-index-triennial-3cd)).
 
 Productivity parameters *M* and *h* were sensitive to changes in $\sigma_O$, as were scale parameters $R_{0}$ and catchability parameters \textit{q} (Tables \@ref(tab:tab-param-table-sens6a-5abcd) to \@ref(tab:tab-param-table-sens6c-5abcd) for Area 5ABCD, and Tables \@ref(tab:tab-param-table-sens6a-3cd) to \@ref(tab:tab-param-table-sens6c-3cd) for Area 3CD).
 
@@ -627,6 +633,10 @@ The "Model-Averaged" decision table probabilities for Area 3CD are presented in 
 Under a 2019 catch level of 500 mt, close to the 2017 TAC, there is an estimated 18% probability
 that the 2020 biomass will be below the LRP and a 99% probability that the 2020 biomass will be
 below the USR.
+
+## RESEARCH RECOMMENDATIONS
+
+*ToDo: See Proceedings draft p11*
 
 ## SUMMARY
 
