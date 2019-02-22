@@ -283,7 +283,7 @@ tidy_ages_raw(x,
 ```
 
 
-```{r age-precision, fig.cap="Ageing precision for Pacific Cod. Each dot and cross-hatch represents an individual fish that has been aged twice. The x-axis represents the age and confidence interval recorded by the initial (primary) individual aging the fish. The y-axis represents the age and confidence interval recorded by the second (precision) individual aging the fish. The dashed diagonal line represents a perfect one-to-one agreement between the two ages. A small amount of random jitter has been added to both axes to reduce overplotting with the same jitter value added to both the x and y axes for a given fish.", fig.asp=1, out.width="3in", fig.width=4}
+```{r age-precision, fig.cap="Ageing precision for Pacific Cod. Each dot and cross-hatch represents an individual fish that has been aged twice. The x-axis represents the age and confidence interval recorded by the primary reader. The y-axis represents the age and confidence interval recorded by the second reader. The dashed diagonal line represents a perfect one-to-one agreement between the two age readings. A small amount of random jitter has been added to both axes to improve readability.", fig.asp=1, out.width="3in", fig.width=4}
 tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
   plot_age_precision(n = 1e6) +
   scale_x_continuous(breaks = seq(0, 10, 1)) +
