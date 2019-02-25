@@ -385,7 +385,7 @@ Resulting posterior estimates of biomass, recruitment and fishing mortality comp
 
 ## SC 2A AND 2B. PRIOR PROBABILITY DISTRIBUTION FOR SURVEY SCALING PARAMETERS (CATCHABILITY)
 
-For 5ABCD, six sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(survey-scaling-parameters-for-area-5abcd) and \@ref(survey-scaling-parameters-for-area-3cd) for Reference Case details:
+The absolute scale of the estimated biomass in the two assessed areas, determined by estimated catchability (*q*) in the survey indices, is considered the major axis of uncertainty in this assessment. For 5ABCD, six sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(survey-scaling-parameters-for-area-5abcd) and \@ref(survey-scaling-parameters-for-area-3cd) for Reference Case details:
 
 > **Sc 2a.** The mean of the QCS Synoptic Survey prior was set to the same mean as for the HS Synoptic Survey, and was then pro-rated according to relative areas, i.e., mean $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$.
 
@@ -643,7 +643,7 @@ below the USR.
 
 ## SUMMARY
 
-We presented the alternative, model averaged decision tables for Areas 5ABCD and 3CD in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders. However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
+We presented the alternative, model averaged decision tables for Areas 5ABCD and 3CD in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders. The absolute scale of the estimated biomass in the two assessed areas, determined by estimated catchability (*q*) in the survey indices, was considered the major axis of uncertainty in this assessment. Several sensitivity analyses were done to evaluate the possible magnitude of this uncertainty. Relatedly, uncertainty in the relative scale of biomass between the historical and modern eras was also identified as an important axis of uncertainty, especially for Area 5ABCD. However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
 
 1. The effects of the assumption of constant selectivity in the trawl fishery;
 1. The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years;

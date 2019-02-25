@@ -143,7 +143,7 @@ make.priors.posts.plot <- function(model,
         ## Normal, plot from -(p1-p2*4) to (p1+p2*4)
         curve(func,
               from = xx$p1 - 4 * xx$p2,
-              to = xx$p2 + 4 * xx$p2,
+              to = xx$p2 + 2 * xx$p2,
               xlab = "",
               ylab = "",
               col = "black",
@@ -160,7 +160,8 @@ make.priors.posts.plot <- function(model,
     }else{
       plot.marg(xx,
                 breaks = "sturges",
-                col = "wheat")
+                col = "wheat",
+                specs = prior.specs[i,2])
     }
   }
 }
@@ -168,9 +169,11 @@ make.priors.posts.plot <- function(model,
 plot.marg <- function(xx,
                       breaks = "sturges",
                       ex.factor = 1.0,
+                      specs = 0,
                       ...){
   ## xx - a list(p = samples, p1 = prior param 1, p2 = prior param 2,
   ##  fn = prior distribution)
+  ## specs = type of prior
   post.no.plot <- hist(as.matrix(xx$p),
                        breaks = breaks,
                        plot = FALSE)
@@ -180,7 +183,11 @@ plot.marg <- function(xx,
   pd <- xx$fn(xvals, xx$p1, xx$p2)
   z <- cbind(xvals, pd)
 
-  xlim <- c(min(xvals), max(xvals))
+  #set xlim for non-uniform priors
+  if(specs==0) {
+    xlim <- c(min(xvals), max(xvals))
+  }else xlim <- c(0.45*min(xvals), 1.5*max(xvals))
+
   ss <- hist(as.matrix(xx$p),
              prob = TRUE,
              breaks = breaks,
