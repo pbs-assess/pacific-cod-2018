@@ -550,7 +550,7 @@ As expected, inflating the historical commercial catch data inflated estimates o
 
 \clearpage
 
-# MODEL-AVERAGED DECISION TABLES
+# MODEL-AVERAGED PROJECTIONS AND DECISION TABLES
 Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on posterior samples for a one-year projection to the end of 2019. Uncertainty enters the projections through parameter uncertainty propagated from the modeled time series, and recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
 1. $P(B_{2020} < B_{2019})$
@@ -577,7 +577,7 @@ Decision tables summarizing the probability of breaching reference points over a
 
 Inclusion of posterior samples from multiple model configurations in production of the decision tables is intended to better bracket the uncertainty  that arises from key assumptions in the models. 
 
-### Area 5ABCD
+## Area 5ABCD
 
 For Area 5ABCD, probabilities in the model-averaged decision table were calculated from combined posterior projections of performance measures from the following seven models:
 
@@ -607,7 +607,7 @@ Under a 2019 catch level of 900 mt, close to the 2017 TAC, there is an estimated
 that the 2020 biomass will be below the LRP and a 99% probability that the 2019 biomass will
 be below the USR.
 
-### Area 3CD
+## Area 3CD
 
 For Area 3CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following seven models:
 
@@ -637,7 +637,7 @@ Under a 2019 catch level of 500 mt, close to the 2017 TAC, there is an estimated
 that the 2020 biomass will be below the LRP and a 99% probability that the 2020 biomass will be
 below the USR.
 
-## SUMMARY AND RESEARCH RECOMMENDATIONS
+# SUMMARY AND RESEARCH RECOMMENDATIONS
 
 We presented the alternative, model averaged decision tables for Areas 5ABCD and 3CD in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders. The absolute scale of the estimated biomass in the two assessed areas, determined by estimated catchability (*q*) in the survey indices, was considered the major axis of uncertainty in this assessment. Several sensitivity analyses were done to evaluate the possible magnitude of this uncertainty. Relatedly, uncertainty in the relative scale of biomass between the historical and modern eras was also identified as an important axis of uncertainty, especially for Area 5ABCD. However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
 
@@ -657,16 +657,13 @@ Uncertainty is therefore under-represented in this assessment. We make a number 
 
 •	Work with the fishing industry to improve understanding of the magnitude of historical foreign catch and discards, and drivers of changes in fishing effort during the historical period, which may improve understanding of the relationship between commercial CPUE and abundance, and to better characterize uncertainty due to historical changes in the fishery.
 
-•	Continue to develop feedback simulation models for this species (e.g., @forrest2018; @carruthers2018) to evaluate, *inter alia*, costs and benefits of including age-composition data in developing advice for this species, given the current paucity of available ageing data, the expense of preparing fin-sections and the uncertainty associated with age readings. Such analyses could  also be used to evaluate relative performance of the delay-difference model and alternative data-rich and/or data-limited assessment methods.
+•	Continue to develop feedback simulation models for this species [@forrest2018; @carruthers2018] to evaluate, *inter alia*, costs and benefits of including age-composition data in developing advice for this species, given the current paucity of available ageing data, the expense of preparing fin-sections and the uncertainty associated with age readings. Such analyses could  also be used to evaluate relative performance of the delay-difference model and alternative data-rich and/or data-limited assessment methods.
 
 # ACKNOWLEDGEMENTS
 
 We are grateful to Elise Keppel (Pacific Biological Station) for reconstructing
 the historical commercial catch per unit effort data. Her work on the data for this
 assessment made it possible to create a fully reproducible analysis and will be
-helpful in future assessments for this and other stocks. More generally, her
-help with the gfplot R package, and its carefully constructed SQL queries, made
-the data extraction for this assessment seamless. We thank Norm Olsen for his advice on the historical commercial catch per unit effort reconstruction. We also thank Greg Workman and Maria Surry (Pacific Biological Station) for their support and advice with the
-preparation for this assessment. We thank Bruce Turris and Brian Mose (Canadian Groundfish Research and Conservation Society) for their advice to the authors. Finally, we are extremely grateful to two reviewers, Ian Stewart (International Pacific Halibut Commission) and Daniel Ricard (Gulf Fisheries Centre), whose detailed reviews greatly improved the advice in this assessment. Rowan Haigh (Pacific Biological Station) also provided helpful editorial comments.
+helpful in future assessments for this and other stocks. Matthew Grinnell (Pacific Biological Station) assisted with initial preparation of this document. Norm Olsen, Greg Workman and Maria Surry (Pacific Biological Station) provided support and advice with data preparation for the assessment. We thank Bruce Turris and Brian Mose (Canadian Groundfish Research and Conservation Society) for their advice on fishery operations and assessment needs. Rob Tadey and Gwyn Mason (Groundfish Management Unit) provided advice on historical TAC values. We are very grateful to two reviewers, Ian Stewart (International Pacific Halibut Commission) and Daniel Ricard (Gulf Fisheries Centre), whose detailed reviews greatly improved the advice in this assessment. Rowan Haigh (Institute of Ocean Sciences) also provided helpful editorial comments.
 
 \clearpage
