@@ -96,7 +96,7 @@ plot_grid(mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015),
 catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
 ```
 
-```{r fig-base-mcmc-priors-posts-5abcd, fig.cap=paste0("Histograms of posterior samples with prior probability distributions (lines) used in the Area 5ABCD base reference model. ", q.5abcd.desc)}
+```{r fig-base-mcmc-priors-posts-5abcd, fig.cap=paste0("Histograms of posterior samples with prior probability distributions (lines) used in the Area 5ABCD base reference model. MPD estimate shown as vertical dashed line. Note that both the Queen Charlotte Sound and Hecate Strait Synoptic Surveys used normal prior distributions on $ln(q)$, see Figure 10 for full distribution. ", q.5abcd.desc)}
 make.priors.posts.plot(base.model.5abcd, priors.only = FALSE)
 ```
 
@@ -181,7 +181,7 @@ plot_grid(mw.plot(base.model.3cd[[1]], cv = 0.2, every = 5, last.yr = 2015),
 catch.fit.plot(base.model.3cd, every = 5, last.yr = 2015)
 ```
 
-```{r fig-base-mcmc-priors-posts-3cd, fig.cap=paste0("Histograms of posterior samples with prior probability distributions (lines) used in the Area 3CD base reference model. ", q.3cd.desc)}
+```{r fig-base-mcmc-priors-posts-3cd, fig.cap=paste0("Histograms of posterior samples with prior probability distributions (lines) used in the Area 3CD base reference model. MPD estimate shown as vertical dashed line. Note that the West Coast Vancouver Island Synoptic Survey used a normal prior distribution on $ln(q)$, see Figure 11 for full distribution. ", q.3cd.desc)}
 make.priors.posts.plot(base.model.3cd, priors.only = FALSE)
 ```
 

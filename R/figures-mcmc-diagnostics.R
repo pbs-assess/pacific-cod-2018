@@ -186,7 +186,7 @@ plot.marg <- function(xx,
   #set xlim for non-uniform priors
   if(specs==0) {
     xlim <- c(min(xvals), max(xvals))
-  }else xlim <- c(0.45*min(xvals), 1.5*max(xvals))
+  }else xlim <- c(0.45*min(xvals), 1.75*max(xvals))
 
   ss <- hist(as.matrix(xx$p),
              prob = TRUE,
