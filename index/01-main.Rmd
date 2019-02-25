@@ -530,23 +530,23 @@ Given the uncertainties in interpreting the mean weight time series (see Section
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens7-biomass-5abcd) to \@ref(fig:fig-sens7-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens14-biomass-3cd) to \@ref(fig:fig-sens14-f-3cd) for Area 3CD.
 
-Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and Figures \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) a and \@ref(fig:fig-sens14-meanweightfit-3cd) b). Decreasing $\sigma_w$ in Sc 7b did not have a noticeable effect on estimated biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd) b and \@ref(fig:fig-sens14-meanweightfit-3cd) b).Confidence intervals shown on the plots arise from the observed data and are unaffected by the value of $\sigma_W$.
+Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd)a and \@ref(fig:fig-sens14-meanweightfit-3cd)a). Decreasing $\sigma_w$ in Sc 7b did not have a noticeable effect on estimated biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd)b and \@ref(fig:fig-sens14-meanweightfit-3cd)b). Confidence intervals shown on the plots arise from the observed data and are unaffected by the value of $\sigma_W$.
 
 ## SC 7C.INFLUENCE OF HISTORICAL ANNUAL MEAN WEIGHT IN THE COMMERCIAL CATCH
 The annnual mean weight data are known to be biased prior to 1996 due to lack of samples of fish released at sea. For both stocks, a sensitivity analysis was done with pre-1996 annual mean weight data removed, to illustrate the influence of these data on the model.
 
 > **Sc 7c.** Remove observed annual mean weight data prior to 1996.
 
-Removing the mean weight data resulted in lower estimates of biomass ()
+This scenario is essentially a more extreme case of Sc 7a. Removing the pre-1996 mean weight data resulted in much lower estimates of biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)), especially in the early parts of the time series. Notably for Area 5ABCD, removing these data also resulted in an implausibly large spike (> 15 */y*) in the credible interval for fishing mortality in 1991 (Figure \@ref(fig:fig-sens7-f-5abcd)). For Area 3CD, there were large peaks in estimated fishing mortality throughout the historical period (Figure \@ref(fig:fig-sens14-f-3cd)). 
 
-<!--
 ## SC 8A and 8B.EFFECT OF ASSUMPTION OF PERFECTLY-KNOWN HISTORICAL CATCH
-For each stock, two sensitivity analyses were done, where pre-1996 commercial catch data were inflated by a fixed amount. These were done mainly to bracket the uncertainty in the model due to uncertain historical discarding and, to a lesser extent, foreign catches in the early part of the time series. These scenarios are not intended to represent real estimates of historical discarding, which is recommended as an important area of future research.
+For each stock, two sensitivity analyses were done, where pre-1996 commercial catch data were inflated by a fixed amount. These were done mainly to bracket the uncertainty in the model due to uncertain historical discarding and, to a lesser extent, foreign catches in the early part of the time series. These scenarios are not intended to represent real estimates of historical discarding. Reconstruction of the historical catch data, in collaboration with the fishing industry, is recommended as an area of future research.
 
 > **Sc 8a.** Inflate pre-1996 catches by 25%.
 
-> **Sc 8b.** Inflate pre-1996 catches by 50%.-->
+> **Sc 8b.** Inflate pre-1996 catches by 50%.
 
+As expected, inflating the historical commercial catch data inflated estimates of historical biomass by a similar magnitude (Figures \@ref(fig:fig-sens8-biomass-5abcd) and \@ref(fig:fig-sens15-biomass-3cd)), as the models needed more biomass to explain the observed catch. We note that RPR industry participants felt that unreported discards were not significant for this species due to the nature of fishing operations during the historical period.
 
 \clearpage
 
