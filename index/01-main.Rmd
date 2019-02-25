@@ -459,8 +459,6 @@ Two sensitivity analyses were done to illustrate the effect of the prior probabi
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens4-biomass-5abcd) to \@ref(fig:fig-sens4-f-5abcd) for Area 5ABCD, and Figures \@ref(fig:fig-sens11-biomass-3cd) to \@ref(fig:fig-sens11-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens4a-5abcd) to \@ref(tab:tab-param-table-sens4b-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens4a-3cd) to \@ref(tab:tab-param-table-sens4b-3cd) for Area 3CD.
 
-<!-- TODO: longterm, should be dynamic values: -->
-
 For Area 5ABCD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.479 and 0.883.  For Area 3CD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.497 and 0.889. This was compared compared to 0.744 for the Area 5ABCD Reference Case and 0.747 for the Area 3CD Reference Case.
 
 Despite the very large range in median posterior estimates of *h* among scenarios for both areas, there was almost no discernible effect on estimated biomass and recruitment, especially for Area 3CD (Figures \@ref(fig:fig-sens4-biomass-5abcd) and \@ref(fig:fig-sens11-biomass-3cd)). Model insensitivity to the prior probability distribution for *h* explains in part why the posterior probability distribution so closely matched the prior for both models (Figures \@ref(fig:fig-base-mcmc-priors-posts-5abcd) and \@ref(fig:fig-base-mcmc-priors-posts-3cd)).
@@ -639,11 +637,7 @@ Under a 2019 catch level of 500 mt, close to the 2017 TAC, there is an estimated
 that the 2020 biomass will be below the LRP and a 99% probability that the 2020 biomass will be
 below the USR.
 
-## RESEARCH RECOMMENDATIONS
-
-*ToDo: See Proceedings draft p11*
-
-## SUMMARY
+## SUMMARY AND RESEARCH RECOMMENDATIONS
 
 We presented the alternative, model averaged decision tables for Areas 5ABCD and 3CD in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders. The absolute scale of the estimated biomass in the two assessed areas, determined by estimated catchability (*q*) in the survey indices, was considered the major axis of uncertainty in this assessment. Several sensitivity analyses were done to evaluate the possible magnitude of this uncertainty. Relatedly, uncertainty in the relative scale of biomass between the historical and modern eras was also identified as an important axis of uncertainty, especially for Area 5ABCD. However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
 
@@ -653,16 +647,26 @@ We presented the alternative, model averaged decision tables for Areas 5ABCD and
 1. The impact of uncertainty in the magnitude of historical discarding and foreign catches;
 1. The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.
 
-Uncertainty is therefore under-represented in this assessment.
+Uncertainty is therefore under-represented in this assessment. We make a number of research recommendations to help reduce uncertainties for BC Pacific Cod stocks:
+
+•	Investigate application of a length-based model to characterize possible changes in selectivity in the trawl fishery, recognizing that length samples prior to 1996 under-represent smaller length classes.
+
+•	Investigate possible mixing between stock areas within and outside of British Columbia. Genetic samples have been collected from spawning fish in Hecate Strait and Queen Charlotte Sound but these data have not yet been analysed. Other sources of information could also be considered, such as comparing trends in Alaskan waters, comparing trends with other BC commercial fisheries, otolith microchemistry or similarities/differences in other biological factors among areas.
+
+•	Explore the application of geostatistical tools to coast-wide geospatial data for developing indices of abundance and better capturing spatio-temporal characteristics of the stock.
+
+•	Work with the fishing industry to improve understanding of the magnitude of historical foreign catch and discards, and drivers of changes in fishing effort during the historical period, which may improve understanding of the relationship between commercial CPUE and abundance, and to better characterize uncertainty due to historical changes in the fishery.
+
+•	Continue to develop feedback simulation models for this species (e.g., @forrest2018; @carruthers2018) to evaluate, *inter alia*, costs and benefits of including age-composition data in developing advice for this species, given the current paucity of available ageing data, the expense of preparing fin-sections and the uncertainty associated with age readings. Such analyses could  also be used to evaluate relative performance of the delay-difference model and alternative data-rich and/or data-limited assessment methods.
 
 # ACKNOWLEDGEMENTS
 
 We are grateful to Elise Keppel (Pacific Biological Station) for reconstructing
-the historical commercial catch per unit effort data. Her work on this important data set for this
-assessment made it possible to have a fully reproducible analysis and will be
+the historical commercial catch per unit effort data. Her work on the data for this
+assessment made it possible to create a fully reproducible analysis and will be
 helpful in future assessments for this and other stocks. More generally, her
 help with the gfplot R package, and its carefully constructed SQL queries, made
 the data extraction for this assessment seamless. We thank Norm Olsen for his advice on the historical commercial catch per unit effort reconstruction. We also thank Greg Workman and Maria Surry (Pacific Biological Station) for their support and advice with the
-preparation for this assessment. We thank Bruce Turris and Brian Mose (Canadian Groundfish Research and Conservation Society) for their advice to the authors.Finally, we are extremely grateful to two reviewers, Ian Stewart (International Pacific Halibut Commission) and Daniel Ricard (Gulf Fisheries Centre), whose detailed reviews greatly improved the advice in this assessment. Rowan Haigh (Pacific Biological Station) also provided helpful editorial comments.
+preparation for this assessment. We thank Bruce Turris and Brian Mose (Canadian Groundfish Research and Conservation Society) for their advice to the authors. Finally, we are extremely grateful to two reviewers, Ian Stewart (International Pacific Halibut Commission) and Daniel Ricard (Gulf Fisheries Centre), whose detailed reviews greatly improved the advice in this assessment. Rowan Haigh (Pacific Biological Station) also provided helpful editorial comments.
 
 \clearpage
