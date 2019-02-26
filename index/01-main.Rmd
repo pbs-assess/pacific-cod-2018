@@ -31,7 +31,7 @@ Other species caught with Pacific Cod include Arrowtooth Flounder (*Atheresthes 
 
 ## FISHERIES
 
-Pacific Cod in BC are caught almost entirely in the groundfish bottom trawl fishery, which is part of BC's integrated groundfish fishery [@dfo2017]. They are also caught in very small quantities in the groundfish longline fishery (around 0.5% of the total annual catch on average), also part of the integrated fishery. Currently, the majority of the BC Pacific Cod catch is taken from Hecate Strait (Area 5CD), where it is one of the principal target species of the trawl fishery (Figures \@ref(fig:fig-catch-5ab),\@ref(fig:fig-catch-5cd) and \@ref(fig:fig-catch-3cd)). Commercial catches also come from Queen Charlotte Sound (Area 5AB) and the west coast of Vancouver Island (Area 3CD). Near negligible catch is also taken from the west coast of Haida Gwaii, Area 5E ( < 0.5% of total average annual catch since 1985). 
+Pacific Cod in BC are caught almost entirely in the groundfish bottom trawl fishery, which is part of BC's integrated groundfish fishery [@dfo2017]. They are also caught in very small quantities in the groundfish longline fishery (around 0.5% of the total annual catch on average), also part of the integrated fishery. Currently, the majority of the BC Pacific Cod catch is taken from Hecate Strait (Area 5CD), where it is one of the principal target species of the trawl fishery (Figures \@ref(fig:fig-catch-5ab),\@ref(fig:fig-catch-5cd) and \@ref(fig:fig-catch-3cd)). Commercial catches also come from Queen Charlotte Sound (Area 5AB) and the west coast of Vancouver Island (Area 3CD). Near negligible catch is also taken from the west coast of Haida Gwaii, Area 5E ( < 0.5% of total average annual catch since 1985).
 
 Pacific Cod are distributed throughout Hecate Strait (Area 5CD) at depths mainly less than 150 m. Pacific Cod density appears to be highest over the Two Peaks/Butterworth, White Rocks, Shell Ground, Reef Island, and Horseshoe fishing grounds [Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization),  @forrest2013]. In Queen Charlotte Sound (Area 5AB), Pacific Cod are caught mainly off Cape Scott and Mexicana Banks, north of Vancouver Island, in Area 5A, and around the edge of Goose Island Bank in Area 5B  [Appendix \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization), @forrest2013]. The depth range of capture in 5ABCD ranges from around 60--200 m, with data showing a shift to deeper depths since 1996 (Appendix B, Figure \@ref(fig:cpue-depth-hists)). The transition to deeper fishing grounds reflects a larger proportion of catches coming from deeper waters in Queen Charlotte Sound in more recent years (Figures \@ref(fig:fig-catch-5ab) and \@ref(fig:fig-catch-5cd)). Annual reported catches of Pacific Cod in both Hecate Strait and Queen Charlotte Sound have shown considerable variability since the beginning of the time series in 1956 (Figure \@ref(fig:fig-catch-5abcd)). The depth range of catches off West Coast Vancouver Island (Area 3CD) is similar to Area 5ABCD, with the majority of catch coming from 50--200 m depth zones (Appendix B, Figure \@ref(fig:cpue-depth-hists)). See @sinclair2001 for description of changes in historical depth ranges of the fishery. See also Appendix B. Historical catches in Area 3CD have shown a similarly variable pattern to Area 5ABCD (Figure \@ref(fig:fig-catch-3cd)).
 
@@ -93,7 +93,7 @@ At the time of the assessment, the 2018 fishing year was incomplete. In order to
 
 ## INDICES OF ABUNDANCE
 
-Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995). 
+Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey); and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
 
 Stock assessment models in Area 3CD were fit to two fishery-independent survey indices (West Coast Vancouver Island Synoptic Survey and NMFS Triennial Survey in Canada) and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
 
@@ -497,7 +497,7 @@ The observation error parameter was $\sigma_O$ was fixed at 0.2 in the Reference
 
 > **Sc 6c.** Fix $\sigma_O$ = 0.25.
 
-Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD. 
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD.
 
 MPD index fits for the HSMAS, HSSS and QCSS surveys are shown in Figures \@ref(fig:fig-sens6-index-hsmas-5abcd) to \@ref(fig:fig-sens6-index-hsss-5abcd). MPD index fits for the Area 5ABCD commercial CPUE indices are shown in Figures \@ref(fig:fig-sens6-index-cpue-pre1996-5abcd) and \@ref(fig:fig-sens6-index-cpue-post1995-5abcd).
 
@@ -536,7 +536,7 @@ The annnual mean weight data are known to be biased prior to 1996 due to lack of
 
 > **Sc 7c.** Remove observed annual mean weight data prior to 1996.
 
-This scenario is essentially a more extreme case of Sc 7a. Removing the pre-1996 mean weight data resulted in much lower estimates of biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)), especially in the early parts of the time series. Notably for Area 5ABCD, removing these data also resulted in an implausibly large spike (> 15 */y*) in the credible interval for fishing mortality in 1991 (Figure \@ref(fig:fig-sens7-f-5abcd)). For Area 3CD, there were large peaks in estimated fishing mortality throughout the historical period (Figure \@ref(fig:fig-sens14-f-3cd)). 
+This scenario is essentially a more extreme case of Sc 7a. Removing the pre-1996 mean weight data resulted in much lower estimates of biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)), especially in the early parts of the time series. Notably for Area 5ABCD, removing these data also resulted in an implausibly large spike (> 15 */y*) in the credible interval for fishing mortality in 1991 (Figure \@ref(fig:fig-sens7-f-5abcd)). For Area 3CD, there were large peaks in estimated fishing mortality throughout the historical period (Figure \@ref(fig:fig-sens14-f-3cd)).
 
 ## SC 8A and 8B. ASSUMPTION OF PERFECTLY-KNOWN HISTORICAL CATCH
 For each stock, two sensitivity analyses were done, where pre-1996 commercial catch data were inflated by a fixed amount. These were done mainly to bracket the uncertainty in the model due to uncertain historical discarding and, to a lesser extent, foreign catches in the early part of the time series. These scenarios are not intended to represent real estimates of historical discarding. Reconstruction of the historical catch data, in collaboration with the fishing industry, is recommended as an area of future research.
@@ -549,7 +549,9 @@ As expected, inflating the historical commercial catch data inflated estimates o
 
 \clearpage
 
-# MODEL-AVERAGED PROJECTIONS AND DECISION TABLES
+# MODEL-AVERAGED REFERENCE POINTS AND DECISION TABLES
+Reference points were calculated for each area using model-averaged blended posteriors. The results are shown in Table \@ref(tab:tab-ref-points-table-avg-5abcd) for Area 5ABCD and Table \@ref(tab:tab-ref-points-table-avg-3cd) for Area 3CD. Biomass and recruitment posterior medians with credible intervals and MPD values are also provided in Tables \@ref(tab:tab-post-biomass-avg-5abcd) and \@ref(tab:tab-post-recr-avg-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-post-biomass-avg-3cd) and \@ref(tab:tab-post-recr-avg-3cd) for Area 3CD.
+
 Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on posterior samples for a one-year projection to the end of 2019. Uncertainty enters the projections through parameter uncertainty propagated from the modeled time series, and recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
 1. $P(B_{2020} < B_{2019})$
@@ -574,7 +576,7 @@ Probabilities of such states are measured as the proportion of thinned, burned-i
 
 Decision tables summarizing the probability of breaching reference points over a range of fixed catches for a one-year projection were constructed for each area using the unweighted combined posterior samples from a set of six sensitivity cases, plus the reference case (the "model-averaged" set). The choice of sensitivity cases included in the model-averaged set was agreed upon by Regional Peer Review participants (Pacific Biological Station, October 10-11, 2018). For each performance measure, under each alternative 2018 catch level, Vectors of 1,000 burned-in posterior samples from each of the seven models were combined into a single vector of 7,000 samples. Probabilities of performance measures were then calculated from the combined samples. No attempt was made to assign different weights to the alternative sensitivity cases.
 
-Inclusion of posterior samples from multiple model configurations in production of the decision tables is intended to better bracket the uncertainty  that arises from key assumptions in the models. 
+Inclusion of posterior samples from multiple model configurations in production of the decision tables is intended to better bracket the uncertainty  that arises from key assumptions in the models.
 
 ## Area 5ABCD
 
@@ -592,7 +594,7 @@ Posterior estimates of biomass from the six sensitivity cases are shown together
 
 The "Model-Averaged" decision table probabilities are presented in Table \@ref(tab:tab-decision-avg-5abcd). In summary:
 
-•	$P(B_{2020} < B_{2019})$ ranged from 12% to 89% over the range of 2019 catch levels. 
+•	$P(B_{2020} < B_{2019})$ ranged from 12% to 89% over the range of 2019 catch levels.
 
 •	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 200 mt, hence the probability increase between 200 mt and 300 mt.
 
@@ -600,7 +602,7 @@ The "Model-Averaged" decision table probabilities are presented in Table \@ref(t
 
 •	$P(B_{2020} < USR)$ ranged from 98% to 99%.
 
-•	$P(F_{2019} > LRR)$  ranged from <1% to 95%. 
+•	$P(F_{2019} > LRR)$  ranged from <1% to 95%.
 
 Under a 2019 catch level of 900 mt, close to the 2017 TAC, there is an estimated 1% probability
 that the 2020 biomass will be below the LRP and a 99% probability that the 2019 biomass will
@@ -611,7 +613,7 @@ be below the USR.
 For Area 3CD, we present an alternative decision table with probabilities calculated from combined posterior estimates of performance measures from the following seven models:
 
 1.	Sc 1a Reference model
-2.	Sc 2d Set the mean of the prior probability distribution for synoptic survey $\ln(q)$ = $\ln(1.0)$ 
+2.	Sc 2d Set the mean of the prior probability distribution for synoptic survey $\ln(q)$ = $\ln(1.0)$
 3.	Sc 2e Increase the standard deviation (SD) for synoptic survey $\ln(q)$ to 0.6.
 4.	Sc 3a Set the parameters of the prior probability distribution for $\ln(M)$ to $\mathcal{N}\sim(0.4,0.1)$;
 5.	Sc 5a Set knife-edged age at recruitment = 3 years
@@ -622,13 +624,13 @@ Posterior estimates of biomass from the model-averaged set are shown together in
 
 The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd). In summary:
 
-•	$P(B_{2020} < B_{2019})$ ranged from 76% to 89% over the range of 2019 catch levels. 
+•	$P(B_{2020} < B_{2019})$ ranged from 76% to 89% over the range of 2019 catch levels.
 
 •	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 164 mt, hence the probability increase between 100 mt and 200 mt.
 
-•	$P(B_{2020} < LRP)$ ranged from <1% to 1%. 
+•	$P(B_{2020} < LRP)$ ranged from <1% to 1%.
 
-•	$P(B_{2020} < USR)$ ranged from 95% to 97%. 
+•	$P(B_{2020} < USR)$ ranged from 95% to 97%.
 
 •	$P(F_{2019} > LRR)$  ranged from <1% to 96%.
 

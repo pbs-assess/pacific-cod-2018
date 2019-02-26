@@ -461,6 +461,23 @@ make.ref.points.table(c(base.model.5abcd,
                                        "Biomass is in tonnes."))
 ```
 
+```{r tab-post-biomass-avg-5abcd, results='asis'}
+make.value.table(c(base.model.5abcd,
+                        sens.models.6.sub),
+                 1,
+                 digits = 0,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of biomass (t) for model-averaged Area 5ABCD."))
+```
+
+```{r tab-post-recr-avg-5abcd, results='asis'}
+make.value.table(c(base.model.5abcd,
+                        sens.models.6.sub),
+                 2,
+                 digits = 0,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of recruitment (thousands) model-averaged Area 5ABCD."))
+```
 
 ```{r tab-ref-points-table-avg-3cd, results='asis'}
 make.ref.points.table(c(base.model.3cd,
@@ -474,6 +491,24 @@ make.ref.points.table(c(base.model.3cd,
                                        "97.5\\textsuperscript{th} percentile) of reference points for ",
                                        "model-averaged Area 3CD. ",
                                        "Biomass is in tonnes."))
+```
+\vspace{10pt}
+```{r tab-post-biomass-avg-3cd, results='asis'}
+make.value.table(c(base.model.3cd,
+                        sens.models.13.sub),
+                 1,
+                 digits = 0,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of biomass (t) for model-averaged Area 3CD."))
+```
+
+```{r tab-post-recr-avg-3cd, results='asis'}
+make.value.table(c(base.model.3cd,
+                        sens.models.13.sub),
+                 2,
+                 digits = 0,
+                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
+                                  "percentile) and MPD estimates of recruitment (thousands) model-averaged Area 3CD."))
 ```
 
 \clearpage
