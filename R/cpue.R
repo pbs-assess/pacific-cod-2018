@@ -43,7 +43,7 @@ if (params$era == "modern") {
   dfleet <- purrr::map2(params$area, params$area_name, define_fleet)
 } else {
   define_fleet <- function(area, area_name) {
-    out <- tidy_cpue_historic(d,
+    out <- tidy_cpue_historical(d,
       species_common = tolower(params$species_proper),
       use_alt_year = params$april1_year,
       year_range = c(1956, 1995),
