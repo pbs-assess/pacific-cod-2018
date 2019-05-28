@@ -444,7 +444,7 @@ make.parameters.est.table(sens.models.13[[3]],
 
 \clearpage
 
-## MODEL-AVERAGED REFERENCE POINTS AND DECISION TABLES
+## MODEL-AVERAGED REFERENCE POINTS AND DECISION TABLES {#sec:reference-points-and-decision-tables}
 
 
 ```{r tab-ref-points-table-avg-5abcd, results='asis'}
