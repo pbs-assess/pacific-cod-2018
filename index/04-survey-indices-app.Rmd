@@ -214,11 +214,7 @@ knitr::kable(tri_str,
 ```
 
 The stratum definitions used in the 1980 and 1983 surveys were different than
-those used in subsequent surveys, particularly in Canadian waters. Therefore,
-the 1980 and 1983 indices were scaled up by the ratio (9166 km^2^ / 7399 km^2^
-= 1.24) of the total stratum areas relative to the 1989 and later surveys so
-that the coverage from the first two surveys would be comparable to the surveys
-conducted from 1989 onwards. The tow density was much higher in US waters
+those used in subsequent surveys, particularly in Canadian waters. Consequently, these indices were not used in the 3CD stock assessment. The tow density was much higher in US waters
 although the overall number of tows was approximately the same for each
 country. This occurs because the size of the total area fished in the INPFC
 Vancouver area was about twice as large in Canadian waters than in US waters.
