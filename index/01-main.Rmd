@@ -550,8 +550,6 @@ For each stock, two sensitivity analyses were done, where pre-1996 commercial ca
 
 As expected, inflating the historical commercial catch data inflated estimates of historical biomass by a similar magnitude (Figures \@ref(fig:fig-sens8-biomass-5abcd) and \@ref(fig:fig-sens15-biomass-3cd)), as the models needed more biomass to explain the observed catch. We note that RPR industry participants felt that unreported discards were not significant for this species due to the nature of fishing operations during the historical period.
 
-\clearpage
-
 # COMBINED COMPOSITE MODEL
 The Regional Peer Review meeting held in October 2018 reviewed the Reference Case model and the suite of sensitivity runs described above, coming to the conclusion that no one model adequately represented the uncertainty associated with this stock assessment. Consequently, the meeting agreed to adopt an approach that combined model runs to include a greater range of plausible uncertainties associated with this species in each area.
 
