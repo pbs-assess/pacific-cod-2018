@@ -1,0 +1,68 @@
+---
+title: "Assessment of Pacific Cod (*Gadus macrocephalus*) for Hecate Strait and Queen Charlotte Sound (Area 5ABCD), and West Coast Vancouver Island (Area 3CD) in 2018"
+author: |
+  Robyn E. Forrest^1^,
+  Sean C. Anderson^1^,
+  Chris J. Grandin^1^,
+  Paul J. Starr^2^
+
+author_list: "Forrest, R.E., Anderson, S.C., Grandin, C.J., and Paul J. Starr"
+address: |
+  ^1^Pacific Biological Station\
+     Fisheries and Oceans Canada, 3190 Hammond Bay Road\
+     Nanaimos, British Columbia, V9T 6N7, Canada\
+     \
+  ^2^Canadian Groundfish Research and Conservation Society\
+      1406 Rose Ann Drive\
+      Nanaimo, British Columbia, V9T 4K8, Canada\
+
+year: "2019"
+report_number: "nnn"
+type: res-doc
+abstract: |
+  L’état de deux stocks de morue du Pacifique (Gadus macrocephalus), dans le détroit d’Hécate/bassin de la Reine-Charlotte (zone 5ABCD) et sur la côte ouest de l’île de Vancouver (zone 3CD), a été évalué à l’aide de modèles bayésiens de type différence-délai. Les modèles ont été ajustés aux indices de l’abondance indépendants de la pêche et aux nouveaux indices normalisés des captures commerciales par unité d’effort (CPUE) qui ont été élaborés à l’aide de modèles linéaires généralisés à effet mixte (GLGM) de Tweedie. De nouvelles analyses de la croissance et de la maturité ont également été réalisées et intégrées aux modèles.
+
+  Les estimations modélisées de la biomasse et de l’état des stocks dans les deux zones de gestion étaient sensibles aux hypothèses a priori sur les paramètres de mise à l’échelle de la mortalité naturelle et des relevés, la variance des données sur le poids moyen et la qualité de l’ajustement aux indices de l’abondance, en particulier les données sur les CPUE commerciales. Les avis de récolte ont été produits sous la forme de tableaux de décision qui résumaient la probabilité de dépasser les points de référence en 2019 pour une gamme de niveaux de prises fixes pour 2018. En raison de la sensibilité du modèle à un certain nombre d’hypothèses, ces stocks ont été évalués à l’aide d’une approche de calcul de la moyenne des modèles qui combine les distributions a posteriori à partir de sept configurations de rechange du modèle pour chaque stock. Les distributions qui en ont résulté ont servi à évaluer les trajectoires historiques de la biomasse, l’état actuel des stocks et les tableaux de décision fondés sur les projections des prises appropriées à chaque stock.
+
+  Des points de référence fondés sur la reconstitution historique de la biomasse moyenne à long terme et de la mortalité par pêche ont été acceptés en 2013 pour le stock de morue du Pacifique de la zone 5CD. Les points de référence « historiques » ont été recommandés parce que l’incertitude dans les estimations des paramètres de productivité entraînait une grande incertitude dans les points de référence fondés sur le rendement maximal soutenu (RMS). Sur la base de l’acceptation antérieure des points de référence historiques pour la morue du Pacifique de la zone 5CD, la présente évaluation applique la même approche pour les stocks des zones 5ABCD et 3CD. Pour les deux stocks, un point de référence supérieur du stock (PRS) est défini comme la biomasse moyenne estimée pendant la période 1956-2004. Un point de référence limite (PLR) est défini comme étant la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter (situation survenue en 2000 dans la zone 5ABCD et en 1986 dans la zone 3CD). Pour les deux stocks, un taux d’exploitation limite (TEL) est défini comme une estimation de la mortalité par pêche moyenne au cours de la période 1956-2004.
+
+  On estime que la biomasse dans la zone 5ABCD suit une trajectoire à la baisse depuis 2011, après des tendances à la baisse des indices de l’abondance, malgré de faibles taux de mortalité par pêche estimés durant la même période. La médiane des estimations a posteriori de la biomasse se situe entre la médiane du PRL et celle du PRS pour la zone 5ABCD. On estime que le recrutement est inférieur à la moyenne depuis les deux dernières décennies.
+
+  On estime que la biomasse dans la zone 3CD suit une trajectoire à la baisse depuis 2015, après une tendance à la hausse par rapport à un creux historique de la biomasse entre 1998 et 2014. Ces tendances concordent avec les indices de la biomasse disponibles, y compris le déclin récent dans le relevé synoptique sur la côte ouest de l’île de Vancouver et la série des CPUE. La médiane des estimations a posteriori de la biomasse se situe au-dessus de la médiane du PRL, mais en dessous de celle du PRS pour la zone 3CD. On estime que le recrutement a été inférieur à la moyenne la plupart des années des deux dernières décennies, avec des pics au-dessus de la moyenne en 2009, 2013 et 2014.
+
+always_allow_html: yes
+link-citations: true
+output:
+  csasdown::resdoc_pdf:
+    french: true
+  #csasdown::resdoc_word
+header: ""
+bibliography: bib/refs.bib
+region: Pacific Region
+# ---------------------
+# End of options to set
+# ---------------------
+knit: bookdown::render_book
+site: bookdown::bookdown_site
+
+csl: csl/csas.csl
+lot: true
+lof: true
+header-includes:
+- \setcounter{section}{1}
+---
+
+```{r meta}
+meta <- rmarkdown::metadata$output
+if (length(grep("pdf", names(meta)))) {
+  french <- meta$`csasdown::resdoc_pdf`$french
+  prepub <- meta$`csasdown::resdoc_pdf`$prepub
+} else if (length(grep("word", names(meta)))) {
+  french <- meta$`csasdown::resdoc_word`$french
+  prepub <- meta$`csasdown::resdoc_word`$prepub
+}
+if (french) {
+  options(OutDec = ",")
+}
+```
+

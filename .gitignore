@@ -47,7 +47,7 @@ retrospectives*/
 retrospectives/
 data/results/
 data/Results/
-index/resdoc.Rmd
+report/resdoc.Rmd
 cpue-comp-*
 index/resdoc.tex
 /models
@@ -55,8 +55,8 @@ index/resdoc.tex
 *.dat
 *.ctl
 
-index/resdoc.knit.md
-index/resdoc.utf8.md
+report/resdoc.knit.md
+report/resdoc.utf8.md
 *.rda
 *.pxm
 archive/post-1995-cpue-comparison.Rmd

@@ -1,0 +1,669 @@
+# INTRODUCTION
+
+## STOCK STRUCTURE AND LIFE HISTORY
+
+Pacific Cod (*Gadus macrocephalus*) is a relatively short-lived, fast-growing member of the family Gadidae. A common name in British Columbia (BC) is grey cod (or gray cod). Stocks of Pacific Cod are distributed from California, throughout the waters of BC, Gulf of Alaska and the Bering Sea to Russia, Korea, Japan and China [@hart1973]. Maximum observed age in British Columbia is around 10--11 years [@westrheim1996, this document], while a maximum age of approximately 13 years has been reported for Alaskan stocks [@roberson2001]. Maximum length recorded in British Columbia is 100 cm [@hart1973], although some larger specimens have been observed in Alaska and Russia [@westrheim1996]. In recent Synoptic trawl surveys in BC, the maximum recorded length was 93 cm (Appendix A, Table \@ref(tab:length-biosamples-surv)). Pacific Cod are demersal spawners, with several studies reporting that spawning most likely occurs during February to March. A comprehensive review of the biology, life history and distribution of Pacific Cod in BC is provided by @westrheim1996.
+
+Four stocks of Pacific Cod are defined for management purposes on the BC coast: Strait of Georgia (4B); West Coast Vancouver Island (3CD); Queen Charlotte Sound (5AB); and Hecate Strait (5CD). This study focuses on the stocks in Queen Charlotte Sound combined with Hecate Strait (5ABCD), and the West Coast Vancouver Island (3CD) (Figure \@ref(fig:fig-map)).
+
+Recent genetic analyses have identified a distinction between North American and Asian Pacific Cod stocks, and have shown some evidence for distinction between Alaskan stocks and those south of Dixon Entrance in British Columbia [reviewed in @forrest2013]. There is also evidence that fish taken off the coast of Washington and the west coast of Vancouver Island may be distinct from fish sampled within the Strait of Georgia or Puget Sound. However, linkages, if any, among stocks in BC and those in Alaska remain poorly understood. To date it is uncertain whether genetic stock structure exists within BC waters [@forrest2013]. Genetic samples have been collected from spawning grounds in Hecate Strait and Queen Charlotte Sound since the 2013 assessment but these have not yet been analyzed.
+
+The choice to provide science advice for combined areas 5AB and 5CD in a single stock assessment was due mainly to poor model diagnostics and the lack of historical fishery-independent indices of abundance for Area 5AB [@forrest2013]. There is also no evidence for genetic distinction between these two stocks. Provision of science advice for Areas 5ABCD combined should not imply that the areas should be managed as a single area, which is a choice for fishery managers in consultation with fishing industry members and other interested parties.
+
+## ECOSYSTEM CONSIDERATIONS
+
+Population dynamics of Pacific Cod in BC have been characterized by large estimated variations in abundance [e.g., @sinclair2001; @forrest2013], although the causes are not clear. Hypotheses for apparent cyclic abundance in Hecate Strait include predator-prey cycles [@walters1986], density-dependent growth and mortality [@fournier1983], and northward water transport of larvae [@tyler1986; @tyler1991]. Natural mortality has been estimated as high as 0.6--0.65 *y*^-1^ in some stock assessments [e.g., @fournier1983; @sinclair2005] although lower estimates (~0.4 *y*^-1^) have also been obtained [@sinclair2001; @forrest2013]. The combination of apparently volatile dynamics with short life span and high natural mortality suggests periods of over/under harvest could result if harvest strategies are not robust to these features. Also, in the context of the BC integrated groundfish fishery, constraints imposed by quotas for other species and economic considerations can mean that a single-species approach does not necessarily dictate the best harvest strategy.
+
+### PREY AND PREDATORS
+
+Pacific Cod are omnivores, eating a diet of mainly marine invertebrates, including amphipods, euphausiids, shrimp and crabs. At around 50--55 cm they also become piscivorous, with Pacific Sand Lance (*Ammodytes hexapterus*) and Pacific Herring (*Clupea pallasi*) becoming important components of the diet [@westrheim1996]. Juvenile Sablefish (*Anoplopoma fimbria*) and adult Pacific Hake (*Merluccius productus*) have also been reported in the diet of Pacific Cod off the west coast of Vancouver Island @ware1986. Pacific Cod have been reported in the diets of Pacific Halibut (*Hippoglossus stenolepis*), North Pacific Spiny Dogfish (*Squalus suckleyi*), sea birds, seals and sealions [@westrheim1996].
+
+@walters1986 demonstrated a Pacific Cod-Herring predator-prey interaction in Hecate Strait, in contrast to @ware1986. Simulation models developed by @walters1986 concluded that availability of Pacific Herring prey could be an important driver of Pacific Cod production in Hecate Strait, and, similarly, that Pacific Cod predation could be a significant driver of Pacific Herring abundance. These authors acknowledged that there are alternative hypotheses for cycles in abundance of Pacific Cod and Pacific Herring (e.g., environmental forcing; see below) and suggested that large-scale management experiments may be the only way to distinguish among competing hypotheses.
+
+### ENVIRONMENT
+
+
+Several studies have investigated linkages between recruitment and environmental indices for Pacific Cod in Hecate Strait (see @westrheim1996 for review). The dominant hypothesis is an inverse relationship between recruitment and northward  advection of larvae [@tyler1986; @tyler1991]. Northward advection has been shown to be positively correlated with mean annual sea level at Prince Rupert during the spawning season, which in turn has been used as an explanatory variable for recruitment by a number of authors [@fournier1983; @sinclair2000; @sinclair2005-2; @sinclair2005]. However, recent updates of the analyses by @tyler1991 failed to find a continuing correlation between Prince Rupert Sea level and recruitment of Pacific Cod in Hecate Strait (R. Forrest, Pacific Biological Station, unpublished data).This could in part be due to low quotas (and therefore lower catches) since 2001, contributing to low stock assessment estimates of recruitment in recent years [@forrest2013].
+
+### OTHER SPECIES
+
+Other species caught with Pacific Cod include Arrowtooth Flounder (*Atheresthes stomias*), Yellowtail Rockfish (*Sebastes flavidus*), Pacific Ocean Perch (*S. alutus*), Lingcod (*Ophiodon elongatus*), Silvergray Rockfish (*S. brevispinis*), English Sole (*Parophrys vetulus*) and Big Skate (*Raja binoculata*) [@forrest2013]. Vessels catching Pacific Cod must hold quota for all quota species encountered [@dfo2017]. Since 1996, there has been 100% at-sea observer coverage on commercial bottom trawl vessels in BC. At-sea releases are recorded by observers and counted against the vessel's quota, according to agreed-upon discard mortality rates.
+
+## FISHERIES
+
+Pacific Cod in BC are caught almost entirely in the groundfish bottom trawl fishery, which is part of BC's integrated groundfish fishery [@dfo2017]. They are also caught in very small quantities in the groundfish longline fishery (around 0.5% of the total annual catch on average), also part of the integrated fishery. Currently, the majority of the BC Pacific Cod catch is taken from Hecate Strait (Area 5CD), where it is one of the principal target species of the trawl fishery (Figures \@ref(fig:fig-catch-5ab),\@ref(fig:fig-catch-5cd) and \@ref(fig:fig-catch-3cd)). Commercial catches also come from Queen Charlotte Sound (Area 5AB) and the west coast of Vancouver Island (Area 3CD). Near negligible catch is also taken from the west coast of Haida Gwaii, Area 5E ( < 0.5% of total average annual catch since 1985).
+
+Pacific Cod are distributed throughout Hecate Strait (Area 5CD) at depths mainly less than 150 m. Pacific Cod density appears to be highest over the Two Peaks/Butterworth, White Rocks, Shell Ground, Reef Island, and Horseshoe fishing grounds [Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization),  @forrest2013]. In Queen Charlotte Sound (Area 5AB), Pacific Cod are caught mainly off Cape Scott and Mexicana Banks, north of Vancouver Island, in Area 5A, and around the edge of Goose Island Bank in Area 5B  [Appendix \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization), @forrest2013]. The depth range of capture in 5ABCD ranges from around 60--200 m, with data showing a shift to deeper depths since 1996 (Appendix B, Figure \@ref(fig:cpue-depth-hists)). The transition to deeper fishing grounds reflects a larger proportion of catches coming from deeper waters in Queen Charlotte Sound in more recent years (Figures \@ref(fig:fig-catch-5ab) and \@ref(fig:fig-catch-5cd)). Annual reported catches of Pacific Cod in both Hecate Strait and Queen Charlotte Sound have shown considerable variability since the beginning of the time series in 1956 (Figure \@ref(fig:fig-catch-5abcd)). The depth range of catches off West Coast Vancouver Island (Area 3CD) is similar to Area 5ABCD, with the majority of catch coming from 50--200 m depth zones (Appendix B, Figure \@ref(fig:cpue-depth-hists)). See @sinclair2001 for description of changes in historical depth ranges of the fishery. See also Appendix B. Historical catches in Area 3CD have shown a similarly variable pattern to Area 5ABCD (Figure \@ref(fig:fig-catch-3cd)).
+
+Prior to the introduction of at-sea observer coverage in 1996, estimates of at-sea releases (discards) for the period 1956--1995 were obtained from fishing logbooks. These estimates are considered an underestimate of the actual releases (Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd)). Estimates in years following the introduction of 100% at-sea observer coverage in 1996 can be considered to be  accurate. Since 1996, the proportions of estimated discards have been considerably higher than in years before at-sea observers (Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd)), especially in Queen Charlotte Sound, largely as a result of reduced total catches and TACs (Table \@ref(tab:tab-tac)). Pacific Cod can be legally discarded by trawlers in BC. However, on-board observers first estimate the quantity being discarded. Therefore, in addition to greater accuracy in reporting of discards since 1996, incentives to avoid discarding have also been greater.
+
+Japanese and Soviet vessels also trawled in waters off BC in the late 1960s and early 1970s. These vessels were mainly targeting rockfish and likely at depths greater than 150 m. The bycatch of Pacific Cod in these fisheries is, however, unknown. Given uncertainty in foreign catches and discards in the earlier parts of the time series, total catch estimates should be considered underestimates prior to 1996.
+
+Total fishing effort of bottom trawl vessels has declined in all areas in recent years. A detailed analysis of catch per unit effort (CPUE) is provided in Appendix B. As noted by @sinclair2000, there are a number of problems with the use of commercial catch per unit effort as an index of biomass for Pacific Cod. Changes in the management regime from an unrestricted fishery prior to 1992, to the introduction of TACs (1992--1996) and then to Individual Vessel Quotas (IVQs) (1997-present), as well as several increases in mesh size [@forrest2013, their Table 5], have affected the underlying relationship between commercial CPUE and abundance, and the relationship between fishing effort and fishing mortality. In recent years of lower Pacific Cod quotas (Table \@ref(tab:tab-tac)), many fishing masters report actively avoiding Pacific Cod to prevent their Pacific Cod quota being exceeded before catching available quotas for other species. In the present assessment CPUE series are split into pre- and post-1996 series, and generalized linear mixed affect models are used to attempt to standardize the indices (Appendix \@ref(commercial-cpue-standardization)).
+
+## ASSESSMENT HISTORY
+
+A number of methods have been used to assess Pacific Cod in Hecate Strait since the 1980s. @fournier1983 developed an age-structured model and used it to test for evidence of age-dependent trends in natural mortality, density-dependent natural mortality and catchability, and also for evidence of an environmental factor affecting recruitment. Evidence was found for a relationship between mean sea level at Prince Rupert and recruitment, and also for density-dependent natural mortality. Natural mortality was estimated to be 0.65 *y*^-1^ by @fournier1983. This author cautioned about the possibility of confounding among model parameters and systematic data biases that could influence conclusions from the analysis. Estimates of age were obtained from length-frequency analysis [@foucher1982].
+
+Pacific Cod are one of the most difficult Pacific groundfish species to age. Annual rings (annuli) in otoliths, other bony structures and scales are difficult to distinguish from interannual growth checks [@beamish1981; @chilton1982; @roberson2001; @johnston2012]. In British Columbia, age compositions have been estimated using length-based approaches, scales, otoliths and, currently, dorsal fin ray sections, although all methods present difficulties. In the absence of reliable direct age data, length-based approaches were used to assess the Hecate Strait stock during the 1990s [e.g., @haist1995; @haist1998]. In the last of these, @haist1998 suggested that the stock had reached an historic low in 1996, followed by a slight rebound.
+
+@sinclair2000 used a simple surplus production model fit to a commercial CPUE index to assess the Area 5CD stock in 2000. This author cited significant structural changes in the fishery during the 1990s resulting in changes in quality and comparability of fishery-dependent data available for the analysis. Changes included voluntary increases in mesh size in the commercial fishery and introduction of individual vessel quotas (IVQs) in 1997 as discussed above. Given the large structural differences between the previous length-based models and the surplus production model, @sinclair2000 noted that results were remarkably comparable until 1994, with three estimated peaks in abundance occurring in 1965, 1974--5 and 1986--7. The two approaches diverged significantly after 1994, with the length-based Multifan model [@haist1998] estimating an increase in biomass while the surplus production model estimated a decline. The differences were interpreted to be due to differences in the indices of abundance used to tune the models, as well as structural model differences.
+
+@sinclair2001 developed a delay-difference model [@deriso1980; @schnute1985] containing a Ricker stock-recruit function to assess Pacific Cod in Areas 3CD and 5CD. Recruitment was assumed to be knife-edged at age 2 years. A report card summary of information available for the stock was also developed. The delay-difference model provided a better statistical fit to the data than the previously-applied surplus production model [@sinclair2000]. However, biomass estimates followed a similar trend and magnitude. The 2001 Area 3CD stock was updated in 2002 [@Starr2002], using the same delay-difference model developed the previous year [@sinclair2001] and adding data from DFO's shrimp trawl survey. The authors of the 2002 assessment noted that the estimated MSY-based reference points *F*~MSY~ and *B*~MSY~ were not well estimated [@Starr2002].
+
+The Area 5CD assessment was updated in 2004 [@sinclair2005], using a similar delay-difference model to that used by @sinclair2001, but using a Beverton-Holt stock-recruit function. Model fits were presented with alternative combinations of fixing or estimating natural mortality (*M*) and the steepness parameter of the stock-recruit function, *h* (Mace and Doonan 1988). They reported similar fits and biomass estimates for both scenarios but noted very different estimates of equilibrium MSY-based management parameters under alternative combinations of fixed and estimated *h* and *M*. They proposed "history-based" reference points, based on estimated historical biomass and fishing mortality, due to unreliability of MSY-based reference points.  The Area 5AB and 5CD stocks were last assessed in 2013 [@forrest2013] using a new delay-difference model with a Beverton-Holt stock-recruit function and the assumption of knife-edged selectivity at 2 y. The model had some minor structural differences from the previous assessment, although bridging analyses showed these to have a relatively minor effect [@forrest2013, their Appendix A]. The 2013 assessment adopted the same historical reference points that had been used in 2004 and these were accepted during peer review for Area 5CD [@dfo2015]. However, no reference points were accepted for Area 5AB [@dfo2015-2]. Key uncertainties noted by @forrest2013 were:
+
+1. Uncertainty in fixed variance parameters, particularly the assumed observation error in the surveys, and the objective function component of the fit to annual mean weights;
+2. Reliability of commercial CPUE as an index of abundance, and effects on CPUE of management changes post-1996;
+3. Uncertainty in the prior probability distribution used for natural mortality *M*;
+4. Uncertainty in the growth function (model parameters and assumptions of stationarity);
+5. The possibility of violating the assumption of knife-edged recruitment at age 2 years, given evidence for younger fish in the length composition data from the commercial fishery; and
+6. Uncertainty in stock structure.
+
+Sensitivity to the first three of these uncertainties was partially addressed in @forrest2013 through the presentation of sensitivity analyses and alternative "model-averaged" decision tables for Areas 5AB and 5CD. The fourth and fifth uncertainties are partially addressed in the current assessment through the addition of extra sensitivity analyses comparing the previous and updated growth parameters, and comparing results with the assumption of knife-edged selectivity (Section \@ref(sensitivity-analyses)). The sixth is still a key uncertainty for Pacific Cod. In the current assessment, data from Areas 5AB and 5CD are combined, under the assumption that Pacific Cod in Queen Charlotte Sound and Hecate Strait belong to a single stock.
+
+# DATA SOURCES
+
+## DATABASES
+
+Data were extracted from a number of different databases:
+
+**GFBio**:
+Biological samples and research cruise database. Groundfish Section, Marine
+Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada,
+Pacific Biological Station. This data archive includes most of the groundfish
+specimen data collected since the 1950s. It therefore includes data from a variety
+of sources (port and at-sea commercial sampling, research survey sampling),
+collected using a variety of sampling methods.
+
+**GFCatch**:
+Canadian trawl landings, 1954--1995 [@rutherford1999].
+
+**PacHarvTrawl**:
+Canadian trawl landings, 1996 to March 31, 2007. SQL Server database, Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
+
+**GFFOS**:
+Canadian trawl landings, April 1, 2007 to 2017. View of the Fisheries and Oceans Canada (DFO) Fishery Operations (FOS) database. Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
+
+## CATCH DATA
+
+Groundfish fisheries were managed by calendar year until 1996. Beginning in 1997--98 the fishing year changed to April 1--March 31. In 2010--2011 the fishing year was changed again to February 21 to February 20. Throughout this document, as in @forrest2013, fishing years are defined as beginning on April 1 for all years, and are referenced by starting year, e.g., fishing year 1957 runs from April 1, 1957 to March 31, 1958. These definitions were used consistently in all calculations involving commercial catch data, including development of the commercial CPUE index (Appendix \@ref(commercial-cpue-standardization)) and calculation of annual average mean weight in the catch (Appendix \@ref(analysis-of-biological-data)). Landings data are presented separately for Canada and the USA (Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd)). Combined USA-Canada landings data were obtained from the Pacific Marine Fisheries Commission reports for 1956--1981 and the USA landed portion was determined by subtracting the Canadian landed amount from the combined total for each year. In cases where the difference was negative, the USA landed amount was set to zero. Canadian data were obtained from the GFCatch database for the period 1954--1995 [@rutherford1999]; from the PacHarvest database for the period 1996-March 31, 2007; and from the Fisheries and Oceans Canada (DFO) FOS database for the period April 1, 2007 until the present. The annual size compositions of commercial catches and landings were estimated from port samples and at-sea samples collected by observers archived in the GFBio database (Appendix \@ref(analysis-of-biological-data).
+
+At the time of the assessment, the 2018 fishing year was incomplete. In order to provide projections for the 2019 fishing season, the 2018 catch was extrapolated in each area. For Area 5ABCD, the three year average proportion of catch taken by September 30 (88.4%) was used to extrapolate from the catch at September 30, 2018 to the total estimated catch for the 2018 fishing year (Table \@ref(tab:tab-catch-5abcd)). For Area 3CD, the 2018 catch to September 30 was anomolously low for reasons that were unclear but that could have been related to the fishing industry delaying opportunities to catch Pacific Cod. Therefore, the total catch for the 2018 fishing year was extrapolated to be the same as the catch for 2017 (Table \@ref(tab:tab-catch-3cd)).
+
+## INDICES OF ABUNDANCE
+
+Stock assessment models in Area 5ABCD were fit to three fishery-independent survey indices (Hecate Strait Multispecies Assemblage Survey, Hecate Strait Synoptic Survey and Queen Charlotte Sound Synoptic Survey) and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
+
+Stock assessment models in Area 3CD were fit to two fishery-independent survey indices (West Coast Vancouver Island Synoptic Survey and NMFS Triennial Survey in Canada) and two commercial CPUE indices derived from commercial bottom trawl catch and effort data (pre-1996 and post-1995).
+
+The fishery-independent indices of abundance were developed using swept-area analyses. Descriptions of the surveys and details of the analyses are provided in Appendix \@ref(fishery-independent-indices-of-abundance).
+
+The commercial CPUE indices were standardized for depth, fishing locality, month, vessel, and latitude, when available, using generalized linear mixed models (GLMMs), based on a Tweedie distribution. Details are provided in Appendix \@ref(commercial-cpue-standardization).
+
+## BIOLOGICAL DATA
+
+Updates to estimated growth, maturity and annual mean weights in commercial catches are provided in Appendix \@ref(analysis-of-biological-data).
+
+We note that due to the near neglible quantities of catch taken in Area 5E (average <0.5% of total catch since 1985), and from the commercial groundfish longline fishery (around 0.5% of total catch since 1985), data from Area 5E and from the longline fishery are excluded from this assessment.
+
+# STOCK ASSESSMENT MODEL
+
+All models presented in this document are Bayesian models implemented in AD Model Builder [@fournier2012]. The models are based on the Integrated Statistical Catch Age Model (iSCAM), first reported in @martell2011. A major modification by the authors of @forrest2013 and this assessment is inclusion of delay-difference calculations. The model in its present formulation is fully described in Appendix \@ref(delay-difference-model). Two major differences between the current model and the previous assessment [@forrest2013] are:
+
+1. The current model estimates only one average recruitment parameter ($R_{0}$). The models in @forrest2013 and @martell2011 estimated three average recruitment parameters:
+
+  - $R_{0}$, average unfished recruitment used in derivation of stock-recruit parameters;
+  - $R_{Init}$, initial average recruitment used to initialize the age structure in the first year; and
+  - $R_{Avg}$, average recruitment for the time series.
+
+The decision to use just one average recruitment parameter was made because there is little to no information for estimating three parameters in the delay-difference model, which contains no explicit age composition information.
+
+Also, the von Bertalanffy growth parameters have been updated in the current assessment for both stocks, to reflect more recent age and length data. Details are provided in Appendix \@ref(analysis-of-biological-data).
+
+The reference models for the Area 5ABCD and 3CD assessments are discussed in more detail in Section \@ref(reference-case-models).
+
+# REFERENCE POINTS
+
+The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy [@dfo2009] requires stock status to be characterized using three reference points:
+
+1. A Reference Removal Rate;
+2. A Limit Reference Point (LRP);
+3. An Upper Stock Reference point (USR).
+
+In the current assessment, these reference points are incorporated into the decision tables, where projected probabilities of breaching the reference points are reported. I.e., reference points are not incorporated into a formal harvest control rule.
+
+Provisional values of $USR = 0.8B_{MSY}$ and $LRP = 0.4B_{MSY}$ are suggested in the absence of stock-specific reference points [@dfo2009]. The framework specifies a limit reference removal rate of $F_{MSY}$. We refer to the reference removal rate as the limit removal rate (LRR) throughout this document. The PA policy also endorses “history-based” proxies based on estimated average spawning biomass and fishing mortality over a productive historical period [@dfo2009].
+
+As already noted, large uncertainties in the productivity parameters *M* and *h* have resulted
+in substantial uncertainties in MSY-based reference points for Hecate Strait Pacific Cod in previous assessments [@Starr2002; @sinclair2005; @forrest2013]. Given uncertainty in productivity parameters for this stock, @sinclair2005 suggested using alternative reference points based on the reconstructed history of the stock, i.e., "history-based" reference points. They recommended the Limit Reference Point to be the minimum spawning biomass from which the stock recovered to above average levels. This was estimated to have occurred in 1971 (i.e., $LRP = B_{1971}$). @sinclair2005 suggested long-term average Biomass ($B_{Avg}$) as a candidate proxy Upper Stock Reference and long-term average harvest rate ($U_{Avg}$) as a proxy for the reference removal rate.
+
+@sinclair2005 and @forrest2013 acknowledged that the absolute estimate of biomass in 1971 is dependent on model formulation, but found that most model formulations agreed that 1971 was the year in which the stock was lowest and subsequently recovered to above average levels. Therefore, they recommended the LRP be set at $B_{1971}$, as estimated by the assessment model. The Groundfish Subcommittee of PSARC [@fargo2005] subsequently recommended the use of $B_{1971}$ as the LRP for the Hecate Strait stock and it was again accepted as LRP by a Regional Peer Review (RPR) process in 2014 [@dfo2015] for Area 5CD. Concurrently, long-term average Biomass ($B_{Avg}$) between 1956 and 2004, and long-term average fishing mortality ($F_{Avg}$) for the same period were accepted by the RPR for the Area 5CD USR and LRR, respectively [@dfo2015].
+
+While there was no precedent for reference points in Queen Charlotte Sound, the minimum stock size from which the biomass was estimated to have recovered to an above average level occurred in 1985 [@forrest2013]. These authors proposed $B_{1985}$ as the LRP for the Queen Charlotte Sound, with average biomass and fishing mortality for the period 1956--2004 as the USR and LRR, respectively. However, the RPR did not accept any reference points for the Queen Charlotte Sound (Area 5AB) Pacific Cod stock [@dfo2015-2]. The main reason cited was that the fishery in Area 5AB had become an "avoidance" fishery for Pacific Cod (to avoid breaching the Pacific Cod TAC before TACs for other groundfish species had been realized). Therefore the RPR participants felt that post-1996 estimates of abundance, which were largely informed by low catches, could not be assumed to accurately reflect abundance.
+
+@forrest2018 simulation-tested a set of alternative reference points for Hecate Strait Pacific Cod and Rock Sole (*Lepidopsetta* spp.). They found that the "history-based" reference points (or operational control points, OCPs) that had been used for Pacific Cod in 2013 [@forrest2013] were robust to stock assessment biases because they scaled in the same direction as bias in estimates of biomass and fishing mortality. However, they were not necessarily good proxies for MSY-based reference points and tended to produce more precautionary catch recommendations than reference points based on $B_{MSY}$, $B_{0}$ and the spawning potential ratio (SPR; @clark1991). While the "history-based" reference points outperformed others in terms of long-term conservation outcomes, there were sometimes large trade-offs in terms of catch and catch stability [@forrest2018]. Reference points based on estimated $B_{0}$ performed similarly to the "history-based" reference points but tended to have better trade-off properties [@forrest2018].
+
+Some of the reference point concerns with the 5AB model may have been addressed by combining data for Areas 5AB and 5CD in the present stock assessment. Therefore we suggest using the same USR for Area 5ABCD as had been used for Area 5CD in [@forrest2013]. During the review meeting for this assessment, it was decided by reviewers and attendees to modify the LRP to be the lowest estimated biomass agreed to be an undesirable state to avoid. The change in definition led to using 2000 as the low-biomass year and therefore the limit reference point for this assessment (i.e., $LRP = B_{2000}$).
+
+In the absence of accepted reference points for Area 3CD, we suggest implementing the same approach. The LRP was kept as the biomass in 1986, as in the previous assessment, as it was agreed that moving it to a more recent time period would have a negligible effect. 
+
+In addition to the LRR, LRP and USR discussed above, two benchmark measures are also included: (i) $F_{2017}$ and (ii) $B_{2018}$. Projected biomass and fishing mortality relative to these benchmarks are included in the decision tables to show whether: (i) fishing mortality is projected to increase or decrease under alternative projected 2018 catch levels; and whether biomass is projected to increase or decrease under alternative projected 2018 catch levels.
+
+Suggested reference points and benchmarks for both areas are provided in Section \@ref(sec:reference-points-and-decision-tables}.
+
+# REFERENCE CASE MODELS
+Reference Case models were established for Areas 5ABCD and 3CD to show model response under what were considered the most plausible choices across a range of assumptions for each stock. These models served as the basis from which sensitivity runs were made, altering alternative hypotheses one step at a time. Most of these sensitivity runs altered assumptions that the current model configuration and data availability were not able to reliably exclude from consideration. Consequently, these Reference Case models should not be considered to be the “best available information” from which management advice can be provided. Instead, a model averaging approach (see below) was adopted that combined model results across a range of plausible assumptions, which in turn was used to provide management advice.
+
+The Reference Case models for Areas 5ABCD and 3CD shared similar characteristics in terms of data choices, prior probability distributions and fixed parameter settings. For brevity, both reference case models are described in this section, with differences explained as necessary. The Bayesian delay-difference model is fully described in Appendix \@ref(delay-difference-model).
+
+The joint posterior distribution for each model was numerically approximated using the
+Markov Chain Monte Carlo routines built into AD Model Builder (Metropolis-Hastings algorithm) [@fournier2012]. Posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples (the first 1,000 samples were dropped to allow for sufficient burn-in). We assessed consistency with chain convergence by visual inspection of trace plots and autocorrelation plots and through calculating the potential scale reduction statistic $\hat{R}$ and the effective number of simulation draws $n_\mathrm{eff}$ via the R package Stan [@rstan2018].
+
+<!-- https://github.com/stan-dev/stan/blob/238faf42b556c007197c9faca20214ad9b37f0b2/src/docs/reference-manual/analysis.Rmd -->
+
+The potential scale reduction statistic [@gelman1992] is a common metric used in Bayesian statistics to assess chain convergence [@gelman2014; @hobbs2015; @stan-manual2017]. The statistic measures the ratio of the average variance of MCMC samples within each chain to the variance of the samples across chains. As $\hat{R}$ approaches 1.0, the chains are consistent with convergence. In our case, we only had a single chain for each model run, but in following the advice of @gelman2014, we first divided the chain in two, effectively treating the first and second half as separate chains. Following the notation of @hobbs2015, we can calculate $\hat{R}$ for a given parameter $\theta$ as follows. For $j = 1, ..., m$ chains (two half chains here), we calculate the mean of the variances $w$ as:
+
+$$
+w=\frac{1}{m}\sum_{j=1}^{m}\operatorname{var}\left(\theta_{j}\right)
+$$
+
+where \(\theta_{j}\) is defined as
+$\theta_{j}=\frac{1}{K-1}\sum_{n=1}^{K}\left(\theta_{kj}-\overline{\theta}_{j}\right)^{2}$
+across $k = 1, ..., K$ iterations. We then define the among-chain variance $b$ as:
+
+$$
+b=\frac{K}{m-1}\sum_{j=1}^{m}\left(\overline{\theta}_{j}-\overline{\overline{\theta}}\right)^{2}
+$$
+
+where
+$\overline{\overline{\theta}}=\frac{1}{m}\sum_{j=1}^{m}\overline{\theta}_{j}$.
+The variance of a stationary distribution of $\theta$ is then calculated as a weighted mean
+$\sigma_{\theta}^{2}=\left(1-\frac{1}{K}\right)w+\frac{1}{K}b$,
+and we can define the potential scale reduction factor as $\hat { R } = \sqrt{\frac{\sigma_{ \theta}^{2}}{w}}$.
+
+The statistic $n_\mathrm{eff}$ measures the effective number of MCMC independent samples after accounting for autocorrelation. For brevity we do not define the full calculation here, but it is available in @gelman2014 pp. 286--287 or @stan-manual2017 pp. 373--376.
+
+## DATA CHOICES
+
+Both models were fit to observed catch data, observed average annual mean weight in the commercial catch, and fishery-independent and -dependent indices of abundance. Details on objective function components of the model are provided in Appendix \@ref(delay-difference-model).
+
+Data sources for observed catch data were described in Section \@ref(data-sources), with values in Tables \@ref(tab:tab-catch-5abcd) and \@ref(tab:tab-catch-3cd) and Figures \@ref(fig:fig-catch-5abcd) to \@ref(fig:fig-discards-5cd) for Area 5ABCD, and Figures \@ref(fig:fig-catch-3cd) to \@ref(fig:fig-discards-3cd) for Area 3CD.
+
+Fishery independent swept area abundance indices are documented in Appendix \@ref(fishery-independent-indices-of-abundance), including biomass estimates, CVs and years covered.
+
+For Area 5ABCD, these are:
+
+1. the Hecate Strait Multispecies Assemblage Survey;
+2. the Queen Charlotte Sound Synoptic Survey;
+3. the Hecate Strait Synoptic Survey.
+
+For Area 3CD, these are:
+
+1. the West Coast Vancouver Island Synoptic Survey;
+2. the NMFS Triennial Survey (in Canada).
+
+Fishery dependent indices are fully documented in Appendix \@ref(commercial-cpue-standardization). In each area, the CPUE time series are standardized GLMMs, with separate analyses for the periods before and after the introduction of 100% observer coverage in 1996, which resulted in large improvements in estimates of catch, discards and general data reliability. The two periods are referred to as: historical (1956--1995) and modern (1996--2017) (Appendix \@ref(commercial-cpue-standardization)).
+
+Details on the calculation of average annual mean weight in the commercial fishery are provided in Appendix \@ref(analysis-of-biological-data). Inclusion of average annual mean weight data is intended to provide information about recruitment in the absence of age-composition data. This is dependent on the underlying assumption of the delay-difference model (Appendix \@ref(delay-difference-model)) that selectivity, growth and natural mortality are constant and knife-edged throughout the time period covered by the model (1956--2017). It is important to note that lower average annual mean weight in the commercial data could indicate a recruitment event, but could also have other causes including smaller proportions of older/larger fish due to fishing or natural mortality, changes in the spatial distribution of the fishery, or changes in growth.
+
+## PRIOR PROBABILITY DISTRIBUTIONS AND FIXED VARIANCE PARAMETERS
+
+The prior probability distributions for leading parameters in the Area 5ABCD and 3CD Reference Case models are provided in Tables \@ref(tab:tab-priors-5abcd) and \@ref(tab:tab-priors-3cd). Graphic presentation of prior probability distributions is provided in Figures \@ref(fig:fig-base-mcmc-priors-5abcd) and \@ref(fig:fig-base-mcmc-priors-3cd). Model sensitivities to prior assumptions are tested in Section \@ref(sensitivity-analyses).
+
+## LEADING PARAMETERS
+
+A broad, uniform prior probability distribution was used for $\ln(R_0)$, reflecting an ignorance the scale of the stock.
+
+A beta distribution was used as a prior for steepness with shape parameters that resulted in a distribution with mean = 0.7 and SD = 0.15. These parameter choices resulted in a distribution with little to no probability density for values less than 0.2 (Figure \@ref(fig:fig-base-mcmc-priors-5abcd)), implying that no transformation was necessary. This is the same prior probability distribution accepted for use in the previous stock assessment [@forrest2013]. @sinclair2005 fixed steepness at 0.75 in one of their "preferred" scenarios. In their other "preferred" scenario, the mode of the joint posterior distribution (MPD) estimate of steepness was 0.53. The prior probability distribution chosen here encompasses both of these values.
+
+A normal distribution was used for $\ln(M)$ with mean = $\ln(0.5)$ and SD = 0.1, as was used in @forrest2013. @sinclair2005 obtained MPD estimates of *M* of 0.596 and 0.567 in their two "preferred" scenarios, whereas @forrest2013 obtained MPD estimates of 0.393 *y*^-1^ and 0.426 *y*^-1^ for Areas 5CD and 5AB, respectively. A bridging analysis done by @forrest2013 suggested that *M* could be considerably lower, depending on the values of other fixed or estimated parameters, and there has been considerable variability of estimates of *M* for Pacific cod throughout its assessment history [@fournier1983; @haist1998; @sinclair2001].
+
+## SURVEY SCALING PARAMETERS (CATCHABILITY)
+
+Broad uniform prior probability distributions were used for the scaling parameter $q_{k}$ for indices *k*:
+
+1. Hecate Strait Multispecies Assemblage Survey;
+1. NMFS Triennial Survey; and
+1. Commercial CPUE indices.
+
+These priors reflected ignorance of the scale of the survey index relative to the stock. The Hecate Strait Multispecies Assemblage (HSMA) Survey was never designed as a stratified random trawl survey. Instead, it was a grid survey with one fixed location station per grid.  @sinclair1999 assigned each station to a depth stratum and analyzed the data as if the survey used a stratified random design. Because of this post-hoc stratification approach, the relationship between the survey index and the Pacific Cod stock is unknown.  The National Marine Fisheries Service (NMFS) Triennial Survey ventured into Canadian waters seven times in the period 1980 to 2001. The survey was a random transect design, using a random start and then progressing up the west coast of the United States and Canada at 50 nm intervals.  Each transect was stratified by depth and stations along the transect were selected randomly.  The extent that the Triennial survey extended into Canada varied by survey, but the data were analyzed as if the survey had the same areal coverage in every year (see Appendix \@ref(fishery-independent-indices-of-abundance)).  This survey was included in the current 3CD stock assessment to provide fishery independent biomass information in the 1980s and 1990s. However, as for the HSMA survey, the relationship between the survey index and the 3CD Pacific Cod stock is not known. The commercial CPUE indices are standardized catch rates (Appendix \@ref(commercial-cpue-standardization)) with an unknown relationship to stock abundance.
+
+Normal distributions were used for $\ln(q_{k})$ for indices *k* =:
+
+1. Queen Charlotte Sound Synoptic Survey;
+2. Hecate Strait Synoptic Survey; and
+3. West Coast Vancouver Island Synoptic Survey.
+
+The choice of prior probability distribution for survey scaling parameters has the potential for large impacts on stock assessment outcomes. We therefore present a number of alternative prior formulations as sensitivity analyses for the following informative prior probability distributions in Section \@ref(sensitivity-analyses).
+
+### Survey scaling parameters for Area 5ABCD
+
+We used informative prior probability distributions for the two synoptic surveys based on median posterior estimates of *q* from the most recent stock assessment for Rock Sole [@holt2016]. This was done to constrain the tendency in the models towards estimating implausibly high stock sizes. Rock sole is a flatfish species occupying a similar (although slightly shallower) depth range to Pacific Cod. @holt2016 obtained median posterior estimates of *q* = 0.6280 for Area 5AB and *q* = 0.1869 for Area 5CD. They did not use an informative prior probability distribution for *q*. The CV of their estimates was around 0.3. For our combined Area 5ABCD assessment we pro-rated these values according to the relative areas of habitat in Areas 5AB and 5CD. Adding up the areas of all the surveyed depth strata in each area gave a ratio of approximately 0.65:0.35 (5AB:5CD). Therefore the following values were used as means for the normal prior probability distributions for $\ln(q_{k})$, for
+
+1. *k* = Queen Charlotte Sound Synoptic Survey: mean $\ln(q_{k})$ = $\ln(0.6280
+   \cdot 0.65)$ = -0.895998; and
+2. *k* = Hecate Strait Synoptic Survey: mean $\ln(q_{k})$ = $\ln(0.1869 \cdot
+   0.35)$ = -2.727539;
+
+For both synoptic surveys, the standard deviation of the normal prior probability distribution for $\ln(q_{k})$ was set to 0.3 in log space.
+
+### Survey scaling parameters for Area 3CD
+
+As for Area 5ABCD, we used an informative prior probability distribution for the West Coast Vancouver Island Synoptic Survey based on a median posterior estimate from a recent assessment. Again this was done to constrain the very large stock size estimates made by the model when a uniform prior was applied. There have been fewer recent stock assessments focused on Area 3CD only and none for species in the same depth range as Pacific Cod. Here we used a normal prior probability distribution for $\ln(q_{k})$ with mean set to the median posterior estimate of *q* from the most recent assessment for Area 3CD Pacific Ocean Perch (*Sebastes alutus*) [@edwards2013-2], i.e., mean $\ln(q_{k})$ = $\ln(0.228)$ = -1.47841. The standard deviation of the normal prior probability distribution for $\ln(q_{k})$ was set to 0.3 in log space, as for Area 5ABCD. Pacific Ocean Perch occurs in a deeper depth range than Pacific Cod, but it is a major target species for the trawl fishery and may therefore be informative about catchability in this area. @edwards2013-2 did not use an informative prior probability distribution for *q*.
+
+## FIXED VARIANCE PARAMETERS
+
+The errors in variables approach used to partition process and observation error is described in detail in Appendix \@ref(delay-difference-model). Briefly, The key variance parameter is the inverse of the total
+variance, i.e., total precision $\phi^{-2}$ [@martell2011]. This parameter can be fixed or estimated, and was fixed here. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation
+error [@punt1993; @deriso2007]. These parameters are used to derive the observation error component of the total variance ($\sigma_O$, Eq. \@ref(eq:ddsigo)) and the process error term ($\sigma_R$, Eq. \@ref(eq:ddsigr)), which enters the objective function in the log likelihood function for the recruitment residuals (Eq. \@ref(eq:ddrlt)).
+
+@forrest2013 found it was not possible to obtain plausible estimates of the variance term
+$\phi^{-2}$ for their Base Case model. Any attempt to estimate $\phi^{-2}$ resulted in estimates of $\sigma_R$ close to 2.0 and estimates of $\sigma_O$ close to 1.5, with extremely poor fits to the indices of abundance, particularly the commercial CPUE data. It was therefore necessary to fix $\phi^{-2}$ and $\rho$ to give fixed values of $\sigma_O$ and $\sigma_R$. @sinclair2005 also used fixed variance parameters in their assessment of Area 5CD Pacific Cod. @forrest2013 used values of $\phi^{-2}$ and $\rho$ that resulted in $\sigma_O$ = 0.25 and $\sigma_R$ = 0.8. Preliminary model runs with the current dataset found that $\sigma_O$ = 0.25 resulted in poor fits to the synoptic survey indices of abundance, especially in Area 5ABCD. Therefore in the current assessment $\sigma_O$ was reduced to 0.2 in both Reference Case models. Sensitivity tests are provided in Section \@ref(sensitivity-analyses).
+
+In addition to the overall observation error term $\sigma_O$, annual index points for each index of abundance series were weighted by annual CVs, using a multiplicative weighting approach fully described in Appendix \@ref(delay-difference-model).
+
+As for the previous stock assessment for Pacific Cod [@forrest2013], fixed variance components were used for the likelihood components for annual catch ($\sigma_C$) and average annual mean weight ($\sigma_W$). Problems with interpreting the mean weight data were discussed in @forrest2013, their Appendix C. These problems stem from changes over time in the sample sizes of different categories of length data, i.e., sorted and unsorted categories, and lack of data for smaller fish before observers measured fish at sea. Concerns about the use of the mean weight data were also recorded in the review of the 2005 assessment [@fargo2005]. This issue was acknowledged by @sinclair2005, who noted that the mean weight series was necessary for estimation of model parameters but was down-weighted in the objective function. As in @forrest2013, $\sigma_W$ was set to 0.2 in the Reference Case models. Because the model assumes observed catches are known without error, $\sigma_C$ was set to a small value, i.e., $\sigma_C$ = 0.05. However, sensitivity tests to these assumptions are provided in Section \@ref(sensitivity-analyses).
+
+# RESULTS
+
+## AREA 5ABCD: QUEEN CHARLOTTE SOUND AND HECATE STRAIT
+
+The model diagnostics were consistent with convergence (Figure \@ref(fig:fig-base-mcmc-trace-5abcd)) and posterior sample autocorrelation was minor for most parameters (Figure \@ref(fig:fig-base-mcmc-autocor-5abcd)). The value of $\hat{R}$ was $\sim 1.00$ for all parameters (Table \@ref(tab:tab-param-est-table-5abcd)).
+
+The MPD model fits to the five indices of abundance are shown in Figure \@ref(fig:fig-base-index-fits-5abcd). The model followed the general trends of the three fishery-independent indices, but could not fit some of the larger peaks (for example 2004 and 2005 peaks in the Queen Charlotte Sound Synoptic Survey, and the 2013 peak in the Hecate Strait Synoptic Survey, Figure \@ref(fig:fig-base-index-fits-5abcd)). Similarly, the model followed the major patterns in the two CPUE indices but did not capture all the peaks (Figure \@ref(fig:fig-base-index-fits-5abcd)).
+
+@forrest2013 considered goodness of fit to the indices of abundance to be a primary driver of uncertainty in their assessment, as estimates of productivity parameters were sensitive to how well the model fit observed peaks in the indices. They presented a number of sensitivity analyses to treatment of the observation error parameter $\sigma_O$, some of which are explored in the current assessment (Section \@ref(sensitivity-analyses).
+
+Model fit to the average annual weight in the commercial fishery (Figure \@ref(fig:fig-base-mean-weight-5abcd)) was slightly better than in the 2013 assessment [@forrest2013, their Figure 37], which tended to underestimate annual mean weight. However, the current model also tended to underestimate annual mean weight, especially between 1970 and 2000. The slightly improved fit compared to the previous assessment is likely partly due to the updated growth parameters used in the current model compared to the previous assessment (see Section \@ref(sensitivity-analyses)). The effects of alternative values of $\sigma_W$ are evaluated in Section \@ref(sensitivity-analyses).
+
+Model fit to the total commercial catch is shown in Figure \@ref(fig:fig-base-catch-fit-5abcd). Model fits are almost perfect due to the setting $\sigma_C$ = 0.05 in the objective function (Appendix \@ref(delay-difference-model)). This was done so that the model was essentially conditioned on the catch data, which was assumed to be known with very little error, even though pre-1996 discard rates are uncertain.
+
+Posterior probability distributions of estimated parameters are provided in Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd) and Table (\@ref(tab:tab-param-est-table-5abcd)). The median, 2.5^th^ percentile and 97.5^th^ percentile posterior parameter estimates, and MPD estimates, are provided in Table \@ref(tab:tab-param-est-table-5abcd). With the exception of steepness, the posterior estimates did not appear to be strongly influenced by the prior probability distributions. The posterior probability distribution for steepness was very similar to the prior probability distribution (Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd)), implying that there is little information about this parameter in the available data. This is common in many stock assessments and was also noted in the previous stock assessments for Areas 5AB and 5CD [@forrest2013]. Sensitivity to the prior distribution assumed for steepness is tested in Section \@ref(sensitivity-analyses).
+
+Posterior probability estimates of $\ln(M)$ tended to be lower than the prior values (Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd)), with a posterior median estimate of 0.346 *y*^-1^, which is slightly lower than the median posterior estimate of 0.393 *y*^-1^ obtained by @forrest2013 for the Area 5CD stock. As noted above, @forrest2013 reported that posterior estimates of $M$ were strongly influenced by the fit to the index of abundance data. Therefore the value assumed for $\sigma_O$ likely has a stronger influence on estimates of $M$ than the prior probability distribution for $\ln(M)$. This is discussed further in Section \@ref(sensitivity-analyses).
+
+Survey scaling parameters ($q_{k}$) were strongly positively correlated with each other, especially the two synoptic surveys $q_2$ and $q_3$ in Figure \@ref(fig:fig-base-mcmc-pairs-5abcd), which were linearly correlated. This implies that changing the prior probability distribution for one of these parameters will strongly affect the other, and correspondingly, the scale of estimated biomass in the model. Because the two synoptic surveys occur in mostly the same years, it appears that the model had little leeway to change the ratio of their relative scales (see Section \@ref(sensitivity-analyses)). Survey scaling parameters were negatively correlated with $M$. $R_0$ was also positively correlated with $M$, implying that there is limited information in the data to estimate both parameters independently, as they scale together when the estimated scale of the stock changes (Figure \@ref(fig:fig-base-mcmc-pairs-5abcd)).The estimated a posterior distribution for the Queen Charlotte Sound $q$ was well outside of the prior while the posterior distribution for the Hecate St synoptic survey scaling parameter was shifted but still within the compass of the prior distribution (Figure \@ref(fig:fig-base-mcmc-priors-posts-5abcd)). These results indicate that the prior for the QC Sound synoptic survey may not be appropriate for this species/survey combination, especially given the strong linear correlation between the two synoptic surveys ($q_2$ and $q_3$ in Figure \@ref(fig:fig-base-mcmc-pairs-5abcd)).
+
+Estimates of reference points and benchmarks are provided in Table \@ref(tab:tab-ref-points-table-5abcd).
+
+Median posterior estimated biomass $B_{t}$ (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-biomass-5abcd), with values in Table \@ref(tab:tab-post-biomass-5abcd). Of note is the estimated downturn in estimated biomass since 2011. This is in contrast to the 2013 assessment [@forrest2013, their Figure 16], which projected an increase in biomass for 2014. In the current assessment, this downturn is driven by a decreasing trend in the synoptic surveys since 2013, as well as in the modern CPUE index (Figure \@ref(fig:fig-base-index-fits-5abcd)). Also of note compared to the previous assessment is the lower estimate of $B_0$, which is now estimated to be lower than the 1956 stock biomass, with a smaller confidence interval (Figure \@ref(fig:fig-base-biomass-5abcd)). This is due to the structural change in the current assessment, where all average recruitment parameters are now set to the same estimated value (see Section \@ref(stock-assessment-model)), and may also be a function of the reduction in biomass driven by the drop in biomass indices.
+
+Median posterior estimated relative biomass ($B_{t}/B_0$) (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-depl-5abcd) and Table \@ref(tab:tab-post-depl-5abcd). Median posterior estimated age-2 recruits and recruitment deviations (with 95% credibility interval) are shown in Figure \@ref(fig:fig-base-recr-5abcd) and Table \@ref(tab:tab-post-recr-5abcd). Recruitment is estimated to have been below average since 1990, with negative recruitment deviations since 2010.This is likely to be the primary reason that this stock is not doing well, in spite of low estimated fishing mortalities (Figure \@ref(fig:fig-base-f-5abcd)).
+
+Median posterior estimated fishing mortality ($F_{t}$) is shown in Figure \@ref(fig:fig-base-f-5abcd). Fishing mortality in 2017 was low compared to the historical period, with the posterior median estimated to be 0.03 y^-1^ (Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-post-f-5abcd)).
+
+We ran a retrospective analysis, sequentially removing the terminal year of data for four years to show the effects of each year's data (Figure \@ref(fig:fig-base-retro-biomass-5abcd)). Results clearly show the effects of the biennial synoptic surveys on terminal estimates of biomass. Removing four years of data reverted the model back to its 2013 state, with an increase in biomass as was projected in the previous assessment for the Area 5CD stock [@forrest2013]. Adding the 2014 data had little effect on the model as there were no Area 5AB or 5CD surveys in 2014. However, adding the 2015 data resulted in a lowering of estimated terminal biomass, because of a large drop in the 2015 Hecate Strait Synoptic Survey index (Figure \@ref(fig:fig-base-index-fits-5abcd)).
+
+## AREA 3CD: WEST COAST VANCOUVER ISLAND
+
+The model diagnostics were consistent with convergence (Figure \@ref(fig:fig-base-mcmc-trace-3cd)) and posterior sample autocorrelation was minor for most parameters (Figure \@ref(fig:fig-base-mcmc-autocor-3cd)).The value of $\hat{R}$ was 1.00 for all parameters (Table \@ref(tab:tab-param-est-table-3cd)).
+
+The MPD model fits to the four indices of abundance are shown in Figure \@ref(fig:fig-base-index-fits-3cd). The model fit the two fishery-independent indices quite closely (Figure \@ref(fig:fig-base-index-fits-3cd) a and d), but did not fit the 2012 data point in the West Coast Vancouver Island Synoptic Survey. Similarly, the model followed the major patterns in the two CPUE indices but did not capture all the peaks (\@ref(fig:fig-base-index-fits-3cd) b and c).
+
+As for Area 5ABCD, the model tended to underfit average annual weight in the commercial fishery (Figure \@ref(fig:fig-base-mean-weight-3cd)). The effects of alternative values of $\sigma_W$ are evaluated in Section \@ref(sensitivity-analyses).
+
+Model fit to the total commercial catch is shown in Figure \@ref(fig:fig-base-catch-fit-3cd).
+
+Posterior probability distributions of estimated parameters are provided in Figure \@ref(fig:fig-base-mcmc-priors-posts-3cd) and Table \@ref(tab:tab-param-est-table-3cd). The median, 2.5^th^ percentile and 97.5^th^ percentile posterior parameter estimates, and MPD estimates, are provided in Table \@ref(tab:tab-param-est-table-3cd). As for Area 5ABCD, with the exception of steepness, the posterior estimates did not appear to be strongly influenced by the prior probability distributions. The posterior probability distribution for steepness, however, was very similar to the prior probability distribution (Figure \@ref(fig:fig-base-mcmc-priors-posts-3cd)), implying that there is little information about this parameter in the available data. Sensitivity to the prior distribution assumed for steepness is tested in Section \@ref(sensitivity-analyses).
+
+As for Area 5ABCD, posterior probability estimates of $\ln(M)$ tended to be lower than the prior values (Figure \@ref(fig:fig-base-mcmc-priors-posts-3cd)), with a posterior median estimate of 0.413 *y*^-1^. This is higher than the median posterior estimate of 0.346 *y*^-1^ obtained for the Area 5ABCD stock (Table \@ref(tab:tab-param-est-table-3cd)), and very similar to the value of 0.42 *y*^-1^ obtained by @sinclair2001 for the Area 3CD stock.
+
+Survey scaling parameters ($q_{k}$) were strongly positively correlated with each other (Figure \@ref(fig:fig-base-mcmc-pairs-3cd)). As for Area 5ABCD, the survey scaling parameters were negatively correlated with $M$, implying that there is limited information in the data to distinguish between a small productive stock or a larger, less productive stock (Figure \@ref(fig:fig-base-mcmc-pairs-3cd)). Interestingly, $R_0$ was positively correlated with $M$. As for the QC Sound synoptic survey, the estimated posterior distribution for the WCVI synoptic survey scaling parameter was outside of the prior (Figure \@ref(fig:fig-base-mcmc-priors-posts-3cd)).
+
+Estimates of reference points and benchmarks are provided in Table \@ref(tab:tab-ref-points-table-3cd).
+
+Median posterior estimated biomass $B_{t}$ (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-biomass-3cd), with values in Table \@ref(tab:tab-post-biomass-3cd). Biomass is estimated to have been on a declining trajectory since 2015. This followed an increasing trend from a historical low level of biomass between 1998 and 2014. The stock is estimated to have increased in abundance since 2008, consistent with an increasing trend in observed abundance in the West Coast Vancouver Island Synoptic Survey since 2010, as well as a general increase in the modern CPUE index since 2008 (Figure \@ref(fig:fig-base-index-fits-3cd)). The downturn in estimated biomass in 2017 is consistent with a slight drop in the West Coast Vancouver Island Synoptic Survey index and a large decrease in the modern CPUE index in 2017.
+
+Median posterior estimated relative biomass ($B_{t}/B_0$) (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-depl-3cd) and Table \@ref(tab:tab-post-depl-3cd). Median posterior estimated age-2 recruits and recruitment deviations (with 95% credibility interval) are shown in Figure \@ref(fig:fig-base-recr-3cd) and Table \@ref(tab:tab-post-recr-3cd). Recruitment is estimated to have been below average for most years in the past two decades, with above average peaks in 2009, 2013 and 2014.
+
+Median posterior estimated fishing mortality ($F_{t}$) is shown in Figure \@ref(fig:fig-base-f-3cd). Fishing mortality in 2017 is estimated to be very low, with the posterior median estimated to be 0.01 *y*^-1^ (Tables \@ref(tab:tab-ref-points-table-3cd) and \@ref(tab:tab-post-f-3cd)), reflecting low catches during the past decade (Figure \@ref(fig:fig-base-catch-fit-5abcd)) and an apparent growth in biomass (Figure \@ref(fig:fig-base-biomass-3cd)).
+
+We ran a retrospective analysis, sequentially removing the terminal year of data for four years to show the effects of each year's data (Figure \@ref(fig:fig-base-retro-biomass-3cd)). Results were not so systematic as for Area 5ABCD (Figure \@ref(fig:fig-base-retro-biomass-3cd)) and the relative magnitude of the bias was smaller. The largest effect was the addition of the 2017 data which caused the terminal biomass estimate to shift notably, most likely due to the large drop in the modern CPUE index in 2017 (Figure \@ref(fig:fig-base-index-fits-3cd)).
+
+# SENSITIVITY ANALYSES
+
+We present a number of sensitivity analyses to show the influence of certain data sources, fixed
+parameters and prior probability distributions on model outcomes for the Area 5ABCD and 3CD Reference Case models. Prior probability distributions for leading parameters are provided in Tables \@ref(tab:tab-priors-5abcd) and \@ref(tab:tab-priors-3cd). Fixed parameters are provided in Section \@ref(reference-case-models).
+
+For both stocks, we tested sensitivity of the model outputs to the following data and assumptions:
+
+1. Inclusion of a locality-year interaction as a random effect in the commercial CPUE data (historical period: pre-1996 and modern period: post-1995)
+1. Inclusion of commercial CPUE indices for the historical and modern periods.
+1. Inclusion of the NMFS Triennial Survey index for Area 3CD
+1. The prior probability distribution for $\ln(q)$
+1. The prior probability distribution for $\ln(M)$
+1. The prior probability distribution for steepness
+1. The assumption of knife-edged selectivity and maturity at age 2
+1. The updated growth parameters
+1. The assumed fixed value of observation error $\sigma_O$
+1. The assumed fixed value of $\sigma_R$
+1. The assumed fixed value of $\sigma_W$
+1. The influence of the pre-1996 annual mean weight data
+1. The assumption of perfectly-known pre-1996 catch data
+
+Results are presented under these headings below. In all sensitivity runs, as for the Reference Case models, posterior samples were drawn every 5,000 iterations from a chain of length 10 million, resulting in 2,000 posterior samples. The first 1,000 samples were dropped to allow for sufficient burn-in.
+
+## SC 1B AND SC 1C. EXCLUSION OF A LOCALITY-YEAR INTERACTION AS RANDOM EFFECT IN COMMERCIAL CPUE INDICES
+
+The reference case models were fit to historical and modern commercial CPUE indices that included a locality-year interaction as random effect (see Appendix \@ref(commercial-cpue-standardization), Equations \@ref(eq:cpue-tweedie) to \@ref(eq:cpue-vessel)). Two sensitivity analyses are shown to illustrate the effect of omitting the locality-year interaction term (Equation \@ref(eq:cpue-locality-year)) from both historical and modern indices:
+
+> **Sc 1b.** Use equations without the interaction term to create CPUE indices
+> for the historical and modern periods. Use the annual CVs resulting from the
+> analysis as annual weighting terms in objective function of delay difference
+> model (Equations \@ref(eq:ddsigjt), \@ref(eq:ddcjt)).
+
+> **Sc 1c.** Use equations without the interaction term to create CPUE indices
+> for the historical and modern periods **and** double the annual CVs resulting
+> from the analysis. Input the doubled CVs as weighting terms in objective
+> function of delay difference model (Equations \@ref(eq:ddsigjt),
+> \@ref(eq:ddcjt)).
+
+Sc 1c was done because the annual CVs of the CPUE indices with omitted locality-year interactions were very small (less than 0.1 in some years). Annual CVs were doubled to address concerns that the objective function of the delay-difference model may have been giving the CPUE indices too much weight.
+
+Resulting posterior estimates of biomass, recruitment, and fishing mortality
+compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens1-biomass-5abcd) to \@ref(fig:fig-sens1-f-5abcd) for Area 5ABCD, and Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd) for Area 3CD. Removing the locality-year random effect interaction did not have a major effect on the biomass, recruitment, or fishing mortality posteriors. Of these sensitivity tests, removing the locality-year random effect interaction without artificially doubling the CV had the largest effect --- this sensitivity analysis lowered the absolute estimate of biomass slightly and somewhat narrowed the credible intervals.
+
+## SC 1D to 1F. EXCLUSION OF COMMERCIAL CPUE INDICES
+
+A sensitivity analysis was done where the modern CPUE index was removed from the model altogether (Sc 1d). This was to address concerns that CPUE in the post-IVQ period (post-1995) may not be a good index of abundance, as some skippers reported avoiding Pacific Cod when quotas were low, especially in Area 5AB [@forrest2013]. For comparison, to illustrate the effect of the historical CPUE index on model output, the historical CPUE index was removed (Sc 1e). Finally, to show the overall influence of the commercial CPUE data on model outcomes, both commercial CPUE indexes were removed (Sc 1f):
+
+> **Sc 1d.** Remove modern CPUE index from the model. Historical
+index includes locality-year interaction term as a random effect.
+
+> **Sc 1e.** Remove historical CPUE index from the model. Modern
+index includes locality-year interaction term as a random effect.
+
+> **Sc 1f.** Remove both CPUE indices from the model.
+
+Resulting posterior estimates of biomass, recruitment, and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens1-biomass-5abcd) to \@ref(fig:fig-sens1-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens8-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd) for Area 3CD. For clarity biomass trajectories without Sc 1e and 1f are provided in Figures \@ref(fig:fig-sens1-sub2-biomass-5abcd) and \@ref(fig:fig-sens8-sub2-biomass-3cd).
+
+Removing the modern CPUE index from the model had little effect on the biomass, recruitment, or fishing mortality posteriors (Figures \@ref(fig:fig-sens1-sub2-biomass-5abcd) and \@ref(fig:fig-sens8-sub2-biomass-3cd)). However, removing the historical CPUE index had a large effect on the posterior estimates --- especially the biomass estimates --- substantially increasing the estimates of biomass prior to approximately 1970 (Figures \@ref(fig:fig-sens1-biomass-5abcd) and \@ref(fig:fig-sens8-biomass-3cd)). A similar strong influence of historical CPUE was noted by @forrest2013 who included a no-CPUE model run in their final model averaged decision tables.
+
+## SC 1G. EXCLUSION OF THE NMFS TRIENNIAL SURVEY INDEX FOR AREA 3CD
+
+For Area 3CD only, a sensitivity analysis was done where the NMFS Triennial Survey index was removed from the model:
+
+> **Sc 1g (Area 3CD only).** Remove NMFS Triennial Survey index from the model.
+
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are included in Figures \@ref(fig:fig-sens8-sub2-biomass-3cd) to \@ref(fig:fig-sens8-f-3cd).There was very little impact on the biomass trajectory compared to the reference case in this sensitivity run.
+
+## SC 2A AND 2B. PRIOR PROBABILITY DISTRIBUTION FOR SURVEY SCALING PARAMETERS (CATCHABILITY)
+
+The absolute scale of the estimated biomass in the two assessed areas, determined by estimated catchability (*q*) in the survey indices, is considered the major axis of uncertainty in this assessment. For 5ABCD, six sensitivity analyses are shown to illustrate the effect of the normal prior probability distributions assumed for $\ln(q)$ for the QCS and HS Synoptic Surveys (see Sections \@ref(survey-scaling-parameters-for-area-5abcd) and \@ref(survey-scaling-parameters-for-area-3cd) for Reference Case details:
+
+> **Sc 2a.** The mean of the QCS Synoptic Survey prior was set to the same mean as for the HS Synoptic Survey, and was then pro-rated according to relative areas, i.e., mean $\ln(q)$ = $\ln(0.1869 \cdot 0.65)$.
+
+> **Sc 2b.** No prior was used for \textit{q} for either the QCS and HS Synoptic Surveys.
+
+Four additional analyses were done to bracket the considerable uncertainty in the scale of the stock.
+
+> **Sc 2c.** The means of the QCS and HS Synoptic Survey priors were set to ln(0.5), and were then pro-rated according to relative areas, i.e.,for Queen Charlotte Sound mean $\ln(q)$ = $\ln(0.5 \cdot 0.65)$ ; and for Hecate Strait mean $\ln(q)$ = $\ln(0.5 \cdot 0.35)$.
+
+> **Sc 2d.** The means of the QCS and HS Synoptic Survey priors were set to ln(1), and were then pro-rated according to relative areas, i.e.,for Queen Charlotte Sound mean $\ln(q)$ = $\ln(0.65)$ ; and for Hecate Strait mean $\ln(q)$ = $\ln(0.35)$.
+
+> **Sc 2e.** The SDs of the QCS and HS Synoptic Survey priors were set to 0.6.
+
+> **Sc 2f.** The SDs of the QCS and HS Synoptic Survey priors were set to 1.0.
+
+For 3CD, six sensitivity analyses are shown to illustrate the effect of the normal prior probability distribution assumed for $\ln(q)$ for the WCVI Synoptic Survey:
+
+> **Sc 2a.** The SD of the WCVI Synoptic Survey was set to the same SD as the value estimated by @edwards2013-2 for Pacific Ocean Perch, i.e., SD = 0.448.
+
+> **Sc 2b.** No prior was used for \textit{q} for the WCVI Synoptic Survey.
+
+As for Area 5ABCD, four additional analyses were done to bracket the considerable uncertainty in the scale of the stock.
+
+> **Sc 2c.** The mean of the WCVI Synoptic Survey prior was set to ln(0.5).
+
+> **Sc 2d.** The mean of the WCVI Synoptic Survey prior was set to ln(1).
+
+> **Sc 2e.** The SD of the WCVI Synoptic Survey prior was set to 0.6.
+
+> **Sc 2f.** The SD of the WCVI Synoptic Survey prior was set to 1.0.
+
+Models were moderately sensitive to choice of the parameters used for the normal prior for $\ln(q)$ (Sc 2a; Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)). For clarity, estimated biomass biomass trajectories without Sc 2b is provided for Area 3Cd in Figure \@ref(fig:fig-sens9-biomass-3cd-sub). Essentially, lowering the value of the mean (Area 5ABCD), or increasing the variance (Area 3CD) resulted in lower estimates of $q$ (Tables \@ref(tab:tab-param-table-sens2a-5abcd) and \@ref(tab:tab-param-table-sens2a-3cd)), leading to larger estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd-sub)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)).
+
+Notably, removing the informative prior in Sc 2b resulted in very low estimates of $q$ for these surveys (Tables \@ref(tab:tab-param-table-sens2b-5abcd) and \@ref(tab:tab-param-table-sens2b-3cd)),leading to very large and uncertain estimates of biomass (Figures \@ref(fig:fig-sens2-biomass-5abcd) and \@ref(fig:fig-sens9-biomass-3cd)) and recruitment (Figures \@ref(fig:fig-sens2-recr-5abcd) and \@ref(fig:fig-sens9-recr-3cd)). This was extremely pronounced for Area 3CD (Table \@ref(tab:tab-param-table-sens2b-3cd) and Figure \@ref(fig:fig-sens9-biomass-3cd)) For both areas, increased estimates of biomass led to decreased estimates of $F_{t}$ (Figures \@ref(fig:fig-sens2-f-5abcd) and \@ref(fig:fig-sens9-f-3cd)).
+
+Given model sensitivity to priors assumed for survey $ln(q)$, and the tendency of the estimates to run to very low values without prior constraint, it seems justified to use a prior probability distribution informed by age-structured assessments for groundfish species caught in the same areas with the same gear, even though those estimates are conditional on the assumptions inherent in those models. Synoptic survey *q* should be considered a major source of uncertainty in this assessment and we suggest inclusion of Sc 2a (both areas) in the ensemble of models for model-averaged decision tables (Section \@ref(sec:reference-points-and-decision-tables)).
+
+## SC 3A TO 3C. PRIOR PROBABILITY DISTRIBUTION FOR *M*
+
+Three sensitivity analyses are shown to illustrate the effect of the parameters of the normal prior distribution assumed for $\ln(M)$:
+
+> **Sc 3a.** The mean was held at the Reference Case value of 0.5, while the standard
+  deviation was increased to 0.2.
+
+> **Sc 3b.** The mean was reduced to 0.4 and the standard deviation was held at
+  the Reference Case value of 0.1.
+
+> **Sc 3c.** The mean was reduced to 0.4 and the standard deviation was increased
+  to 0.2.
+
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens3-biomass-5abcd) to \@ref(fig:fig-sens3-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens10-biomass-3cd) to \@ref(fig:fig-sens10-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens3a-5abcd) to \@ref(tab:tab-param-table-sens3c-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens3a-3cd) to \@ref(tab:tab-param-table-sens3c-3cd) for Area 3CD.
+
+For Area 5ABCD, respective median posterior estimates of *M* for Sc 3a, 3b and 3c were 0.324 y^-1^, 0.287 y^-1^ and 0.298 y^-1^. These values are compared to the median posterior Reference Case estimate of *M* = 0.346 y^-1^.
+
+For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.392 y^-1^, 0.391 y^-1^ and 0.398 y^-1^. These values are compared to the median posterior Reference Case estimate of *M* = 0.413 y^-1^.
+
+For Area 5ABCD, all sensitivity runs resulted in lower estimates of biomass than the Reference Case model (Figure \@ref(fig:fig-sens3-biomass-5abcd)).This was not surprising, given that all had lower posterior median estimates of *M*. Differences in estimated biomass among scenarios were smaller for Area 3CD, although all were slightly lower than for the Reference Case model (Figure \@ref(fig:fig-sens10-biomass-3cd)).
+
+We suggest inclusion of Sc 3b (both areas) in the ensemble of models for model-averaged decision tables (Section \@ref(sec:reference-points-and-decision-tables)), as this scenario resulted in the biggest difference in estimated biomass in both areas.
+
+## SC 4A AND SC 4B. PRIOR PROBABILITY DISTRIBUTION FOR STEEPNESS
+
+Two sensitivity analyses were done to illustrate the effect of the prior probability distribution assumed for steepness in the reference case model:
+
+> **Sc 4a.** Use a uniform prior for steepness bounded between 0.21 and 0.999.
+
+> **Sc 4b.** Use a beta prior for steepness with mean = 0.85 and sd = 0.15.
+
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens4-biomass-5abcd) to \@ref(fig:fig-sens4-f-5abcd) for Area 5ABCD, and Figures \@ref(fig:fig-sens11-biomass-3cd) to \@ref(fig:fig-sens11-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens4a-5abcd) to \@ref(tab:tab-param-table-sens4b-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens4a-3cd) to \@ref(tab:tab-param-table-sens4b-3cd) for Area 3CD.
+
+For Area 5ABCD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.479 and 0.883.  For Area 3CD, respective median posterior estimates of *h* for Scenarios 4a and 4b were 0.497 and 0.889. This was compared compared to 0.744 for the Area 5ABCD Reference Case and 0.747 for the Area 3CD Reference Case.
+
+Despite the very large range in median posterior estimates of *h* among scenarios for both areas, there was almost no discernible effect on estimated biomass and recruitment, especially for Area 3CD (Figures \@ref(fig:fig-sens4-biomass-5abcd) and \@ref(fig:fig-sens11-biomass-3cd)). Model insensitivity to the prior probability distribution for *h* explains in part why the posterior probability distribution so closely matched the prior for both models (Figures \@ref(fig:fig-base-mcmc-priors-posts-5abcd) and \@ref(fig:fig-base-mcmc-priors-posts-3cd)).
+
+Differences in model sensitivity to the prior for *h* in the current assessment vs. the previous assessment for Area 5CD can be explained by changes in the treatment of average recruitment. The model used in @forrest2013, estimated $R_{0}$ as a separate parameter to average annual recruitment ($R_{Avg}$). As a result, when @forrest2013 tested a uniform prior for *h*, while biomass estimates were unaffected, their posterior estimates of $B_{0}$ became very large [@forrest2013, their Figures 33 and 34]. They described poor model convergence for most parameters and noted the model's tendency to sample very low estimates of steepness coincident with the very large estimates of $\ln(R_0)$. This suggests there was very little information in the data for estimation of a separate $\ln(R_0)$ parameter in the absence of age-composition data, suggesting that it may be preferable to combine average and unfished recruitment, as has been done in the current assessment.
+
+## SC 5A AND 5B. THE ASSUMPTION OF KNIFE-EDGED SELECTIVITY AND MATURITY AT AGE 2, AND EFFECTS OF UPDATING THE GROWTH PARAMETERS
+
+The Reference Case delay-difference models assumed knife-edged selectivity and maturity at age 2 *y* (i.e., age at recruitment $k$ = 2, Table \@ref(tab:tab-param-list)). New analysis of age and maturity data  suggest age at 50% maturity could be closer to 3 *y* for BC Pacific Cod (Appendix \@ref(analysis-of-biological-data)). A sensitivity analysis (Sc 5a) was done to illustrate the effect of assuming that fish recruit to the fishery and mature at age 3 *y*:
+
+Another sensitivity analysis (Sc 5b) was done to illustrate the effects of reverting back to the von Bertalanffy growth parameters used in the previous Area 5CD assessments [@forrest2013; @sinclair2005], which were also used by @sinclair2001 in the last assessment for Area 3CD. These previous stock assessments used the von Bertalanffy parameters that @westrheim1996 reported for Area 3CD, ($L_{inf}$ = 89.48 cm; $K_{VB}$ = 0.307 *y*^1^; and $a_0$ = -0.116 *y*).
+
+The current Area 5ABCD assessment used values of growth parameters estimated in Appendix \@ref(analysis-of-biological-data) using survey age and length data from the Hecate Strait and Queen Charlotte Sound Synoptic Surveys ($L_{inf}$ = 95.51 cm; $K_{VB}$ = 0.19 *y*^1^; and $a_0$ = -0.81 *y*). The current Area 3CD assessment used values of growth parameters estimated in Appendix \@ref(analysis-of-biological-data) using survey age and length data from the West Coast Vancouver Island Synoptic Survey ($L_{inf}$ = 82.59 cm; $K_{VB}$ = 0.26 *y*^1^; and $a_0$ = -0.67 *y*). For both areas, the new values of the growth rate $K_{VB}$ were much lower than used in the previous assessments.The delay-difference model in Sc 5b used Ford-Walford parameters $W_{k}$, $\alpha_g$ and $\rho_g$ (Appendix \@ref(delay-difference-model)) derived from previous growth parameters used in [@forrest2013; @sinclair2005; @sinclair2001].
+
+In summary, the two new scenarios are:
+
+> **Sc 5a.** Set $k = 3 y$ and update weight at recruitment $W_k$ and Ford-Walford parameters accordingly.
+
+> **Sc 5b.** Run the model using the von Bertalanffy growth parameters that were used in the previous stock assessment [@forrest2013].
+
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens5-biomass-5abcd) to \@ref(fig:fig-sens5-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens12-biomass-3cd) to \@ref(fig:fig-sens12-f-3cd) for Area 3CD.
+Fits to the average annual mean weight in the commercial fishery for Scenarios 5a and 5b are shown in Figures \@ref(fig:fig-sens5-meanweightfit-5abcd) and \@ref(fig:fig-sens12-meanweightfit-3cd).
+
+Not surprisingly, the Area 5ABCD model was sensitive to both the age at knife-edged selectivity and the growth parameters (Figure \@ref(fig:fig-sens5-biomass-5abcd)). For Sc 5a, the model estimated much lower biomass, especially for the historical period. This is expected since this scenario does not include age-2 fish. The fit to the average annual mean weight for Sc 5a (Figure \@ref(fig:fig-sens5-meanweightfit-5abcd) a) was better for the historical portion of the time series than for the Reference Case model, which tended to greatly underfit in some years (Figure \@ref(fig:fig-base-mean-weight-5abcd)). However, it should be remembered that prior to 1996, many observations of small fish were missing from the commercial length data, as only landed fish were measured (Appendix \@ref(analysis-of-biological-data) and @forrest2013, their Appendix C). Therefore, the current Reference Case model is estimating mean weights that were probably present in the catch but not recorded.
+
+For Sc 5b in Area 5ABCD, estimates of biomass were lower than for the Reference Case, especially for the historical period (Figure \@ref(fig:fig-sens5-biomass-5abcd)), with smaller peaks in biomass in the 1970s and 1990s. The von Bertalanffy growth rate used by @forrest2013 and @sinclair2005 was larger than that in the Reference Case model, indicating a more productive stock. Therefore large peaks in catches could be explained by lower biomass in Sc 5b, due to greater stock productivity. Recent estimates of biomass were, however, more similar to the Reference Case (Figure \@ref(fig:fig-sens5-biomass-5abcd)). Fits to the annual average mean weight for Sc 5b (Figure \@ref(fig:fig-sens5-meanweightfit-5abcd) b) were similar to fits in the Reference Case model (Figure \@ref(fig:fig-base-mean-weight-5abcd)).
+
+For Area 3CD, results were broadly similar to those in Area 5ABCD, although differences in biomass between the Reference Case and the two scenarios were more distinct (Figure \@ref(fig:fig-sens12-biomass-3cd)). The fit to the average annual mean weight data was very poor for Sc 5a, and fairly similar to the Reference Case model for Sc 5b (Figure \@ref(fig:fig-sens12-meanweightfit-3cd)). As for Area 5ABCD, the growth rate used in the Reference Case model was lower than that used in Sc 5b. Therefore the model needed to explain catches of a less productive stock with a larger historical biomass.
+
+## SC 6A - 6C. ASSUMED FIXED VALUE OF OBSERVATION ERROR $\sigma_O$
+
+The observation error parameter was $\sigma_O$ was fixed at 0.2 in the Reference Case models (Section \@ref(fixed-variance-parameters)). Three sensitivity analyses were done to explore the impacts of changing this value:
+
+> **Sc 6a.** Fix $\sigma_O$ = 0.10.
+
+> **Sc 6b.** Fix $\sigma_O$ = 0.15.
+
+> **Sc 6c.** Fix $\sigma_O$ = 0.25.
+
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD.
+
+MPD index fits for the HSMAS, HSSS and QCSS surveys are shown in Figures \@ref(fig:fig-sens6-index-hsmas-5abcd) to \@ref(fig:fig-sens6-index-hsss-5abcd). MPD index fits for the Area 5ABCD commercial CPUE indices are shown in Figures \@ref(fig:fig-sens6-index-cpue-pre1996-5abcd) and \@ref(fig:fig-sens6-index-cpue-post1995-5abcd).
+
+MPD index fits for the WCVISS and Triennial Survey are shown in Figures \@ref(fig:fig-sens13-index-wcviss-3cd) and \@ref(fig:fig-sens13-index-triennial-3cd). MPD index fits for the Area 3CD commercial CPUE indices are shown in Figures \@ref(fig:fig-sens13-index-cpue-pre1996-3cd) and \@ref(fig:fig-sens13-index-cpue-post1995-3cd).
+
+Confidence intervals shown on the plots are derived from the observed data (see Appendices \@ref(fishery-independent-indices-of-abundance) and \@ref(commercial-cpue-standardization)) and are unaffected by the value of $\sigma_O$.
+
+As expected, decreasing the value of $\sigma_O$ resulted in closer fits to indices of abundance in both areas. In Area 5ABCD, reducing $\sigma_O$ also caused a reduction in estimated historical biomass, especially Sc 6a, although recent estimates of biomass were similar among scenarios (Figure \@ref(fig:fig-sens6-biomass-5abcd)). In Area 3CD, results were less pronounced (Figure \@ref(fig:fig-sens13-biomass-3cd)), with more similar index fits among scenarios (Figure \@ref(fig:fig-sens13-index-triennial-3cd)).
+
+Productivity parameters *M* and *h* were sensitive to changes in $\sigma_O$, as were scale parameters $R_{0}$ and catchability parameters \textit{q} (Tables \@ref(tab:tab-param-table-sens6a-5abcd) to \@ref(tab:tab-param-table-sens6c-5abcd) for Area 5ABCD, and Tables \@ref(tab:tab-param-table-sens6a-3cd) to \@ref(tab:tab-param-table-sens6c-3cd) for Area 3CD).
+
+## SC 6C. ASSUMED FIXED VALUE OF PROCESS ERROR $\sigma_R$
+
+The process error parameter was $\sigma_R$ was fixed at 0.8 in the Reference Case models (Section \@ref(fixed-variance-parameters)), as this stock appears to have had very variable
+recruitment throughout the history of the fishery. One sensitivity
+analysis was done to test the effect of increasing the assumed value of $\sigma_R$:
+
+> **Sc 6d.** Fix $\sigma_R$ = 1.0.
+
+There was very little discernible difference in the estimated biomass, recruitment and fishing mortality between the Reference Case model and Sc 6d (Figures \@ref(fig:fig-sens6-biomass-5abcd) to \@ref(fig:fig-sens6-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens13-biomass-3cd) to \@ref(fig:fig-sens13-f-3cd) for Area 3CD).
+
+## SC 7A. ASSUMED FIXED VALUE OF $\sigma_W$
+
+Given the uncertainties in interpreting the mean weight time series (see Section \@ref(reference-case-models)) and its potential to provide direct information for scaling the stock size, two sensitivity analysis was done to illustrate the effect of the fixed value of $\sigma_W$:
+
+> **Sc 7a.** Fix $\sigma_W$ = 0.4.
+
+> **Sc 7b.** Fix $\sigma_W$ = 0.15.
+
+Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens7-biomass-5abcd) to \@ref(fig:fig-sens7-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens14-biomass-3cd) to \@ref(fig:fig-sens14-f-3cd) for Area 3CD.
+
+Increasing $\sigma_W$ in Sc 7a resulted in a large reduction in estimated biomass in both areas (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)), but very poor fits to the average annual mean weight data (Figures \@ref(fig:fig-sens7-meanweightfit-5abcd)a and \@ref(fig:fig-sens14-meanweightfit-3cd)a). Decreasing $\sigma_w$ in Sc 7b did not have a noticeable effect on estimated biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)) or fits to the mean weight data (Figures Figures \@ref(fig:fig-sens7-meanweightfit-5abcd)b and \@ref(fig:fig-sens14-meanweightfit-3cd)b). Confidence intervals shown on the plots arise from the observed data and are unaffected by the value of $\sigma_W$.
+
+## SC 7C. HISTORICAL ANNUAL MEAN WEIGHT IN THE COMMERCIAL CATCH
+The annnual mean weight data are known to be biased prior to 1996 due to lack of samples of fish released at sea. For both stocks, a sensitivity analysis was done with pre-1996 annual mean weight data removed, to illustrate the influence of these data on the model.
+
+> **Sc 7c.** Remove observed annual mean weight data prior to 1996.
+
+This scenario is essentially a more extreme case of Sc 7a. Removing the pre-1996 mean weight data resulted in much lower estimates of biomass (Figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)), especially in the early parts of the time series. Notably for Area 5ABCD, removing these data also resulted in an implausibly large spike (> 15 */y*) in the credible interval for fishing mortality in 1991 (Figure \@ref(fig:fig-sens7-f-5abcd)). For Area 3CD, there were large peaks in estimated fishing mortality throughout the historical period (Figure \@ref(fig:fig-sens14-f-3cd)).
+
+## SC 8A and 8B. ASSUMPTION OF PERFECTLY-KNOWN HISTORICAL CATCH
+For each stock, two sensitivity analyses were done, where pre-1996 commercial catch data were inflated by a fixed amount. These were done mainly to bracket the uncertainty in the model due to uncertain historical discarding and, to a lesser extent, foreign catches in the early part of the time series. These scenarios are not intended to represent real estimates of historical discarding. Reconstruction of the historical catch data, in collaboration with the fishing industry, is recommended as an area of future research.
+
+> **Sc 8a.** Inflate pre-1996 catches by 25%.
+
+> **Sc 8b.** Inflate pre-1996 catches by 50%.
+
+As expected, inflating the historical commercial catch data inflated estimates of historical biomass by a similar magnitude (Figures \@ref(fig:fig-sens8-biomass-5abcd) and \@ref(fig:fig-sens15-biomass-3cd)), as the models needed more biomass to explain the observed catch. We note that RPR industry participants felt that unreported discards were not significant for this species due to the nature of fishing operations during the historical period.
+
+# COMBINED COMPOSITE MODEL
+The Regional Peer Review meeting held in October 2018 reviewed the Reference Case model and the suite of sensitivity runs described above, coming to the conclusion that no one model adequately represented the uncertainty associated with this stock assessment. Consequently, the meeting agreed to adopt an approach that combined model runs to include a greater range of plausible uncertainties associated with this species in each area.
+
+@forrest2013 used a model-averaging approach to construct decision tables based on combined posterior samples from several different sensitivity cases. This was to address some of the key irresolvable uncertainties associated with the stock assessment. A similar approach was used in the 2011 assessment of Pacific Hake [@stewart2011], where two structurally different stock assessment models were judged by the Pacific Fishery Management Council’s Scientific and Statistical Committee to be equally plausible. A similar “ensemble” approach is used in the annual assessments of Pacific Halibut, where four structurally distinct models are used in construction of the decision table [@stewart2016]. Two recent BC groundfish stock assessments (Shortspine Thornyhead [@starr2017] and Walleye Pollock [@starr2018]), which were based on the same iscam delay-difference model have also adopted this approach.
+
+For Area 5ABCD, the following seven models were selected because they represent stock hypotheses and sources of uncertainty which cannot be ruled out given the current model structure and the availability of data:
+
+1.	Sc 1a Reference model
+2.	Sc 2d Set the mean of the prior probability distribution for synoptic surveys $\ln(q)$ = $\ln(1.0)$ (pro-rated by depth-stratum areas of Area 5AB and 5CD)
+3.	Sc 2e Increase the standard deviation (SD) for synoptic survey $\ln(q)$ to 0.6.
+4.	Sc 3a Set the parameters of the prior probability distribution for $\ln(M)$ to $\mathcal{N}\sim(0.4,0.1)$;
+5.	Sc 5a Set knife-edged age at recruitment = 3 years
+6.	Sc 6b Reduce the overall observation error term $\sigma_O = 0.15$
+7.	Sc 7b Reduce the SD in the likelihood for the fit to average annual mean weight $\sigma_W = 0.15$
+
+Posterior estimates of biomass from the six sensitivity cases are shown together in Figure \@ref(fig:fig-model-average-biomass-comp-5abcd). The combined posterior estimates of biomass are shown in Figure \@ref(fig:fig-model-average-biomass-5abcd). Projected biomass from the model-averaged set is shown in Figure \@ref(fig:fig-model-average-biomass-5abcd-proj).
+
+For Area 3CD, the following seven models were selected because they represent stock hypotheses and sources of uncertainty which cannot be ruled out given the current model structure and the availability of data:
+
+1.	Sc 1a Reference model
+2.	Sc 2d Set the mean of the prior probability distribution for synoptic survey $\ln(q)$ = $\ln(1.0)$
+3.	Sc 2e Increase the standard deviation (SD) for synoptic survey $\ln(q)$ to 0.6.
+4.	Sc 3a Set the parameters of the prior probability distribution for $\ln(M)$ to $\mathcal{N}\sim(0.4,0.1)$;
+5.	Sc 5a Set knife-edged age at recruitment = 3 years
+6.	Sc 6b Reduce the overall observation error term $\sigma_O = 0.15$
+7.	Sc 7b Reduce the SD in the likelihood for the fit to average annual mean weight $\sigma_W = 0.15$
+
+Posterior estimates of biomass from the model-averaged set are shown together in Figure \@ref(fig:fig-model-average-biomass-comp-3cd). The combined posterior estimates of biomass are shown in Figure \@ref(fig:fig-model-average-biomass-3cd). Projected biomass from the model-averaged set is shown in Figure \@ref(fig:fig-model-average-biomass-3cd-proj).
+
+# MODEL-AVERAGED REFERENCE POINTS AND DECISION TABLES
+Reference points were calculated for each area using model-averaged blended posteriors as described above. The results are shown in Table \@ref(tab:tab-ref-points-table-avg-5abcd) for Area 5ABCD and Table \@ref(tab:tab-ref-points-table-avg-3cd) for Area 3CD. Biomass and recruitment posterior medians with credible intervals and MPD values are also provided in Tables \@ref(tab:tab-post-biomass-avg-5abcd) and \@ref(tab:tab-post-recr-avg-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-post-biomass-avg-3cd) and \@ref(tab:tab-post-recr-avg-3cd) for Area 3CD.
+
+Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on posterior samples for a one-year projection to the end of 2019. Uncertainty enters the projections through parameter uncertainty propagated from the modeled time series, and recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
+
+1. $P(B_{2020} < B_{2019})$
+1. $P(F_{2019} > F_{2018})$
+1. $P(B_{2020} < LRP)$
+1. $P(B_{2020} < USR)$
+1. $P(F_{2019} > LRR)$
+
+where
+
+1. $USR$ (Upper Stock Reference) is the historical mean of the biomass estimates from 1956--2004.
+1. $LRP$ (Limit Reference Point) is the lowest estimated biomass agreed upon as an undesirable state to be avoided. For Area 5ABCD this is the estimated biomass in 2000. For Area 3CD it is the estimated biomass in 1986.
+1. $LRR$ (Limit Removal Rate) is the average fishing mortality rate from 1956--2004.
+
+For more information on reference points, see Section \@ref(reference-points).
+
+The above performance measures are intended to present probabilities of "undesirable" states under alternative 2018 projected catch levels. For example, an "undesirable" biomass-based performance measure occurs when the 2019 projected biomass is below the LRP, i.e., $B_{2019}/LRP < 1$. An "undesirable" fishing mortality-based performance measure occurs when projected 2018 fishing mortality is above the reference point, i.e., $F_{2018}/LRR > 1$.
+
+Probabilities of such states are measured as the proportion of thinned, burned-in posterior samples that meet the criteria above (i.e., proportion of posterior samples < 1 for biomass-based performance measures; and proportion of posterior samples > 1 for fishing mortality-based performance measures). Note that MPD results are not used in development of advice.
+
+Decision tables summarizing the probability of breaching reference points over a range of fixed catches for a one-year projection were constructed for each area using the unweighted combined posterior samples from a set of six sensitivity cases, plus the reference case (the "model-averaged" set). For each performance measure, under each alternative 2018 catch level, Vectors of 1,000 burned-in posterior samples from each of the seven models were combined into a single vector of 7,000 samples. Probabilities of performance measures were then calculated from the combined samples. No attempt was made to assign different weights to the alternative sensitivity cases.
+
+## Area 5ABCD
+
+The "Model-Averaged" decision table probabilities are presented in Table \@ref(tab:tab-decision-avg-5abcd). In summary:
+
+•	$P(B_{2020} < B_{2019})$ ranged from 12% to 89% over the range of 2019 catch levels.
+
+•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 200 mt, hence the probability increase between 200 mt and 300 mt.
+
+•	$P(B_{2020} < LRP)$ ranged from <1% to 11%.
+
+•	$P(B_{2020} < USR)$ ranged from 98% to 99%.
+
+•	$P(F_{2019} > LRR)$  ranged from <1% to 95%.
+
+Under a 2019 catch level of 900 mt, close to the 2017 TAC, there is an estimated 1% probability
+that the 2020 biomass will be below the LRP and a 99% probability that the 2019 biomass will
+be below the USR.
+
+## Area 3CD
+
+The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd). In summary:
+
+•	$P(B_{2020} < B_{2019})$ ranged from 76% to 89% over the range of 2019 catch levels.
+
+•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 164 mt, hence the probability increase between 100 mt and 200 mt.
+
+•	$P(B_{2020} < LRP)$ ranged from <1% to 1%.
+
+•	$P(B_{2020} < USR)$ ranged from 95% to 97%.
+
+•	$P(F_{2019} > LRR)$  ranged from <1% to 96%.
+
+Under a 2019 catch level of 500 mt, close to the 2017 TAC, there is an estimated 18% probability
+that the 2020 biomass will be below the LRP and a 99% probability that the 2020 biomass will be
+below the USR.
+
+# SUMMARY AND RESEARCH RECOMMENDATIONS
+
+We presented the alternative, model averaged decision tables for Areas 5ABCD and 3CD in an attempt to more comprehensively incorporate substantial structural uncertainty in the assessments into advice for fishery managers and stakeholders. The absolute scale of the estimated biomass in the two assessed areas, determined by estimated catchability (*q*) in the survey indices, was considered the major axis of uncertainty in this assessment. Several sensitivity analyses were done to evaluate the possible magnitude of this uncertainty. Relatedly, uncertainty in the relative scale of biomass between the historical and modern eras was also identified as an important axis of uncertainty, especially for Area 5ABCD. However, we emphasize that there are major structural uncertainties that we have not been able to address in this assessment. These include, but are not limited to:
+
+1. The effects of the assumption of constant selectivity over each of the two time periods in the trawl fishery. This assumption is unlikely to be correct, given the known variations in mesh size regulations and in fishing behaviour;
+1. The effect of the assumption that recruitment to the fishery, surveys and the spawning biomass is knife-edged at age 2 years. Knife-edge recruitment is a structural assumption associated with the delay-difference model. Addressing this uncertainty would involve adopting another modelling approach;
+1. The impact of uncertainty in stock structure in understanding patterns in abundance;
+1. The impact of uncertainty in the magnitude of historical discarding and foreign catches;
+1. The impact of change in onboard observer coverage and representativeness of length samples from the commercial catch.This issue is particularly important when interpreting sorted samples taken from landed catch relative to unsorted samples taken from catch as it comes on board.
+1. There was a substantial change in the quality of the catch/effort data available to this assessment beginning in 1996. Before 1996, data were self-reported by fishers with uncertain reliability.  Tow-by-tow data only began in 1991, which meant that the catch location and depth can only be approximately known before 1991. Before 1991, effort and catch were combined on a daily basis within defined spatial "localities", again with unknown reliability. This meant that the analyses performed on the pre-1996 catch/effort data had fewer available variables for standardizing the "abundance" effect compared to the post-1995 data.  As well, all fisher-dependent data (both before and after 1996) are affected by economic and other non-biological considerations for which it is difficult or impossible to standardize. Consequently, CPUE data need to be viewed as potentially biased and possibly misleading. This is an important uncertainty because both area stock assessments are highly dependent on the pre-1996 CPUE series, as indicated by sensitivity runs 1e and 1f, which estimate much larger stock sizes in the absence of the pre-1996 CPUE series. On the other hand, there is little sensitivity to the removal of the post-1995 CPUE data for either stock, likely because of the presence of the co-occurring fishery- independent surveys.
+
+Uncertainty is therefore under-represented in this assessment. We make a number of research recommendations to help reduce uncertainties for BC Pacific Cod stocks:
+
+1. Investigate application of a length-based model to characterize possible changes in selectivity in the trawl fishery, particularly the impact of changing mesh size regulations and recognizing that length samples prior to 1996 under-represent smaller length classes.
+1. Investigate possible mixing between stock areas within and outside of British Columbia. Genetic samples have been collected from spawning fish in Hecate Strait and Queen Charlotte Sound but these data have not yet been analyzed. Other sources of information could also be considered, such as comparing trends in Alaskan waters, comparing trends with other BC commercial fisheries, otolith microchemistry or similarities/differences in other biological factors among areas.
+1. Explore the application of geostatistical tools to coast-wide geospatial data for developing indices of abundance and better capturing spatio-temporal characteristics of the stock.
+1. Work with the fishing industry to improve understanding of the magnitude of historical foreign catch and discards, and drivers of changes in fishing effort during the historical period, which may improve understanding of the relationship between commercial CPUE and abundance, and to better characterize uncertainty due to historical changes in the fishery.
+1. Continue to develop feedback simulation models for this species [@forrest2018; @carruthers2018] to evaluate, *inter alia*, costs and benefits of including age-composition data in developing advice for this species, given the current paucity of available ageing data, the expense of preparing fin-sections and the uncertainty associated with age readings. Such analyses could  also be used to evaluate relative performance of the delay-difference model and alternative data-rich and/or data-limited assessment methods.
+
+# ACKNOWLEDGEMENTS
+
+We are grateful to Elise Keppel (Pacific Biological Station) for reconstructing
+the historical commercial catch per unit effort data. Her work on the data for this
+assessment made it possible to create a fully reproducible analysis and will be
+helpful in future assessments for this and other stocks. Matthew Grinnell (Pacific Biological Station) assisted with initial preparation of this document. Norm Olsen, Greg Workman and Maria Surry (Pacific Biological Station) provided support and advice with data preparation for the assessment. We thank Bruce Turris and Brian Mose (Canadian Groundfish Research and Conservation Society) for their advice on fishery operations and assessment needs. Rob Tadey and Gwyn Mason (Groundfish Management Unit) provided advice on historical TAC values. We are very grateful to two reviewers, Ian Stewart (International Pacific Halibut Commission) and Daniel Ricard (Gulf Fisheries Centre), whose detailed reviews greatly improved the advice in this assessment. Rowan Haigh (Institute of Ocean Sciences) also provided helpful editorial comments.
+
+\clearpage
