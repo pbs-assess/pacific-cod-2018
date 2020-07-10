@@ -433,13 +433,13 @@ knitr::kable(surv_tri, caption = "Biomass estimates and confidence intervals for
 
 
 ```{r tri-tows, fig.cap="(Left panels): plot of tow locations in the Vancouver INPFC region for the NMFS triennial survey in US and Canadian waters. Tow locations are colour-coded by depth range: black=55--183m; red=184-366m; grey=367-500m. Dashed line shows approximate position of the Canada/USA marine boundary. Horizontal lines are the stratum boundaries: 47 30, 47 50, 48 20 and 49 50. Tows south of the 47 30 line were not included in the analysis. (Right panels): circle sizes in the density plot are scaled across all years (1980, 1983, 1989, 1992, 1995, 1998, and 2001), with the largest circle = 7,229 kg/km2 in 1989. The red solid lines indicate the boundaries between PMFC areas 3B, 3C and 3D.", cache=FALSE}
-knitr::include_graphics(here::here("index", "paul-figs", "paul-surv-small.png"),
+knitr::include_graphics(here::here("report", "paul-figs", "paul-surv-small.png"),
   dpi = NA)
 ```
 
 ```{r tri-fig8, fig.cap="Distribution of Pacific Cod catch weights for each survey year summarised into 25 m depth intervals for all tows (Table B.2) in Canadian and US waters of the Vancouver INPFC area. Catches are plotted at the mid-point of the interval.  Note that the deep strata introduced in 1995 (see Table B.2) have been included in this plot but were not used in the biomass estimation."}
 insert_paul_figure <- function(n) {
-  knitr::include_graphics(here::here("index", "paul-figs", paste0("paul", n, ".png")), dpi = NA)
+  knitr::include_graphics(here::here("report", "paul-figs", paste0("paul", n, ".png")), dpi = NA)
 }
 insert_paul_figure(8)
 ```
