@@ -3,7 +3,7 @@
 # FIGURES
 
 ```{r fig-map, fig.cap="Map of the management areas 5AB (Queen Charlotte Sound), 5CD (Hecate Strait), and 3CD (West Coast Vancouver Island).", out.width="4in"}
-knitr::include_graphics("figure/Pcod_3CD5ABCDE_Pic.png")
+knitr::include_graphics(here::here("report-french/figure/Pcod_3CD5ABCDE_Pic.png"))
 
 ```
 
@@ -341,15 +341,18 @@ i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
 ```
 
-```{r fig-sens7-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+<!-- FIXME: remove eval=FALSE -->
+```{r fig-sens7-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD.", eval=FALSE}
 b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
-```{r fig-sens7-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+<!-- FIXME: remove eval=FALSE -->
+```{r fig-sens7-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD.", eval=FALSE}
 r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
-```{r fig-sens7-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+<!-- FIXME: remove eval=FALSE -->
+```{r fig-sens7-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD.", eval=FALSE}
 f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 

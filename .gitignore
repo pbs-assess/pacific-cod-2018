@@ -65,3 +65,4 @@ data/generated/cpue-predictions-historical.csv
 data/generated/cpue-predictions-modern.csv
 swans.R
 index
+report-french/resdoc.Rmd
