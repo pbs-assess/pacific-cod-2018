@@ -32,7 +32,6 @@
 \RequirePackage[title, toc]{appendix}  % More appendix options
 \RequirePackage{subcaption}  % Panels within a figure
 \RequirePackage{pdfcomment} % For pdftooltip
-\usepackage{chngcntr} % https://tex.stackexchange.com/questions/85776/change-figure-numbering-for-appendix
 
 % Included so that the kableExtra::linebreak function can be used
 \RequirePackage{makecell}
@@ -177,11 +176,11 @@
 
 % Yes, ugly, but that's the rules (Or is it? Might not be required)
 \RequirePackage{ragged2e}
-% \RequirePackage{microtype}
+\RequirePackage{microtype}
 % Default is 50 (lots of hyphenation); bigger values penalize hyphenation more; make it huge to completely avoid them;
 % 1200 is my guess at a reasonable compromise:
 \hyphenpenalty=1200 % https://tex.stackexchange.com/questions/291685/minimize-hyphenations-with-ragged2e
-\RaggedLeft
+\RaggedRight
 %\raggedright  % Ragged right
 %\raggedbottom  % Ragged bottom
 \setlength\parindent{0pt}  % No indent paragraphs
@@ -202,10 +201,12 @@
 % \tikzstyle{line} = [draw, -{Latex[length=2mm, width=1.5mm]}, thick]
 
 % Ensure auto-generated sections are uppercase
-\addto\captionsenglish{\renewcommand{\contentsname}{CONTENTS}}
-\addto\captionsenglish{\renewcommand{\refname}{REFERENCES}}
+\addto\captionsenglish{\renewcommand{\contentsname}{TABLE DES MATIÈRES}}
+\addto\captionsenglish{\renewcommand{\refname}{RÉFÉRENCES CITÉES}}
 \addto\captionsenglish{\renewcommand{\indexname}{INDEX}}
-\addto\captionsenglish{\renewcommand{\appendixname}{APPENDIX}}
+\addto\captionsenglish{\renewcommand{\appendixname}{ANNEXE}}
+
+\renewcommand\appendixtocname{ANNEXES}
 
 % Arguments for frames around figures (fbox)
 \setlength{\fboxsep}{0pt}  % Distance between frame and content
@@ -251,15 +252,15 @@
 % New definition: Citation
 \newcommand{\trCitation}{
 \begin{hangparas}{1em}{1}
-\trAuthsBack{} \trYear{}. \trTitle{}. Can. Tech. Rep. Fish. Aquat. Sci. \trReportNum{}: \pageref{TRlastRoman}{}\,+\,\pageref{LastPage}{}\,p.
+\trAuthsBack{} \trYear{}. \trTitle{}. Rapp. tech. can. sci. halieut. aquat. \trReportNum{}: \pageref{TRlastRoman}{}\,+\,\pageref{LastPage}{}\,p.
 \end{hangparas}}
 
 %%%%% Frontmatter %%%%%
 \def\frontmatter{%
 
 % Sections in capitals
-\renewcommand\listfigurename{LIST OF FIGURES}
-\renewcommand\listtablename{LIST OF TABLES}
+\renewcommand\listfigurename{LISTE DE FIGURES}
+\renewcommand\listtablename{LISTE DE TABLEAUX}
 
 % Footnote symbols in front matter
 \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
@@ -283,9 +284,9 @@
 \trYear{}
 \vfill
 \Large
-\textbf{Canadian Technical Report of\\
-Fisheries and Aquatic Sciences \trReportNum{}}
-\lfoot{\includegraphics[height=7mm, keepaspectratio]{\locRepo/images/e_dfo_bw.png}}
+\textbf{Rapport technique canadien des\\
+sciences halieutiques et aquatiques \trReportNum{}}
+\lfoot{\includegraphics[height=7mm, keepaspectratio]{\locRepo/images/f_dfo_bw.png}}
 \cfoot{}
 \rfoot{\includegraphics[height=7mm, keepaspectratio]{\locRepo/images/canada_bw.png}}
 \end{flushleft}
@@ -296,28 +297,6 @@ Fisheries and Aquatic Sciences \trReportNum{}}
 \footnotesize
 \lfoot{} \cfoot{\thepage} \rfoot{}
 \thispagestyle{empty}
-\begin{center}
-\textbf{Canadian Technical Report of Fisheries and Aquatic Sciences}
-\end{center}
-\noindent
-Technical reports contain scientific and technical information that contributes to existing knowledge but which is not normally appropriate for primary literature.
-Technical reports are directed primarily toward a worldwide audience and have an international distribution.
-No restriction is placed on subject matter and the series reflects the broad interests and policies of Fisheries and Oceans Canada, namely, fisheries and aquatic sciences.
-\indent
-\par
-Technical reports may be cited as full publications.
-The correct citation appears above the abstract of each report.
-Each report is abstracted in the data base \emph{Aquatic Sciences and Fisheries Abstracts}.
-\par
-Technical reports are produced regionally but are numbered nationally.
-Requests for individual reports will be filled by the issuing establishment listed on the front cover and title page.
-Out-of-stock reports will be supplied for a fee by commercial agents.
-\par
-Numbers 1--456 in this series were issued as Technical Reports of the Fisheries Research Board of Canada.
-Numbers 457--714 were issued as Department of the Environment, Fisheries and Marine Service, Research and Development Directorate Technical Reports.
-Numbers 715--924 were issued as Department of Fisheries and Environment, Fisheries and Marine Service Technical Reports.
-The current series name was changed with report number 925.
-\bigskip
 \begin{center}
 \textbf{Rapport technique canadien des sciences halieutiques et aquatiques}
 \end{center}
@@ -339,6 +318,28 @@ Les num\'{e}ros 1 \`{a} 456 de cette s\'{e}rie ont \'{e}t\'{e} publi\'{e}s \`{a}
 Les num\'{e}ros 457 \`{a} 714 sont parus \`{a} titre de Rapports techniques de la Direction g\'{e}n\'{e}rale de la recherche et du d\'{e}veloppement, Service des p\^{e}ches et de la mer, minist\`{e}re de l'Environnement.
 Les num\'{e}ros 715 \`{a} 924 ont \'{e}t\'{e} publi\'{e}s \`{a} titre de Rapports techniques du Service des p\^{e}ches et de la mer, minist\`{e}re des P\^{e}ches et de l'Environnement.
 Le nom actuel de la s\'{e}rie a \'{e}t\'{e} \'{e}tabli lors de la parution du num\'{e}ro 925.
+\bigskip
+\begin{center}
+\textbf{Canadian Technical Report of Fisheries and Aquatic Sciences}
+\end{center}
+\noindent
+Technical reports contain scientific and technical information that contributes to existing knowledge but which is not normally appropriate for primary literature.
+Technical reports are directed primarily toward a worldwide audience and have an international distribution.
+No restriction is placed on subject matter and the series reflects the broad interests and policies of Fisheries and Oceans Canada, namely, fisheries and aquatic sciences.
+\indent
+\par
+Technical reports may be cited as full publications.
+The correct citation appears above the abstract of each report.
+Each report is abstracted in the data base \emph{Aquatic Sciences and Fisheries Abstracts}.
+\par
+Technical reports are produced regionally but are numbered nationally.
+Requests for individual reports will be filled by the issuing establishment listed on the front cover and title page.
+Out-of-stock reports will be supplied for a fee by commercial agents.
+\par
+Numbers 1--456 in this series were issued as Technical Reports of the Fisheries Research Board of Canada.
+Numbers 457--714 were issued as Department of the Environment, Fisheries and Marine Service, Research and Development Directorate Technical Reports.
+Numbers 715--924 were issued as Department of Fisheries and Environment, Fisheries and Marine Service Technical Reports.
+The current series name was changed with report number 925.
 \clearpage
 
 % Start page numbering/anchoring
@@ -350,14 +351,14 @@ Le nom actuel de la s\'{e}rie a \'{e}t\'{e} \'{e}tabli lors de la parution du nu
 \thispagestyle{empty}
 \noindent
 \begin{center}
-Canadian Technical Report of\\
-Fisheries and Aquatic Sciences \trReportNum{}
+Rapport technique canadien des sciences\\
+halieutiques et aquatiques \trReportNum{}
 \vfill
 \trYear{}
 \vfill
 \textnormal{\MakeTextUppercase{\trTitle{}}}
 \vfill
-by
+par
 \vfill
 \trAuthsLong{}
 \vfill
@@ -368,13 +369,13 @@ by
 % Fourth page: Colophon
 \vspace*{\fill}
 \begin{center}
-\copyright{} Her Majesty the Queen in Right of Canada, \trYear{}\\
-Cat. No. Fs97-6/\trReportNum{} E-PDF \quad ISBN \trISBN{} \quad ISSN 1488-5379
+\copyright{} Sa Majesté la Reine du Chef du Canada, \trYear{}\\
+N° de cat. Fs97-6/\trReportNum{} F-PDF \quad ISBN \trISBN{} \quad ISSN 1488-545X
 \end{center}
 \par
 \bigskip
 \noindent
-Correct citation for this publication:
+On doit citer la publication comme suit:
 \bigskip
 \par
 \trCitation{}
@@ -384,21 +385,25 @@ Correct citation for this publication:
 \pdfbookmark[1]{\contentsname}{toc}
 
 % Table of contents page
+% \tableofcontents\clearpage
+
+\renewcommand{\contentsname}{\bf TABLE DES MATI\`ERES}
 \tableofcontents\clearpage
+
 
 % Lists of figures and tables (optional)
 % \listoffigures \listoftables \clearpage
 
 % Abstract page(s)
-\section*{ABSTRACT}\addcontentsline{toc}{section}{ABSTRACT}
-\trCitation{}
-\bigskip
-\trAbstract{}
-\clearpage
 \section*{R\'{E}SUM\'{E}}\addcontentsline{toc}{section}{R\'{E}SUM\'{E}}
 \trCitation{}
 \bigskip
 \trResume{}
+\clearpage
+\section*{ABSTRACT}\addcontentsline{toc}{section}{ABSTRACT}
+\trCitation{}
+\bigskip
+\trAbstract{}
 \label{TRlastRoman}
 \clearpage
 

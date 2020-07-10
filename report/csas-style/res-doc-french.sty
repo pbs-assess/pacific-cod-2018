@@ -1,11 +1,11 @@
-%% sr.sty - Unofficial LaTeX style file for Canadian
-%%  Science Response Documents.
+%% res-doc.sty - Unoffocial LaTeX style file for Canadian
+%%  Science Advisory Secretariat Research Documents.
 
-%% See res-doc.sty for more information on contents of this file
 \usepackage{tabularx}
 
-%% ------------------------------------------------------------------------------
+%% Use the resDoc.bst file for bibliography style.
 \usepackage{natbib}
+%% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
 %% Load hyperlink package and set up link colors
@@ -20,13 +20,6 @@
             urlcolor=blue,
             bookmarksopen=true,
             bookmarksopenlevel=1}
-% Underlines
-\usepackage[normalem]{ulem}
-% hack into hyperref (from https://tex.stackexchange.com/q/208808)
-\makeatletter
-\newcommand*{\link}{\begingroup\@makeother\#\@mylink}
-\newcommand*{\@mylink}[2]{\href{#1}{\sffamily\uline{#2}}\endgroup}
-\makeatother
 %% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
@@ -45,11 +38,10 @@
 \usepackage[pagewise]
            {lineno}
 %% Page margins
-\usepackage[top=0.25in,
-            bottom=1.7in,
+\usepackage[top=1in,
+            bottom=1in,
             left=1in,
-            right=1in,
-            includefoot]
+            right=1in]
            {geometry}
 %% ------------------------------------------------------------------------------
 
@@ -64,10 +56,6 @@
             singlelinecheck=false]
            {caption}
 %% ------------------------------------------------------------------------------
-\usepackage{afterpage}
-
-% Included so that the kableExtra::linebreak function can be used
-\usepackage{makecell}
 
 %% ------------------------------------------------------------------------------
 %% Table of Contents
@@ -120,8 +108,6 @@
 %% Paragraph text settings
 %% To not indent paragraphs.
 \setlength\parindent{0pt}
-%% To increase white space between paragraphs (since not indenting).
-\parskip 2ex
 %% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
@@ -152,33 +138,32 @@
 
 \newcommand{\nonumsection}{\@startsection
 {section}{1}{0mm}                 %% name, level, indent
-{-1.5ex \@plus -0.25ex \@minus -.1ex}
-{0.5ex \@plus.1ex}
-{\centering\normalfont\Large\bfseries}}
+{-3.5ex \@plus -1ex \@minus -.2ex}%% beforeskip
+{2.3ex \@plus.2ex}                %% afterskip
+{\centering\normalfont\large\bfseries\MakeUppercase}}
 
 \renewcommand{\section}{\@startsection
-{section}{2}{0mm}
-{-1.5ex \@plus -0.25ex \@minus -.1ex}
-{0.5ex \@plus.1ex}
-{\centering\normalfont\Large\bfseries}}
+{section}{1}{0mm}
+{-3.5ex \@plus -1ex \@minus -.2ex}
+{2.3ex \@plus.2ex}
+{\centering\normalfont\large\bfseries\MakeUppercase}}
 
 \renewcommand{\subsection}{\@startsection
-{subsection}{3}{0mm}
-{-1.5ex \@plus -0.25ex \@minus -.1ex}
-{0.5ex \@plus.1ex}
-{\normalfont\large\bf}}
+{subsection}{2}{0mm}
+{-3.25ex plus -1ex minus  -.2ex}{1.5ex plus .2ex}
+%% {1ex}{0.1ex plus -2ex}
+{\normalfont\bf\MakeUppercase}}
 
 \renewcommand{\subsubsection}{\@startsection
-{subsubsection}{4}{0.63cm}
-{-1.5ex \@plus -0.25ex \@minus -.1ex}
-{0.5ex \@plus.1ex}
+{subsubsection}{3}{0mm}
+{-2ex plus -1ex minus -.2ex}{1.5ex plus .2ex}
 {\normalfont\bf}}
 
 \renewcommand{\chapter}{\@startsection
 {chapter}{1}{0mm}
-{-1ex \@plus -0.25ex \@minus -.1ex}
-{1ex \@plus.1ex}
-{\centering\normalfont\Large\bfseries}}
+{-3.5ex \@plus -1ex \@minus -.2ex}
+{2.3ex \@plus.2ex}
+{\centering\normalfont\large\bfseries\MakeUppercase}}
 
 %% Section headings in appendices must be left-justified not centered;
 %%  this is same as \section above but without \centering.
@@ -188,7 +173,22 @@
 {section}{1}{0mm}                 %% name, level, indent
 {-3.5ex \@plus -1ex \@minus -.2ex}%% beforeskip
 {2.3ex \@plus.2ex}                %% afterskip
-{\normalfont\Large\bfseries}} %% style
+{\normalfont\large\bfseries\MakeUppercase}} %% style
+
+\newcommand\TableOfContents{
+  \thispagestyle{fancyplain}
+  \pagenumbering{roman}
+  %% TOC is required by CSAS to be on page iii.
+  \setcounter{page}{3}
+  \renewcommand{\contentsname}{\bf \large \vspace{-20mm} TABLE DES MATI\`ERES}
+  \addtocontents{toc}{\protect\thispagestyle{fancy}}
+  \begin{center}
+    \tableofcontents
+  \end{center}
+  \newpage
+  %% To number subsubheadings
+  \setcounter{secnumdepth}{5}
+}
 
 \newcommand\Citation[1]{
   %% Start citation indentation
@@ -206,7 +206,7 @@
 \newcommand\Main{
   %% To number the main document sections, tables, etc.
   %%  as 1.1, 1.2, etc.
-  \renewcommand{\thesection}{\arabic{section}.}
+  \renewcommand{\thesection}{\arabic{section}}
   \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
   \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
   \renewcommand{\thetable}{\arabic{table}}
@@ -235,16 +235,15 @@
   \renewcommand{\section}{\appsection}
 }
 
-%% Changes the name of the bibliography.
-\renewcommand{\bibname}{Sources of information}
-%% To make REFERENCES a section
+%% Changes the name of the bibliography to REFERENCES.
+\renewcommand{\bibname}{REFERENCES}
+%% To make REFERENCES a section and then number it
 \renewcommand{\bibsection}{\section{\bibname}}
 
 %% Makes figures stick to the top of the page. i.e. if there is a single figure
 %%  on a page, it will be placed in the center. This forces it to stick
 %%  to the top.
-\setlength{\@fptop}{0pt}
-\setlength{\@fpsep}{18pt}  % Reduce space betwen floats too
+\setlength\@fptop{0pt}
 
 %% From hake.sty:
 %% Change default options for float rules for figure and tables, from:
@@ -269,10 +268,34 @@
 \newcommand{\starredchapter}[1]{
   \clearpage
   %% Make spacing between top of page and heading less.
-  \vspace*{-50\p@}
+  \vspace*{-40\p@}
   \phantomsection
   %% Add the appendix name to the table of contents.
   \addcontentsline{toc}{chapter}{#1}\chapter*{#1}
+}
+
+%% Make English abstract have entry in the table of contents
+\newcommand{\abstract}{
+  \clearpage
+  %% Make spacing between top of page and heading less.
+  \vspace*{-40\p@}
+  \phantomsection
+  %% Add the appendix name to the table of contents.
+  \addcontentsline{toc}{section}{RÉSUMÉ}\nonumsection*{RÉSUMÉ}
+}
+
+%% Make French abstract have entry in the table of contents
+\newcommand{\frenchabstract}[1]{
+  \clearpage
+  %% Make spacing between top of page and heading less.
+  \vspace*{-30\p@}
+  \phantomsection
+  \begin{center}
+    \Large \textbf{#1}
+  \end{center}
+  \vspace{-6mm}
+  %% Add the appendix name to the table of contents.
+  \addcontentsline{toc}{section}{R\'ESUM\'E}\nonumsection*{R\'ESUM\'E}
 }
 
 %% Make a landscape page properly, with the page numbers and bars rotated to
@@ -294,7 +317,8 @@
 
 %% ------------------------------------------------------------------------------
 %% For landscape pages in CSAS documents
-\usepackage{pdflscape}
+% \usepackage{pdflscape}
+\usepackage{lscape}
 \usepackage[absolute]{textpos}
 \setlength{\TPHorizModule}
   {8.5in}
@@ -344,19 +368,18 @@
 
 %% ------------------------------------------------------------------------------
 %% Defines the header and footer rules for a CSAS paper.
-\fancyhf{}
+\pagestyle{fancy}
 \renewcommand{\footrulewidth}{0.4pt}
 \renewcommand{\headrulewidth}{0.4pt}
-\newcommand{\regionWidth}{\widthof{\textbf{\rdRegion{}}}}
-\newcommand{\remainderWidth}{\linewidth - \regionWidth - 0.5cm}
-\fancyhead[L]{\parbox[b]{\regionWidth}{\textbf{\rdRegion{}}}}
-\fancyhead[R]{\parbox[b]{\remainderWidth}{\RaggedLeft{\textbf{Science Response: \rdTitleShort{}}}}}
-\fancypagestyle{csapfancy}{
+\fancypagestyle{csapfancy}{%%
+  %% \fancyhead[L]{}%%{DRAFT -- Non-citable working paper}
+  %% \fancyhead[R]{}%%{CSAP WP2016zzzxx}
+  %% \fancyfoot[L]{}%%{Appendix \thechapter -- Model Results}
+  %% \fancyfoot[R]{}%%{\Sexpr{paste0(sppname," (",area.name,")")}}
   \fancyfoot[C]{\thepage}
   \renewcommand{\footrulewidth}{0.4pt}
   \renewcommand{\headrulewidth}{0.4pt}
 }
-\pagestyle{csapfancy}
 %% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
@@ -382,7 +405,6 @@
 %% The following controls the look of the second-level in an enumeration list
 %% This will make list items circles instead of stars
 \renewcommand{\labelitemii}{$\circ$}
-\renewcommand{\labelitemi}{$\bullet$}
 %% Sets up the levels of lists with types to use for each,
 %%  e.g. level 2 uses small alphabetic characters and
 %%  level 3 uses roman numerals.
@@ -395,14 +417,14 @@
   labelsep*=0.01in,  % Space betw. numbers and text (note * is req'd)
   leftmargin=!,      % No space betw. margin of list and following lines
   itemindent=0pt,    % Hanging indentation (after first line)
-  itemsep=3pt        % Vertical space between list items
+  itemsep=0pt        % Vertical space between list items
 }
 \setenumerate[1]{label=\arabic*.}
 \setenumerate[2]{label=\alph*.}
 \setenumerate[3]{label=\roman*.}
 \setenumerate[4]{label=\arabic*.}
 \setenumerate[5]{label=\alph*.}
-\setenumerate{itemsep=3pt} % This needs to be here for itemsep above to be recognized
+%\setenumerate{nosep} % This needs to be here for itemsep above to be recognized
 \setitemize{
   align=left,        % Left align labels
   topsep=0pt,        % Vertical space before the list
@@ -411,15 +433,9 @@
   labelsep*=0.01in,  % Space betw. numbers and text (note * is req'd)
   leftmargin=!,      % No space betw. margin of list and following lines
   itemindent=0pt,    % Hanging indentation (after first line)
-  itemsep=3pt        % Vertical space between list items
+  itemsep=0pt        % Vertical space between list items
 }
-\setitemize{itemsep=3pt}   % This needs to be here for itemsep above to be recognized
-
-% This actually does most of the bullet spacing:
-\setlist[itemize,1]{leftmargin=14pt,labelsep=10pt}
-\setlist[itemize,2]{leftmargin=15pt,labelsep=10pt}
-\setlist[enumerate,1]{leftmargin=14pt}
-\setlist[enumerate,2]{leftmargin=15pt}
+%\setitemize{nosep}   % This needs to be here for itemsep above to be recognized
 
 %% Hanging indent of the bibliography items.
 \setlength{\bibhang}{0.25in}
@@ -459,7 +475,7 @@
 \usepackage{arydshln}
 %% So paragraphs will have a blank line between them
 \usepackage[parfill]{parskip}
-\setlength{\parskip}{6pt}  % Note that "6 pts before and 6 pts after" a paragaph means 6 pts between paragraphs
+\setlength{\parskip}{4pt}
 %% So links will anchor at figure, not caption
 \usepackage{hypcap}
 %% For two-panel plots
@@ -472,8 +488,8 @@
 \usepackage{multirow}
 % To do 'for' loops in latex
 \usepackage{pgffor}
-% For float barriers --  add a silent floatbarrier to section commands
-\usepackage[section]{placeins}
+% For float barriers
+\usepackage{placeins}
 % Include PDFs (i.e., whole page)
 \usepackage{pdfpages}
 
@@ -482,9 +498,8 @@
 
 % https://tex.stackexchange.com/questions/311132/how-to-style-hrefs-underlined-and-coloured-throughout-the-document
 \usepackage{xcolor,soul}
+\usepackage{pdfcomment}
 
-% Sections without numbers
-\setcounter{secnumdepth}{0}
 
 %% Allows the french abstract to be pasted in with special characters intact
 %% Make sure maindoc.rnw is saved in utf8 encoding.
@@ -506,9 +521,6 @@
 %%   \pdftooltip{ \includegraphics{fig-file} }
 %%              {Figure~\ref{fig:haida}}   (see longer examples in readme)
 \usepackage{pdfcomment}
-
-% For uppercase title
-\usepackage{textcase}
 
 %% ------------------------------------------------------------------------------
 
@@ -542,110 +554,149 @@
 \newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
 %% ------------------------------------------------------------------------------
 
-% \usepackage{afterpage}
+\fancypagestyle{nofooter}{%
+\fancyfoot{}%
+}
 
 %% ------------------------------------------------------------------------------
-%% Set up first page (header and footer)
-\fancypagestyle{firstPage}{%
-    \newgeometry{}
-    \fancyhf{}
-    \fancyhead{}
-    \lhead{\includegraphics[width=9.2cm]{\locRepo/images/Fip-stacked-DFO-EOS-eng_bw.png}\\
-    \vspace{0.6cm}
-    \textbf{\rdRegion{}}}
-    \rhead{\textbf{Canadian Science Advisory Secretariat}\\
-    \textbf{Science Response \rdYear{}/\rdNumber{}}}
-    \lfoot{\rdMonth{} \rdYear{}}
-    \rfoot{\includegraphics[width=3.54cm]{\locRepo/images/canada_bw.png}}
-    \afterpage{\cfoot{\thepage}}
-    \afterpage{\restoregeometry}
-}
+%% Frontmatter: set up first few pages including the title page, TOC, and abstract
+%% Note that this requires some custom variables that you need to set in the main
+%% document (e.g., title, authors, year, report number)
+\def\frontmatter{%
 
-% Generate the first page
-\newcommand{\MakeFirstPage}{
-  % Headers and footers for the first page
-  \thispagestyle{firstPage}
-  % Make the title -- needs a big space to print below the header
-  \vspace*{1.75cm}
-  \begin{center}
-  \hypertarget{PageOne}{}
-  \Large{\textbf{\MakeTextUppercase{\rdTitle{}}}}
-  %\vspace{1in}
-  \end{center}
-}
+\thispagestyle{empty}
 
-% Generate the approval
-\newcommand{\MakeApproval}{
-  \section{Approved by}
-  \begin{minipage}[c]{\linewidth}
-  \begin{center}
-  \rdApp{}\\
-  \rdBranch{}, \rdRegion{}\\
-  Fisheries and Oceans Canada\\
-  \vspace{0.1cm}
-  \rdAppDate{}\\
-  \end{center}
-  \end{minipage}
-  \vspace{1mm}
-}
+\newgeometry{top=0.55in,bottom=0.55in,left=1in,right=1in}
 
-% Packages for landscape pages
-\usepackage[contents={}]{background}
-\usepackage{varwidth}
+\includegraphics[width=9.14cm]{\locRepo/images/Fip-stacked-DFO-EOS-fra_bw.png}
 
-% Background for landscape pages (header and footer)
-\newenvironment{turn}{
-  \newgeometry{hmargin=1.25in, vmargin=1in}
-  \begin{landscape}
-  \newcommand{\regionWidthW}{\widthof{\textbf{\rdRegion{}}}}
-  \newcommand{\remainderWidthW}{\linewidth - \regionWidthW - 0.5cm}
-  \pagestyle{empty}
-  \backgroundsetup{
-    angle=90,
-    opacity=1,
-    scale=1,
-    color=black,
-    nodeanchor=south,
-    position={current page.west},
-    vshift=-8.5in,
-    contents={\begin{varwidth}{\linewidth}{
-      \vspace*{2cm}
-      \parbox[b]{\regionWidthW}{\textbf{\rdRegion{}}}
-      \hfill
-      \parbox[b]{\remainderWidthW}{\RaggedLeft{\textbf{Science Response: \rdTitleShort{}}}}\\
-      \vspace{-0.3cm}
-      \rule{\linewidth}{0.4pt}\\
-      \vspace{16.75cm}
-      \vfill
-      \rule{\linewidth}{0.4pt}\\
-      \begin{center}\thepage{}\end{center}
-      \vspace{0.9cm}
-      \hphantom{.}
-      }
-      \end{varwidth}
-    }
-  }
-  }
-  {
-  \end{landscape}
-  \pagestyle{csapfancy}
-  \restoregeometry
-  \clearpage
-}
+\vspace{1.5mm}
 
-% Add leading zeros to get length 3
-\newcommand{\threedigits}[1]{\ifnum#1<10 00#1\else\ifnum#1<100 0#1\else#1\fi\fi}
+\textbf{Secrétariat canadien de consultation scientifique (SCCS)}
 
-% English citation
-\newcommand{\citeEng}[1]{
-\hangindent=0.6cm
-DFO. \rdYear{}. \rdTitle{}.
-DFO Can.\ Sci.\ Advis.\ Sec.\ Sci.\ Resp.
-#1.}
+\vspace{0.4mm}
 
-% French citation
-\newcommand{\citeFr}[1]{
-\hangindent=0.6cm
-\emph{MPO. \rdYear{}. \rdTitleFr{}.
-Secr.\ can.\ de consult.\ sci.\ du MPO, R\'{e}p.\ des Sci.\
-#1.}}
+\hrule
+
+\vspace{1.8mm}
+
+\textbf{Document de recherche \rdYear{}/\rdNumber{}}\\
+
+\vspace{2mm}
+
+\textbf{\rdRegion{}}
+
+\vspace*{\fill}
+\begin{center}
+
+\textbf{\rdTitle{}}
+\vspace{.35cm}
+
+\rdAuth{}
+
+\vspace{.35cm}
+
+\rdAuthAddy{}
+
+\end{center}
+\vspace*{\fill}
+
+\hrule
+
+\vspace{-0.9mm}
+
+
+\parbox{9cm}{\rdMonth{} \rdYear{}}%
+\begin{minipage}[t]{7.48cm}
+\flushright
+\includegraphics[width=3.54cm]{\locRepo/images/canada_bw.png}%
+\end{minipage}
+
+\clearpage
+
+\restoregeometry
+
+\vspace*{\fill}
+
+\begin{center}
+\textbf{Avant-propos}
+\end{center}
+\vspace{0.2mm}
+
+La présente série documente les fondements scientifiques des évaluations des ressources et des écosystèmes aquatiques du Canada. Elle traite des problèmes courants selon les échéanciers dictés. Les documents qu’elle contient ne doivent pas être considérés comme des énoncés définitifs sur les sujets traités, mais plutôt comme des rapports d’étape sur les études en cours.
+
+\vspace{4.2mm}
+
+\begin{center}
+\textbf{Publié par:\\}
+\vspace{1.9mm}
+Pêches et Océans Canada\\
+Secrétariat canadien de consultation scientifique\\
+200, rue Kent\\
+Ottawa ON K1A 0E6\\
+\vspace{0.17cm}
+
+\href{http://www.dfo-mpo.gc.ca/csas-sccs/}{http://www.dfo-mpo.gc.ca/csas-sccs/}\\
+\href{mailto://csas-sccs@dfo-mpo.gc.ca}{csas-sccs@dfo-mpo.gc.ca}
+
+\vspace{0mm}
+\includegraphics[scale=0.96]{\locRepo/images/recycle.png}
+
+\vspace{-1mm}
+\textcopyright\ Sa Majesté la Reine du chef du Canada, \rdYear{}\\
+ISSN 2292-4272
+\end{center}
+
+\vspace{-0.2mm}
+
+\textbf{La présente publication doit être citée comme suit :}\\
+\vspace{2mm}
+\hangindent=0.6cm \rdAuthRev{}
+\rdYear{}.
+\rdTitle{}.
+Secr.\ can.\ de\ consult.\ sci.\ du\ MPO.\ Doc.\ de\ rech. \rdYear{}/\rdNumber{}.
+\pageref{TRlastRoman}{} + \pageref{LastPage}~p.
+
+\vspace{0.2mm}
+\textbf{Also available in English:}\\
+\vspace{2mm}
+\hangindent=0.6cm \emph{\citationOtherLanguage{}}\\
+
+\vspace*{\fill}
+
+\thispagestyle{nofooter}
+
+\clearpage
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[C]{\sffamily\selectfont\thepage} % except the center
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+\pagestyle{plain}
+
+\TableOfContents
+
+% \fancypagestyle{plain}{%
+% \fancyhf{} % clear all header and footer fields
+% \fancyfoot[C]{\sffamily\selectfont\thepage} % except the center
+% % \fancyfoot[L]{\slshape \rightmark}
+% % \fancyfoot[L]{\slshape \leftmark}
+% \renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}}
+% \pagestyle{plain}
+
+\Main
+
+\rdAbstract{}
+
+\label{TRlastRoman}
+
+\clearpage
+
+% The next two lines are required to start off numbering
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+}% End of frontmatter
+%% ------------------------------------------------------------------------------
