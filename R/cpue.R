@@ -152,7 +152,7 @@ predictions <- plyr::ldply(model, predict_cpue_index_tweedie)
 arith_cpue <- dfleet %>%
   bind_rows() %>%
   group_by(area, year) %>%
-  summarise(est = sum(spp_catch) / sum(hours_fished)) %>%
+  summarise(est = sum(spp_catch) / sum(effort)) %>%
   mutate(model = "Combined") %>%
   group_by(area) %>%
   mutate(geo_mean = exp(mean(log(est)))) %>%
