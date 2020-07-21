@@ -149,38 +149,21 @@ predictions <- plyr::ldply(model, predict_cpue_index_tweedie)
 ## readr::write_csv(predictions,
 ##   here::here(paste0("data/generated/cpue-predictions-", spp, "-", params$era, ".csv")))
 
-# arith_cpue <- dfleet %>%
-#   bind_rows() %>%
-#   group_by(area, year) %>%
-#   summarise(est = sum(spp_catch) / sum(effort)) %>%
-#   mutate(model = "Combined") %>%
-#   group_by(area) %>%
-#   mutate(geo_mean = exp(mean(log(est)))) %>%
-#   mutate(est = est/geo_mean) %>%
-#   ungroup()
-
-if(params$era=="modern") {
-  arith_cpue <- dfleet %>%
-    bind_rows() %>%
-    group_by(area, year) %>%
-    summarise(est = sum(spp_catch) / sum(effort)) %>%  #RF thinks effort is hours_fished (checked tidy_cpue_index code)
-    mutate(model = "Combined") %>%
-    group_by(area) %>%
-    mutate(geo_mean = exp(mean(log(est)))) %>%
-    mutate(est = est/geo_mean) %>%
-    ungroup()
-} else {
-  arith_cpue <- dfleet %>%
-    bind_rows() %>%
-    group_by(area, year) %>%
-    summarise(est = sum(spp_catch) / sum(hours_fished)) %>%
-    mutate(model = "Combined") %>%
-    group_by(area) %>%
-    mutate(geo_mean = exp(mean(log(est)))) %>%
-    mutate(est = est/geo_mean) %>%
-    ungroup()
+for (i in seq_along(dfleet)) {
+  if ("hours_fished" %in% names(dfleet[[i]])) {
+    dfleet[[i]] <- dplyr::rename(dfleet[[i]], effort = hours_fished)
+  }
 }
 
+arith_cpue <- dfleet %>%
+  bind_rows() %>%
+  group_by(area, year) %>%
+  summarise(est = sum(spp_catch) / sum(effort)) %>%
+  mutate(model = "Combined") %>%
+  group_by(area) %>%
+  mutate(geo_mean = exp(mean(log(est)))) %>%
+  mutate(est = est/geo_mean) %>%
+  ungroup()
 
 gg_cpue$pred <- predictions %>%
   filter(formula_version %in% c("Unstandardized", "Full standardization")) %>%
