@@ -341,18 +341,15 @@ i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
 ```
 
-<!-- FIXME: remove eval=FALSE -->
-```{r fig-sens7-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD.", eval=FALSE}
+```{r fig-sens7-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
-<!-- FIXME: remove eval=FALSE -->
-```{r fig-sens7-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD.", eval=FALSE}
+```{r fig-sens7-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
-<!-- FIXME: remove eval=FALSE -->
-```{r fig-sens7-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD.", eval=FALSE}
+```{r fig-sens7-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
 f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
