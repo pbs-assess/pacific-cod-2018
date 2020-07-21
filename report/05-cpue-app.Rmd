@@ -336,7 +336,7 @@ plot_tweedie_ex(df)
 ```{r cpue-catch-effort-ts, fig.cap="Raw time series of Pacific Cod catch and total hours trawled (regardless of species caught). Data prior to 1996 is shown separately from data after 1996.", fig.asp=1.1}
 g1 <- make_catch_effort_ts_plot(dfleet_hist)  +
   ggtitle("1956-1995 data")
-g2 <- make_catch_effort_ts_plot(dfleet_modern) +
+g2 <- make_catch_effort_ts_plot_modern(dfleet_modern) +
   ggtitle("1996+ data")
 cowplot::plot_grid(g1, g2, ncol = 1)
 ```
