@@ -44,10 +44,11 @@ catch.table <- function(dat,
 }
 
 tac.table <- function(tac,
-                      cap = ""){
+                      cap = "", french = FALSE){
   ## dat is what comes out of the csv file data/pcod-tac-1996-2018.csv
 
   names(tac) <- gsub("X", "", names(tac))
+  names(tac) <- en2fr(names(tac), translate = french, allow_missing = TRUE)
 
   tac[,c(2,3,4,5)] <- apply(tac[,c(2,3,4,5)],
                             2,

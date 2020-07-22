@@ -1,7 +1,7 @@
 priors.table <- function(model,
                          cap = "",
                          basis.vec = NA,
-                         digits = 2){
+                         digits = 2, french = FALSE){
 
   ## basis.vec is the reasons for each prior being used.
   ##  if there is a dash - in them, that will signify a new
@@ -164,6 +164,9 @@ priors.table <- function(model,
     latex.bold("P1"),
     latex.bold("P2"),
     latex.bold("Estimated"))
+
+  col.names <- en2fr(col.names, translate = french, allow_missing = TRUE)
+
   if(!is.na(basis.vec[1])){
     col.names <- c(col.names, latex.bold("Basis"))
   }

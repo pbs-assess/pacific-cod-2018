@@ -36,7 +36,7 @@ cap = paste0("Prises déclarées (tm) de morue du Pacifique dans la zone 3CD ",
 
 ```{r tab-tac}
 tac.table(tac,
- cap = paste0("Sommaire des TAC par zone."))
+ cap = paste0("Sommaire des TAC par zone."), french = french)
 ```
 
 \clearpage
@@ -56,7 +56,8 @@ basis.vec = c("Non informatif",
               "Non informatif-Nécessité technique",
               "Non informatif-Nécessité technique"),
              cap = paste0(" Distributions de probabilité a priori, leurs paramètres et les valeurs initiales utilisées dans le ",
-                          "modèle du scénario de référence de la zone 5ABCD. ", q.5abcd.desc))
+                          "modèle du scénario de référence de la zone 5ABCD. ", q.5abcd.desc),
+  french = french)
 ```
 
 \clearpage
