@@ -77,7 +77,7 @@ for (i in seq_along(dfleet)) {
 }
 
 if (params$era == "modern") {
-  formulas <- data_frame(
+  formulas <- tibble::tibble(
     formula = c(
       "cpue ~ 0 + year_factor",
       "cpue ~ 0 + year_factor + depth",
@@ -100,7 +100,7 @@ if (params$era == "modern") {
     )
   )
 } else {
-  formulas <- data_frame(
+  formulas <- tibble::tibble(
     formula = c(
       "cpue ~ 0 + year_factor",
       "cpue ~ 0 + year_factor + depth",
