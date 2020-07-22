@@ -293,7 +293,7 @@ make_catch_effort_ts_plot_modern <- function(dat) {
   bind_rows(dat) %>% group_by(year, area) %>%
     summarise(
       `Species catch` = sum(spp_catch)/1000,
-      `Hours fished` = sum(effort)/1000) %>%
+      `Hours fished` = sum(hours_fished)/1000) %>%
     reshape2::melt(id.vars = c("year", "area")) %>%
     ggplot(aes(year, value)) +
     geom_line() +
