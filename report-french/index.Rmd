@@ -52,7 +52,7 @@ header-includes:
 - \setcounter{section}{1}
 ---
 
-```{r meta}
+```{r meta, include=FALSE, echo=FALSE}
 meta <- rmarkdown::metadata$output
 if (length(grep("pdf", names(meta)))) {
   french <- meta$`csasdown::resdoc_pdf`$french
