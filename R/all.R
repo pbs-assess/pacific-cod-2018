@@ -70,7 +70,8 @@ if(!file.exists(dat.file)){
   cache_pbs_data(species = "pacific cod",
                  path = file.path(rootd.data,
                                   "pcod-cache"),
-                 survey_sets = TRUE)
+                 survey_sets = TRUE,
+                 unsorted_only = FALSE)
 }
 dat <- readRDS(dat.file)
 
