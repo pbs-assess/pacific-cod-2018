@@ -550,7 +550,7 @@ Nous n’avons pas tenté d’attribuer des pondérations différentes aux modè
 
 ### Zone 5ABCD
 
-Le tableau de décision pour le modèle du scénario de référence de la zone 5ABCD est fourni dans le tableau \@ref(tab:tab-decision-5abcd). Des projections ont été établies pour une fourchette de niveaux de prises de 2018 allant de `r dt.5abcd.min.catch` tonnes métriques (t) à 3 000 t, soit environ trois fois le TAC combiné actuel de la zone 5ABCDE, qui est de 950 t (tableau \@ref(tab:tab-tac)).
+Le tableau de décision pour le modèle du scénario de référence de la zone 5ABCD est fourni dans le tableau \@ref(tab:tab-decision-avg-5abcd). Des projections ont été établies pour une fourchette de niveaux de prises de 2018 allant de `r dt.5abcd.min.catch` tonnes métriques (t) à 3 000 t, soit environ trois fois le TAC combiné actuel de la zone 5ABCDE, qui est de 950 t (tableau \@ref(tab:tab-tac)).
 
 La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de `r dt.5abcd.b.2019.2018.c0` % pour des prises nulles en 2018 à `r dt.5abcd.b.2019.2018.cmax` % pour des prises de `r dt.5abcd.max.catch` t.
 
@@ -562,7 +562,7 @@ Pour un niveau de prises de 900 t en 2018, proche du TAC de 2017, il y a une pro
 
 ### Zone 3CD
 
-Le tableau de décision pour le modèle du scénario de référence de la zone 3CD est fourni dans le tableau \@ref(tab:tab-decision-3cd). Des projections ont été faites pour une fourchette de niveaux de prises de 2018 allant de `r dt.3cd.min.catch` à 1 500 t, soit environ trois fois le TAC actuel de 500 t (tableau \@ref(tab:tab-tac)).
+Le tableau de décision pour le modèle du scénario de référence de la zone 3CD est fourni dans le tableau \@ref(tab:tab-decision-avg-3cd). Des projections ont été faites pour une fourchette de niveaux de prises de 2018 allant de `r dt.3cd.min.catch` à 1 500 t, soit environ trois fois le TAC actuel de 500 t (tableau \@ref(tab:tab-tac)).
 
 La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de `r dt.3cd.b.2019.2018.c0` % pour des prises nulles en 2018 à `r dt.3cd.b.2019.2018.cmax` % pour des prises de `r dt.3cd.max.catch` t.
 
