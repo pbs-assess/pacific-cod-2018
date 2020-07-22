@@ -2,112 +2,112 @@
 
 # FIGURES
 
-```{r fig-map, fig.cap="Map of the management areas 5AB (Queen Charlotte Sound), 5CD (Hecate Strait), and 3CD (West Coast Vancouver Island).", out.width="4in"}
+```{r fig-map, fig.cap="Carte des zones de gestion 5AB (bassin de la Reine-Charlotte), 5CD (détroit d’Hécate) et 3CD (côte ouest de l’île de Vancouver).", out.width="4in"}
 knitr::include_graphics(here::here("report-french/figure/Pcod_3CD5ABCDE_Pic.png"))
 
 ```
 
 \clearpage
 
-## CATCH: AREA 5ABCD
+## PRISES : ZONE 5ABCD
 
-```{r fig-catch-5abcd, fig.cap="Catch for Area 5ABCD. Canadian catch includes at-sea releases."}
+```{r fig-catch-5abcd, fig.cap="Prises pour la zone 5ABCD. Les prises canadiennes comprennent les remises à l’eau."}
 make.catches.plot(catch.5)
 ```
 
-```{r fig-discards-5abcd, fig.cap="Estimated at-sea releases of Pacific Cod by bottom trawlers for Area 5ABCD."}
+```{r fig-discards-5abcd, fig.cap="Estimation des remises à l’eau de morue du Pacifique par les chalutiers de fond pour la zone 5ABCD."}
 discards.plot(catch.5)
 ```
 
-```{r fig-catch-5ab, fig.cap="Catch for Area 5AB. Canadian catch includes at-sea releases."}
+```{r fig-catch-5ab, fig.cap="Prises pour la zone 5AB. Les prises canadiennes comprennent les remises à l’eau."}
 make.catches.plot(catch.5ab)
 ```
 
-```{r fig-discards-5ab, fig.cap="Estimated at-sea releases of Pacific Cod by bottom trawlers for Area 5AB."}
+```{r fig-discards-5ab, fig.cap="Estimation des remises à l’eau de morue du Pacifique par les chalutiers de fond pour la zone 5AB."}
 discards.plot(catch.5ab)
 ```
 
-```{r fig-catch-5cd, fig.cap="Catch for Area 5CD. Canadian catch includes at-sea releases."}
+```{r fig-catch-5cd, fig.cap="Prises pour la zone 5CD. Les prises canadiennes comprennent les remises à l’eau."}
 make.catches.plot(catch.5cd)
 ```
 
-```{r fig-discards-5cd, fig.cap="Estimated at-sea releases of Pacific Cod by bottom trawlers for Area 5CD."}
+```{r fig-discards-5cd, fig.cap="Estimation des remises à l’eau de morue du Pacifique par les chalutiers de fond pour la zone 5CD."}
 discards.plot(catch.5cd)
 ```
 
 \clearpage
 
-## CATCH: AREA 3CD
+## PRISES : ZONE 3CD
 
-```{r fig-catch-3cd, fig.cap="Catch for Area 3CD. Canadian catch includes at-sea releases."}
+```{r fig-catch-3cd, fig.cap="Prises pour la zone 3CD. Les prises canadiennes comprennent les remises à l’eau."}
 make.catches.plot(catch.3)
 ```
 
-```{r fig-discards-3cd, fig.cap="Estimated at-sea releases of Pacific Cod by bottom trawlers for Area 3CD."}
+```{r fig-discards-3cd, fig.cap="Estimation des remises à l’eau de morue du Pacifique par les chalutiers de fond pour la zone 3CD."}
 discards.plot(catch.3)
 ```
 
 \clearpage
 
-## PRIOR PROBABILITY DISTRIBUTIONS
+## DISTRIBUTIONS DE PROBABILITÉ A PRIORI
 
-```{r fig-base-mcmc-priors-5abcd, fig.cap=paste0("Prior probability distributions used in the Area 5ABCD reference model. ", q.5abcd.desc)}
+```{r fig-base-mcmc-priors-5abcd, fig.cap=paste0("Distributions de probabilité a priori utilisées dans le modèle de référence de la zone 5ABCD. ", q.5abcd.desc)}
 make.priors.posts.plot(base.model.5abcd)
 ```
 
-```{r fig-base-mcmc-priors-3cd, fig.cap=paste0("Prior probability distributions used in the Area 3CD reference model. ", q.3cd.desc)}
+```{r fig-base-mcmc-priors-3cd, fig.cap=paste0("Distributions de probabilité a priori utilisées dans le modèle de référence de la zone 3CD. ", q.3cd.desc)}
 make.priors.posts.plot(base.model.3cd)
 ```
 
 \clearpage
 
-## MODEL RESULTS: AREA 5ABCD
+## RÉSULTATS DU MODÈLE : ZONE 5ABCD
 
-```{r fig-base-mcmc-trace-5abcd, fig.cap=paste0("Traceplots of posterior samples for the Area 5ABCD reference model. ", q.5abcd.desc)}
+```{r fig-base-mcmc-trace-5abcd, fig.cap=paste0("Graphiques des traces des échantillons a posteriori pour le modèle de référence de la zone 5ABCD. ", q.5abcd.desc)}
 make.traces.plot(base.model.5abcd)
 ```
 
-```{r fig-base-mcmc-autocor-5abcd, fig.cap=paste0("Autocorrelation plots for the Area 5ABCD reference model. ", q.5abcd.desc)}
+```{r fig-base-mcmc-autocor-5abcd, fig.cap=paste0("Graphiques d’autocorrélation pour le modèle de référence de la zone 5ABCD. ", q.5abcd.desc)}
 make.autocor.plot(base.model.5abcd)
 ```
 
-```{r fig-base-index-fits-5abcd, fig.cap="MPD fits to observed indices of abundance (points) for the Area 5ABCD reference model from: (a) the Hecate Strait Assemblage survey, (b) the Queen Charlotte Sound Synoptic Survey, (c) the Hecate Strait Synoptic Survey, (d) the Commercial CPUE pre-1996, and (e) the Commercial CPUE post-1995. For clarity, only MPD results are shown"}
+```{r fig-base-index-fits-5abcd, fig.cap="Ajustements de la DPM aux indices observés de l’abondance (points) pour le modèle de référence de la zone 5ABCD, d’après : a) le relevé de la communauté d’espèces dans le détroit d’Hécate, b) le relevé synoptique dans le bassin de la Reine-Charlotte, c) le relevé synoptique dans le détroit d’Hécate, d) les CPUE commerciales avant 1996 et e) les CPUE commerciales après 1995. Dans un souci de clarté, seuls les résultats de la DPM sont illustrés."}
 plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5),
           i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5),
           i.plot(base.model.5abcd, base.model.5abcd.name, 3, every = 5),
           i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("CPUE commerciales (kg/heure)"),
           i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("CPUE commerciales (kg/heure)"),
           nrow = 2,
           ncol = 3,
           labels = c("(a)", "(b)", "(c)", "(d)", "(e)"),
           label_x = 0.2)
 ```
 
-```{r fig-base-mean-weight-5abcd, fig.cap="MPD fit to the mean weight data for Area 5ABCD reference model. For clarity, only MPD results are shown"}
+```{r fig-base-mean-weight-5abcd, fig.cap="Ajustement de la DPM aux données sur le poids moyen pour le modèle de référence de la zone 5ABCD. Dans un souci de clarté, seuls les résultats de la DPM sont illustrés."}
 plot_grid(mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015),
           mw.compare.plot(base.model.5abcd[[1]]),
           nrow = 1,
           ncol = 2)
 ```
 
-```{r fig-base-catch-fit-5abcd, fig.cap="MPD fit to the catch data for Area 5ABCD reference model. For clarity, only MPD results are shown"}
+```{r fig-base-catch-fit-5abcd, fig.cap="Ajustement de la DPM aux données sur les prises pour le modèle de référence de la zone 5ABCD. Dans un souci de clarté, seuls les résultats de la DPM sont illustrés."}
 catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
 ```
 
-(ref:priorpostcaption5abcd) Histograms of posterior samples with prior probability distributions (lines) used in the Area 5ABCD reference model. MPD estimate shown as vertical dashed line. Note that both the Queen Charlotte Sound and Hecate Strait Synoptic Surveys used normal prior distributions on $ln(q)$, see Figure \@ref(fig:fig-base-mcmc-priors-5abcd) for full distribution. 
+(ref:priorpostcaption5abcd) Histogrammes des échantillons a posteriori avec des distributions de probabilité a priori (lignes) utilisés dans le modèle de référence de la zone 5ABCD. L’estimation de la DPM est représentée par une ligne pointillée verticale. Il convient de noter que les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate ont utilisé des distributions a priori normales sur $ln(q)$, voir la distribution complète sur la figure \@ref(fig:fig-base-mcmc-priors-5abcd). 
 
 ```{r fig-base-mcmc-priors-posts-5abcd, fig.cap=paste("(ref:priorpostcaption5abcd)", q.5abcd.desc)}
 make.priors.posts.plot(base.model.5abcd, priors.only = FALSE)
 ```
 
-```{r fig-base-mcmc-pairs-5abcd, fig.cap="Pairs plots of posterior samples for the Area 5ABCD reference model. $\\bar{R} = R_{Avg}$, $q_1$ = Hecate Strait Assemblage survey, $q_2$ = Queen Charlotte Sound Synoptic Survey, $q_3$ = Hecate Strait Synoptic Survey, $q_4$ = Commercial CPUE pre-1996, and $q_5$ = Commercial CPUE post-1995."}
+```{r fig-base-mcmc-pairs-5abcd, fig.cap="Tracés par paires des échantillons a posteriori pour le modèle de référence de la zone 5ABCD. $\\bar{R} = R_{Avg}$, $q_1$ = Relevé de la communauté d’espèces dans le détroit d’Hécate, $q_2$ = Relevé synoptique dans le bassin de la Reine-Charlotte, $q_3$ = Relevé synoptique dans le détroit d’Hécate, $q_4$ = CPUE commerciales avant 1996 et $q_5$ = CPUE commerciales après 1995."}
 make.pairs.plot(base.model.5abcd)
 ```
 
 
-```{r fig-base-biomass-5abcd, fig.cap="Posterior estimated biomass for the Reference Model, Area 5ABCD.  The green dashed line shows the median Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the median Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000."}
+```{r fig-base-biomass-5abcd, fig.cap="Biomasse estimée a priori pour le modèle de référence de la zone 5ABCD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000."}
 b.plot(base.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
@@ -116,13 +116,13 @@ b.plot(base.model.5abcd,
        usr = c(1956, 2004))
 ```
 
-```{r fig-base-depl-5abcd, fig.cap="Relative biomass for the Reference Model, Area 5ABCD."}
+```{r fig-base-depl-5abcd, fig.cap="Biomasse relative pour le modèle de référence, zone 5ABCD."}
 b.plot(base.model.5abcd,
        base.model.5abcd.name,
        depl = TRUE)
 ```
 
-```{r fig-base-recr-5abcd, fig.cap="Recruitment (a) and recruitment deviations (b) for the Reference Model, Area 5ABCD.  The green dashed line shows the mean of the MCMC posterior medians, the blue dashed line shows the median of the MCMC posterior medians."}
+```{r fig-base-recr-5abcd, fig.cap="Recrutement (a) et écarts du recrutement (b) pour le modèle de référence, zone 5ABCD.  La ligne pointillée verte représente la moyenne des médianes a posteriori des MCCM, la ligne pointillée bleue représente la médiane des médianes a posteriori des MCCM."}
 plot_grid(r.plot(base.model.5abcd,
                  base.model.5abcd.name,
                  add.meds = TRUE,
@@ -136,12 +136,12 @@ plot_grid(r.plot(base.model.5abcd,
           label_x = c(0.15, 0.1))
 ```
 
-```{r fig-base-f-5abcd, fig.cap="Fishing mortality for the Reference Model, Area 5ABCD."}
+```{r fig-base-f-5abcd, fig.cap="Mortalité par pêche pour le modèle de référence, zone 5ABCD."}
 f.plot(base.model.5abcd,
        base.model.5abcd.name)
 ```
 
-```{r fig-base-retro-biomass-5abcd, fig.cap="Retrospective biomass for the Reference Model, Area 5ABCD."}
+```{r fig-base-retro-biomass-5abcd, fig.cap="Biomasse rétrospective pour le modèle de référence, zone 5ABCD."}
 b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
            c(base.model.5abcd.name, retro.names),
            depl = FALSE)
@@ -150,22 +150,22 @@ b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
 
 \clearpage
 
-## MODEL RESULTS: AREA 3CD
+## RÉSULTATS DU MODÈLE : ZONE 3CD
 
-```{r fig-base-mcmc-trace-3cd, fig.cap=paste0("Traceplots of posterior samples for the Area 3CD reference model. ", q.3cd.desc)}
+```{r fig-base-mcmc-trace-3cd, fig.cap=paste0("Graphiques des traces des échantillons a posteriori pour le modèle de référence de la zone 3CD. ", q.3cd.desc)}
 make.traces.plot(base.model.3cd)
 ```
 
-```{r fig-base-mcmc-autocor-3cd, fig.cap=paste0("Autocorrelation plots for the Area 3CD reference model. ", q.3cd.desc)}
+```{r fig-base-mcmc-autocor-3cd, fig.cap=paste0("Graphiques d’autocorrélation pour le modèle de référence de la zone 3CD. ", q.3cd.desc)}
 make.autocor.plot(base.model.3cd)
 ```
 
-```{r fig-base-index-fits-3cd, fig.cap="MPD fits to observed indices of abundance (points) for the Area 3CD reference model from: (a) the West Coast Vancouver Island Synoptic Survey, (b) the Commercial CPUE pre-1996, (c) the Commercial CPUE post-1995, and (d) the NMFS Triennial Survey (Canadian portion)."}
+```{r fig-base-index-fits-3cd, fig.cap="Ajustements de la DPM aux indices observés de l’abondance (points) pour le modèle de référence de la zone 3CD, d’après : a) le relevé synoptique sur la côte ouest de l’île de Vancouver, b) les CPUE commerciales avant 1996, c) les CPUE commerciales après 1995 et d) le relevé triennal du NMFS (partie canadienne)."}
 plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
           i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("CPUE commerciales (kg/heure)"),
           i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
-            + ylab("Commercial CPUE (kg/hour)"),
+            + ylab("CPUE commerciales (kg/heure)"),
           i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5),
           nrow = 2,
           ncol = 2,
@@ -173,28 +173,28 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
           label_x = c(0.15, 0.13, 0.13, 0.2))
 ```
 
-```{r fig-base-mean-weight-3cd, fig.cap="MPD fit to the mean weight data for Area 3CD reference model."}
+```{r fig-base-mean-weight-3cd, fig.cap="Ajustement de la DPM aux données sur le poids moyen pour le modèle de référence de la zone 3CD."}
 plot_grid(mw.plot(base.model.3cd[[1]], cv = 0.2, every = 5, last.yr = 2015),
           mw.compare.plot(base.model.3cd[[1]]),
           nrow = 1,
           ncol = 2)
 ```
 
-```{r fig-base-catch-fit-3cd, fig.cap="MPD fit to the catch data for Area 3CD reference model."}
+```{r fig-base-catch-fit-3cd, fig.cap="Ajustement de la DPM aux données sur les prises pour le modèle de référence de la zone 3CD."}
 catch.fit.plot(base.model.3cd, every = 5, last.yr = 2015)
 ```
 
-(ref:priorpostcaption3cd) Histograms of posterior samples with prior probability distributions (lines) used in the Area 3CD reference model. MPD estimate shown as vertical dashed line. Note that the West Coast Vancouver Island Synoptic Survey used a normal prior distribution on $ln(q)$, see Figure \@ref(fig:fig-base-mcmc-priors-3cd) for full distribution.
+(ref:priorpostcaption3cd) Histogrammes des échantillons a posteriori avec des distributions de probabilité a priori (lignes) utilisés dans le modèle de référence de la zone 3CD. L’estimation de la DPM est représentée par une ligne pointillée verticale. Il convient de noter que le relevé synoptique sur la côte ouest de l’île de Vancouver a utilisé une distribution a priori normale sur $ln(q)$, voir la distribution complète sur la figure \@ref(fig:fig-base-mcmc-priors-3cd).
 
 ```{r fig-base-mcmc-priors-posts-3cd, fig.cap=paste("(ref:priorpostcaption3cd)", q.3cd.desc)}
 make.priors.posts.plot(base.model.3cd, priors.only = FALSE)
 ```
 
-```{r fig-base-mcmc-pairs-3cd, fig.cap=paste0("Pairs plots of posterior samples for the Area 3CD reference model. ", q.3cd.desc)}
+```{r fig-base-mcmc-pairs-3cd, fig.cap=paste0("Tracés par paires des échantillons a posteriori pour le modèle de référence de la zone 3CD. ", q.3cd.desc)}
 make.pairs.plot(base.model.3cd)
 ```
 
-```{r fig-base-biomass-3cd, fig.cap="Posterior estimated biomass for the Reference Model, Area 3CD. The green dashed line shows the median Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the median Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 1986."}
+```{r fig-base-biomass-3cd, fig.cap="Biomasse estimée a priori pour le modèle de référence de la zone 3CD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986."}
 b.plot(base.model.3cd,
        base.model.3cd.name,
        depl = FALSE,
@@ -203,13 +203,13 @@ b.plot(base.model.3cd,
        usr = c(1956, 2004))
 ```
 
-```{r fig-base-depl-3cd, fig.cap="Relative biomass for the Reference Model, Area 3CD."}
+```{r fig-base-depl-3cd, fig.cap="Biomasse relative pour le modèle de référence, zone 3CD."}
 b.plot(base.model.3cd,
        base.model.3cd.name,
        depl = TRUE)
 ```
 
-```{r fig-base-recr-3cd, fig.cap="Recruitment (a) and recruitment deviations (b) for the Reference Model, Area 3CD.  The green dashed line shows the mean of the MCMC posterior medians, the blue dashed line shows the median of the MCMC posterior medians."}
+```{r fig-base-recr-3cd, fig.cap="Recrutement (a) et écarts du recrutement (b) pour le modèle de référence, zone 3CD.  La ligne pointillée verte représente la moyenne des médianes a posteriori des MCCM, la ligne pointillée bleue représente la médiane des médianes a posteriori des MCCM."}
 plot_grid(r.plot(base.model.3cd, base.model.3cd.name, add.meds = TRUE, x.axis.angle = 90),
           r.devs.plot(base.model.3cd, base.model.3cd.name, x.axis.angle = 90),
           nrow = 1,
@@ -218,12 +218,12 @@ plot_grid(r.plot(base.model.3cd, base.model.3cd.name, add.meds = TRUE, x.axis.an
           label_x = c(0.17, 0.1))
 ```
 
-```{r fig-base-f-3cd, fig.cap="Fishing mortality for the Reference Model, Area 3CD."}
+```{r fig-base-f-3cd, fig.cap="Mortalité par pêche pour le modèle de référence, zone 3CD."}
 f.plot(base.model.3cd,
        base.model.3cd.name)
 ```
 
-```{r fig-base-retro-biomass-3cd, fig.cap="Retrospective biomass for the Reference Model, Area 3CD."}
+```{r fig-base-retro-biomass-3cd, fig.cap="Biomasse rétrospective pour le modèle de référence, zone 3CD."}
 b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
            c(base.model.3cd.name, retro.names),
            depl = FALSE)
@@ -231,74 +231,74 @@ b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
 
 \clearpage
 
-## SENSITIVITY ANALYSES: AREA 5ABCD
+## ANALYSES DE SENSIBILITÉ : ZONE 5ABCD
 
-```{r fig-sens1-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of the CPUE indices, Area 5ABCD."}
+```{r fig-sens1-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, ainsi qu’au retrait des indices des CPUE commerciales, zone 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
 ```
 
-```{r fig-sens1-sub2-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of post-1995 CPUE indices, Area 5ABCD."}
+```{r fig-sens1-sub2-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, ainsi qu’au retrait des indices des CPUE commerciales d’après 1995, zone 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.1.sub2), c(base.model.5abcd.name, sens.models.name.1.sub2))
 ```
 
-```{r fig-sens1-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, Area 5ABCD."}
+```{r fig-sens1-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, zone 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.1.sub),
        c(base.model.5abcd.name, sens.models.name.1.sub))
 ```
 
-```{r fig-sens1-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of the CPUE indices, Area 5ABCD."}
+```{r fig-sens1-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, ainsi qu’au retrait des indices des CPUE commerciales, zone 5ABCD."}
 f.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
 ```
 
-```{r fig-sens2-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
+```{r fig-sens2-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la moyenne de la capturabilité, $q$, fixée pour être égale pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, à une valeur a priori uniforme utilisée pour les deux relevés, zone 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
 
-```{r fig-sens2-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
+```{r fig-sens2-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la moyenne de la capturabilité, $q$, fixée pour être égale pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, à une valeur a priori uniforme utilisée pour les deux relevés, zone 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
 
-```{r fig-sens2-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to the mean of the catchability, $q$, being set equal for the QCS and HSS surveys, and to a uniform prior being used for both surveys, Area 5ABCD."}
+```{r fig-sens2-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la moyenne de la capturabilité, $q$, fixée pour être égale pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, à une valeur a priori uniforme utilisée pour les deux relevés, zone 5ABCD."}
 f.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
 ```
 
-```{r fig-sens3-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to the parameters on the normal prior for natural mortality, M, Area 5ABCD."}
+```{r fig-sens3-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
 ```
 
-```{r fig-sens3-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the parameters on the normal prior for natural mortality, M, Area 5ABCD."}
+```{r fig-sens3-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
 ```
 
-```{r fig-sens3-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to the parameters on the normal prior for natural mortality, M, Area 5ABCD."}
+```{r fig-sens3-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 5ABCD."}
 f.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
 ```
 
-```{r fig-sens4-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 5ABCD."}
+```{r fig-sens4-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
 ```
 
-```{r fig-sens4-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 5ABCD."}
+```{r fig-sens4-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
 ```
 
-```{r fig-sens4-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 5ABCD."}
+```{r fig-sens4-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 5ABCD."}
 f.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
 ```
 
-```{r fig-sens5-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 5ABCD."}
+```{r fig-sens5-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
-```{r fig-sens5-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 5ABCD."}
+```{r fig-sens5-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
-```{r fig-sens5-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 5ABCD."}
+```{r fig-sens5-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 5ABCD."}
 f.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
 ```
 
-```{r fig-sens5-meanweightfit-5abcd, fig.cap="MPD fits to the average annual mean weights for (a) the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and (b) to using the growth parameters used in the previous Area 5CD stock assessment. Area 5ABCD."}
+```{r fig-sens5-meanweightfit-5abcd, fig.cap="Ajustements de la DPM à la moyenne des poids moyens annuels pour : a) la sensibilité à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et b) l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente de la zone 5CD."}
 plot_grid(
   mw.plot(sens.models.5[[1]], cv = 0.2, every = 5, last.yr = 2015),
   mw.plot(sens.models.5[[2]], cv = 0.2, every = 5, last.yr = 2015),
@@ -308,55 +308,52 @@ plot_grid(
          label_x = c(0.15, 0.13, 0.13, 0.2))
 ```
 
-```{r fig-sens6-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to the assumed value of observation and process errors, Area 5ABCD."}
+```{r fig-sens6-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la valeur présumée des erreurs d’observation et de traitement, zone 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
 
-```{r fig-sens6-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the assumed value of observation and process errors, Area 5ABCD."}
+```{r fig-sens6-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la valeur présumée des erreurs d’observation et de traitement, zone 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
 
-```{r fig-sens6-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to the assumed value of observation and process errors, Area 5ABCD."}
+```{r fig-sens6-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la valeur présumée des erreurs d’observation et de traitement, zone 5ABCD."}
 f.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
 ```
 
-```{r fig-sens6-index-hsmas-5abcd, fig.cap="MPD index fits showing sensitivity to the assumed value of observation and process errors, HSMAS, Area 5ABCD."}
+```{r fig-sens6-index-hsmas-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé de la communauté d’espèces ou multispécifique dans le détroit d’Hécate, zone 5ABCD."}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 1)
 ```
 
-```{r fig-sens6-index-qcss-5abcd, fig.cap="MPD index fits showing sensitivity to the assumed value of observation and process errors, QCSS, Area 5ABCD."}
+```{r fig-sens6-index-qcss-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé dans le bassin de la Reine-Charlotte, zone 5ABCD."}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 2)
 ```
 
-```{r fig-sens6-index-hsss-5abcd, fig.cap="MPD index fits showing sensitivity to the assumed value of observation and process errors, HSSS, Area 5ABCD."}
+```{r fig-sens6-index-hsss-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé synoptique dans le détroit d’Hécate, zone 5ABCD."}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 3)
 ```
 
-```{r fig-sens6-index-cpue-pre1996-5abcd, fig.cap="MPD index fits showing sensitivity to the assumed value of observation and process errors, commercial CPUE pre-1996, Area 5ABCD."}
+```{r fig-sens6-index-cpue-pre1996-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, CPUE commerciales avant 1996, zone 5ABCD."}
 i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 4, every = 5) +
-  ylab("Commercial CPUE (kg/hour)")
+  ylab("CPUE commerciales (kg/heure)")
 ```
 
-```{r fig-sens6-index-cpue-post1995-5abcd, fig.cap="MPD index fits showing sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 5ABCD."}
-i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
+```{r fig-sens6-index-cpue-post1995-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, CPUE commerciales après 1995, zone 5ABCD."}
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft") + ylab("CPUE (commerciales kg/heure)")
 ```
 
-<!-- FIXME: remove eval=FALSE -->
-```{r fig-sens7-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+```{r fig-sens7-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la valeur présumée de $\\sigma_{W}$, zone 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
-<!-- FIXME: remove eval=FALSE -->
-```{r fig-sens7-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+```{r fig-sens7-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la valeur présumée de $\\sigma_{W}$, zone 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
-<!-- FIXME: remove eval=FALSE -->
-```{r fig-sens7-f-5abcd, fig.cap="Sensitivity of fishing mortality estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
+```{r fig-sens7-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la valeur présumée de $\\sigma_{W}$, zone 5ABCD."}
 f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
-```{r fig-sens7-meanweightfit-5abcd, fig.cap="MPD fits to the average annual mean weights showing sensitivity to the assumed value of $\\sigma_{W}$ for (a) $\\sigma_{W}$ = 0.4 and (b) $\\sigma_{W}$ = 0.15, Area 5ABCD."}
+```{r fig-sens7-meanweightfit-5abcd, fig.cap="Ajustements de la DPM à la moyenne des poids moyens annuels montrant la sensibilité à la valeur présumée de $\\sigma_{W}$ pour a) $\\sigma_{W}$ = 0,4 et b) $\\sigma_{W}$ = 0,15, zone 5ABCD."}
 plot_grid(
   mw.plot(sens.models.7[[1]], cv = 0.2, every = 5, last.yr = 2015),
   mw.plot(sens.models.7[[2]], cv = 0.2, every = 5, last.yr = 2015),
@@ -366,84 +363,84 @@ plot_grid(
          label_x = c(0.15, 0.13, 0.13, 0.2))
 ```
 
-```{r fig-sens8-biomass-5abcd, fig.cap="Sensitivity of biomass estimates to inflating the historical catch data, Area 5ABCD"}
+```{r fig-sens8-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à l’inflation des données sur les prises historiques, zone 5ABCD."}
 b.plot(c(base.model.5abcd, sens.models.108), c(base.model.5abcd.name, sens.models.name.108))
 ```
 
 \clearpage
 
-## SENSITIVITY ANALYSES: AREA 3CD
+## ANALYSES DE SENSIBILITÉ : ZONE 3CD
 
-```{r fig-sens8-biomass-3cd, fig.cap="Sensitivity of biomass estimates to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, to removal of the CPUE indices, and to the removal of the Triennial survey index, Area 3CD."}
+```{r fig-sens8-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, au retrait des indices des CPUE et au retrait de l’indice du relevé triennal, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
 ```
 
-```{r fig-sens8-sub2-biomass-3cd, fig.cap="Sensitivity of biomass estimates to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, and to removal of post-1995 CPUE indices, Area 3CD."}
+```{r fig-sens8-sub2-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, ainsi qu’au retrait des indices des CPUE commerciales d’après 1995, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.8.sub2), c(base.model.3cd.name, sens.models.name.8.sub2))
 ```
 
-```{r fig-sens8-recr-3cd, fig.cap="Sensitivity of recruitment estimates to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, Area 3CD."}
+```{r fig-sens8-recr-3cd, fig.cap="Sensibilité des estimations du recrutement au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, zone 3CD."}
 r.plot(c(base.model.3cd, sens.models.8.sub),
        c(base.model.3cd.name, sens.models.name.8.sub))
 ```
 
-```{r fig-sens8-f-3cd, fig.cap="Sensitivity of fishing mortality estimates to removing the year/locality interaction term from the commercial CPUE indices and using the annual CVs resulting from the analysis as the annual weighting terms in the objective function for two CV options, Area 3CD."}
+```{r fig-sens8-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, zone 3CD."}
 f.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
 ```
 
-```{r fig-sens9-biomass-3cd, fig.cap="Sensitivity of biomass estimates to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
+```{r fig-sens9-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à l’écart-type du relevé sur la COIV, fixé pour être égal à l’écart-type pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, et à une valeur a priori uniforme utilisée pour le relevé sur la COIV, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
 ```
 
-```{r fig-sens9-biomass-3cd-sub, fig.cap="Sensitivity of biomass estimates to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, Area 3CD."}
+```{r fig-sens9-biomass-3cd-sub, fig.cap="Sensibilité des estimations de la biomasse à l’écart-type du relevé sur la COIV, fixé pour être égal à l’écart-type pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.9.sub), c(base.model.3cd.name, sens.models.name.9.sub))
 ```
 
-```{r fig-sens9-recr-3cd, fig.cap="Sensitivity of recruitment estimates to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
+```{r fig-sens9-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à l’écart-type du relevé sur la COIV, fixé pour être égal à l’écart-type pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, et à une valeur a priori uniforme utilisée pour le relevé sur la COIV, zone 3CD."}
 r.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
 ```
 
-```{r fig-sens9-f-3cd, fig.cap="Sensitivity of fishing mortality estimates to the SD for the WCVIS survey being set equal to the SD for the QCS and HSS surveys, and to a uniform prior being used for the WCVIS survey, Area 3CD."}
+```{r fig-sens9-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à l’écart-type du relevé sur la COIV, fixé pour être égal à l’écart-type pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, et à une valeur a priori uniforme utilisée pour le relevé sur la COIV, zone 3CD."}
 f.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
 ```
 
-```{r fig-sens10-biomass-3cd, fig.cap="Sensitivity of biomass estimates to the parameters on the normal prior for natural mortality, M, Area 3CD."}
+```{r fig-sens10-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
 ```
 
-```{r fig-sens10-recr-3cd, fig.cap="Sensitivity of recruitment estimates to the parameters on the normal prior for natural mortality, M, Area 3CD."}
+```{r fig-sens10-recr-3cd, fig.cap="Sensibilité des estimations du recrutement aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 3CD."}
 r.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
 ```
 
-```{r fig-sens10-f-3cd, fig.cap="Sensitivity of fishing mortality estimates to the parameters on the normal prior for natural mortality, M, Area 3CD."}
+```{r fig-sens10-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 3CD."}
 f.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
 ```
 
-```{r fig-sens11-biomass-3cd, fig.cap="Sensitivity of biomass estimates to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 3CD."}
+```{r fig-sens11-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
 ```
 
-```{r fig-sens11-recr-3cd, fig.cap="Sensitivity of recruitment estimates to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 3CD."}
+```{r fig-sens11-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 3CD."}
 r.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
 ```
 
-```{r fig-sens11-f-3cd, fig.cap="Sensitivity of fishing mortality estimates to the prior probability distribution for steepness, including using a bounded uniform prior and a beta prior, Area 3CD."}
+```{r fig-sens11-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 3CD."}
 f.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
 ```
 
-```{r fig-sens12-biomass-3cd, fig.cap="Sensitivity of biomass estimates to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 3CD."}
+```{r fig-sens12-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
 
-```{r fig-sens12-recr-3cd, fig.cap="Sensitivity of recruitment estimates to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 3CD."}
+```{r fig-sens12-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 3CD."}
 r.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
 
-```{r fig-sens12-f-3cd, fig.cap="Sensitivity of fishing mortality estimates to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and to using the growth parameters used in the previous stock assessment, Area 3CD."}
+```{r fig-sens12-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 3CD."}
 f.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
 ```
 
-```{r fig-sens12-meanweightfit-3cd, fig.cap="MPD fits to the average annual mean weights for (a) the Sensitivity to setting $k_{age} = 3y$ and update the Ford-Walford parameters accordingly, and (b) to using the growth parameters used in the previous Area 5CD stock assessment. Area 3CD."}
+```{r fig-sens12-meanweightfit-3cd, fig.cap="Ajustements de la DPM à la moyenne des poids moyens annuels pour : (a) la sensibilité à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et (b) l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente de la zone 3CD."}
 plot_grid(
   mw.plot(sens.models.12[[1]], cv = 0.2, every = 5, last.yr = 2015),
   mw.plot(sens.models.12[[2]], cv = 0.2, every = 5, last.yr = 2015),
@@ -454,48 +451,48 @@ plot_grid(
 ```
 
 
-```{r fig-sens13-biomass-3cd, fig.cap="Sensitivity of biomass estimates to the assumed value of observation and process errors, Area 3CD."}
+```{r fig-sens13-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à la valeur présumée des erreurs d’observation et de traitement, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
 ```
 
-```{r fig-sens13-recr-3cd, fig.cap="Sensitivity of recruitment estimates to the assumed value of observation and process errors, Area 3CD."}
+```{r fig-sens13-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à la valeur présumée des erreurs d’observation et de traitement, zone 3CD."}
 r.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
 ```
 
-```{r fig-sens13-f-3cd, fig.cap="Sensitivity of fishing mortality estimates to the assumed value of observation and process errors, Area 3CD."}
+```{r fig-sens13-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la valeur présumée des erreurs d’observation et de traitement, zone 3CD."}
 f.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
 ```
 
-```{r fig-sens13-index-wcviss-3cd, fig.cap="MPD index fits showing sensitivity to the assumed value of observation and process errors, WCVISS, Area 3CD."}
+```{r fig-sens13-index-wcviss-3cd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé synoptique sur la COIV, zone 3CD."}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 1, leg.loc = "topleft")
 ```
 
-```{r fig-sens13-index-triennial-3cd, fig.cap="MPD index fits showing sensitivity to the assumed value of observation and process errors, NMFS Triennial survey, Area 3CD."}
+```{r fig-sens13-index-triennial-3cd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé triennal du NMFS, zone 3CD."}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 4)
 ```
 
-```{r fig-sens13-index-cpue-pre1996-3cd, fig.cap="MPD index fits showing sensitivity to the assumed value of observation and process errows, commercial CPUE pre-1996, Area 3CD."}
+```{r fig-sens13-index-cpue-pre1996-3cd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, CPUE commerciales avant 1996, zone 3CD."}
 i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 2, every = 5) +
-  ylab("Commercial CPUE (kg/hour)")
+  ylab("CPUE commerciales (kg/heure)")
 ```
 
-```{r fig-sens13-index-cpue-post1995-3cd, fig.cap="MPD index fits showing sensitivity to the assumed value of observation and process errors, commercial CPUE post-1995, Area 3CD."}
-i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 3, leg.loc = "topleft") + ylab("Commercial CPUE (kg/hour)")
+```{r fig-sens13-index-cpue-post1995-3cd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, CPUE commerciales après 1995, zone 3CD."}
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 3, leg.loc = "topleft") + ylab("CPUE (commerciales kg/heure)")
 ```
 
-```{r fig-sens14-biomass-3cd, fig.cap="Sensitivity of biomass estimates to the assumed value of $\\sigma_{W}$, Area 3CD."}
+```{r fig-sens14-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à la valeur présumée de $\\sigma_{W}$, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
-```{r fig-sens14-recr-3cd, fig.cap="Sensitivity of recruitment estimates to the assumed value of $\\sigma_{W}$, Area 3CD."}
+```{r fig-sens14-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à la valeur présumée de $\\sigma_{W}$, zone 3CD."}
 r.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
-```{r fig-sens14-f-3cd, fig.cap="Sensitivity of fishing mortality estimates to the assumed value of $\\sigma_{W}$, Area 3CD."}
+```{r fig-sens14-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la valeur présumée de $\\sigma_{W}$, zone 3CD."}
 f.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
 ```
 
-```{r fig-sens14-meanweightfit-3cd, fig.cap="MPD fits to the average annual mean weights showing sensitivity to the assumed value of $\\sigma_{W}$ for (a) $\\sigma_{W}$ = 0.4 and (b) $\\sigma_{W}$ = 0.15, Area 3CD."}
+```{r fig-sens14-meanweightfit-3cd, fig.cap="Ajustements de la DPM à la moyenne des poids moyens annuels montrant la sensibilité à la valeur présumée de $\\sigma_{W}$ pour a) $\\sigma_{W}$ = 0,4 et b) $\\sigma_{W}$ = 0,15, zone 3CD."}
 plot_grid(
   mw.plot(sens.models.14[[1]], cv = 0.2, every = 5, last.yr = 2015),
   mw.plot(sens.models.14[[2]], cv = 0.2, every = 5, last.yr = 2015),
@@ -505,16 +502,16 @@ plot_grid(
          label_x = c(0.15, 0.13, 0.13, 0.2))
 ```
 
-```{r fig-sens15-biomass-3cd, fig.cap="Sensitivity of biomass estimates to inflating the historical catch data, Area 3CD"}
+```{r fig-sens15-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à l’inflation des données sur les prises historiques, zone 3CD."}
 b.plot(c(base.model.3cd, sens.models.15), c(base.model.3cd.name, sens.models.name.15))
 ```
 
 
 \clearpage
 
-## MODEL-AVERAGED BIOMASS AND PROJECTIONS {#sec:projections}
+## BIOMASSE FONDÉE SUR LA MOYENNE DES MODÈLES ET PROJECTIONS {#sec:projections}
 
-<!-- ```{r fig-base-biomass-5abcd-proj, fig.cap="Biomass for the Reference Model, Area 5ABCD with projections.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."} -->
+<!-- ```{r fig-base-biomass-5abcd-proj, fig.cap="Biomasse pour le modèle de référence, zone 5ABCD, avec projections. La ligne horizontale supérieure verte représente le point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente le point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%."} -->
 <!-- b.plot(base.model.5abcd, -->
 <!--        base.model.5abcd.name, -->
 <!--        depl = FALSE, -->
@@ -528,7 +525,7 @@ b.plot(c(base.model.3cd, sens.models.15), c(base.model.3cd.name, sens.models.nam
 <!--        x.every = 2) -->
 <!-- ``` -->
 
-```{r fig-model-average-biomass-comp-5abcd, fig.cap="Posterior estimates of biomass for the model-averaged set for Area 5ABCD. The green dashed line shows the median Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the median Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000."}
+```{r fig-model-average-biomass-comp-5abcd, fig.cap="Estimations a priori de la biomasse pour la moyenne des modèles fixée pour la zone 5ABCD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000."}
 b.plot(desc.models.5abcd,
        desc.models.5abcd.name,
        depl = FALSE,
@@ -538,7 +535,7 @@ b.plot(desc.models.5abcd,
 ```
 
 
-```{r fig-model-average-biomass-5abcd, fig.cap="Combined posterior biomass for the averaged models, Area 5ABCD. The green dashed line shows the median Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the median Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000."}
+```{r fig-model-average-biomass-5abcd, fig.cap="Biomasse a posteriori combinée pour la moyenne des modèles, zone 5ABCD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000."}
 b.plot(avg.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
@@ -548,7 +545,7 @@ b.plot(avg.model.5abcd,
 ```
 
 
-```{r fig-model-average-biomass-5abcd-proj, fig.cap="Combined posterior estimates of biomass for the model-averaged set for Area 5ABCD with projections (to the end of 2019).  The upper horizontal green dashed line shows the median Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the median Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval. For clarity, years before 2010 are removed."}
+```{r fig-model-average-biomass-5abcd-proj, fig.cap="Estimations a posteriori combinées de la biomasse pour la moyenne des modèles fixée pour la zone 5ABCD, avec projections (jusqu’à la fin de 2019). La ligne horizontale supérieure verte représente la médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente la médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%. Dans un souci de clarté, les années antérieures à 2010 sont omises."}
 b.plot(avg.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
@@ -563,7 +560,7 @@ b.plot(avg.model.5abcd,
 ```
 
 
-```{r fig-model-average-biomass-comp-3cd, fig.cap="Posterior estimates of biomass for the model-averaged set for Area 3CD. The green dashed line shows the median Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the median Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 1986."}
+```{r fig-model-average-biomass-comp-3cd, fig.cap="Estimations a priori de la biomasse pour la moyenne des modèles fixée pour la zone 3CD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986."}
 b.plot(desc.models.3cd,
        desc.models.3cd.name,
        depl = FALSE,
@@ -573,7 +570,7 @@ b.plot(desc.models.3cd,
 ```
 
 
-```{r fig-model-average-biomass-3cd, fig.cap="Combined posterior biomass for the model-averaged set for Area 3CD.  The green dashed line shows the median Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The red dashed line shows the median Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 1986."}
+```{r fig-model-average-biomass-3cd, fig.cap="Biomasse a posteriori combinée pour la moyenne des modèles fixée pour la zone 3CD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986."}
 b.plot(avg.model.3cd,
        base.model.3cd.name,
        depl = FALSE,
@@ -583,7 +580,7 @@ b.plot(avg.model.3cd,
 ```
 
 
-```{r fig-model-average-biomass-3cd-proj, fig.cap="Combined posterior estimates of biomass for the model-averaged set for Area 3CD with projections (to the end of 2019).  The upper horizontal green dashed line shows the median Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the median Limit Reference Point (LRP) which is the lowest estimated biomass agreed to be an undesirable state to avoid, in this case it is the biomass estimate for 2000. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval.For clarity, years before 2010 are removed."}
+```{r fig-model-average-biomass-3cd-proj, fig.cap="Estimations a posteriori combinées de la biomasse pour la moyenne des modèles fixée pour la zone 3CD, avec projections (jusqu’à la fin de 2019).  La ligne horizontale supérieure verte représente la médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente la médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%. Dans un souci de clarté, les années antérieures à 2010 sont omises."}
 b.plot(avg.model.3cd,
        base.model.3cd.name,
        depl = FALSE,
@@ -597,7 +594,7 @@ b.plot(avg.model.3cd,
        x.every = 2)
 ```
 
-<!-- ```{r fig-base-biomass-3cd-proj, fig.cap="Biomass for the Reference Model, Area 3CD with projections.  The upper horizontal green dashed line shows the Upper Stock Reference (USR) which is the mean biomass estimate for the years 1956--2004. The lower horizontal red dashed line shows the Limit Reference Point (LRP) which is the lowest biomass from which the stock has recovered, in this case it is the biomass estimate for 1986. The coloured regions to the right of the vertical line represent projections based on various TACs. The line represents the posterior median and the shaded region represents the 95\\% credible interval."} -->
+<!-- ```{r fig-base-biomass-3cd-proj, fig.cap="Biomasse pour le modèle de référence, zone 3CD, avec projections. La ligne horizontale supérieure verte représente le point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente le point de référence limite (PRL), qui est la biomasse la plus faible à partir de laquelle le stock s’est rétabli; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%."} -->
 <!-- b.plot(base.model.3cd, -->
 <!--        base.model.3cd.name, -->
 <!--        depl = FALSE, -->
@@ -612,13 +609,13 @@ b.plot(avg.model.3cd,
 <!-- ``` -->
 
 
-<!-- ```{r fig-model-average-recr-5abcd, fig.cap="Combined posterior recruitment for the model-averaged set for Area 5ABCD.The green dashed line shows the mean of the combined posterior medians, the blue dashed line shows the median of the combined posterior medians. "} -->
+<!-- ```{r fig-model-average-recr-5abcd, fig.cap="Recrutement a posteriori combiné pour la moyenne des modèles fixée pour la zone 5ABCD. La ligne pointillée verte représente la moyenne des médianes a posteriori combinées, la ligne pointillée bleue représente la médiane des médianes a posteriori combinées. "} -->
 <!-- r.plot(avg.model.5abcd, -->
 <!--        base.model.5abcd.name, -->
 <!--        add.meds = TRUE) -->
 <!-- ``` -->
 
-<!-- ```{r fig-model-average-recr-3cd, fig.cap="Combined posterior recruitment for the model-averaged set for Area 3CD. The green dashed line shows the mean of the combined posterior medians, the blue dashed line shows the median of the combined posterior medians."} -->
+<!-- ```{r fig-model-average-recr-3cd, fig.cap="Recrutement postérieur combiné pour la moyenne des modèles fixée pour la zone 3CD. La ligne pointillée verte représente la moyenne des médianes a posteriori combinées, la ligne pointillée bleue représente la médiane des médianes a posteriori combinées."} -->
 <!-- r.plot(avg.model.3cd, -->
 <!--        base.model.3cd.name, -->
 <!--        add.meds = TRUE) -->
