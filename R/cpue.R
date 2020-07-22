@@ -22,8 +22,8 @@ if (params$era == "modern") {
 
 if (params$era == "modern") {
   define_fleet <- function(area, area_name) {
-    d1996$catch_kg <- d1996$landed_kg + d1996$discarded_kg
-    d1996 <- mutate(d1996, species_common_name = ifelse(species_code == 222, "pacific cod", "ignore me"))
+    # d1996$catch_kg <- d1996$landed_kg + d1996$discarded_kg
+    # d1996 <- mutate(d1996, species_common_name = ifelse(species_code == 222, "pacific cod", "ignore me"))
     out <- tidy_cpue_index(d1996,
       species_common = tolower(params$species_proper),
       gear = "bottom trawl",
@@ -31,7 +31,7 @@ if (params$era == "modern") {
       use_alt_year = params$april1_year,
       year_range = c(1996, 2017),
       lat_range = c(48, Inf),
-      min_positive_fe = 100,
+      min_positive_tows = 100,
       min_positive_trips = 5,
       min_yrs_with_trips = 5,
       depth_band_width = 25,
@@ -149,16 +149,16 @@ predictions <- plyr::ldply(model, predict_cpue_index_tweedie)
 ## readr::write_csv(predictions,
 ##   here::here(paste0("data/generated/cpue-predictions-", spp, "-", params$era, ".csv")))
 
-for (i in seq_along(dfleet)) {
-  if ("hours_fished" %in% names(dfleet[[i]])) {
-    dfleet[[i]] <- dplyr::rename(dfleet[[i]], effort = hours_fished)
-  }
-}
+# for (i in seq_along(dfleet)) {
+#   if ("hours_fished" %in% names(dfleet[[i]])) {
+#     dfleet[[i]] <- dplyr::rename(dfleet[[i]], effort = hours_fished)
+#   }
+# }
 
 arith_cpue <- dfleet %>%
   bind_rows() %>%
   group_by(area, year) %>%
-  summarise(est = sum(spp_catch) / sum(effort)) %>%
+  summarise(est = sum(spp_catch) / sum(hours_fished)) %>%
   mutate(model = "Combined") %>%
   group_by(area) %>%
   mutate(geo_mean = exp(mean(log(est)))) %>%
