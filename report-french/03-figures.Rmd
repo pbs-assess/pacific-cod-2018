@@ -347,7 +347,7 @@ b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.
 ```
 
 <!-- FIXME: remove eval=FALSE -->
-```{r fig-sens7-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."E}
+```{r fig-sens7-recr-5abcd, fig.cap="Sensitivity of recruitment estimates to the assumed value of $\\sigma_{W}$, Area 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
 ```
 
