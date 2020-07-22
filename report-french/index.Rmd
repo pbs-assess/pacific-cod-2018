@@ -1,5 +1,5 @@
 ---
-title: "Assessment of Pacific Cod (*Gadus macrocephalus*) for Hecate Strait and Queen Charlotte Sound (Area 5ABCD), and West Coast Vancouver Island (Area 3CD) in 2018"
+title: "Évaluation de la morue du Pacifique (*Gadus macrocephalus*) pour le détroit d’Hécate et le bassin de la Reine-Charlotte (zone 5ABCD), ainsi que pour la côte ouest de l’île de Vancouver (zone 3CD) en 2018"
 author: |
   Robyn E. Forrest^1^,
   Sean C. Anderson^1^,

@@ -1,20 +1,19 @@
 \clearpage
 
-# TABLES
+# TABLEAUX
 
 ```{r tab-catch-5abcd}
 catch.table(catch.5,
             catch.5.discards,
             area = "5ABCD",
- cap = paste0("Reported catch (mt) of Pacific Cod in Area 5ABCD ",
-              "by Canada and the USA, ",
+cap = paste0("Prises déclarées (tm) de morue du Pacifique dans la zone 5ABCD ",
+              "par le Canada et les États-Unis,",
               min(catch.5$year), "--", max(catch.5$year),
-              ". The reported discards for the period ", min(catch.5$year),
-              "--1995 are ",
-              "unrepresentative of true discarding because the estimates were taken ",
-              "from logbooks. Discard estimates since 1996 are based on at-sea ",
-              "observations and are considered to be more representative of true discarding."))
-
+              ". Les rejets déclarés pour la période ", min(catch.5$year),
+              "--1995 ne sont ",
+              "pas représentatives des rejets réels parce que les estimations ont été tirées ",
+              "des journaux de bord. Les estimations des rejets depuis 1996 sont fondées sur les ",
+              "observations en mer et sont considérées comme plus représentatives des rejets réels."))
 ```
 
 \clearpage
@@ -23,60 +22,60 @@ catch.table(catch.5,
 catch.table(catch.3,
             catch.3.discards,
             area = "3CD",
- cap = paste0("Reported catch (mt) of Pacific Cod in Area 3CD ",
-              "by Canada and the USA, ",
+cap = paste0("Prises déclarées (tm) de morue du Pacifique dans la zone 3CD ",
+              "par le Canada et les États-Unis,",
               min(catch.3$year), "--", max(catch.3$year),
-              ". The reported discards for the period ", min(catch.3$year),
-              "--1995 are ",
-              "unrepresentative of true discarding because the estimates were taken ",
-              "from logbooks. Discard estimates since 1996 are based on at-sea ",
-              "observations and are considered to be more representative of true discarding."))
+              ". Les rejets déclarés pour la période ", min(catch.3$year),
+              "--1995 ne sont ",
+              "pas représentatives des rejets réels parce que les estimations ont été tirées ",
+              "des journaux de bord. Les estimations des rejets depuis 1996 sont fondées sur les ",
+              "observations en mer et sont considérées comme plus représentatives des rejets réels."))
 ```
 
 \clearpage
 
 ```{r tab-tac}
 tac.table(tac,
- cap = paste0("Summary of TACs by area."))
+ cap = paste0("Sommaire des TAC par zone."))
 ```
 
 \clearpage
 
 ```{r tab-priors-5abcd}
 priors.table(base.model.5abcd,
-basis.vec = c("Noninformative",
-              "Informative-Previous assessment",
-              "Informative-Previous assessment",
-              "No prior-Fixed parameter",
-              "No prior-Fixed parameter",
-              "No prior-Fixed parameter",
-              "No prior-Fixed parameter",
-              "Noninformative-Technical necessity",
-              "Noninformative-Technical necessity",
-              "Noninformative-Technical necessity",
-              "Noninformative-Technical necessity",
-              "Noninformative-Technical necessity"),
-             cap = paste0("Prior probability distributions, their parameters and initial values used in the ",
-                          "Area 5ABCD Reference Case model. ", q.5abcd.desc))
+basis.vec = c("Non informatif",
+              "Informatif-Évaluation antérieure",
+              "Informatif-Évaluation antérieure",
+              "Pas de valeur a priori-Paramètre fixe",
+              "Pas de valeur a priori-Paramètre fixe",
+              "Pas de valeur a priori-Paramètre fixe",
+              "Pas de valeur a priori-Paramètre fixe",
+              "Non informatif-Nécessité technique",
+              "Non informatif-Nécessité technique",
+              "Non informatif-Nécessité technique",
+              "Non informatif-Nécessité technique",
+              "Non informatif-Nécessité technique"),
+             cap = paste0(" Distributions de probabilité a priori, leurs paramètres et les valeurs initiales utilisées dans le ",
+                          "modèle du scénario de référence de la zone 5ABCD. ", q.5abcd.desc))
 ```
 
 \clearpage
 
 ```{r tab-priors-3cd}
 priors.table(base.model.3cd,
-basis.vec = c("Noninformative",
-              "Informative-Previous assessment",
-              "Informative-Previous assessment",
-              "No prior-Fixed parameter",
-              "No prior-Fixed parameter",
-              "No prior-Fixed parameter",
-              "No prior-Fixed parameter",
-              "Noninformative-Technical necessity",
-              "Noninformative-Technical necessity",
-              "Noninformative-Technical necessity",
-              "Noninformative-Technical necessity"),
-             cap = paste0("Prior probability distributions, their parameters and initial values used in the ",
-                          "Area 3CD Reference Case model. ", q.3cd.desc))
+basis.vec = c("Non informatif",
+              "Informatif-Évaluation antérieure",
+              "Informatif-Évaluation antérieure",
+              "Pas de valeur a priori-Paramètre fixe",
+              "Pas de valeur a priori-Paramètre fixe",
+              "Pas de valeur a priori-Paramètre fixe",
+              "Pas de valeur a priori-Paramètre fixe",
+              "Non informatif-Nécessité technique",
+              "Non informatif-Nécessité technique",
+              "Non informatif-Nécessité technique",
+              "Non informatif-Nécessité technique"),
+             cap = paste0(" Distributions de probabilité a priori, leurs paramètres et les valeurs initiales utilisées dans le ",
+                          "modèle du scénario de référence de la zone 3CD. ", q.3cd.desc))
 ```
 
 ```{r tab-suggested-ref-points}
@@ -85,12 +84,12 @@ suggested.ref.points()
 
 \clearpage
 
-## MODEL RESULTS: AREA 5ABCD
+## RÉSULTATS DU MODÈLE : ZONE 5ABCD
 
 ```{r tab-param-table-5abcd, results='asis'}
 make.parameters.table(base.model.5abcd,
-  caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
-    "in the Reference Case, Area 5ABCD."),
+  caption = paste0("Paramètres estimés et fixes et distributions de probabilité a priori utilisés",
+    "dans le scénario de référence, zone 5ABCD"),
   omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
     "Log mean recruitment ($\\ln(\\overline{R})$)"),
   omit_selectivity_pars = TRUE)
@@ -99,9 +98,9 @@ make.parameters.table(base.model.5abcd,
 ```{r tab-param-est-table-5abcd, results='asis'}
 pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(base.model.5abcd,
-  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-    "97.5\\textsuperscript{th} percentile) and MPD ",
-    "estimates of key parameters from the Reference Case, Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. ",
+  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th}, médiane et ",
+    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+    "estimations des paramètres clés du scénario de référence, zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. ",
     q.5abcd.desc),
   omit_pars = pars_est_omit)
 ```
@@ -113,18 +112,18 @@ make.ref.points.table(base.model.5abcd,
                       lrp = c(2000, 2000),
                       usr = c(1956, 2004),
                       digits = 2,
-                      caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                                       "97.5\\textsuperscript{th} percentile) of reference points for Area 5ABCD. ",
-                                       "Biomass is in tonnes."))
+                      caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                                       "Centile 97,5 \\textsuperscript{th}) des points de référence pour la zone 5ABCD. ",
+                                       "La biomasse est en tonnes."))
 ```
 
 ```{r tab-post-biomass-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
                  1,
                  digits = 0,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass (t) for the Reference Case, ",
-                                  "Area 5ABCD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM de la biomasse (t) pour le scénario de référence, ",
+                                  "Zone 5ABCD."))
 ```
 
 \clearpage
@@ -133,9 +132,9 @@ make.value.table(base.model.5abcd,
 make.value.table(base.model.5abcd,
                  5,
                  digits = 2,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass relative to $B_0$ ",
-                                  "for the Reference Case, Area 5ABCD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM de la biomasse par rapport à $B_0$ ",
+                                  "pour le scénario de référence, zone 5ABCD."))
 ```
 
 \clearpage
@@ -144,9 +143,9 @@ make.value.table(base.model.5abcd,
 make.value.table(base.model.5abcd,
                  2,
                  digits = 0,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of recruitment (thousands) for the Reference Case, ",
-                                  "Area 5ABCD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM du recrutement (en milliers) pour le scénario de référence, ",
+                                  "Zone 5ABCD."))
 ```
 
 \clearpage
@@ -155,19 +154,19 @@ make.value.table(base.model.5abcd,
 make.value.table(base.model.5abcd,
                  3,
                  digits = 2,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of fishing mortality, F, ",
-                                  "for the Reference Case, Area 5ABCD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM de la mortalité par pêche, F, ",
+                                  "pour le scénario de référence, zone 5ABCD."))
 ```
 
 \clearpage
 
-## MODEL RESULTS: AREA 3CD
+## RÉSULTATS DU MODÈLE : ZONE 3CD
 
 ```{r tab-param-table-3cd, results='asis'}
 make.parameters.table(base.model.3cd,
-  caption = paste0("Estimated and fixed parameters and prior probablilty distributions used ",
-    "in the Reference Case, Area 3CD."),
+  caption = paste0("Paramètres estimés et fixes et distributions de probabilité a priori utilisés",
+    "dans le scénario de référence, zone 3CD"),
   omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
     "Log mean recruitment ($\\ln(\\overline{R})$)"),
   omit_selectivity_pars = TRUE)
@@ -175,9 +174,9 @@ make.parameters.table(base.model.3cd,
 
 ```{r tab-param-est-table-3cd, results='asis'}
 make.parameters.est.table(base.model.3cd,
-  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-    "97.5\\textsuperscript{th} percentile) and MPD ",
-    "estimates of key parameters from the reference Case, Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes.  ",
+  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+    "des paramètres clés du scénario de référence, zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes.  ",
     q.5abcd.desc),
   omit_pars = pars_est_omit)
 ```
@@ -189,18 +188,18 @@ make.ref.points.table(base.model.3cd,
                       lrp = c(1986, 1986),
                       usr = c(1956, 2004),
                       digits = 2,
-                      caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                                       "97.5\\textsuperscript{th} percentile) of reference points for Area 3CD. ",
-                                       "Biomass is in tonnes."))
+                      caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                                       "Centile 97,5 \\textsuperscript{th}) des points de référence pour la zone 3CD. ",
+                                       "La biomasse est en tonnes."))
 ```
 
 ```{r tab-post-biomass-3cd, results='asis'}
 make.value.table(base.model.3cd,
                  1,
                  digits = 0,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass (t) for ",
-                                  "the Reference Case, Area 3CD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM de la biomasse (t) pour ",
+                                  "le scénario de référence, zone 3CD."))
 ```
 
 \clearpage
@@ -209,9 +208,9 @@ make.value.table(base.model.3cd,
 make.value.table(base.model.3cd,
                  5,
                  digits = 2,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass relative to $B_0$ ",
-                                  "for the Reference Case, Area 3CD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM de la biomasse par rapport à $B_0$ ",
+                                  "pour le scénario de référence, zone 3CD."))
 ```
 
 \clearpage
@@ -220,9 +219,9 @@ make.value.table(base.model.3cd,
 make.value.table(base.model.3cd,
                  2,
                  digits = 0,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of recruitment (thousands) for the Reference Case,",
-                                  "Area 3CD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM du recrutement (en milliers) pour le scénario de référence,",
+                                  "Zone 3CD."))
 ```
 
 \clearpage
@@ -231,40 +230,40 @@ make.value.table(base.model.3cd,
 make.value.table(base.model.3cd,
                  3,
                  digits = 2,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of fishing mortality, F, ",
-                                  "for the Reference Case, Area 3CD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM de la mortalité par pêche, F, ",
+                                  "pour le scénario de référence, zone 3CD."))
 ```
 
 \clearpage
 
-## SELECTED SENSITIVITY RESULTS: AREA 5ABCD
+## QUELQUES RÉSULTATS DE SENSIBILITÉ : ZONE 5ABCD
 
 ```{r tab-param-table-sens2a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.2[[1]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 2a (mean of the QCS Synoptic Survey was set to the same mean as for the HS Synoptic Survey), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 2a (la moyenne du relevé synoptique dans le bassin de la Reine-Charlotte a été établie à la même moyenne que pour le relevé synoptique dans le détroit d’Hécate), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens2b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.2[[2]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 2b (uniform priors for synoptic survey catchability), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 2b (valeurs a priori uniformes pour la capturabilité des relevés synoptiques), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 
 ```{r tab-param-table-sens3a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[1]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 3a (moyenne ln(M)=ln(0,5), ET=0,2), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -273,28 +272,28 @@ make.parameters.est.table(sens.models.3[[1]],
 
 ```{r tab-param-table-sens3b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[2]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 3b (moyenne ln(M)=ln(0,4), ET=0,1), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens3c-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[3]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 3c (moyenne ln(M)=ln(0,4), ET=0,2), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens4a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.4[[1]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 4a (Uniform prior for steepness), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 4a (valeur a priori uniforme pour la pente), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -302,28 +301,28 @@ make.parameters.est.table(sens.models.4[[1]],
 
 ```{r tab-param-table-sens4b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.4[[2]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 4b (valeur a priori bêta pour la pente avec moyenne = 0,85 et ET = 0,15), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens6a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.6[[1]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 6a ($\\sigma_{O}$ = 0.1), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 6a ($$\\sigma_{O}$  = 0,1), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens6b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.6[[2]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 6b ($\\sigma_{O}$ = 0.15), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 6b ($$\\sigma_{O}$ = 0,15), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -331,42 +330,42 @@ make.parameters.est.table(sens.models.6[[2]],
 
 ```{r tab-param-table-sens6c-5abcd, results='asis'}
 make.parameters.est.table(sens.models.6[[3]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 6c ($\\sigma_{O}$ = 0.25), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 6c ($$\\sigma_{O}$ = 0,25), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 
 \clearpage
 
-## SELECTED SENSITIVITY RESULTS: AREA 3CD
+## QUELQUES RÉSULTATS DE SENSIBILITÉ : ZONE 3CD
 
 ```{r tab-param-table-sens2a-3cd, results='asis'}
 make.parameters.est.table(sens.models.9[[1]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 2a (sd of the WCVI Synoptic Survey was set to the same sd as for the QCS and HS Synoptic Surveys), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 2a (l’écart-type du relevé synoptique de la COIV dans le bassin de la Reine-Charlotte a été établi au même écart-type que pour le relevé synoptique dans le détroit d’Hécate), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens2b-3cd, results='asis'}
 make.parameters.est.table(sens.models.9[[2]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 2b (uniform priors for synoptic survey catchability), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 2b (valeurs a priori uniformes pour la capturabilité des relevés synoptiques), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens3a-3cd, results='asis'}
 make.parameters.est.table(sens.models.10[[1]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 3a (moyenne ln(M)=ln(0,5), ET=0,2), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -375,28 +374,28 @@ make.parameters.est.table(sens.models.10[[1]],
 
 ```{r tab-param-table-sens3b-3cd, results='asis'}
 make.parameters.est.table(sens.models.10[[2]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 3b (mean ln(M)=ln(0.4), SD=0.1), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 3b (moyenne ln(M)=ln(0,4), ET=0,1), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens3c-3cd, results='asis'}
 make.parameters.est.table(sens.models.10[[3]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 3c (mean ln(M)=ln(0.4), SD=0.2), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 3c (moyenne ln(M)=ln(0,4), ET=0,2), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens4a-3cd, results='asis'}
 make.parameters.est.table(sens.models.11[[1]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 4a (Uniform prior for steepness), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 4a (valeur a priori uniforme pour la pente), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -405,28 +404,28 @@ make.parameters.est.table(sens.models.11[[1]],
 
 ```{r tab-param-table-sens4b-3cd, results='asis'}
 make.parameters.est.table(sens.models.11[[2]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 4b (beta prior for steepness with mean = 0.85 and SD = 0.15), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 4b (valeur a priori bêta pour la pente avec moyenne = 0,85 et ET = 0,15), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens6a-3cd, results='asis'}
 make.parameters.est.table(sens.models.13[[1]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 6a ($\\sigma_{O}$ = 0.1), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 6a ($$\\sigma_{O}$  = 0,1), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 ```{r tab-param-table-sens6b-3cd, results='asis'}
 make.parameters.est.table(sens.models.13[[2]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                   "for Sc 6b ($\\sigma_{O}$ = 0.15), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                   "pour le Scénario 6b ($$\\sigma_{O}$ = 0,15), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
@@ -435,16 +434,16 @@ make.parameters.est.table(sens.models.13[[2]],
 
 ```{r tab-param-table-sens6c-3cd, results='asis'}
 make.parameters.est.table(sens.models.13[[3]],
- caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                   "97.5\\textsuperscript{th} percentile) and MPD ",
-                   "estimates of key parameters ",
-                  "for Sc 6c ($\\sigma_{O}$ = 0.25), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
+ caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                   "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+                   "des paramètres clés ",
+                  "pour le Scénario 6c ($$\\sigma_{O}$ = 0,25), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
   omit_pars = pars_est_omit)
 ```
 
 \clearpage
 
-## MODEL-AVERAGED REFERENCE POINTS AND DECISION TABLES {#sec:reference-points-and-decision-tables}
+## POINTS DE RÉFÉRENCE FONDÉS SUR LA MOYENNE DES MODÈLES ET TABLEAUX DE DÉCISION {#sec:reference-points-and-decision-tables}
 
 
 ```{r tab-ref-points-table-avg-5abcd, results='asis'}
@@ -455,10 +454,10 @@ make.ref.points.table(c(base.model.5abcd,
                       lrp = c(2000, 2000),
                       usr = c(1956, 2004),
                       digits = 2,
-                      caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                                       "97.5\\textsuperscript{th} percentile) of reference points for ",
-                                       "model-averaged Area 5ABCD. ",
-                                       "Biomass is in tonnes."))
+                      caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                                       "centile 97,5 \\textsuperscript{th}) des points de référence pour ",
+                                       "la moyenne des modèles pour la zone 5ABCD. ",
+                                       "La biomasse est en tonnes."))
 ```
 
 ```{r tab-post-biomass-avg-5abcd, results='asis'}
@@ -466,8 +465,8 @@ make.value.table(c(base.model.5abcd,
                         sens.models.6.sub),
                  1,
                  digits = 0,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass (t) for model-averaged Area 5ABCD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM de la biomasse (t) pour la moyenne des modèles dans la zone 5ABCD "))
 ```
 
 ```{r tab-post-recr-avg-5abcd, results='asis'}
@@ -475,8 +474,8 @@ make.value.table(c(base.model.5abcd,
                         sens.models.6.sub),
                  2,
                  digits = 0,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of recruitment (thousands) model-averaged Area 5ABCD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM du recrutement (en milliers) selon la moyenne des modèles pour la zone 5ABCD."))
 ```
 
 ```{r tab-ref-points-table-avg-3cd, results='asis'}
@@ -487,10 +486,10 @@ make.ref.points.table(c(base.model.3cd,
                       lrp = c(1986, 1986),
                       usr = c(1956, 2004),
                       digits = 2,
-                      caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-                                       "97.5\\textsuperscript{th} percentile) of reference points for ",
-                                       "model-averaged Area 3CD. ",
-                                       "Biomass is in tonnes."))
+                      caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
+                                       "centile 97,5 \\textsuperscript{th}) des points de référence pour ",
+                                       "la moyenne des modèles pour la zone 3CD. ",
+                                       "La biomasse est en tonnes."))
 ```
 \vspace{10pt}
 ```{r tab-post-biomass-avg-3cd, results='asis'}
@@ -498,8 +497,8 @@ make.value.table(c(base.model.3cd,
                         sens.models.13.sub),
                  1,
                  digits = 0,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of biomass (t) for model-averaged Area 3CD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM de la biomasse (t) pour la moyenne des modèles dans la zone 3CD "))
 ```
 
 ```{r tab-post-recr-avg-3cd, results='asis'}
@@ -507,15 +506,15 @@ make.value.table(c(base.model.3cd,
                         sens.models.13.sub),
                  2,
                  digits = 0,
-                 caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
-                                  "percentile) and MPD estimates of recruitment (thousands) model-averaged Area 3CD."))
+                 caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
+                                  ") et estimations de la DPM du recrutement (en milliers) selon la moyenne des modèles pour la zone 3CD."))
 ```
 
 \clearpage
 
 ```{r tab-decision-avg-5abcd, results='asis'}
 decision.table(avg.model.5abcd,
-               caption = paste0("Decision table with model averaging for Area 5ABCD. Models averaged are: ",
+               caption = paste0("Tableau de décision avec moyenne des modèles pour la zone 5ABCD. Les modèles pris en compte dans la moyenne sont les suivants : ",
                                 and.string(c(base.model.5abcd.name, sens.models.name.6.sub)),
                                 "."))
 ```
@@ -524,7 +523,7 @@ decision.table(avg.model.5abcd,
 
 ```{r tab-decision-avg-3cd, results='asis'}
 decision.table(avg.model.3cd,
-               caption = paste0("Decision table with model averaging for Area 3CD. Models averaged are: ",
+               caption = paste0("Tableau de décision avec moyenne des modèles pour la zone 3CD. Les modèles pris en compte dans la moyenne sont les suivants : ",
                                 and.string(c(base.model.3cd.name, sens.models.name.13.sub)),
                                 "."))
 ```
