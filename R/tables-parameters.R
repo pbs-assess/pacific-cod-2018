@@ -238,7 +238,8 @@ make.parameters.est.table <- function(model,
                                       digits = 3,
                                       caption = "",
                                       omit_pars = NULL,
-                                      format = "pandoc",french=FALSE){
+                                      format = "pandoc",
+                                      french=FALSE){
   ## Returns an xtable in the proper format for parameter estimates and priors
   ##
   ## digits - number of decimal points on % columns
@@ -388,7 +389,8 @@ make.ref.points.table <- function(models,
                                   usr = NA,
                                   lower = 0.025,
                                   upper = 0.975,
-                                  format = "pandoc")
+                                  format = "pandoc",
+                                  french=FALSE)
   {
 
   probs <- c(lower, 0.5, upper)

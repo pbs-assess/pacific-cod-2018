@@ -1,0 +1,22 @@
+Needs translation,,,,Format for rosettafish,,
+English,French,Notes,,USA,,�tats-Unis
+,,,,,,
+Landed,,"As in ""the fish they caught were landed at the port""",,,,
+Released at sea,,"As in ""the fish they caught were released at sea""",,,,
+Landings,,As in fishery landings,,,,
+Total catch,,As in fisheries catch,,,,
+Canada total,,Short for Canada total catch,,,,
+Source,,As in source of information,,,,
+IFMP,,Acronym for Integrated Fishery Management Plan,,,,
+GMU,,Acronym for Groundfish Management Unit,,,,
+Number estimated,,As in number of estimated parameters,,Ready to add to rosettafish,,
+"Bounds [low, high]",,As in bounds of a  probability distribution,,Reference Point,,Point de référence
+"Prior (mean, SD) (single value = fixed)",,Prior as in prior probability distribution,,Reference points,,Points de référence
+Definition,,,,Reference Points,,Points de référence
+Role,,As in role of the reference point,,,,
+Initial value,,,,,,
+Lower bound,,As in bounds of a  probability distribution,,,,
+Upper bound,,As in bounds of a  probability distribution,,,,
+Distribution,,As in probability distribution,,,,
+Estimated,,,,,,
+Basis,,,,,,
