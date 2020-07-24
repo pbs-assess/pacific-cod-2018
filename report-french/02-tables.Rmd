@@ -13,7 +13,8 @@ cap = paste0("Prises déclarées (tm) de morue du Pacifique dans la zone 5ABCD "
               "--1995 ne sont ",
               "pas représentatives des rejets réels parce que les estimations ont été tirées ",
               "des journaux de bord. Les estimations des rejets depuis 1996 sont fondées sur les ",
-              "observations en mer et sont considérées comme plus représentatives des rejets réels."))
+              "observations en mer et sont considérées comme plus représentatives des rejets réels."),
+french=french)
 ```
 
 \clearpage
@@ -29,7 +30,7 @@ cap = paste0("Prises déclarées (tm) de morue du Pacifique dans la zone 3CD ",
               "--1995 ne sont ",
               "pas représentatives des rejets réels parce que les estimations ont été tirées ",
               "des journaux de bord. Les estimations des rejets depuis 1996 sont fondées sur les ",
-              "observations en mer et sont considérées comme plus représentatives des rejets réels."))
+              "observations en mer et sont considérées comme plus représentatives des rejets réels."), french=french)
 ```
 
 \clearpage

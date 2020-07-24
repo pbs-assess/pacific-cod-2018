@@ -1,7 +1,8 @@
 catch.table <- function(dat,
                         dat.disc = NULL, # no longer used
                         area = "NA",
-                        cap = ""){
+                        cap = "",
+                        french = FALSE){
   ## dat is what comes out of data/get-data.R/total.catch.yr.qtr
   ## dat.disc is what comes out of data/get-data.R/total.catch.discards
 
@@ -28,7 +29,9 @@ catch.table <- function(dat,
                               f(tmp)
                             })
 
+  colnames(j) <- en2fr(colnames(j), translate = french, allow_missing = TRUE)
   colnames(j) <- latex.bold(colnames(j))
+
   #do not include 2018
   kable(j[1:(nrow(j)-1),],
         caption = cap,
