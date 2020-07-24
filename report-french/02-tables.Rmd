@@ -178,7 +178,7 @@ make.parameters.est.table(base.model.3cd,
   caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
     "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
     "des paramètres clés du scénario de référence, zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes.  ",
-    q.5abcd.desc),
+    q.3cd.desc),
   omit_pars = pars_est_omit)
 ```
 
