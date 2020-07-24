@@ -14,7 +14,7 @@ cap = paste0("Prises déclarées (tm) de morue du Pacifique dans la zone 5ABCD "
               "pas représentatives des rejets réels parce que les estimations ont été tirées ",
               "des journaux de bord. Les estimations des rejets depuis 1996 sont fondées sur les ",
               "observations en mer et sont considérées comme plus représentatives des rejets réels."),
-french=french)
+              french=french)
 ```
 
 \clearpage
@@ -30,7 +30,7 @@ cap = paste0("Prises déclarées (tm) de morue du Pacifique dans la zone 3CD ",
               "--1995 ne sont ",
               "pas représentatives des rejets réels parce que les estimations ont été tirées ",
               "des journaux de bord. Les estimations des rejets depuis 1996 sont fondées sur les ",
-              "observations en mer et sont considérées comme plus représentatives des rejets réels."), french=french)
+              "observations en mer et sont considérées comme plus représentatives des rejets réels."),                   french=french)
 ```
 
 \clearpage
@@ -58,7 +58,7 @@ basis.vec = c("Non informatif",
               "Non informatif-Nécessité technique"),
              cap = paste0(" Distributions de probabilité a priori, leurs paramètres et les valeurs initiales utilisées dans le ",
                           "modèle du scénario de référence de la zone 5ABCD. ", q.5abcd.desc),
-  french = french)
+            french = french)
 ```
 
 \clearpage
@@ -77,11 +77,12 @@ basis.vec = c("Non informatif",
               "Non informatif-Nécessité technique",
               "Non informatif-Nécessité technique"),
              cap = paste0(" Distributions de probabilité a priori, leurs paramètres et les valeurs initiales utilisées dans le ",
-                          "modèle du scénario de référence de la zone 3CD. ", q.3cd.desc))
+                          "modèle du scénario de référence de la zone 3CD. ", q.3cd.desc),
+               french=french)
 ```
 
 ```{r tab-suggested-ref-points}
-suggested.ref.points()
+suggested.ref.points(french=french)
 ```
 
 \clearpage
@@ -94,7 +95,8 @@ make.parameters.table(base.model.5abcd,
     "dans le scénario de référence, zone 5ABCD"),
   omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
     "Log mean recruitment ($\\ln(\\overline{R})$)"),
-  omit_selectivity_pars = TRUE)
+  omit_selectivity_pars = TRUE, 
+  french=french)
 ```
 
 ```{r tab-param-est-table-5abcd, results='asis'}
@@ -104,8 +106,11 @@ make.parameters.est.table(base.model.5abcd,
     "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
     "estimations des paramètres clés du scénario de référence, zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. ",
     q.5abcd.desc),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+  french=french)
 ```
+
+
 
 ```{r tab-ref-points-table-5abcd, results='asis'}
 make.ref.points.table(base.model.5abcd,
@@ -118,6 +123,8 @@ make.ref.points.table(base.model.5abcd,
                                        "Centile 97,5 \\textsuperscript{th}) des points de référence pour la zone 5ABCD. ",
                                        "La biomasse est en tonnes."))
 ```
+
+<!--
 
 ```{r tab-post-biomass-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
@@ -531,3 +538,5 @@ decision.table(avg.model.3cd,
 ```
 
 \clearpage
+
+-->

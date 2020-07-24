@@ -67,7 +67,7 @@ decision.table <- function(model,
   }
 }
 
-suggested.ref.points <- function(){
+suggested.ref.points <- function(french=FALSE){
   df <- data.frame(
     referencepoint = c("$B_{\t{Min}}$",
                        "$B_{\t{Avg}}$",
@@ -90,6 +90,7 @@ suggested.ref.points <- function(){
              "Benchmark")) %>%
     rename("Reference point" = referencepoint)
 
+  colnames(df) <- en2fr(colnames(df), translate = french, allow_missing = TRUE)
   colnames(df) <- latex.bold(colnames(df))
   kable(df,
         caption = paste0("Reference points for the Reference Case ",

@@ -16,7 +16,8 @@ mcmc_monitor <- function(model) {
 make.parameters.table <- function(model,
                                   caption = "default", omit_pars = NULL,
                                   omit_selectivity_pars = FALSE,
-                                  format = "pandoc"){
+                                  format = "pandoc",
+                                  french=FALSE){
 
   get.bounds <- function(ind){
     ## Return the bounds string for row ind of the parameters
@@ -219,12 +220,11 @@ make.parameters.table <- function(model,
     tab <- dplyr::filter(tab, !grepl("selectivity", `param.text`))
   }
 
-
   colnames(tab) <- c(latex.bold("Parameter"),
                      latex.mlc(c("Number",
                                  "estimated")),
                      latex.mlc(c("Bounds",
-                                 "[low, high")),
+                                 "[low, high]")),
                      latex.mlc(c("Prior (mean, SD)",
                                  "(single value = fixed)")))
   knitr::kable(tab,
@@ -238,7 +238,7 @@ make.parameters.est.table <- function(model,
                                       digits = 3,
                                       caption = "",
                                       omit_pars = NULL,
-                                      format = "pandoc"){
+                                      format = "pandoc",french=FALSE){
   ## Returns an xtable in the proper format for parameter estimates and priors
   ##
   ## digits - number of decimal points on % columns
@@ -368,6 +368,8 @@ make.parameters.est.table <- function(model,
     # tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
     tab <- dplyr::filter(tab, !`Parameter` %in% omit_pars)
   }
+
+  colnames(tab) <- en2fr(colnames(tab), translate = french, allow_missing = TRUE)
   colnames(tab) <- latex.bold(latex.perc(colnames(tab)))
 
   knitr::kable(tab,
@@ -386,7 +388,8 @@ make.ref.points.table <- function(models,
                                   usr = NA,
                                   lower = 0.025,
                                   upper = 0.975,
-                                  format = "pandoc"){
+                                  format = "pandoc")
+  {
 
   probs <- c(lower, 0.5, upper)
 
