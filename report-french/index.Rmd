@@ -62,7 +62,7 @@ if (length(grep("pdf", names(meta)))) {
   prepub <- meta$`csasdown::resdoc_word`$prepub
 }
 if (french) {
-  options(OutDec = ",")
+  #options(OutDec = ",")
 }
 ```
 

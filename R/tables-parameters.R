@@ -279,11 +279,11 @@ make.parameters.est.table <- function(model,
       pname <- "sbo"
     }
     match.sel <- grep("sel[[:digit:]]+",
-      pname)
+                      pname)
     match.sel.sd <- grep("selsd[[:digit:]]+",
-      pname)
+                         pname)
     match.q <- grep("q[[:digit:]]+",
-      pname)
+                    pname)
     ## Age value at 50%
     sel.pars <- mpd$sel_par[,3]
     ## Age SD at 50%
@@ -292,19 +292,19 @@ make.parameters.est.table <- function(model,
     if(length(match.sel) > 0){
       ## The parameter starts with "sel"
       split.val <- strsplit(pname,
-        "[^[:digit:]]")[[1]]
+                            "[^[:digit:]]")[[1]]
       sel.num <- as.numeric(split.val[length(split.val)])
       this.par <- sel.pars[sel.num]
     }else if(length(match.sel.sd) > 0){
       ## The parameter starts with "selsd"
       split.val <- strsplit(pname,
-        "[^[:digit:]]")[[1]]
+                            "[^[:digit:]]")[[1]]
       sel.num <- as.numeric(split.val[length(split.val)])
       this.par <- sel.sd.pars[sel.num]
     }else if(length(match.q) > 0){
       ## The parameter starts with "q"
       split.val <- strsplit(pname,
-        "[^[:digit:]]")[[1]]
+                            "[^[:digit:]]")[[1]]
       q.num <- as.numeric(split.val[length(split.val)])
       this.par <- q.pars[q.num]
     }else{
@@ -374,9 +374,9 @@ make.parameters.est.table <- function(model,
   colnames(tab) <- latex.bold(latex.perc(colnames(tab)))
 
   knitr::kable(tab,
-    caption = caption, format = format,
-    align = get.align(ncol(tab))[-1], longtable = TRUE,
-    booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
+               caption = caption, format = format,
+               align = get.align(ncol(tab))[-1], longtable = TRUE,
+               booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
     kableExtra::kable_styling(latex_options = "hold_position")
 }
 
@@ -513,7 +513,8 @@ make.ref.points.table <- function(models,
 make.value.table <- function(model,
   type,
   digits = 3,
-  caption = "default"
+  caption = "default",
+  french=FALSE
   ){
 
   if(class(model) == model.lst.class){
@@ -540,6 +541,7 @@ make.value.table <- function(model,
   tab <- f(t(out.dat), digits)
   tab <- cbind(rownames(tab), tab)
   colnames(tab)[1] <- "Year"
+  colnames(tab) <- en2fr(colnames(tab), translate = french, allow_missing = TRUE)
   colnames(tab) <- latex.bold(latex.perc(colnames(tab)))
 
   knitr::kable(tab,

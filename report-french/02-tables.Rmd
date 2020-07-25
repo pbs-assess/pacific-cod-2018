@@ -102,14 +102,13 @@ make.parameters.table(base.model.5abcd,
 ```{r tab-param-est-table-5abcd, results='asis'}
 pars_est_omit <- c("$\\overline{R}_{init}$", "$\\overline{R}$", "$\\vartheta$")
 make.parameters.est.table(base.model.5abcd,
-  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th}, médiane et ",
-    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
+  caption = paste0("Valeur a posteriori (centile 2.5\\textsuperscript{th}, médiane et ",
+    "centile 97.5 \\textsuperscript{th}) et estimations de la DPM ",
     "estimations des paramètres clés du scénario de référence, zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. ",
     q.5abcd.desc),
   omit_pars = pars_est_omit,
-  french=french)
+              french=french)
 ```
-
 
 
 ```{r tab-ref-points-table-5abcd, results='asis'}
@@ -121,10 +120,10 @@ make.ref.points.table(base.model.5abcd,
                       digits = 2,
                       caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
                                        "Centile 97,5 \\textsuperscript{th}) des points de référence pour la zone 5ABCD. ",
-                                       "La biomasse est en tonnes."))
+                                       "La biomasse est en tonnes."),
+               french=french)
 ```
 
-<!--
 
 ```{r tab-post-biomass-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
@@ -132,7 +131,8 @@ make.value.table(base.model.5abcd,
                  digits = 0,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
                                   ") et estimations de la DPM de la biomasse (t) pour le scénario de référence, ",
-                                  "Zone 5ABCD."))
+                                  "Zone 5ABCD."),
+               french=french)
 ```
 
 \clearpage
@@ -143,7 +143,8 @@ make.value.table(base.model.5abcd,
                  digits = 2,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
                                   ") et estimations de la DPM de la biomasse par rapport à $B_0$ ",
-                                  "pour le scénario de référence, zone 5ABCD."))
+                                  "pour le scénario de référence, zone 5ABCD."),
+               french=french)
 ```
 
 \clearpage
@@ -154,7 +155,8 @@ make.value.table(base.model.5abcd,
                  digits = 0,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
                                   ") et estimations de la DPM du recrutement (en milliers) pour le scénario de référence, ",
-                                  "Zone 5ABCD."))
+                                  "Zone 5ABCD."),
+               french=french)
 ```
 
 \clearpage
@@ -165,7 +167,8 @@ make.value.table(base.model.5abcd,
                  digits = 2,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
                                   ") et estimations de la DPM de la mortalité par pêche, F, ",
-                                  "pour le scénario de référence, zone 5ABCD."))
+                                  "pour le scénario de référence, zone 5ABCD."),
+               french=french)
 ```
 
 \clearpage
@@ -178,7 +181,8 @@ make.parameters.table(base.model.3cd,
     "dans le scénario de référence, zone 3CD"),
   omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
     "Log mean recruitment ($\\ln(\\overline{R})$)"),
-  omit_selectivity_pars = TRUE)
+  omit_selectivity_pars = TRUE,
+               french=french)
 ```
 
 ```{r tab-param-est-table-3cd, results='asis'}
@@ -187,7 +191,8 @@ make.parameters.est.table(base.model.3cd,
     "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
     "des paramètres clés du scénario de référence, zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes.  ",
     q.3cd.desc),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-ref-points-table-3cd, results='asis'}
@@ -199,7 +204,8 @@ make.ref.points.table(base.model.3cd,
                       digits = 2,
                       caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
                                        "Centile 97,5 \\textsuperscript{th}) des points de référence pour la zone 3CD. ",
-                                       "La biomasse est en tonnes."))
+                                       "La biomasse est en tonnes."),
+               french=french)
 ```
 
 ```{r tab-post-biomass-3cd, results='asis'}
@@ -208,7 +214,8 @@ make.value.table(base.model.3cd,
                  digits = 0,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
                                   ") et estimations de la DPM de la biomasse (t) pour ",
-                                  "le scénario de référence, zone 3CD."))
+                                  "le scénario de référence, zone 3CD."),
+               french=french)
 ```
 
 \clearpage
@@ -219,7 +226,8 @@ make.value.table(base.model.3cd,
                  digits = 2,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
                                   ") et estimations de la DPM de la biomasse par rapport à $B_0$ ",
-                                  "pour le scénario de référence, zone 3CD."))
+                                  "pour le scénario de référence, zone 3CD."),
+               french=french)
 ```
 
 \clearpage
@@ -230,7 +238,8 @@ make.value.table(base.model.3cd,
                  digits = 0,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
                                   ") et estimations de la DPM du recrutement (en milliers) pour le scénario de référence,",
-                                  "Zone 3CD."))
+                                  "Zone 3CD."),
+               french=french)
 ```
 
 \clearpage
@@ -241,7 +250,8 @@ make.value.table(base.model.3cd,
                  digits = 2,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
                                   ") et estimations de la DPM de la mortalité par pêche, F, ",
-                                  "pour le scénario de référence, zone 3CD."))
+                                  "pour le scénario de référence, zone 3CD."),
+               french=french)
 ```
 
 \clearpage
@@ -254,7 +264,8 @@ make.parameters.est.table(sens.models.2[[1]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 2a (la moyenne du relevé synoptique dans le bassin de la Reine-Charlotte a été établie à la même moyenne que pour le relevé synoptique dans le détroit d’Hécate), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens2b-5abcd, results='asis'}
@@ -263,7 +274,8 @@ make.parameters.est.table(sens.models.2[[2]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 2b (valeurs a priori uniformes pour la capturabilité des relevés synoptiques), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 
@@ -273,7 +285,8 @@ make.parameters.est.table(sens.models.3[[1]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 3a (moyenne ln(M)=ln(0,5), ET=0,2), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 \clearpage
@@ -285,7 +298,8 @@ make.parameters.est.table(sens.models.3[[2]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 3b (moyenne ln(M)=ln(0,4), ET=0,1), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens3c-5abcd, results='asis'}
@@ -294,7 +308,8 @@ make.parameters.est.table(sens.models.3[[3]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 3c (moyenne ln(M)=ln(0,4), ET=0,2), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens4a-5abcd, results='asis'}
@@ -303,7 +318,8 @@ make.parameters.est.table(sens.models.4[[1]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 4a (valeur a priori uniforme pour la pente), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 \clearpage
@@ -314,7 +330,8 @@ make.parameters.est.table(sens.models.4[[2]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 4b (valeur a priori bêta pour la pente avec moyenne = 0,85 et ET = 0,15), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens6a-5abcd, results='asis'}
@@ -323,7 +340,8 @@ make.parameters.est.table(sens.models.6[[1]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 6a ($$\\sigma_{O}$  = 0,1), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens6b-5abcd, results='asis'}
@@ -332,7 +350,8 @@ make.parameters.est.table(sens.models.6[[2]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 6b ($$\\sigma_{O}$ = 0,15), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 \clearpage
@@ -343,7 +362,8 @@ make.parameters.est.table(sens.models.6[[3]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 6c ($$\\sigma_{O}$ = 0,25), zone 5ABCD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 
@@ -357,7 +377,8 @@ make.parameters.est.table(sens.models.9[[1]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 2a (l’écart-type du relevé synoptique de la COIV dans le bassin de la Reine-Charlotte a été établi au même écart-type que pour le relevé synoptique dans le détroit d’Hécate), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens2b-3cd, results='asis'}
@@ -366,7 +387,8 @@ make.parameters.est.table(sens.models.9[[2]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 2b (valeurs a priori uniformes pour la capturabilité des relevés synoptiques), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens3a-3cd, results='asis'}
@@ -375,7 +397,8 @@ make.parameters.est.table(sens.models.10[[1]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 3a (moyenne ln(M)=ln(0,5), ET=0,2), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 \clearpage
@@ -387,7 +410,8 @@ make.parameters.est.table(sens.models.10[[2]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 3b (moyenne ln(M)=ln(0,4), ET=0,1), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens3c-3cd, results='asis'}
@@ -396,7 +420,8 @@ make.parameters.est.table(sens.models.10[[3]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 3c (moyenne ln(M)=ln(0,4), ET=0,2), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens4a-3cd, results='asis'}
@@ -405,7 +430,8 @@ make.parameters.est.table(sens.models.11[[1]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 4a (valeur a priori uniforme pour la pente), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 \clearpage
@@ -417,7 +443,8 @@ make.parameters.est.table(sens.models.11[[2]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 4b (valeur a priori bêta pour la pente avec moyenne = 0,85 et ET = 0,15), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens6a-3cd, results='asis'}
@@ -426,7 +453,8 @@ make.parameters.est.table(sens.models.13[[1]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 6a ($$\\sigma_{O}$  = 0,1), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 ```{r tab-param-table-sens6b-3cd, results='asis'}
@@ -435,7 +463,8 @@ make.parameters.est.table(sens.models.13[[2]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                    "pour le Scénario 6b ($$\\sigma_{O}$ = 0,15), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 \clearpage
@@ -447,7 +476,8 @@ make.parameters.est.table(sens.models.13[[3]],
                    "centile 97,5 \\textsuperscript{th}) et estimations de la DPM ",
                    "des paramètres clés ",
                   "pour le Scénario 6c ($$\\sigma_{O}$ = 0,25), zone 3CD. $R_0$ est en milliers de poissons. $B_0$ est en tonnes. "),
-  omit_pars = pars_est_omit)
+  omit_pars = pars_est_omit,
+            french = french)
 ```
 
 \clearpage
@@ -466,7 +496,8 @@ make.ref.points.table(c(base.model.5abcd,
                       caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
                                        "centile 97,5 \\textsuperscript{th}) des points de référence pour ",
                                        "la moyenne des modèles pour la zone 5ABCD. ",
-                                       "La biomasse est en tonnes."))
+                                       "La biomasse est en tonnes."),
+               french=french)
 ```
 
 ```{r tab-post-biomass-avg-5abcd, results='asis'}
@@ -475,7 +506,8 @@ make.value.table(c(base.model.5abcd,
                  1,
                  digits = 0,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
-                                  ") et estimations de la DPM de la biomasse (t) pour la moyenne des modèles dans la zone 5ABCD "))
+                                  ") et estimations de la DPM de la biomasse (t) pour la moyenne des modèles dans la zone 5ABCD "),
+               french=french)
 ```
 
 ```{r tab-post-recr-avg-5abcd, results='asis'}
@@ -484,7 +516,8 @@ make.value.table(c(base.model.5abcd,
                  2,
                  digits = 0,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
-                                  ") et estimations de la DPM du recrutement (en milliers) selon la moyenne des modèles pour la zone 5ABCD."))
+                                  ") et estimations de la DPM du recrutement (en milliers) selon la moyenne des modèles pour la zone 5ABCD."),
+               french=french)
 ```
 
 ```{r tab-ref-points-table-avg-3cd, results='asis'}
@@ -498,7 +531,8 @@ make.ref.points.table(c(base.model.3cd,
                       caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et ",
                                        "centile 97,5 \\textsuperscript{th}) des points de référence pour ",
                                        "la moyenne des modèles pour la zone 3CD. ",
-                                       "La biomasse est en tonnes."))
+                                       "La biomasse est en tonnes."),
+               french=french)
 ```
 \vspace{10pt}
 ```{r tab-post-biomass-avg-3cd, results='asis'}
@@ -507,7 +541,8 @@ make.value.table(c(base.model.3cd,
                  1,
                  digits = 0,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
-                                  ") et estimations de la DPM de la biomasse (t) pour la moyenne des modèles dans la zone 3CD "))
+                                  ") et estimations de la DPM de la biomasse (t) pour la moyenne des modèles dans la zone 3CD "),
+               french=french)
 ```
 
 ```{r tab-post-recr-avg-3cd, results='asis'}
@@ -516,10 +551,13 @@ make.value.table(c(base.model.3cd,
                  2,
                  digits = 0,
                  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th, médiane et centile 97,5\\textsuperscript{th} ",
-                                  ") et estimations de la DPM du recrutement (en milliers) selon la moyenne des modèles pour la zone 3CD."))
+                                  ") et estimations de la DPM du recrutement (en milliers) selon la moyenne des modèles pour la zone 3CD."),
+               french=french)
 ```
 
 \clearpage
+
+<!--
 
 ```{r tab-decision-avg-5abcd, results='asis'}
 decision.table(avg.model.5abcd,
