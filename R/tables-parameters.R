@@ -220,13 +220,16 @@ make.parameters.table <- function(model,
     tab <- dplyr::filter(tab, !grepl("selectivity", `param.text`))
   }
 
-  colnames(tab) <- c(latex.bold("Parameter"),
-                     latex.mlc(c("Number",
-                                 "estimated")),
-                     latex.mlc(c("Bounds",
-                                 "[low, high]")),
-                     latex.mlc(c("Prior (mean, SD)",
-                                 "(single value = fixed)")))
+
+  colnames(tab) <- c(latex.bold(en2fr("Parameter", translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("Number",
+                                 "estimated"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("Bounds",
+                                 "[low, high]"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("Prior (mean, SD)",
+                                 "(single value = fixed)"), translate = french, allow_missing = TRUE)))
+
+
   knitr::kable(tab,
     caption = caption, format = format,
     align = get.align(ncol(tab))[-1],
