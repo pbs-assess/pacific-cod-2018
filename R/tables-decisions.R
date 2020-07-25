@@ -3,7 +3,8 @@ decision.table <- function(model,
                            make.table = TRUE,
                            format = "pandoc",
                            tac.vec = NA,
-                           make.lt.gt = TRUE){
+                           make.lt.gt = TRUE,
+                           french=FALSE){
   ## make.lt.gt = add less than and greater than
   ## sybols in table. Changes those columns to character
 
@@ -13,7 +14,7 @@ decision.table <- function(model,
                               ncol = 6,
                               nrow = length(tac)))
   if(format == "html"){
-    col.names <- c("2019 Catch (mt)",
+    col.names <- c(paste("2019", en2fr("Catch", translate = french, allow_missing = TRUE), "(mt)"),
                    "P(B2020 < B2019)",
                    "P(F2019 > F2018)",
                    "P(B2020 < LRP)",
@@ -21,7 +22,7 @@ decision.table <- function(model,
                    "P(F2019 > LRR)")
 
   }else{
-    col.names <- c("$2019$ Catch (mt)",
+    col.names <- c(paste("2019", en2fr("Catch", translate = french, allow_missing = TRUE), "(mt)"),
                    "$P(B_{2020} < B_{2019})$",
                    "$P(F_{2019} > F_{2018})$",
                    "$P(B_{2020} < \\mathrm{LRP})$",
