@@ -86,8 +86,8 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, french=f
 ```
 
 ```{r fig-base-mean-weight-5abcd, fig.cap="Ajustement de la DPM aux données sur le poids moyen pour le modèle de référence de la zone 5ABCD. Dans un souci de clarté, seuls les résultats de la DPM sont illustrés."}
-plot_grid(mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015),
-          mw.compare.plot(base.model.5abcd[[1]]),
+plot_grid(mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015, french=french),
+          mw.compare.plot(base.model.5abcd[[1]], french=french),
           nrow = 1,
           ncol = 2)
 ```
@@ -113,23 +113,25 @@ b.plot(base.model.5abcd,
        depl = FALSE,
        add.hist.ref = TRUE,
        lrp = c(2000, 2000),
-       usr = c(1956, 2004))
+       usr = c(1956, 2004),
+       french=french)
 ```
 
 ```{r fig-base-depl-5abcd, fig.cap="Biomasse relative pour le modèle de référence, zone 5ABCD."}
 b.plot(base.model.5abcd,
        base.model.5abcd.name,
-       depl = TRUE)
+       depl = TRUE,
+       french=french)
 ```
 
 ```{r fig-base-recr-5abcd, fig.cap="Recrutement (a) et écarts du recrutement (b) pour le modèle de référence, zone 5ABCD.  La ligne pointillée verte représente la moyenne des médianes a posteriori des MCCM, la ligne pointillée bleue représente la médiane des médianes a posteriori des MCCM."}
 plot_grid(r.plot(base.model.5abcd,
                  base.model.5abcd.name,
                  add.meds = TRUE,
-                 x.axis.angle = 90),
+                 x.axis.angle = 90, french=french),
           r.devs.plot(base.model.5abcd,
                       base.model.5abcd.name,
-                      x.axis.angle = 90),
+                      x.axis.angle = 90, french=french),
           nrow = 1,
           ncol = 2,
           labels = c("(a)", "(b)"),
@@ -138,13 +140,15 @@ plot_grid(r.plot(base.model.5abcd,
 
 ```{r fig-base-f-5abcd, fig.cap="Mortalité par pêche pour le modèle de référence, zone 5ABCD."}
 f.plot(base.model.5abcd,
-       base.model.5abcd.name)
+       base.model.5abcd.name,
+       french=french)
 ```
 
 ```{r fig-base-retro-biomass-5abcd, fig.cap="Biomasse rétrospective pour le modèle de référence, zone 5ABCD."}
 b.plot.mpd(c(base.model.5abcd, base.retro.models.5abcd),
            c(base.model.5abcd.name, retro.names),
-           depl = FALSE)
+           depl = FALSE,
+       french=french)
 ```
 
 
@@ -161,12 +165,12 @@ make.autocor.plot(base.model.3cd)
 ```
 
 ```{r fig-base-index-fits-3cd, fig.cap="Ajustements de la DPM aux indices observés de l’abondance (points) pour le modèle de référence de la zone 3CD, d’après : a) le relevé synoptique sur la côte ouest de l’île de Vancouver, b) les CPUE commerciales avant 1996, c) les CPUE commerciales après 1995 et d) le relevé triennal du NMFS (partie canadienne)."}
-plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
-          i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5)
+plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, french=french),
+          i.plot(base.model.3cd, base.model.3cd.name, 2, every = 5, french=french)
             + ylab("CPUE commerciales (kg/heure)"),
-          i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5)
+          i.plot(base.model.3cd, base.model.3cd.name, 3, every = 5, french=french)
             + ylab("CPUE commerciales (kg/heure)"),
-          i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5),
+          i.plot(base.model.3cd, base.model.3cd.name, 4, every = 5, french=french),
           nrow = 2,
           ncol = 2,
           labels = c("(a)", "(b)", "(c)", "(d)"),
@@ -174,8 +178,8 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
 ```
 
 ```{r fig-base-mean-weight-3cd, fig.cap="Ajustement de la DPM aux données sur le poids moyen pour le modèle de référence de la zone 3CD."}
-plot_grid(mw.plot(base.model.3cd[[1]], cv = 0.2, every = 5, last.yr = 2015),
-          mw.compare.plot(base.model.3cd[[1]]),
+plot_grid(mw.plot(base.model.3cd[[1]], cv = 0.2, every = 5, last.yr = 2015, french=french),
+          mw.compare.plot(base.model.3cd[[1]], french=french),
           nrow = 1,
           ncol = 2)
 ```
@@ -200,18 +204,22 @@ b.plot(base.model.3cd,
        depl = FALSE,
        add.hist.ref = TRUE,
        lrp = c(1986, 1986),
-       usr = c(1956, 2004))
+       usr = c(1956, 2004),
+       french=french)
 ```
 
 ```{r fig-base-depl-3cd, fig.cap="Biomasse relative pour le modèle de référence, zone 3CD."}
 b.plot(base.model.3cd,
        base.model.3cd.name,
-       depl = TRUE)
+       depl = TRUE,
+       french=french)
 ```
 
 ```{r fig-base-recr-3cd, fig.cap="Recrutement (a) et écarts du recrutement (b) pour le modèle de référence, zone 3CD.  La ligne pointillée verte représente la moyenne des médianes a posteriori des MCCM, la ligne pointillée bleue représente la médiane des médianes a posteriori des MCCM."}
-plot_grid(r.plot(base.model.3cd, base.model.3cd.name, add.meds = TRUE, x.axis.angle = 90),
-          r.devs.plot(base.model.3cd, base.model.3cd.name, x.axis.angle = 90),
+plot_grid(r.plot(base.model.3cd, base.model.3cd.name, add.meds = TRUE, x.axis.angle = 90,
+       french=french),
+          r.devs.plot(base.model.3cd, base.model.3cd.name, x.axis.angle = 90,
+       french=french),
           nrow = 1,
           ncol = 2,
           labels = c("(a)", "(b)"),
@@ -220,13 +228,15 @@ plot_grid(r.plot(base.model.3cd, base.model.3cd.name, add.meds = TRUE, x.axis.an
 
 ```{r fig-base-f-3cd, fig.cap="Mortalité par pêche pour le modèle de référence, zone 3CD."}
 f.plot(base.model.3cd,
-       base.model.3cd.name)
+       base.model.3cd.name,
+       french=french)
 ```
 
 ```{r fig-base-retro-biomass-3cd, fig.cap="Biomasse rétrospective pour le modèle de référence, zone 3CD."}
 b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
            c(base.model.3cd.name, retro.names),
-           depl = FALSE)
+           depl = FALSE,
+       french=french)
 ```
 
 \clearpage
@@ -234,74 +244,92 @@ b.plot.mpd(c(base.model.3cd, base.retro.models.3cd),
 ## ANALYSES DE SENSIBILITÉ : ZONE 5ABCD
 
 ```{r fig-sens1-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, ainsi qu’au retrait des indices des CPUE commerciales, zone 5ABCD."}
-b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
+b.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1),
+       french=french)
 ```
 
 ```{r fig-sens1-sub2-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, ainsi qu’au retrait des indices des CPUE commerciales d’après 1995, zone 5ABCD."}
-b.plot(c(base.model.5abcd, sens.models.1.sub2), c(base.model.5abcd.name, sens.models.name.1.sub2))
+b.plot(c(base.model.5abcd, sens.models.1.sub2), c(base.model.5abcd.name, sens.models.name.1.sub2),
+       french=french)
 ```
 
 ```{r fig-sens1-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, zone 5ABCD."}
 r.plot(c(base.model.5abcd, sens.models.1.sub),
-       c(base.model.5abcd.name, sens.models.name.1.sub))
+       c(base.model.5abcd.name, sens.models.name.1.sub),
+       french=french)
 ```
 
 ```{r fig-sens1-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, ainsi qu’au retrait des indices des CPUE commerciales, zone 5ABCD."}
-f.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1))
+f.plot(c(base.model.5abcd, sens.models.1), c(base.model.5abcd.name, sens.models.name.1),
+       french=french)
 ```
 
 ```{r fig-sens2-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la moyenne de la capturabilité, $q$, fixée pour être égale pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, à une valeur a priori uniforme utilisée pour les deux relevés, zone 5ABCD."}
-b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
+b.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2),
+       french=french)
 ```
 
 ```{r fig-sens2-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la moyenne de la capturabilité, $q$, fixée pour être égale pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, à une valeur a priori uniforme utilisée pour les deux relevés, zone 5ABCD."}
-r.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
+r.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2),
+       french=french)
 ```
 
 ```{r fig-sens2-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la moyenne de la capturabilité, $q$, fixée pour être égale pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, à une valeur a priori uniforme utilisée pour les deux relevés, zone 5ABCD."}
-f.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2))
+f.plot(c(base.model.5abcd, sens.models.2), c(base.model.5abcd.name, sens.models.name.2),
+       french=french)
 ```
 
 ```{r fig-sens3-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 5ABCD."}
-b.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
+b.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3),
+       french=french)
 ```
 
 ```{r fig-sens3-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 5ABCD."}
-r.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
+r.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3),
+       french=french)
 ```
 
 ```{r fig-sens3-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 5ABCD."}
-f.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3))
+f.plot(c(base.model.5abcd, sens.models.3), c(base.model.5abcd.name, sens.models.name.3),
+       french=french)
 ```
 
 ```{r fig-sens4-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 5ABCD."}
-b.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
+b.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4),
+       french=french)
 ```
 
 ```{r fig-sens4-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 5ABCD."}
-r.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
+r.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4),
+       french=french)
 ```
 
 ```{r fig-sens4-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 5ABCD."}
-f.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4))
+f.plot(c(base.model.5abcd, sens.models.4), c(base.model.5abcd.name, sens.models.name.4),
+       french=french)
 ```
 
 ```{r fig-sens5-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 5ABCD."}
-b.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
+b.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5),
+       french=french)
 ```
 
 ```{r fig-sens5-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 5ABCD."}
-r.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
+r.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5),
+       french=french)
 ```
 
 ```{r fig-sens5-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 5ABCD."}
-f.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5))
+f.plot(c(base.model.5abcd, sens.models.5), c(base.model.5abcd.name, sens.models.name.5),
+       french=french)
 ```
 
 ```{r fig-sens5-meanweightfit-5abcd, fig.cap="Ajustements de la DPM à la moyenne des poids moyens annuels pour : a) la sensibilité à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et b) l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente de la zone 5CD."}
 plot_grid(
-  mw.plot(sens.models.5[[1]], cv = 0.2, every = 5, last.yr = 2015),
-  mw.plot(sens.models.5[[2]], cv = 0.2, every = 5, last.yr = 2015),
+  mw.plot(sens.models.5[[1]], cv = 0.2, every = 5, last.yr = 2015,
+       french=french),
+  mw.plot(sens.models.5[[2]], cv = 0.2, every = 5, last.yr = 2015,
+       french=french),
           nrow = 1,
           ncol = 2,
           labels = c("(a)", "(b)"),
@@ -309,54 +337,57 @@ plot_grid(
 ```
 
 ```{r fig-sens6-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la valeur présumée des erreurs d’observation et de traitement, zone 5ABCD."}
-b.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
+b.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6),
+       french=french)
 ```
 
 ```{r fig-sens6-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la valeur présumée des erreurs d’observation et de traitement, zone 5ABCD."}
-r.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
+r.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6),
+       french=french)
 ```
 
 ```{r fig-sens6-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la valeur présumée des erreurs d’observation et de traitement, zone 5ABCD."}
-f.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6))
+f.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6),
+       french=french)
 ```
 
 ```{r fig-sens6-index-hsmas-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé de la communauté d’espèces ou multispécifique dans le détroit d’Hécate, zone 5ABCD."}
-i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 1)
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 1,french=french)
 ```
 
 ```{r fig-sens6-index-qcss-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé dans le bassin de la Reine-Charlotte, zone 5ABCD."}
-i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 2)
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 2,french=french)
 ```
 
 ```{r fig-sens6-index-hsss-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé synoptique dans le détroit d’Hécate, zone 5ABCD."}
-i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 3)
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 3,french=french)
 ```
 
 ```{r fig-sens6-index-cpue-pre1996-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, CPUE commerciales avant 1996, zone 5ABCD."}
-i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 4, every = 5) +
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 4, every = 5,french=french) +
   ylab("CPUE commerciales (kg/heure)")
 ```
 
 ```{r fig-sens6-index-cpue-post1995-5abcd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, CPUE commerciales après 1995, zone 5ABCD."}
-i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft") + ylab("CPUE (commerciales kg/heure)")
+i.plot(c(base.model.5abcd, sens.models.6), c(base.model.5abcd.name, sens.models.name.6), ind = 5, leg.loc = "topleft",french=french) + ylab("CPUE (commerciales kg/heure)")
 ```
 
 ```{r fig-sens7-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à la valeur présumée de $\\sigma_{W}$, zone 5ABCD."}
-b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
+b.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7), french=french)
 ```
 
 ```{r fig-sens7-recr-5abcd, fig.cap="Sensibilité des estimations du recrutement à la valeur présumée de $\\sigma_{W}$, zone 5ABCD."}
-r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
+r.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7), french=french)
 ```
 
 ```{r fig-sens7-f-5abcd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la valeur présumée de $\\sigma_{W}$, zone 5ABCD."}
-f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7))
+f.plot(c(base.model.5abcd, sens.models.7), c(base.model.5abcd.name, sens.models.name.7), french=french)
 ```
 
 ```{r fig-sens7-meanweightfit-5abcd, fig.cap="Ajustements de la DPM à la moyenne des poids moyens annuels montrant la sensibilité à la valeur présumée de $\\sigma_{W}$ pour a) $\\sigma_{W}$ = 0,4 et b) $\\sigma_{W}$ = 0,15, zone 5ABCD."}
 plot_grid(
-  mw.plot(sens.models.7[[1]], cv = 0.2, every = 5, last.yr = 2015),
-  mw.plot(sens.models.7[[2]], cv = 0.2, every = 5, last.yr = 2015),
+  mw.plot(sens.models.7[[1]], cv = 0.2, every = 5, last.yr = 2015,french=french),
+  mw.plot(sens.models.7[[2]], cv = 0.2, every = 5, last.yr = 2015,french=french),
           nrow = 1,
           ncol = 2,
           labels = c("(a)", "(b)"),
@@ -364,7 +395,7 @@ plot_grid(
 ```
 
 ```{r fig-sens8-biomass-5abcd, fig.cap="Sensibilité des estimations de la biomasse à l’inflation des données sur les prises historiques, zone 5ABCD."}
-b.plot(c(base.model.5abcd, sens.models.108), c(base.model.5abcd.name, sens.models.name.108))
+b.plot(c(base.model.5abcd, sens.models.108), c(base.model.5abcd.name, sens.models.name.108), french=french)
 ```
 
 \clearpage
@@ -372,78 +403,78 @@ b.plot(c(base.model.5abcd, sens.models.108), c(base.model.5abcd.name, sens.model
 ## ANALYSES DE SENSIBILITÉ : ZONE 3CD
 
 ```{r fig-sens8-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, au retrait des indices des CPUE et au retrait de l’indice du relevé triennal, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
+b.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8), french=french)
 ```
 
 ```{r fig-sens8-sub2-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, ainsi qu’au retrait des indices des CPUE commerciales d’après 1995, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.8.sub2), c(base.model.3cd.name, sens.models.name.8.sub2))
+b.plot(c(base.model.3cd, sens.models.8.sub2), c(base.model.3cd.name, sens.models.name.8.sub2), french=french)
 ```
 
 ```{r fig-sens8-recr-3cd, fig.cap="Sensibilité des estimations du recrutement au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, zone 3CD."}
 r.plot(c(base.model.3cd, sens.models.8.sub),
-       c(base.model.3cd.name, sens.models.name.8.sub))
+       c(base.model.3cd.name, sens.models.name.8.sub), french=french)
 ```
 
 ```{r fig-sens8-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche au retrait du terme d’interaction année/lieu des indices des CPUE commerciales et de l’utilisation des CV annuels produits par l’analyse en tant que termes de pondération annuelle dans la fonction objective pour deux options de CV, zone 3CD."}
-f.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8))
+f.plot(c(base.model.3cd, sens.models.8), c(base.model.3cd.name, sens.models.name.8), french=french)
 ```
 
 ```{r fig-sens9-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à l’écart-type du relevé sur la COIV, fixé pour être égal à l’écart-type pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, et à une valeur a priori uniforme utilisée pour le relevé sur la COIV, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
+b.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9), french=french)
 ```
 
 ```{r fig-sens9-biomass-3cd-sub, fig.cap="Sensibilité des estimations de la biomasse à l’écart-type du relevé sur la COIV, fixé pour être égal à l’écart-type pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.9.sub), c(base.model.3cd.name, sens.models.name.9.sub))
+b.plot(c(base.model.3cd, sens.models.9.sub), c(base.model.3cd.name, sens.models.name.9.sub), french=french)
 ```
 
 ```{r fig-sens9-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à l’écart-type du relevé sur la COIV, fixé pour être égal à l’écart-type pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, et à une valeur a priori uniforme utilisée pour le relevé sur la COIV, zone 3CD."}
-r.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
+r.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9), french=french)
 ```
 
 ```{r fig-sens9-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à l’écart-type du relevé sur la COIV, fixé pour être égal à l’écart-type pour les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate, et à une valeur a priori uniforme utilisée pour le relevé sur la COIV, zone 3CD."}
-f.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9))
+f.plot(c(base.model.3cd, sens.models.9), c(base.model.3cd.name, sens.models.name.9), french=french)
 ```
 
 ```{r fig-sens10-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
+b.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10), french=french)
 ```
 
 ```{r fig-sens10-recr-3cd, fig.cap="Sensibilité des estimations du recrutement aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 3CD."}
-r.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
+r.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10), french=french)
 ```
 
 ```{r fig-sens10-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche aux paramètres de la valeur a priori normale pour la mortalité naturelle, M, zone 3CD."}
-f.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10))
+f.plot(c(base.model.3cd, sens.models.10), c(base.model.3cd.name, sens.models.name.10), french=french)
 ```
 
 ```{r fig-sens11-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
+b.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11), french=french)
 ```
 
 ```{r fig-sens11-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 3CD."}
-r.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
+r.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11), french=french)
 ```
 
 ```{r fig-sens11-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la distribution de probabilité a priori pour la pente, y compris l’utilisation d’une valeur a priori uniforme limitée et d’une valeur a priori bêta, zone 3CD."}
-f.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11))
+f.plot(c(base.model.3cd, sens.models.11), c(base.model.3cd.name, sens.models.name.11), french=french)
 ```
 
 ```{r fig-sens12-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
+b.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12), french=french)
 ```
 
 ```{r fig-sens12-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 3CD."}
-r.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
+r.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12), french=french)
 ```
 
 ```{r fig-sens12-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et à l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente, zone 3CD."}
-f.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12))
+f.plot(c(base.model.3cd, sens.models.12), c(base.model.3cd.name, sens.models.name.12), french=french)
 ```
 
 ```{r fig-sens12-meanweightfit-3cd, fig.cap="Ajustements de la DPM à la moyenne des poids moyens annuels pour : (a) la sensibilité à la fixation de $k_{age} = 3y$ et mise à jour des paramètres de Ford-Walford en conséquence, et (b) l’utilisation des paramètres de croissance utilisés dans l’évaluation des stocks précédente de la zone 3CD."}
 plot_grid(
-  mw.plot(sens.models.12[[1]], cv = 0.2, every = 5, last.yr = 2015),
-  mw.plot(sens.models.12[[2]], cv = 0.2, every = 5, last.yr = 2015),
+  mw.plot(sens.models.12[[1]], cv = 0.2, every = 5, last.yr = 2015, french=french),
+  mw.plot(sens.models.12[[2]], cv = 0.2, every = 5, last.yr = 2015, french=french),
           nrow = 1,
           ncol = 2,
           labels = c("(a)", "(b)"),
@@ -452,50 +483,50 @@ plot_grid(
 
 
 ```{r fig-sens13-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à la valeur présumée des erreurs d’observation et de traitement, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
+b.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), french=french)
 ```
 
 ```{r fig-sens13-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à la valeur présumée des erreurs d’observation et de traitement, zone 3CD."}
-r.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
+r.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), french=french)
 ```
 
 ```{r fig-sens13-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la valeur présumée des erreurs d’observation et de traitement, zone 3CD."}
-f.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13))
+f.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), french=french)
 ```
 
 ```{r fig-sens13-index-wcviss-3cd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé synoptique sur la COIV, zone 3CD."}
-i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 1, leg.loc = "topleft")
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 1, leg.loc = "topleft", french=french)
 ```
 
 ```{r fig-sens13-index-triennial-3cd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, relevé triennal du NMFS, zone 3CD."}
-i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 4)
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 4, french=french)
 ```
 
 ```{r fig-sens13-index-cpue-pre1996-3cd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, CPUE commerciales avant 1996, zone 3CD."}
-i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 2, every = 5) +
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 2, every = 5, french=french) +
   ylab("CPUE commerciales (kg/heure)")
 ```
 
 ```{r fig-sens13-index-cpue-post1995-3cd, fig.cap="Ajustements de l’indice de la DPM montrant la sensibilité à la valeur présumée des erreurs d’observation et de traitement, CPUE commerciales après 1995, zone 3CD."}
-i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 3, leg.loc = "topleft") + ylab("CPUE (commerciales kg/heure)")
+i.plot(c(base.model.3cd, sens.models.13), c(base.model.3cd.name, sens.models.name.13), ind = 3, leg.loc = "topleft", french=french) + ylab("CPUE (commerciales kg/heure)")
 ```
 
 ```{r fig-sens14-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à la valeur présumée de $\\sigma_{W}$, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
+b.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14), french=french)
 ```
 
 ```{r fig-sens14-recr-3cd, fig.cap="Sensibilité des estimations du recrutement à la valeur présumée de $\\sigma_{W}$, zone 3CD."}
-r.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
+r.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14), french=french)
 ```
 
 ```{r fig-sens14-f-3cd, fig.cap="Sensibilité des estimations de la mortalité par pêche à la valeur présumée de $\\sigma_{W}$, zone 3CD."}
-f.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14))
+f.plot(c(base.model.3cd, sens.models.14), c(base.model.3cd.name, sens.models.name.14), french=french)
 ```
 
 ```{r fig-sens14-meanweightfit-3cd, fig.cap="Ajustements de la DPM à la moyenne des poids moyens annuels montrant la sensibilité à la valeur présumée de $\\sigma_{W}$ pour a) $\\sigma_{W}$ = 0,4 et b) $\\sigma_{W}$ = 0,15, zone 3CD."}
 plot_grid(
-  mw.plot(sens.models.14[[1]], cv = 0.2, every = 5, last.yr = 2015),
-  mw.plot(sens.models.14[[2]], cv = 0.2, every = 5, last.yr = 2015),
+  mw.plot(sens.models.14[[1]], cv = 0.2, every = 5, last.yr = 2015, french=french),
+  mw.plot(sens.models.14[[2]], cv = 0.2, every = 5, last.yr = 2015, french=french),
           nrow = 1,
           ncol = 2,
           labels = c("(a)", "(b)"),
@@ -503,7 +534,7 @@ plot_grid(
 ```
 
 ```{r fig-sens15-biomass-3cd, fig.cap="Sensibilité des estimations de la biomasse à l’inflation des données sur les prises historiques, zone 3CD."}
-b.plot(c(base.model.3cd, sens.models.15), c(base.model.3cd.name, sens.models.name.15))
+b.plot(c(base.model.3cd, sens.models.15), c(base.model.3cd.name, sens.models.name.15), french=french)
 ```
 
 
@@ -531,7 +562,8 @@ b.plot(desc.models.5abcd,
        depl = FALSE,
        add.hist.ref = TRUE,
        lrp = c(2000, 2000),
-       usr = c(1956, 2004))
+       usr = c(1956, 2004),
+       french=french)
 ```
 
 
@@ -541,7 +573,8 @@ b.plot(avg.model.5abcd,
        depl = FALSE,
        add.hist.ref = TRUE,
        lrp = c(2000, 2000),
-       usr = c(1956, 2004))
+       usr = c(1956, 2004), 
+       french=french)
 ```
 
 
@@ -556,7 +589,8 @@ b.plot(avg.model.5abcd,
        tac_vector = c(0, 900, 2000, 3000),
        year_range = c(2010, 2019),
        ylim = c(0, 50000),
-       x.every = 2)
+       x.every = 2,
+       french=french)
 ```
 
 
@@ -566,7 +600,8 @@ b.plot(desc.models.3cd,
        depl = FALSE,
        add.hist.ref = TRUE,
        lrp = c(1986, 1986),
-       usr = c(1956, 2004))
+       usr = c(1956, 2004),
+       french=french)
 ```
 
 
@@ -576,7 +611,8 @@ b.plot(avg.model.3cd,
        depl = FALSE,
        add.hist.ref = TRUE,
        lrp = c(1986, 1986),
-       usr = c(1956, 2004))
+       usr = c(1956, 2004),
+       french=french)
 ```
 
 
@@ -591,7 +627,8 @@ b.plot(avg.model.3cd,
        tac_vector = c(0, 500, 1000, 1500),
        year_range = c(2010, 2019),
        ylim = c(0, 50000),
-       x.every = 2)
+       x.every = 2,
+       french=french)
 ```
 
 <!-- ```{r fig-base-biomass-3cd-proj, fig.cap="Biomasse pour le modèle de référence, zone 3CD, avec projections. La ligne horizontale supérieure verte représente le point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente le point de référence limite (PRL), qui est la biomasse la plus faible à partir de laquelle le stock s’est rétabli; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%."} -->
