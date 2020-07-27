@@ -72,12 +72,12 @@ make.autocor.plot(base.model.5abcd)
 ```
 
 ```{r fig-base-index-fits-5abcd, fig.cap="Ajustements de la DPM aux indices observés de l’abondance (points) pour le modèle de référence de la zone 5ABCD, d’après : a) le relevé de la communauté d’espèces dans le détroit d’Hécate, b) le relevé synoptique dans le bassin de la Reine-Charlotte, c) le relevé synoptique dans le détroit d’Hécate, d) les CPUE commerciales avant 1996 et e) les CPUE commerciales après 1995. Dans un souci de clarté, seuls les résultats de la DPM sont illustrés."}
-plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5),
-          i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5),
-          i.plot(base.model.5abcd, base.model.5abcd.name, 3, every = 5),
-          i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10)
+plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, french=french),
+          i.plot(base.model.5abcd, base.model.5abcd.name, 2, every = 5, french=french),
+          i.plot(base.model.5abcd, base.model.5abcd.name, 3, every = 5, french=french),
+          i.plot(base.model.5abcd, base.model.5abcd.name, 4, every = 10, french=french)
             + ylab("CPUE commerciales (kg/heure)"),
-          i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5)
+          i.plot(base.model.5abcd, base.model.5abcd.name, 5, every = 5, french=french)
             + ylab("CPUE commerciales (kg/heure)"),
           nrow = 2,
           ncol = 3,
