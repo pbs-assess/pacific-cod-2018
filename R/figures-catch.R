@@ -58,7 +58,8 @@ discards.plot <- function(dat,
 
 catch.fit.plot <- function(model,
                            every = 5,
-                           last.yr = 2015){
+                           last.yr = 2015,
+                           french=FALSE){
 
   model <- model[[1]]
   obs <- model$dat$catch %>%
