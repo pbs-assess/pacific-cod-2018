@@ -1,6 +1,7 @@
 make.catches.plot <- function(dat,
                               every = 5,
-                              last.yr = 2015){
+                              last.yr = 2015,
+                              french=FALSE){
   dat <- dat %>%
     select(-total_catch) %>%
     group_by(year) %>%
@@ -11,10 +12,10 @@ make.catches.plot <- function(dat,
     aes(x = year, y = value, fill = variable) +
     geom_col() +
     coord_cartesian(expand = FALSE) +
-    labs(x = "Year",
-         y = "Catch (t)",
+    labs(x = en2fr("Year",translate=french, allow_missing = TRUE),
+         y = paste(en2fr("Catch",translate=french, allow_missing = TRUE),"(t)"),
          fill = "") +
-    scale_fill_brewer(labels = c("USA", "Canada"), palette = "Dark2") +
+    scale_fill_brewer(labels = c(en2fr("USA",translate=french, allow_missing = TRUE), en2fr("Canada",translate=french, allow_missing = TRUE)), palette = "Dark2") +
     scale_y_continuous(labels = comma,
                        limits = c(0, NA)) +
     scale_x_continuous(breaks = seq(0, last.yr, every)) +
@@ -24,7 +25,8 @@ make.catches.plot <- function(dat,
   p
 }
 
-discards.plot <- function(dat){
+discards.plot <- function(dat,
+                          french=FALSE){
   dat <- dat %>%
     group_by(year) %>%
     summarize(`Released at sea` = sum(discarded_canada) ,
@@ -35,13 +37,15 @@ discards.plot <- function(dat){
     aes(x = Year, y = `Released at sea`) +
     geom_col(fill = RColorBrewer::brewer.pal(3, "Dark2")[[2]]) +
     coord_cartesian(expand = FALSE) +
-    labs(x = "Year",
-         y = "Catch (t)",
+    labs(x = en2fr("Year",translate=french, allow_missing = TRUE),
+         y = paste(en2fr("Catch",translate=french, allow_missing = TRUE),"(t)"),
          fill = "") +
     scale_x_continuous(breaks = seq(0, 2015, 5))
 
   g.top <- ggplot(dat) +
-    aes(x = Year, y = `Prop. released`) +
+    aes(x=Year, y= `Prop. released`)+
+    labs(x = en2fr("Year",translate=french, allow_missing = TRUE),
+        y = paste("Prop.", en2fr("released",translate=french, allow_missing = TRUE))) +
     geom_line(color = "grey50",
               size = 1,
               alpha = 0.5) +
@@ -63,6 +67,7 @@ catch.fit.plot <- function(model,
   fit <- model$mpd$ct
 
   i <- as.tibble(cbind(obs, fit))
+
   names(i) <- c("Year", "Catch (t)", "Fit")
 
   p <- ggplot(i) +
@@ -72,6 +77,9 @@ catch.fit.plot <- function(model,
     geom_line(color = "red",
               y = i$Fit,
               size = 1) +
+    labs(x = en2fr("Year",translate=french, allow_missing = TRUE),
+         y = paste(en2fr("Catch",translate=french, allow_missing = TRUE),"(t)"),
+         fill = "") +
     scale_y_continuous(labels = comma,
                        limits = c(0, NA)) +
     scale_x_continuous(breaks = seq(0, last.yr, every))

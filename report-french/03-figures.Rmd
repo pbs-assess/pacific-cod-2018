@@ -12,27 +12,27 @@ knitr::include_graphics(here::here("report-french/figure/Pcod_3CD5ABCDE_Pic.png"
 ## PRISES : ZONE 5ABCD
 
 ```{r fig-catch-5abcd, fig.cap="Prises pour la zone 5ABCD. Les prises canadiennes comprennent les remises à l’eau."}
-make.catches.plot(catch.5)
+make.catches.plot(catch.5, french=french)
 ```
 
 ```{r fig-discards-5abcd, fig.cap="Estimation des remises à l’eau de morue du Pacifique par les chalutiers de fond pour la zone 5ABCD."}
-discards.plot(catch.5)
+discards.plot(catch.5, french=french)
 ```
 
 ```{r fig-catch-5ab, fig.cap="Prises pour la zone 5AB. Les prises canadiennes comprennent les remises à l’eau."}
-make.catches.plot(catch.5ab)
+make.catches.plot(catch.5ab, french=french)
 ```
 
 ```{r fig-discards-5ab, fig.cap="Estimation des remises à l’eau de morue du Pacifique par les chalutiers de fond pour la zone 5AB."}
-discards.plot(catch.5ab)
+discards.plot(catch.5ab, french=french)
 ```
 
 ```{r fig-catch-5cd, fig.cap="Prises pour la zone 5CD. Les prises canadiennes comprennent les remises à l’eau."}
-make.catches.plot(catch.5cd)
+make.catches.plot(catch.5cd, french=french)
 ```
 
 ```{r fig-discards-5cd, fig.cap="Estimation des remises à l’eau de morue du Pacifique par les chalutiers de fond pour la zone 5CD."}
-discards.plot(catch.5cd)
+discards.plot(catch.5cd, french=french)
 ```
 
 \clearpage
@@ -40,11 +40,11 @@ discards.plot(catch.5cd)
 ## PRISES : ZONE 3CD
 
 ```{r fig-catch-3cd, fig.cap="Prises pour la zone 3CD. Les prises canadiennes comprennent les remises à l’eau."}
-make.catches.plot(catch.3)
+make.catches.plot(catch.3, french=french)
 ```
 
 ```{r fig-discards-3cd, fig.cap="Estimation des remises à l’eau de morue du Pacifique par les chalutiers de fond pour la zone 3CD."}
-discards.plot(catch.3)
+discards.plot(catch.3, french=french)
 ```
 
 \clearpage
@@ -93,7 +93,7 @@ plot_grid(mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015),
 ```
 
 ```{r fig-base-catch-fit-5abcd, fig.cap="Ajustement de la DPM aux données sur les prises pour le modèle de référence de la zone 5ABCD. Dans un souci de clarté, seuls les résultats de la DPM sont illustrés."}
-catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
+catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015, french=french)
 ```
 
 (ref:priorpostcaption5abcd) Histogrammes des échantillons a posteriori avec des distributions de probabilité a priori (lignes) utilisés dans le modèle de référence de la zone 5ABCD. L’estimation de la DPM est représentée par une ligne pointillée verticale. Il convient de noter que les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate ont utilisé des distributions a priori normales sur $ln(q)$, voir la distribution complète sur la figure \@ref(fig:fig-base-mcmc-priors-5abcd). 
@@ -181,7 +181,7 @@ plot_grid(mw.plot(base.model.3cd[[1]], cv = 0.2, every = 5, last.yr = 2015),
 ```
 
 ```{r fig-base-catch-fit-3cd, fig.cap="Ajustement de la DPM aux données sur les prises pour le modèle de référence de la zone 3CD."}
-catch.fit.plot(base.model.3cd, every = 5, last.yr = 2015)
+catch.fit.plot(base.model.3cd, every = 5, last.yr = 2015, french=french)
 ```
 
 (ref:priorpostcaption3cd) Histogrammes des échantillons a posteriori avec des distributions de probabilité a priori (lignes) utilisés dans le modèle de référence de la zone 3CD. L’estimation de la DPM est représentée par une ligne pointillée verticale. Il convient de noter que le relevé synoptique sur la côte ouest de l’île de Vancouver a utilisé une distribution a priori normale sur $ln(q)$, voir la distribution complète sur la figure \@ref(fig:fig-base-mcmc-priors-3cd).

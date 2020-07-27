@@ -1,22 +1,24 @@
-Needs translation,,,,,,,,Format for rosettafish,,
-English,French,Notes,,,,,,USA,,États-Unis
-,,,,,,,,,,
-Landed,,"As in ""the fish they caught were landed at the port""",,,,,,,,
-Released at sea,,"As in ""the fish they caught were released at sea""",,,,,,All the text and caption for Table 6,,
-Landings,,As in fishery landings,,,,,,Lowest estimated biomass agreed to be an undesirable state to avoid,,
-Total catch,,As in fisheries catch,,,,,,Average biomass for the period 1956-2004,,
-Canada total,,Short for Canada total catch,,,,,,Average fishing mortality for the period 1956-2004,,
-Source,,As in source of information,,,,,,Biomass in 2018,,
-IFMP,,Acronym for Integrated Fishery Management Plan,,,,,,Fishing mortality in 2017,,
-GMU,,Acronym for Groundfish Management Unit,,,,,,Benchmark,,
-Number estimated,,As in number of estimated parameters,,,,,,Reference points for the Reference Case 5ABCD and 3CD models,,
-"Bounds [low, high]",,As in bounds of a  probability distribution,,,,,,,,
-"Prior (mean, SD) (single value = fixed)",,Prior as in prior probability distribution,,,,,,,,
-Definition,,,,,,,,,,
-Role,,As in role of the reference point,,,,,,,,
-Initial value,,,,,,,,,,
-Lower bound,,As in bounds of a  probability distribution,,,,,,,,
-Upper bound,,As in bounds of a  probability distribution,,,,,,,,
-Distribution,,As in probability distribution,,,,,,,,
-Estimated,,,,,,,,,,
-Basis,,,,,,,,,,
+Needs translation,,,,,,,,All the text and caption for Table 6
+English,French,Notes,,,,,,Lowest estimated biomass agreed to be an undesirable state to avoid
+,,,,,,,,Average biomass for the period 1956-2004
+Landed,,"As in ""the fish they caught were landed at the port""",,,,,,Average fishing mortality for the period 1956-2004
+Released at sea,,"As in ""the fish they caught were released at sea""",,,,,,Biomass in 2018
+Landings,,As in fishery landings,,,,,,Fishing mortality in 2017
+Total catch,,As in fisheries catch,,,,,,Benchmark
+Canada total,,Short for Canada total catch,,,,,,Reference points for the Reference Case 5ABCD and 3CD models
+Source,,As in source of information,,,,,,
+IFMP,,Acronym for Integrated Fishery Management Plan,,,,,,
+GMU,,Acronym for Groundfish Management Unit,,,,,,
+Number estimated,,As in number of estimated parameters,,,,,,
+"Bounds [low, high]",,As in bounds of a  probability distribution,,,,,,
+"Prior (mean, SD) (single value = fixed)",,Prior as in prior probability distribution,,,,,,
+Definition,,,,,,,,
+Role,,As in role of the reference point,,,,,,
+Initial value,,,,,,,,
+Lower bound,,As in bounds of a  probability distribution,,,,,,
+Upper bound,,As in bounds of a  probability distribution,,,,,,
+Distribution,,As in probability distribution,,,,,,
+Estimated,,,,,,,,
+Basis,,,,,,,,
+fit,,As in model fit,,,,,,
+USA,,,,,,,,
