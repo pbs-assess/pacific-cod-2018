@@ -13,8 +13,8 @@ Number estimated,,As in number of estimated parameters,,,,,,Ready to add to rose
 "Bounds [low, high]",,As in bounds of a  probability distribution,,,,,,Reference Point,,Point de référence
 "Prior (mean, SD) (single value = fixed)",,Prior as in prior probability distribution,,,,,,Reference points,,Points de référence
 Definition,,,,,,,,Reference Points,,Points de référence
-Role,,As in role of the reference point,,,,,,,,
-Initial value,,,,,,,,,,
+Role,,As in role of the reference point,,,,,,reference point,,point de référence
+Initial value,,,,,,,,reference points,,points de référence
 Lower bound,,As in bounds of a  probability distribution,,,,,,,,
 Upper bound,,As in bounds of a  probability distribution,,,,,,,,
 Distribution,,As in probability distribution,,,,,,,,
@@ -26,4 +26,3 @@ Basis,,,,,,,,Lowest estimated biomass agreed to be an undesirable state to avoid
 ,,,,,,,,Fishing mortality in 2017,,
 ,,,,,,,,Benchmark,,
 ,,,,,,,,Reference points for the Reference Case 5ABCD and 3CD models,,
-,,,,,,,,"                         """,,

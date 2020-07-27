@@ -408,6 +408,10 @@ make.ref.points.table <- function(models,
     }
     tab <- model$mcmccalcs$r.quants
     tab[,-1] <- f(tab[,-1], digits)
+    if (omit_msy) tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`)) #RF moved the filtering to here
+    col.names <- colnames(tab)
+    col.names[1] <- latex.bold(en2fr("Reference point", translate = french, allow_missing = TRUE))
+    colnames(tab) <- col.names
   }else{
     tab <- lapply(models,
                   function(x){
@@ -441,14 +445,11 @@ make.ref.points.table <- function(models,
     tab <- cbind.data.frame(desc.col, tab)
     col.names <- colnames(tab)
     col.names <- latex.bold(latex.perc(col.names))
-    col.names[1] <- latex.bold("Reference Point")
+    if (omit_msy) tab <- dplyr::filter(tab, !grepl("MSY",  desc.col)) #RF moved the filtering to here
+    col.names[1] <- latex.bold(en2fr("Reference point", translate = french, allow_missing = TRUE))
     colnames(tab) <- col.names
   }
 
-  if (omit_msy) {
-    tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`))
-    # tab <- dplyr::filter(tab, !grepl("MSY", `Reference Point`))
-  }
   if(add.hist.ref){
     if(is.na(lrp) || is.na(usr)){
       cat0("Supply year ranges for both lrp and usr when add.hist.ref is TRUE")
