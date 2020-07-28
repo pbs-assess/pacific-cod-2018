@@ -118,11 +118,11 @@ Un indice de l’abondance relative a été établi pour la zone 3CD à partir d
 
 ### Sélection des données
 
-Les données trait par trait tirées du relevé triennal du National Marine Fisheries Service (NMFS) des États-Unis, qui couvre la région de Vancouver de la CIPPN (Commission internationale des pêches du Pacifique Nord) ont été fournies par Mark Wilkins (NMFS, comm pers.) pour les sept années où le relevé a été réalisé dans les eaux de la Colombie-Britannique (tableau \@ref(tab:surv-tri-strata-table), figure \@ref(fig:tri-tows))). Ces traits ont été attribués aux strates par le NMFS, bien que la taille et la définition de ces strates aient changé au cours de la durée du relevé. La base de données des relevés du NMFS indiquait également le pays dans lequel le trait a eu lieu. Cette information a été reportée sur des cartes et vérifiée par rapport à la frontière maritime acceptée entre le Canada et les États-Unis : tous les traits semblaient être correctement situés par rapport au pays, en fonction de leur position de départ (figure \@ref(fig:tri-tows))). Les désignations du NMFS ont été acceptées pour les traits situés près de la frontière maritime.
+Les données trait par trait tirées du relevé triennal du National Marine Fisheries Service (NMFS) des États-Unis, qui couvre la région de Vancouver de la CIPPN (Commission internationale des pêches du Pacifique Nord) ont été fournies par Mark Wilkins (NMFS, comm pers.) pour les sept années où le relevé a été réalisé dans les eaux de la Colombie-Britannique, figure \@ref(fig:tri-tows))). Ces traits ont été attribués aux strates par le NMFS, bien que la taille et la définition de ces strates aient changé au cours de la durée du relevé. La base de données des relevés du NMFS indiquait également le pays dans lequel le trait a eu lieu. Cette information a été reportée sur des cartes et vérifiée par rapport à la frontière maritime acceptée entre le Canada et les États-Unis : tous les traits semblaient être correctement situés par rapport au pays, en fonction de leur position de départ (figure \@ref(fig:tri-tows))). Les désignations du NMFS ont été acceptées pour les traits situés près de la frontière maritime.
 
 Pour tous les traits utilisables, on connaissait la largeur médiane du filet (quantiles 1-99 %) de 13,4 (11,3-15,7) m et la distance médiane parcourue de 2,8 (1,4--3,5) km, ce qui a permis de calculer la superficie balayée par chaque trait. Les indices de la biomasse et les CV analytiques connexes pour la morue du Pacifique ont été calculés pour l’ensemble de la région de Vancouver de la CIPPN et pour chacune des sous-régions de Vancouver du Canada et des États-Unis, à l’aide des estimations de superficie appropriées pour chaque strate et année. Les strates qui n’ont pas été régulièrement visées par le relevé au cours des sept années ont été retirées de l’analyse, ce qui a permis d’obtenir un ensemble de données comparables pour chaque année à partir des données restantes.
 
-```{r surv-tri-strata-table, warning=FALSE}
+```{r surv-tri-strata-table, warning=FALSE, include=FALSE}
 tri_str <- readr::read_csv(here::here("data/triennial-strata.csv"))
 names(tri_str) <- gsub("_1", "", names(tri_str))
 tri_to_shade <- which(tri_str$Shade == 1)
@@ -226,8 +226,7 @@ Les estimations de la biomasse relative et les intervalles de confiance sont pr�
 
 ```{r surv-trien-table, results='asis'}
 surv_tri <- readr::read_csv(here::here("data/NMFSTriennial_Canada-Vancouver.csv"))
-knitr::kable(surv_tri, caption = "Estimations de la biomasse et intervalles de confiance pour le relevé triennal du NMFS concernant les eaux canadiennes.", booktabs = TRUE, linesep = "",
-  longtable = TRUE, format = "pandoc") %>%
+csasdown::csas_table(surv_tri, caption = "Estimations de la biomasse et intervalles de confiance pour le relevé triennal du NMFS concernant les eaux canadiennes.") %>%
   kableExtra::column_spec(1:7, width = "1.8cm")
 ```
 
