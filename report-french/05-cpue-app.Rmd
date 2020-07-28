@@ -203,7 +203,9 @@ dfleet_hist %>%
 ```
 
 (ref:caption-cpue-bubble-plots-hist-5ABCD) Même que pour la figure \@ref(fig:cpue-bubble-plots-hist-3CD) mais pour  5ABCD.
+
 (ref:caption-cpue-bubble-plots-modern-3CD) Même que pour la figure \@ref(fig:cpue-bubble-plots-hist-3CD) mais pour  1996--2017 3CD.
+
 (ref:caption-cpue-bubble-plots-modern-5ABCD) Même que pour la figure \@ref(fig:cpue-bubble-plots-hist-3CD) mais pour  1996--2017 5ABCD.
 
 ```{r cpue-bubble-plots-hist-5ABCD, fig.asp=1.35, fig.cap="(ref:caption-cpue-bubble-plots-hist-5ABCD)"}
@@ -240,13 +242,13 @@ dfleet_modern %>% make_bubble_dat() %>%
 stopifnot(length(m_historic) == 12L)
 stopifnot(length(m_modern) == 16L)
 qr1 <- qres_tweedie(m_historic[[6]], "cpue")
-gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("historique", params$area_name[1])) + ylab("densité")
+gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("historique", params$area_name[1])) + ylab("densité") + xlab("résiduel quantile aléatoire")
 qr2 <- qres_tweedie(m_historic[[12]], "cpue")
-gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("historique", params$area_name[2])) + ylab("densité")
+gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("historique", params$area_name[2])) + ylab("densité") + xlab("résiduel quantile aléatoire")
 qr3 <- qres_tweedie(m_modern[[8]], "cpue")
-gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("moderne", params$area_name[1])) + ylab("densité")
+gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("moderne", params$area_name[1])) + ylab("densité") + xlab("résiduel quantile aléatoire")
 qr4 <- qres_tweedie(m_modern[[16]], "cpue")
-gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("moderne", params$area_name[2])) + ylab("densité")
+gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("moderne", params$area_name[2])) + ylab("densité") + xlab("résiduel quantile aléatoire")
 cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
 ```
 
@@ -267,7 +269,7 @@ pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historical 5ABCD")
 pars[[3]] <- get_cpue_pars(m_modern[[16]], "Modern 3CD")
 pars[[4]] <- get_cpue_pars(m_modern[[8]], "Modern 5ABCD")
 bind_rows(pars) %>%
-  csasdown::csas_table(caption = "Écart-type (ET) de l’effet aléatoire et estimations des paramètres de puissance ($p$) et de dispersion ($\\phi$) du modèle d’observation de Tweedie.", booktabs = TRUE, linesep = "", escape = FALSE, col.names = en2fr(c("Model", "Parameter", "Estimate"), french, allow_missing = TRUE))
+  csasdown::csas_table(caption = "Écart-type (ET) de l’effet aléatoire et estimations des paramètres de puissance ($p$) et de dispersion ($\\phi$) du modèle d’observation de Tweedie.", booktabs = TRUE, linesep = "", escape = FALSE, col.names = c("Modèle", "Paramètre", "Estimation"))
 ```
 
 
