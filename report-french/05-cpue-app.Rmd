@@ -163,6 +163,7 @@ plot_tweedie_ex(df)
 ```
 
 ```{r cpue-catch-effort-ts, fig.cap="Série chronologique brute des captures de morue du Pacifique et des heures totales de chalutage (indépendamment des espèces capturées). Les données antérieures à 1996 sont présentées séparément des données postérieures à 1996.", fig.asp=1.1}
+source(here::here("R/cpue-functions.R"))
 g1 <- make_catch_effort_ts_plot(dfleet_hist)  +
   ggtitle("1956-1995 data")
 g2 <- make_catch_effort_ts_plot(dfleet_modern) +
