@@ -59,6 +59,7 @@ Nous avons extrait de la base de données GFBio les données sur la longueur, le
 Un récapitulatif du nombre de poissons mesurés par année, relevé et sexe est fourni dans le tableau \@ref(tab:length-biosamples-surv). Les fréquences selon la longueur dans les relevés sont indiquées sur la figure \@ref(fig:length-plotfrequencies-surv). Un récapitulatif du nombre de poissons pesés par année, relevé et sexe est fourni dans le tableau \@ref(tab:weight-biosamples). Un récapitulatif du nombre d’enregistrements de la maturité par année et relevé est fourni dans le tableau \@ref(tab:mat-biosamples).
 
 ```{r length-biosamples-surv, results='asis'}
+# TODO: get translation for unsexed, Max and Min.
 x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
   filter(!is.na(length)) %>%
@@ -74,6 +75,7 @@ x %>%
   rename(
      Survey = survey_abbrev, Year = year, `N male` = nlength_m,
      `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) %>%
+  purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) %>% 
   knitr::kable(caption = "Nombre (N) de mesures de longueur prises lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI)", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(latex_options = c("hold_position"), font_size = 9)
 ```
@@ -310,6 +312,7 @@ vb_fits <-
     })
   })
 ```
+
 
 \clearpage
 
