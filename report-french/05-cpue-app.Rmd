@@ -303,7 +303,7 @@ for (i in seq_along(params$area_name)) {
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```
 
-```{r cpue-coef-plot3, fig.asp=1.35, echo=FALSE, fig.cap="Effets aléatoires du lieu-par-année (espace-temps) pour le modèle de normalisation des CPUE commerciales historiques="Coefficients à effet fixe pour le modèle de normalisation des CPUE commerciales modernes.", fig.width=10.5}
+```{r cpue-coef-plot3, fig.asp=1.35, echo=FALSE, fig.cap="Effets aléatoires du lieu-par-année (espace-temps) pour le modèle de normalisation des CPUE commerciales historiques.", fig.width=10.5}
 p <- list()
 for (i in seq_along(params$area_name)) {
   p[[i]] <- make_year_locality_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
@@ -312,7 +312,7 @@ cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
 
 
-```{r cpue-coef-plot1-modern, fig.asp=1.2, echo=FALSE, fig.cap=" Les points et les segments épais et minces représentent les moyennes et les intervalles de confiance de Wald à 50\\% et 95\\%."}
+```{r cpue-coef-plot1-modern, fig.asp=1.2, echo=FALSE, fig.cap="Coefficients à effet fixe pour le modèle de normalisation des CPUE commerciales modernes. Les points et les segments épais et minces représentent les moyennes et les intervalles de confiance de Wald à 50\\% et 95\\%."}
 toplot <- c(8, 16)
 p <- list()
 for (i in seq_along(params$area_name)) {
