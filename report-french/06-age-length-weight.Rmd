@@ -37,45 +37,26 @@ total_survey_lengths <- gfplot::tidy_lengths_raw(x,
   summarise(n = sum(n)) %>% pull(n)
 ```
 
-# ANALYSIS OF BIOLOGICAL DATA
+# ANALYSE DES DONNÉES BIOLOGIQUES
 
-<!-- We extracted, manipulated, and plotted biological data using the R package gfplot (TODO-REF). -->
+Dans cette annexe, nous analysons les données sur la longueur et la maturité, ainsi que les données disponibles sur la détermination de l’âge pour mettre à jour les paramètres de croissance et de maturité. Nous traçons également les courbes des données sur la fréquence selon l’âge dérivées d’une clé âge-longueur pour visualiser la composition probable selon l’âge dans les données des relevés et les données sur les prises commerciales.
 
-In this appendix we analyse length, maturity, and available ageing data to update growth and maturity parameters. We also plot age-frequency data derived from an age-length key to visualise the probable age composition in survey and commercial catch data.
+## DONNÉES DES RELEVÉS SYNOPTIQUES
 
-## SYNOPTIC SURVEY DATA
+Nous avons extrait de la base de données GFBio les données sur la longueur, le poids et la maturité tirées des relevés synoptiques réalisés dans le détroit d’Hécate, le bassin de la Reine-Charlotte et sur la côte ouest de l’île de Vancouver en utilisant les critères suivants :
 
-We extracted length, weight and maturity data from the Hecate Strait, Queen Charlotte Sound, and West Coast Vancouver Island synoptic surveys from the GFBio database using the following criteria:
 
-1. `SPECIES_CODE` = 222: Pacific Cod.
+1. `SPECIES_CODE` = 222 : morue du Pacifique.
 
-1. `TRIP_SUB_TYPE_CODE` = 2 or 3: research trips.
+1. `TRIP_SUB_TYPE_CODE` = 2 ou 3 : sorties de recherche.
 
-1. `SAMPLE_TYPE_CODE` = 1, 2, 6, 7, or 8: include only samples that are of type 'random' or 'total'.
+1. `SAMPLE_TYPE_CODE` = 1, 2, 6, 7, ou 8 : inclure seulement les échantillons qui sont de type « aléatoire » ou « total ».
 
-1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, or 7: to eliminate samples sorted on unknown criteria.
+1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, ou 7 : pour éliminer les échantillons triés selon des critères inconnus.
 
-1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2: to extract sorted and unsorted samples but remove stomach content samples.
+1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2 : pour extraire les échantillons triés et non triés, mais en retirer les échantillons de contenus stomacaux.
 
-<!-- We extracted biological data using `gfplot::get_survey_samples()` and -->
-<!-- `gfplot::get_commercial_samples()` for research survey and commercial samples, -->
-<!-- respectively.  -->
-
-<!-- We designated samples as one of three sample descriptions -->
-<!-- based on combinations of two codes relating to sampling protocols: -->
-<!-- `SPECIES_CATEGORY_CODE` and `SAMPLE_SOURCE_CODE`.  -->
-
-<!-- Samples can be designated as 'unsorted samples' in which data were collected for -->
-<!-- all specimens in the sample, or 'sorted samples' where specimens were sorted or -->
-<!-- selected into 'keepers', which were sampled, and 'discards' which were not -->
-<!-- sampled: -->
-
-A summary of number of fish measured by year, survey and sex is provided in
-Table \@ref(tab:length-biosamples-surv). Survey length-frequencies are shown in
-Figure \@ref(fig:length-plotfrequencies-surv). A summary of number of fish
-weighed by year, survey and sex is provided in Table
-\@ref(tab:weight-biosamples). A summary of number of maturity records by year
-and survey is provided in Table \@ref(tab:mat-biosamples).
+Un récapitulatif du nombre de poissons mesurés par année, relevé et sexe est fourni dans le tableau \@ref(tab:length-biosamples-surv). Les fréquences selon la longueur dans les relevés sont indiquées sur la figure \@ref(fig:length-plotfrequencies-surv). Un récapitulatif du nombre de poissons pesés par année, relevé et sexe est fourni dans le tableau \@ref(tab:weight-biosamples). Un récapitulatif du nombre d’enregistrements de la maturité par année et relevé est fourni dans le tableau \@ref(tab:mat-biosamples).
 
 ```{r length-biosamples-surv, results='asis'}
 x %>%
@@ -93,7 +74,7 @@ x %>%
   rename(
      Survey = survey_abbrev, Year = year, `N male` = nlength_m,
      `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", format = "pandoc")%>%
+  knitr::kable(caption = "Nombre (N) de mesures de longueur prises lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI)", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(latex_options = c("hold_position"), font_size = 9)
 ```
 
@@ -111,7 +92,7 @@ x %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nweight_m,
     `N female` = nweight_f, `N unsexed` = nweight_u) %>%
-  knitr::kable(caption = "Number (N) of weight measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, linesep = "", format = "pandoc")%>%
+  knitr::kable(caption = "Nombre (N) de mesures de poids prises lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI).", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(font_size = 9)
 ```
 
@@ -129,11 +110,11 @@ x %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nmat_m,
     `N female` = nmat_f) %>%
-  knitr::kable(caption = "Number (N) of maturities recorded in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, linesep = "", format = "pandoc")%>%
+  knitr::kable(caption = "Nombre (N) de maturité enregistrées lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI).", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(font_size = 9)
 ```
 
-```{r length-plotfrequencies-surv, fig.cap="Length-frequencies of Pacific Cod taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Note that for clarity only male and female specimens are plotted."}
+```{r length-plotfrequencies-surv, fig.cap="Fréquences de longueur de la morue du Pacifique prises lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI). Il convient de noter que seuls les spécimens mâles et femelles sont représentés sur le graphique."}
 
  x %>%
   tidy_lengths_raw(survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
@@ -146,29 +127,29 @@ x %>%
 
 \clearpage
 
-## COMMERCIAL FISHERY DATA
+## DONNÉES DE LA PÊCHE COMMERCIALE
 
-We extracted length and weight data from commercial bottom trawl vessels from the GFBio database using the following criteria:
+Nous avons extrait de la base de données GFBio les données sur la longueur et le poids communiquées par les chalutiers commerciaux en utilisant les critères suivants :
 
-1. `SPECIES_CODE` = 222: Pacific Cod.
+1. `SPECIES_CODE` = 222 : morue du Pacifique.
 
-1. `TRIP_SUB_TYPE_CODE` = 1 or 4: 1 = non-observed domestic; 4 = observed domestic.
+1. `TRIP_SUB_TYPE_CODE` = 1 ou 4 : 1 = sans observateur, au pays; 4 = avec observateur, au pays.
 
-1. `GEAR_CODE` = 1: Bottom trawl.
+1. `GEAR_CODE` = 1 : Chalut de fond.
 
-1. `SAMPLE_TYPE_CODE` = 1, 2, 6, 7, or 8: include only samples that are of type 'random' or 'total'.
+1. `SAMPLE_TYPE_CODE` = 1, 2, 6, 7, ou 8 : inclure seulement les échantillons qui sont de type « aléatoire » ou « total ».
 
-1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, or 7: to eliminate samples sorted on unknown criteria.
+1. `SPECIES_CATEGORY_CODE` = NULL, 1, 3, 5, 6, ou 7 : pour éliminer les échantillons triés selon des critères inconnus.
 
-1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2, 3: to extract sorted and unsorted samples but remove stomach content samples.
+1. `SAMPLE_SOURCE_CODE` = NULL, 1, 2, 3 : pour extraire les échantillons triés et non triés, mais en retirer les échantillons de contenus stomacaux.
 
-1. `SAMPLE_ID` not in 173726, 173740, 191471, 184243, 184159, 215903, or 223726: these samples were coded as Pacific Cod but have size composition inconsistent with the species. These samples were therefore excluded from further analysis.
+1. « SAMPLE_ID » pas en 173726, 173740, 191471, 184243, 184159, 215903 ou 223726; ces échantillons ont été codés comme étant de la morue du Pacifique, mais la composition selon la taille ne correspond pas à l’espèce. Ces échantillons ont donc été exclus du reste de l’analyse.
 
-1. Fishing year: April 1 to March 31 based on `trip_start_date`.
+1. Année de pêche : Du 1er avril au 31 mars d’après `trip_start_date`.
 
-1. Quarter: months 4--6 = 1, months 7--9 = 2, months 10--12 = 3, months 1--3 = 4.
+1. Trimestre : mois 4-6 = 1, mois 7-9 = 2, mois 10-12 = 3, mois 1-3 = 4.
 
-Summaries of number of fish measured by year, survey and sex are provided in Tables \@ref(tab:length-biosamples-com-5ABCD) and \@ref(tab:length-biosamples-com-3CD). Commercial length-frequencies are shown in Figure  \@ref(fig:length-plot-frequencies-com).
+Un récapitulatif du nombre de poissons mesurés par année, relevé et sexe est fourni dans les tableaux \@ref(tab:length-biosamples-com-5ABCD) et \@ref(tab:length-biosamples-com-3CD). Les fréquences selon la longueur dans les pêches commerciales sont indiquées sur la figure \@ref(fig:length-plot-frequencies-com).
 
 \clearpage
 
@@ -187,7 +168,7 @@ xx %>%
   rename(
     Area = area, Year = year, `N male` = nlength_m,
     `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 5ABCD.", booktabs = TRUE, format = "pandoc", linesep = "", longtable=TRUE)%>%
+  knitr::kable(caption = "Nombre (N) de mesures de longueur prises dans la pêche commerciale au chalut dans la zone 5ABCD.", booktabs = TRUE, format = "pandoc", linesep = "", longtable=TRUE)%>%
   kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 10)
 ```
 
@@ -208,13 +189,13 @@ xx %>%
   rename(
     Area = area, Year = year, `N male` = nlength_m,
     `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the commercial trawl fishery in Area 3CD.", booktabs = TRUE, format = "pandoc", linesep = "", longtable=TRUE)%>%
+  knitr::kable(caption = "Nombre (N) de mesures de longueur prises dans la pêche commerciale au chalut dans la zone 3CD.", booktabs = TRUE, format = "pandoc", linesep = "", longtable=TRUE)%>%
   kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 10)
 ```
 
 \clearpage
 
-```{r length-plot-frequencies-com, fig.cap="Length-frequencies of Pacific Cod taken in the commercial trawl fishery. For clarity only lengths since 1996 are shown.", fig.asp=1.4}
+```{r length-plot-frequencies-com, fig.cap="Fréquences selon la longueur de la morue du Pacifique prises dans la pêche commerciale au chalut. Par souci de clarté, seules les longueurs depuis 1996 sont indiquées.", fig.asp=1.4}
 
 xx %>%
  filter(!is.na(area)) %>%
@@ -237,13 +218,13 @@ xx %>%
 
 \clearpage
 
-## AGE SAMPLES
+## ÉCHANTILLONS D’ÂGE
 
-Pacific Cod are difficult to age due to inconsistency in annual marks, especially in the first few years of life [@beamish1981; @johnston2012; @kastelle2017]. A recent microchemistry-based validation study of Alaskan Pacific Cod otoliths revealed that visual aging of otoliths resulted in a high probability of over-ageing fish of ages 3--4 y. This was due to difficulty of readers distinguishing growth checks (translucent zones) from annuli [@kastelle2017]. Due to large difficulties in interpreting growth patterns on otoliths from BC Pacific Cod, they are here aged using dorsal finray sections, although this method is unvalidated [@beamish1981]. Ageing finray sections is resource intensive, since fins must be dried, sectioned and mounted in resin before reading. Therefore, production ageing of Pacific Cod has not been routinely done for BC populations.
+L’âge de la morue du Pacifique est difficile à déterminer en raison de l’incohérence des marques annuelles, surtout au cours des premières années de vie [@beamish1981; @johnston2012; @kastelle2017]. Une récente étude de validation fondée sur la microchimie des otolithes de la morue du Pacifique de l’Alaska a révélé que la détermination visuelle de l’âge des otolithes entraînait une forte probabilité de sur-vieillir les poissons âgés de 3 à 4 ans. En effet, les lecteurs ont du mal à distinguer les anneaux de croissance (zones translucides) des annuli [@kastelle2017]. En raison des grandes difficultés que pose l’interprétation des modèles de croissance des otolithes de la morue du Pacifique de la Colombie-Britannique, nous avons déterminé ici l’âge des poissons en utilisant des coupes des rayons des nageoires dorsales, bien que cette méthode ne soit pas validée [@beamish1981]. La détermination de l’âge à partir des coupes des rayons de nageoires exige beaucoup de ressources, car les nageoires doivent être séchées, sectionnées et montées dans de la résine avant la lecture. C’est pourquoi on n’a pas régulièrement déterminé l’âge des morues du Pacifique pour les populations de la Colombie-Britannique.
 
-A request was made in 2012 to age Pacific Cod from dorsal fin rays collected in recent Hecate Strait, Queen Charlotte Sound and West Coast Vancouver Island synoptic surveys. A total of `r total_aged` fin rays were aged, covering the years 2007, 2009, 2011 for SYN HS; 2011 for SYN QCS and 2006, 2008 and 2010 for SYN WCVI. A summary of number of fish aged by year, survey and sex is provided in Table \@ref(tab:age-biosamples). Proportions at each age are shown in Figure \@ref(fig:age-plotages). Due to the difficulties with interpreting annuli for Pacific Cod, a subset of fin rays were read by a second reader. There were 162 such secondary reads for Area 5CD and 57 for Area 3CD. Results showed that precision reads sometimes differed from the primary read by one or more years, particularly for older fish (Figure \@ref(fig:age-precision)).
+En 2012, une demande dans ce sens a été présentée, à partir des rayons de nageoires dorsales recueillis lors des récents relevés synoptiques effectués dans le détroit d’Hécate et le bassin de la Reine-Charlotte et sur la côte ouest de l’île de Vancouver. Au total, on a déterminé l’âge de `r total_aged` rayons de nageoires, couvrant les années 2007, 2009, 2011 pour le SYN HS, 2011 pour le SYN QCS et 2006, 2008 et 2010 pour le SYN WCVI. Un récapitulatif du nombre de poissons dont l’âge a été déterminé, par année, relevé et sexe, est fourni dans le tableau \@ref(tab:age-biosamples). Les proportions à chaque âge sont indiquées sur la figure \@ref(fig:age-plotages). En raison des difficultés d’interprétation des annuli pour la morue du Pacifique, un deuxième lecteur a procédé à la lecture d’un sous-ensemble des rayons de nageoires. Il y a ainsi eu 162 lectures secondaires pour la zone 5CD et 57 pour la zone 3CD. Les résultats ont montré que les lectures de précision différaient parfois de la lecture primaire d’une année ou plus, particulièrement pour les poissons plus âgés (figure \@ref(fig:age-precision)).
 
-Given the small ranges of years with aged fish, these data are insufficient to support an age-structured stock assessment model. However, they can be used to estimate growth and maturity parameters, and may be useful for visualizing probable age compositions in the commercial catch data.
+Étant donné les petites plages d’années pour lesquelles on dispose de l’âge des poissons, ces données ne sont pas suffisantes pour appuyer un modèle d’évaluation des stocks structuré selon l’âge. Toutefois, elles peuvent servir à estimer les paramètres de croissance et de maturité et peuvent être utiles pour visualiser les compositions probables selon l’âge dans les données sur les prises commerciales.
 
 \clearpage
 
@@ -264,10 +245,10 @@ x %>%
     #`P male` = proportion_male,
     #`P female` = proportion_female
   ) %>%
-  knitr::kable(caption = "Numbers (N) of otoliths aged in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, format = "pandoc", linesep = "")
+  knitr::kable(caption = "Nombres (N) d’otolithes dont l’âge a été déterminé pour les relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI).", booktabs = TRUE, format = "pandoc", linesep = "")
 ```
 
-```{r age-plotages, fig.cap="Proportions at age of fish aged in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Grey circles = males. Red circles = females."}
+```{r age-plotages, fig.cap="Proportions selon l’âge des poissons dont l’âge a été déterminé pour les relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI). Cercles gris = mâles. Cercles rouges = femelles."}
 tidy_ages_raw(x,
   survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
   ageing_method_codes = 6
@@ -283,7 +264,7 @@ tidy_ages_raw(x,
 ```
 
 
-```{r age-precision, fig.cap="Ageing precision for Pacific Cod. Each dot and cross-hatch represents an individual fish that has been aged twice. The x-axis represents the age and confidence interval recorded by the primary reader. The y-axis represents the age and confidence interval recorded by the second reader. The dashed diagonal line represents a perfect one-to-one agreement between the two age readings. A small amount of random jitter has been added to both axes to improve readability.", fig.asp=1, out.width="3in", fig.width=4}
+```{r age-precision, fig.cap="Précision de la détermination de l’âge pour la morue du Pacifique. Chaque point et hachure représente un poisson individuel dont l’âge a été déterminé deux fois. L’axe des x représente l’âge et l’intervalle de confiance consignés par le lecteur principal. L’axe des y représente l’âge et l’intervalle de confiance consignés par le deuxième lecteur. La ligne diagonale tiretée représente un parfait accord un à un entre les deux lectures de l’âge. On a ajouté une petite quantité de fluctuation aléatoire aux deux axes pour en améliorer la précision de lecture.", fig.asp=1, out.width="3in", fig.width=4}
 tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
   plot_age_precision(n = 1e6) +
   scale_x_continuous(breaks = seq(0, 10, 1)) +
@@ -295,16 +276,18 @@ tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
 
 ## GROWTH PARAMETERS
 
-Growth parameters were estimated by fitting the von Bertalanffy growth function to age and length data:
+## PARAMÈTRES DE CROISSANCE
+
+On a estimé les paramètres de croissance en ajustant la fonction de croissance de von Bertalanffy aux données sur l’âge et la longueur :
 
 \begin{equation}
 L_{s} = L_{\infty,s}\left( 1 - e^{- k_{s}\left( a_{s} - {a_{0}}_{s} \right)} \right)
  (\#eq:vB)
 \end{equation}
 
-where $L_{\infty,s}$, $k_{s}$ and ${a_{0}}_{s}$ are the parameters of the equation specific to sex, and $L_{s}$ and $a_{s}$ are paired length ($L$) and age ($a$) observations from synoptic surveys (Tables \@ref(tab:length-biosamples-surv) and \@ref(tab:age-biosamples)). We allowed for lognormal observation error.
+où $L_{\infty,s}$, $k_{s}$ et ${a_{0}}_{s}$ sont les paramètres de l’équation propres au sexe, et $L_{s}$ et $a_{s}$ sont les observations jumelées de la longueur ($L$) et de l’âge ($a$) tirées des relevés synoptiques (tableaux \@ref(tab:length-biosamples-surv) et \@ref(tab:age-biosamples)). Nous avons permis une erreur d’observation log-normale.
 
-The model was fit for combined sex data to: (a) all paired age-length samples; (b) Hecate Strait/Queen Charlotte Sound age-length samples; and (c) West Coast Vancouver Island age-length samples (Figures  \@ref(fig:vb-figs) and \@ref(fig:age-vb-pars); Table \@ref(tab:age-coeff-table)). Hecate Strait and Queen Charlotte Sound samples were combined because there was only one year of age observations (2011) for Queen Charlotte Sound (Table \@ref(tab:age-biosamples)). We sampled from the joint posterior distributions of each model with Stan [@carpenter2017; @rstan2018] using four chains and 2000 iterations per chain, discarding the first half of each as warmup. We placed uniform priors bounded at zero on $k$, $L_{\infty}$, and $\sigma$ (lognormal observation standard deviation), and a uniform prior on $a_0$.
+Le modèle a été ajusté aux données des sexes combinés pour : a) tous les échantillons jumelés âge-longueur; b) les échantillons âge-longueur du détroit d’Hécate et du bassin de la Reine-Charlotte; c) les échantillons âge-longueur de la côte ouest de l’île de Vancouver (figures @ref(fig:vb-figs) et \@ref(fig:age-vb-pars); tableau \@ref(tab:age-coeff-table)). Les échantillons du détroit d’Hécate et du bassin de la Reine-Charlotte ont été combinés parce qu’il n’y a eu qu’une année d’observations de l’âge (2011) pour le bassin de la Reine-Charlotte (tableau \@ref(tab:age-biosamples)). Nous avons échantillonné les distributions conjuguées a posteriori de chaque modèle avec Stan [@carpenter2017; @rstan2018] en utilisant quatre chaînes et 2 000 itérations par chaîne, en rejetant la première moitié de chacune comme échauffement. Nous avons placé les valeurs a priori uniformes limitées à zéro sur $k$, $L_{\infty}$ et $\sigma$ (écart-type de l’observation log-normale), et une valeur a priori uniforme sur $a_0$.
 
 \clearpage
 
@@ -355,13 +338,13 @@ get_par_df(vb_fits, 1) %>%
   mutate(Estimate = f(Estimate, 2),
     Conf.low = f(Conf.low, 2), Conf.high = f(Conf.high, 2)) %>%
   knitr::kable(
-    caption = "von Bertalanffy growth coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. The Area 5ABCD model used the parameters shown for SYN HS, SYN QCS. The Area 3CD model used the parameters shown for SYN WCVI.",
+    caption = "Coefficients de croissance de von Bertalanffy pour la morue du Pacifique dans les relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI). Le modèle de la zone 5ABCD a utilisé les paramètres indiqués pour le SYN HS et le SYN QCS. Le modèle de la zone 3CD a utilisé les paramètres indiqués pour le SYN WCVI.",
     booktabs = TRUE, linesep = "", escape=FALSE, format = "pandoc",
     align = c("l", "l", "l", "r", "r", "r")) %>%
   row_spec(seq(13, 18), bold = TRUE)
 ```
 
-```{r vb-figs, fig.cap = "Length-age model fits. The length-age growth curve is a von Bertalanffy model. Text on the panels shows the parameter estimates and light dots represent data for individual fish.", fig.asp=0.3, fig.width=9, out.width="6.5in"}
+```{r vb-figs, fig.cap = "Ajustements du modèle de l’âge selon la longueur. La courbe de croissance de l’âge selon la longueur est un modèle de von Bertalanffy. Le texte dans les graphiques montre les estimations des paramètres et les points représentent les données pour les poissons individuels.", fig.asp=0.3, fig.width=9, out.width="6.5in"}
 vb_figs <- map(vb_fits, ~ plot_vb(
   object_all = .x[[1]],
   col = c(All = "grey30"), lab_x = 0.38) +
@@ -378,7 +361,7 @@ cowplot::save_plot(here::here('presentations/figures/growth-vb.svg'), plot = g_v
 
 ```
 
-```{r age-vb-pars, fig.asp=0.4, fig.cap = "Coefficient estimates from the von Bertalanffy model."}
+```{r age-vb-pars, fig.asp=0.4, fig.cap = "Estimations de coefficients du modèle de von Bertalanffy."}
 get_par_df <- function(.d, element = 1) {
   map_df(vb_fits, function(.x) {
     broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
@@ -417,20 +400,20 @@ vbp_hsqcs <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS") %>% pull(est
 vbp_all <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI") %>% pull(estimate) %>% round(2)
 ```
 
-Estimates of the von Bertalanffy growth rate $k$ were higher in the WCVI survey ($k$ = `r vbp_wci` y^-1^) compared to estimates of $k$ from the HS-QCS  surveys combined ($k$ = `r vbp_hsqcs` y^-1^), and all surveys combined ($k$ = `r vbp_all` y^-1^) (Table \@ref(tab:age-coeff-table)). The 2013 stock assessments for Hecate Strait and Queen Charlotte Sound [@forrest2013] used the same growth parameters that had been used in the 2004 assessment for Hecate Strait ($L_{\infty}$ = 89.48 cm; $k$ = 0.307 y^-1^ and $a_0$ = -0.116 y [@sinclair2005]). These values had been reported by @westrheim1996 for the WCVI stock, based on analyses of length-frequency data [@foucher1982]. @westrheim1996 had actually reported a lower growth rate for the Hecate Strait stock, i.e., $k$ = 0.203 y^-1^.
+Les estimations du taux de croissance de von Bertalanffy $k$ étaient plus élevées dans le relevé sur la COIV ($k$ = `r vbp_wci` y^-1^) que celles de $k$ dans les relevés combinés du détroit d’Hécate et du bassin de la Reine-Charlotte ($k$ = `r vbp_hsqcs` y^-1^) et de tous les relevés combinés ($k$ = `r vbp_all` y^-1^) (tableau \@ref(tab:age-coeff-table)). Les évaluations des stocks de 2013 pour le détroit d’Hécate et le bassin de la Reine-Charlotte [@forrest2013] ont utilisé les mêmes paramètres de croissance que ceux employés dans l’évaluation de 2004 pour le détroit d’Hécate ($L_{\infty}$ = 89,48 cm; $k$ = 0,307 y^-1^ et $a_0$ = -0,116 y [@sinclair2005]). Ces valeurs avaient été indiquées par @westrheim1996 pour le stock de la COIV, d’après les analyses des données sur la fréquence des longueurs [@foucher1982]. @westrheim1996 avait en fait présenté un taux de croissance plus faible pour le stock du détroit d’Hécate, $k$ = 0,203 y^-1^.
 
-The current results for Hecate Strait (Table \@ref(tab:age-coeff-table)), are consistent with the parameters reported by @westrheim1996. This suggests that the growth rate use in the delay difference models in @forrest2013 and @sinclair2005 may have been too high for the Hecate Strait stock. The current Reference Case models therefore use the growth parameters reported in Table \@ref(tab:age-coeff-table), i.e., "SYN HS, SYN QCS" for Area 5ABCD; and "SYN WCVI" for Area 3CD.
+Les résultats actuels pour le détroit d’Hécate (tableau \@ref(tab:age-coeff-table)) sont conformes aux paramètres indiqués par @westrheim1996. On peut en déduire que le taux de croissance utilisé dans les modèles de type différence-délai de @forrest2013 et @sinclair2005 était peut-être trop élevé pour le stock du détroit d’Hécate. Les modèles du scénario de référence actuels utilisent donc les paramètres de croissance indiqués dans le tableau \@ref(tab:age-coeff-table), c.-à-d. "SYN HS, SYN QCS" pour la zone 5ABCD et "SYN WCVI" pour la zone 3CD.
 
 \clearpage
 
-Length-weight parameters (Equation \@ref(eq:weight-length)) were estimated using paired length and weight data from the synoptic surveys.
+Les paramètres de longueur-poids (équation \@ref(eq:weight-length)) ont été estimés à l’aide des données jumelées de longueur et de poids provenant des relevés synoptiques.
 
 \begin{equation}
 W_{s} = \alpha_{s}{L_{s}}^{\beta_{s}}
  (\#eq:weight-length)
 \end{equation}
 
-where $\alpha_s$ and $\beta_s$ are the parameters of the equation specific to sex, and $L_s$ and $W_s$ are paired length ($L$) and weight ($W$) observations from synoptic surveys (Tables  \@ref(tab:length-biosamples-surv) and \@ref(tab:weight-biosamples)). As for the growth parameters, Equation \@ref(eq:weight-length) was evaluated using data from all surveys combined; the HS-QCS  surveys combined; and the WCVI survey (Figures \@ref(fig:age-lw-figs) and \@ref(fig:age-lw-pars), Table \@ref(tab:lw-coeff-table)). The models were fit as robust linear regressions: $\ln(W_s) = \ln(a) + b \cdot \ln(L_s)$ with an M estimator [@venables2002]. Robust linear models were chosen over linear models with normally distributed error to downweight the influence of a small number of outlying specimens.
+où $\alpha_s$ et $\beta_s$ sont les paramètres de l’équation propres au sexe et où $L_s$ et $W_s$ sont les observations jumelées de la longueur ($L$) et du poids ($W$) des relevés synoptiques (tableaux \@ref(tab:length-biosamples-surv) et \@ref(tab:weight-biosamples)). En ce qui concerne les paramètres de croissance, l’équation \@ref(eq:weight-length) a été évaluée à l’aide des données de tous les relevés combinés; des relevés HS-QCS combinés; et du relevé WCVI (figures \@ref(fig:age-lw-figs) et \@ref(fig:age-lw-pars), tableau \@ref(tab:lw-coeff-table)). Les modèles correspondaient à des régressions linéaires solides : $\ln(W_s) = \ln(a) + b \cdot \ln(L_s)$ avec un estimateur M [@venables2002]. Nous avons choisi des modèles linéaires solides plutôt que des modèles linéaires avec une erreur à distribution normale pour réduire l’influence d’un petit nombre de spécimens aberrants.
 
 ```{r age-fit-lw, results='hide'}
 lw_fits <-
@@ -463,10 +446,10 @@ get_par_df(lw_fits, 1) %>%
   mutate(Sex = gsub("^all$", "Male and Female", Sex)) %>%
   rename(Term = term, Estimate = estimate) %>%
   dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
-  knitr::kable(caption = "Length-weight coefficients for Pacific Cod in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, format = "pandoc", linesep = "", digits=2, escape=FALSE)
+  knitr::kable(caption = "Coefficients longueur-poids pour la morue du Pacifique dans les relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI).", booktabs = TRUE, format = "pandoc", linesep = "", digits=2, escape=FALSE)
 ```
 
-```{r age-lw-figs, fig.cap = "Length-weight model fits. Text on the panels shows the parameter estimates and light dots represent data for individual fish.", fig.asp=0.28, fig.width=9, out.width="6.5in"}
+```{r age-lw-figs, fig.cap = "Ajustements du modèle longueur-poids. Le texte dans les graphiques montre les estimations des paramètres et les points représentent les données pour les poissons individuels.", fig.asp=0.28, fig.width=9, out.width="6.5in"}
 lw_figs <- map(lw_fits, ~ plot_length_weight(
   object_all = .x[[1]],
       col = c(All = "grey30"), lab_x_gap = 0.45) +
@@ -476,7 +459,7 @@ lw_figs <- map(lw_fits, ~ plot_length_weight(
 cowplot::plot_grid(plotlist = lw_figs, nrow = 1)
 ```
 
-```{r age-lw-pars, fig.asp=0.4, fig.cap = "Coefficients from the length-weight model fits."}
+```{r age-lw-pars, fig.asp=0.4, fig.cap = "Coefficients des ajustements du modèle longueur-poids."}
 get_par_df <- function(.d, element = 1) {
   map_df(lw_fits, function(.x) {
     broom::tidy(.x[[element]]$model) %>%
@@ -505,11 +488,11 @@ get_par_df(lw_fits, 1) %>%
 
 \clearpage
 
-## MATURITY PARAMETERS
+## PARAMÈTRES DE LA MATURITÉ
 
-Maturity for Pacific Cod is assessed by visual inspection of the gonads, where maturity is assigned a code according to Gadid maturity stage.Fish are assessed as being in one of six states: 1.immature; 2.maturing; 3.mature (resting); 4.mature; 5.mature (spent); and 6.mature (ripe). For the purposes of fitting to a logistic curve, maturity was assigned a binary code, where fish with gonad maturity code 3 or higher were defined as mature (maturity assigned 1), and fish with gonad code 1 or 2 were defined as immature (maturity assigned 0).
+La maturité de la morue du Pacifique est évaluée par une inspection visuelle des gonades, qui permet d’attribuer un code à la maturité selon le stade de maturité pour les gadidés. Les poissons sont évalués comme relevant de l’un des six états suivants : 1.immature; 2.en cours de maturation; 3.mature (repos); 4.mature; 5.mature (guai); et 6.mature (plein). Pour pouvoir l’ajuster à une courbe logistique, on a attribué à la maturité un code binaire, où les poissons dont les gonades présentent un code de maturité de 3 ou plus étaient définis comme matures (maturité attribuée 1), et les poissons dont les gonades présentent un code de 1 ou 2 étaient définis comme immatures (maturité attribuée 0).
 
-We fit maturity ogives as logistic regressions of maturity (mature vs. not mature) against length or age:
+Nous avons ajusté les ogives de la maturité en tant que régressions logistiques de la maturité (mature par rapport à immature) selon la longueur ou l’âge :
 
 \begin{align}
 y_i &\sim \mathrm{Binomial}(\pi_i)\\
@@ -517,16 +500,11 @@ y_i &\sim \mathrm{Binomial}(\pi_i)\\
  (\#eq:maturity)
 \end{align}
 
-where $y_i$ represents a 1 if fish $i$ is considered mature and a 0 if fish $i$
-is considered immature. The $\beta$ parameters represent estimated coefficients,
-$x_i$ represents the age of fish $i$, and $F_i$ represents
-a binary predictor that is 1 if the fish is female and 0 if the fish is male.
-The variable $\pi_i$ represents the expected probability of fish $i$ being
-mature. We can then calculate of the age at 50% maturity as: $-(\log(1 / 0.5 - 1) + \beta_0) / \beta_1$ or $-(\log(1) + \beta_0) / \beta_1$ for males and $-(\log(1) + \beta_0 + \beta_2) / (\beta_1 + \beta_3)$ for females.
+où $y_i$ représente un 1 si le poisson $i$ est considéré comme étant mature et un 0 si le poisson $i$ est considéré comme étant immature. Les paramètres $\beta$ représentent les coefficients estimés, $x_i$ l’âge du poisson $i$ et $F_i$ un prédicteur binaire qui a la valeur 1 si le poisson est une femelle et 0 si le poisson est un mâle. La variable $\pi_i$ représente la probabilité prévue que le poisson $i$ soit mature. Nous pouvons ensuite calculer l’âge à 50 % de maturité comme suit : $-(\log(1 / 0.5 - 1) + \beta_0) / \beta_1$ ou $-(\log(1) + \beta_0) / \beta_1$ pour les mâles et $-(\log(1) + \beta_0 + \beta_2) / (\beta_1 + \beta_3)$ pour les femelles.
 
-Estimated parameters are provided in Tables \@ref(tab:mat-fifty-tab) and \@ref(tab:age-mat-coefs-table), and Figure \@ref(fig:age-mat-coefs). Estimated maturity ogives are shown in Figure \@ref(fig:age-mat-figs).
+Les paramètres estimés sont fournis dans les tableaux \@ref(tab:mat-fifty-tab) et \@ref(tab:age-mat-coefs-table), ainsi que sur la figure \@ref(fig:age-mat-coefs). Les ogives de la maturité estimée sont présentées sur la figure \@ref(fig:age-mat-figs).
 
-Results suggest that age 3 y may be a more appropriate assumption for knife-edged maturity than age 2 y.
+D’après les résultats, l’âge de 3 ans pourrait être une hypothèse plus appropriée pour la maturité en lame de couteau que l’âge de 2 ans.
 
 ```{r age-fit-maturity}
 surveys_list <- list(
@@ -578,7 +556,7 @@ inner_join(est, se) %>%
   mutate(Conf.low = estimate - 1.96 * std.error, Conf.high = estimate + 1.96 * std.error) %>%
   rename(Survey = .id, Term = term, Estimate = estimate) %>%
   dplyr::select(Survey,Term, Estimate, Conf.low, Conf.high) %>%
-   knitr::kable(caption = "Coefficients from the logistic regression maturity ogives.",
+   knitr::kable(caption = "Coefficients des ogives de la maturité par régression logistique.",
      booktabs = TRUE, linesep = "", digits=2, format = "pandoc", escape=FALSE)
 ```
 
@@ -590,12 +568,12 @@ plyr::ldply(mat_fits, function(.x)
   rename(Survey = .id, Sex = variable, `Estimated age-at-50% maturity` = value) %>%
   arrange(Survey, Sex) %>%
   knitr::kable(
-    caption = "Estimates of age at 50\\% maturity from the logistic regression maturity ogives.", booktabs = TRUE, format = "pandoc", linesep = "", digits=1)
+    caption = "Estimations de l’âge à 50\\% de maturité d’après les ogives de la maturité par régression logistique.", booktabs = TRUE, format = "pandoc", linesep = "", digits=1)
 ```
 
 \clearpage
 
-```{r age-mat-figs, fig.cap = "Age-at-maturity ogives. Maturity ogives are fit as logistic regressions to individual fish specimens, which are categorized as mature vs. not mature. The solid black lines represent fits to the female fish and the dashed gray lines represent fits to the male fish. The vertical lines indicate the estimated age or at length at 50\\% maturity. Text on the panels indicates the estimated age and length at 5, 50 and 95\\% maturity for females (F) and males (M). Short rug lines along the top and bottom of each panel represent up to 1500 randomly chosen individual fish with a small amount of random jittering to help differentiate individual fish.", fig.asp=1.7, fig.width=4.5, out.width="3.4in"}
+```{r age-mat-figs, fig.cap = "Ogives de l’âge à maturité. Les ogives de la maturité sont ajustées en tant que régressions logistiques aux spécimens de poissons individuels, qui sont classés comme étant matures ou non matures. Les lignes noires pleines représentent les ajustements aux poissons femelles et les lignes grises tiretées représentent les ajustements aux poissons mâles. Les lignes verticales indiquent l’âge ou la longueur estimés à 50\\% de maturité. Le texte dans les graphiques indique l’âge et la longueur estimés à 5, 50 et 95\\% de maturité pour les femelles (F) et les mâles (M). Les traits courts le long du haut et du bas de chaque graphique représentent jusqu’à 1 500 poissons choisis au hasard, avec une petite fluctuation aléatoire pour aider à différencier les poissons individuels.", fig.asp=1.7, fig.width=4.5, out.width="3.4in"}
 mat_figs <- map(mat_fits, ~ plot_mat_ogive(.x) +
     coord_cartesian(xlim = c(0, 8.2), ylim = c(0, 1), expand = FALSE))
 for (i in seq_along(mat_figs))
@@ -603,7 +581,7 @@ for (i in seq_along(mat_figs))
 cowplot::plot_grid(plotlist = mat_figs, ncol = 1)
 ```
 
-```{r age-mat-coefs, fig.pos = "H", fig.cap = "Rearranged coefficients from the logistic regression maturity ogives (e.g. intercept female = $\\beta_0 + \\beta_2$). Parameters are in logit or log odds space. The intercept refers to the log odds of maturity for a theoretical fish of age zero.", fig.width=6, out.width="4.5in"}
+```{r age-mat-coefs, fig.pos = "H", fig.cap = "Coefficients réorganisés à partir des ogives de la maturité par régression logistique (p. ex. intercept female = $\\beta_0 + \\beta_2$). Les paramètres sont dans l’espace logit ou des probabilités logarithmiques. L’interception fait référence aux probabilités logarithmiques de la maturité pour un poisson théorique de 0 an.", fig.width=6, out.width="4.5in"}
 #based on outputs from age-mat-coefs-table
 inner_join(est, se) %>%
   mutate(conf.low = estimate - 1.96 * std.error) %>%
@@ -621,35 +599,35 @@ inner_join(est, se) %>%
 
 \clearpage
 
-## AVERAGE ANNUAL MEAN WEIGHT IN COMMERCIAL CATCH
+## MOYENNE DU POIDS MOYEN ANNUEL DANS LES PRISES COMMERCIALES
 
-The calculation of annual mean weight was done in the following steps. The same steps were used in both Areas 3CD and 5ABCD. The same length-weight relationship was use for all quarters, but differ by area. The values of the length-weight parameters used are for Area 3CD: `r paste0("$\\alpha = ", .ALPHA3, "$")` and `r paste0("$\\beta = ", .BETA3, "$")`; for Area 5ABCD: `r paste0("$\\alpha = ", .ALPHA, "$")` and `r paste0("$\\beta = ", .BETA, "$")`.
+Le calcul du poids moyen annuel a été effectué selon les étapes suivantes. Les mêmes étapes ont été appliquées dans les zones 3CD et 5ABCD. La même relation longueur-poids a été utilisée pour tous les trimestres, mais elle différait selon la zone. Pour la zone 3CD, les valeurs des paramètres de poids-longueur utilisées sont les suivantes : `r paste0("$\\alpha = ", .ALPHA3, "$")` et `r paste0("$\\beta = ", .BETA3, "$")`; pour la zone 5ABCD : `r paste0("$\\alpha = ", .ALPHA, "$")` et `r paste0("$\\beta = ", .BETA, "$")`.
 
-*Step 1.* Convert individual length ($l_i$) in each Sample ID ($j$) to weight ($w_i$):
+*Étape 1.* Convertir la longueur individuelle ($l_i$) dans chaque ID d’échantillon ($j$) en poids ($w_i$) :
 
 \begin{equation}
 {W_i} = a^q{L_i}^{b^q}
 \end{equation}
 
-where $a^q$ and $b^q$ are constant length-weight parameters.
+où $a^q$ et $b^q$ sont des paramètres de longueur-poids constants.
 
-*Step 2.* From the selected data set, calculate the mean weight ($W_j$) for each Sample ID ($j$):
+*Étape 2.* À partir de l’ensemble de données sélectionné, calculer le poids moyen ($W_j$) pour chaque ID d’échantillon ($j$) :
 
 \begin{equation}
 {W_j} = \frac{{\sum\limits_{i=1}^{{N_j}} {{w_{i,j}}} }}{{{N_j}}}
 \end{equation}
 
-where $N_j$ is the number of weights $w_{ij}$ in Sample ID ($j$).
+où $N_j$ est le nombre de poids en $w_{ij}$ dans l’ID d’échantillon ($j$).
 
-*Step 3.* The mean weight ($W_s$) for each sequential quarter was then calculated, weighted by the sample weight of Pacific Cod ($S_j$) in each SampleID ($j$). If the sample weight was recorded as data, it is used. Otherwise, the sum of the calculated weights from the sample is used:
+*Étape 3.* Calculer ensuite le poids moyen ($W_s$) pour chaque trimestre séquentiel, pondéré par le poids de l’échantillon de la morue du Pacifique ($S_j$) dans chaque ID d’échantillon ($j$). Si le poids de l’échantillon a été consigné dans les données, il est utilisé. Sinon, on utilise la somme des poids calculés à partir de l’échantillon :
 
 \begin{equation}
 {W_s} = \frac{{\sum\limits_{i=1}^{{K_s}} {{W_{j,s}S_{j,s}}}}}{{\sum\limits_{j=1}^{{K_s}} {{S_{j,s}}}}}
 \end{equation}
 
-where $K_j$ is the number of SampleIDs ($j$) in sequential quarter ($s$), where sequential quarter is a unique identifier for each quarter in the time series.
+où $K_j$ est le nombre d’ID d’échantillon ($j$) dans le trimestre séquentiel ($s$), où le trimestre séquentiel est un identificateur unique pour chaque trimestre dans la série chronologique.
 
-*Step 4.* The mean weight ($W_f$) for a fishing year was calculated by averaging the quarterly mean weight weighted by the commercial catch of Pacific Cod ($C_s$) during sequential quarter ($s$):
+*Étape 4.* Calculer le poids moyen ($W_f$) pour une année de pêche en faisant la moyenne du poids moyen trimestriel pondéré par les prises commerciales de morue du Pacifique ($C_s$) au cours du trimestre séquentiel ($s$) :
 
 \begin{equation}
 {W_f} = \frac{{\sum\limits_{s=1}^{{4}} {{W_sC_s}}}}{{\sum\limits_{s=1}^{{4}} {{C_s}}}}
