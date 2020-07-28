@@ -269,7 +269,7 @@ pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historical 5ABCD")
 pars[[3]] <- get_cpue_pars(m_modern[[16]], "Modern 3CD")
 pars[[4]] <- get_cpue_pars(m_modern[[8]], "Modern 5ABCD")
 bind_rows(pars) %>%
-  csasdown::csas_table(caption = "Écart-type (ET) de l’effet aléatoire et estimations des paramètres de puissance ($p$) et de dispersion ($\\phi$) du modèle d’observation de Tweedie.", booktabs = TRUE, linesep = "", escape = FALSE, col.names = c("Modèle", "Paramètre", "Estimation"))
+  csasdown::csas_table(caption = "Écart-type (ET) de l’effet aléatoire et estimations des paramètres de puissance ($p$) et de dispersion ($\\phi$) du modèle d’observation de Tweedie.", booktabs = TRUE, linesep = "", escape = FALSE, col.names = c("Modele", "Parametre", "Estimation"))
 ```
 
 
