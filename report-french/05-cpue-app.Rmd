@@ -172,19 +172,20 @@ cowplot::plot_grid(g1, g2, ncol = 1)
 ```
 
 ```{r, cpue-depth-hists, fig.asp=0.8, fig.cap="Distribution en profondeur pour les sorties de pêche (rangée du haut) et les événements de chalutage (rangée du bas) qui ont permis ou non de capturer des morues du Pacifique."}
-g1 <- gg_cpue_modern$depth + ylab("Nombre d’événements de pêche") + xlab("Profondeur") +
-  labs(fill = "Fishing event\ncaught\nPacific Cod") +
+g1 <- gg_cpue_modern$depth + ylab("Nombre d'événements de pêche") + xlab("Profondeur") +
+  labs(fill = "
+L'événement de pêche\na attrapé la\nmorue du Pacifique") +
   theme(legend.position = c(0.95, 0.95), legend.background = element_rect(fill = "white"),
     legend.justification = c(1, 1)) +
-  ggtitle("1996+ data") +
+  ggtitle("Données de 1996+") +
   scale_colour_brewer(palette = "Dark2") +
   scale_fill_brewer(palette = "Dark2")
 
 g2 <- gg_cpue_hist$depth + ylab("Trip count") + xlab("Depth") +
-  labs(fill = "Trip\ncaught\nPacific Cod") +
+  labs(fill = "Le voyage\na attrapé la morue\ndu Pacifique") +
   theme(legend.position = c(0.95, 0.95), legend.background = element_rect(fill = "white"),
     legend.justification = c(1, 1)) +
-  ggtitle("1956-1995 data")  +
+  ggtitle("Données de 1956-1995")  +
   scale_colour_brewer(palette = "Dark2") +
   scale_fill_brewer(palette = "Dark2")
 
@@ -196,7 +197,9 @@ dfleet_hist %>%
   make_bubble_dat(measure.vars = c("month", "locality", "depth")) %>%
   filter(area == "3CD") %>%
   make_facet_bubble_plot(group = "trips") +
-  ggtitle("1956-1995 3CD")
+  ggtitle("1956-1995 3CD") +
+  labs(size = paste0("Nombre de\nvoyages")) +
+  labs(fill = paste0("Nombre de\nvoyages"))
 ```
 
 (ref:caption-cpue-bubble-plots-hist-5ABCD) Même que pour la figure \@ref(fig:cpue-bubble-plots-hist-3CD) mais pour  5ABCD.
@@ -208,21 +211,27 @@ dfleet_hist %>%
   make_bubble_dat(measure.vars = c("month", "locality", "depth")) %>%
   filter(area == "5ABCD") %>%
   make_facet_bubble_plot(group = "trips") +
-  ggtitle("1956-1995 5ABCD")
+  ggtitle("1956-1995 5ABCD") +
+  labs(size = paste0("Nombre de\nvoyages")) +
+  labs(fill = paste0("Nombre de\nvoyages"))
 ```
 
 ```{r cpue-bubble-plots-modern-3CD, fig.asp=1.4, fig.width=9, fig.cap="(ref:caption-cpue-bubble-plots-modern-3CD)"}
 dfleet_modern %>% make_bubble_dat() %>%
   filter(area == "3CD") %>%
   make_facet_bubble_plot() +
-  ggtitle("1996+ 3CD")
+  ggtitle("1996+ 3CD")+
+  labs(size = paste0("Nombre d'événements\nde pêche")) +
+  labs(fill = paste0("Nombre d'événements\nde pêche"))
 ```
 
 ```{r cpue-bubble-plots-modern-5ABCD, fig.asp=1.4, fig.width=9, fig.cap="(ref:caption-cpue-bubble-plots-modern-5ABCD)"}
 dfleet_modern %>% make_bubble_dat() %>%
   filter(area == "5ABCD") %>%
   make_facet_bubble_plot() +
-  ggtitle("1996+ 5ABCD")
+  ggtitle("1996+ 5ABCD")+
+  labs(size = paste0("Nombre d'événements\nde pêche")) +
+  labs(fill = paste0("Nombre d'événements\nde pêche"))
 ```
 
 (ref:caption-cpue-quantile-residuals) Histogrammes des résidus de quantiles randomisés [@dunn1996] pour les modèles de normalisation des MLGM des CPUE. Les histogrammes illustrent la distribution de la densité réelle de 10 000 résidus de quantiles randomisés sélectionnés au hasard. Les lignes en pointillés indiquent la densité de probabilité pour une distribution normale avec le même écart-type.
@@ -231,13 +240,13 @@ dfleet_modern %>% make_bubble_dat() %>%
 stopifnot(length(m_historic) == 12L)
 stopifnot(length(m_modern) == 16L)
 qr1 <- qres_tweedie(m_historic[[6]], "cpue")
-gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("Historical", params$area_name[1]))
+gqr1 <- plot_qres_histogram(qr1) + ggtitle(paste("historique", params$area_name[1])) + ylab("densité")
 qr2 <- qres_tweedie(m_historic[[12]], "cpue")
-gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("Historical", params$area_name[2]))
+gqr2 <- plot_qres_histogram(qr2) + ggtitle(paste("historique", params$area_name[2])) + ylab("densité")
 qr3 <- qres_tweedie(m_modern[[8]], "cpue")
-gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("Modern", params$area_name[1]))
+gqr3 <- plot_qres_histogram(qr3) + ggtitle(paste("moderne", params$area_name[1])) + ylab("densité")
 qr4 <- qres_tweedie(m_modern[[16]], "cpue")
-gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("Modern", params$area_name[2]))
+gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("moderne", params$area_name[2])) + ylab("densité")
 cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
 ```
 
@@ -258,7 +267,7 @@ pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historical 5ABCD")
 pars[[3]] <- get_cpue_pars(m_modern[[16]], "Modern 3CD")
 pars[[4]] <- get_cpue_pars(m_modern[[8]], "Modern 5ABCD")
 bind_rows(pars) %>%
-  knitr::kable(caption = "Écart-type (ET) de l’effet aléatoire et estimations des paramètres de puissance ($p$) et de dispersion ($\\phi$) du modèle d’observation de Tweedie.", booktabs = TRUE, linesep = "", escape = FALSE, format = "pandoc")
+  csasdown::csas_table(caption = "Écart-type (ET) de l’effet aléatoire et estimations des paramètres de puissance ($p$) et de dispersion ($\\phi$) du modèle d’observation de Tweedie.", booktabs = TRUE, linesep = "", escape = FALSE, col.names = en2fr(c("Model", "Parameter", "Estimate"), french, allow_missing = TRUE))
 ```
 
 
@@ -266,7 +275,8 @@ bind_rows(pars) %>%
 make_cpue_ts_dat(cpue_pred_hist) %>% make_cpue_ts_plot() +
   ggtitle("1956-1995 CPUE") +
   scale_colour_brewer(palette = "Dark2") +
-  scale_fill_brewer(palette = "Dark2")
+  scale_fill_brewer(palette = "Dark2") +
+  ylab("CPUE divisée par la moyenne géométrique")
 ```
 
 (ref:caption-cpue-index-ts-modern) Même chose que pour la figure \@ref(fig:cpue-index-ts-hist), mais pour les données de 1996 à 2017. Les interactions lieu, navire et lieu-navire sont ajustées comme des effets aléatoires et toutes les autres variables comme des effets fixes.
@@ -275,14 +285,15 @@ make_cpue_ts_dat(cpue_pred_hist) %>% make_cpue_ts_plot() +
 make_cpue_ts_dat(cpue_pred_modern) %>% make_cpue_ts_plot() +
   ggtitle("1996+ CPUE") +
   scale_colour_brewer(palette = "Dark2") +
-  scale_fill_brewer(palette = "Dark2")
+  scale_fill_brewer(palette = "Dark2") +  
+  ylab("CPUE divisée par la moyenne géométrique")
 ```
 
 ```{r cpue-int-test-plot, fig.asp=0.85, fig.cap="Comparaison des séries chronologiques des CPUE normalisées avec un modèle qui n’inclut pas les effets aléatoires lieu-année (espace-temps) (noir/gris) et avec un modèle qui inclut les effets aléatoires lieu-année (en couleur)."}
 g1 <- make_cpue_ts_dat_noint(cpue_pred_hist) %>% make_cpue_ts_plot_noint() +
-  ggtitle("1956-1995 CPUE")
+  ggtitle("1956-1995 CPUE") + ylab("CPUE divisée par la moyenne géométrique")
 g2 <- make_cpue_ts_dat_noint(cpue_pred_modern) %>% make_cpue_ts_plot_noint() +
-  ggtitle("1996+ CPUE")
+  ggtitle("1996+ CPUE") + ylab("CPUE divisée par la moyenne géométrique")
 cowplot::plot_grid(g1, g2, ncol = 1)
 ```
 
@@ -290,7 +301,7 @@ cowplot::plot_grid(g1, g2, ncol = 1)
 toplot <- c(6, 12)
 p <- list()
 for (i in seq_along(params$area_name)) {
-  p[[i]] <- make_fe_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
+  p[[i]] <- make_fe_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i]) + xlab("Valeur du coefficient dans l'espace log") + ylab("Valeur du prédicteur")
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
@@ -299,7 +310,7 @@ cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 p <- list()
 for (i in seq_along(params$area_name)) {
    p[[i]] <- make_re_plots(m_historic[[toplot[i]]], re_names = "locality") +
-    ggtitle(params$area_name[i]) + xlab("Random intercept value\n(log space)")
+    ggtitle(params$area_name[i]) + xlab("Valeur d'interception aléatoire\n(espace journal)")
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```
@@ -307,7 +318,7 @@ cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```{r cpue-coef-plot3, fig.asp=1.35, echo=FALSE, fig.cap="Effets aléatoires du lieu-par-année (espace-temps) pour le modèle de normalisation des CPUE commerciales historiques.", fig.width=10.5}
 p <- list()
 for (i in seq_along(params$area_name)) {
-  p[[i]] <- make_year_locality_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i])
+  p[[i]] <- make_year_locality_plots(m_historic[[toplot[i]]]) + ggtitle(params$area_name[i]) +ylab("Valeur d'interaction d'interception aléatoire dans l'espace journal") + xlab("Année")
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
@@ -317,7 +328,8 @@ cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 toplot <- c(8, 16)
 p <- list()
 for (i in seq_along(params$area_name)) {
-  p[[i]] <- make_fe_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
+  p[[i]] <- make_fe_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i]) + xlab("
+Valeur du coefficient dans l'espace log") + ylab("Valeur du prédicteur")
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```
@@ -326,7 +338,7 @@ cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 p <- list()
 for (i in seq_along(params$area_name)) {
    p[[i]] <- make_re_plots(m_modern[[c(8, 16)[i]]], re_names = c("locality", "vessel")) +
-    ggtitle(params$area_name[i])
+    ggtitle(params$area_name[i]) + xlab("Valeur d'interception aléatoire dans l'espace du journa")
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```
@@ -334,7 +346,7 @@ cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```{r cpue-coef-plot3-modern, fig.asp=1.35, echo=FALSE, fig.cap="Effets aléatoires du lieu-par-année (espace-temps) pour le modèle de normalisation des CPUE commerciales modernes."}
 p <- list()
 for (i in seq_along(params$area_name)) {
-  p[[i]] <- make_year_locality_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i])
+  p[[i]] <- make_year_locality_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i]) + ylab("Valeur d'interaction d'interception aléatoire dans l'espace journal")
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
@@ -344,20 +356,20 @@ if (!file.exists(here::here("data/generated/cpue-re-preds.rda"))) {
   stopifnot(length(m_modern) == 16L)
   g1 <- plot_cpue_int_res(m_modern[[8]], fleet = dfleet_modern[[1]],
     index_data = cpue_pred_modern,
-    era = "modern") + ggtitle("1996+ 5ABCD")
+    era = "modern") + ggtitle("1996+ 5ABCD") + ylab("Log de cpue standardisé")
 
   g2 <- plot_cpue_int_res(m_modern[[16]], fleet = dfleet_modern[[2]],
     index_data = cpue_pred_modern,
-    era = "modern") + ggtitle("1996+ 3CD")
+    era = "modern") + ggtitle("1996+ 3CD") + ylab("Log de cpue standardisé")
 
   stopifnot(length(m_historic) == 12L)
   g3 <- plot_cpue_int_res(m_historic[[6]], fleet = dfleet_hist[[1]],
     index_data = cpue_pred_hist,
-    era = "historical")+ ggtitle("1956-1995 5ABCD")
+    era = "historical")+ ggtitle("1956-1995 5ABCD") + ylab("Log de cpue standardisé")
 
   g4 <- plot_cpue_int_res(m_historic[[12]], fleet = dfleet_hist[[2]],
     index_data = cpue_pred_hist,
-    era = "historical")+ ggtitle("1956-1995 3CD")
+    era = "historical")+ ggtitle("1956-1995 3CD") + ylab("Log de cpue standardisé")
 
   save(g1, g2, g3, g4, file = here::here("data/generated/cpue-re-preds.rda"))
 } else {
@@ -372,22 +384,22 @@ if (!file.exists(here::here("data/generated/cpue-re-preds-noint.rda"))) {
   g1 <- plot_cpue_int_res(m_modern[[7]], fleet = dfleet_modern[[1]],
     index_data = cpue_pred_modern,
     the_formula_version = "Full standardization minus interactions",
-    era = "modern") + ggtitle("1996+ 5ABCD")
+    era = "modern") + ggtitle("1996+ 5ABCD") + ylab("Log de cpue standardisé")
 
   g2 <- plot_cpue_int_res(m_modern[[15]], fleet = dfleet_modern[[2]],
     index_data = cpue_pred_modern,
     the_formula_version = "Full standardization minus interactions",
-    era = "modern") + ggtitle("1996+ 3CD")
+    era = "modern") + ggtitle("1996+ 3CD") + ylab("Log de cpue standardisé")
 
   g3 <- plot_cpue_int_res(m_historic[[5]], fleet = dfleet_hist[[1]],
     index_data = cpue_pred_hist,
     the_formula_version = "Full standardization minus interactions",
-    era = "historical")+ ggtitle("1956-1995 5ABCD")
+    era = "historical")+ ggtitle("1956-1995 5ABCD") + ylab("Log de cpue standardisé")
 
   g4 <- plot_cpue_int_res(m_historic[[11]], fleet = dfleet_hist[[2]],
     index_data = cpue_pred_hist,
     the_formula_version = "Full standardization minus interactions",
-    era = "historical")+ ggtitle("1956-1995 3CD")
+    era = "historical")+ ggtitle("1956-1995 3CD") + ylab("Log de cpue standardisé")
   save(g1, g2, g3, g4, file = here::here("data/generated/cpue-re-preds-noint.rda"))
 } else {
   load(here::here("data/generated/cpue-re-preds-noint.rda"))
