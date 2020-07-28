@@ -375,7 +375,7 @@ if (!file.exists(here::here("data/generated/cpue-re-preds.rda"))) {
 } else {
   load(here::here("data/generated/cpue-re-preds.rda"))
 }
-cowplot::plot_grid(g4, g3, g2, g1, ncol = 2)
+cowplot::plot_grid(g4 + ylab("Log de cpue standardisé"), g3 + ylab("Log de cpue standardisé"), g2 + ylab("Log de cpue standardisé"), g1 + ylab("Log de cpue standardisé"), ncol = 2)
 ```
 
 
@@ -404,7 +404,7 @@ if (!file.exists(here::here("data/generated/cpue-re-preds-noint.rda"))) {
 } else {
   load(here::here("data/generated/cpue-re-preds-noint.rda"))
 }
-cowplot::plot_grid(g4, g3, g2, g1, ncol = 2)
+cowplot::plot_grid(g4 + ylab("Log de cpue standardisé"), g3 + ylab("Log de cpue standardisé"), g2 + ylab("Log de cpue standardisé"), g1 + ylab("Log de cpue standardisé"), ncol = 2)
 ```
 
 ```{r cpue-sim-test-tweedie-glmm, message=FALSE, warning=FALSE, results='hide'}
