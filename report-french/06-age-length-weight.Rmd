@@ -492,9 +492,9 @@ get_par_df(lw_fits, 1) %>%
 ```
 
 ```{r age-lw-figs, fig.cap = "Ajustements du modèle longueur-poids. Le texte dans les graphiques montre les estimations des paramètres et les points représentent les données pour les poissons individuels.", fig.asp=0.28, fig.width=9, out.width="6.5in"}
-lw_figs <- map(lw_fits, ~ plot_length_weight(
+lw_figs <- map(lw_fits, ~ gfplot:::plot_length_weight(
   object_all = .x[[1]],
-      col = c(All = "grey30"), lab_x_gap = 0.45) +
+      col = c(All = "grey30"), lab_x_gap = 0.45, french=french) +
     ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
     guides(colour = FALSE)+
     ylab(paste(en2fr("Weight",translate=french,allow_missing=TRUE), 
@@ -529,7 +529,7 @@ get_par_df(lw_fits, 1) %>%
   geom_pointrange(position = position_dodge(width = 0.2)) +
   facet_wrap(~term, scales = "free_x") +
   coord_flip() +
-  ylab("Parameter value") +
+  ylab("Valeur du paramètre") +
   xlab("") +
   theme_pbs() +
   scale_color_manual(values = c("all" = "grey30")) +
@@ -606,6 +606,7 @@ inner_join(est, se) %>%
   mutate(Conf.low = estimate - 1.96 * std.error, Conf.high = estimate + 1.96 * std.error) %>%
   rename(Survey = .id, Term = term, Estimate = estimate) %>%
   dplyr::select(Survey,Term, Estimate, Conf.low, Conf.high) %>%
+  purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) %>% 
    knitr::kable(caption = "Coefficients des ogives de la maturité par régression logistique.",
      booktabs = TRUE, linesep = "", digits=2, format = "pandoc", escape=FALSE)
 ```
@@ -615,8 +616,9 @@ plyr::ldply(mat_fits, function(.x)
   data.frame(Female = .x$mat_perc$f.p0.5, Male = .x$mat_perc$m.p0.5)) %>%
   melt() %>%
   mutate(.id = factor(.id, levels = names(surveys_list))) %>%
-  rename(Survey = .id, Sex = variable, `Estimated age-at-50% maturity` = value) %>%
+  rename(Survey = .id, Sex = variable, `Estimated age-at-50%-maturity` = value) %>%
   arrange(Survey, Sex) %>%
+  purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) %>% 
   knitr::kable(
     caption = "Estimations de l’âge à 50\\% de maturité d’après les ogives de la maturité par régression logistique.", booktabs = TRUE, format = "pandoc", linesep = "", digits=1)
 ```
@@ -625,7 +627,13 @@ plyr::ldply(mat_fits, function(.x)
 
 ```{r age-mat-figs, fig.cap = "Ogives de l’âge à maturité. Les ogives de la maturité sont ajustées en tant que régressions logistiques aux spécimens de poissons individuels, qui sont classés comme étant matures ou non matures. Les lignes noires pleines représentent les ajustements aux poissons femelles et les lignes grises tiretées représentent les ajustements aux poissons mâles. Les lignes verticales indiquent l’âge ou la longueur estimés à 50\\% de maturité. Le texte dans les graphiques indique l’âge et la longueur estimés à 5, 50 et 95\\% de maturité pour les femelles (F) et les mâles (M). Les traits courts le long du haut et du bas de chaque graphique représentent jusqu’à 1 500 poissons choisis au hasard, avec une petite fluctuation aléatoire pour aider à différencier les poissons individuels.", fig.asp=1.7, fig.width=4.5, out.width="3.4in"}
 mat_figs <- map(mat_fits, ~ plot_mat_ogive(.x) +
-    coord_cartesian(xlim = c(0, 8.2), ylim = c(0, 1), expand = FALSE))
+    coord_cartesian(xlim = c(0, 8.2), ylim = c(0, 1), expand = FALSE)+
+      ylab(en2fr("Probability mature", translate=french,allow_missing=TRUE))+
+      xlab(paste(en2fr("Age",translate=french,allow_missing=TRUE), 
+             paste0("(",
+                    en2fr("years",translate=french,allow_missing=TRUE,case="lower"),
+                    ")")))
+    )
 for (i in seq_along(mat_figs))
   mat_figs[[i]] <- mat_figs[[i]] + ggtitle(names(surveys_list)[i])
 cowplot::plot_grid(plotlist = mat_figs, ncol = 1)
@@ -642,8 +650,8 @@ inner_join(est, se) %>%
   geom_pointrange(position = position_dodge(width = 0.4)) +
   coord_flip() +
   theme_pbs() +
-  xlab("") + ylab("Coefficient") +
-  labs(colour = "Survey group") +
+  xlab("") + ylab(en2fr("Coefficient",translate=french, allow_missing=TRUE)) +
+  labs(colour = en2fr("Survey",translate=french, allow_missing=TRUE)) +
   scale_color_brewer(palette = "Dark2")
 ```
 
