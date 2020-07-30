@@ -487,6 +487,7 @@ get_par_df(lw_fits, 1) %>%
   mutate(Sex = gsub("^all$", "Male and Female", Sex)) %>%
   rename(Term = term, Estimate = estimate) %>%
   dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
+  purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T))    %>%
   knitr::kable(caption = "Coefficients longueur-poids pour la morue du Pacifique dans les relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI).", booktabs = TRUE, format = "pandoc", linesep = "", digits=2, escape=FALSE)
 ```
 
