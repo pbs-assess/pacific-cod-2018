@@ -60,6 +60,7 @@ Un récapitulatif du nombre de poissons mesurés par année, relevé et sexe est
 
 ```{r length-biosamples-surv, results='asis'}
 # TODO: get translation for unsexed, Max and Min.
+# TODO: wrap text of colnames
 x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
   filter(!is.na(length)) %>%
@@ -94,6 +95,7 @@ x %>%
   rename(
     Survey = survey_abbrev, Year = year, `N male` = nweight_m,
     `N female` = nweight_f, `N unsexed` = nweight_u) %>%
+  purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T))    %>%
   knitr::kable(caption = "Nombre (N) de mesures de poids prises lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI).", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(font_size = 9)
 ```
@@ -294,117 +296,129 @@ Le modèle a été ajusté aux données des sexes combinés pour : a) tous les �
 \clearpage
 
 ```{r age-fit-vb, results='hide'}
-surveys_list <- list(
-  `SYN HS, SYN QCS, SYN WCVI` = c("SYN HS", "SYN QCS","SYN WCVI"),
-  `SYN HS, SYN QCS` = c("SYN HS", "SYN QCS"),
-  `SYN WCVI` = "SYN WCVI"
-)
 
-sexes <- c("all")
-vb_fits <-
-  map(surveys_list, function(.survey) {
-    map(sexes, function(.sex) {
-      .dat <- filter(x, is.element(survey_abbrev, .survey))
-      fit_vb(.dat, .sex, method = "mcmc", chains = 4L, iter = 2000L,
-        uniform_priors = TRUE, seed = 1,
-        cores = parallel::detectCores(),
-        control = list(adapt_delta = 0.99, max_treedepth = 20L))
-    })
-  })
+ surveys_list <- list(
+   `SYN HS, SYN QCS, SYN WCVI` = c("SYN HS", "SYN QCS","SYN WCVI"),
+   `SYN HS, SYN QCS` = c("SYN HS", "SYN QCS"),
+   `SYN WCVI` = "SYN WCVI"
+ )
+
+ sexes <- c("all")
+# #Not working
+# vb_fits <-
+#   map(surveys_list, function(.survey) {
+#     map(sexes, function(.sex) {
+#       .dat <- filter(x, is.element(survey_abbrev, .survey))
+#       fit_vb(.dat, .sex, method = "mcmc", chains = 4L, iter = 2000L,
+#         uniform_priors = TRUE, seed = 1,
+#         cores = parallel::detectCores(),
+#         control = list(adapt_delta = 0.99, max_treedepth = 20L))
+#     })
+#   })
 ```
 
 
 \clearpage
 
 ```{r age-coeff-table, results='asis'}
-get_par_df <- function(.d, element = 1) {
-  map_df(vb_fits, function(.x) {
-    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
-    select(-std.error) %>%
-    mutate(Surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
-    mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
-    mutate(Sex = sexes[element]) %>%
-    filter(term != "sigma")
-})}
-get_par_df(vb_fits, 1) %>%
-  # bind_rows(get_par_df(vb_fits, 2)) %>%
-  # bind_rows(get_par_df(vb_fits, 3)) %>%
-  mutate(term = gsub("^k$", "$k$", term)) %>%
-  mutate(term = gsub("^linf$", "$L_{\\\\infty}$", term)) %>%
-  mutate(term = gsub("^t0$", "$a_0$", term)) %>%
-  mutate(Sex = gsub("^male$", "Male", Sex)) %>%
-  mutate(Sex = gsub("^female$", "Female", Sex)) %>%
-  mutate(Sex = gsub("^all$", "Male and Female", Sex)) %>%
-  mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list))))     %>%
-  rename(Term = term, Estimate = estimate, Conf.low = conf.low, Conf.high = conf.high) %>%
-  dplyr::select(Surveys,Term, Estimate, Conf.low, Conf.high) %>%
-  mutate(Estimate = f(Estimate, 2),
-    Conf.low = f(Conf.low, 2), Conf.high = f(Conf.high, 2)) %>%
-  knitr::kable(
-    caption = "Coefficients de croissance de von Bertalanffy pour la morue du Pacifique dans les relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI). Le modèle de la zone 5ABCD a utilisé les paramètres indiqués pour le SYN HS et le SYN QCS. Le modèle de la zone 3CD a utilisé les paramètres indiqués pour le SYN WCVI.",
-    booktabs = TRUE, linesep = "", escape=FALSE, format = "pandoc",
-    align = c("l", "l", "l", "r", "r", "r")) %>%
-  row_spec(seq(13, 18), bold = TRUE)
+#vb_fits not working
+
+# get_par_df <- function(.d, element = 1) {
+#   map_df(vb_fits, function(.x) {
+#     broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
+#     select(-std.error) %>%
+#     mutate(Surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+#     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+#     mutate(Sex = sexes[element]) %>%
+#     filter(term != "sigma")
+# })}
+# get_par_df(vb_fits, 1) %>%
+#   # bind_rows(get_par_df(vb_fits, 2)) %>%
+#   # bind_rows(get_par_df(vb_fits, 3)) %>%
+#   mutate(term = gsub("^k$", "$k$", term)) %>%
+#   mutate(term = gsub("^linf$", "$L_{\\\\infty}$", term)) %>%
+#   mutate(term = gsub("^t0$", "$a_0$", term)) %>%
+#   mutate(Sex = gsub("^male$", "Male", Sex)) %>%
+#   mutate(Sex = gsub("^female$", "Female", Sex)) %>%
+#   mutate(Sex = gsub("^all$", "Male and Female", Sex)) %>%
+#   mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list))))     %>%
+#   rename(Term = term, Estimate = estimate, Conf.low = conf.low, Conf.high = conf.high) %>%
+#   dplyr::select(Surveys,Term, Estimate, Conf.low, Conf.high) %>%
+#   mutate(Estimate = f(Estimate, 2),
+#     Conf.low = f(Conf.low, 2), Conf.high = f(Conf.high, 2)) %>%
+#   knitr::kable(
+#     caption = "Coefficients de croissance de von Bertalanffy pour la morue du Pacifique dans les relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI). Le modèle de la zone 5ABCD a utilisé les paramètres indiqués pour le SYN HS et le SYN QCS. Le modèle de la zone 3CD a utilisé les paramètres indiqués pour le SYN WCVI.",
+#     booktabs = TRUE, linesep = "", escape=FALSE, format = "pandoc",
+#     align = c("l", "l", "l", "r", "r", "r")) %>%
+#   row_spec(seq(13, 18), bold = TRUE)
 ```
 
 ```{r vb-figs, fig.cap = "Ajustements du modèle de l’âge selon la longueur. La courbe de croissance de l’âge selon la longueur est un modèle de von Bertalanffy. Le texte dans les graphiques montre les estimations des paramètres et les points représentent les données pour les poissons individuels.", fig.asp=0.3, fig.width=9, out.width="6.5in"}
-vb_figs <- map(vb_fits, ~ plot_vb(
-  object_all = .x[[1]],
-  col = c(All = "grey30"), lab_x = 0.38) +
-    ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
-    guides(colour = FALSE)
-)
-g_vb <- cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
-print(g_vb)
+#vb_fits not working
+
+# vb_figs <- map(vb_fits, ~ plot_vb(
+#   object_all = .x[[1]],
+#   col = c(All = "grey30"), lab_x = 0.38) +
+#     ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
+#     guides(colour = FALSE)
+# )
+# g_vb <- cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
+# print(g_vb)
 ```
 
 ```{r vb-figs-svg}
-g_vb2 <- cowplot::plot_grid(plotlist = list(vb_figs[[2]], vb_figs[[3]]), nrow = 1)
-cowplot::save_plot(here::here('presentations/figures/growth-vb.svg'), plot = g_vb2, base_width = 4, base_height = 3, ncol = 2)
+
+#vbfits not working
+# g_vb2 <- cowplot::plot_grid(plotlist = list(vb_figs[[2]], vb_figs[[3]]), nrow = 1)
+# cowplot::save_plot(here::here('presentations/figures/growth-vb.svg'), plot = g_vb2, base_width = 4, base_height = 3, ncol = 2)
 
 ```
 
 ```{r age-vb-pars, fig.asp=0.4, fig.cap = "Estimations de coefficients du modèle de von Bertalanffy."}
-get_par_df <- function(.d, element = 1) {
-  map_df(vb_fits, function(.x) {
-    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
-    select(-std.error) %>%
-    mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
-    mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
-    mutate(Sex = sexes[element]) %>%
-    filter(term != "sigma")
-})}
-get_par_df(vb_fits, 1) %>%
-  # bind_rows(get_par_df(vb_fits, 2)) %>%
-  # bind_rows(get_par_df(vb_fits, 3)) %>%
-  mutate(surveys = factor(surveys, levels = rev(names(surveys_list))))  %>%
-  mutate(term = gsub("^t0$", "a_0", term)) %>%
-  ggplot(aes(surveys, estimate, colour = Sex, ymin = conf.low, ymax = conf.high)) +
-  geom_pointrange(position = position_dodge(width = 0.2)) +
-  facet_wrap(~term, scales = "free_x") +
-  coord_flip() +
-  ylab("Parameter value") +
-  xlab("") +
-  theme_pbs() +
-  scale_color_manual(values = c("all" = "grey30")) +
-  guides(colour = FALSE)
-
-vbp <- get_par_df(vb_fits, 1)
-  # bind_rows(get_par_df(vb_fits, 2))
-# vbp_wci_m <- filter(vbp, term == "k", surveys == "SYN WCVI", Sex == "male") %>% pull(estimate) %>% round(3)
-# vbp_wci_f <- filter(vbp, term == "k", surveys == "SYN WCVI", Sex == "female") %>% pull(estimate) %>% round(3)
-# vbp_hsqcs_m <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS", Sex == "male") %>% pull(estimate) %>% round(3)
-# vbp_hsqcs_f <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS", Sex == "female") %>% pull(estimate) %>% round(3)
-# vbp_all_m <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI", Sex == "male") %>% pull(estimate) %>% round(3)
-# vbp_all_f <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI", Sex == "female") %>% pull(estimate) %>% round(3)
-
-vbp_wci <- filter(vbp, term == "k", surveys == "SYN WCVI") %>% pull(estimate) %>% round(2)
-vbp_hsqcs <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS") %>% pull(estimate) %>% round(2)
-vbp_all <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI") %>% pull(estimate) %>% round(2)
+#vbfits not working
+# get_par_df <- function(.d, element = 1) {
+#   map_df(vb_fits, function(.x) {
+#     broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
+#     select(-std.error) %>%
+#     mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+#     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
+#     mutate(Sex = sexes[element]) %>%
+#     filter(term != "sigma")
+# })}
+# get_par_df(vb_fits, 1) %>%
+#   # bind_rows(get_par_df(vb_fits, 2)) %>%
+#   # bind_rows(get_par_df(vb_fits, 3)) %>%
+#   mutate(surveys = factor(surveys, levels = rev(names(surveys_list))))  %>%
+#   mutate(term = gsub("^t0$", "a_0", term)) %>%
+#   ggplot(aes(surveys, estimate, colour = Sex, ymin = conf.low, ymax = conf.high)) +
+#   geom_pointrange(position = position_dodge(width = 0.2)) +
+#   facet_wrap(~term, scales = "free_x") +
+#   coord_flip() +
+#   ylab("Parameter value") +
+#   xlab("") +
+#   theme_pbs() +
+#   scale_color_manual(values = c("all" = "grey30")) +
+#   guides(colour = FALSE)
+# 
+# vbp <- get_par_df(vb_fits, 1)
+#   # bind_rows(get_par_df(vb_fits, 2))
+# # vbp_wci_m <- filter(vbp, term == "k", surveys == "SYN WCVI", Sex == "male") %>% pull(estimate) %>% round(3)
+# # vbp_wci_f <- filter(vbp, term == "k", surveys == "SYN WCVI", Sex == "female") %>% pull(estimate) %>% round(3)
+# # vbp_hsqcs_m <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS", Sex == "male") %>% pull(estimate) %>% round(3)
+# # vbp_hsqcs_f <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS", Sex == "female") %>% pull(estimate) %>% round(3)
+# # vbp_all_m <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI", Sex == "male") %>% pull(estimate) %>% round(3)
+# # vbp_all_f <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI", Sex == "female") %>% pull(estimate) %>% round(3)
+# 
+# vbp_wci <- filter(vbp, term == "k", surveys == "SYN WCVI") %>% pull(estimate) %>% round(2)
+# vbp_hsqcs <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS") %>% pull(estimate) %>% round(2)
+# vbp_all <- filter(vbp, term == "k", surveys == "SYN HS, SYN QCS, SYN WCVI") %>% pull(estimate) %>% round(2)
 ```
 
-Les estimations du taux de croissance de von Bertalanffy $k$ étaient plus élevées dans le relevé sur la COIV ($k$ = `r vbp_wci` y^-1^) que celles de $k$ dans les relevés combinés du détroit d’Hécate et du bassin de la Reine-Charlotte ($k$ = `r vbp_hsqcs` y^-1^) et de tous les relevés combinés ($k$ = `r vbp_all` y^-1^) (tableau \@ref(tab:age-coeff-table)). Les évaluations des stocks de 2013 pour le détroit d’Hécate et le bassin de la Reine-Charlotte [@forrest2013] ont utilisé les mêmes paramètres de croissance que ceux employés dans l’évaluation de 2004 pour le détroit d’Hécate ($L_{\infty}$ = 89,48 cm; $k$ = 0,307 y^-1^ et $a_0$ = -0,116 y [@sinclair2005]). Ces valeurs avaient été indiquées par @westrheim1996 pour le stock de la COIV, d’après les analyses des données sur la fréquence des longueurs [@foucher1982]. @westrheim1996 avait en fait présenté un taux de croissance plus faible pour le stock du détroit d’Hécate, $k$ = 0,203 y^-1^.
+<!--
+PARAGRAPH TEMPORARILY DELETED OUT UNTIL VB FUNCTIONS WORKING. STILL CAUSED KNIT ERROR WHEN
+COMMENTED OUT. TEXT IS IN FILE "report-french/deleted-text.txt"
 
+-->
 Les résultats actuels pour le détroit d’Hécate (tableau \@ref(tab:age-coeff-table)) sont conformes aux paramètres indiqués par @westrheim1996. On peut en déduire que le taux de croissance utilisé dans les modèles de type différence-délai de @forrest2013 et @sinclair2005 était peut-être trop élevé pour le stock du détroit d’Hécate. Les modèles du scénario de référence actuels utilisent donc les paramètres de croissance indiqués dans le tableau \@ref(tab:age-coeff-table), c.-à-d. "SYN HS, SYN QCS" pour la zone 5ABCD et "SYN WCVI" pour la zone 3CD.
 
 \clearpage

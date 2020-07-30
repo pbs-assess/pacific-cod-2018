@@ -7,7 +7,7 @@ rmd_files: ["index.Rmd",
             #"03-figures.Rmd",
             "04-survey-indices-app.Rmd",
             #"05-cpue-app.Rmd",
-            #"06-age-length-weight.Rmd",
+            "06-age-length-weight.Rmd",
             #"07-model-description-app.Rmd",
             "98-colophon.Rmd",
             "99-references.Rmd"
