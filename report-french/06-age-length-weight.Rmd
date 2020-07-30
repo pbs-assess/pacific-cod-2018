@@ -183,6 +183,7 @@ xx %>%
   rename(
     Area = area, Year = year, `N male` = nlength_m,
     `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
+   purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T))    %>%
   knitr::kable(caption = "Nombre (N) de mesures de longueur prises dans la pêche commerciale au chalut dans la zone 5ABCD.", booktabs = TRUE, format = "pandoc", linesep = "", longtable=TRUE)%>%
   kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 10)
 ```
@@ -204,6 +205,7 @@ xx %>%
   rename(
     Area = area, Year = year, `N male` = nlength_m,
     `N female` = nlength_f, `N unsexed` = nlength_u ) %>%
+   purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T))    %>%
   knitr::kable(caption = "Nombre (N) de mesures de longueur prises dans la pêche commerciale au chalut dans la zone 3CD.", booktabs = TRUE, format = "pandoc", linesep = "", longtable=TRUE)%>%
   kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 10)
 ```
@@ -225,7 +227,11 @@ xx %>%
  mutate(proportion = n / sum(n), total = sum(n)) %>%
  ungroup() %>%
  mutate(sex = "M", survey_abbrev = area) %>% # sex = "M" is a trick to plot them all
- plot_lengths() + xlab("Length (cm)") +
+ plot_lengths() +
+ xlab(paste(en2fr("Length",translate=french,allow_missing=TRUE), "(cm)")) +
+ ylab(paste(en2fr("Relative",translate=french,allow_missing=TRUE),
+             en2fr("length",translate=french,allow_missing=TRUE,case="lower"),
+             en2fr("frequency", translate=french, allow_missing=TRUE,case="lower")))+
  guides(colour = FALSE, fill = FALSE)
 
 
@@ -260,6 +266,7 @@ x %>%
     #`P male` = proportion_male,
     #`P female` = proportion_female
   ) %>%
+  purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T))    %>%
   knitr::kable(caption = "Nombres (N) d’otolithes dont l’âge a été déterminé pour les relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI).", booktabs = TRUE, format = "pandoc", linesep = "")
 ```
 
@@ -274,6 +281,10 @@ tidy_ages_raw(x,
   ) +
   scale_x_continuous(breaks = 2006:2011) +
   scale_y_continuous(breaks = seq(1, 10)) +
+  ylab(paste(en2fr("Age",translate=french,allow_missing=TRUE), 
+             paste0("(",
+                    en2fr("years",translate=french,allow_missing=TRUE,case="lower"),
+                    ")")))+
   ggtitle("") +
   ylim(0, NA)
 ```
@@ -284,6 +295,8 @@ tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
   plot_age_precision(n = 1e6) +
   scale_x_continuous(breaks = seq(0, 10, 1)) +
   scale_y_continuous(breaks = seq(0, 10, 1)) +
+  xlab(en2fr("Primary age", translate=french, allow_missing=TRUE))+
+  xlab(en2fr("Secondary age", translate=french, allow_missing=TRUE))+
   ggtitle("")
 ```
 
