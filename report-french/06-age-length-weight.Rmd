@@ -131,7 +131,11 @@ x %>%
   tidy_lengths_raw(survey = c("SYN HS", "SYN QCS", "SYN WCVI"),
   bin_size = 2,
   year_range = c(2002, Inf)) %>%
-  plot_lengths()
+  plot_lengths()+
+  xlab(paste(en2fr("Length",translate=french,allow_missing=TRUE), "(cm)")) +
+  ylab(paste(en2fr("Relative",translate=french,allow_missing=TRUE),
+             en2fr("length",translate=french,allow_missing=TRUE,case="lower"),
+             en2fr("frequency", translate=french, allow_missing=TRUE,case="lower")))
 
 
 ```
