@@ -370,6 +370,7 @@ Le modèle a été ajusté aux données des sexes combinés pour : a) tous les �
 #   dplyr::select(Surveys,Term, Estimate, Conf.low, Conf.high) %>%
 #   mutate(Estimate = f(Estimate, 2),
 #     Conf.low = f(Conf.low, 2), Conf.high = f(Conf.high, 2)) %>%
+#   purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) %>% 
 #   knitr::kable(
 #     caption = "Coefficients de croissance de von Bertalanffy pour la morue du Pacifique dans les relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI). Le modèle de la zone 5ABCD a utilisé les paramètres indiqués pour le SYN HS et le SYN QCS. Le modèle de la zone 3CD a utilisé les paramètres indiqués pour le SYN WCVI.",
 #     booktabs = TRUE, linesep = "", escape=FALSE, format = "pandoc",
@@ -379,11 +380,17 @@ Le modèle a été ajusté aux données des sexes combinés pour : a) tous les �
 
 ```{r vb-figs, fig.cap = "Ajustements du modèle de l’âge selon la longueur. La courbe de croissance de l’âge selon la longueur est un modèle de von Bertalanffy. Le texte dans les graphiques montre les estimations des paramètres et les points représentent les données pour les poissons individuels.", fig.asp=0.3, fig.width=9, out.width="6.5in"}
 #vb_fits not working
+# TODO: Check french x and y axis labels working
 
 # vb_figs <- map(vb_fits, ~ plot_vb(
 #   object_all = .x[[1]],
 #   col = c(All = "grey30"), lab_x = 0.38) +
 #     ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
+#     xlab(paste(en2fr("Age",translate=french,allow_missing=TRUE), 
+#             paste0("(",
+#                    en2fr("years",translate=french,allow_missing=TRUE,case="lower"),
+#                    ")")) +
+#     ylab(paste(en2fr("length",translate=french,allow_missing=TRUE), "(cm)"))
 #     guides(colour = FALSE)
 # )
 # g_vb <- cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
