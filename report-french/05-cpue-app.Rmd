@@ -1,6 +1,6 @@
 \clearpage
 
-# NORMALISATION DES CPUE COMMERCIALES 
+# NORMALISATION DES CPUE COMMERCIALES {#app:commercial-cpue-standardization}
 
 Nous avons cherché à générer un indice de l’abondance de la morue du Pacifique à partir des données sur les captures commerciales par unité d’effort, qui ont été normalisées pour la profondeur, le lieu de pêche (régions spatiales définies; figures \@ref(fig:cpue-locality-map-5), \@ref(fig:cpue-locality-map-3)), le mois, le navire et la latitude, lorsque ces renseignements étaient disponibles. Avant d’ajuster un modèle de normalisation, nous avons dû filtrer et manipuler les données disponibles sur les captures et l’effort afin de générer un ensemble de données approprié pour l’ajustement du modèle. Dans les sections qui suivent, nous décrivons ces décisions pour les données « historiques » (1956-1995) et « modernes » (1996--2017). Nous décrivons ensuite notre modèle de normalisation des indices, explorons la contribution des diverses composantes de normalisation et déterminons l’effet de l’inclusion ou de l’omission des interactions espace-temps.
 

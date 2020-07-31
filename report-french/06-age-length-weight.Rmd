@@ -37,7 +37,7 @@ total_survey_lengths <- gfplot::tidy_lengths_raw(x,
   summarise(n = sum(n)) %>% pull(n)
 ```
 
-# ANALYSE DES DONNÉES BIOLOGIQUES
+# ANALYSE DES DONNÉES BIOLOGIQUES {#app:analysis-of-biological-data}
 
 Dans cette annexe, nous analysons les données sur la longueur et la maturité, ainsi que les données disponibles sur la détermination de l’âge pour mettre à jour les paramètres de croissance et de maturité. Nous traçons également les courbes des données sur la fréquence selon l’âge dérivées d’une clé âge-longueur pour visualiser la composition probable selon l’âge dans les données des relevés et les données sur les prises commerciales.
 

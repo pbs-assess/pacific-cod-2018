@@ -4,7 +4,7 @@
 
 `r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
 
-# INDICES DE L’ABONDANCE INDÉPENDANTS DE LA PÊCHE
+# INDICES DE L’ABONDANCE INDÉPENDANTS DE LA PÊCHE  {#app:fishery-independent-indices-of-abundance} 
 
 ## RELEVÉS AU CANADA
 

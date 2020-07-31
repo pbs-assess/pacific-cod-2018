@@ -1,6 +1,6 @@
 \clearpage
 
-# MODÈLE DE TYPE DIFFÉRENCE-DÉLAI
+# MODÈLE DE TYPE DIFFÉRENCE-DÉLAI {#app:delay-difference-model}
 
 La dernière évaluation de la morue du Pacifique dans les zones 5AB et 5CD a utilisé un modèle de type différence-délai [@forrest2013]. Un modèle de type différence-délai est essentiellement un modèle combiné structuré selon l’âge, assujetti à certaines hypothèses des modèles selon l’âge. La structure en différence-délai suit les effets du recrutement, de la survie et de la croissance sur la biomasse, sans nécessiter un cadre entièrement structuré selon l’âge. On utilise des équations de différences, qui permettent un délai entre le frai et le recrutement, pour construire le modèle de population en pas de temps annuels discrets; dans ce modèle, la biomasse survivante pour l’année suivante est prévue à partir de la biomasse qui a survécu l’année précédente, après un ajustement en fonction de la croissance et l’ajout du recrutement. L’un des avantages des modèles de type différence-délai par rapport aux modèles de production plus simples est qu’ils ne supposent pas un recrutement constant au fil du temps.
 
