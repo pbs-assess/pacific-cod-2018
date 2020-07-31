@@ -379,19 +379,17 @@ get_par_df(vb_fits, 1) %>%
 
 ```{r vb-figs, fig.cap = "Ajustements du modèle de l’âge selon la longueur. La courbe de croissance de l’âge selon la longueur est un modèle de von Bertalanffy. Le texte dans les graphiques montre les estimations des paramètres et les points représentent les données pour les poissons individuels.", fig.asp=0.3, fig.width=9, out.width="6.5in"}
 
-# TODO: Check french x and y axis labels working
-
 vb_figs <- map(vb_fits, ~ plot_vb(
   object_all = .x[[1]],
   col = c(All = "grey30"), lab_x = 0.38) +
     ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
-    xlab(paste(en2fr("Age",translate=french,allow_missing=TRUE),
-            paste0("(",
-                   en2fr("years",translate=french,allow_missing=TRUE,case="lower"),
-                   ")")) +
-    ylab(paste(en2fr("length",translate=french,allow_missing=TRUE), "(cm)"))
+     xlab(paste(en2fr("Age",translate=french,allow_missing=TRUE),
+             paste0("(",
+                    en2fr("years",translate=french,allow_missing=TRUE,case="lower"),
+                    ")"))) +
+    ylab(paste(en2fr("length",translate=french,allow_missing=TRUE), "(cm)"))+
     guides(colour = FALSE)
-))
+)
 g_vb <- cowplot::plot_grid(plotlist = vb_figs, nrow = 1)
 print(g_vb)
 ```
@@ -423,7 +421,7 @@ get_par_df(vb_fits, 1) %>%
   geom_pointrange(position = position_dodge(width = 0.2)) +
   facet_wrap(~term, scales = "free_x") +
   coord_flip() +
-  ylab("Parameter value") +
+  ylab("Valeur du paramètre") +
   xlab("") +
   theme_pbs() +
   scale_color_manual(values = c("all" = "grey30")) +
