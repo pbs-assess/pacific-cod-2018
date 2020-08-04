@@ -291,7 +291,7 @@ Median posterior estimated biomass $B_{t}$ (with 95% credibility interval) is sh
 
 Median posterior estimated relative biomass ($B_{t}/B_0$) (with 95% credibility interval) is shown in Figure \@ref(fig:fig-base-depl-5abcd) and Table \@ref(tab:tab-post-depl-5abcd). Median posterior estimated age-2 recruits and recruitment deviations (with 95% credibility interval) are shown in Figure \@ref(fig:fig-base-recr-5abcd) and Table \@ref(tab:tab-post-recr-5abcd). Recruitment is estimated to have been below average since 1990, with negative recruitment deviations since 2010.This is likely to be the primary reason that this stock is not doing well, in spite of low estimated fishing mortalities (Figure \@ref(fig:fig-base-f-5abcd)).
 
-Median posterior estimated fishing mortality ($F_{t}$) is shown in Figure \@ref(fig:fig-base-f-5abcd). Fishing mortality in 2017 was low compared to the historical period, with the posterior median estimated to be 0.03 y^-1^ (Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-post-f-5abcd)).
+Median posterior estimated fishing mortality ($F_{t}$) is shown in Figure \@ref(fig:fig-base-f-5abcd). Fishing mortality in 2017 was low compared to the historical period, with the posterior median estimated to be 0.03 *y*^-1^ (Tables \@ref(tab:tab-ref-points-table-5abcd) and \@ref(tab:tab-post-f-5abcd)).
 
 We ran a retrospective analysis, sequentially removing the terminal year of data for four years to show the effects of each year's data (Figure \@ref(fig:fig-base-retro-biomass-5abcd)). Results clearly show the effects of the biennial synoptic surveys on terminal estimates of biomass. Removing four years of data reverted the model back to its 2013 state, with an increase in biomass as was projected in the previous assessment for the Area 5CD stock [@forrest2013]. Adding the 2014 data had little effect on the model as there were no Area 5AB or 5CD surveys in 2014. However, adding the 2015 data resulted in a lowering of estimated terminal biomass, because of a large drop in the 2015 Hecate Strait Synoptic Survey index (Figure \@ref(fig:fig-base-index-fits-5abcd)).
 
@@ -443,9 +443,9 @@ Three sensitivity analyses are shown to illustrate the effect of the parameters 
 
 Resulting posterior estimates of biomass, recruitment and fishing mortality compared to the Reference Case models are shown in Figures \@ref(fig:fig-sens3-biomass-5abcd) to \@ref(fig:fig-sens3-f-5abcd) for Area 5ABCD and Figures \@ref(fig:fig-sens10-biomass-3cd) to \@ref(fig:fig-sens10-f-3cd) for Area 3CD. Resulting parameter estimates are provided in Tables \@ref(tab:tab-param-table-sens3a-5abcd) to \@ref(tab:tab-param-table-sens3c-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-param-table-sens3a-3cd) to \@ref(tab:tab-param-table-sens3c-3cd) for Area 3CD.
 
-For Area 5ABCD, respective median posterior estimates of *M* for Sc 3a, 3b and 3c were 0.324 y^-1^, 0.287 y^-1^ and 0.298 y^-1^. These values are compared to the median posterior Reference Case estimate of *M* = 0.346 y^-1^.
+For Area 5ABCD, respective median posterior estimates of *M* for Sc 3a, 3b and 3c were 0.324 *y*^-1^, 0.287 *y*^-1^ and 0.298 *y*^-1^. These values are compared to the median posterior Reference Case estimate of *M* = 0.346 *y*^-1^.
 
-For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.392 y^-1^, 0.391 y^-1^ and 0.398 y^-1^. These values are compared to the median posterior Reference Case estimate of *M* = 0.413 y^-1^.
+For Area 3CD, respective median posterior estimates of *M* for Scenarios 3a, 3b and 3c were 0.392 *y*^-1^, 0.391 *y*^-1^ and 0.398 *y*^-1^. These values are compared to the median posterior Reference Case estimate of *M* = 0.413 *y*^-1^.
 
 For Area 5ABCD, all sensitivity runs resulted in lower estimates of biomass than the Reference Case model (Figure \@ref(fig:fig-sens3-biomass-5abcd)).This was not surprising, given that all had lower posterior median estimates of *M*. Differences in estimated biomass among scenarios were smaller for Area 3CD, although all were slightly lower than for the Reference Case model (Figure \@ref(fig:fig-sens10-biomass-3cd)).
 
