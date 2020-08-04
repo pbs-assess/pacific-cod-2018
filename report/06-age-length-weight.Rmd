@@ -322,7 +322,7 @@ vb_fits <-
       .dat <- filter(x, is.element(survey_abbrev, .survey))
       fit_vb(.dat, .sex, method = "mcmc", chains = 4L, iter = 2000L,
         uniform_priors = TRUE, seed = 1,
-        cores = parallel::detectCores(),
+        cores = 1,
         control = list(adapt_delta = 0.99, max_treedepth = 20L))
     })
   })

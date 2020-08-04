@@ -138,7 +138,7 @@ Nous avons peut-être réglé certaines des préoccupations relatives aux points
 
 En l’absence de points de référence acceptés pour la zone 3CD, nous suggérons d’appliquer la même approche. Nous avons conservé comme PRL la biomasse en 1986, comme dans l’évaluation précédente, car il a été convenu que sa modification aurait un effet négligeable. En plus du TEL, du PRL et du PRS dont il a été question plus haut, deux points de repère sont également inclus : (i) $F_{2017}$ et (ii) $B_{2018}$. Les projections de la biomasse et de la mortalité par pêche par rapport à ces points de repère sont incluses dans les tableaux de décision pour montrer si : (i) la mortalité par pêche devrait augmenter ou diminuer selon les autres niveaux de prises projetés pour 2018; et (ii) si la biomasse devrait augmenter ou diminuer selon les autres niveaux de prises projetés pour 2018.
 
-Les points de référence et les points de repère suggérés pour les deux zones sont indiqués dans le tableau \@ref(tab:suggested-ref-points).
+Les points de référence et les points de repère suggérés pour les deux zones sont indiqués dans le section \@ref(sec:reference-points-and-decision-tables).
 
 # MODÈLES DU SCÉNARIO DE RÉFÉRENCE {#sec:reference-case-models}
 
