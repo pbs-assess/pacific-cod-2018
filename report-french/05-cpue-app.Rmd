@@ -47,10 +47,10 @@ Nous adaptons le MLGM (modèle linéaire généralisé à effets mixtes) de Twee
   \right),\\
 \alpha^\mathrm{locality}_j &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality}}),\\
- (\#eq:cpue­locality­year)
+ (\#eq:cpue-locality-year)
 \alpha^\mathrm{locality-year}_k &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality-year}}),\\
- (\#eq:cpue­vessel)
+ (\#eq:cpue-vessel)
 \alpha^\mathrm{vessel}_l &\sim
   \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{vessel}}),
 \end{align}
