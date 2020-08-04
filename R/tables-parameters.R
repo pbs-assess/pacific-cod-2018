@@ -100,13 +100,13 @@ make.parameters.table <- function(model,
     prior = character(),
     stringsAsFactors = FALSE)
 
-  param.text <- c("Log recruitment ($ln(R_0)$)",
-                  "Steepness ($h$)",
-                  "Log natural mortality ($ln(M)$)",
-                  "Log mean recruitment ($\\ln(\\overline{R})$)",
-                  "Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
-                  "Variance ratio ($\\rho$)",
-                  "Inverse total variance ($\\vartheta^2$)")
+  param.text <- c("Log recrutement ($ln(R_0)$)",
+                  "La pente ($h$)",
+                  "Log mortalité naturelle ($ln(M)$)",
+                  "Log recrutement moyen ($\\ln(\\overline{R})$)",
+                  "Log recrutement initial ($\\ln(\\overline{R}_{init})$)",
+                  "Rapport de variance ($\\rho$)",
+                  "Variance totale inverse ($\\vartheta^2$)")
 
   param.vals <- do.call(rbind, lapply(1:nrow(params), get.vals))
 
