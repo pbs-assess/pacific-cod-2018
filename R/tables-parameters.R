@@ -38,7 +38,7 @@ make.parameters.table <- function(model,
     vec <- as.numeric(params[ind, 4:7])
     if(vec[1] < 1){
       return(c(0,
-        "Fixed",
+        en2fr("Fixed",translate=french,allow_missing=TRUE),
         paste0("$", f(params[ind, 1], 3), "$")))
     }else if(vec[2] == 0){
       return(c(1,
@@ -100,14 +100,25 @@ make.parameters.table <- function(model,
     prior = character(),
     stringsAsFactors = FALSE)
 
+  #Need to do it this way due to different order of adjectives and nouns (e.g., mean recruitment)
+if(french==TRUE){
   param.text <- c("Log recrutement ($ln(R_0)$)",
                   "La pente ($h$)",
-                  "Log mortalité naturelle ($ln(M)$)",
+                  paste("Log", en2fr("Natural mortality", translate=french, allow_missing=TRUE, case="lower" ), "($ln(M)$))"),
                   "Log recrutement moyen ($\\ln(\\overline{R})$)",
                   "Log recrutement initial ($\\ln(\\overline{R}_{init})$)",
                   "Rapport de variance ($\\rho$)",
                   "Variance totale inverse ($\\vartheta^2$)")
+}else{
+  param.text <- c("Log recruitment ($ln(R_0)$)",
+                  "Steepness ($h$)",
+                  "Natural mortality ($ln(M)$)",
+                  "Log mean recruitment ($\\ln(\\overline{R})$)",
+                  "Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
+                  "Variance ratio ($\\rho$)",
+                  "Total inverse variance ($\\vartheta^2$)")
 
+}
   param.vals <- do.call(rbind, lapply(1:nrow(params), get.vals))
 
   ## Selectivity parameters
@@ -150,16 +161,16 @@ make.parameters.table <- function(model,
   param.vals <- rbind(param.vals,
     c(surv.est,
       "[0, 1]",
-      "None"),
+      en2fr("None",translate=french,allow_missing=TRUE)),
     c(fish.est,
       "[0, 1]",
-      "None"),
+      en2fr("None",translate=french,allow_missing=TRUE)),
     c(surv.est,
       "[0, Inf)",
-      "None"),
+      en2fr("None",translate=french,allow_missing=TRUE)),
     c(fish.est,
       "[0, Inf)",
-      "None"))
+      en2fr("None",translate=french,allow_missing=TRUE)))
 
   param.text <- c(param.text,
     "Survey age at 50\\% selectivity ($\\hat{a}_k$)",
@@ -180,11 +191,11 @@ make.parameters.table <- function(model,
   num.inds <- ctl$num.indices
   param.vals <- rbind(param.vals,
     c(num.inds,
-      "None",
+      en2fr("None",translate=french,allow_missing=TRUE),
       "Normal($0.5, 1$)"))
 
   param.text <- c(param.text,
-    "Survey catchability ($q_k$)")
+    paste(en2fr("Survey catchability", translate=french, allow_missing=TRUE), "($q_k$)"))
 
   ## Fishing mortality and recruitment parameters
   ##
@@ -197,17 +208,23 @@ make.parameters.table <- function(model,
       "[-30, 3]",
       "[-30, 3]"),
     c(num.rec.params,
-      "None",
+      en2fr("None",translate=french,allow_missing=TRUE),
       "Normal($0, 2$)"),
     c(num.init.rec.params,
-      "None",
+      en2fr("None",translate=french,allow_missing=TRUE),
       "Normal($0, 2$)"))
 
+  if(french==TRUE){
+  param.text <- c(param.text,
+    paste("Log", en2fr("Fishing mortality", translate=french,allow_missing=TRUE, case="lower"), "($\\Gamma_{k,t}$)"),
+    paste(en2fr("Log recruitment deviations", translate=french,allow_missing=TRUE, case="sentence"), "($\\omega_t$)"),
+    paste(en2fr("Log recruitment deviations", translate=french,allow_missing=TRUE, case="sentence"), "inital ($\\omega_{init,t}$)"))
+  }else{
   param.text <- c(param.text,
     "Log fishing mortality values ($\\Gamma_{k,t}$)",
     "Log recruitment deviations ($\\omega_t$)",
     "Initial log recruitment deviations ($\\omega_{init,t}$)")
-
+  }
   tab <- cbind(param.text, param.vals)
 
   tab <- as.data.frame(tab)
@@ -343,7 +360,7 @@ make.parameters.est.table <- function(model,
 
   new.col <- rownames(tab)
   new.col <- gsub("^ro$", "$R_0$", new.col)
-  new.col <- gsub("^h$", "Steepness ($h$)", new.col)
+  new.col <- gsub("^h$", "$h$", new.col)
   new.col <- gsub("^m$", "$M$", new.col)
   new.col <- gsub("^rbar$", "$\\\\overline{R}$", new.col)
   new.col <- gsub("^rinit$", "$\\\\overline{R}_{init}$", new.col)
