@@ -84,11 +84,11 @@ suggested.ref.points <- function(french=FALSE){
       "Average fishing mortality for the period 1956-2004",
       "Biomass in 2018",
       "Fishing mortality in 2017"),
-    Role = c("LRP",
-             "USR",
-             "LRR",
-             "Benchmark",
-             "Benchmark")) %>%
+    Role = c(en2fr("LRP", translate=french, allow_missing=TRUE),
+             en2fr("USR", translate=french, allow_missing=TRUE),
+             en2fr("LRR", translate=french, allow_missing=TRUE),
+             en2fr("Benchmark", translate=french, allow_missing=TRUE),
+                   en2fr("Benchmark", translate=french, allow_missing=TRUE))) %>%
     rename("Reference point" = referencepoint)
 
   colnames(df) <- en2fr(colnames(df), translate = french, allow_missing = TRUE)
