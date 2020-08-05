@@ -26,7 +26,7 @@ priors.table <- function(model,
               prior = prior,
               p1 = p1,
               p2 = p2,
-              Estimated = if_else(phz > 0, "Yes", "No"))
+              Estimated = if_else(phz > 0, en2fr("Yes",translate=french,allow_missing=TRUE), en2fr("No",translate=french,allow_missing=TRUE)))
 
   ## Add the q parameters to the prior specs table
   q.names <- paste0("q", 1:ncol(model$ctl$surv.q))
@@ -38,7 +38,7 @@ priors.table <- function(model,
               prior = priortype,
               p1 = priormeanlog,
               p2 = priorsd,
-              Estimated = "Yes")
+              Estimated = en2fr("Yes",translate=french,allow_missing=TRUE))
 
   prior.specs <- bind_rows(prior.specs, q.specs)
 
