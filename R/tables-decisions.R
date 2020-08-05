@@ -72,6 +72,7 @@ suggested.ref.points <- function(french=FALSE){
 
   #FIXME: é displaying incorrectly in pdf. RF has tried substituting Ã© for é in various parts in the if(french=TRUE)
   # section below and getting random results. The text is too long to add to the rosettafish library
+  # This is github issue #107
 
   if(french==TRUE){
     definition_text <-c(latex.mlc(c("La biomasse estimée la plus faible représentant",
