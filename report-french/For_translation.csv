@@ -1,48 +1,48 @@
-Needs translation for rosettafish dictionary,,,,,,,,All the text and caption for Table 6,From the main translation
-English,French,Notes,,,,,,Lowest estimated biomass agreed to be an undesirable state to avoid,la biomasse estimée la plus faible reconnue comme représentant un état non souhaitable à éviter
-,,,,,,,,Average biomass for the period 1956-2004,la biomasse moyenne à long terme (1956 - 2004)
-Landed,,"As in ""the fish they caught were landed at the port""",,,,,,Average fishing mortality for the period 1956-2004,la mortalité par pêche moyenne à long terme (1956-2004)
-Released at sea,,"As in ""the fish they caught were released at sea""",,,,,,Biomass in 2018,la biomasse en 2018
-Landings,,As in fishery landings,,,,,,Fishing mortality in 2017,la mortalité par pêche en 2017
-Total catch,,As in fisheries catch,,,,,,Benchmark,Point de repÃ¨re
-Canada total,,Short for Canada total catch,,,,,,Reference points for the Reference Case 5ABCD and 3CD models,points de référence pour les modèles du scénario de référence pour les zones 5ABCD et 3CD
-Source,,As in source of information,,,,,,,
-IFMP,,Acronym for Integrated Fishery Management Plan,,,,,,,
-GMU,,Acronym for Groundfish Management Unit,,,,,,,
-Number estimated,,As in number of estimated parameters,,,,,,,
-"Bounds [low, high]",,As in bounds of a  probability distribution,,,,,,,
-"Prior (mean, SD) (single value = fixed)",,Prior as in prior probability distribution,,,,,,,
-Definition,,,,,,,,,
-Role,,As in role of the reference point,,,,,,,
-Initial value,,,,,,,,,
-Lower bound,,As in bounds of a  probability distribution,,,,,,,
-Upper bound,,As in bounds of a  probability distribution,,,,,,,
-Distribution,,As in probability distribution,,,,,,,
-Estimated,,,,,,,,,
-Basis,,,,,,,,,
-fit,,As in model fit,,,,,,,
-USA,,,,,,,,,
-Observed annual mean weight ,,,,,,,,,
-Estimated annual mean weight ,,,,,,,,,
-Annual mean weight,,,,,,,,,
-Annual mean weight,,,,,,,,,
-thousands,,As in number of fish (thousands),,,,,,,
-millions,,As in number of fish (millions),,,,,,,
-Unsexed,,As in sex of a fish was not determined,,,,,,,
-Maximum,,,,,,,,,
-Minimum,,,,,,,,,
-Max,,As in abbreviation for maximum,,,,,,,
-Min,,As in abbreviation for minimum,,,,,,,
-Relative,,As in relative index of abundance,,,,,,,
-Primary age,,Age as in the age of a fish,,,,,,,
-Secondary age,,Age as in the age of a fish,,,,,,,
-Area,,As in Area 2J3KL,,,,,,,
-Term,,As in word to describe a thing,,,,,,,
-Estimate,,NOUN as in parameter estimate,,,,,,,
-Conf,,Abbreviation for confidence,,,,,,,
-Low,,As in low value for parameter,,,,,,,
-High,,As in high value for parameter,,,,,,,
-Conf low,,Abbreviation for low confidence limit,,,,,,,
-Conf high,,Abbreviation for high confidence limit,,,,,,,
-Estimated age-at-50%-maturity,,,,,,,,,
-Coefficient,,,,,,,,,
+Needs translation for rosettafish dictionary,,
+English,French,Notes
+,,
+Landed,,"As in ""the fish they caught were landed at the port"""
+Released at sea,,"As in ""the fish they caught were released at sea"""
+Landings,,As in fishery landings
+Total catch,,As in fisheries catch
+Canada total,,Short for Canada total catch
+Source,,As in source of information
+IFMP,,Acronym for Integrated Fishery Management Plan
+GMU,,Acronym for Groundfish Management Unit
+Number estimated,,As in number of estimated parameters
+"Bounds [low, high]",,As in bounds of a  probability distribution
+"Prior (mean, SD) (single value = fixed)",,Prior as in prior probability distribution
+Definition,,
+Role,,As in role of the reference point
+Initial value,,
+Lower bound,,As in bounds of a  probability distribution
+Upper bound,,As in bounds of a  probability distribution
+Distribution,,As in probability distribution
+Estimated,,
+Basis,,
+fit,,As in model fit
+USA,,
+Observed annual mean weight ,,
+Estimated annual mean weight ,,
+Annual mean weight,,
+Annual mean weight,,
+thousands,,As in number of fish (thousands)
+millions,,As in number of fish (millions)
+Unsexed,,As in sex of a fish was not determined
+Maximum,,
+Minimum,,
+Max,,As in abbreviation for maximum
+Min,,As in abbreviation for minimum
+Relative,,As in relative index of abundance
+Primary age,,Age as in the age of a fish
+Secondary age,,Age as in the age of a fish
+Area,,As in Area 2J3KL
+Term,,As in word to describe a thing
+Estimate,,NOUN as in parameter estimate
+Conf,,Abbreviation for confidence
+Low,,As in low value for parameter
+High,,As in high value for parameter
+Conf low,,Abbreviation for low confidence limit
+Conf high,,Abbreviation for high confidence limit
+Estimated age-at-50%-maturity,,
+Coefficient,,
