@@ -110,6 +110,7 @@ make.parameters.est.table(base.model.5abcd,
               french=french)
 ```
 
+\clearpage
 
 ```{r tab-ref-points-table-5abcd, results='asis'}
 make.ref.points.table(base.model.5abcd,
@@ -124,6 +125,7 @@ make.ref.points.table(base.model.5abcd,
                french=french)
 ```
 
+\clearpage
 
 ```{r tab-post-biomass-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
@@ -195,6 +197,8 @@ make.parameters.est.table(base.model.3cd,
             french = french)
 ```
 
+\clearpage
+
 ```{r tab-ref-points-table-3cd, results='asis'}
 make.ref.points.table(base.model.3cd,
                       omit_msy = TRUE,
@@ -207,6 +211,8 @@ make.ref.points.table(base.model.3cd,
                                        "La biomasse est en tonnes."),
                french=french)
 ```
+
+\clearpage
 
 ```{r tab-post-biomass-3cd, results='asis'}
 make.value.table(base.model.3cd,

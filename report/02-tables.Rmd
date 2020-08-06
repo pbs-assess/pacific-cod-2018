@@ -118,6 +118,8 @@ make.ref.points.table(base.model.5abcd,
                                        "Biomass is in tonnes."))
 ```
 
+\clearpage
+
 ```{r tab-post-biomass-5abcd, results='asis'}
 make.value.table(base.model.5abcd,
                  1,
@@ -194,6 +196,8 @@ make.ref.points.table(base.model.3cd,
                                        "Biomass is in tonnes."))
 ```
 
+\clearpage
+
 ```{r tab-post-biomass-3cd, results='asis'}
 make.value.table(base.model.3cd,
                  1,
@@ -258,6 +262,7 @@ make.parameters.est.table(sens.models.2[[2]],
   omit_pars = pars_est_omit)
 ```
 
+\clearpage
 
 ```{r tab-param-table-sens3a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[1]],
@@ -269,7 +274,6 @@ make.parameters.est.table(sens.models.3[[1]],
 ```
 
 \clearpage
-
 
 ```{r tab-param-table-sens3b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[2]],
