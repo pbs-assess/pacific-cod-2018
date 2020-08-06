@@ -484,7 +484,6 @@ make.parameters.est.table(sens.models.13[[3]],
 
 ## POINTS DE RÉFÉRENCE FONDÉS SUR LA MOYENNE DES MODÈLES ET TABLEAUX DE DÉCISION {#sec:reference-points-and-decision-tables}
 
-
 ```{r tab-ref-points-table-avg-5abcd, results='asis'}
 make.ref.points.table(c(base.model.5abcd,
                         sens.models.6.sub),
@@ -500,6 +499,8 @@ make.ref.points.table(c(base.model.5abcd,
                french=french)
 ```
 
+\clearpage
+
 ```{r tab-post-biomass-avg-5abcd, results='asis'}
 make.value.table(c(base.model.5abcd,
                         sens.models.6.sub),
@@ -510,6 +511,8 @@ make.value.table(c(base.model.5abcd,
                french=french)
 ```
 
+\clearpage
+
 ```{r tab-post-recr-avg-5abcd, results='asis'}
 make.value.table(c(base.model.5abcd,
                         sens.models.6.sub),
@@ -519,6 +522,8 @@ make.value.table(c(base.model.5abcd,
                                   ") et estimations de la DPM du recrutement (en milliers) selon la moyenne des modèles pour la zone 5ABCD."),
                french=french)
 ```
+
+\clearpage
 
 ```{r tab-ref-points-table-avg-3cd, results='asis'}
 make.ref.points.table(c(base.model.3cd,
@@ -534,7 +539,9 @@ make.ref.points.table(c(base.model.3cd,
                                        "La biomasse est en tonnes."),
                french=french)
 ```
-\vspace{10pt}
+
+\clearpage
+
 ```{r tab-post-biomass-avg-3cd, results='asis'}
 make.value.table(c(base.model.3cd,
                         sens.models.13.sub),
@@ -544,6 +551,8 @@ make.value.table(c(base.model.3cd,
                                   ") et estimations de la DPM de la biomasse (t) pour la moyenne des modèles dans la zone 3CD "),
                french=french)
 ```
+
+\clearpage
 
 ```{r tab-post-recr-avg-3cd, results='asis'}
 make.value.table(c(base.model.3cd,

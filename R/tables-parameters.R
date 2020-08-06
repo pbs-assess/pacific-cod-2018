@@ -497,12 +497,12 @@ make.ref.points.table <- function(models,
       usr.5 <- mean(as.numeric(cau$`2.5%`))
       usr.50 <- mean(as.numeric(cau$`50%`))
       usr.95 <- mean(as.numeric(cau$`97.5%`))
-      lrp.desc <- paste0("LRP (",
+      lrp.desc <- paste0(en2fr("LRP",translate=french,allow_missing=TRUE), " (",
                          ifelse(lrp[1] == lrp[2],
                                 lrp[1],
                                 paste0(lrp[1], "--", lrp[2])),
                          ")")
-      usr.desc <- paste0("USR (",
+      usr.desc <- paste0(en2fr("USR",translate=french,allow_missing=TRUE), " (",
                          ifelse(usr[1] == usr[2],
                                 usr[1],
                                 paste0(usr[1], "--", usr[2])),

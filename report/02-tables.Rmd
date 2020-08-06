@@ -461,6 +461,8 @@ make.ref.points.table(c(base.model.5abcd,
                                        "Biomass is in tonnes."))
 ```
 
+\clearpage
+
 ```{r tab-post-biomass-avg-5abcd, results='asis'}
 make.value.table(c(base.model.5abcd,
                         sens.models.6.sub),
@@ -470,6 +472,8 @@ make.value.table(c(base.model.5abcd,
                                   "percentile) and MPD estimates of biomass (t) for model-averaged Area 5ABCD."))
 ```
 
+\clearpage
+
 ```{r tab-post-recr-avg-5abcd, results='asis'}
 make.value.table(c(base.model.5abcd,
                         sens.models.6.sub),
@@ -478,6 +482,8 @@ make.value.table(c(base.model.5abcd,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
                                   "percentile) and MPD estimates of recruitment (thousands) model-averaged Area 5ABCD."))
 ```
+
+\clearpage
 
 ```{r tab-ref-points-table-avg-3cd, results='asis'}
 make.ref.points.table(c(base.model.3cd,
@@ -492,7 +498,9 @@ make.ref.points.table(c(base.model.3cd,
                                        "model-averaged Area 3CD. ",
                                        "Biomass is in tonnes."))
 ```
-\vspace{10pt}
+
+\clearpage
+
 ```{r tab-post-biomass-avg-3cd, results='asis'}
 make.value.table(c(base.model.3cd,
                         sens.models.13.sub),
@@ -501,6 +509,8 @@ make.value.table(c(base.model.3cd,
                  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} ",
                                   "percentile) and MPD estimates of biomass (t) for model-averaged Area 3CD."))
 ```
+
+\clearpage
 
 ```{r tab-post-recr-avg-3cd, results='asis'}
 make.value.table(c(base.model.3cd,
