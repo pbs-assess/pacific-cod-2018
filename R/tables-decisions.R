@@ -68,38 +68,9 @@ decision.table <- function(model,
   }
 }
 
-suggested.ref.points <- function(french=FALSE){
+suggested.ref.points <- function(french=FALSE, definition_text="definition", caption_text="caption"){
 
-  #FIXME: é displaying incorrectly in pdf. RF has tried substituting Ã© for é in various parts in the if(french=TRUE)
-  # section below and getting random results. The text is too long to add to the rosettafish library
-  # This is github issue #107
-
-  if(french==TRUE){
-    definition_text <-c(latex.mlc(c("La biomasse estimée la plus faible représentant",
-                                    "un état non souhaitable à éviter ($B_{\t{2000}}$",
-                                    "en  5ABCD; $B_{\t{1986}}$ en 3CD)"),
-                                  make.bold = FALSE),
-                        "La biomasse moyenne à long terme (1956-2004)",
-                        "La mortalité par pêche moyenne à long terme (1956-2004)",
-                        "La biomasse en 2018",
-                        "La mortalité par pêche en 2017")
-    caption_text <- paste("Points de référence pour les modèles du scénario de référence ",
-      "pour les zones 5ABCD et 3CD.")
-
-  }else {
-    definition_text <-c(latex.mlc(c("Lowest estimated biomass agreed to be an",
-                                  "undesirable state to avoid ($B_{\t{2000}}$",
-                                  "in  5ABCD; $B_{\t{1986}}$ in 3CD)"),
-                                make.bold = FALSE),
-                      "Average biomass for the period 1956-2004",
-                      "Average fishing mortality for the period 1956-2004",
-                      "Biomass in 2018",
-                      "Fishing mortality in 2017")
-    caption_text <- paste0("Reference points for the Reference Case ",
-                         "5ABCD and 3CD models.")
-  }
-
-   df <- data.frame(
+    df <- data.frame(
     referencepoint = c("$B_{\t{Min}}$",
                        "$B_{\t{Avg}}$",
                        "$F_{\t{Avg}}$",
