@@ -635,16 +635,12 @@ model.param.desc.table <- function(cap = "",
     "$d_{C_t}^2$",       "Residual log difference for catch data",                                      "",                               "",
     "$d_{W_t}^2$",       "Residual log difference for mean weight data",                                "",                               "")
 
-  names(j) <- paste0("\\textbf{", names(j), "}")
-
-  kable(j,
-        caption = cap,
-        booktabs = TRUE,
-        longtable = TRUE,
-        linesep = "",
-        escape = FALSE) %>%
-    kable_styling(latex_options = c("hold_position", "repeat_header"),
-                  font_size = font.size) %>%
+  csasdown::csas_table(j,
+                       format = "latex",
+                       caption = cap,
+                       bold_header = TRUE,
+                       col_names = c("Parameter", "Description", "Value 5ABCD", "Value 3CD")) %>%
+    column_spec(2, width = "5cm") %>%
     footnote(alphabet = c("Estimated in log space",
                           "Conditional MPD estimates"))
 }
