@@ -10,15 +10,15 @@ catch.table <- function(dat,
     group_by(year) %>%
     summarize(Year = year[1],
       USA = sum(usa_catch),
-      `Canada landed` = sum(landed_canada),
-      `Canada released at sea` = sum(discarded_canada),
-      `Canada total` = sum(landed_canada + discarded_canada),
-      `Total catch` = `Canada total` + `USA`) %>%
+      `landings` = sum(landed_canada),
+      `released at sea` = sum(discarded_canada),
+      `total` = sum(landed_canada + discarded_canada),
+      `Total catch` = `total` + `USA`) %>%
     select(-year)
 
   j <- j[!is.na(j$`Total catch`),]
 
-  j <- j[,c("Year", "Canada landed", "Canada released at sea", "Canada total", "USA", "Total catch")]
+  j <- j[,c("Year", "landings", "released at sea", "total", "USA", "Total catch")]
 
   j[,-1] <- round(j[,-1], 0)
 
@@ -30,6 +30,13 @@ catch.table <- function(dat,
                             })
 
   colnames(j) <- en2fr(colnames(j), translate = french, allow_missing = TRUE)
+
+  #Add Canada to colnames for cols 2-4
+  for(k in 2:4){
+    colnames(j)[k] <- paste("Canada", colnames(j)[k])
+  }
+
+
   colnames(j) <- latex.bold(colnames(j))
 
   #do not include 2018
@@ -52,6 +59,9 @@ tac.table <- function(tac,
 
   names(tac) <- gsub("X", "", names(tac))
   names(tac) <- en2fr(names(tac), translate = french, allow_missing = TRUE)
+
+  #Hardcode the translation for IFMP
+  tac[1:13,6] <- "PGIP"
 
   tac[,c(2,3,4,5)] <- apply(tac[,c(2,3,4,5)],
                             2,

@@ -37,7 +37,7 @@ cap = paste0("Prises déclarées (tm) de morue du Pacifique dans la zone 3CD ",
 
 ```{r tab-tac}
 tac.table(tac,
- cap = paste0("Sommaire des TAC par zone."), french = french)
+ cap = paste0("Sommaire des TAC par zone. PGIP = Plan de gestion intégrée des pêches"), french = french)
 ```
 
 \clearpage

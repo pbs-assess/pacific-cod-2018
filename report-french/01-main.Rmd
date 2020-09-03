@@ -120,23 +120,23 @@ Le cadre décisionnel pour les pêches intégrant l’approche de précaution du
 
 1. Un taux d’exploitation de référence;
 2. Un point de référence limite (PRL);
-3. Un point de référence supérieur du stock (PRS).
+3. Un point de référence supérieur du stock (RSS).
 
 Dans la présente évaluation, ces points de référence sont intégrés aux tableaux de décision (section \@ref(sec:projections-and-decision-tables)), où les probabilités projetées de dépassement des points de référence sont indiquées, c.-à-d. que les points de référence ne sont pas incorporés dans une règle officielle de contrôle des prises.
 
-Des valeurs provisoires de $USR = 0,8 B_{MSY}$ et de $LRP = 0,4 B_{MSY}$ sont proposées en l’absence de points de référence propres au stock [@dfo2009]. Le cadre précise un taux d’exploitation de référence limite de $F_{MSY}$. Tout au long du présent document, nous désignons le taux d’exploitation de référence comme étant le taux d’exploitation limite (TEL). La politique de l’AP approuve également les approximations « fondées sur l’historique » basées sur une estimation de la biomasse féconde moyenne et de la mortalité par pêche sur une période historique productive [@dfo2009].
+Des valeurs provisoires de $RSS = 0,8 B_{MSY}$ et de $PRL = 0,4 B_{MSY}$ sont proposées en l’absence de points de référence propres au stock [@dfo2009]. Le cadre précise un taux d’exploitation de référence limite de $F_{MSY}$. Tout au long du présent document, nous désignons le taux d’exploitation de référence comme étant le taux d’exploitation limite (TEL). La politique de l’AP approuve également les approximations « fondées sur l’historique » basées sur une estimation de la biomasse féconde moyenne et de la mortalité par pêche sur une période historique productive [@dfo2009].
 
-Comme il a déjà été mentionné, les importantes incertitudes qui entourent les paramètres de productivité *M* et *h* ont entraîné de grandes incertitudes concernant les points de référence fondés sur le RMS pour le stock de morue du Pacifique du détroit d’Hécate dans les évaluations antérieures [@Starr2002; @sinclair2005; @forrest2013]. Compte tenu de l’incertitude des paramètres de productivité pour ce stock, @sinclair2005 a suggéré d’utiliser d’autres points de référence fondés sur l’historique reconstitué du stock, c.‑à‑d. les points de référence « fondés sur l’historique ». Il a recommandé de prendre pour point de référence limite la biomasse féconde minimale à partir de laquelle le stock s’est rétabli au-dessus des niveaux moyens. On a estimé que cela s’était produit en 1971 (c.-à-d. $LRP = B_{1971}$). @sinclair2005 a aussi proposé d’utiliser la biomasse moyenne à long terme (B_$B_{Avg}$) comme variable de remplacement pour le point de référence supérieur du stock et le taux de récolte moyen à long terme ($U_{Avg}$) comme substitut pour le taux d’exploitation de référence.
+Comme il a déjà été mentionné, les importantes incertitudes qui entourent les paramètres de productivité *M* et *h* ont entraîné de grandes incertitudes concernant les points de référence fondés sur le RMS pour le stock de morue du Pacifique du détroit d’Hécate dans les évaluations antérieures [@Starr2002; @sinclair2005; @forrest2013]. Compte tenu de l’incertitude des paramètres de productivité pour ce stock, @sinclair2005 a suggéré d’utiliser d’autres points de référence fondés sur l’historique reconstitué du stock, c.‑à‑d. les points de référence « fondés sur l’historique ». Il a recommandé de prendre pour point de référence limite la biomasse féconde minimale à partir de laquelle le stock s’est rétabli au-dessus des niveaux moyens. On a estimé que cela s’était produit en 1971 (c.-à-d. $PRL = B_{1971}$). @sinclair2005 a aussi proposé d’utiliser la biomasse moyenne à long terme ($B_{Avg}$) comme variable de remplacement pour le point de référence supérieur du stock et le taux de récolte moyen à long terme ($U_{Avg}$) comme substitut pour le taux d’exploitation de référence.
 
-@sinclair2005 et @forrest2013 ont reconnu que l’estimation absolue de la biomasse en 1971 dépend de la formulation du modèle, mais ont constaté que, dans la plupart des formulations de modèles, 1971 était l’année où le stock était le plus bas et s’est ensuite rétabli au-dessus des niveaux moyens. C’est pourquoi ils ont recommandé de fixer le PRL à $B_{1971}$, selon l’estimation du modèle d’évaluation. Le Sous-comité du poisson de fond du CEESP [@fargo2005] a par la suite recommandé d’utiliser $B_{1971}$ comme PRL pour le stock du détroit d’Hécate et un processus régional d’examen par les pairs a de nouveau accepté cette valeur comme PRL pour la zone 5CD en 2014 [@dfo2015]. Parallèlement, le processus régional d’examen par les pairs a accepté la biomasse moyenne à long terme ($B_{Avg}$) entre 1956 et 2004 comme PRS, et la mortalité par pêche moyenne à long terme ($F_{Avg}$) comme TEL pour la même période [@dfo2015].
+@sinclair2005 et @forrest2013 ont reconnu que l’estimation absolue de la biomasse en 1971 dépend de la formulation du modèle, mais ont constaté que, dans la plupart des formulations de modèles, 1971 était l’année où le stock était le plus bas et s’est ensuite rétabli au-dessus des niveaux moyens. C’est pourquoi ils ont recommandé de fixer le PRL à $B_{1971}$, selon l’estimation du modèle d’évaluation. Le Sous-comité du poisson de fond du CEESP [@fargo2005] a par la suite recommandé d’utiliser $B_{1971}$ comme PRL pour le stock du détroit d’Hécate et un processus régional d’examen par les pairs a de nouveau accepté cette valeur comme PRL pour la zone 5CD en 2014 [@dfo2015]. Parallèlement, le processus régional d’examen par les pairs a accepté la biomasse moyenne à long terme ($B_{Avg}$) entre 1956 et 2004 comme RSS, et la mortalité par pêche moyenne à long terme ($F_{Avg}$) comme TEL pour la même période [@dfo2015].
 
-Bien qu’il n’existe pas de précédent pour les points de référence dans le bassin de la Reine-Charlotte, la taille minimale du stock à partir de laquelle on a estimé que la biomasse s’était rétablie au-dessus d’un niveau moyen a été enregistrée en 1985 [@forrest2013]. Ces auteurs ont proposé $B_{1985}$ comme PRL pour le bassin de la Reine-Charlotte, avec la biomasse et la mortalité par pêche moyennes pour la période 1956-2004 comme PRS et TEL, respectivement. Toutefois, le processus régional d’examen par les pairs n’a accepté aucun point de référence pour le stock de morue du Pacifique du bassin de la Reine-Charlotte (zone 5AB) [@dfo2015-2]. La principale raison invoquée était que la pêche dans la zone 5AB était devenue une pêche « d’évitement » pour la morue du Pacifique (pour éviter de dépasser le TAC de la morue du Pacifique avant d’avoir atteint les TAC d’autres espèces de poisson de fond). Les participants au processus régional d’examen par les pairs ont donc jugé qu’il n’était pas possible de présumer que les estimations de l’abondance après 1996, qui s’appuyaient en grande partie sur les faibles prises, reflétaient l’abondance avec exactitude.
+Bien qu’il n’existe pas de précédent pour les points de référence dans le bassin de la Reine-Charlotte, la taille minimale du stock à partir de laquelle on a estimé que la biomasse s’était rétablie au-dessus d’un niveau moyen a été enregistrée en 1985 [@forrest2013]. Ces auteurs ont proposé $B_{1985}$ comme PRL pour le bassin de la Reine-Charlotte, avec la biomasse et la mortalité par pêche moyennes pour la période 1956-2004 comme RSS et TEL, respectivement. Toutefois, le processus régional d’examen par les pairs n’a accepté aucun point de référence pour le stock de morue du Pacifique du bassin de la Reine-Charlotte (zone 5AB) [@dfo2015-2]. La principale raison invoquée était que la pêche dans la zone 5AB était devenue une pêche « d’évitement » pour la morue du Pacifique (pour éviter de dépasser le TAC de la morue du Pacifique avant d’avoir atteint les TAC d’autres espèces de poisson de fond). Les participants au processus régional d’examen par les pairs ont donc jugé qu’il n’était pas possible de présumer que les estimations de l’abondance après 1996, qui s’appuyaient en grande partie sur les faibles prises, reflétaient l’abondance avec exactitude.
 
 @forrest2018 ont testé en simulation un ensemble d’autres points de référence pour la morue du Pacifique et la fausse limande (*Lepidopsetta* spp.) du détroit d’Hécate. Ils ont constaté que les points de référence « fondés sur l’historique » (ou points de contrôle opérationnels, PCO) qui avaient été utilisés pour la morue du Pacifique en 2013 [@forrest2013] résistaient bien aux biais de l’évaluation des stocks parce qu’ils s’échelonnaient dans la même direction que le biais dans les estimations de la biomasse et de la mortalité par pêche. Cependant, ils ne constituaient pas nécessairement de bons substituts pour les points de référence basés sur le RMS et avaient tendance à produire des recommandations de prises plus prudentes que les points de référence fondés sur $B_{MSY}$, $B_{0}$ et le ratio du potentiel de frai (RPF; @clark1991). Bien que les points de référence « fondés sur l’historique » aient donné de meilleurs résultats pour la conservation à long terme que les autres, il y a parfois eu d’importants compromis en ce qui concerne les prises et la stabilité des prises [@forrest2018]. Les points de référence fondés sur $B_{0}$ ont produit des résultats semblables aux points de référence « fondés sur l’historique », mais avaient tendance à avoir de meilleures propriétés en ce qui concerne les compromis [@forrest2018].
 
-Nous avons peut-être réglé certaines des préoccupations relatives aux points de référence du modèle de la zone 5AB en combinant les données des zones 5AB et 5CD dans la présente évaluation des stocks. Par conséquent, nous suggérons d’utiliser le même PRS pour la zone 5ABCD que celui appliqué pour la zone 5CD dans [@forrest2013]. Durant la réunion d’examen de la présente évaluation, les examinateurs et les participants ont décidé de modifier le PRL et d’utiliser la biomasse estimée la plus faible reconnue comme représentant un état non souhaitable à éviter. Cette modification a été motivée par la modulation limitée des estimations de la biomasse ces dernières années (de 1992 à aujourd’hui) jugée acceptable par le comité. La modification de la définition a mené à l’utilisation de la faible biomasse en 2000 comme point de référence limite pour cette évaluation (c.-à-d. $LRP = B_{2000}$).
+Nous avons peut-être réglé certaines des préoccupations relatives aux points de référence du modèle de la zone 5AB en combinant les données des zones 5AB et 5CD dans la présente évaluation des stocks. Par conséquent, nous suggérons d’utiliser le même RSS pour la zone 5ABCD que celui appliqué pour la zone 5CD dans [@forrest2013]. Durant la réunion d’examen de la présente évaluation, les examinateurs et les participants ont décidé de modifier le PRL et d’utiliser la biomasse estimée la plus faible reconnue comme représentant un état non souhaitable à éviter. Cette modification a été motivée par la modulation limitée des estimations de la biomasse ces dernières années (de 1992 à aujourd’hui) jugée acceptable par le comité. La modification de la définition a mené à l’utilisation de la faible biomasse en 2000 comme point de référence limite pour cette évaluation (c.-à-d. $PRL = B_{2000}$).
 
-En l’absence de points de référence acceptés pour la zone 3CD, nous suggérons d’appliquer la même approche. Nous avons conservé comme PRL la biomasse en 1986, comme dans l’évaluation précédente, car il a été convenu que sa modification aurait un effet négligeable. En plus du TEL, du PRL et du PRS dont il a été question plus haut, deux points de repère sont également inclus : (i) $F_{2017}$ et (ii) $B_{2018}$. Les projections de la biomasse et de la mortalité par pêche par rapport à ces points de repère sont incluses dans les tableaux de décision pour montrer si : (i) la mortalité par pêche devrait augmenter ou diminuer selon les autres niveaux de prises projetés pour 2018; et (ii) si la biomasse devrait augmenter ou diminuer selon les autres niveaux de prises projetés pour 2018.
+En l’absence de points de référence acceptés pour la zone 3CD, nous suggérons d’appliquer la même approche. Nous avons conservé comme PRL la biomasse en 1986, comme dans l’évaluation précédente, car il a été convenu que sa modification aurait un effet négligeable. En plus du TEL, du PRL et du RSS dont il a été question plus haut, deux points de repère sont également inclus : (i) $F_{2017}$ et (ii) $B_{2018}$. Les projections de la biomasse et de la mortalité par pêche par rapport à ces points de repère sont incluses dans les tableaux de décision pour montrer si : (i) la mortalité par pêche devrait augmenter ou diminuer selon les autres niveaux de prises projetés pour 2018; et (ii) si la biomasse devrait augmenter ou diminuer selon les autres niveaux de prises projetés pour 2018.
 
 Les points de référence et les points de repère suggérés pour les deux zones sont indiqués dans le section \@ref(sec:reference-points-and-decision-tables).
 
@@ -521,19 +521,19 @@ Les mesures du rendement ont été calculées sur une séquence de niveaux de pr
 
 1. $P(B_{2019} < B_{2018})$
 1. $P(F_{2018} > F_{2017})$
-1. $P(B_{2019} < LRP)$
-1. $P(B_{2019} < USR)$
-1. $P(F_{2018} > LRR)$
+1. $P(B_{2019} < PRL)$
+1. $P(B_{2019} < RSS)$
+1. $P(F_{2018} > TEL)$
 
 où
 
-1. $USR$ (point de référence supérieur du stock) est la moyenne historique des estimations de la biomasse de 1956 à 2004 (les deux zones).
-1. $LRP$ (point de référence limite) est la biomasse estimée la plus basse reconnue comme constituant un état indésirable à éviter. Pour la zone 5ABCD, il s’agit de l’estimation de la biomasse pour 2000. Pour la zone 3CD, il s’agit de l’estimation de la biomasse pour 1986.
-1. $LRR$ (taux d’exploitation de référence limite) est le taux moyen de mortalité par pêche de 1956 à 2004 (les deux zones).
+1. $RSS$ (point de référence supérieur du stock) est la moyenne historique des estimations de la biomasse de 1956 à 2004 (les deux zones).
+1. $PRL$ (point de référence limite) est la biomasse estimée la plus basse reconnue comme constituant un état indésirable à éviter. Pour la zone 5ABCD, il s’agit de l’estimation de la biomasse pour 2000. Pour la zone 3CD, il s’agit de l’estimation de la biomasse pour 1986.
+1. $TEL$ (taux d’exploitation de référence limite) est le taux moyen de mortalité par pêche de 1956 à 2004 (les deux zones).
 
 Pour de plus amples renseignements sur les points de référence, voir la section \@ref(sec:reference-points).
 
-Les mesures du rendement susmentionnées visent à présenter les probabilités d’atteindre les états « indésirables » selon les niveaux de prises de rechange projetés pour 2018. Par exemple, on obtient une mesure du rendement fondée sur la biomasse « indésirable » lorsque la biomasse projetée pour 2019 est inférieure au PRL, c.-à-d. que $B_{2019}/LRP < 1$. On obtient une mesure du rendement fondée sur la mortalité par pêche « indésirable » lorsque la mortalité par pêche de 2014 projetée est supérieure au point de référence, c.-à-d. que $F_{2018}/LRR > 1$.
+Les mesures du rendement susmentionnées visent à présenter les probabilités d’atteindre les états « indésirables » selon les niveaux de prises de rechange projetés pour 2018. Par exemple, on obtient une mesure du rendement fondée sur la biomasse « indésirable » lorsque la biomasse projetée pour 2019 est inférieure au PRL, c.-à-d. que $B_{2019}/PRL < 1$. On obtient une mesure du rendement fondée sur la mortalité par pêche « indésirable » lorsque la mortalité par pêche de 2014 projetée est supérieure au point de référence, c.-à-d. que $F_{2018}/TEL > 1$.
 
 Les probabilités de ces états sont mesurées comme la proportion d’échantillons a posteriori du rodage qui répondent aux critères ci-avant (proportion d’échantillons a posteriori < 1 pour les mesures du rendement fondées sur la biomasse; proportion d’échantillons a posteriori > 1 pour les mesures du rendement fondées sur la mortalité par pêche).
 
@@ -551,11 +551,11 @@ Le tableau de décision pour le modèle du scénario de référence de la zone 5
 
 La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de `r dt.5abcd.b.2019.2018.c0` % pour des prises nulles en 2018 à `r dt.5abcd.b.2019.2018.cmax` % pour des prises de `r dt.5abcd.max.catch` t.
 
-La probabilité que la biomasse de 2019 soit inférieure au PRL allait de `r dt.5abcd.b.2019.lrp.c0` % à `r dt.5abcd.b.2019.lrp.cmax` % pour la fourchette des niveaux de prises considérés. Il y avait une probabilité de `r dt.5abcd.b.2019.usr.cmax` % que la biomasse de 2019 soit inférieure au PRS pour toute la fourchette des niveaux de prises considérés.
+La probabilité que la biomasse de 2019 soit inférieure au PRL allait de `r dt.5abcd.b.2019.lrp.c0` % à `r dt.5abcd.b.2019.lrp.cmax` % pour la fourchette des niveaux de prises considérés. Il y avait une probabilité de `r dt.5abcd.b.2019.usr.cmax` % que la biomasse de 2019 soit inférieure au RSS pour toute la fourchette des niveaux de prises considérés.
 
 La probabilité que la mortalité par pêche en 2018 soit supérieure à la mortalité par pêche en 2017 variait de `r dt.5abcd.f.2018.2017.c0` % à `r dt.5abcd.f.2018.2017.cmax` %. La probabilité que la mortalité par pêche en 2018 soit supérieure au TEL variait également de 0 % à 100 %.
 
-Pour un niveau de prises de 900 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de `r dt.5abcd.b.2019.lrp.c900` % que la biomasse de 2019 sera inférieure au PRL et une probabilité de `r dt.5abcd.b.2019.usr.c900` % que la biomasse de 2019 sera inférieure au PRS.
+Pour un niveau de prises de 900 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de `r dt.5abcd.b.2019.lrp.c900` % que la biomasse de 2019 sera inférieure au PRL et une probabilité de `r dt.5abcd.b.2019.usr.c900` % que la biomasse de 2019 sera inférieure au RSS.
 
 ### Zone 3CD
 
@@ -563,11 +563,11 @@ Le tableau de décision pour le modèle du scénario de référence de la zone 3
 
 La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de `r dt.3cd.b.2019.2018.c0` % pour des prises nulles en 2018 à `r dt.3cd.b.2019.2018.cmax` % pour des prises de `r dt.3cd.max.catch` t.
 
-La probabilité que la biomasse de 2019 soit inférieure au PRL était de 0% pour la fourchette des niveaux de prises considérés. Il y avait une probabilité de 98 % à 99 % que la biomasse de 2019 soit inférieure au PRS pour la fourchette des niveaux de prises considérés.
+La probabilité que la biomasse de 2019 soit inférieure au PRL était de 0% pour la fourchette des niveaux de prises considérés. Il y avait une probabilité de 98 % à 99 % que la biomasse de 2019 soit inférieure au RSS pour la fourchette des niveaux de prises considérés.
 
 La probabilité que la mortalité par pêche en 2018 soit supérieure à la mortalité par pêche en 2017 variait de `r dt.3cd.f.2018.2017.c0` % à 100 %. La probabilité que la mortalité par pêche en 2018 soit supérieure au TEL variait également de `r dt.3cd.f.2018.lrr.c0` % à 100 %.
 
-Pour un niveau de prises de 500 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de `r dt.3cd.b.2019.lrp.c500` % que la biomasse de 2019 sera inférieure au PRL et une probabilité de `r dt.3cd.b.2019.usr.c500` % que la biomasse de 2019 sera inférieure au PRS.
+Pour un niveau de prises de 500 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de `r dt.3cd.b.2019.lrp.c500` % que la biomasse de 2019 sera inférieure au PRL et une probabilité de `r dt.3cd.b.2019.usr.c500` % que la biomasse de 2019 sera inférieure au RSS.
 
 ## TABLEAUX DE DÉCISION FONDÉS SUR LA MOYENNE DES MODÈLES
 
@@ -589,11 +589,11 @@ Les probabilités du tableau de décision « fondé sur la moyenne des modèles 
 
 La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de 10 % pour des prises nulles en 2018 à 89 % pour des prises de 3 000 t.
 
-La probabilité que la biomasse de 2019 soit inférieure au PRL variait de 82 à 96% pour la fourchette des niveaux de prises considérés. Il y avait une probabilité de 100 % que la biomasse de 2019 soit inférieure au PRS pour toute la fourchette des niveaux de prises considérés.
+La probabilité que la biomasse de 2019 soit inférieure au PRL variait de 82 à 96% pour la fourchette des niveaux de prises considérés. Il y avait une probabilité de 100 % que la biomasse de 2019 soit inférieure au RSS pour toute la fourchette des niveaux de prises considérés.
 
 La probabilité que la mortalité par pêche en 2018 soit supérieure à la mortalité par pêche en 2017 variait de 0,0 % à 100 %. La probabilité que la mortalité par pêche en 2018 soit supérieure au TEL variait également de 0,0 % à 100 %.
 
-Pour un niveau de prises de 900 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de 89 % que la biomasse de 2019 sera inférieure au PRL et une probabilité de 100 % que la biomasse de 2019 sera inférieure au PRS.
+Pour un niveau de prises de 900 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de 89 % que la biomasse de 2019 sera inférieure au PRL et une probabilité de 100 % que la biomasse de 2019 sera inférieure au RSS.
 
 ### Zone 3CD
 
@@ -611,11 +611,11 @@ Pour la plupart des mesures du rendement, les probabilités étaient semblables 
 
 La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de 75 % pour des prises nulles en 2018 à 91 % pour des prises de 1 500 t.
 
-La probabilité que la biomasse de 2019 soit inférieure au PRL était de 18 % pour la fourchette des niveaux de prises considérés. La probabilité que la biomasse de 2019 soit inférieure au PRS variait de 98 à 99 % pour la fourchette des niveaux de prises considérés.
+La probabilité que la biomasse de 2019 soit inférieure au PRL était de 18 % pour la fourchette des niveaux de prises considérés. La probabilité que la biomasse de 2019 soit inférieure au RSS variait de 98 à 99 % pour la fourchette des niveaux de prises considérés.
 
 La probabilité que la mortalité par pêche en 2018 soit supérieure à la mortalité par pêche en 2017 variait de 0 % à 100 % pour la fourchette des niveaux de prises considérés. La probabilité que la mortalité par pêche en 2018 soit supérieure au TEL variait également de 0,0 % à 98 %.
 
-Pour un niveau de prises de 500 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de 18 % que la biomasse de 2019 sera inférieure au PRL et une probabilité de 99 % que la biomasse de 2019 sera inférieure au PRS.
+Pour un niveau de prises de 500 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de 18 % que la biomasse de 2019 sera inférieure au PRL et une probabilité de 99 % que la biomasse de 2019 sera inférieure au RSS.
 
 ## SOMMAIRE
 

@@ -37,7 +37,7 @@ catch.table(catch.3,
 
 ```{r tab-tac}
 tac.table(tac,
- cap = paste0("Summary of TACs by area."))
+ cap = paste0("Summary of TACs by area. IFMP = Integrated Fishery Management Plan"))
 ```
 
 \clearpage

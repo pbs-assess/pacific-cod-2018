@@ -107,7 +107,7 @@ make.pairs.plot(base.model.5abcd)
 ```
 
 
-```{r fig-base-biomass-5abcd, fig.cap="Biomasse estimée a priori pour le modèle de référence de la zone 5ABCD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000."}
+```{r fig-base-biomass-5abcd, fig.cap="Biomasse estimée a priori pour le modèle de référence de la zone 5ABCD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000."}
 b.plot(base.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
@@ -198,7 +198,7 @@ make.priors.posts.plot(base.model.3cd, priors.only = FALSE)
 make.pairs.plot(base.model.3cd)
 ```
 
-```{r fig-base-biomass-3cd, fig.cap="Biomasse estimée a priori pour le modèle de référence de la zone 3CD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986."}
+```{r fig-base-biomass-3cd, fig.cap="Biomasse estimée a priori pour le modèle de référence de la zone 3CD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986."}
 b.plot(base.model.3cd,
        base.model.3cd.name,
        depl = FALSE,
@@ -542,7 +542,7 @@ b.plot(c(base.model.3cd, sens.models.15), c(base.model.3cd.name, sens.models.nam
 
 ## BIOMASSE FONDÉE SUR LA MOYENNE DES MODÈLES ET PROJECTIONS {#sec:projections}
 
-<!-- ```{r fig-base-biomass-5abcd-proj, fig.cap="Biomasse pour le modèle de référence, zone 5ABCD, avec projections. La ligne horizontale supérieure verte représente le point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente le point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%."} -->
+<!-- ```{r fig-base-biomass-5abcd-proj, fig.cap="Biomasse pour le modèle de référence, zone 5ABCD, avec projections. La ligne horizontale supérieure verte représente le point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente le point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%."} -->
 <!-- b.plot(base.model.5abcd, -->
 <!--        base.model.5abcd.name, -->
 <!--        depl = FALSE, -->
@@ -556,7 +556,7 @@ b.plot(c(base.model.3cd, sens.models.15), c(base.model.3cd.name, sens.models.nam
 <!--        x.every = 2) -->
 <!-- ``` -->
 
-```{r fig-model-average-biomass-comp-5abcd, fig.cap="Estimations a priori de la biomasse pour la moyenne des modèles fixée pour la zone 5ABCD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000."}
+```{r fig-model-average-biomass-comp-5abcd, fig.cap="Estimations a priori de la biomasse pour la moyenne des modèles fixée pour la zone 5ABCD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000."}
 b.plot(desc.models.5abcd,
        desc.models.5abcd.name,
        depl = FALSE,
@@ -567,7 +567,7 @@ b.plot(desc.models.5abcd,
 ```
 
 
-```{r fig-model-average-biomass-5abcd, fig.cap="Biomasse a posteriori combinée pour la moyenne des modèles, zone 5ABCD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000."}
+```{r fig-model-average-biomass-5abcd, fig.cap="Biomasse a posteriori combinée pour la moyenne des modèles, zone 5ABCD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000."}
 b.plot(avg.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
@@ -578,7 +578,7 @@ b.plot(avg.model.5abcd,
 ```
 
 
-```{r fig-model-average-biomass-5abcd-proj, fig.cap="Estimations a posteriori combinées de la biomasse pour la moyenne des modèles fixée pour la zone 5ABCD, avec projections (jusqu’à la fin de 2019). La ligne horizontale supérieure verte représente la médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente la médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%. Dans un souci de clarté, les années antérieures à 2010 sont omises."}
+```{r fig-model-average-biomass-5abcd-proj, fig.cap="Estimations a posteriori combinées de la biomasse pour la moyenne des modèles fixée pour la zone 5ABCD, avec projections (jusqu’à la fin de 2019). La ligne horizontale supérieure verte représente la médiane du point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente la médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%. Dans un souci de clarté, les années antérieures à 2010 sont omises."}
 b.plot(avg.model.5abcd,
        base.model.5abcd.name,
        depl = FALSE,
@@ -594,7 +594,7 @@ b.plot(avg.model.5abcd,
 ```
 
 
-```{r fig-model-average-biomass-comp-3cd, fig.cap="Estimations a priori de la biomasse pour la moyenne des modèles fixée pour la zone 3CD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986."}
+```{r fig-model-average-biomass-comp-3cd, fig.cap="Estimations a priori de la biomasse pour la moyenne des modèles fixée pour la zone 3CD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986."}
 b.plot(desc.models.3cd,
        desc.models.3cd.name,
        depl = FALSE,
@@ -605,7 +605,7 @@ b.plot(desc.models.3cd,
 ```
 
 
-```{r fig-model-average-biomass-3cd, fig.cap="Biomasse a posteriori combinée pour la moyenne des modèles fixée pour la zone 3CD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986."}
+```{r fig-model-average-biomass-3cd, fig.cap="Biomasse a posteriori combinée pour la moyenne des modèles fixée pour la zone 3CD. La ligne pointillée verte représente la valeur médiane du point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne pointillée rouge représente la valeur médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986."}
 b.plot(avg.model.3cd,
        base.model.3cd.name,
        depl = FALSE,
@@ -616,7 +616,7 @@ b.plot(avg.model.3cd,
 ```
 
 
-```{r fig-model-average-biomass-3cd-proj, fig.cap="Estimations a posteriori combinées de la biomasse pour la moyenne des modèles fixée pour la zone 3CD, avec projections (jusqu’à la fin de 2019).  La ligne horizontale supérieure verte représente la médiane du point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente la médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%. Dans un souci de clarté, les années antérieures à 2010 sont omises."}
+```{r fig-model-average-biomass-3cd-proj, fig.cap="Estimations a posteriori combinées de la biomasse pour la moyenne des modèles fixée pour la zone 3CD, avec projections (jusqu’à la fin de 2019).  La ligne horizontale supérieure verte représente la médiane du point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente la médiane du point de référence limite (PRL), qui est la biomasse estimée la plus faible reconnue comme constituant un état indésirable à éviter; dans ce cas, il s’agit de l’estimation de la biomasse pour 2000. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%. Dans un souci de clarté, les années antérieures à 2010 sont omises."}
 b.plot(avg.model.3cd,
        base.model.3cd.name,
        depl = FALSE,
@@ -631,7 +631,7 @@ b.plot(avg.model.3cd,
        french=french)
 ```
 
-<!-- ```{r fig-base-biomass-3cd-proj, fig.cap="Biomasse pour le modèle de référence, zone 3CD, avec projections. La ligne horizontale supérieure verte représente le point de référence supérieur du stock (PRS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente le point de référence limite (PRL), qui est la biomasse la plus faible à partir de laquelle le stock s’est rétabli; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%."} -->
+<!-- ```{r fig-base-biomass-3cd-proj, fig.cap="Biomasse pour le modèle de référence, zone 3CD, avec projections. La ligne horizontale supérieure verte représente le point de référence supérieur du stock (RSS), qui est l’estimation moyenne de la biomasse pour les années 1956-2004. La ligne horizontale inférieure rouge représente le point de référence limite (PRL), qui est la biomasse la plus faible à partir de laquelle le stock s’est rétabli; dans ce cas, il s’agit de l’estimation de la biomasse pour 1986. Les régions en couleur à droite de la ligne verticale représentent les projections fondées sur divers TAC. La ligne représente la médiane a posteriori et la région ombrée représente l’intervalle de crédibilité de 95\\%."} -->
 <!-- b.plot(base.model.3cd, -->
 <!--        base.model.3cd.name, -->
 <!--        depl = FALSE, -->
