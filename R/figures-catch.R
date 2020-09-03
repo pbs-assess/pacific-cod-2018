@@ -42,10 +42,16 @@ discards.plot <- function(dat,
          fill = "") +
     scale_x_continuous(breaks = seq(0, 2015, 5))
 
+  if(french==TRUE) {
+    ylab <- paste("Prop.", en2fr("discarded",translate=french, allow_missing = TRUE))
+  } else {
+    ylab <- "Prop. released"
+   }
+
   g.top <- ggplot(dat) +
     aes(x=Year, y= `Prop. released`)+
     labs(x = en2fr("Year",translate=french, allow_missing = TRUE),
-        y = paste("Prop.", en2fr("released",translate=french, allow_missing = TRUE))) +
+        y = ylab) +
     geom_line(color = "grey50",
               size = 1,
               alpha = 0.5) +

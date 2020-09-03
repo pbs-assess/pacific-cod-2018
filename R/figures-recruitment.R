@@ -52,7 +52,7 @@ r.plot <- function(models,
                        limits = c(0, NA)) +
     coord_cartesian(expand = FALSE) +
     scale_x_continuous(breaks = seq(0, 3000, 5)) +
-    ylab(paste(en2fr("Recruitment",translate=french, allow_missing = TRUE),paste0("(",en2fr("thousands",translate=french, allow_missing = TRUE),")")))+
+    ylab(paste(en2fr("Recruitment",translate=french, allow_missing = TRUE),paste0("(",en2fr("thousands",translate=french, allow_missing = TRUE, case = "lower"),")")))+
     xlab(en2fr("Year",translate=french, allow_missing = TRUE))
 
   if(add.meds){
