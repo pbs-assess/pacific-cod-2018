@@ -29,6 +29,25 @@ decision.table <- function(model,
                    "$P(B_{2020} < \\mathrm{USR})$",
                    "$P(F_{2019} > \\mathrm{LRR})$")
   }
+  if(french==TRUE){
+    if(format == "html"){
+      col.names <- c(paste("2019", en2fr("Catch", translate = french, allow_missing = TRUE), "(mt)"),
+                     "P(B2020 < B2019)",
+                     "P(F2019 > F2018)",
+                     "P(B2020 < PRL)",
+                     "P(B2020 < RSS)",
+                     "P(F2019 > TEL)")
+
+    }else{
+      col.names <- c(paste("2019", en2fr("Catch", translate = french, allow_missing = TRUE), "(mt)"),
+                     "$P(B_{2020} < B_{2019})$",
+                     "$P(F_{2019} > F_{2018})$",
+                     "$P(B_{2020} < \\mathrm{PRL})$",
+                     "$P(B_{2020} < \\mathrm{RSS})$",
+                     "$P(F_{2019} > \\mathrm{TEL})$")
+    }
+  }
+
   tac <- model$proj$tac.vec
   if(!is.na(tac.vec[1])){
     tac <- tac.vec[tac.vec %in% tac]

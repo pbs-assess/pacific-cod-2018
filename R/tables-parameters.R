@@ -243,9 +243,12 @@ if(french==TRUE){
                                  "estimated"), translate = french, allow_missing = TRUE)),
                      latex.mlc(en2fr(c("Bounds",
                                  "[low, high]"), translate = french, allow_missing = TRUE)),
-                     latex.mlc(en2fr(c("Prior (mean, SD)",
-                                 "(single value = fixed)"), translate = french, allow_missing = TRUE)))
+                     latex.mlc(c("Prior (mean, SD)", "(single value = fixed)")))
 
+  #Hardwire the last heading
+  if(french==TRUE) {
+    colnames(tab)[4] <- latex.bold(latex.mlc(c("Priori (moyenne, ET)", "(une seule valeur = fixe)")))
+  }
 
   knitr::kable(tab,
     caption = caption, format = format,
