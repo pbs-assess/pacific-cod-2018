@@ -241,8 +241,7 @@ if(french==TRUE){
   colnames(tab) <- c(latex.bold(en2fr("Parameter", translate = french, allow_missing = TRUE)),
                      latex.mlc(en2fr(c("Number",
                                  "estimated"), translate = french, allow_missing = TRUE)),
-                     latex.mlc(en2fr(c("Bounds",
-                                 "[low, high]"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("Bounds", "[low, high]"), translate = french, allow_missing = TRUE)),
                      latex.mlc(c("Prior (mean, SD)", "(single value = fixed)")))
 
   #Hardwire the last heading

@@ -156,14 +156,17 @@ priors.table <- function(model,
   col.names <-  c(latex.bold(en2fr("Parameter", translate = french, allow_missing = TRUE)),
     latex.mlc(en2fr(c("Initial",
                 "value"), translate = french, allow_missing = TRUE)),
-    latex.mlc(en2fr(c("Lower",
-                "bound"), translate = french, allow_missing = TRUE)),
-    latex.mlc(en2fr(c("Upper",
-                "bound"), translate = french, allow_missing = TRUE)),
+    latex.mlc(c("Lower", "bound")),
+    latex.mlc(c("Upper", "bound")),
     latex.bold(en2fr("Distribution", translate = french, allow_missing = TRUE)),
     latex.bold(en2fr("P1", translate = french, allow_missing = TRUE)),
     latex.bold(en2fr("P2", translate = french, allow_missing = TRUE)),
     latex.bold(en2fr("Estimated", translate = french, allow_missing = TRUE)))
+
+  if(french==TRUE) {
+    col.names[3] <- latex.bold(latex.mlc(en2fr(c("Bound", "lower"),translate = french, allow_missing = TRUE)))
+    col.names[4] <- latex.bold(latex.mlc(en2fr(c("Bound", "upper"),translate = french, allow_missing = TRUE)))
+  }
 
   if(!is.na(basis.vec[1])){
     col.names <- c(col.names, latex.bold(en2fr("Basis", translate = french, allow_missing = TRUE)))
