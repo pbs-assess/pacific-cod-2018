@@ -181,7 +181,7 @@ L'événement de pêche\na attrapé la\nmorue du Pacifique") +
   scale_colour_brewer(palette = "Dark2") +
   scale_fill_brewer(palette = "Dark2")
 
-g2 <- gg_cpue_hist$depth + ylab("Trip count") + xlab("Depth") +
+g2 <- gg_cpue_hist$depth + ylab("Trip count") + xlab(en2fr("Depth", translate=french,allow_missing=TRUE, case="sentence")) +
   labs(fill = "Le voyage\na attrapé la morue\ndu Pacifique") +
   theme(legend.position = c(0.95, 0.95), legend.background = element_rect(fill = "white"),
     legend.justification = c(1, 1)) +

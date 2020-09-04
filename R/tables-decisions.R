@@ -14,7 +14,7 @@ decision.table <- function(model,
                               ncol = 6,
                               nrow = length(tac)))
   if(format == "html"){
-    col.names <- c(paste("2019", en2fr("Catch", translate = french, allow_missing = TRUE), "(mt)"),
+    col.names <- c("2019 Catch (mt)",
                    "P(B2020 < B2019)",
                    "P(F2019 > F2018)",
                    "P(B2020 < LRP)",
@@ -22,16 +22,16 @@ decision.table <- function(model,
                    "P(F2019 > LRR)")
 
   }else{
-    col.names <- c(paste("2019", en2fr("Catch", translate = french, allow_missing = TRUE), "(mt)"),
-                   "$P(B_{2020} < B_{2019})$",
-                   "$P(F_{2019} > F_{2018})$",
-                   "$P(B_{2020} < \\mathrm{LRP})$",
-                   "$P(B_{2020} < \\mathrm{USR})$",
-                   "$P(F_{2019} > \\mathrm{LRR})$")
+    col.names <- c(latex.mlc(c("$2019$", "$\\mathrm{Prise (mt)}$")),
+                   latex.mlc(c("$P(B_{2020} <$", "$B_{2019})$")),
+                   latex.mlc(c("$P(F_{2019} >$", "$F_{2018})$")),
+                   latex.mlc(c("$P(B_{2020} <$", "$\\mathrm{LRP})$")),
+                   latex.mlc(c("$P(B_{2020} <$", "$\\mathrm{USR})$")),
+                   latex.mlc(c("$P(F_{2019} >$", "$\\mathrm{LRR})$")))
   }
   if(french==TRUE){
     if(format == "html"){
-      col.names <- c(paste("2019", en2fr("Catch", translate = french, allow_missing = TRUE), "(mt)"),
+      col.names <- c("2019 Prise (mt)",
                      "P(B2020 < B2019)",
                      "P(F2019 > F2018)",
                      "P(B2020 < PRL)",
@@ -39,12 +39,12 @@ decision.table <- function(model,
                      "P(F2019 > TEL)")
 
     }else{
-      col.names <- c(paste("2019", en2fr("Catch", translate = french, allow_missing = TRUE), "(mt)"),
-                     "$P(B_{2020} < B_{2019})$",
-                     "$P(F_{2019} > F_{2018})$",
-                     "$P(B_{2020} < \\mathrm{PRL})$",
-                     "$P(B_{2020} < \\mathrm{RSS})$",
-                     "$P(F_{2019} > \\mathrm{TEL})$")
+      col.names <- c(latex.mlc(c("$2019$", "$\\mathrm{Prise (mt)}$")),
+                     latex.mlc(c("$P(B_{2020}<$", "$B_{2019})$")),
+                     latex.mlc(c("$P(F_{2019} >$", "$F_{2018})$")),
+                     latex.mlc(c("$P(B_{2020} <$", "$\\mathrm{PRL})$")),
+                     latex.mlc(c("$P(B_{2020} <$", "$\\mathrm{RSS})$")),
+                     latex.mlc(c("$P(F_{2019} >$", "$\\mathrm{TEL})$")))
     }
   }
 

@@ -312,7 +312,8 @@ make_catch_effort_ts_plot_fr <- function(dat) {
     ggplot(aes(year, value)) +
     geom_line() +
     facet_grid(variable~area, scales = "free_y") +
-    ylab(paste(en2fr("Value",translate=french,allow_missing=TRUE), "(1000 kg", en2fr("or",translate=french,allow_missing=TRUE, case ="lower"), "1000 hours)")) + xlab("") +
+    ylab(paste(en2fr("Value",translate=french,allow_missing=TRUE), "(1000 kg", en2fr("or",translate=french,allow_missing=TRUE, case ="lower"), "1000", en2fr("hours",translate=french,allow_missing=TRUE, case ="lower"),")")) +
+    xlab("") +
     ylim(0, NA)
 }
 
@@ -325,7 +326,7 @@ make_catch_effort_ts_plot_modern_fr <- function(dat) {
     ggplot(aes(year, value)) +
     geom_line() +
     facet_grid(variable~area, scales = "free_y") +
-    ylab(paste(en2fr("Value",translate=french,allow_missing=TRUE), "(1000 kg", en2fr("or",translate=french,allow_missing=TRUE, case ="lower"), "1000 hours)")) +
+    ylab(paste(en2fr("Value",translate=french,allow_missing=TRUE), "(1000 kg", en2fr("or",translate=french,allow_missing=TRUE, case ="lower"), "1000", en2fr("hours",translate=french,allow_missing=TRUE, case ="lower"),")")) +
     xlab("") +
     ylim(0, NA)
 }

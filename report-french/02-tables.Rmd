@@ -2,6 +2,7 @@
 
 # TABLEAUX
 
+
 ```{r tab-catch-5abcd}
 catch.table(catch.5,
             catch.5.discards,
@@ -607,12 +608,13 @@ decision.table(avg.model.5abcd,
 
 \clearpage
 
+
 ```{r tab-decision-avg-3cd, results='asis'}
 decision.table(avg.model.3cd,
                caption = paste0("Tableau de décision avec moyenne des modèles pour la zone 3CD. Les modèles pris en compte dans la moyenne sont les suivants : ",
                                 and.string(c(base.model.3cd.name, sens.models.name.13.sub)),
                                 "."),
-               french=french)
+               french=french) 
 ```
 
 \clearpage
