@@ -151,6 +151,15 @@ make_fe_plots <- function(object) {
   sud <- rename(sud, est = Estimate, se = `Std. Error`)
   sud <- mutate(sud, par_value = gsub("^[A-Z_a-z]+", "", param))
   sud <- mutate(sud, par_group = gsub("^([A-Z_a-z]+)[0-9.]+$", "\\1", param))
+
+  if(french==TRUE){
+    sud <- sud %>%
+      mutate(par_group = replace(par_group,par_group == "month", "mois")) %>%
+      mutate(par_group = replace(par_group,par_group == "depth", "profondeur")) %>%
+      mutate(par_group = replace(par_group,par_group == "year_factor", "année"))
+    }
+
+
   ggplot(sud, aes_string("est", "forcats::fct_rev(par_value)",
     yend = "forcats::fct_rev(par_value)"
   )) +
@@ -181,8 +190,16 @@ make_re_dat <- function(object) {
     mutate(loc_group = gsub("^([0-9]+)[ -]*([0-9a-zA-Z-]+)$", "\\2", par_value)) %>%
     mutate(loc_year = gsub("^([0-9]+)[ -]*[0-9a-zA-Z-]+$", "\\1", par_value))
 }
+
 make_re_plots <- function(object, re_names = c("locality")) {
   re <- make_re_dat(object)
+
+  if(french==TRUE){
+    re <- re %>%
+      mutate(par_group = replace(par_group,par_group == paste(re_names), paste(en2fr(paste(re_names), translate=french, allow_missing=T, case="lower"))))
+    re_names = paste(en2fr(paste(re_names), translate=french, allow_missing=T, case="lower"))
+  }
+
   filter(re, par_group %in% re_names) %>%
     ggplot(aes_string("est", "forcats::fct_rev(par_value)")) +
     geom_vline(xintercept = 0, lty = 2, alpha = 0.4) +
@@ -191,6 +208,7 @@ make_re_plots <- function(object, re_names = c("locality")) {
     theme_pbs() + guides(shape = FALSE, colour = FALSE) +
     labs(x = "Random intercept value (log space)", y = "")
 }
+
 make_year_locality_plots <- function(object) {
   re <- make_re_dat(object)
   filter(re, par_group == "year_locality") %>%

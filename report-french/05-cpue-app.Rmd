@@ -365,7 +365,7 @@ cowplot::plot_grid(p[[2]], p[[1]], ncol = 2)
 ```{r cpue-coef-plot3-modern, fig.asp=1.35, echo=FALSE, fig.cap="Effets aléatoires du lieu-par-année (espace-temps) pour le modèle de normalisation des CPUE commerciales modernes."}
 p <- list()
 for (i in seq_along(params$area_name)) {
-  p[[i]] <- make_year_locality_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i]) + ylab("Valeur d'interaction d'interception aléatoire dans l'espace journal")
+  p[[i]] <- make_year_locality_plots(m_modern[[toplot[i]]]) + ggtitle(params$area_name[i]) + ylab("Valeur d'interaction d'interception aléatoire dans l'espace journal") + xlab("Année")
 }
 cowplot::plot_grid(p[[2]], p[[1]], ncol = 1)
 ```
