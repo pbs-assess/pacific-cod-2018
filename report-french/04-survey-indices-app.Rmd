@@ -127,6 +127,8 @@ Les données trait par trait tirées du relevé triennal du National Marine Fish
 
 Pour tous les traits utilisables, on connaissait la largeur médiane du filet (quantiles 1-99 %) de 13,4 (11,3-15,7) m et la distance médiane parcourue de 2,8 (1,4--3,5) km, ce qui a permis de calculer la superficie balayée par chaque trait. Les indices de la biomasse et les CV analytiques connexes pour la morue du Pacifique ont été calculés pour l’ensemble de la région de Vancouver de la CIPPN et pour chacune des sous-régions de Vancouver du Canada et des États-Unis, à l’aide des estimations de superficie appropriées pour chaque strate et année. Les strates qui n’ont pas été régulièrement visées par le relevé au cours des sept années ont été retirées de l’analyse, ce qui a permis d’obtenir un ensemble de données comparables pour chaque année à partir des données restantes.
 
+\clearpage
+
 ```{r surv-tri-strata-table, warning=FALSE}
 tri_str <- readr::read_csv(here::here("data/triennial-strata.csv"))
 names(tri_str) <- gsub("_1", "", names(tri_str))
