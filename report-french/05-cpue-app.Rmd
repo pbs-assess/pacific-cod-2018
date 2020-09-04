@@ -41,18 +41,18 @@ Nous adaptons le MLGM (modèle linéaire généralisé à effets mixtes) de Twee
   y_i &\sim \mathrm{Tweedie}(\mu_i, p, \phi), \quad 1 < p < 2,\\
   \mu_i &= \exp \left(
   \bm{X}_i \bm{\beta}
-  + \alpha^\mathrm{locality}_{j[i]}
-  + \alpha^\mathrm{locality-year}_{k[i]}
-  + \alpha^\mathrm{vessel}_{l[i]}
+  + \alpha^\mathrm{lieu}_{j[i]}
+  + \alpha^\mathrm{lieu-annee}_{k[i]}
+  + \alpha^\mathrm{navire}_{l[i]}
   \right),\\
 \alpha^\mathrm{locality}_j &\sim
-  \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality}}),\\
+  \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{lieu}}),\\
  (\#eq:cpue-locality-year)
 \alpha^\mathrm{locality-year}_k &\sim
-  \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{locality-year}}),\\
+  \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{lieu-annee}}),\\
  (\#eq:cpue-vessel)
 \alpha^\mathrm{vessel}_l &\sim
-  \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{vessel}}),
+  \mathrm{Normal}(0, \sigma^2_{\alpha \; \mathrm{navire}}),
 \end{align}
 
 où $i$ représente une sortie (données historiques) ou un trait (données modernes) unique, $y_i$ représente les captures (kg) par unité d’effort (heures de chalutage), $\bm{X_i}$ représente un vecteur de prédicteurs à effet fixe (historiques : profondeur, mois; modernes : profondeur, mois, latitude), $\bm{\beta}$ représente un vecteur de coefficients et $\mu_i$ représente les CPUE attendues pour une sortie ou un trait. Les interceptions des effets aléatoires (symboles $\alpha$) peuvent différer de l’interception globale par lieu $j$ (\(\alpha^\mathrm{locality}_j\)), lieu-année $k$ (\(\alpha^\mathrm{locality-year}_k\)) et navire $l$ (\(\alpha^\mathrm{vessel}_l\)) (uniquement pour l’ensemble des données modernes) et sont limitées par des distributions normales dont les écarts-types respectifs sont indiqués par les paramètres $\sigma$.
@@ -221,8 +221,8 @@ dfleet_hist %>%
   filter(area == "5ABCD") %>%
   make_facet_bubble_plot(group = "trips") +
   ggtitle("1956-1995 5ABCD") +
-  labs(size = paste0("Nombre de\nvoyages")) +
-  labs(fill = paste0("Nombre de\nvoyages"))
+  labs(size = paste0("Nombre de\nsorties")) +
+  labs(fill = paste0("Nombre de\nsorties"))
 ```
 
 ```{r cpue-bubble-plots-modern-3CD, fig.asp=1.4, fig.width=9, fig.cap="(ref:caption-cpue-bubble-plots-modern-3CD)"}
@@ -281,10 +281,24 @@ get_cpue_pars <- function(obj, name = "") {
     tibble(Model = name, Parameter = c("$p$", "$\\phi$"), Estimate = c(p, phi)))
 }
 pars <- list()
-pars[[1]] <- get_cpue_pars(m_historic[[12]], "Historique 3CD")
-pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historique 5ABCD")
-pars[[3]] <- get_cpue_pars(m_modern[[16]], "Moderne 3CD")
-pars[[4]] <- get_cpue_pars(m_modern[[8]], "Moderne 5ABCD")
+pars[[1]] <- get_cpue_pars(m_historic[[12]], "Historique 3CD") %>% 
+  mutate(Parameter = replace(Parameter,Parameter == "locality SD", "ET lieu"))%>%
+  mutate(Parameter = replace(Parameter,Parameter == "year-locality SD", "ET année-lieu"))
+
+pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historique 5ABCD")%>% 
+  mutate(Parameter = replace(Parameter,Parameter == "locality SD", "ET lieu"))%>%
+  mutate(Parameter = replace(Parameter,Parameter == "year-locality SD", "ET année-lieu"))
+
+pars[[3]] <- get_cpue_pars(m_modern[[16]], "Moderne 3CD")%>% 
+  mutate(Parameter = replace(Parameter,Parameter == "locality SD", "ET lieu"))%>%
+  mutate(Parameter = replace(Parameter,Parameter == "vessel SD", "ET navire"))%>%
+  mutate(Parameter = replace(Parameter,Parameter == "year-locality SD", "ET année-lieu"))
+
+pars[[4]] <- get_cpue_pars(m_modern[[8]], "Moderne 5ABCD")%>% 
+  mutate(Parameter = replace(Parameter,Parameter == "locality SD", "ET lieu"))%>%
+  mutate(Parameter = replace(Parameter,Parameter == "vessel SD", "ET navire"))%>%
+  mutate(Parameter = replace(Parameter,Parameter == "year-locality SD", "ET année-lieu"))
+
 bind_rows(pars) %>%
   csasdown::csas_table(caption = "Écart-type (ET) de l’effet aléatoire et estimations des paramètres de puissance ($p$) et de dispersion ($\\phi$) du modèle d’observation de Tweedie.", booktabs = TRUE, linesep = "", escape = FALSE, col.names = c("Modele", "Parametre", "Estimation"))
 ```

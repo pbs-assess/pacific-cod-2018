@@ -156,7 +156,7 @@ make_fe_plots <- function(object) {
     sud <- sud %>%
       mutate(par_group = replace(par_group,par_group == "month", "mois")) %>%
       mutate(par_group = replace(par_group,par_group == "depth", "profondeur")) %>%
-      mutate(par_group = replace(par_group,par_group == "year_factor", "année"))
+      mutate(par_group = replace(par_group,par_group == "year_factor", "annee"))
     }
 
 
