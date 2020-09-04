@@ -490,9 +490,15 @@ orig_dat <- select(x, yr, yr_ef) %>% unique() %>%
 pp <- left_join(pp, orig_dat, by = "year") %>%
   mutate(est_link = est_link - mean(est_link)) %>%
   ungroup() %>%
-  mutate(variable = gsub("^y$", "Données sans interaction espace-temps", variable)) %>%
-  mutate(variable = gsub("^y_w_int$", "Données avec interactions espace-temps", variable)) %>%
-  mutate(model = forcats::fct_rev(model))
+  mutate(model = gsub("No space-time interactions", "Sans interactions espace-temps", model)) %>%
+  mutate(model = gsub("Space-time interactions", "Interactions espace-temps", model)) %>% 
+  mutate(variable = gsub("^y$", "Données sans interactions espace-temps", variable)) %>%
+  mutate(variable = gsub("^y_w_int$", "Données avec interactions espace-temps", variable)) %>% 
+  mutate(variable = forcats::fct_rev(variable))
+  
+  #Don't reverse factor levels for "model" with French, reverse "variable" instead. 
+  #Need to keep factors in same order in both languages so colours and plots match caption
+  ##mutate(model = forcats::fct_rev(model))
 
 gg <- pp %>% group_by(model, variable) %>%
   ungroup() %>%

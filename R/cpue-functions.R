@@ -54,7 +54,7 @@ make_cpue_ts_dat <- function(dat) {
 }
 
 make_cpue_ts_plot <- function(dat) {
-# First need to rename formula_version values if french. en2fr doesn't work with replace function.
+# First need to rename formula_version values if french.
  if(french==TRUE){
    dat$stand$formula_version <- as.character(dat$stand$formula_version) #replace doesn't work with factors
    dat$stand <- dat$stand %>%
