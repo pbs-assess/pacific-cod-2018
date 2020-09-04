@@ -63,14 +63,22 @@ make_cpue_ts_plot <- function(dat) {
       mutate(formula_version = replace(formula_version,formula_version == "Depth", "Profondeur"))%>%
       mutate(formula_version = replace(formula_version,formula_version == "Vessel", "Navire"))%>%
       mutate(formula_version = replace(formula_version,formula_version == "Unstandardized", "Non normalisée"))%>%
-      mutate(formula_version = replace(formula_version,formula_version == "Full standardization", "Normalisation complet"))%>%
+      mutate(formula_version = replace(formula_version,formula_version == "Full standardization", "Normalisation\ncomplet"))%>%
       mutate(formula_version =
-               replace(formula_version,formula_version == "Full standardization\nminus interactions", "Normalisation complet\nmois interactions")) %>%
+               replace(formula_version,formula_version == "Full standardization\nminus interactions", "Normalisation\ncomplet\nmois interactions")) %>%
       filter(formula_version != "Non normalisée")
 
    #convert back to factor so they plot in the correct order
+   if(dat$stand$year[1] <1996){
+   #historical
       dat$stand$formula_version <- factor(dat$stand$formula_version,
-            levels=c("Profondeur","Lieu","Mois","Normalisation complet\nmois interactions","Normalisation complet"))
+            levels=c("Profondeur","Lieu","Mois","Normalisation\ncomplet\nmois interactions","Normalisation\ncomplet"))
+   }else {
+   #modern
+   dat$stand$formula_version <- factor(dat$stand$formula_version,
+     levels=c("Profondeur","Latitude","Lieu","Mois","Navire","Normalisation\ncomplet\nmois interactions","Normalisation\ncomplet"))
+
+   }
 
   } else {
     dat$stand <- dat$stand %>%
