@@ -111,7 +111,8 @@ dplyr::filter(dat$survey_index, survey_abbrev %in%
 ```{r surv-canadian, fig.cap="Données des relevés au chalut sur la morue du Pacifique au Canada. La figure illustre la biomasse relative et les intervalles de confiance inférieurs et supérieurs correspondants. Les traits positifs désignent le nombre de traits de chalut qui ont capturé des morues du Pacifique."}
 gfplot::tidy_survey_index(dat$survey_index,
   survey = c("SYN QCS", "SYN WCVI", "SYN HS", "SYN WCHG", "OTHER HS MSA")) %>%
-  plot_survey_index()
+  plot_survey_index() + ylab("La biomasse relative")
+
 ```
 
 \clearpage
@@ -126,7 +127,7 @@ Les données trait par trait tirées du relevé triennal du National Marine Fish
 
 Pour tous les traits utilisables, on connaissait la largeur médiane du filet (quantiles 1-99 %) de 13,4 (11,3-15,7) m et la distance médiane parcourue de 2,8 (1,4--3,5) km, ce qui a permis de calculer la superficie balayée par chaque trait. Les indices de la biomasse et les CV analytiques connexes pour la morue du Pacifique ont été calculés pour l’ensemble de la région de Vancouver de la CIPPN et pour chacune des sous-régions de Vancouver du Canada et des États-Unis, à l’aide des estimations de superficie appropriées pour chaque strate et année. Les strates qui n’ont pas été régulièrement visées par le relevé au cours des sept années ont été retirées de l’analyse, ce qui a permis d’obtenir un ensemble de données comparables pour chaque année à partir des données restantes.
 
-```{r surv-tri-strata-table, warning=FALSE, include=FALSE}
+```{r surv-tri-strata-table, warning=FALSE}
 tri_str <- readr::read_csv(here::here("data/triennial-strata.csv"))
 names(tri_str) <- gsub("_1", "", names(tri_str))
 tri_to_shade <- which(tri_str$Shade == 1)
@@ -135,6 +136,7 @@ for (i in seq_along(names(tri_str))) {
   tri_str[,i][is.na(tri_str[,i])] <- ""
 }
 tri_str$`Stratum No.`[tri_to_shade] <- paste0(tri_str$`Stratum No.`[tri_to_shade], "*")
+names(tri_str)[1] <- "Strate"
 knitr::kable(tri_str,
     caption = "Nombre de traits par strate et par année du relevé pour le relevé triennal du NFMS. Les strates marquées d’un astérisque ont été exclues de l’analyse, car elles n’avaient pas été couvertes complètement au cours des sept années du relevé ou parce que les emplacements étaient situés à l’extérieur de la zone de Vancouver de la CIPPN.",
     booktabs = TRUE, linesep = "", format = "pandoc") %>%
@@ -143,8 +145,6 @@ knitr::kable(tri_str,
 
 Les définitions des strates utilisées dans les relevés de 1980 et de 1983 étaient différentes de celles utilisées dans les relevés ultérieurs, particulièrement dans les eaux canadiennes. De ce fait, ces indices n’ont pas été utilisés dans l’évaluation des stocks de la zone 3CD. La densité des traits était beaucoup plus forte dans les eaux américaines, bien que leur nombre total ait été à peu près le même dans chaque pays. Cela s’explique par le fait que la superficie totale de la zone de pêche de Vancouver de la CIPPN était environ deux fois plus grande dans les eaux canadiennes que dans les eaux américaines.
 Il convient de noter que la limite nord du relevé a varié d’une année à l’autre (figure \@ref(fig:tri-tows)), mais cette différence a été compensée en utilisant une superficie de relevé constante pour toutes les années et en supposant que les taux de prises dans les zones non échantillonnées étaient les mêmes que dans la zone échantillonnée.
-
-
 
 Un examinateur de la NOAA qui travaillait sur le sébaste à queue jaune en 2014 a noté qu’un certain nombre des premiers traits du relevé triennal avaient été considérés comme des « pêches nulles » (aucune capture de poisson ou d’invertébré) et qu’il faudrait les rejeter. Les traits utilisés pour estimer la biomasse relative de la morue du Pacifique excluent ces traits.
 
@@ -230,7 +230,18 @@ Les estimations de la biomasse relative et les intervalles de confiance sont pr�
 
 ```{r surv-trien-table, results='asis'}
 surv_tri <- readr::read_csv(here::here("data/NMFSTriennial_Canada-Vancouver.csv"))
-csasdown::csas_table(surv_tri, caption = "Estimations de la biomasse et intervalles de confiance pour le relevé triennal du NMFS concernant les eaux canadiennes.") %>%
+  colnames(surv_tri) <- c(en2fr(colnames(surv_tri)[1],translate=french,allow_missing=TRUE),
+                          en2fr(colnames(surv_tri)[2], translate=french,allow_missing=TRUE),
+                          en2fr("Mean", translate=french,allow_missing=TRUE),
+                          en2fr("Lower", translate=french,allow_missing=TRUE, case="sentence"),
+                          en2fr("Upper", translate=french,allow_missing=TRUE, case="sentence"),
+                          en2fr("CV", translate=french,allow_missing=TRUE),
+                          en2fr("CV Analytique", translate=french,allow_missing=TRUE)
+    
+ )
+
+ csasdown::csas_table(surv_tri, caption = "Estimations de la biomasse et intervalles de confiance pour le relevé triennal du NMFS concernant les eaux canadiennes.") %>%
+
   kableExtra::column_spec(1:7, width = "1.8cm")
 ```
 
