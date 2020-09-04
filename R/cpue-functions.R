@@ -54,9 +54,31 @@ make_cpue_ts_dat <- function(dat) {
 }
 
 make_cpue_ts_plot <- function(dat) {
-  dat$stand %>%
-    filter(formula_version != "Unstandardized") %>%
-    ggplot(aes(year, est, ymin = lwr, ymax = upr, fill = formula_version)) +
+# First need to rename formula_version values if french. en2fr doesn't work with replace function.
+ if(french==TRUE){
+   dat$stand$formula_version <- as.character(dat$stand$formula_version) #replace doesn't work with factors
+   dat$stand <- dat$stand %>%
+      mutate(formula_version = replace(formula_version,formula_version == "Month", "Mois")) %>%
+      mutate(formula_version = replace(formula_version,formula_version == "Locality", "Lieu"))%>%
+      mutate(formula_version = replace(formula_version,formula_version == "Depth", "Profondeur"))%>%
+      mutate(formula_version = replace(formula_version,formula_version == "Vessel", "Navire"))%>%
+      mutate(formula_version = replace(formula_version,formula_version == "Unstandardized", "Non normalisée"))%>%
+      mutate(formula_version = replace(formula_version,formula_version == "Full standardization", "Normalisation complet"))%>%
+      mutate(formula_version =
+               replace(formula_version,formula_version == "Full standardization\nminus interactions", "Normalisation complet\nmois interactions")) %>%
+      filter(formula_version != "Non normalisée")
+
+   #convert back to factor so they plot in the correct order
+      dat$stand$formula_version <- factor(dat$stand$formula_version,
+            levels=c("Profondeur","Lieu","Mois","Normalisation complet\nmois interactions","Normalisation complet"))
+
+  } else {
+    dat$stand <- dat$stand %>%
+    filter(formula_version != "Unstandardized")
+  }
+
+dat$stand %>%
+   ggplot(aes(year, est, ymin = lwr, ymax = upr, fill = formula_version)) +
     geom_line() +
     geom_ribbon(data = dat$unstand, aes(x = year, ymin = lwr, ymax = upr),
       fill = "black", alpha = 0.5,

@@ -181,7 +181,7 @@ L'événement de pêche\na attrapé la\nmorue du Pacifique") +
   scale_colour_brewer(palette = "Dark2") +
   scale_fill_brewer(palette = "Dark2")
 
-g2 <- gg_cpue_hist$depth + ylab("Trip count") + xlab(en2fr("Depth", translate=french,allow_missing=TRUE, case="sentence")) +
+g2 <- gg_cpue_hist$depth + ylab("Nombre de sorties") + xlab(en2fr("Depth", translate=french,allow_missing=TRUE, case="sentence")) +
   labs(fill = "Le voyage\na attrapé la morue\ndu Pacifique") +
   theme(legend.position = c(0.95, 0.95), legend.background = element_rect(fill = "white"),
     legend.justification = c(1, 1)) +
@@ -195,11 +195,15 @@ cowplot::plot_grid(g2, g1, ncol = 1)
 ```{r cpue-bubble-plots-hist-3CD, fig.asp=1.35, fig.cap="Distribution des prédicteurs dans les modèles de normalisation de la CPUE pour l’ensemble de données de 1956 à 1995 dans la zone 3CD. La superficie des cercles extérieurs représente le nombre de combinaisons sortie-lieu pour cette combinaison de la valeur prédictive et de l’année. La superficie et l’ombrage des cercles intérieurs représentent le nombre de combinaisons sortie-lieu pour cette combinaison de la valeur prédictive et de l’année qui ont capturé des morues du Pacifique."}
 dfleet_hist %>%
   make_bubble_dat(measure.vars = c("month", "locality", "depth")) %>%
+  mutate(variable = replace(variable,variable == "Month", "Mois"))%>%
+  mutate(variable = replace(variable,variable == "Locality", "Lieu"))%>%
+  mutate(variable = replace(variable,variable == "Depth", "Profondeur"))%>%
   filter(area == "3CD") %>%
   make_facet_bubble_plot(group = "trips") +
   ggtitle("1956-1995 3CD") +
-  labs(size = paste0("Nombre de\nvoyages")) +
-  labs(fill = paste0("Nombre de\nvoyages"))
+  labs(size = paste0("Nombre de\nsorties")) +
+  labs(fill = paste0("Nombre de\nsorties"))
+
 ```
 
 (ref:caption-cpue-bubble-plots-hist-5ABCD) Même que pour la figure \@ref(fig:cpue-bubble-plots-hist-3CD) mais pour  5ABCD.
@@ -211,6 +215,9 @@ dfleet_hist %>%
 ```{r cpue-bubble-plots-hist-5ABCD, fig.asp=1.35, fig.cap="(ref:caption-cpue-bubble-plots-hist-5ABCD)"}
 dfleet_hist %>%
   make_bubble_dat(measure.vars = c("month", "locality", "depth")) %>%
+  mutate(variable = replace(variable,variable == "Month", "Mois"))%>%
+  mutate(variable = replace(variable,variable == "Locality", "Lieu"))%>%
+  mutate(variable = replace(variable,variable == "Depth", "Profondeur"))%>%
   filter(area == "5ABCD") %>%
   make_facet_bubble_plot(group = "trips") +
   ggtitle("1956-1995 5ABCD") +
@@ -220,6 +227,10 @@ dfleet_hist %>%
 
 ```{r cpue-bubble-plots-modern-3CD, fig.asp=1.4, fig.width=9, fig.cap="(ref:caption-cpue-bubble-plots-modern-3CD)"}
 dfleet_modern %>% make_bubble_dat() %>%
+  mutate(variable = replace(variable,variable == "Month", "Mois"))%>%
+  mutate(variable = replace(variable,variable == "Locality code", "Lieu"))%>%
+  mutate(variable = replace(variable,variable == "Depth", "Profondeur"))%>%
+  mutate(variable = replace(variable,variable == "Vessel", "Navire"))%>%
   filter(area == "3CD") %>%
   make_facet_bubble_plot() +
   ggtitle("1996+ 3CD")+
@@ -230,6 +241,10 @@ dfleet_modern %>% make_bubble_dat() %>%
 ```{r cpue-bubble-plots-modern-5ABCD, fig.asp=1.4, fig.width=9, fig.cap="(ref:caption-cpue-bubble-plots-modern-5ABCD)"}
 dfleet_modern %>% make_bubble_dat() %>%
   filter(area == "5ABCD") %>%
+  mutate(variable = replace(variable,variable == "Month", "Mois"))%>%
+  mutate(variable = replace(variable,variable == "Locality code", "Lieu"))%>%
+  mutate(variable = replace(variable,variable == "Depth", "Profondeur"))%>%
+  mutate(variable = replace(variable,variable == "Vessel", "Navire"))%>%
   make_facet_bubble_plot() +
   ggtitle("1996+ 5ABCD")+
   labs(size = paste0("Nombre d'événements\nde pêche")) +
