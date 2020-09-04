@@ -152,7 +152,7 @@ plot_tweedie_ex <- function(df, max = 15) {
     facet_grid(power~phi, scales = "free") +
     gfplot::theme_pbs() +
     labs(colour = "μ") +
-    xlab("Value") + ylab("Density") +
+    xlab("Valuer") + ylab("Densité") +
     coord_cartesian(expand = FALSE, xlim = c(-0.2, max(out$x))) +
     scale_colour_brewer(palette = "Dark2") +
     scale_fill_brewer(palette = "Dark2")
@@ -164,10 +164,10 @@ plot_tweedie_ex(df)
 
 ```{r cpue-catch-effort-ts, fig.cap="Série chronologique brute des captures de morue du Pacifique et des heures totales de chalutage (indépendamment des espèces capturées). Les données antérieures à 1996 sont présentées séparément des données postérieures à 1996.", fig.asp=1.1}
 source(here::here("R/cpue-functions.R"))
-g1 <- make_catch_effort_ts_plot(dfleet_hist)  +
-  ggtitle("1956-1995 data")
-g2 <- make_catch_effort_ts_plot(dfleet_modern) +
-  ggtitle("1996+ data")
+g1 <- make_catch_effort_ts_plot_fr(dfleet_hist)  +
+  ggtitle("1956-1995")
+g2 <- make_catch_effort_ts_plot_fr(dfleet_modern) +
+  ggtitle("1996+")
 cowplot::plot_grid(g1, g2, ncol = 1)
 ```
 
@@ -252,6 +252,8 @@ gqr4 <- plot_qres_histogram(qr4) + ggtitle(paste("moderne", params$area_name[2])
 cowplot::plot_grid(gqr2, gqr1, gqr4, gqr3, ncol = 2)
 ```
 
+\clearpage
+
 ```{r cpue-pars, results='asis'}
 get_cpue_pars <- function(obj, name = "") {
   re <- broom.mixed::tidy(obj, effects = "ran_pars")
@@ -264,10 +266,10 @@ get_cpue_pars <- function(obj, name = "") {
     tibble(Model = name, Parameter = c("$p$", "$\\phi$"), Estimate = c(p, phi)))
 }
 pars <- list()
-pars[[1]] <- get_cpue_pars(m_historic[[12]], "Historical 3CD")
-pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historical 5ABCD")
-pars[[3]] <- get_cpue_pars(m_modern[[16]], "Modern 3CD")
-pars[[4]] <- get_cpue_pars(m_modern[[8]], "Modern 5ABCD")
+pars[[1]] <- get_cpue_pars(m_historic[[12]], "Historique 3CD")
+pars[[2]] <- get_cpue_pars(m_historic[[6]], "Historique 5ABCD")
+pars[[3]] <- get_cpue_pars(m_modern[[16]], "Moderne 3CD")
+pars[[4]] <- get_cpue_pars(m_modern[[8]], "Moderne 5ABCD")
 bind_rows(pars) %>%
   csasdown::csas_table(caption = "Écart-type (ET) de l’effet aléatoire et estimations des paramètres de puissance ($p$) et de dispersion ($\\phi$) du modèle d’observation de Tweedie.", booktabs = TRUE, linesep = "", escape = FALSE, col.names = c("Modele", "Parametre", "Estimation"))
 ```

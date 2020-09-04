@@ -279,26 +279,54 @@ plot_cpue_int_res <- function(model, fleet, index_data,
 make_catch_effort_ts_plot <- function(dat) {
   bind_rows(dat) %>% group_by(year, area) %>%
     summarise(
-      `Species catch` = sum(spp_catch)/1000,
-      `Hours fished` = sum(hours_fished)/1000) %>%
+      `Catch` = sum(spp_catch)/1000,
+       `Hours` = sum(hours_fished)/1000) %>%
     reshape2::melt(id.vars = c("year", "area")) %>%
     ggplot(aes(year, value)) +
     geom_line() +
     facet_grid(variable~area, scales = "free_y") +
-    ylab("Value (1000 kg or 1000 hours)") + xlab("") +
+    ylab(paste(en2fr("Value",translate=french,allow_missing=TRUE), "(1000 kg", en2fr("or",translate=french,allow_missing=TRUE, case ="lower"), "1000 hours)")) + xlab("") +
     ylim(0, NA)
 }
 
 make_catch_effort_ts_plot_modern <- function(dat) {
   bind_rows(dat) %>% group_by(year, area) %>%
     summarise(
-      `Species catch` = sum(spp_catch)/1000,
-      `Hours fished` = sum(hours_fished)/1000) %>%
+      `Catch` = sum(spp_catch)/1000,
+      `Hours` = sum(hours_fished)/1000) %>%
     reshape2::melt(id.vars = c("year", "area")) %>%
     ggplot(aes(year, value)) +
     geom_line() +
     facet_grid(variable~area, scales = "free_y") +
-    ylab("Value (1000 kg or 1000 hours)") + xlab("") +
+    ylab(paste(en2fr("Value",translate=french,allow_missing=TRUE), "(1000 kg", en2fr("or",translate=french,allow_missing=TRUE, case ="lower"), "1000 hours)")) +
+    xlab("") +
+    ylim(0, NA)
+}
+
+make_catch_effort_ts_plot_fr <- function(dat) {
+  bind_rows(dat) %>% group_by(year, area) %>%
+    summarise(
+      `Prise` = sum(spp_catch)/1000,
+      `Heures` = sum(hours_fished)/1000) %>%
+    reshape2::melt(id.vars = c("year", "area")) %>%
+    ggplot(aes(year, value)) +
+    geom_line() +
+    facet_grid(variable~area, scales = "free_y") +
+    ylab(paste(en2fr("Value",translate=french,allow_missing=TRUE), "(1000 kg", en2fr("or",translate=french,allow_missing=TRUE, case ="lower"), "1000 hours)")) + xlab("") +
+    ylim(0, NA)
+}
+
+make_catch_effort_ts_plot_modern_fr <- function(dat) {
+  bind_rows(dat) %>% group_by(year, area) %>%
+    summarise(
+      `Prise` = sum(spp_catch)/1000,
+      `Heures` = sum(hours_fished)/1000) %>%
+    reshape2::melt(id.vars = c("year", "area")) %>%
+    ggplot(aes(year, value)) +
+    geom_line() +
+    facet_grid(variable~area, scales = "free_y") +
+    ylab(paste(en2fr("Value",translate=french,allow_missing=TRUE), "(1000 kg", en2fr("or",translate=french,allow_missing=TRUE, case ="lower"), "1000 hours)")) +
+    xlab("") +
     ylim(0, NA)
 }
 
