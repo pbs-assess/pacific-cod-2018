@@ -33,7 +33,9 @@ abstract: |
 always_allow_html: yes
 link-citations: true
 output:
-  csasdown::resdoc_pdf
+  csasdown::resdoc_pdf:
+    french: false
+    prepub: false
   #csasdown::resdoc_word
 header: ""
 bibliography: bib/refs.bib
