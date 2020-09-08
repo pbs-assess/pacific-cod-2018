@@ -63,7 +63,7 @@ Un récapitulatif du nombre de poissons mesurés par année, relevé et sexe est
 ```{r length-biosamples-surv, results='asis'}
 # TODO: get translation for unsexed, Max and Min.
 # TODO: wrap text of colnames
-x %>%
+biotable <- x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
   filter(!is.na(length)) %>%
   group_by(survey_abbrev, year) %>%
@@ -77,9 +77,19 @@ x %>%
   ) %>%
   rename(
      Survey = survey_abbrev, Year = year, `N male` = nlength_m,
-     `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) %>%
-  purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) %>% 
-  knitr::kable(caption = "Nombre (N) de mesures de longueur prises lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI)", booktabs = TRUE, linesep = "", format = "pandoc")%>%
+     `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) #%>%
+  #purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) #%>% 
+colnames(biotable) <- c(en2fr("Survey", translate = french, allow_missing = TRUE),
+                     latex.mlc(en2fr("Year", translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("N", "male"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("N", "female"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("N", "undetermined"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("Max", "male", "(cm)"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("Max", "female", "(cm)"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("Max", "unsexed", "(cm)"), translate = french, allow_missing = TRUE)))
+                     
+  
+  knitr::kable(biotable, caption = "Nombre (N) de mesures de longueur prises lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI)", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(latex_options = c("hold_position"), font_size = 9)
 ```
 
@@ -341,6 +351,7 @@ Le modèle a été ajusté aux données des sexes combinés pour : a) tous les �
    })
 ```
 
+<!--
 
 \clearpage
 
@@ -656,6 +667,8 @@ inner_join(est, se) %>%
 ```
 
 \clearpage
+
+-->
 
 ## MOYENNE DU POIDS MOYEN ANNUEL DANS LES PRISES COMMERCIALES
 

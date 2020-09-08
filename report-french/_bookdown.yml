@@ -2,14 +2,14 @@ book_filename: "resdoc"
 chapter_name: "Chapter "
 rmd_files: ["index.Rmd",
             "00-load.Rmd",
-            "01-main.Rmd",
-            "02-tables.Rmd",
-            "03-figures.Rmd",
-            "04-survey-indices-app.Rmd",
-            "05-cpue-app.Rmd",
+            #"01-main.Rmd",
+            #"02-tables.Rmd",
+            #"03-figures.Rmd",
+            #"04-survey-indices-app.Rmd",
+            #"05-cpue-app.Rmd",
             "06-age-length-weight.Rmd",
-            "07-model-description-app.Rmd",
-            "98-colophon.Rmd",
+            #"07-model-description-app.Rmd",
+            #"98-colophon.Rmd",
             "99-references.Rmd"
             ]
 download: [["resdoc.pdf", "PDF"], ["resdoc.docx", "Word"]]  #
