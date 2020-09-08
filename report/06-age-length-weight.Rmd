@@ -78,7 +78,7 @@ weighed by year, survey and sex is provided in Table
 and survey is provided in Table \@ref(tab:mat-biosamples).
 
 ```{r length-biosamples-surv, results='asis'}
-x %>%
+biotable <- x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
   filter(!is.na(length)) %>%
   group_by(survey_abbrev, year) %>%
@@ -92,8 +92,18 @@ x %>%
   ) %>%
   rename(
      Survey = survey_abbrev, Year = year, `N male` = nlength_m,
-     `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) %>%
-  knitr::kable(caption = "Number (N) of length measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", format = "pandoc")%>%
+     `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u)
+
+colnames(biotable) <- c(latex.mlc("Survey"),
+                     latex.mlc("Year"),
+                     latex.mlc("N male"),
+                     latex.mlc("N female"),
+                     latex.mlc("N unsexed"),
+                     latex.mlc(c("Max", "male (cm)")),
+                     latex.mlc(c("Max", "female (cm)")),
+                     latex.mlc(c("Max", "unsexed (cm)")))
+  
+  knitr::kable(biotable, caption = "Number (N) of length measurements taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(latex_options = c("hold_position"), font_size = 9)
 ```
 

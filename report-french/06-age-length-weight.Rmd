@@ -77,8 +77,8 @@ biotable <- x %>%
   ) %>%
   rename(
      Survey = survey_abbrev, Year = year, `N male` = nlength_m,
-     `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) #%>%
-  #purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) #%>% 
+     `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) 
+
 colnames(biotable) <- c(latex.mlc(en2fr("Survey", translate = french, allow_missing = TRUE)),
                      latex.mlc(en2fr("Year", translate = french, allow_missing = TRUE)),
                      latex.mlc(en2fr(c("N male"), translate = french, allow_missing = TRUE)),
