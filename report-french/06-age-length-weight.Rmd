@@ -658,6 +658,10 @@ inner_join(est, se) %>%
   mutate(conf.low = estimate - 1.96 * std.error) %>%
   mutate(conf.high = estimate + 1.96 * std.error) %>%
   mutate(.id = factor(.id, levels = names(surveys_list))) %>%
+  mutate(term = gsub("intercept_male","Ordonnée à l’origine mâle",term)) %>%
+  mutate(term = gsub("intercept_female","Ordonnée à l’origine femelle",term)) %>%
+  mutate(term = gsub("slope_male","Pente mâle",term)) %>%
+  mutate(term = gsub("slope_female","Pente femelle",term)) %>%
   ggplot(aes(ymin = conf.low, ymax = conf.high, y = estimate,
     x = term, colour = .id)) +
   geom_pointrange(position = position_dodge(width = 0.4)) +

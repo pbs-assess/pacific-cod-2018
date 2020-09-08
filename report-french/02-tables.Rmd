@@ -310,6 +310,7 @@ make.parameters.est.table(sens.models.2[[2]],
             french = french)
 ```
 
+\clearpage
 
 ```{r tab-param-table-sens3a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[1]],
