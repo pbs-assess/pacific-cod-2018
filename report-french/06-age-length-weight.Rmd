@@ -84,9 +84,9 @@ colnames(biotable) <- c(latex.mlc(en2fr("Survey", translate = french, allow_miss
                      latex.mlc(en2fr(c("N male"), translate = french, allow_missing = TRUE)),
                      latex.mlc(en2fr(c("N female"), translate = french, allow_missing = TRUE)),
                      latex.mlc(en2fr(c("N unsexed"), translate = french, allow_missing = TRUE)),
-                     latex.mlc(en2fr(c("Max", "male", "(cm)"), translate = french, allow_missing = TRUE, case="sentence")),
-                     latex.mlc(en2fr(c("Max", "female", "(cm)"), translate = french, allow_missing = TRUE, case="sentence")),
-                     latex.mlc(en2fr(c("Max", "unsexed", "(cm)"), translate = french, allow_missing = TRUE, case="sentence")))
+                     latex.mlc(en2fr(c("Max", "male", "(cm)"), translate = french, allow_missing = TRUE, case="lower")),
+                     latex.mlc(en2fr(c("Max", "female", "(cm)"), translate = french, allow_missing = TRUE, case="lower")),
+                     latex.mlc(en2fr(c("Max", "unsexed", "(cm)"), translate = french, allow_missing = TRUE, case="lower")))
                      
   
   knitr::kable(biotable, caption = "Nombre (N) de mesures de longueur prises lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI)", booktabs = TRUE, linesep = "", format = "pandoc")%>%
@@ -306,7 +306,7 @@ tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
   scale_x_continuous(breaks = seq(0, 10, 1)) +
   scale_y_continuous(breaks = seq(0, 10, 1)) +
   xlab(en2fr("Primary age (years)", translate=french, allow_missing=TRUE))+
-  xlab(en2fr("Secondary age (years)", translate=french, allow_missing=TRUE))+
+  ylab(en2fr("Secondary age (years)", translate=french, allow_missing=TRUE))+
   ggtitle("")
 ```
 
@@ -370,9 +370,9 @@ get_par_df(vb_fits, 1) %>%
   mutate(term = gsub("^k$", "$k$", term)) %>%
   mutate(term = gsub("^linf$", "$L_{\\\\infty}$", term)) %>%
   mutate(term = gsub("^t0$", "$a_0$", term)) %>%
-  mutate(Sex = gsub("^male$", "Male", Sex)) %>%
-  mutate(Sex = gsub("^female$", "Female", Sex)) %>%
-  mutate(Sex = gsub("^all$", "Male and Female", Sex)) %>%
+  mutate(Sex = gsub("^male$", "Mâle", Sex)) %>%
+  mutate(Sex = gsub("^female$", "Femelle", Sex)) %>%
+  mutate(Sex = gsub("^all$", "Mâle et Femelle", Sex)) %>%
   mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list))))     %>%
   rename(Term = term, Estimate = estimate, Conf.low = conf.low, Conf.high = conf.high) %>%
   dplyr::select(Surveys,Term, Estimate, Conf.low, Conf.high) %>%
@@ -491,9 +491,9 @@ get_par_df(lw_fits, 1) %>%
   mutate(Surveys = factor(Surveys, levels = rev(names(surveys_list)))) %>%
   mutate(term = gsub("\\(Intercept\\)", "$ln(\\\\alpha_s)$", term)) %>%
   mutate(term = gsub("log\\(length\\)", "$\\\\beta_s$", term)) %>%
-  mutate(Sex = gsub("^male$", "Male", Sex)) %>%
-  mutate(Sex = gsub("^female$", "Female", Sex)) %>%
-  mutate(Sex = gsub("^all$", "Male and Female", Sex)) %>%
+  mutate(Sex = gsub("^male$", "Mâle", Sex)) %>%
+  mutate(Sex = gsub("^female$", "Femelle", Sex)) %>%
+  mutate(Sex = gsub("^all$", "Mâle et Femelle", Sex)) %>%
   rename(Term = term, Estimate = estimate) %>%
   dplyr::select(Surveys,Sex,Term, Estimate, Conf.low, Conf.high) %>%
   purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T))    %>%
@@ -637,8 +637,6 @@ plyr::ldply(mat_fits, function(.x)
 ```
 
 \clearpage
-
-
 
 ```{r age-mat-figs, fig.cap = "Ogives de l’âge à maturité. Les ogives de la maturité sont ajustées en tant que régressions logistiques aux spécimens de poissons individuels, qui sont classés comme étant matures ou non matures. Les lignes noires pleines représentent les ajustements aux poissons femelles et les lignes grises tiretées représentent les ajustements aux poissons mâles. Les lignes verticales indiquent l’âge ou la longueur estimés à 50\\% de maturité. Le texte dans les graphiques indique l’âge et la longueur estimés à 5, 50 et 95\\% de maturité pour les femelles (F) et les mâles (M). Les traits courts le long du haut et du bas de chaque graphique représentent jusqu’à 1 500 poissons choisis au hasard, avec une petite fluctuation aléatoire pour aider à différencier les poissons individuels.", fig.asp=1.7, fig.width=4.5, out.width="3.4in"}
 mat_figs <- map(mat_fits, ~ plot_mat_ogive(.x) +
