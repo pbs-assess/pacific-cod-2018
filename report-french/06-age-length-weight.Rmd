@@ -652,7 +652,7 @@ for (i in seq_along(mat_figs))
 cowplot::plot_grid(plotlist = mat_figs, ncol = 1)
 ```
 
-```{r age-mat-coefs, fig.pos = "H", fig.cap = "Coefficients réorganisés à partir des ogives de la maturité par régression logistique (p. ex. intercept female = $\\beta_0 + \\beta_2$). Les paramètres sont dans l’espace logit ou des probabilités logarithmiques. L’interception fait référence aux probabilités logarithmiques de la maturité pour un poisson théorique de 0 an.", fig.width=6, out.width="4.5in"}
+```{r age-mat-coefs, fig.pos = "H", fig.cap = "Coefficients réorganisés à partir des ogives de la maturité par régression logistique (p. ex. Ordonnée à l’origine femelle = $\\beta_0 + \\beta_2$). Les paramètres sont dans l’espace logit ou des probabilités logarithmiques. L’interception fait référence aux probabilités logarithmiques de la maturité pour un poisson théorique de 0 an.", fig.width=6, out.width="4.5in"}
 #based on outputs from age-mat-coefs-table
 inner_join(est, se) %>%
   mutate(conf.low = estimate - 1.96 * std.error) %>%
