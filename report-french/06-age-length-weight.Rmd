@@ -79,14 +79,14 @@ biotable <- x %>%
      Survey = survey_abbrev, Year = year, `N male` = nlength_m,
      `N female` = nlength_f, `N unsexed` = nlength_u, `Max male (cm)` = maxlength_m, `Max female (cm)` = maxlength_f, `Max unsexed (cm)` = maxlength_u) #%>%
   #purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) #%>% 
-colnames(biotable) <- c(en2fr("Survey", translate = french, allow_missing = TRUE),
+colnames(biotable) <- c(latex.mlc(en2fr("Survey", translate = french, allow_missing = TRUE)),
                      latex.mlc(en2fr("Year", translate = french, allow_missing = TRUE)),
-                     latex.mlc(en2fr(c("N", "male"), translate = french, allow_missing = TRUE)),
-                     latex.mlc(en2fr(c("N", "female"), translate = french, allow_missing = TRUE)),
-                     latex.mlc(en2fr(c("N", "undetermined"), translate = french, allow_missing = TRUE)),
-                     latex.mlc(en2fr(c("Max", "male", "(cm)"), translate = french, allow_missing = TRUE)),
-                     latex.mlc(en2fr(c("Max", "female", "(cm)"), translate = french, allow_missing = TRUE)),
-                     latex.mlc(en2fr(c("Max", "unsexed", "(cm)"), translate = french, allow_missing = TRUE)))
+                     latex.mlc(en2fr(c("N male"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("N female"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("N unsexed"), translate = french, allow_missing = TRUE)),
+                     latex.mlc(en2fr(c("Max", "male", "(cm)"), translate = french, allow_missing = TRUE, case="sentence")),
+                     latex.mlc(en2fr(c("Max", "female", "(cm)"), translate = french, allow_missing = TRUE, case="sentence")),
+                     latex.mlc(en2fr(c("Max", "unsexed", "(cm)"), translate = french, allow_missing = TRUE, case="sentence")))
                      
   
   knitr::kable(biotable, caption = "Nombre (N) de mesures de longueur prises lors des relevés synoptiques effectués dans le détroit d’Hécate (SYN HS), le bassin de la Reine-Charlotte (SYN QCS) et sur la côte ouest de l’île de Vancouver (SYN WCVI)", booktabs = TRUE, linesep = "", format = "pandoc")%>%
@@ -305,8 +305,8 @@ tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
   plot_age_precision(n = 1e6) +
   scale_x_continuous(breaks = seq(0, 10, 1)) +
   scale_y_continuous(breaks = seq(0, 10, 1)) +
-  xlab(en2fr("Primary age", translate=french, allow_missing=TRUE))+
-  xlab(en2fr("Secondary age", translate=french, allow_missing=TRUE))+
+  xlab(en2fr("Primary age (years)", translate=french, allow_missing=TRUE))+
+  xlab(en2fr("Secondary age (years)", translate=french, allow_missing=TRUE))+
   ggtitle("")
 ```
 
@@ -350,8 +350,6 @@ Le modèle a été ajusté aux données des sexes combinés pour : a) tous les �
      })
    })
 ```
-
-<!--
 
 \clearpage
 
@@ -608,18 +606,19 @@ se <- group_by(mat_coefs, .id) %>%
     slope_female = combine_se(std.error[term == "age_or_length"],
       std.error[term == "age_or_length:female"])
   ) %>% reshape2::melt(variable.name = "term", value.name = "std.error")
-inner_join(est, se) %>%
+  inner_join(est, se) %>%
   mutate(.id = factor(.id, levels = names(surveys_list))) %>%
-  mutate(term = gsub("^intercept_male$", "Intercept male: $\\\\beta_0$", term)) %>%
-  mutate(term = gsub("^intercept_female$", "Intercept female: $\\\\beta_0 + \\\\beta_2$", term)) %>%
-  mutate(term = gsub("^slope_female$", "Slope female: $\\\\beta_1 + \\\\beta_3$", term)) %>%
-  mutate(term = gsub("^slope_male$", "Slope male: $\\\\beta_1$", term)) %>%
+  mutate(term = gsub("^intercept_male$", "Ordonnée à l’origine mâle: $\\\\beta_0$", term)) %>%
+  mutate(term = gsub("^intercept_female$", "Ordonnée à l’origine femelle: $\\\\beta_0 + \\\\beta_2$", term)) %>%
+  mutate(term = gsub("^slope_female$", "Pente femelle: $\\\\beta_1 + \\\\beta_3$", term)) %>%
+  mutate(term = gsub("^slope_male$", "Pente mâle: $\\\\beta_1$", term)) %>%
   mutate(Conf.low = estimate - 1.96 * std.error, Conf.high = estimate + 1.96 * std.error) %>%
   rename(Survey = .id, Term = term, Estimate = estimate) %>%
   dplyr::select(Survey,Term, Estimate, Conf.low, Conf.high) %>%
   purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) %>% 
    knitr::kable(caption = "Coefficients des ogives de la maturité par régression logistique.",
      booktabs = TRUE, linesep = "", digits=2, format = "pandoc", escape=FALSE)
+
 ```
 
 ```{r mat-fifty-tab, results = 'asis'}
@@ -627,14 +626,19 @@ plyr::ldply(mat_fits, function(.x)
   data.frame(Female = .x$mat_perc$f.p0.5, Male = .x$mat_perc$m.p0.5)) %>%
   melt() %>%
   mutate(.id = factor(.id, levels = names(surveys_list))) %>%
-  rename(Survey = .id, Sex = variable, `Estimated age-at-50%-maturity` = value) %>%
+  mutate(variable = gsub("Male", "Mâle", variable)) %>%
+  mutate(variable = gsub("Female", "Femelle", variable)) %>%
+  rename(Survey = .id, Sex = variable, `Estimated age at 50% maturity` = value) %>%
   arrange(Survey, Sex) %>%
   purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) %>% 
   knitr::kable(
     caption = "Estimations de l’âge à 50\\% de maturité d’après les ogives de la maturité par régression logistique.", booktabs = TRUE, format = "pandoc", linesep = "", digits=1)
+
 ```
 
 \clearpage
+
+
 
 ```{r age-mat-figs, fig.cap = "Ogives de l’âge à maturité. Les ogives de la maturité sont ajustées en tant que régressions logistiques aux spécimens de poissons individuels, qui sont classés comme étant matures ou non matures. Les lignes noires pleines représentent les ajustements aux poissons femelles et les lignes grises tiretées représentent les ajustements aux poissons mâles. Les lignes verticales indiquent l’âge ou la longueur estimés à 50\\% de maturité. Le texte dans les graphiques indique l’âge et la longueur estimés à 5, 50 et 95\\% de maturité pour les femelles (F) et les mâles (M). Les traits courts le long du haut et du bas de chaque graphique représentent jusqu’à 1 500 poissons choisis au hasard, avec une petite fluctuation aléatoire pour aider à différencier les poissons individuels.", fig.asp=1.7, fig.width=4.5, out.width="3.4in"}
 mat_figs <- map(mat_fits, ~ plot_mat_ogive(.x) +
@@ -667,8 +671,6 @@ inner_join(est, se) %>%
 ```
 
 \clearpage
-
--->
 
 ## MOYENNE DU POIDS MOYEN ANNUEL DANS LES PRISES COMMERCIALES
 
