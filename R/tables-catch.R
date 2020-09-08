@@ -29,11 +29,10 @@ catch.table <- function(dat,
                               f(tmp)
                             })
 
-  if(french==TRUE) case<-"lower"
   colnames(j) <- c(en2fr(colnames(j)[1], translate = french, allow_missing = TRUE),
-                  en2fr(colnames(j)[2], translate = french, allow_missing = TRUE, case=case),
-                  en2fr(colnames(j)[3], translate = french, allow_missing = TRUE, case=case),
-                  en2fr(colnames(j)[4], translate = french, allow_missing = TRUE, case=case),
+                  en2fr(colnames(j)[2], translate = french, allow_missing = TRUE, case="lower"),
+                  en2fr(colnames(j)[3], translate = french, allow_missing = TRUE, case="lower"),
+                  en2fr(colnames(j)[4], translate = french, allow_missing = TRUE, case="lower"),
                   en2fr(colnames(j)[5], translate = french, allow_missing = TRUE),
                   en2fr(colnames(j)[6], translate = french, allow_missing = TRUE))
 
