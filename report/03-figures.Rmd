@@ -86,14 +86,14 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5),
 ```
 
 ```{r fig-base-mean-weight-5abcd, fig.cap="MPD fit to the mean weight data for Area 5ABCD reference model. For clarity, only MPD results are shown"}
-plot_grid(mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015),
+plot_grid(mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 10, last.yr = 2020),
           mw.compare.plot(base.model.5abcd[[1]]),
           nrow = 1,
           ncol = 2)
 ```
 
 ```{r fig-base-catch-fit-5abcd, fig.cap="MPD fit to the catch data for Area 5ABCD reference model. For clarity, only MPD results are shown"}
-catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015)
+catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2020)
 ```
 
 (ref:priorpostcaption5abcd) Histograms of posterior samples with prior probability distributions (lines) used in the Area 5ABCD reference model. MPD estimate shown as vertical dashed line. Note that both the Queen Charlotte Sound and Hecate Strait Synoptic Surveys used normal prior distributions on $ln(q)$, see Figure \@ref(fig:fig-base-mcmc-priors-5abcd) for full distribution. 
@@ -174,14 +174,14 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5),
 ```
 
 ```{r fig-base-mean-weight-3cd, fig.cap="MPD fit to the mean weight data for Area 3CD reference model."}
-plot_grid(mw.plot(base.model.3cd[[1]], cv = 0.2, every = 5, last.yr = 2015),
+plot_grid(mw.plot(base.model.3cd[[1]], cv = 0.2, every = 10, last.yr = 2020),
           mw.compare.plot(base.model.3cd[[1]]),
           nrow = 1,
           ncol = 2)
 ```
 
 ```{r fig-base-catch-fit-3cd, fig.cap="MPD fit to the catch data for Area 3CD reference model."}
-catch.fit.plot(base.model.3cd, every = 5, last.yr = 2015)
+catch.fit.plot(base.model.3cd, every = 5, last.yr = 2020)
 ```
 
 (ref:priorpostcaption3cd) Histograms of posterior samples with prior probability distributions (lines) used in the Area 3CD reference model. MPD estimate shown as vertical dashed line. Note that the West Coast Vancouver Island Synoptic Survey used a normal prior distribution on $ln(q)$, see Figure \@ref(fig:fig-base-mcmc-priors-3cd) for full distribution.

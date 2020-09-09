@@ -86,14 +86,14 @@ plot_grid(i.plot(base.model.5abcd, base.model.5abcd.name, 1, every = 5, french=f
 ```
 
 ```{r fig-base-mean-weight-5abcd, fig.cap="Ajustement de la DPM aux données sur le poids moyen pour le modèle de référence de la zone 5ABCD. Dans un souci de clarté, seuls les résultats de la DPM sont illustrés."}
-plot_grid(mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 5, last.yr = 2015, french=french),
+plot_grid(mw.plot(base.model.5abcd[[1]], cv = 0.2, every = 10, last.yr = 2020, french=french),
           mw.compare.plot(base.model.5abcd[[1]], french=french),
           nrow = 1,
           ncol = 2)
 ```
 
 ```{r fig-base-catch-fit-5abcd, fig.cap="Ajustement de la DPM aux données sur les prises pour le modèle de référence de la zone 5ABCD. Dans un souci de clarté, seuls les résultats de la DPM sont illustrés."}
-catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2015, french=french)
+catch.fit.plot(base.model.5abcd, every = 5, last.yr = 2020, french=french)
 ```
 
 (ref:priorpostcaption5abcd) Histogrammes des échantillons a posteriori avec des distributions de probabilité a priori (lignes) utilisés dans le modèle de référence de la zone 5ABCD. L’estimation de la DPM est représentée par une ligne pointillée verticale. Il convient de noter que les relevés synoptiques dans le bassin de la Reine-Charlotte et le détroit d’Hécate ont utilisé des distributions a priori normales sur $ln(q)$, voir la distribution complète sur la figure \@ref(fig:fig-base-mcmc-priors-5abcd). 
@@ -178,14 +178,14 @@ plot_grid(i.plot(base.model.3cd, base.model.3cd.name, 1, every = 5, french=frenc
 ```
 
 ```{r fig-base-mean-weight-3cd, fig.cap="Ajustement de la DPM aux données sur le poids moyen pour le modèle de référence de la zone 3CD."}
-plot_grid(mw.plot(base.model.3cd[[1]], cv = 0.2, every = 5, last.yr = 2015, french=french),
+plot_grid(mw.plot(base.model.3cd[[1]], cv = 0.2, every = 10, last.yr = 2020, french=french),
           mw.compare.plot(base.model.3cd[[1]], french=french),
           nrow = 1,
           ncol = 2)
 ```
 
 ```{r fig-base-catch-fit-3cd, fig.cap="Ajustement de la DPM aux données sur les prises pour le modèle de référence de la zone 3CD."}
-catch.fit.plot(base.model.3cd, every = 5, last.yr = 2015, french=french)
+catch.fit.plot(base.model.3cd, every = 5, last.yr = 2020, french=french)
 ```
 
 (ref:priorpostcaption3cd) Histogrammes des échantillons a posteriori avec des distributions de probabilité a priori (lignes) utilisés dans le modèle de référence de la zone 3CD. L’estimation de la DPM est représentée par une ligne pointillée verticale. Il convient de noter que le relevé synoptique sur la côte ouest de l’île de Vancouver a utilisé une distribution a priori normale sur $ln(q)$, voir la distribution complète sur la figure \@ref(fig:fig-base-mcmc-priors-3cd).
