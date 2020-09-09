@@ -22,7 +22,7 @@ decision.table <- function(model,
                    "P(F2019 > LRR)")
 
   }else{
-    col.names <- c(latex.mlc(c("$2019$", "$\\mathrm{Prise (mt)}$")),
+    col.names <- c(latex.mlc(c("$2019$", "$\\mathrm{Catch (mt)}$")),
                    latex.mlc(c("$P(B_{2020} <$", "$B_{2019})$")),
                    latex.mlc(c("$P(F_{2019} >$", "$F_{2018})$")),
                    latex.mlc(c("$P(B_{2020} <$", "$\\mathrm{LRP})$")),

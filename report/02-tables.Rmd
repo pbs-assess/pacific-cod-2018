@@ -80,7 +80,18 @@ basis.vec = c("Noninformative",
 ```
 
 ```{r tab-suggested-ref-points}
-suggested.ref.points()
+  definition_text <-c(latex.mlc(c("Lowest estimated biomass agreed to be an",
+                                    "undesirable state to avoid ($B_{\t{2000}}$",
+                                    "in  5ABCD; $B_{\t{1986}}$ in 3CD)"),
+                                  make.bold = FALSE),
+                        "Average biomass for the period 1956-2004",
+                        "Average fishing mortality for the period 1956-2004",
+                        "Biomass in 2018",
+                        "Fishing mortality in 2017")
+    caption_text <- paste0("Reference points for the Reference Case ",
+                           "5ABCD and 3CD models.")
+  
+suggested.ref.points(french=french, definition_text=definition_text,caption_text=caption_text)
 ```
 
 \clearpage
