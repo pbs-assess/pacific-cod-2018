@@ -91,7 +91,7 @@ basis.vec = c("Noninformative",
     caption_text <- paste0("Reference points for the Reference Case ",
                            "5ABCD and 3CD models.")
   
-suggested.ref.points(french=french, definition_text=definition_text,caption_text=caption_text)
+suggested.ref.points(definition_text=definition_text,caption_text=caption_text)
 ```
 
 \clearpage
