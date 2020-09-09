@@ -639,7 +639,7 @@ plyr::ldply(mat_fits, function(.x)
 \clearpage
 
 ```{r age-mat-figs, fig.cap = "Ogives de l’âge à maturité. Les ogives de la maturité sont ajustées en tant que régressions logistiques aux spécimens de poissons individuels, qui sont classés comme étant matures ou non matures. Les lignes noires pleines représentent les ajustements aux poissons femelles et les lignes grises tiretées représentent les ajustements aux poissons mâles. Les lignes verticales indiquent l’âge ou la longueur estimés à 50\\% de maturité. Le texte dans les graphiques indique l’âge et la longueur estimés à 5, 50 et 95\\% de maturité pour les femelles (F) et les mâles (M). Les traits courts le long du haut et du bas de chaque graphique représentent jusqu’à 1 500 poissons choisis au hasard, avec une petite fluctuation aléatoire pour aider à différencier les poissons individuels.", fig.asp=1.7, fig.width=4.5, out.width="3.4in"}
-mat_figs <- map(mat_fits, ~ plot_mat_ogive(.x, french=french) +
+mat_figs <- map(mat_fits, ~ plot_mat_ogive(.x) +
     coord_cartesian(xlim = c(0, 8.2), ylim = c(0, 1), expand = FALSE)+
       ylab(en2fr("Probability mature", translate=french,allow_missing=TRUE))+
       xlab(paste(en2fr("Age",translate=french,allow_missing=TRUE), 
