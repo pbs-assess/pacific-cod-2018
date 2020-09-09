@@ -77,6 +77,8 @@ weighed by year, survey and sex is provided in Table
 \@ref(tab:weight-biosamples). A summary of number of maturity records by year
 and survey is provided in Table \@ref(tab:mat-biosamples).
 
+\clearpage
+
 ```{r length-biosamples-surv, results='asis'}
 biotable <- x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
@@ -107,6 +109,8 @@ colnames(biotable) <- c(latex.mlc("Survey"),
   kableExtra::kable_styling(latex_options = c("hold_position"), font_size = 9)
 ```
 
+\clearpage
+
 ```{r weight-biosamples, results='asis'}
 x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
@@ -125,6 +129,8 @@ x %>%
   kableExtra::kable_styling(font_size = 9)
 ```
 
+\clearpage
+
 ```{r mat-biosamples, results='asis'}
 x %>%
   filter(survey_abbrev %in% c("SYN HS", "SYN QCS", "SYN WCVI")) %>%
@@ -142,6 +148,8 @@ x %>%
   knitr::kable(caption = "Number (N) of maturities recorded in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys.", booktabs = TRUE, linesep = "", format = "pandoc")%>%
   kableExtra::kable_styling(font_size = 9)
 ```
+
+\clearpage
 
 ```{r length-plotfrequencies-surv, fig.cap="Length-frequencies of Pacific Cod taken in the Hecate Strait (SYN HS), Queen Charlotte Sound (SYN QCS) and West Coast Vancouver Island (SYN WCVI) synoptic surveys. Note that for clarity only male and female specimens are plotted."}
 
