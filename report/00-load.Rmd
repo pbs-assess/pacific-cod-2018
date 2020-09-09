@@ -30,10 +30,6 @@ build(ovwrt.base = FALSE,
       thin = 1)
 load.models.into.parent.env()
 source(file.path(rootd.R, "custom-knitr-variables.R"))
-french <- rmarkdown::metadata$output$`csasdown::resdoc_pdf`$french
-if(french){
-  options(OutDec =  ",")
-}
 ```
 
 ```{r setup-tables, cache=FALSE, echo=FALSE}
