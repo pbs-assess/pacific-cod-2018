@@ -357,7 +357,7 @@ Le modèle a été ajusté aux données des sexes combinés pour : a) tous les �
 
 get_par_df <- function(.d, element = 1) {
   map_df(vb_fits, function(.x) {
-    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
+    broom.mixed::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
     select(-std.error) %>%
     mutate(Surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
@@ -414,7 +414,7 @@ print(g_vb)
 
 get_par_df <- function(.d, element = 1) {
   map_df(vb_fits, function(.x) {
-    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
+    broom.mixed::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
     select(-std.error) %>%
     mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%

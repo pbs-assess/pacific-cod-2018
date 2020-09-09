@@ -351,7 +351,7 @@ vb_fits <-
 ```{r age-coeff-table, results='asis'}
 get_par_df <- function(.d, element = 1) {
   map_df(vb_fits, function(.x) {
-    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
+    broom.mixed::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
     select(-std.error) %>%
     mutate(Surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
@@ -399,7 +399,7 @@ cowplot::save_plot(here::here('presentations/figures/growth-vb.svg'), plot = g_v
 ```{r age-vb-pars, fig.asp=0.4, fig.cap = "Coefficient estimates from the von Bertalanffy model."}
 get_par_df <- function(.d, element = 1) {
   map_df(vb_fits, function(.x) {
-    broom::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
+    broom.mixed::tidyMCMC(.x[[element]]$model, conf.int = TRUE, conf.level = 0.95) %>%
     select(-std.error) %>%
     mutate(surveys = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
     mutate(Sex = paste(unique(.x[[element]]$data$survey_abbrev), collapse = ", ")) %>%
