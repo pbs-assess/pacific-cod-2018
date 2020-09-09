@@ -501,7 +501,7 @@ get_par_df(lw_fits, 1) %>%
 ```
 
 ```{r age-lw-figs, fig.cap = "Ajustements du modèle longueur-poids. Le texte dans les graphiques montre les estimations des paramètres et les points représentent les données pour les poissons individuels.", fig.asp=0.28, fig.width=9, out.width="6.5in"}
-lw_figs <- map(lw_fits, ~ gfplot:::plot_length_weight(
+lw_figs <- map(lw_fits, ~ gfplot::plot_length_weight(
   object_all = .x[[1]],
       col = c(All = "grey30"), lab_x_gap = 0.45, french=french) +
     ggtitle(paste(unique(.x[[1]]$data$survey_abbrev), collapse = ", ")) +
