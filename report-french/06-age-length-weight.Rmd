@@ -312,8 +312,6 @@ tidy_age_precision(d$age_precision, ageing_method_codes = 6) %>%
 
 \clearpage
 
-## GROWTH PARAMETERS
-
 ## PARAMÈTRES DE CROISSANCE
 
 On a estimé les paramètres de croissance en ajustant la fonction de croissance de von Bertalanffy aux données sur l’âge et la longueur :
@@ -325,7 +323,7 @@ L_{s} = L_{\infty,s}\left( 1 - e^{- k_{s}\left( a_{s} - {a_{0}}_{s} \right)} \ri
 
 où $L_{\infty,s}$, $k_{s}$ et ${a_{0}}_{s}$ sont les paramètres de l’équation propres au sexe, et $L_{s}$ et $a_{s}$ sont les observations jumelées de la longueur ($L$) et de l’âge ($a$) tirées des relevés synoptiques (tableaux \@ref(tab:length-biosamples-surv) et \@ref(tab:age-biosamples)). Nous avons permis une erreur d’observation log-normale.
 
-Le modèle a été ajusté aux données des sexes combinés pour : a) tous les échantillons jumelés âge-longueur; b) les échantillons âge-longueur du détroit d’Hécate et du bassin de la Reine-Charlotte; c) les échantillons âge-longueur de la côte ouest de l’île de Vancouver (figures @ref(fig:vb-figs) et \@ref(fig:age-vb-pars); tableau \@ref(tab:age-coeff-table)). Les échantillons du détroit d’Hécate et du bassin de la Reine-Charlotte ont été combinés parce qu’il n’y a eu qu’une année d’observations de l’âge (2011) pour le bassin de la Reine-Charlotte (tableau \@ref(tab:age-biosamples)). Nous avons échantillonné les distributions conjuguées a posteriori de chaque modèle avec Stan [@carpenter2017; @rstan2018] en utilisant quatre chaînes et 2 000 itérations par chaîne, en rejetant la première moitié de chacune comme échauffement. Nous avons placé les valeurs a priori uniformes limitées à zéro sur $k$, $L_{\infty}$ et $\sigma$ (écart-type de l’observation log-normale), et une valeur a priori uniforme sur $a_0$.
+Le modèle a été ajusté aux données des sexes combinés pour : a) tous les échantillons jumelés âge-longueur; b) les échantillons âge-longueur du détroit d’Hécate et du bassin de la Reine-Charlotte; c) les échantillons âge-longueur de la côte ouest de l’île de Vancouver (figures \@ref(fig:vb-figs) et \@ref(fig:age-vb-pars); tableau \@ref(tab:age-coeff-table)). Les échantillons du détroit d’Hécate et du bassin de la Reine-Charlotte ont été combinés parce qu’il n’y a eu qu’une année d’observations de l’âge (2011) pour le bassin de la Reine-Charlotte (tableau \@ref(tab:age-biosamples)). Nous avons échantillonné les distributions conjuguées a posteriori de chaque modèle avec Stan [@carpenter2017; @rstan2018] en utilisant quatre chaînes et 2 000 itérations par chaîne, en rejetant la première moitié de chacune comme échauffement. Nous avons placé les valeurs a priori uniformes limitées à zéro sur $k$, $L_{\infty}$ et $\sigma$ (écart-type de l’observation log-normale), et une valeur a priori uniforme sur $a_0$.
 
 \clearpage
 
