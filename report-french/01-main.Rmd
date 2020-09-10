@@ -517,7 +517,7 @@ Pour chaque stock, deux analyses de sensibilité ont été effectuées, dans les
 
 # PROJECTIONS ET TABLEAUX DE DÉCISION {#sec:projections-and-decision-tables}
 
-Les mesures du rendement ont été calculées sur une séquence de niveaux de prises projetés de rechange pour 2018 et sont fondées sur une projection d’un an jusqu’en 2019 (figures \@ref(fig:fig-base-biomass-5abcd-proj) et \@ref(fig:fig-base-biomass-3cd-proj)). L’incertitude entre dans les projections par des anomalies du recrutement pour l’année de projection, qui ont été tirées au hasard à partir d’une distribution normale, $\mathcal{N}(0,\sigma_R^2)$. Les mesures du rendement suivantes ont été évaluées :
+Les mesures du rendement ont été calculées sur une séquence de niveaux de prises projetés de rechange pour 2018 et sont fondées sur une projection d’un an jusqu’en 2019. L’incertitude entre dans les projections par des anomalies du recrutement pour l’année de projection, qui ont été tirées au hasard à partir d’une distribution normale, $\mathcal{N}(0,\sigma_R^2)$. Les mesures du rendement suivantes ont été évaluées :
 
 1. $P(B_{2019} < B_{2018})$
 1. $P(F_{2018} > F_{2017})$
