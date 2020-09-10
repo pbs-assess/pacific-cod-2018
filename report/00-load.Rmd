@@ -23,7 +23,7 @@ library(rosettafish)
 french <- FALSE
 ```
 
-```{r load-models, cache=TRUE}
+```{r load-models, cache=TRUE, results='hide', echo=FALSE}
 build(ovwrt.base = FALSE,
       ovwrt.sens = FALSE,
       ovwrt.retro = FALSE,
