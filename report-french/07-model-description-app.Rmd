@@ -33,11 +33,12 @@ où $S$ est la survie, donnée par la formule
 
 où $M$ est le taux de mortalité naturelle; $F$ est le taux estimé de mortalité par pêche instantanée; $\alpha_g$ et $\rho_g$ sont l’interception et la pente de l’équation de Ford-Walford pour tous les âges > $k$, où $k$ est l’âge auquel on présume que les poissons deviennent entièrement vulnérables à la pêche; $w_k$ est le poids à $k$; et $R_t$ est la fonction présumée stock-recrutement, ici contrainte pour être conforme à une fonction de Beverton-Holt, $a$ et $b$ étant les constantes de cette équation (éq. \@ref(eq:ddrt)). Pour les stocks des zones 5ABCD et 3CD, on suppose que le recrutement dans la pêche, le relevé et le stock reproducteur se fait à l’âge de 2 ans (c.-à-d. $k$ = 2 *y*), conformément aux hypothèses formulées dans @sinclair2001, @sinclair2005 et @forrest2013.
 
-La liste des paramètres du modèle est fournie dans le tableau \@ref(tab:tab-param-list). Les équations d’équilibre et dynamiques sont présentées dans les sections \@ref(summary-of-equilibrium-equations-for-the-delay-difference-model) et \@ref(time-dynamic-equations-and-likelihood-components-for-the-delay-difference-model). Les paramètres de variance et les composantes de la fonction objective sont indiqués dans la section \@ref(time-dynamic-equations-and-likelihood-components-for-the-delay-difference-model). Les paramètres avancés estimés sont indiqués en caractères gras dans le tableau \@ref(tab:tab-param-list). Les valeurs fixes des paramètres et les distributions de probabilité a priori sont données dans la description des modèles du scénario de référence (section \@ref(reference-case-models)).
+La liste des paramètres du modèle est fournie dans le tableau \@ref(tab:tab-param-list). Les équations d’équilibre et dynamiques sont présentées dans les sections \@ref(sec:equilibrium-equations) et \@ref(sec:time-dynamic-equations). Les paramètres de variance et les composantes de la fonction objective sont indiqués dans la section \@ref(sec:time-dynamic-equations). 
+Les paramètres avancés estimés sont indiqués en caractères gras dans le tableau \@ref(tab:tab-param-list). Les valeurs fixes des paramètres et les distributions de probabilité a priori sont données dans la description des modèles du scénario de référence (section \@ref(sec:reference-case-models)).
 
 Pour éviter l’hypothèse selon laquelle les stocks étaient à l’équilibre en 1956, @forrest2013 ont utilisé la même approche qu’un modèle structuré selon l’âge pour initialiser les nombres la première année. Nous avons repris la même approche ici (éq. \@ref(eq:ddn1)).
 
-De 1956 à 2017, les recrutements annuels avec correction du biais ont été estimés comme le produit d’un recrutement non exploité moyen estimatif ($R_{0}$, estimé dans l’espace logarithmique) et des écarts logarithmiques annuels du recrutement avec correction du biais ($\omega_t$), qui étaient faiblement contraints à une distribution normale avec $\omega_t \sim \mathcal{N}(0,2^2)$. On a utilisé $\ln(R_{0})$ et un vecteur estimé de huit années d’écarts logarithmique (âge 3--âge 10; $\omega_{t\_init}$) pour remplir la première année de la matrice des nombres selon l’âge, et la mortalité naturelle pour calculer la survie (éq. \@ref(eq:ddn1)). On a ensuite calculé le nombre de poissons la première année comme la somme des nombres selon l’âge la première année (éq. \@ref(eq:ddnt)). Pour les années 1957 à 2013, le nombre annuel de poissons ($N_t$) a été calculé à l’aide de la formule (éq. \@ref(eq:ddnt)). La biomasse la première année a été calculée comme la somme sur l’âge du produit des nombres selon l’âge et du poids selon l’âge (éq. @ref(eq:ddbt), ce dernier étant dérivé des paramètres de croissance de von Bertlanffy (tableau \@ref(tab:tab-param-list)). On a appliqué des équations de différence-délai pour calculer la biomasse annuelle ($B_t$) pour les années 1957 à 2014 (éq. \@ref(eq:ddbt)), le recrutement étant donné par la formule (éq. \@ref(eq:ddrt)). Les anomalies du recrutement logarithmique pour l’année de projection 2018 ont été tirées d’une distribution normale, $\omega_t \sim \mathcal{N}(0,\sigma_R^2)$.
+De 1956 à 2017, les recrutements annuels avec correction du biais ont été estimés comme le produit d’un recrutement non exploité moyen estimatif ($R_{0}$, estimé dans l’espace logarithmique) et des écarts logarithmiques annuels du recrutement avec correction du biais ($\omega_t$), qui étaient faiblement contraints à une distribution normale avec $\omega_t \sim \mathcal{N}(0,2^2)$. On a utilisé $\ln(R_{0})$ et un vecteur estimé de huit années d’écarts logarithmique (âge 3--âge 10; $\omega_{t\_init}$) pour remplir la première année de la matrice des nombres selon l’âge, et la mortalité naturelle pour calculer la survie (éq. \@ref(eq:ddn1)). On a ensuite calculé le nombre de poissons la première année comme la somme des nombres selon l’âge la première année (éq. \@ref(eq:ddnt)). Pour les années 1957 à 2013, le nombre annuel de poissons ($N_t$) a été calculé à l’aide de la formule (éq. \@ref(eq:ddnt)). La biomasse la première année a été calculée comme la somme sur l’âge du produit des nombres selon l’âge et du poids selon l’âge (éq. \@ref(eq:ddbt), ce dernier étant dérivé des paramètres de croissance de von Bertlanffy (tableau \@ref(tab:tab-param-list)). On a appliqué des équations de différence-délai pour calculer la biomasse annuelle ($B_t$) pour les années 1957 à 2014 (éq. \@ref(eq:ddbt)), le recrutement étant donné par la formule (éq. \@ref(eq:ddrt)). Les anomalies du recrutement logarithmique pour l’année de projection 2018 ont été tirées d’une distribution normale, $\omega_t \sim \mathcal{N}(0,\sigma_R^2)$.
 
 ## CONDITIONNEMENT DU MODÈLE
 
@@ -55,10 +56,9 @@ La fonction objective du modèle de type différence-délai comportait cinq comp
 
 Les essais ont montré que le modèle est insensible aux modifications des paramètres de la fonction de pénalité, et donc que les autres composantes de la vraisemblance et les distributions de probabilité a priori étaient les éléments principaux de la fonction objective.
 
-
 ## INDICES DE L’ABONDANCE
 
-Les indices de l’abondance indépendants et dépendants de la pêche (annexes \@ref(fishery-independent-indices-of-abundance) et \@ref(commercial-cpue-standardization)) ont été traités comme des indices de l’abondance relative, présumés directement proportionnels à la biomasse, avec des erreurs log-normales. Le paramètre de mise à l’échelle du relevé (capturabilité) $q_j$ pour chaque relevé $j$ a été traité comme un paramètre incertain, en utilisant l’estimation de la densité a posteriori maximale (DPM) conditionnelle de $q_j$ dans la fonction objective (éq. \@ref(eq:ddljt), où le paramètre $j_z$ représente l’estimation de la probabilité maximale de $\ln(j_q)$, conditionnelle sur les autres paramètres du modèle, $n_j$ étant le nombre d’observations dans l’indice $j$ [@walters1994] (éq. \@ref(eq:ddzjt)--\@ref(eq:dddjt)).
+Les indices de l’abondance indépendants et dépendants de la pêche (annexes \@ref(app:fishery-independent-indices-of-abundance) et \@ref(app:commercial-cpue-standardization)) ont été traités comme des indices de l’abondance relative, présumés directement proportionnels à la biomasse, avec des erreurs log-normales. Le paramètre de mise à l’échelle du relevé (capturabilité) $q_j$ pour chaque relevé $j$ a été traité comme un paramètre incertain, en utilisant l’estimation de la densité a posteriori maximale (DPM) conditionnelle de $q_j$ dans la fonction objective (éq. \@ref(eq:ddljt), où le paramètre $j_z$ représente l’estimation de la probabilité maximale de $\ln(j_q)$, conditionnelle sur les autres paramètres du modèle, $n_j$ étant le nombre d’observations dans l’indice $j$ [@walters1994] (éq. \@ref(eq:ddzjt)--\@ref(eq:dddjt)).
 
 ## DONNÉES SUR LES PRISES
 
@@ -82,13 +82,13 @@ L’équation pour la composante d’erreur d’observation de la variance total
 
 Le terme de l’erreur d’observation globale $\sigma_O$ influence l’ajustement à tous les indices d’abondance par sa contribution à $\sigma_{j,t}$, l’écart-type des résidus d’observation logarithmiques pour chaque indice $j$ l’année de relevé $t$ dans la fonction de log-vraisemblance (éq. \@ref(eq:ddljt)). Pour une évaluation théorique avec un seul indice de l’abondance dans lequel les observations ont une pondération égale, $\sigma_{j,t}$ serait égal à $\sigma_O$ pour toutes les observations. Toutefois, il y a souvent plusieurs relevés disponibles. Dans un relevé donné, les coefficients de variation annuels ($CV_{j,t}$) pour chaque observation peuvent également différer d’une année à l’autre en raison des différences d’échantillonnage annuelles (p. ex. taille de l’échantillon, effets spatiaux, etc.). Il est donc souhaitable de pondérer chaque observation en fonction de son $CV_{j,t}$, où un faible $CV_{j,t}$ pour une observation donnée lui donne un poids plus élevé (et un écart-type plus faible dans la fonction objective). Cela est mis en œuvre de façon multiplicative à l’aide des éqs. \@ref(eq:ddsigjt) et \@ref(eq:ddcjt), où le terme $c_{j,t}$ permet de pondérer chaque observation par rapport à l’erreur d’observation globale $\sigma_O$. Dans ce cas, on obtient $c_{j,t}$ simplement à partir de l’inverse de $CV_{j,t}$ (éq. \@ref(eq:ddcjt)). Par souci de cohérence avec l’utilisation d’un terme de l’erreur d’observation globale appliqué à tous les indices de l’abondance, le vecteur des termes $c_{j,t}$ a été normalisé entre tous les relevés en divisant par la valeur moyenne de $c_{j,t}$. Cela a eu pour effet une pondération uniforme de chaque observation du relevé dans les trois ensembles de données.
 
-Pour les indices des relevés indépendants de la pêche, on a calculé les coefficients de variation annuels ($CV_{j,t}$) à partir de l’auto-amorçage des estimations de la superficie balayée (annexe \@ref(fishery-independent-indices-of-abundance)). Pour les indices des CPUE commerciales, les coefficients de variation annuels ont été calculés à partir des MLGM utilisés pour produire les indices (annexe \@ref(commercial-cpue-standardization)).
+Pour les indices des relevés indépendants de la pêche, on a calculé les coefficients de variation annuels ($CV_{j,t}$) à partir de l’auto-amorçage des estimations de la superficie balayée (annexe \@ref(app:fishery-independent-indices-of-abundance)). Pour les indices des CPUE commerciales, les coefficients de variation annuels ont été calculés à partir des MLGM utilisés pour produire les indices (annexe \@ref(app:commercial-cpue-standardization)).
 
 Un certain nombre d’auteurs ont remarqué que l’on parvient mal à un consensus sur la meilleure approche pour gérer la pondération relative de plusieurs indices de relevé, et qu’il y a toujours un certain degré de subjectivité dans le choix de la stratégie de pondération. (p. ex. @francis2011, @mcallister2001). En particulier, il n’y a pas de moyen objectif de déterminer la mesure dans laquelle un modèle devrait être ajusté aux données sur les CPUE commerciales, étant donné qu’il n’existe pas de moyen indépendant de savoir dans quelle mesure ces données sont proportionnelles à la biomasse sous-jacente. Les pêches commerciales n’échantillonnent pas les populations de façon aléatoire; la capturabilité et la sélectivité ne sont probablement pas constantes au fil du temps, et les effets spatiaux peuvent avoir une incidence sur la relation sous-jacente entre la CPUE et l’abondance [@hilborn1992]. On suppose toutefois que les relevés sont proportionnels à l’abondance en raison du plan de relevé, mais cette hypothèse peut elle aussi être vulnérable à divers effets.
 
 @francis2011 a passé en revue certaines approches pour pondérer les indices de l’abondance dans l’évaluation des stocks de poissons et a mis en garde contre une sous-pondération subjective des données sur les CPUE commerciales. Il décrit une approche en deux étapes pour pondérer une partie ou la totalité des ensembles de données dans le but d’uniformiser davantage les pondérations des données avec les sorties du modèle, c.-à-d. de satisfaire à un critère d’ajustement statistique. Il a proposé un terme de pondération propre au relevé, établi de sorte que l’écart-type des résidus normalisés de Pearson pour chaque ensemble de données sur l’indice de l’abondance est égal à environ 1,0 [@francis2011].
 
-Dans la présente évaluation, l’adoption d’une approche itérative de repondération semblable à celle présentée dans @francis2011 nécessiterait l’introduction d’un troisième terme de pondération propre au relevé pour calculer $\sigma_{j,t}$. Autrement dit, $\sigma_{j,t}$ serait composé de $\sigma_O$, de $c_{j,t}$ et d’un terme de pondération propre au relevé, $w_j$, ce qui rapprocherait l’écart-type des résidus normalisés de Pearson de 1,0 @francis2011. Étant donné que tant $\sigma_O$ que les termes $CV_{j,t}$ des CPUE commerciales étaient déjà fixés à des valeurs déterminées subjectivement, et que $c_{j,t}$ était déjà normalisé entre les relevés, il ne semblait pas justifié d’ajouter un autre terme de pondération fixe. @francis2011 a déclaré que l’objectif global est une évaluation des stocks qui correspond bien à tous les indices de l’abondance et que l’écart-type des résidus normalisés de Pearson fournit un moyen de déterminer si c’est le cas. Toutefois, on peut aussi faire appel au jugement d’un expert [@mcallister2001]. Nous présentons des analyses de sensibilité aux valeurs des paramètres de variance fixes (section \@ref(sensitivity-analyses)) et suggérons qu’il est possible de comprendre l’incidence des hypothèses de variance fixe sur les avis de gestion pour la morue du Pacifique sans recourir à une repondération itérative.
+Dans la présente évaluation, l’adoption d’une approche itérative de repondération semblable à celle présentée dans @francis2011 nécessiterait l’introduction d’un troisième terme de pondération propre au relevé pour calculer $\sigma_{j,t}$. Autrement dit, $\sigma_{j,t}$ serait composé de $\sigma_O$, de $c_{j,t}$ et d’un terme de pondération propre au relevé, $w_j$, ce qui rapprocherait l’écart-type des résidus normalisés de Pearson de 1,0 @francis2011. Étant donné que tant $\sigma_O$ que les termes $CV_{j,t}$ des CPUE commerciales étaient déjà fixés à des valeurs déterminées subjectivement, et que $c_{j,t}$ était déjà normalisé entre les relevés, il ne semblait pas justifié d’ajouter un autre terme de pondération fixe. @francis2011 a déclaré que l’objectif global est une évaluation des stocks qui correspond bien à tous les indices de l’abondance et que l’écart-type des résidus normalisés de Pearson fournit un moyen de déterminer si c’est le cas. Toutefois, on peut aussi faire appel au jugement d’un expert [@mcallister2001]. Nous présentons des analyses de sensibilité aux valeurs des paramètres de variance fixes (section \@ref(sec:sensitivity-analyses)) et suggérons qu’il est possible de comprendre l’incidence des hypothèses de variance fixe sur les avis de gestion pour la morue du Pacifique sans recourir à une repondération itérative.
 
 \clearpage
 
@@ -100,8 +100,85 @@ model.param.desc.table(cap = paste0("Liste des paramètres pour le modèle de ty
 
 \clearpage
 
+## SOMMAIRE DES ÉQUATIONS D’ÉQUILIBRE POUR LE MODÈLE DE TYPE DIFFÉRENCE-DÉLAI {#sec:equilibrium-equations}
 
-## ÉQUATIONS DE DYNAMIQUE-TEMPS ET COMPOSANTES DE LA VRAISEMBLANCE POUR LE MODÈLE DE TYPE DIFFÉRENCE-DÉLAI
+**Équations d’équilibre pour le calcul des paramètres du stock-recrutement**
+
+Équilibre - survie non exploitée :
+
+\begin{equation}
+{S_0} = {e^{ - M}}
+(\#eq:ddso)
+\end{equation}
+
+Équilibre - poids moyen non exploité :
+
+\begin{equation}
+{\bar w_0} = \frac{{{S_0}{\alpha _g} + {w_k}\left( {1 - {S_0}} \right)}}{{1 - {\rho _g}{S_0}}}
+(\#eq:ddwo)
+\end{equation}
+
+Équilibre - nombres non exploités :
+
+\begin{equation}
+{N_0} = \frac{{{R_0}}}{{\left( {1 - {S_0}} \right)}}
+(\#eq:ddno)
+\end{equation}
+
+Équilibre - biomasse non exploitée :
+
+\begin{equation}
+{B_0} = {N_0}{\bar w_0}
+(\#eq:ddbo)
+\end{equation}
+
+Ratio de compensation du recrutement (Beverton-Holt) :
+
+\begin{equation}
+{\rm{CR}} = \frac{{4h}}{{1 - h}}
+(\#eq:ddcr)
+\end{equation}
+
+Paramètres de la relation stock-recrutement (Beverton-Holt) :
+
+\begin{equation}
+b = \frac{{{\rm{CR}} - 1}}{{\,{B_0}}}
+(\#eq:ddbeta)
+\end{equation}
+
+**Équations d’équilibre pour les points de référence de la pêche**
+
+Équilibre - taux de survie à une mortalité par pêche fixe à long terme $F_e$ :
+
+\begin{equation}
+{S_e} = {e^{ - \left( {M + {F_e}} \right)}}
+(\#eq:ddse)
+\end{equation}
+
+Équilibre - poids moyen à long terme à $F_e$ :
+
+\begin{equation}
+{\bar w_e} = \frac{{{S_e}{\alpha _g} + {w_k}\left( {1 - {S_e}} \right)}}{{1 - {\rho _g}{S_e}}}
+(\#eq:ddwe)
+\end{equation}
+
+Équilibre - biomasse à long terme à $F_e$ :
+
+\begin{equation}
+{B_e} =  - \frac{{\left( {{\rm{ - }}{{{\rm{\bar W}}}_e}{\rm{  +  }}{{\rm{S}}_e}{\alpha _g}{\rm{  +  }}{{\rm{S}}_e}{\rho _g}{{{\rm{\bar W}}}_e} + {W_k}a{{{\rm{\bar W}}}_e}} \right)}}{{b\left( {{\rm{ - }}{{{\rm{\bar W}}}_e}{\rm{  +  }}{{\rm{S}}_e}{\alpha _g}{\rm{  +  }}{{\rm{S}}_e}{\rho _g}{{{\rm{\bar W}}}_e}} \right)}}
+(\#eq:ddbe)
+\end{equation}
+
+Équilibre - rendement à long terme à $F_e$ :
+
+\begin{equation}
+{Y_e} = {B_e}\frac{{{F_e}}}{{\left( {{F_e} + M} \right)}}\left( {1 - {e^{ - \left( {{F_e} + M} \right)}}} \right)
+(\#eq:ddye)
+\end{equation}
+
+\clearpage
+
+## ÉQUATIONS DE DYNAMIQUE-TEMPS ET COMPOSANTES DE LA VRAISEMBLANCE POUR LE MODÈLE DE TYPE DIFFÉRENCE-DÉLAI {#sec:time-dynamic-equations}
 
 **Équations de dynamique-temps**
 
