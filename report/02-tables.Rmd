@@ -273,8 +273,6 @@ make.parameters.est.table(sens.models.2[[2]],
   omit_pars = pars_est_omit)
 ```
 
-\clearpage
-
 ```{r tab-param-table-sens3a-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[1]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -283,8 +281,6 @@ make.parameters.est.table(sens.models.3[[1]],
                   "for Sc 3a (mean ln(M)=ln(0.5), SD=0.2), Area 5ABCD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
-
-\clearpage
 
 ```{r tab-param-table-sens3b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[2]],
@@ -387,7 +383,6 @@ make.parameters.est.table(sens.models.10[[1]],
 
 \clearpage
 
-
 ```{r tab-param-table-sens3b-3cd, results='asis'}
 make.parameters.est.table(sens.models.10[[2]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -416,7 +411,6 @@ make.parameters.est.table(sens.models.11[[1]],
 ```
 
 \clearpage
-
 
 ```{r tab-param-table-sens4b-3cd, results='asis'}
 make.parameters.est.table(sens.models.11[[2]],
@@ -447,7 +441,6 @@ make.parameters.est.table(sens.models.13[[2]],
 
 \clearpage
 
-
 ```{r tab-param-table-sens6c-3cd, results='asis'}
 make.parameters.est.table(sens.models.13[[3]],
  caption = paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -456,8 +449,6 @@ make.parameters.est.table(sens.models.13[[3]],
                   "for Sc 6c ($\\sigma_{O}$ = 0.25), Area 3CD. $R_0$ is in thousands of fish. $B_0$ is in tonnes. "),
   omit_pars = pars_est_omit)
 ```
-
-\clearpage
 
 ## MODEL-AVERAGED REFERENCE POINTS AND DECISION TABLES {#sec:reference-points-and-decision-tables}
 
@@ -498,7 +489,6 @@ make.value.table(c(base.model.5abcd,
                                   "percentile) and MPD estimates of recruitment (thousands) model-averaged Area 5ABCD."))
 ```
 
-\clearpage
 
 ```{r tab-ref-points-table-avg-3cd, results='asis'}
 make.ref.points.table(c(base.model.3cd,

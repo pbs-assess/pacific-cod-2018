@@ -322,9 +322,6 @@ make.parameters.est.table(sens.models.3[[1]],
             french = french)
 ```
 
-\clearpage
-
-
 ```{r tab-param-table-sens3b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.3[[2]],
  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th}, médiane et ",
@@ -354,8 +351,6 @@ make.parameters.est.table(sens.models.4[[1]],
   omit_pars = pars_est_omit,
             french = french)
 ```
-
-\clearpage
 
 ```{r tab-param-table-sens4b-5abcd, results='asis'}
 make.parameters.est.table(sens.models.4[[2]],
@@ -387,8 +382,6 @@ make.parameters.est.table(sens.models.6[[2]],
             french = french)
 ```
 
-\clearpage
-
 ```{r tab-param-table-sens6c-5abcd, results='asis'}
 make.parameters.est.table(sens.models.6[[3]],
  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th}, médiane et ",
@@ -398,7 +391,6 @@ make.parameters.est.table(sens.models.6[[3]],
   omit_pars = pars_est_omit,
             french = french)
 ```
-
 
 \clearpage
 
@@ -469,7 +461,6 @@ make.parameters.est.table(sens.models.11[[1]],
 
 \clearpage
 
-
 ```{r tab-param-table-sens4b-3cd, results='asis'}
 make.parameters.est.table(sens.models.11[[2]],
  caption = paste0("Valeur a posteriori (centile 2,5\\textsuperscript{th}, médiane et ",
@@ -513,8 +504,6 @@ make.parameters.est.table(sens.models.13[[3]],
             french = french)
 ```
 
-\clearpage
-
 ## POINTS DE RÉFÉRENCE FONDÉS SUR LA MOYENNE DES MODÈLES ET TABLEAUX DE DÉCISION {#sec:reference-points-and-decision-tables}
 
 ```{r tab-ref-points-table-avg-5abcd, results='asis'}
@@ -555,8 +544,6 @@ make.value.table(c(base.model.5abcd,
                                   ") et estimations de la DPM du recrutement (en milliers) selon la moyenne des modèles pour la zone 5ABCD."),
                french=french)
 ```
-
-\clearpage
 
 ```{r tab-ref-points-table-avg-3cd, results='asis'}
 make.ref.points.table(c(base.model.3cd,
