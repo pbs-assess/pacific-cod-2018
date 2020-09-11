@@ -111,10 +111,19 @@ make.priors.posts.plot <- function(model,
   mpd.param.vals <- do.call(c, mpd.lst)
   names(mpd.param.vals) <- post.names
 
+  # If priors only, need to change dimensions of plot to reduce white space
+  # Also need to remove priors with uniform dist
+  if(priors.only==TRUE){
+    prior.specs <-  prior.specs %>%  dplyr::filter(prior > 0)
+    post.names <- row.names(prior.specs)
+  }
+
   n.side <- get.rows.cols(length(post.names))
   par(mfrow = n.side,
       oma = c(2, 3, 1, 1),
-      mai = c(0.2, 0.4, 0.3, 0.2))
+      mai = c(0.3, 0.4, 0.3, 0.2))
+
+
 
   for(i in 1:length(post.names)){
     specs <- prior.specs[i,]
