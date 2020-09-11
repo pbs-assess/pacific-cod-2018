@@ -92,11 +92,79 @@ Dans la présente évaluation, l’adoption d’une approche itérative de repon
 
 \clearpage
 
-```{r tab-param-list, fig.pos="H"}
-model.param.desc.table(cap = paste0("Liste des paramètres pour le modèle de type différence-délai.",
+```{r tab-param-list, fig.pos="H" }
+j <- tribble(
+    ~`Paramètre`,          ~Description,                                                                  ~`Valeur 5ABCD`,                   ~`Valeur 3CD`,
+    "\\textbf{Indices}", "",                                                                            "",                               "",
+    "$t$",               "Période (années)",                                                                paste0(start.yr5, "--", end.yr5), paste0(start.yr3, "--", end.yr3),
+    "$j$",               "Engin (pêche ou indice d’abondance)",                                        "",                               "",
+    "$a$",               "Âge (années) utilisé pour initialiser les données durant la première année",                     paste0(sage5, "--", nage5, " y"), paste0(sage3, "--", nage3, " y"),
+    "$A$",               "Âge maximum (années) utilisé pour initialiser les données durant la première année",             paste0(nage5, " y"),              paste0(nage3, " y"),
+    "\\textbf{Paramètres d’entrée fixes}", "", "", "",
+    "$k$",               "Âge au moment du recrutement en lame de couteau",                                               paste0(sage5, " y"),              paste0(sage3, " y"),
+    "$L_\\infty$",       "Longueur maximale théorique",                                                  paste0(linf5, " cm"),             paste0(linf3, " cm"),
+    "$K_{VB}$",          "Taux de croissance de von Bertalanffy",                                                 as.character(k5),                 as.character(k3),
+    "$a_{LW}$",          "Paramètre de mise à l’échelle de la relation entre la longueur et le poids",                         as.character(lwscal5),            as.character(lwscal3),
+    "$b_{LW}$",          "Exposant de la relation entre la longueur et le poids",                                  as.character(lwpow5),             as.character(lwpow3),
+    "$t_0$",             "Âge théorique à 0 cm",                                                     as.character(t05),                as.character(t03),
+    "$\\alpha_g$",       "Intersection de la courbe de Ford-Walford pour tous les âges > $k$",                      as.character(alpha.g5),           as.character(alpha.g3),
+    "$\\rho_g$",         "Pente de la courbe de Ford-Walford pour tous les âges > $k$",                          as.character(rho.g5),             as.character(rho.g3),
+    "$W_k$",             "Poids à l’âge du recrutement $k$",                                            as.character(wk5),                as.character(wk3),
+    "\\textbf{Données d’entrée annuelles}", "", "", "",
+    "$C_t$",             "Prises (en tonnes métriques)",                                                       "",                               "",
+    "$W_t$",             "Poids moyen des individus de la population",                                "",                               "",
+    "$I_{j,t}$",         "Indice d’abondance $j$ (CPUE tirée d’un relevé ou de la pêche commerciale au chalut)",                    "",                               "",
+    "$CV_{j,t}$",        "Coefficients annuels de variation de l’indice des observations d’abondance",         "",                               "",
+    "\\textbf{Paramètres invariables dans le temps}", "", "", "",
+    "$R_0$",             "\\textbf{Nombres d’équilibre non exploitée pour les recrues d’âge 0} $^a$",                          "",                               "",
+    "$h$",               "\\textbf{Pente de la courbe de la relation stock-recrutement}",                       "",                               "",
+    "$M$",               "\\textbf{Mortalité naturelle} $^a$",                                            "",                               "",
+    "$R_{AVG}$",         "\\textbf{Recrutement annuel moyen} $^a$",                                   "",                               "",
+    "$R_{AVG\\_init}$",  "\\textbf{Recrutement annuel moyen pour initialiser le modèle} $^a$",         "",                               "",
+    "$CR$",              "Rapport recrutement-compensation",                                              "",                               "",
+    "$a$",               "Pente de la courbe de la fonction stock-recrutement à l’origine",                           "",                               "",
+    "$b$",               "Paramètre de mise à l’échelle de la fonction stock-recrutement",                             "",                               "",
+    "$N_0$",             "Nombres d’équilibre non exploitée",                                                "",                               "",
+    "$B_0$",             "Biomasse d’équilibre non exploitée",                                                "",                               "",
+    "$S_0$",             "Taux de survie d’équilibre non exploitée",                                          "",                               "",
+    "$\\bar{W}_0$",      "Poids moyen d’équilibre non exploitée",                                            "",                               "",
+    "$c_j$",             "Erreur de traitement supplémentaire en ce qui a trait aux observations de l’indice d’abondance pour les engins $j$",    "",                               "",
+    "\\textbf{Paramètres variables dans le temps}", "", "", "",
+    "$\\omega_t$",       "Écarts de recrutement à l’échelle logarithmique$^a$",                                              "",                               "",
+    "$F_t$",             "Mortalité par pêche dans la pêche au chalut",                                      "",                               "",
+    "$S_t$",             "Taux de survie annuel",                                                        "",                               "",
+    "$N_t$",             "Nombres",                                                                     "",                               "",
+    "$R_t$",             "Recrues",                                                                    "",                               "",
+    "$B_t$",             "Biomasse",                                                                     "",                               "",
+    "$\\bar{W}_t$",      "Poids moyen prévu",                                                       "",                               "",
+    "\\textbf{Composantes de probabilité}", "", "", "",
+    "$\\sigma_R$",       "Écart-type des résidus liés au recrutement à l’échelle logarithmique",                             "",                               "",
+    "$\\sigma_R$",       "Écart-type global des résidus d’observation",                             "",                               "",
+    "$\\sigma_{i,j}$",   "Écart-type annuel des résidus d’observation pour chaque relevé",          "",                               "",
+    "$\\sigma_C$",       "Écart-type des prises",                                                 "",                               "",
+    "$\\sigma_W$",       "Écart-type du poids moyen",                                           "",                               "",
+    "$\\vartheta^{-2}$", "\\textbf{Inverse de l’écart total (précision totale)}",                   "",                               "",
+    "$\\rho$",           "\\textbf{Proportion de l’écart total entraînée par une erreur d’observation}",             "",                               "",
+    "$\\tau$",           "\\textbf{Écart lié aux résidus de la composition selon l’âge} $^b$",                        "",                               "",
+    "$q_j$",             "\\textbf{Constante de proportionnalité dans les indices de (capturabilité)} $^{a,b}$", "",                               "",
+    "$d_{j,t}^2$",       "Différence résiduelle à l’échelle logarithmique pour les indices d’abondance $j$",                        "",                               "",
+    "$d_{C_t}^2$",       "Différence résiduelle à l’échelle logarithmique pour les données sur les prises",                                      "",                               "",
+    "$d_{W_t}^2$",       "Différence résiduelle à l’échelle logarithmique pour les données sur le poids moyen",                                "",                               "")
+
+csasdown::csas_table(j,
+                   format = "latex",
+                   caption = paste0("Liste des paramètres pour le modèle de type différence-délai.",
                                     "Les paramètres avancés estimés (ou fixes) sont mis en évidence",
-                                    "en caractères gras."))
+                                    "en caractères gras."),
+                   bold_header = TRUE,
+                   col_names = c("Paramètre", "Description", "Valeur 5ABCD", "Valeur 3CD")) %>%
+column_spec(2, width = "5cm") %>%
+footnote(alphabet = c("Estimé dans l’espace logarithmique",
+                      "Estimations de la DPM conditionnelle"))
+
+
 ```
+
 
 \clearpage
 
