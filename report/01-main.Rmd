@@ -608,15 +608,15 @@ Decision tables summarizing the probability of breaching reference points over a
 
 The "Model-Averaged" decision table probabilities are presented in Table \@ref(tab:tab-decision-avg-5abcd). In summary:
 
-•	$P(B_{2020} < B_{2019})$ ranged from 12% to 89% over the range of 2019 catch levels.
+-	$P(B_{2020} < B_{2019})$ ranged from 12% to 89% over the range of 2019 catch levels.
 
-•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 200 mt, hence the probability increase between 200 mt and 300 mt.
+- $P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 200 mt, hence the probability increase between 200 mt and 300 mt.
 
-•	$P(B_{2020} < LRP)$ ranged from <1% to 11%.
+- $P(B_{2020} < LRP)$ ranged from <1% to 11%.
 
-•	$P(B_{2020} < USR)$ ranged from 98% to 99%.
+- $P(B_{2020} < USR)$ ranged from 98% to 99%.
 
-•	$P(F_{2019} > LRR)$  ranged from <1% to 95%.
+- $P(F_{2019} > LRR)$  ranged from <1% to 95%.
 
 Under a 2019 catch level of 900 mt, close to the 2017 TAC, there is an estimated 1% probability
 that the 2020 biomass will be below the LRP and a 99% probability that the 2019 biomass will
@@ -626,15 +626,15 @@ be below the USR.
 
 The "Model-Averaged" decision table probabilities for Area 3CD are presented in Table \@ref(tab:tab-decision-avg-3cd). In summary:
 
-•	$P(B_{2020} < B_{2019})$ ranged from 76% to 89% over the range of 2019 catch levels.
+- $P(B_{2020} < B_{2019})$ ranged from 76% to 89% over the range of 2019 catch levels.
 
-•	$P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 164 mt, hence the probability increase between 100 mt and 200 mt.
+- $P(F_{2019} > F_{2018})$ ranged from < 1% to > 99%. The 2018 catch was extrapolated to be approximately 164 mt, hence the probability increase between 100 mt and 200 mt.
 
-•	$P(B_{2020} < LRP)$ ranged from <1% to 1%.
+- $P(B_{2020} < LRP)$ ranged from <1% to 1%.
 
-•	$P(B_{2020} < USR)$ ranged from 95% to 97%.
+- $P(B_{2020} < USR)$ ranged from 95% to 97%.
 
-•	$P(F_{2019} > LRR)$  ranged from <1% to 96%.
+- $P(F_{2019} > LRR)$  ranged from <1% to 96%.
 
 Under a 2019 catch level of 500 mt, close to the 2017 TAC, there is an estimated 18% probability
 that the 2020 biomass will be below the LRP and a 99% probability that the 2020 biomass will be
