@@ -6,7 +6,7 @@ author: |
   Chris J. Grandin^1^,
   Paul J. Starr^2^
 
-author_list: "Forrest, R.E., Anderson, S.C., Grandin, C.J., and Paul J. Starr"
+author_list: "Forrest, R.E., Anderson, S.C., Grandin, C.J., and Starr, P.J."
 address: |
   ^1^Station biologique du Pacifique\
      Pêches et Océans Canada, 3190 Hammond Bay Road\
