@@ -17,7 +17,7 @@ address: |
       Nanaimo, Colombie-Britannique, V9T 4K8, Canada\
 
 year: "2020"
-report_number: "nnn"
+report_number: "070"
 type: res-doc
 abstract: |
   L’état de deux stocks de morue du Pacifique (Gadus macrocephalus), dans le détroit d’Hécate/bassin de la Reine-Charlotte (zone 5ABCD) et sur la côte ouest de l’île de Vancouver (zone 3CD), a été évalué à l’aide de modèles bayésiens de type différence-délai. Les modèles ont été ajustés aux indices de l’abondance indépendants de la pêche et aux nouveaux indices normalisés des captures commerciales par unité d’effort (CPUE) qui ont été élaborés à l’aide de modèles linéaires généralisés à effet mixte (GLGM) de Tweedie. De nouvelles analyses de la croissance et de la maturité ont également été réalisées et intégrées aux modèles.
