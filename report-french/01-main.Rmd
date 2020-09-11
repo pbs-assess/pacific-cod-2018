@@ -104,9 +104,9 @@ Tous les modèles présentés dans ce document sont des modèles bayésiens mis 
 
 1. Le modèle actuel n’estime qu’un paramètre de recrutement moyen ($R_{0}$). Les modèles décrits dans @forrest2013 et @martell2011 estimaient trois paramètres de recrutement moyen :
 
-  - $R_{0}$, le recrutement non exploité moyen utilisé dans le calcul des paramètres du stock-recrutement;
-  - $R_{Init}$, le recrutement moyen initial utilisé pour initialiser la structure selon l’âge la première année;
-  - $R_{Avg}$, le recrutement moyen pour la série chronologique.
+      - $R_{0}$, le recrutement non exploité moyen utilisé dans le calcul des paramètres du stock-recrutement;
+      - $R_{Init}$, le recrutement moyen initial utilisé pour initialiser la structure selon l’âge la première année;
+      - $R_{Avg}$, le recrutement moyen pour la série chronologique.
 
 Nous avons décidé d’utiliser un seul paramètre de recrutement moyen parce qu’il y a peu ou pas d’information pour estimer trois paramètres dans le modèle de type différence-délai, qui ne contient aucune information explicite sur la composition selon l’âge.
 

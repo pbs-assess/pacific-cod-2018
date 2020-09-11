@@ -113,9 +113,9 @@ All models presented in this document are Bayesian models implemented in AD Mode
 
 1. The current model estimates only one average recruitment parameter ($R_{0}$). The models in @forrest2013 and @martell2011 estimated three average recruitment parameters:
 
-  - $R_{0}$, average unfished recruitment used in derivation of stock-recruit parameters;
-  - $R_{Init}$, initial average recruitment used to initialize the age structure in the first year; and
-  - $R_{Avg}$, average recruitment for the time series.
+    - $R_{0}$, average unfished recruitment used in derivation of stock-recruit parameters;
+    - $R_{Init}$, initial average recruitment used to initialize the age structure in the first year; and
+    - $R_{Avg}$, average recruitment for the time series.
 
 The decision to use just one average recruitment parameter was made because there is little to no information for estimating three parameters in the delay-difference model, which contains no explicit age composition information.
 
