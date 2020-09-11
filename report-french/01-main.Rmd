@@ -617,7 +617,7 @@ La probabilité que la mortalité par pêche en 2018 soit supérieure à la mort
 
 Pour un niveau de prises de 500 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de 18 % que la biomasse de 2019 sera inférieure au PRL et une probabilité de 99 % que la biomasse de 2019 sera inférieure au RSS.
 
-## SOMMAIRE
+# SOMMAIRE ET RECOMMANDATIONS DE RECHERCHE
 
 Nous avons présenté les autres tableaux de décision fondés sur la moyenne des modèles pour les zones 5ABCD et 3CD dans le but d’intégrer de façon plus exhaustive l’incertitude structurelle importante des évaluations dans les avis communiqués aux gestionnaires des pêches et aux intervenants. Toutefois, nous insistons sur les importantes incertitudes structurelles que nous n’avons pas été en mesure d’aborder dans cette évaluation, notamment :
 
