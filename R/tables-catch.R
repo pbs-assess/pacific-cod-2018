@@ -44,8 +44,7 @@ catch.table <- function(dat,
 
   colnames(j) <- latex.bold(colnames(j))
 
-  #do not include 2018
-  kable(j[1:(nrow(j)-1),],
+  kable(j[1:nrow(j),],
         caption = cap,
         booktabs = TRUE,
         longtable = TRUE,
