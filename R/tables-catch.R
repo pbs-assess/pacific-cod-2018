@@ -44,7 +44,8 @@ catch.table <- function(dat,
 
   colnames(j) <- latex.bold(colnames(j))
 
-  kable(j[1:nrow(j),],
+  #cut off first three years
+  kable(j[4:nrow(j),],
         caption = cap,
         booktabs = TRUE,
         longtable = TRUE,
