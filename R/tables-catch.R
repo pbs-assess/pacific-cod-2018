@@ -22,12 +22,24 @@ catch.table <- function(dat,
 
   j[,-1] <- round(j[,-1], 0)
 
+ # Hardwire 2018 catch ... extrapolated
+  if(area=="5ABCD") {
+    j[nrow(j), c(2,4,6)] <- 230
+    j[nrow(j), c(3,5)] <- 0
+  }
+  if(area=="3CD") {
+    j[nrow(j), c(2,4,6)] <- 164
+    j[nrow(j), c(3,5)] <- 0
+  }
+
   j[,c(2,3,4,5,6)] <- apply(j[,c(2,3,4,5,6)],
                             2,
                             function(x){
                               tmp <- as.numeric(x)
                               f(tmp)
                             })
+
+
 
   colnames(j) <- c(en2fr(colnames(j)[1], translate = french, allow_missing = TRUE),
                   en2fr(colnames(j)[2], translate = french, allow_missing = TRUE, case="lower"),
