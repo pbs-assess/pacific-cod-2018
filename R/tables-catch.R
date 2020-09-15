@@ -22,25 +22,46 @@ catch.table <- function(dat,
 
   j[,-1] <- round(j[,-1], 0)
 
-  # Extrapolate the final year's catch, two different ways depending on area (See 2018 assessment doc, Section 2.2)
-  if(area == "5ABCD") {
+  # Extrapolate the final year's catch. Inflate the final year catch (Q1 and 2 only), based
+  # on the average proportion taken by end of Q2 in the past three years.
+  # two different ways depending on area (See 2018 assessment doc, Section 2.2)
+
+    if(area == "5ABCD") {
+    # First need to remove Q3 data from 2018 catch so that numbers match iscam file
+      # At the time we only had data up to the end of Q2 (Sep 30)
+      # This is a one-time hack because we are retroactively adding
+      # the extrapolation to the table
+      j18 <- dat %>%
+        dplyr::filter(year==2018, quarter<3) %>%
+        summarize(Year = year[1],
+           USA = sum(usa_catch),
+          `landings` = sum(landed_canada),
+          `released at sea` = sum(discarded_canada),
+          `total` = sum(landed_canada + discarded_canada),
+          `Total catch` = `total` + `USA`)
+      j18 <- j18[,c("Year", "landings", "released at sea", "total", "USA", "Total catch")]
+      j18[,-1] <- round(j18[,-1], 0)
+      #Replace last row of catch table
+      j[nrow(j),]  <- j18
+
+    # Now do the extrapolation based on the average proportion taken in the first 2 quarters
     # Use last three years only, not including the last year in the data
     last_year <- dat %>%
       tail(1) %>%
       pull(year)
     yrs <- (last_year - 3):(last_year - 1)
-    catch_last3yrs_first3quarters <- dat %>%
+    catch_last3yrs_first2quarters <- dat %>%
       filter(year %in% yrs) %>%
-      filter(quarter %in% 1:3) %>%
+      filter(quarter %in% 1:2) %>%
       group_by(year) %>%
-      summarize(total_catch_first3_quarters = sum(total_catch))
+      summarize(total_catch_first2_quarters = sum(total_catch))
     catch_last3yrs_all_quarters <- j %>%
       filter(Year %in% yrs) %>%
       select(Year, `Total catch`) %>%
       rename(year = Year, total_catch = `Total catch`)
-    catch_last3yrs <- catch_last3yrs_first3quarters %>%
+    catch_last3yrs <- catch_last3yrs_first2quarters %>%
       left_join(catch_last3yrs_all_quarters, by = "year") %>%
-      mutate(proportion = total_catch_first3_quarters / total_catch)
+      mutate(proportion = total_catch_first2_quarters / total_catch)
     avg_prop <- mean(catch_last3yrs$proportion)
     j$landings[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
     j$total[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
