@@ -304,7 +304,7 @@ bind_rows(pars) %>%
 ```
 
 
-```{r cpue-index-ts-hist, fig.asp=1.15, fig.cap="Modèles de normalisation de la CPUE pour le chalut commercial. Sur tous les graphiques, la ligne noire et la région ombrée en noir indiquent un indice de la CPUE avec seulement un prédicteur d’année. La ligne colorée et les rubans ombrés en couleur indiquent des indices normalisés par un ou plusieurs prédicteurs. Les trois premières rangées illustrent des modèles de normalisation qui comprennent un seul prédicteur, précisé à droite. L’avant-dernière rangée illustre un modèle de normalisation qui inclut tous les prédicteurs dans un modèle. La dernière rangée illustre un modèle de normalisation qui comprend tous les prédicteurs plus les effets aléatoires lieu-par-année (espace-temps). Les interactions lieu et lieu-navire sont ajustées comme des effets aléatoires et toutes les autres variables comme des effets fixes."}
+```{r cpue-index-ts-hist, fig.asp=1.15, fig.cap="Modèles de normalisation de la CPUE pour le chalut commercial. Sur tous les graphiques, la ligne noire et la région ombrée en noir indiquent un indice de la CPUE avec seulement un prédicteur d’année. La ligne colorée et les rubans ombrés en couleur indiquent des indices normalisés par un ou plusieurs prédicteurs. Les trois premières rangées illustrent des modèles de normalisation qui comprennent un seul prédicteur, précisé à droite. L’avant-dernière rangée illustre un modèle de normalisation qui inclut tous les prédicteurs dans un modèle. La dernière rangée illustre un modèle de normalisation qui comprend tous les prédicteurs plus les effets aléatoires lieu-par-année (espace-temps). Les interactions lieu et lieu-année sont ajustées comme des effets aléatoires et toutes les autres variables comme des effets fixes."}
 make_cpue_ts_dat(cpue_pred_hist) %>% make_cpue_ts_plot() +
   ggtitle("1956-1995 CPUE") +
   scale_colour_brewer(palette = "Dark2") +
@@ -312,7 +312,7 @@ make_cpue_ts_dat(cpue_pred_hist) %>% make_cpue_ts_plot() +
   ylab("CPUE divisée par la moyenne géométrique")
 ```
 
-(ref:caption-cpue-index-ts-modern) Même chose que pour la figure \@ref(fig:cpue-index-ts-hist), mais pour les données de 1996 à 2017. Les interactions lieu, navire et lieu-navire sont ajustées comme des effets aléatoires et toutes les autres variables comme des effets fixes.
+(ref:caption-cpue-index-ts-modern) Même chose que pour la figure \@ref(fig:cpue-index-ts-hist), mais pour les données de 1996 à 2017. Les interactions lieu, navire et lieu-année sont ajustées comme des effets aléatoires et toutes les autres variables comme des effets fixes.
 
 ```{r cpue-index-ts-modern, fig.asp=1.55, fig.cap="(ref:caption-cpue-index-ts-modern)", out.width="5.2in", fig.width=6.5}
 make_cpue_ts_dat(cpue_pred_modern) %>% make_cpue_ts_plot() +
