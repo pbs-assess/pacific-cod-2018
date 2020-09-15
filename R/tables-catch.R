@@ -22,14 +22,38 @@ catch.table <- function(dat,
 
   j[,-1] <- round(j[,-1], 0)
 
- # Hardwire 2018 catch ... extrapolated
-  if(area=="5ABCD") {
-    j[nrow(j), c(2,4,6)] <- 230
-    j[nrow(j), c(3,5)] <- 0
-  }
-  if(area=="3CD") {
-    j[nrow(j), c(2,4,6)] <- 164
-    j[nrow(j), c(3,5)] <- 0
+  # Extrapolate the final year's catch, two different ways depending on area (See 2018 assessment doc, Section 2.2)
+  if(area == "5ABCD") {
+    # Use last three years only, not including the last year in the data
+    last_year <- dat %>%
+      tail(1) %>%
+      pull(year)
+    yrs <- (last_year - 3):(last_year - 1)
+    catch_last3yrs_first3quarters <- dat %>%
+      filter(year %in% yrs) %>%
+      filter(quarter %in% 1:3) %>%
+      group_by(year) %>%
+      summarize(total_catch_first3_quarters = sum(total_catch))
+    catch_last3yrs_all_quarters <- j %>%
+      filter(Year %in% yrs) %>%
+      select(Year, `Total catch`) %>%
+      rename(year = Year, total_catch = `Total catch`)
+    catch_last3yrs <- catch_last3yrs_first3quarters %>%
+      left_join(catch_last3yrs_all_quarters, by = "year") %>%
+      mutate(proportion = total_catch_first3_quarters / total_catch)
+    avg_prop <- mean(catch_last3yrs$proportion)
+    j$landings[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
+    j$total[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
+    j$`Total catch`[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
+    j$`released at sea`[nrow(j)] <- 0
+    j$USA[nrow(j)] <- 0
+  }else if(area == "3CD") {
+    # Use the last year's values
+    j$landings[nrow(j)] <- j$`Total catch`[nrow(j) - 1]
+    j$total[nrow(j)] <- j$`Total catch`[nrow(j) - 1]
+    j$`Total catch`[nrow(j)] <- j$`Total catch`[nrow(j) - 1]
+    j$`released at sea`[nrow(j)] <- 0
+    j$USA[nrow(j)] <- 0
   }
 
   j[,c(2,3,4,5,6)] <- apply(j[,c(2,3,4,5,6)],
@@ -38,8 +62,6 @@ catch.table <- function(dat,
                               tmp <- as.numeric(x)
                               f(tmp)
                             })
-
-
 
   colnames(j) <- c(en2fr(colnames(j)[1], translate = french, allow_missing = TRUE),
                   en2fr(colnames(j)[2], translate = french, allow_missing = TRUE, case="lower"),
