@@ -63,9 +63,22 @@ catch.table <- function(dat,
       left_join(catch_last3yrs_all_quarters, by = "year") %>%
       mutate(proportion = total_catch_first2_quarters / total_catch)
     avg_prop <- mean(catch_last3yrs$proportion)
-    j$landings[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
-    j$total[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
-    j$`Total catch`[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
+
+    # Sadly, we need to hardwire the number this time, so the number here matches the iscam files
+    # There must have been more catch added to Q2
+    # after we made the iscam data files. The date on the pcod-cache/pacific-cod.rds file
+    # is Oct 25 2018 so we would have pulled it again.
+    # BUT this is the way to do it going forward!
+
+    # j$landings[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
+    # j$total[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
+    # j$`Total catch`[nrow(j)] <- j$`Total catch`[nrow(j)] / avg_prop
+    # j$`released at sea`[nrow(j)] <- 0
+    # j$USA[nrow(j)] <- 0
+
+    j$landings[nrow(j)] <- 230
+    j$total[nrow(j)] <- 230
+    j$`Total catch`[nrow(j)] <- 230
     j$`released at sea`[nrow(j)] <- 0
     j$USA[nrow(j)] <- 0
   }else if(area == "3CD") {
