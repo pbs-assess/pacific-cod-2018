@@ -582,7 +582,7 @@ Posterior estimates of biomass from the model-averaged set are shown together in
 # MODEL-AVERAGED REFERENCE POINTS AND DECISION TABLES
 Reference points were calculated for each area using model-averaged blended posteriors as described above. The results are shown in Table \@ref(tab:tab-ref-points-table-avg-5abcd) for Area 5ABCD and Table \@ref(tab:tab-ref-points-table-avg-3cd) for Area 3CD. Biomass and recruitment posterior medians with credible intervals and MPD values are also provided in Tables \@ref(tab:tab-post-biomass-avg-5abcd) and \@ref(tab:tab-post-recr-avg-5abcd) for Area 5ABCD and Tables \@ref(tab:tab-post-biomass-avg-3cd) and \@ref(tab:tab-post-recr-avg-3cd) for Area 3CD.
 
-Performance measures were calculated over a sequence of alternative 2018 projected catch levels and are based on posterior samples for a one-year projection to the end of 2019. Uncertainty enters the projections through parameter uncertainty propagated from the modeled time series, and recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
+Performance measures were calculated over a sequence of alternative 2019 projected catch levels and are based on posterior samples for a one-year projection to the end of 2020. Uncertainty enters the projections through parameter uncertainty propagated from the modeled time series, and recruitment anomalies for the projection year, which were drawn randomly from a normal distribution, $\mathcal{N}(0,\sigma_R^2)$. The following performance measures were evaluated:
 
 1. $P(B_{2020} < B_{2019})$
 1. $P(F_{2019} > F_{2018})$
