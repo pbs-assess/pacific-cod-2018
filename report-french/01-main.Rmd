@@ -515,122 +515,107 @@ Pour chaque stock, deux analyses de sensibilité ont été effectuées, dans les
 
 \clearpage
 
-# PROJECTIONS ET TABLEAUX DE DÉCISION {#sec:projections-and-decision-tables}
+# MODÈLE COMPOSITE COMBINÉ 
 
-Les mesures du rendement ont été calculées sur une séquence de niveaux de prises projetés de rechange pour 2018 et sont fondées sur une projection d’un an jusqu’en 2019. L’incertitude entre dans les projections par des anomalies du recrutement pour l’année de projection, qui ont été tirées au hasard à partir d’une distribution normale, $\mathcal{N}(0,\sigma_R^2)$. Les mesures du rendement suivantes ont été évaluées :
+La réunion régionale d’examen par les pairs tenue en octobre 2018 portait sur le modèle du scénario de référence et la série de passages de sensibilité décrits ci-dessus. Les participants sont arrivés à la conclusion qu’aucun modèle ne représentait adéquatement l’incertitude associée à cette évaluation des stocks. Par conséquent, les participants à la réunion ont convenu d’adopter une approche qui combine les passages de modèle en vue d’inclure un plus grand éventail d’incertitudes plausibles associées à cette espèce dans chaque zone.
 
-1. $P(B_{2019} < B_{2018})$
-1. $P(F_{2018} > F_{2017})$
-1. $P(B_{2019} < PRL)$
-1. $P(B_{2019} < RSS)$
-1. $P(F_{2018} > TEL)$
+@forrest2013 ont utilisé une approche de calcul de la moyenne des modèles pour préparer des tableaux de décision fondés sur des échantillons a posteriori combinés provenant de plusieurs scénarios de sensibilité différents. Ils cherchaient ainsi à résoudre certaines des principales incertitudes insolubles associées à l’évaluation des stocks. Une approche semblable a été utilisée pour l’évaluation de 2011 du merlu du Pacifique [@stewart2011], où deux modèles d’évaluation des stocks structurellement différents ont été jugés tout aussi plausibles par le comité scientifique et statistique du Pacific Fishery Management Council. Une approche « d’ensemble » similaire est appliquée dans les évaluations annuelles du flétan du Pacifique, pour lesquelles quatre modèles structurellement distincts sont utilisés lors de la préparation des tableaux de décision [@stewart2016]. Deux évaluations récentes des stocks de poissons de fond de la Colombie-Britannique (sébastolobe à courtes épines [@starr2017] et goberge de l’Alaska [@starr2018]), qui étaient fondées sur le même modèle intégré des prises selon l’âge de type différence-délai, ont également adopté cette approche.
 
-où
+Pour la zone 5ABCD, les sept modèles suivants ont été sélectionnés parce qu’ils représentent des hypothèses de stocks et des sources d’incertitude qui ne peuvent être écartées étant donné la structure actuelle du modèle et la disponibilité des données :
 
-1. $RSS$ (point de référence supérieur du stock) est la moyenne historique des estimations de la biomasse de 1956 à 2004 (les deux zones).
-1. $PRL$ (point de référence limite) est la biomasse estimée la plus basse reconnue comme constituant un état indésirable à éviter. Pour la zone 5ABCD, il s’agit de l’estimation de la biomasse pour 2000. Pour la zone 3CD, il s’agit de l’estimation de la biomasse pour 1986.
-1. $TEL$ (taux d’exploitation de référence limite) est le taux moyen de mortalité par pêche de 1956 à 2004 (les deux zones).
+1.	Scénario 1a – Modèle de référence;
+2.	Scénario 2d – Établir la moyenne de la distribution de probabilité a priori pour les relevés synoptiques $\ln(q)$ = $\ln(1.0)$ (calculée au prorata des zones profondeur-strate de la zone 5AB et 5CD);
+3.	Scénario 2e – Augmenter l’écart-type (ET) du relevé synoptique de $\ln(q)$ à 0,6;
+4.	Scénario 3a – Définir les paramètres de la distribution de probabilité a priori pour $\ln(M)$ à $\mathcal{N}\sim(0.4,0.1)$;
+5.	Scénario 5a – Établir l’âge marqué au moment du recrutement = 3 ans;
+6.	Scénario 6b – Réduire le terme d’erreur d’observation globale $\sigma_O = 0.15$;
+7.	Scénario 7b – Réduire l’écart-type de la probabilité de l’ajustement à la moyenne du poids moyen annuel $\sigma_W = 0.15$.
 
-Pour de plus amples renseignements sur les points de référence, voir la section \@ref(sec:reference-points).
+Les estimations a posteriori de la biomasse établies à partir des six scénarios de sensibilité sont présentées ensemble sur la figure \@ref(fig:fig-model-average-biomass-comp-5abcd). Les estimations a posteriori combinées de la biomasse sont présentées à la figure \@ref(fig:fig-model-average-biomass-5abcd). Les projections de la biomasse à partir de l’ensemble utilisant la moyenne des modèles sont présentées à la figure \@ref(fig:fig-model-average-biomass-5abcd-proj).
 
-Les mesures du rendement susmentionnées visent à présenter les probabilités d’atteindre les états « indésirables » selon les niveaux de prises de rechange projetés pour 2018. Par exemple, on obtient une mesure du rendement fondée sur la biomasse « indésirable » lorsque la biomasse projetée pour 2019 est inférieure au PRL, c.-à-d. que $B_{2019}/PRL < 1$. On obtient une mesure du rendement fondée sur la mortalité par pêche « indésirable » lorsque la mortalité par pêche de 2014 projetée est supérieure au point de référence, c.-à-d. que $F_{2018}/TEL > 1$.
+Pour la zone 3CD, les sept modèles suivants ont été sélectionnés parce qu’ils représentent des hypothèses de stocks et des sources d’incertitude qui ne peuvent être écartées étant donné la structure actuelle du modèle et la disponibilité des données :
 
-Les probabilités de ces états sont mesurées comme la proportion d’échantillons a posteriori du rodage qui répondent aux critères ci-avant (proportion d’échantillons a posteriori < 1 pour les mesures du rendement fondées sur la biomasse; proportion d’échantillons a posteriori > 1 pour les mesures du rendement fondées sur la mortalité par pêche).
+1.	Scénario 1a – Modèle de référence;
+2.	Scénario 2d – Établir la moyenne de la distribution de probabilité a priori pour le relevé synoptique $\ln(q)$ = $\ln(1.0)$;
+3.	Scénario 2e – Augmenter l’écart-type (ET) du relevé synoptique de $\ln(q)$ à 0,6;
+4.	Scénario 3a – Définir les paramètres de la distribution de probabilité a priori pour $\ln(M)$ à $\mathcal{N}\sim(0.4,0.1)$;
+5.	Scénario 5a – Établir l’âge marqué au moment du recrutement = 3 ans;
+6.	Scénario 6b – Réduire le terme d’erreur d’observation globale $\sigma_O = 0.15$;
+7.	Scénario 7b – Réduire l’écart-type de la probabilité de l’ajustement à la moyenne du poids moyen annuel $\sigma_W = 0.15$.
 
-@forrest2013 ont utilisé une approche de calcul de la moyenne des modèles pour préparer des tableaux de décision fondés sur des échantillons a posteriori combinés provenant de cas présentant différentes sensibilités. Ils cherchaient ainsi à résoudre certaines des principales incertitudes insolubles associées à l’évaluation des stocks. Une approche semblable a été utilisée dans l’évaluation de 2011 du merlu du Pacifique [@stewart2011], où deux autres modèles d’évaluation des stocks ont été jugés tout aussi possibles par le Comité scientifique et statistique du Pacific Fishery Management Council. Une approche « d’ensemble » semblable est appliquée dans les évaluations annuelles du flétan du Pacifique, pour lesquelles quatre modèles structurellement distincts sont utilisés [@stewart2016].
+Les estimations a posteriori de la biomasse établies à partir de l’ensemble utilisant la moyenne des modèles sont présentées à la figure \@ref(fig:fig-model-average-biomass-comp-3cd). Les estimations a posteriori combinées de la biomasse sont présentées à la figure \@ref(fig:fig-model-average-biomass-3cd). Les projections de la biomasse à partir de l’ensemble utilisant la moyenne des modèles sont présentées à la figure \@ref(fig:fig-model-average-biomass-3cd-proj).
 
-Dans les sections qui suivent, nous présentons les tableaux de décision du scénario de référence pour chaque zone, puis les tableaux de décision de rechange « fondés sur la moyenne des modèles » qui intègrent l’incertitude des modèles du scénario de référence (section \@ref(sec:reference-case-models)) et un sous-ensemble des cas de sensibilité ci-avant (section \@ref(sec:sensitivity-analyses)). Les détails de l’approche de calcul de la moyenne pour les zones 5ABCD et 3CD sont donnés ci-après.
+# POINTS DE RÉFÉRENCE UTILISANT LA MOYENNE DES MODÈLES ET TABLES DE DÉCISION
 
-Nous n’avons pas tenté d’attribuer des pondérations différentes aux modèles de rechange pour préparer les résultats fondés sur la moyenne des modèles.
+Les points de référence ont été calculés pour chaque zone en utilisant la moyenne des modèles des estimations a posteriori combinées, comme décrit ci-dessus. Les résultats sont présentés dans le tableau \@ref(tab:tab-ref-points-table-avg-5abcd) pour la zone 5ABCD et le tableau \@ref(tab:tab-ref-points-table-avg-3cd) pour la zone 3CD. La biomasse et les médianes du recrutement a posteriori sont également fournies avec les intervalles de crédibilité et les valeurs de la DPM dans les tableaux \@ref(tab:tab-post-biomass-avg-5abcd) et \@ref(tab:tab-post-recr-avg-5abcd) pour la zone 5ABCD et les tableaux \@ref(tab:tab-post-biomass-avg-3cd) et \@ref(tab:tab-post-recr-avg-3cd) pour la zone 3CD.
 
-## TABLEAUX DE DÉCISION DU SCÉNARIO DE RÉFÉRENCE
+Les mesures du rendement ont été calculées sur une série d’autres niveaux de prises projetés de 2018 et sont fondées sur des échantillons a posteriori pour une projection d’un an jusqu’à la fin de 2019. L’incertitude entre dans les projections par l’incertitude des paramètres propagée par la série chronologique modélisée et des anomalies du recrutement pour l’année de projection, qui ont été tirées de manière aléatoire à partir d’une distribution normale, $\mathcal{N}(0,\sigma_R^2)$. Les mesures du rendement suivantes ont été évaluées :
 
-### Zone 5ABCD
+1. $P(B_{2020} < B_{2019})$
+1. $P(F_{2019} > F_{2018})$
+1. $P(B_{2020} < PRL)$
+1. $P(B_{2020} < RSS)$
+1. $P(F_{2019} > TEL)$
 
-Le tableau de décision pour le modèle du scénario de référence de la zone 5ABCD est fourni dans le tableau \@ref(tab:tab-decision-avg-5abcd). Des projections ont été établies pour une fourchette de niveaux de prises de 2018 allant de `r dt.5abcd.min.catch` tonnes métriques (t) à 3 000 t, soit environ trois fois le TAC combiné actuel de la zone 5ABCDE, qui est de 950 t (tableau \@ref(tab:tab-tac)).
+où :
 
-La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de `r dt.5abcd.b.2019.2018.c0` % pour des prises nulles en 2018 à `r dt.5abcd.b.2019.2018.cmax` % pour des prises de `r dt.5abcd.max.catch` t.
+1. $RSS$ (point de référence supérieur du stock) est la moyenne historique des estimations de la biomasse de 1956 à 2004.
+1. $PRL$ (point de référence limite) est la biomasse estimée la plus basse reconnue comme constituant un état indésirable à éviter. Pour la zone 5ABCD, il s’agit de la biomasse estimée pour 2000. Pour la zone 3CD, il s’agit de la biomasse estimée pour 1986.
+1. $TEL$ (taux d’exploitation de référence limite) est le taux moyen de mortalité par pêche de 1956 à 2004.
 
-La probabilité que la biomasse de 2019 soit inférieure au PRL allait de `r dt.5abcd.b.2019.lrp.c0` % à `r dt.5abcd.b.2019.lrp.cmax` % pour la fourchette des niveaux de prises considérés. Il y avait une probabilité de `r dt.5abcd.b.2019.usr.cmax` % que la biomasse de 2019 soit inférieure au RSS pour toute la fourchette des niveaux de prises considérés.
+Pour de plus amples renseignements sur les points de référence, voir la section \@ref(reference-points).
+Les mesures du rendement susmentionnées visent à présenter les probabilités d’atteindre les états « indésirables » selon les niveaux de prises de rechange projetés pour 2018. Par exemple, on obtient une mesure du rendement fondée sur la biomasse « indésirable » lorsque la biomasse projetée pour 2019 est inférieure au PRL, c.-à-d. que $B_{2019}/PRL < 1$. On obtient une mesure du rendement fondée sur la mortalité par pêche « indésirable » lorsque la mortalité par pêche de 2018 projetée est supérieure au point de référence, c.-à-d. que $F_{2018}/TEL > 1$.
 
-La probabilité que la mortalité par pêche en 2018 soit supérieure à la mortalité par pêche en 2017 variait de `r dt.5abcd.f.2018.2017.c0` % à `r dt.5abcd.f.2018.2017.cmax` %. La probabilité que la mortalité par pêche en 2018 soit supérieure au TEL variait également de 0 % à 100 %.
+Les probabilités de ces états sont mesurées comme la proportion d’échantillons a posteriori amincis du rodage qui répondent aux critères ci-avant (proportion d’échantillons a posteriori < 1 pour les mesures du rendement fondées sur la biomasse; proportion d’échantillons a posteriori > 1 pour les mesures du rendement fondées sur la mortalité par pêche). Il convient de noter que les résultats de la DPM ne sont pas utilisés pour élaborer l'avis.
 
-Pour un niveau de prises de 900 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de `r dt.5abcd.b.2019.lrp.c900` % que la biomasse de 2019 sera inférieure au PRL et une probabilité de `r dt.5abcd.b.2019.usr.c900` % que la biomasse de 2019 sera inférieure au RSS.
+Des tableaux de décision résumant la probabilité de dépassement des points de référence sur une fourchette de prises fixes pour une projection d’un an ont été préparés pour chaque zone à l’aide des échantillons a posteriori combinés non pondérés tirés d’un ensemble de six scénarios de sensibilité, plus le scénario de référence (l’ensemble de la « moyenne des modèles »). Pour chaque mesure du rendement, sous chaque autre niveau de prises de 2018, nous avons combiné des vecteurs de 1 000 échantillons a posteriori de rodage de chacun des sept modèles en un seul vecteur de 7 000 échantillons. Nous avons ensuite calculé les probabilités des mesures du rendement à partir des échantillons combinés. Nous n’avons pas tenté d’attribuer des pondérations différentes aux autres scénarios de sensibilité.
 
-### Zone 3CD
+## Zone 5ABCD
 
-Le tableau de décision pour le modèle du scénario de référence de la zone 3CD est fourni dans le tableau \@ref(tab:tab-decision-avg-3cd). Des projections ont été faites pour une fourchette de niveaux de prises de 2018 allant de `r dt.3cd.min.catch` à 1 500 t, soit environ trois fois le TAC actuel de 500 t (tableau \@ref(tab:tab-tac)).
+Les probabilités du tableau de décision « fondé sur la moyenne des modèles » pour les zones 5ABCD sont présentées dans le tableau \@ref(tab:tab-decision-avg-5abcd). En résumé :
 
-La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de `r dt.3cd.b.2019.2018.c0` % pour des prises nulles en 2018 à `r dt.3cd.b.2019.2018.cmax` % pour des prises de `r dt.3cd.max.catch` t.
+- P$ (B_{2020} < B_{2019})$ variait de 12 % à 89 % de la fourchette des niveaux de prises de 2019.
+- $P(F_{2019} > F_{2018})$ variait de < 1 % à > 99 %. Les prises de 2018 ont été extrapolées à environ 200 t, ce qui explique l’augmentation de la probabilité entre 200 et 300 t.
+- $P(B_{2020} < PRL)$ variait de <1 % à 11 %.
+- $P(B_{2020} < RSS)$ variait de 98 % à 99 %.
+- P$ (F_{2019} > TEL) $ variait de <1 % à 95 %.
 
-La probabilité que la biomasse de 2019 soit inférieure au PRL était de 0% pour la fourchette des niveaux de prises considérés. Il y avait une probabilité de 98 % à 99 % que la biomasse de 2019 soit inférieure au RSS pour la fourchette des niveaux de prises considérés.
+Pour un niveau de prises de 900 t en 2019, proche du TAC de 2017, il y a une probabilité estimée de 1 % que la biomasse de 2020 sera inférieure au PRL et une probabilité de 99 % que la biomasse de 2019 sera inférieure au RSS.
 
-La probabilité que la mortalité par pêche en 2018 soit supérieure à la mortalité par pêche en 2017 variait de `r dt.3cd.f.2018.2017.c0` % à 100 %. La probabilité que la mortalité par pêche en 2018 soit supérieure au TEL variait également de `r dt.3cd.f.2018.lrr.c0` % à 100 %.
+## Zone 3CD
 
-Pour un niveau de prises de 500 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de `r dt.3cd.b.2019.lrp.c500` % que la biomasse de 2019 sera inférieure au PRL et une probabilité de `r dt.3cd.b.2019.usr.c500` % que la biomasse de 2019 sera inférieure au RSS.
+Les probabilités du tableau de décision « fondé sur la moyenne des modèles » pour les zones 3CD sont présentées dans le tableau \@ref(tab:tab-decision-avg-3cd). En résumé :
 
-## TABLEAUX DE DÉCISION FONDÉS SUR LA MOYENNE DES MODÈLES
+- P$ (B_{2020} < B_{2019}) variait de 76 % à 89 % de la fourchette des niveaux de prises de 2019.
+- $P(F_{2019} > F_{2018})$ variait de < 1 % à > 99 %. Les prises de 2018 ont été extrapolées à environ 164 t, ce qui explique l’augmentation de la probabilité entre 100 et 200 t.
+- $P(B_{2020} < PRL)$ variait de <1 % à 1%.
+- $P(B_{2020} < RSS)$ variait de 95 % à 97 %.
+- P$ (F_{2019} > TEL) $ variait de <1 % à 96%.
 
-Nous avons choisi quatre scénarios de sensibilité (plus le scénario de référence) à inclure dans un tableau de décision fondé sur la moyenne des modèles pour chaque zone. Les scénarios de sensibilité ci-après ont été choisis parce qu’ils ont produit des résultats possibles qui divergeaient des modèles du scénario de référence. L’inclusion de ces échantillons a posteriori dans le tableau de décision pourrait donc mieux circonscrire l’incertitude en raison des différentes hypothèses reflétées dans les scénarios de sensibilité. Toutefois, veuillez noter que les choix des scénarios de sensibilité inclus dans les tableaux fondés sur la moyenne des modèles devraient être considérés comme des éléments à discuter et convenir à la prochaine réunion régionale d’examen par les pairs.
-
-Les vecteurs de 1 000 échantillons a posteriori retirés par le rodage dans chacun des cinq modèles, pour chaque mesure du rendement, sous chaque niveau des prises de rechange de 2018, ont été combinés en un seul vecteur de 5 000 échantillons et les probabilités de mesures du rendement ont été calculées à partir des échantillons combinés.
-
-### Zone 5ABCD
-
-Pour la zone 5ABCD, nous présentons un tableau de décision de rechange avec les probabilités calculées à partir des estimations a posteriori combinées des mesures du rendement des cinq modèles suivants :
-
-1. Le scénario de référence;
-2. Le scénario de sensibilité sans les données sur les CPUE commerciales (Sc 1f);
-3. Le scénario de sensibilité avec la valeur a priori pour le bassin de la Reine-Charlotte de $q$ : moyenne de $\ln(q)$ = $\ln(0,1869 \cdot 0,65)$ (Sc 2a);
-4. Le scénario de sensibilité avec la valeur a priori de ln($M$) : $\mathcal{N}\sim(0.4,0.1)$ (Sc 3b);
-5. Le scénario de sensibilité avec $\sigma_0 = 0,15$ (Sc 6b).
-
-Les probabilités du tableau de décision « fondé sur la moyenne des modèles » pour les zones 5ABCD sont présentées dans le tableau \@ref(tab:tab-decision-avg-5abcd).
-
-La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de 10 % pour des prises nulles en 2018 à 89 % pour des prises de 3 000 t.
-
-La probabilité que la biomasse de 2019 soit inférieure au PRL variait de 82 à 96% pour la fourchette des niveaux de prises considérés. Il y avait une probabilité de 100 % que la biomasse de 2019 soit inférieure au RSS pour toute la fourchette des niveaux de prises considérés.
-
-La probabilité que la mortalité par pêche en 2018 soit supérieure à la mortalité par pêche en 2017 variait de 0,0 % à 100 %. La probabilité que la mortalité par pêche en 2018 soit supérieure au TEL variait également de 0,0 % à 100 %.
-
-Pour un niveau de prises de 900 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de 89 % que la biomasse de 2019 sera inférieure au PRL et une probabilité de 100 % que la biomasse de 2019 sera inférieure au RSS.
-
-### Zone 3CD
-
-Pour la zone 3CD, nous présentons un tableau de décision de rechange avec les probabilités calculées à partir des estimations a posteriori combinées des mesures du rendement des cinq modèles suivants :
-
-1. Le scénario de référence;
-2. Le scénario de sensibilité sans les données sur les CPUE commerciales (Sc 1f);
-3. Le scénario de sensibilité avec l’ET de la valeur a priori pour le relevé synoptique sur la COIV = 0,448 (Sc 2a);
-4. Le scénario de sensibilité avec la valeur a priori de ln($M$) : $\mathcal{N}\sim(0.4,0.1)$ (Sc 3b);
-5. Le scénario de sensibilité avec $\sigma_0 = 0,15$ (Sc 6b).
-
-Les probabilités du tableau de décision « fondé sur la moyenne des modèles » pour les zones 3CD sont présentées dans le tableau \@ref(tab:tab-decision-avg-3cd).
-
-Pour la plupart des mesures du rendement, les probabilités étaient semblables à celles du modèle du scénario de référence.
-
-La probabilité que la biomasse de 2019 soit inférieure à celle de 2018 variait de 75 % pour des prises nulles en 2018 à 91 % pour des prises de 1 500 t.
-
-La probabilité que la biomasse de 2019 soit inférieure au PRL était de 18 % pour la fourchette des niveaux de prises considérés. La probabilité que la biomasse de 2019 soit inférieure au RSS variait de 98 à 99 % pour la fourchette des niveaux de prises considérés.
-
-La probabilité que la mortalité par pêche en 2018 soit supérieure à la mortalité par pêche en 2017 variait de 0 % à 100 % pour la fourchette des niveaux de prises considérés. La probabilité que la mortalité par pêche en 2018 soit supérieure au TEL variait également de 0,0 % à 98 %.
-
-Pour un niveau de prises de 500 t en 2018, proche du TAC de 2017, il y a une probabilité estimée de 18 % que la biomasse de 2019 sera inférieure au PRL et une probabilité de 99 % que la biomasse de 2019 sera inférieure au RSS.
+Pour un niveau de prises de 500 t en 2019, proche du TAC de 2017, il y a une probabilité estimée de 18 % que la biomasse de 2020 sera inférieure au PRL et une probabilité de 99 % que la biomasse de 2020 sera inférieure au RSS.
 
 # SOMMAIRE ET RECOMMANDATIONS DE RECHERCHE
 
-Nous avons présenté les autres tableaux de décision fondés sur la moyenne des modèles pour les zones 5ABCD et 3CD dans le but d’intégrer de façon plus exhaustive l’incertitude structurelle importante des évaluations dans les avis communiqués aux gestionnaires des pêches et aux intervenants. Toutefois, nous insistons sur les importantes incertitudes structurelles que nous n’avons pas été en mesure d’aborder dans cette évaluation, notamment :
+Nous avons présenté les autres tableaux de décision fondés sur la moyenne des modèles pour les zones 5ABCD et 3CD dans le but d’intégrer de façon plus exhaustive l’incertitude structurelle importante des évaluations dans les avis communiqués aux gestionnaires des pêches et aux intervenants. L’échelle absolue de la biomasse estimée dans les deux zones évaluées, déterminée par la capturabilité estimée (*q*) dans les indices du relevé, a été considérée comme le principal axe d’incertitude dans la présente évaluation. Plusieurs analyses de sensibilité ont été effectuées pour évaluer l’ampleur possible de cette incertitude. De plus, l’incertitude dans l’échelle relative de la biomasse entre les époques historiques et modernes a également été reconnue comme un axe important d’incertitude, en particulier pour la zone 5ABCD. Toutefois, nous insistons sur les importantes incertitudes structurelles que nous n’avons pas été en mesure d’aborder dans cette évaluation, notamment :
 
-1. Les effets de l’hypothèse d’une sélectivité constante dans la pêche au chalut;
-1. L’effet de l’hypothèse selon laquelle le recrutement dans la pêche, les relevés et la biomasse féconde sont en lame de couteau à l’âge de 2 ans;
+1. Les effets de l’hypothèse de la sélectivité constante sur chacune des deux périodes dans la pêche au chalut. Il est peu probable que cette hypothèse soit exacte, compte tenu des variations connues dans les règlements sur la taille des mailles et dans le comportement de la pêche;
+1. L’effet de l’hypothèse selon laquelle le recrutement dans la pêche, les relevés et la biomasse féconde sont en lame de couteau à l’âge de 2 ans. Le recrutement en lame de couteau est une hypothèse structurelle associée au modèle de la différence de type différence-délai. Pour dissiper cette incertitude, il faudrait adopter une autre approche de modélisation;
 1. L’incidence de l’incertitude entourant la structure des stocks sur la compréhension des tendances de l’abondance;
 1. L’incidence de l’incertitude entourant l’ampleur des rejets et prises étrangères historiques;
-1. L’incidence du changement du niveau de présence des observateurs à bord et de la représentativité des échantillons de longueur provenant des prises commerciales.
+1. L’incidence de la modification de la présence des observateurs à bord et de la représentativité des échantillons de longueur des prises commerciales. Cette question est particulièrement importante pour interpréter les échantillons triés prélevés dans les prises débarquées par rapport aux échantillons non triés prélevés dans les prises lorsqu’elles sont remontées à bord.
+1. La qualité des données sur les prises et l’effort disponibles pour cette évaluation a beaucoup changé à partir de 1996. Avant 1996, les données étaient autodéclarées par les pêcheurs, avec une fiabilité incertaine. Les données trait par trait sont compilées depuis 1991 seulement, ce qui signifie que l’emplacement et la profondeur des prises ne peuvent être connus qu’approximativement avant 1991. Avant 1991, l’effort et les prises étaient combinés quotidiennement dans des « localités » spatiales définies, encore une fois avec une fiabilité inconnue. Cela signifie que les analyses effectuées sur les données sur les prises et l’effort d’avant 1996 comportaient moins de variables disponibles pour normaliser l’effet « d’abondance » par rapport aux données d’après 1995. De plus, toutes les données dépendantes de la pêche (avant et après 1996) sont influencées par des considérations économiques et d’autres considérations non biologiques et il est donc difficile ou impossible de les normaliser. Par conséquent, les données des CPUE doivent être considérées comme potentiellement biaisées et peut-être trompeuses. Il s’agit d’une incertitude importante parce que les évaluations des stocks des deux zones dépendent fortement de la série des CPUE d’avant 1996, comme l’indiquent les passages de sensibilité 1e et 1f, qui estiment des effectifs des stocks beaucoup plus grands en l’absence de la série des CPUE d’avant 1996. Par ailleurs, les résultats pour les deux stocks sont peu sensibles à la suppression des données des CPUE d’après 1995, probablement en raison de la présence des relevés indépendants de la pêche concomitants.
 
-L’incertitude est donc sous-représentée dans cette évaluation.
+L’incertitude est donc sous-représentée dans cette évaluation. Nous formulons un certain nombre de recommandations de recherche en vue de réduire les incertitudes pour les stocks de morue du Pacifique en Colombie-Britannique :
+
+1. Étudier l’application d’un modèle fondé sur la longueur pour caractériser les changements possibles de la sélectivité dans la pêche au chalut, en particulier l’incidence du changement des règlements sur la taille des mailles et en raison du fait que les classes de longueur plus petites sont sous-représentées dans les échantillons de longueur avant 1996.
+1. Étudier la possibilité d’un mélange entre les stocks à l’intérieur et à l’extérieur de la Colombie-Britannique. Des échantillons génétiques ont été prélevés sur des géniteurs dans le détroit d’Hécate et le bassin de la Reine-Charlotte, mais ces données n’ont pas encore été analysées. D’autres sources d’information pourraient également être prises en compte, comme la comparaison des tendances dans les eaux de l’Alaska, la comparaison des tendances avec d’autres pêches commerciales de la Colombie-Britannique, la microchimie des otolithes ou les similitudes/différences dans d’autres facteurs biologiques entre les zones.
+1. Explorer l’application d’outils géostatistiques aux données géospatiales de l’ensemble de la côte pour élaborer des indices de l’abondance et mieux refléter les caractéristiques spatio-temporelles du stock.
+1. Collaborer avec l’industrie de la pêche afin de mieux comprendre l’ampleur des prises étrangères et des rejets historiques, ainsi que les facteurs de changement dans l’effort de pêche durant la période historique, ce qui pourrait améliorer la compréhension de la relation entre les CPUE commerciales et l’abondance et permettre de mieux caractériser l’incertitude due aux changements historiques dans la pêche.
+1. Continuer d’élaborer des modèles de simulation de la rétroaction pour cette espèce [@forrest2018; @carruthers2018] pour évaluer, *inter alia*, les coûts et les avantages de l’inclusion des données sur la composition selon l’âge dans l’élaboration des avis pour cette espèce, compte tenu de la rareté actuelle des données sur la détermination de l’âge, des dépenses liées à la préparation des entailles de nageoires et de l’incertitude entourant la mesure de l’âge. Ces analyses pourraient également servir à évaluer le rendement relatif du modèle de type différence-délai et des autres méthodes d’évaluation riches en données ou limitées en données.
 
 # REMERCIEMENTS
 
-Nous remercions Elise Keppel (Station biologique du Pacifique), qui a reconstitué les données historiques sur les captures commerciales par unité d’effort. Son travail à l’égard de cet important ensemble de données pour la présente évaluation a permis de disposer d’une analyse entièrement reproductible et sera utile pour les évaluations futures d’autres stocks. De façon plus générale, son aide avec le progiciel gfplot R et ses requêtes SQL soigneusement construites ont grandement facilité l’extraction des données pour cette évaluation. Nous remercions Norm Olsen pour ses conseils sur la reconstruction historique des captures commerciales par unité d’effort. Nous remercions également Greg Workman et Maria Surry (Station biologique du Pacifique) pour leur soutien et leurs conseils lors de la préparation de cette évaluation. Nous remercions Bruce Turris et Brian Mose (Canadian Groundfish Research and Conservation Society) pour les conseils qu’ils ont donnés aux auteurs.
+Nous remercions Elise Keppel (Station biologique du Pacifique), qui a reconstitué les données historiques sur les captures par unité d’effort dans les pêches commerciales. Son travail sur les données pour cette évaluation a permis de créer une analyse entièrement reproductible et sera utile pour les évaluations futures de ce stock et d’autres stocks. Matthew Grinnell (Station biologique du Pacifique) a participé à la préparation initiale du présent document. Norm Olsen, Greg Workman et Maria Surry (Station biologique du Pacifique) ont fourni du soutien et des conseils pour la préparation des données en vue de l’évaluation. Nous remercions Bruce Turris et Brian Mose (Canadian Groundfish Research and Conservation Society) de leurs conseils au sujet des activités des pêches et des exigences relatives à l’évaluation. Rob Tadey et Gwyn Mason (Unité de gestion du poisson de fond) ont fourni des conseils sur les valeurs historiques des TAC. Nous sommes très reconnaissants à deux réviseurs, Ian Stewart (Commission internationale du flétan du Pacifique) et Daniel Ricard (Centre des pêches du Golfe), dont les examens détaillés ont grandement amélioré l’avis présenté dans cette évaluation. Rowan Haigh (Institut des sciences de la mer) a également fourni des commentaires éditoriaux utiles.
 
 \clearpage
+
