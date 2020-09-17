@@ -505,6 +505,10 @@ On sait que les données sur le poids moyen annuel étaient biaisées avant 1996
 
 > **Sc 7c.** Retirer les données sur le poids moyen annuel observé avant 1996.
 
+Ce scénario est essentiellement un cas plus extrême de Sc 7a. La suppression des données sur le poids moyen avant 1996 a entraîné des estimations beaucoup plus faibles de la biomasse (figures \@ref(fig:fig-sens7-biomass-5abcd) and \@ref(fig:fig-sens14-biomass-3cd)), surtout dans les premières parties de la série chronologique.
+Notamment pour la zone 5ABCD, la suppression de ces données a également donné lieu à un pic implausiblement important (> 15 */y*) dans l’intervalle crédible de mortalité par pêche en 1991 (figure \@ref(fig:fig-sens7-f-5abcd)).
+Pour la zone 3CD, il y a eu d’importants pics de mortalité par pêche estimative tout au long de la période historique (figure \@ref(fig:fig-sens14-f-3cd)).
+
 ## SC 8A et 8B. EFFET DE L’HYPOTHÈSE DES PRISES HISTORIQUES PARFAITEMENT CONNUES
 Pour chaque stock, deux analyses de sensibilité ont été effectuées, dans lesquelles les données sur les prises commerciales d’avant 1996 ont été gonflées d’une quantité fixe. Cela visait principalement à encadrer l’incertitude du modèle attribuable à l’incertitude entourant les rejets historiques et, dans une moindre mesure, les prises étrangères au début de la série chronologique. Ces scénarios ne cherchent pas à représenter des estimations réelles des rejets historiques, qui sont recommandées à titre d’important domaine pour les recherches futures.
 
@@ -512,6 +516,8 @@ Pour chaque stock, deux analyses de sensibilité ont été effectuées, dans les
 
 > **Sc 8b.** Gonfler les prises d’avant 1996 de 50 %.
 
+Comme prévu, le gonflement des données historiques sur les prises commerciales a gonflé les estimations de la biomasse historique d’une ampleur semblable (figures \@ref(fig:fig-sens8-biomass-5abcd) and \@ref(fig:fig-sens15-biomass-3cd)), car les modèles avaient besoin de plus de biomasse pour expliquer les prises observées.
+Nous notons que les participants de l’industrie du RRP estimaient que les rejets non déclarés n’étaient pas importants pour cette espèce en raison de la nature des activités de pêche pendant la période historique.
 
 \clearpage
 
