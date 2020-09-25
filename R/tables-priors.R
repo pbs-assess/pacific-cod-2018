@@ -180,5 +180,6 @@ priors.table <- function(model,
         linesep = "",
         escape = FALSE,
         align = c("l", "r", "r", "r", "r", "r", "r", "r", "c")) %>%
-    kable_styling(latex_options = c("hold_position", "repeat_header"))
+    kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 9)
+
 }

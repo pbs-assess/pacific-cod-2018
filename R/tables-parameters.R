@@ -253,7 +253,8 @@ if(french==TRUE){
     caption = caption, format = format,
     align = get.align(ncol(tab))[-1],
     booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
-    kableExtra::kable_styling(latex_options = "hold_position")
+    kableExtra::kable_styling(latex_options = "hold_position", font_size = 9) #%>%
+    #kable_styling(font_size = 9)
 }
 
 make.parameters.est.table <- function(model,

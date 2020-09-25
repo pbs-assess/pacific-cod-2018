@@ -615,7 +615,8 @@ se <- group_by(mat_coefs, .id) %>%
   dplyr::select(Survey,Term, Estimate, Conf.low, Conf.high) %>%
   purrr::set_names(en2fr(colnames(.), translate=french, allow_missing=T)) %>% 
    knitr::kable(caption = "Coefficients des ogives de la maturité par régression logistique.",
-     booktabs = TRUE, linesep = "", digits=2, format = "pandoc", escape=FALSE)
+     booktabs = TRUE, linesep = "", digits=2, format = "pandoc", escape=FALSE) %>% 
+     kableExtra::kable_styling(font_size = 8)
 
 ```
 

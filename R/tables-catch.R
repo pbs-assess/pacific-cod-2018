@@ -133,13 +133,7 @@ tac.table <- function(tac,
   names(tac) <- gsub("X", "", names(tac))
   names(tac) <- en2fr(names(tac), translate = french, allow_missing = TRUE)
 
-  #Hardcode the translation for IFMP
-  if(french=TRUE) {
-    tac[1:13,6] <- "PGIP"
-    tac[23,2:4] <- "prises accessoires"
-  }
-
-  tac[,c(2,3,4,5)] <- apply(tac[,c(2,3,4,5)],
+   tac[,c(2,3,4,5)] <- apply(tac[,c(2,3,4,5)],
                             2,
                             function(x){
                               tmp <- as.numeric(x)
@@ -148,6 +142,12 @@ tac.table <- function(tac,
   tac[grep(" *NA", tac[,2]), 2] = "bycatch only"
   tac[grep(" *NA", tac[,3]), 3] = "bycatch only"
   tac[grep(" *NA", tac[,4]), 4] = "bycatch only"
+
+  #Hardcode the translation for IFMP and bycatch only
+  if(french==TRUE) {
+    tac[1:13,6] <- "PGIP"
+    tac[23,2:4] <- "prises accessoires"
+  }
 
   colnames(tac) <- latex.bold(colnames(tac))
 
