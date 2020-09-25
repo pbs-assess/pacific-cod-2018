@@ -111,7 +111,7 @@ dplyr::filter(dat$survey_index, survey_abbrev %in%
 ```{r surv-canadian, fig.cap="Données des relevés au chalut sur la morue du Pacifique au Canada. La figure illustre la biomasse relative et les intervalles de confiance inférieurs et supérieurs correspondants. Les traits positifs désignent le nombre de traits de chalut qui ont capturé des morues du Pacifique."}
 gfplot::tidy_survey_index(dat$survey_index,
   survey = c("SYN QCS", "SYN WCVI", "SYN HS", "SYN WCHG", "OTHER HS MSA")) %>%
-  plot_survey_index() + ylab("La biomasse relative")
+  plot_survey_index(french=french) + ylab("La biomasse relative")
 
 ```
 
