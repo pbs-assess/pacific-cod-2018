@@ -129,11 +129,11 @@ readr::write_csv(cpue_pred_hist, here::here("data/generated/cpue-predictions-his
 ```
 
 ```{r cpue-locality-map-5, fig.cap="Lieux du MPO utilisés dans le modèle moderne de normalisation de la CPUE dans la zone 5ABCD.", fig.asp=0.9}
-gfplot:::plot_dfo_localities(unique(dfleet_modern[[1]]$locality_code))
+gfplot:::plot_dfo_localities(unique(dfleet_modern[[1]]$locality_code), french=french)
 ```
 
 ```{r cpue-locality-map-3, fig.cap="Lieux du MPO utilisés dans le modèle moderne de normalisation de la CPUE dans la zone 3CD.", fig.asp=0.9}
-gfplot:::plot_dfo_localities(unique(dfleet_modern[[2]]$locality_code))
+gfplot:::plot_dfo_localities(unique(dfleet_modern[[2]]$locality_code), french=french)
 ```
 
 ```{r cpue-tweedie-ex, fig.asp=0.7, fig.cap="Exemples de fonctions de densité pour la distribution de Tweedie. Le symbole $\\phi$ (représenté par phi sur cette figure) représente le paramètre de dispersion, $p$ représente le paramètre de puissance et $\\mu$ représente la moyenne. Il convient de noter que le pic de densité que l’on voit sur la gauche des graphiques a une valeur de 0 sur l’axe des x."}

@@ -30,19 +30,19 @@ Le relevé synoptique au chalut de fond sur le poisson de fond dans le bassin de
 Le relevé synoptique au chalut de fond sur la côte ouest de l’île de Vancouver a été réalisé pour la première fois en 2004 et est effectué une année sur deux (les années paires) sur un chalutier commercial affrété (figure \@ref(fig:survey-maps-syn-wcvi)). La zone du relevé se trouve au large de la côte ouest de l’île de Vancouver, entre environ 49 $^\circ$ 12$^\prime$ et 50 $^\circ$ 36$^\prime$ de latitude Nord et environ 124 $^\circ$ 48$^\prime$ à 128 $^\circ$ 30$^\prime$ de longitude Ouest. Sa limite méridionale longe la frontière canado-américaine. Le relevé comporte une seule strate aérienne dans les régions 3C et 3D du secteur de gestion des pêches du Pacifique, séparée en quatre strates de profondeur : 50-125 m; 125-200 m; 200-330 m; et 330-500 m. Environ 150 à 180 blocs de 4 km^2^ sont sélectionnés au hasard parmi les quatre strates de profondeur lors de chaque relevé.
 
 ```{r survey-maps-hs-msa, fig.asp=1, fig.cap="Différents traits du relevé multispécifique au chalut de fond sur le poisson de fond dans le détroit d’Hécate. Les croix gris pâle indiquent les traits du relevé qui n’ont pas capturé de morue du Pacifique. La superficie et la couleur des cercles sont proportionnelles à la densité de la morue du Pacifique pour ce trait du relevé. Les coordonnées en abscisse et en ordonnée sont indiquées pour la zone 9 UTM."}
-plot_multiyear_survey_sets(dat$survey_sets, "HS MSA")
+plot_multiyear_survey_sets(dat$survey_sets, "HS MSA", french=french)
 ```
 
 ```{r survey-maps-syn-hs, fig.asp=1, fig.cap="Différents traits du relevé synoptique au chalut de fond sur le poisson de fond dans le détroit d’Hécate. Les croix gris pâle indiquent les traits du relevé qui n’ont pas capturé de morue du Pacifique. La superficie et la couleur des cercles sont proportionnelles à la densité de la morue du Pacifique pour ce trait du relevé. Les coordonnées en abscisse et en ordonnée sont indiquées pour la zone 9 UTM."}
-plot_multiyear_survey_sets(dat$survey_sets, "SYN HS")
+plot_multiyear_survey_sets(dat$survey_sets, "SYN HS", french=french)
 ```
 
 ```{r survey-maps-syn-qcs, fig.asp=1, fig.cap="Différents traits du relevé synoptique au chalut de fond sur le poisson de fond dans le bassin de la Reine-Charlotte. Les croix gris pâle indiquent les traits du relevé qui n’ont pas capturé de morue du Pacifique. La superficie et la couleur des cercles sont proportionnelles à la densité de la morue du Pacifique pour ce trait du relevé. Les coordonnées en abscisse et en ordonnée sont indiquées pour la zone 9 UTM."}
-plot_multiyear_survey_sets(dat$survey_sets, "SYN QCS")
+plot_multiyear_survey_sets(dat$survey_sets, "SYN QCS", french=french)
 ```
 
 ```{r survey-maps-syn-wcvi, fig.asp=1, fig.cap="Différents traits du relevé synoptique au chalut de fond sur le poisson de fond sur la côte ouest de l’île de Vancouver. Les croix gris pâle indiquent les traits du relevé qui n’ont pas capturé de morue du Pacifique. La superficie et la couleur des cercles sont proportionnelles à la densité de la morue du Pacifique pour ce trait du relevé. Les coordonnées en abscisse et en ordonnée sont indiquées pour la zone 9 UTM."}
-plot_multiyear_survey_sets(dat$survey_sets, "SYN WCVI")
+plot_multiyear_survey_sets(dat$survey_sets, "SYN WCVI", french=french)
 ```
 
 \clearpage
