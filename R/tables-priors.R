@@ -10,6 +10,7 @@ priors.table <- function(model,
 
   model <- model[[1]]
 
+  if (french) options(OutDec = ".")
   p.names <- as.tibble(data.frame(name = c("Uniform",
                                            "Normal",
                                            "Log-Normal",
@@ -134,11 +135,11 @@ priors.table <- function(model,
                                   })
 
   ## Round the values off
-  prior.specs$`Initial value` <- f(prior.specs$`Initial value`, digits)
-  prior.specs$`Upper bound` <- f(prior.specs$`Upper bound`, digits)
-  prior.specs$`Lower bound` <- f(prior.specs$`Lower bound`, digits)
-  prior.specs$P1 <- f(prior.specs$P1, digits)
-  prior.specs$P2 <- f(prior.specs$P2, digits)
+  prior.specs$`Initial value` <- f(prior.specs$`Initial value`, digits, french = french)
+  prior.specs$`Upper bound` <- f(prior.specs$`Upper bound`, digits, french = french)
+  prior.specs$`Lower bound` <- f(prior.specs$`Lower bound`, digits, french = french)
+  prior.specs$P1 <- f(prior.specs$P1, digits, french = french)
+  prior.specs$P2 <- f(prior.specs$P2, digits, french = french)
 
   ## Change all NAs to --
   prior.specs <- apply(prior.specs,
@@ -172,15 +173,12 @@ priors.table <- function(model,
     col.names <- c(col.names, latex.bold(en2fr("Basis", translate = french, allow_missing = TRUE)))
   }
   colnames(prior.specs) <- col.names
+  if (french) options(OutDec = ",")
 
-  kable(prior.specs,
-        caption = cap, format = "pandoc",
-        booktabs = TRUE,
-        longtable = TRUE,
-        linesep = "",
-        escape = FALSE,
-        align = c("l", "r", "r", "r", "r", "r", "r", "r", "c")) %>%
-    kable_styling(latex_options = c("hold_position", "repeat_header")) %>%
-    kable_styling(font_size=6)
+  csasdown::csas_table(prior.specs,
+        caption = cap, format = "latex",
+        font_size = 8,
+        align = c("l", "r", "r", "r", "r", "r", "r", "r", "c"))
+    # kable_styling(latex_options = c("hold_position", "repeat_header"))
 
 }

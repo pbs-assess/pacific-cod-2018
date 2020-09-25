@@ -249,12 +249,10 @@ if(french==TRUE){
     colnames(tab)[4] <- latex.bold(latex.mlc(c("Priori (moyenne, ET)", "(une seule valeur = fixe)")))
   }
 
-  knitr::kable(tab,
-    caption = caption, format = format,
-    align = get.align(ncol(tab))[-1],
-    booktabs = TRUE, linesep = "", escape = FALSE, row.names = FALSE) %>%
-    kableExtra::kable_styling(latex_options = "hold_position", font_size = 9) #%>%
-    #kable_styling(font_size = 9)
+  csasdown::csas_table(tab,
+    caption = caption, format = "latex", font_size = 8,
+    align = get.align(ncol(tab))[-1])
+
 }
 
 make.parameters.est.table <- function(model,
@@ -344,19 +342,22 @@ make.parameters.est.table <- function(model,
   rownames(tab) <- row.n
 
   tab <- t(tab)
-  tab[row.names(tab) == "ro", ] <-       f(as.numeric(tab[row.names(tab) == "ro", ]), 0)
-  tab[row.names(tab) == "h", ] <-        f(as.numeric(tab[row.names(tab) == "h", ]), digits)
-  tab[row.names(tab) == "m", ] <-        f(as.numeric(tab[row.names(tab) == "m", ]), digits)
-  tab[row.names(tab) == "rbar", ] <-     f(as.numeric(tab[row.names(tab) == "rbar", ]), 0)
-  tab[row.names(tab) == "rinit", ] <-    f(as.numeric(tab[row.names(tab) == "rinit", ]), 0)
-  tab[row.names(tab) == "vartheta", ] <- f(as.numeric(tab[row.names(tab) == "vartheta", ]), digits)
-  tab[row.names(tab) == "sbo", ] <-      f(as.numeric(tab[row.names(tab) == "sbo", ]), 0)
-  tab[row.names(tab) == "q1", ] <-       f(as.numeric(tab[row.names(tab) == "q1", ]), digits)
-  tab[row.names(tab) == "q2", ] <-       f(as.numeric(tab[row.names(tab) == "q2", ]), digits)
-  tab[row.names(tab) == "q3", ] <-       f(as.numeric(tab[row.names(tab) == "q3", ]), digits)
-  tab[row.names(tab) == "q4", ] <-       f(as.numeric(tab[row.names(tab) == "q4", ]), digits)
-  tab[row.names(tab) == "q5", ] <-       f(as.numeric(tab[row.names(tab) == "q5", ]), digits)
-  tab[row.names(tab) == "q5", ] <-       f(as.numeric(tab[row.names(tab) == "q5", ]), digits)
+
+  if (french) options(OutDec = ".")
+
+  tab[row.names(tab) == "ro", ] <-       f(as.numeric(tab[row.names(tab) == "ro", ]), 0, french = french)
+  tab[row.names(tab) == "h", ] <-        f(as.numeric(tab[row.names(tab) == "h", ]), digits, french = french)
+  tab[row.names(tab) == "m", ] <-        f(as.numeric(tab[row.names(tab) == "m", ]), digits, french = french)
+  tab[row.names(tab) == "rbar", ] <-     f(as.numeric(tab[row.names(tab) == "rbar", ]), 0, french = french)
+  tab[row.names(tab) == "rinit", ] <-    f(as.numeric(tab[row.names(tab) == "rinit", ]), 0, french = french)
+  tab[row.names(tab) == "vartheta", ] <- f(as.numeric(tab[row.names(tab) == "vartheta", ]), digits, french = french)
+  tab[row.names(tab) == "sbo", ] <-      f(as.numeric(tab[row.names(tab) == "sbo", ]), 0, french = french)
+  tab[row.names(tab) == "q1", ] <-       f(as.numeric(tab[row.names(tab) == "q1", ]), digits, french = french)
+  tab[row.names(tab) == "q2", ] <-       f(as.numeric(tab[row.names(tab) == "q2", ]), digits, french = french)
+  tab[row.names(tab) == "q3", ] <-       f(as.numeric(tab[row.names(tab) == "q3", ]), digits, french = french)
+  tab[row.names(tab) == "q4", ] <-       f(as.numeric(tab[row.names(tab) == "q4", ]), digits, french = french)
+  tab[row.names(tab) == "q5", ] <-       f(as.numeric(tab[row.names(tab) == "q5", ]), digits, french = french)
+  if (french) options(OutDec = ",")
 
   ## The next set of names only pertains to the ARF assessment, the q's
   ##  and sel's are modified to line up with each other.
@@ -385,6 +386,12 @@ make.parameters.est.table <- function(model,
   tab <- left_join(tab, mon, by = "par")
   tab$par <- NULL
   tab$Rhat[tab$Rhat == " NaN"] <- "--"
+
+  tab$Rhat <- as.character(tab$Rhat)
+  tab$n_eff <- as.character(tab$n_eff)
+  if (french) tab$n_eff <- gsub(",", " ", tab$n_eff)
+  if (french) tab$Rhat <- gsub("\\.", ",", tab$Rhat)
+
   names(tab) <- gsub("n_eff", "$n_\\\\mathrm{eff}$", names(tab))
   names(tab) <- gsub("Rhat", "$\\\\hat{R}$", names(tab))
 
@@ -416,6 +423,7 @@ make.ref.points.table <- function(models,
                                   french=FALSE)
   {
 
+  if (french) options(OutDec = ".")
   probs <- c(lower, 0.5, upper)
 
   model <- models[[1]]
@@ -427,7 +435,7 @@ make.ref.points.table <- function(models,
       }
     }
     tab <- model$mcmccalcs$r.quants
-    tab[,-1] <- f(tab[,-1], digits)
+    tab[,-1] <- f(tab[,-1], digits, french = french)
     if (omit_msy) tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`)) #RF moved the filtering to here
     col.names <- colnames(tab)
     col.names[1] <- latex.bold(en2fr("Reference point", translate = french, allow_missing = TRUE))
@@ -511,18 +519,22 @@ make.ref.points.table <- function(models,
                                 paste0(usr[1], "--", usr[2])),
                          ")")
       col.names <- colnames(tab)
+
       tab <- data.frame(lapply(tab, as.character), stringsAsFactors = FALSE)
+      if (french) options(OutDec = ",")
+
+
       tab <- rbind(tab,
                    c(lrp.desc,
-                     f(lrp.5),
-                     f(lrp.50),
-                     f(lrp.95)))
+                     f(lrp.5, french=french),
+                     f(lrp.50, french=french),
+                     f(lrp.95, french=french)))
 
       tab <- rbind(tab,
                    c(usr.desc,
-                     f(usr.5),
-                     f(usr.50),
-                     f(usr.95)))
+                     f(usr.5, french=french),
+                     f(usr.50, french=french),
+                     f(usr.95, french=french)))
       colnames(tab) <- col.names
     }
   }
@@ -562,7 +574,7 @@ make.value.table <- function(model,
     stop("Type ", type, " not implemented.")
   }
 
-  tab <- f(t(out.dat), digits)
+  tab <- f(t(out.dat), digits, french = french)
   tab <- cbind(rownames(tab), tab)
   colnames(tab)[1] <- "Year"
   colnames(tab) <- en2fr(colnames(tab), translate = french, allow_missing = TRUE)

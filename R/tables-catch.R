@@ -112,13 +112,21 @@ catch.table <- function(dat,
 
   colnames(j) <- latex.bold(colnames(j))
 
+
+  if (french) {
+    for (i in seq_len(ncol(j))) {
+      j[,i] <- gsub(",", " ", j[,i,drop=TRUE])
+      j[,i] <- gsub("\\.", ",", j[,i,drop=TRUE])
+    }
+  }
+
   #cut off first three years
   kable(j[4:nrow(j),],
         caption = cap,
         booktabs = TRUE,
         longtable = TRUE,
         linesep = "",
-        escape = FALSE, format = "pandoc",
+        escape = FALSE, format = "latex",
         align = c("l", "r", "r", "r", "r", "r")) %>%
     column_spec(c(2, 4, 5, 6), width = "2cm") %>%
     column_spec(3, width = "4cm") %>%
@@ -139,9 +147,9 @@ tac.table <- function(tac,
                               tmp <- as.numeric(x)
                               f(tmp)
                             })
-  tac[grep(" *NA", tac[,2]), 2] = "bycatch only"
-  tac[grep(" *NA", tac[,3]), 3] = "bycatch only"
-  tac[grep(" *NA", tac[,4]), 4] = "bycatch only"
+  tac[grep(" *NA", tac[,2]), 2] = if (!french) "bycatch only" else "prise accessoire"
+  tac[grep(" *NA", tac[,3]), 3] = if (!french) "bycatch only" else "prise accessoire"
+  tac[grep(" *NA", tac[,4]), 4] = if (!french) "bycatch only" else "prise accessoire"
 
   #Hardcode the translation for IFMP and bycatch only
   if(french==TRUE) {
@@ -155,8 +163,8 @@ tac.table <- function(tac,
         booktabs = TRUE,
         longtable = TRUE,
         linesep = "",
-        escape = FALSE, format = "pandoc",
+        escape = FALSE, format = "latex",
         align = c("l", "r", "r", "r", "r", "l")) %>%
-    kable_styling(latex_options = c("hold_position", "repeat_header"))
+    kable_styling(latex_options = c("hold_position", "repeat_header"), font_size = 8.5)
 
 }
