@@ -134,7 +134,10 @@ tac.table <- function(tac,
   names(tac) <- en2fr(names(tac), translate = french, allow_missing = TRUE)
 
   #Hardcode the translation for IFMP
-  tac[1:13,6] <- "PGIP"
+  if(french=TRUE) {
+    tac[1:13,6] <- "PGIP"
+    tac[23,2:4] <- "prises accessoires"
+  }
 
   tac[,c(2,3,4,5)] <- apply(tac[,c(2,3,4,5)],
                             2,
