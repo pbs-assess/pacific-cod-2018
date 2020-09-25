@@ -416,7 +416,7 @@ Trois analyses de sensibilité sont présentées pour illustrer l’effet des pa
 
 > **Sc 3c.** La moyenne a été réduite à 0,4 et l’écart-type a été augmenté à 0,2.
 
-Les estimations a posteriori ainsi obtenues de la biomasse, du recrutement et de la mortalité par pêche par rapport aux modèles du scénario de référence sont représentées sur les figures \@ref(fig:fig-sens3-biomass-5abcd) à \@ref(fig:fig-sens3-f-5abcd) pour la zone 5ABCD, et sur les figures \@ref(fig:fig-sens10-biomass-3cd) à \@ref(fig:fig-sens10-f-3cd) pour la zone 3CD. Les estimations des paramètres ainsi obtenues sont indiquées dans les tableaux \@ref(tab:tab-param-table-sens3a-5abcd) à \@ref(tab:tab-param-table-sens3c-5abcd) pour la zone 5ABCD et dans les tableaux \@ref (tab:tab-param-table-sens3a-3cd) à \@ref (tab:tab-param-table-sens3cd) pour la zone 3CD.
+Les estimations a posteriori ainsi obtenues de la biomasse, du recrutement et de la mortalité par pêche par rapport aux modèles du scénario de référence sont représentées sur les figures \@ref(fig:fig-sens3-biomass-5abcd) à \@ref(fig:fig-sens3-f-5abcd) pour la zone 5ABCD, et sur les figures \@ref(fig:fig-sens10-biomass-3cd) à \@ref(fig:fig-sens10-f-3cd) pour la zone 3CD. Les estimations des paramètres ainsi obtenues sont indiquées dans les tableaux \@ref(tab:tab-param-table-sens3a-5abcd) à \@ref(tab:tab-param-table-sens3c-5abcd) pour la zone 5ABCD et dans les tableaux \@ref(tab:tab-param-table-sens3a-3cd) à \@ref(tab:tab-param-table-sens3cd) pour la zone 3CD.
 
 Pour la zone 5ABCD, les estimations a posteriori médianes respectives de *M* pour les scénarios 3a, 3b et 3c étaient de 0,324 *a*^-1^, 0,287 *a*^-1^ et 0,298 *a*^-1^. Ces valeurs sont à comparer à l’estimation a posteriori médiane du scénario de référence de *M* = 0,346 *a*^-1^.
 
@@ -424,7 +424,7 @@ Pour la zone 3CD, les estimations a posteriori médianes respectives de *M* pour
 
 Pour la zone 5ABCD, toutes les analyses de sensibilité ont donné des estimations de la biomasse inférieures à celles du modèle du scénario de référence (figure \@ref(fig:fig-sens3-biomass-5abcd)), ce qui n’était pas surprenant puisqu’elles avaient toutes des estimations de la médiane postérieure inférieures à *M*. Les différences dans l’estimation de la biomasse entre les scénarios étaient plus faibles pour la zone 3CD, même si toutes étaient légèrement inférieures à celles du modèle du scénario de référence (figure \@ref(fig:fig-sens10-biomass-3cd)).
 
-Nous suggérons d’inclure le scénario 3b (les deux zones) dans l’ensemble de modèles pour les tableaux de décision fondés sur la moyenne des modèles (section \@ref(sec:projections-and-decision-tables))), car c’est ce scénario qui a généré la plus grande différence dans la biomasse estimée dans les deux zones.
+Nous suggérons d’inclure le scénario 3b (les deux zones) dans l’ensemble de modèles pour les tableaux de décision fondés sur la moyenne des modèles (section \@ref(sec:projections-and-decision-tables)), car c’est ce scénario qui a généré la plus grande différence dans la biomasse estimée dans les deux zones.
 
 ## SC 4A ET SC 4B. DISTRIBUTION DE PROBABILITÉ A PRIORI POUR LA PENTE
 
@@ -434,7 +434,7 @@ Deux analyses de sensibilité ont été effectuées pour illustrer l’effet de 
 
 > **Sc 4b.** Utiliser une valeur a priori bêta pour la pente avec la moyenne = 0,85 et l’écart-type = 0,15.
 
-Les estimations a posteriori ainsi obtenues de la biomasse, du recrutement et de la mortalité par pêche par rapport aux modèles du scénario de référence sont représentées sur les figures \@ref(fig:fig-sens4-biomass-5abcd) à \@ref(fig:fig-sens4-f-5abcd) pour la zone 5ABCD, et sur les figures \@ref(fig:fig-sens11-biomass-3cd) à \@ref(fig:fig-sens11-f-3cd) pour la zone 3CD. Les estimations des paramètres ainsi obtenues sont indiquées dans les tableaux \@ref(tab:tab-param-table-sens4a-5abcd) à \@ref(tab:tab-param-table-sens4b-5abcd) pour la zone 5ABCD et dans les tableaux \@ref (tab:tab-param-table-sens4a-3cd) à \@ref (tab:tab-param-table-sens3cd) pour la zone 3CD.
+Les estimations a posteriori ainsi obtenues de la biomasse, du recrutement et de la mortalité par pêche par rapport aux modèles du scénario de référence sont représentées sur les figures \@ref(fig:fig-sens4-biomass-5abcd) à \@ref(fig:fig-sens4-f-5abcd) pour la zone 5ABCD, et sur les figures \@ref(fig:fig-sens11-biomass-3cd) à \@ref(fig:fig-sens11-f-3cd) pour la zone 3CD. Les estimations des paramètres ainsi obtenues sont indiquées dans les tableaux \@ref(tab:tab-param-table-sens4a-5abcd) à \@ref(tab:tab-param-table-sens4b-5abcd) pour la zone 5ABCD et dans les tableaux \@ref(tab:tab-param-table-sens4a-3cd) à \@ref(tab:tab-param-table-sens3cd) pour la zone 3CD.
 
 Pour la zone 5ABCD, les estimations a posteriori médianes respectives de *h* pour les scénarios 4a et 4b étaient de 0,479 et de 0,883. Pour la zone 3CD, les estimations a posteriori médianes respectives de *h* pour les scénarios 4a et 4b étaient de 0,497 et de 0,889. Ces valeurs ont été comparées à celles de 0,744 pour le scénario de référence de la zone 5ABCD et de 0,747 pour le scénario de référence de la zone 3CD.
 
@@ -452,7 +452,7 @@ La présente évaluation de la zone 5ABCD a utilisé les valeurs des paramètres
 
 En résumé, les deux nouveaux scénarios sont les suivants :
 
-> **Sc 5a. ** Fixer k$ = 3 a$ et mettre à jour le poids au recrutement $W_k$ et les paramètres de Ford-Walford en conséquence.
+> **Sc 5a. ** Fixer $k = 3 a$ et mettre à jour le poids au recrutement $W_k$ et les paramètres de Ford-Walford en conséquence.
 
 > **Sc 5b.** Exécuter le modèle en utilisant les paramètres de croissance de von Bertalanffy appliqués dans l’évaluation précédente des stocks [@forrest2013].
 
@@ -549,7 +549,7 @@ Pour la zone 3CD, les sept modèles suivants ont été sélectionnés parce qu�
 
 Les estimations a posteriori de la biomasse établies à partir de l’ensemble utilisant la moyenne des modèles sont présentées à la figure \@ref(fig:fig-model-average-biomass-comp-3cd). Les estimations a posteriori combinées de la biomasse sont présentées à la figure \@ref(fig:fig-model-average-biomass-3cd). Les projections de la biomasse à partir de l’ensemble utilisant la moyenne des modèles sont présentées à la figure \@ref(fig:fig-model-average-biomass-3cd-proj).
 
-# POINTS DE RÉFÉRENCE UTILISANT LA MOYENNE DES MODÈLES ET TABLES DE DÉCISION
+# POINTS DE RÉFÉRENCE UTILISANT LA MOYENNE DES MODÈLES ET TABLES DE DÉCISION {#sec:projections-and-decision-tables}
 
 Les points de référence ont été calculés pour chaque zone en utilisant la moyenne des modèles des estimations a posteriori combinées, comme décrit ci-dessus. Les résultats sont présentés dans le tableau \@ref(tab:tab-ref-points-table-avg-5abcd) pour la zone 5ABCD et le tableau \@ref(tab:tab-ref-points-table-avg-3cd) pour la zone 3CD. La biomasse et les médianes du recrutement a posteriori sont également fournies avec les intervalles de crédibilité et les valeurs de la DPM dans les tableaux \@ref(tab:tab-post-biomass-avg-5abcd) et \@ref(tab:tab-post-recr-avg-5abcd) pour la zone 5ABCD et les tableaux \@ref(tab:tab-post-biomass-avg-3cd) et \@ref(tab:tab-post-recr-avg-3cd) pour la zone 3CD.
 
@@ -578,11 +578,11 @@ Des tableaux de décision résumant la probabilité de dépassement des points d
 
 Les probabilités du tableau de décision « fondé sur la moyenne des modèles » pour les zones 5ABCD sont présentées dans le tableau \@ref(tab:tab-decision-avg-5abcd). En résumé :
 
-- P$ (B_{2020} < B_{2019})$ variait de 12 % à 89 % de la fourchette des niveaux de prises de 2019.
+- $P(B_{2020} < B_{2019})$ variait de 12 % à 89 % de la fourchette des niveaux de prises de 2019.
 - $P(F_{2019} > F_{2018})$ variait de < 1 % à > 99 %. Les prises de 2018 ont été extrapolées à environ 200 t, ce qui explique l’augmentation de la probabilité entre 200 et 300 t.
 - $P(B_{2020} < PRL)$ variait de <1 % à 11 %.
 - $P(B_{2020} < RSS)$ variait de 98 % à 99 %.
-- P$ (F_{2019} > TEL) $ variait de <1 % à 95 %.
+- $P(F_{2019} > TEL)$ variait de <1 % à 95 %.
 
 Pour un niveau de prises de 900 t en 2019, proche du TAC de 2017, il y a une probabilité estimée de 1 % que la biomasse de 2020 sera inférieure au PRL et une probabilité de 99 % que la biomasse de 2019 sera inférieure au RSS.
 
@@ -590,11 +590,11 @@ Pour un niveau de prises de 900 t en 2019, proche du TAC de 2017, il y a une pro
 
 Les probabilités du tableau de décision « fondé sur la moyenne des modèles » pour les zones 3CD sont présentées dans le tableau \@ref(tab:tab-decision-avg-3cd). En résumé :
 
-- P$ (B_{2020} < B_{2019}) variait de 76 % à 89 % de la fourchette des niveaux de prises de 2019.
+- $P(B_{2020} < B_{2019})$ variait de 76 % à 89 % de la fourchette des niveaux de prises de 2019.
 - $P(F_{2019} > F_{2018})$ variait de < 1 % à > 99 %. Les prises de 2018 ont été extrapolées à environ 164 t, ce qui explique l’augmentation de la probabilité entre 100 et 200 t.
 - $P(B_{2020} < PRL)$ variait de <1 % à 1%.
 - $P(B_{2020} < RSS)$ variait de 95 % à 97 %.
-- P$ (F_{2019} > TEL) $ variait de <1 % à 96%.
+- $P(F_{2019} > TEL)$ variait de <1 % à 96%.
 
 Pour un niveau de prises de 500 t en 2019, proche du TAC de 2017, il y a une probabilité estimée de 18 % que la biomasse de 2020 sera inférieure au PRL et une probabilité de 99 % que la biomasse de 2020 sera inférieure au RSS.
 
