@@ -117,7 +117,7 @@ suggested.ref.points(french=french, definition_text=definition_text,caption_text
 
 ```{r tab-param-table-5abcd, results='asis'}
 make.parameters.table(base.model.5abcd,
-  caption = paste0("Paramètres estimés et fixes et distributions de probabilité a priori utilisés",
+  caption = paste0("Paramètres estimés et fixes et distributions de probabilité a priori utilisés ",
     "dans le scénario de référence, zone 5ABCD"),
   omit_pars = c("Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
     "Log mean recruitment ($\\ln(\\overline{R})$)"),

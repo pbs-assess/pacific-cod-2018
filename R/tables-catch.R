@@ -152,9 +152,12 @@ tac.table <- function(tac,
   tac[grep(" *NA", tac[,4]), 4] = if (!french) "bycatch only" else "prise accessoire"
 
   #Hardcode the translation for IFMP and bycatch only
-  if(french==TRUE) {
+  if (french) {
     tac[1:13,6] <- "PGIP"
     tac[23,2:4] <- "prises accessoires"
+    for (i in seq_len(ncol(tac))) {
+      tac[,i] <- gsub(",", " ", tac[,i,drop=TRUE])
+    }
   }
 
   colnames(tac) <- latex.bold(colnames(tac))

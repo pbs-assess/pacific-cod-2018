@@ -245,8 +245,9 @@ if(french==TRUE){
                      latex.mlc(c("Prior (mean, SD)", "(single value = fixed)")))
 
   #Hardwire the last heading
-  if(french==TRUE) {
+  if (french) {
     colnames(tab)[4] <- latex.bold(latex.mlc(c("Priori (moyenne, ET)", "(une seule valeur = fixe)")))
+    tab[,ncol(tab)] <- gsub("\\.", ",", tab[,ncol(tab)])
   }
 
   csasdown::csas_table(tab,
@@ -536,6 +537,13 @@ make.ref.points.table <- function(models,
                      f(usr.50, french=french),
                      f(usr.95, french=french)))
       colnames(tab) <- col.names
+    }
+  }
+
+  if (french) {
+    for (i in seq_len(ncol(tab))) {
+      tab[,i] <- gsub(",", " ", tab[,i])
+      tab[,i] <- gsub("\\.", ",", tab[,i])
     }
   }
 
