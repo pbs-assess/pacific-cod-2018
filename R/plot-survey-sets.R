@@ -1,6 +1,6 @@
 plot_multiyear_survey_sets <- function(dat, survey_abbrev,
   density_column = "density_kgpm2",
-  density_lab = "", density_multiplier = 1e6, french=french) {
+  density_lab = "", density_multiplier = 1e6, french=FALSE) {
   density_lab = paste(en2fr("Density",translate=french),expression(~(kg/km^2)))
   dd <- gfplot::tidy_survey_sets(dat, survey_abbrev, years = seq(0, 1e6),
     density_column = density_column)
