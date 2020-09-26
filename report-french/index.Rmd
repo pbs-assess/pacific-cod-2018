@@ -16,7 +16,7 @@ address: |
       1406 Rose Ann Drive\
       Nanaimo, Colombie-Britannique, V9T 4K8, Canada\
 
-month: "October"
+month: "Octobre"
 year: "2020"
 report_number: "070"
 type: res-doc
