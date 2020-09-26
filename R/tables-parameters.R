@@ -395,6 +395,10 @@ make.parameters.est.table <- function(model,
 
   names(tab) <- gsub("n_eff", "$n_\\\\mathrm{eff}$", names(tab))
   names(tab) <- gsub("Rhat", "$\\\\hat{R}$", names(tab))
+  if(french) {
+    names(tab) <- gsub("%", " %", names(tab))
+    names(tab) <- gsub(".5", ",5", names(tab))
+  }
 
   if (!is.null(omit_pars)) {
     # tab <- dplyr::filter(tab, !`\\textbf{Parameter}` %in% omit_pars)
@@ -439,7 +443,19 @@ make.ref.points.table <- function(models,
     tab[,-1] <- f(tab[,-1], digits, french = french)
     if (omit_msy) tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`)) #RF moved the filtering to here
     col.names <- colnames(tab)
-    col.names[1] <- latex.bold(en2fr("Reference point", translate = french, allow_missing = TRUE))
+
+    # I can't get the percentage headings to render properly in bold when there is only one
+    # model so make them all not bold!
+   if(french){
+     col.names[1] <- en2fr("Reference point", translate = french, allow_missing = TRUE)
+     col.names[2] <- "2,5 %"
+     col.names[3] <- "50 %"
+     col.names[4] <- "97,5 %"
+   } else
+   {
+     col.names[1] <- latex.bold(en2fr("Reference point", translate = french, allow_missing = TRUE))
+   }
+
     colnames(tab) <- col.names
   }else{
     tab <- lapply(models,
@@ -472,6 +488,10 @@ make.ref.points.table <- function(models,
                   paste0("0.8",
                          latex.subscr.ital("B", "MSY")))
     tab <- cbind.data.frame(desc.col, tab)
+    if(french) {
+      names(tab) <- gsub("%", " %", names(tab))
+      names(tab) <- gsub(".5", ",5", names(tab))
+    }
     col.names <- colnames(tab)
     col.names <- latex.bold(latex.perc(col.names))
     if (omit_msy) tab <- dplyr::filter(tab, !grepl("MSY",  desc.col)) #RF moved the filtering to here
@@ -584,9 +604,16 @@ make.value.table <- function(model,
 
   tab <- f(t(out.dat), digits, french = french)
   tab <- cbind(rownames(tab), tab)
+
   colnames(tab)[1] <- "Year"
+  if(french){
+    colnames(tab)[2] <- "2,5 %"
+    colnames(tab)[3] <- "50 %"
+    colnames(tab)[4] <- "97,5 %"
+  }
   colnames(tab) <- en2fr(colnames(tab), translate = french, allow_missing = TRUE)
   colnames(tab) <- latex.bold(latex.perc(colnames(tab)))
+
 
   knitr::kable(tab,
     caption = caption,
