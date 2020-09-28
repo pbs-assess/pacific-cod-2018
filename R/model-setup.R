@@ -141,8 +141,8 @@ sens.models.dir.name.1.sub <- c(file.path(model.dir,
                                 file.path(model.dir,
                                           "0_1c_5ABCD_NO_loc-yr-interact_rsoleq_06_019_doubleCV"))
 
-sens.models.name.1.sub <- c("1b) No locality/yr interaction",
-                            "1c) No locality/yr interaction, double CV")
+sens.models.name.1.sub <- c(ifelse(french, "Sc 1b.", "1b) No locality/yr interaction"),
+                            ifelse(french, "Sc 1c.", "1c) No locality/yr interaction, double CV"))
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 1 subset 2 (5ABCD)
