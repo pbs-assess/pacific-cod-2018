@@ -20,7 +20,7 @@ month: "October"
 year: "2020"
 report_number: "070"
 type: res-doc
-citation_other_language: "Forrest, R.E., Anderson, S.C., Grandin, C.J., et Starr, P.J. 2020. Évaluation de la morue du Pacifique (*Gadus macrocephalus*) pour le détroit d’Hécate et le bassin de la Reine-Charlotte (zone 5ABCD), ainsi que pour la côte ouest de l’île de Vancouver (zone 3CD) en 2018. DFO Secr. can. de consult. sci. du MPO. Doc. de rech 2020/070. vi + 225 p."
+citation_other_language: "Forrest, R.E., Anderson, S.C., Grandin, C.J., et Starr, P.J. 2020. Évaluation de la morue du Pacifique (*Gadus macrocephalus*) pour le détroit d’Hécate et le bassin de la Reine-Charlotte (zone 5ABCD), ainsi que pour la côte ouest de l’île de Vancouver (zone 3CD) en 2018. DFO Secr. can. de consult. sci. du MPO. Doc. de rech 2020/070. v + 226 p."
 abstract: |
   The status of two stocks of Pacific Cod (*Gadus macrocephalus*) in Hecate Strait/Queen Charlotte Sound (Area 5ABCD) and West Coast Vancouver Island (Area 3CD) was assessed using Bayesian delay-difference models. The models were fit to fishery-independent indices of abundance and new standardized commercial catch-per-unit-effort (CPUE) indices that were developed using Tweedie generalized linear mixed effect models (GLMMs). New analyses of growth and maturity were also done and incorporated into the models.
 
