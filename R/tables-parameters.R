@@ -441,25 +441,15 @@ make.ref.points.table <- function(models,
     }
     tab <- model$mcmccalcs$r.quants
     tab[,-1] <- f(tab[,-1], digits, french = french)
+
     if (omit_msy) tab <- dplyr::filter(tab, !grepl("MSY", `\\textbf{Reference Point}`)) #RF moved the filtering to here
 
-     col.names <- colnames(tab)
-
-     # I can't get the percentage headings to render properly in bold when there is only one
-     # model so make them all not bold!
-    if(french){
-      col.names[1] <- en2fr("Reference point", translate = french, allow_missing = TRUE)
-      col.names[2] <- "2,5 %"
-      col.names[3] <- "50 %"
-      col.names[4] <- "97,5 %"
-    } else
-    {
-      col.names[1] <- latex.bold(en2fr("Reference point", translate = french, allow_missing = TRUE))
+    if(french) {
+      names(tab) <- gsub("\\\\%", " \\\\%", names(tab))
+      names(tab) <- gsub("\\.", ",", names(tab))
+      names(tab)[1] <- paste0("\\textbf{", en2fr("Reference Point"), "}")
     }
-
-    # col.names <- latex.bold(col.names) # Not working
-     colnames(tab) <- col.names
-
+    col.names <- colnames(tab)
   }else{
     tab <- lapply(models,
                   function(x){
