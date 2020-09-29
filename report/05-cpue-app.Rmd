@@ -370,7 +370,9 @@ dfleet_hist %>%
 ```
 
 (ref:caption-cpue-bubble-plots-hist-5ABCD) Same as Figure \@ref(fig:cpue-bubble-plots-hist-3CD) but for 5ABCD.
+
 (ref:caption-cpue-bubble-plots-modern-3CD) Same as Figure \@ref(fig:cpue-bubble-plots-hist-3CD) but for 1996--2017 3CD.
+
 (ref:caption-cpue-bubble-plots-modern-5ABCD) Same as Figure \@ref(fig:cpue-bubble-plots-hist-3CD) but for 1996--2017 5ABCD.
 
 ```{r cpue-bubble-plots-hist-5ABCD, fig.asp=1.35, fig.cap="(ref:caption-cpue-bubble-plots-hist-5ABCD)"}
