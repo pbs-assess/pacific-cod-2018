@@ -201,8 +201,8 @@ dfleet_hist %>%
   filter(area == "3CD") %>%
   make_facet_bubble_plot(group = "trips") +
   ggtitle("1956-1995 3CD") +
-  labs(size = paste0("Nombre de\nsorties")) +
-  labs(fill = paste0("Nombre de\nsorties"))
+  labs(fill = paste0("Nombre de\nsorties")) +
+  labs(size = paste0("Nombre de\nsorties")) 
 
 ```
 
@@ -221,8 +221,9 @@ dfleet_hist %>%
   filter(area == "5ABCD") %>%
   make_facet_bubble_plot(group = "trips") +
   ggtitle("1956-1995 5ABCD") +
+  labs(fill = paste0("Nombre de\nsorties")) +
   labs(size = paste0("Nombre de\nsorties")) +
-  labs(fill = paste0("Nombre de\nsorties"))
+  theme(legend.text = element_text(size = 6))
 ```
 
 ```{r cpue-bubble-plots-modern-3CD, fig.asp=1.4, fig.width=9, fig.cap="(ref:caption-cpue-bubble-plots-modern-3CD)"}
